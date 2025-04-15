@@ -1,4 +1,4 @@
-# Warning! This project written only for practice in vibe coding with AI (Grok)!
+# Warning! This project written only for practice in vibe coding with AI Grok. In progress now.
 
 # Typing trainer
 
