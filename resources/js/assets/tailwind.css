@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.error-char {
+    @apply bg-red-200 text-red-800;
+}
