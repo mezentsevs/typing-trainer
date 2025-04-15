@@ -6,6 +6,7 @@
         "test:cypress": "cypress run"
     },
     "devDependencies": {
+        "@tailwindcss/vite": "^4.0.0",
         "@vitejs/plugin-vue": "^5.0.0",
         "axios": "^1.7.0",
         "cypress": "^13.6.0",
@@ -18,5 +19,6 @@
     "dependencies": {
         "pinia": "^2.1.7",
         "vue-router": "^4.3.0"
-    }
+    },
+    "type": "module"
 }
