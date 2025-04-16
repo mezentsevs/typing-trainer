@@ -1,9 +1,10 @@
+import '../css/app.css';
+
+import App from '@/App.vue';
+import axios from 'axios';
+import router from '@/router';
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
-import App from '@/App.vue';
-import router from '@/router';
-import axios from 'axios';
-import '@/assets/tailwind.css';
 
 axios.defaults.baseURL = '/api';
 const token = localStorage.getItem('token');
