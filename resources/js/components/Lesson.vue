@@ -74,7 +74,7 @@ const handleInput = async () => {
     const words = typed.value.length / 5;
     speed.value = time.value > 0 ? Math.round((words / time.value) * 60) : 0;
 
-    if (typed.value === text.value) {
+    if (typed.value.length === text.value.length) {
         await axios.post('/lessons/progress', {
             lesson_id: lesson.value.id,
             time_seconds: time.value,
