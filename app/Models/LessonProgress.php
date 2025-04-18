@@ -9,6 +9,8 @@ class LessonProgress extends Model
 {
     use HasFactory;
 
+    protected $table = 'lesson_progresses';
+
     protected $fillable = ['user_id', 'lesson_id', 'time_seconds', 'speed_wpm', 'errors'];
 
     public function user()
