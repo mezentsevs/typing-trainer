@@ -46,14 +46,14 @@ const lessons = ref<any[]>([]);
 const nextLesson = computed(() => lessons.value.find(l => l.number === lessonNumber + 1));
 
 const fetchLesson = async () => {
-    const [lessonRes, textRes, lessonsRes] = await Promise.all([
-        axios.get(`/lessons/${language}/${lessonNumber}`),
-        axios.get(`/lessons/${language}/${lessonNumber}/text`),
+    const [lessonsRes, textRes, ] = await Promise.all([
         axios.get(`/lessons/${language}`),
+        axios.get(`/lessons/${language}/${lessonNumber}/text`),
     ]);
+
+    lessons.value = lessonsRes.data;
     lesson.value = lessonsRes.data.find((l: any) => l.number === lessonNumber);
     text.value = textRes.data.text;
-    lessons.value = lessonsRes.data;
 };
 
 const handleInput = async () => {
