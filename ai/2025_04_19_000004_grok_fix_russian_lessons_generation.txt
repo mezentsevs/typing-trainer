@@ -1,0 +1,230 @@
+В web-приложении для тренировки слепого метода печати генерируются уроки. Предоставляю контекстную информацию по миграции, модели, сервису уроков:<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration {
+    public function up(): void
+    {
+        Schema::create('lessons', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedInteger('number');
+            $table->string('language');
+            $table->string('new_chars');
+            $table->timestamps();
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('lessons');
+    }
+};
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Lesson extends Model
+{
+    use HasFactory;
+
+    protected $fillable = ['number', 'language', 'new_chars'];
+
+    public function progresses()
+    {
+        return $this->hasMany(LessonProgress::class);
+    }
+}
+<?php
+
+namespace App\Services;
+
+use App\Models\Lesson;
+
+class LessonService
+{
+    protected $charSets = [
+        'en' => 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=[]{}|;:,.<>?',
+        'ru' => 'абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ0123456789!@#$%^&*()_+-=[]{}|;:,.<>?',
+    ];
+
+    public function generateLessons(string $language, int $lessonCount): void
+    {
+        $chars = str_split($this->charSets[$language] ?? $this->charSets['en']);
+        $charsPerLesson = ceil(count($chars) / $lessonCount);
+
+        Lesson::where('language', $language)->delete();
+
+        for ($i = 0; $i < $lessonCount; $i++) {
+            $start = $i * $charsPerLesson;
+            $newChars = array_slice($chars, $start, $charsPerLesson);
+            if ($newChars) {
+                Lesson::create([
+                    'number' => $i + 1,
+                    'language' => $language,
+                    'new_chars' => implode('', $newChars),
+                ]);
+            }
+        }
+    }
+
+    public function generateLessonText(string $language, int $lessonNumber, int $length = 100): string
+    {
+        $lesson = Lesson::where('language', $language)->where('number', $lessonNumber)->firstOrFail();
+        $availableChars = '';
+        foreach (Lesson::where('language', $language)->where('number', '<=', $lessonNumber)->get() as $l) {
+            $availableChars .= $l->new_chars;
+        }
+
+        $text = '';
+        for ($i = 0; $i < $length; $i++) {
+            $text .= $availableChars[random_int(0, strlen($availableChars) - 1)];
+        }
+
+        return $text;
+    }
+}
+Для генерации урока используется метод generateLessons. При генерации уроков на русском языке возникает ошибка:[2025-04-19 14:16:58] local.ERROR: Malformed UTF-8 characters, possibly incorrectly encoded {"userId":1,"exception":"[object] (InvalidArgumentException(code: 0): Malformed UTF-8 characters, possibly incorrectly encoded at /var/www/html/vendor/laravel/framework/src/Illuminate/Http/JsonResponse.php:89)
+[stacktrace]
+#0 /var/www/html/vendor/symfony/http-foundation/JsonResponse.php(49): Illuminate\\Http\\JsonResponse->setData()
+#1 /var/www/html/vendor/laravel/framework/src/Illuminate/Http/JsonResponse.php(31): Symfony\\Component\\HttpFoundation\\JsonResponse->__construct()
+#2 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(104): Illuminate\\Http\\JsonResponse->__construct()
+#3 /var/www/html/app/Http/Controllers/LessonController.php(40): Illuminate\\Routing\\ResponseFactory->json()
+#4 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(46): App\\Http\\Controllers\\LessonController->getText()
+#5 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Route.php(265): Illuminate\\Routing\\ControllerDispatcher->dispatch()
+#6 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Route.php(211): Illuminate\\Routing\\Route->runController()
+#7 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(808): Illuminate\\Routing\\Route->run()
+#8 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(169): Illuminate\\Routing\\Router->{closure:Illuminate\\Routing\\Router::runRouteWithinStack():807}()
+#9 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(50): Illuminate\\Pipeline\\Pipeline->{closure:Illuminate\\Pipeline\\Pipeline::prepareDestination():167}()
+#10 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(208): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle()
+#11 /var/www/html/vendor/laravel/framework/src/Illuminate/Auth/Middleware/Authenticate.php(63): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():183}:184}()
+#12 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(208): Illuminate\\Auth\\Middleware\\Authenticate->handle()
+#13 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(126): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():183}:184}()
+#14 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(807): Illuminate\\Pipeline\\Pipeline->then()
+#15 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(786): Illuminate\\Routing\\Router->runRouteWithinStack()
+#16 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(750): Illuminate\\Routing\\Router->runRoute()
+#17 /var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(739): Illuminate\\Routing\\Router->dispatchToRoute()
+#18 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(200): Illuminate\\Routing\\Router->dispatch()
+#19 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(169): Illuminate\\Foundation\\Http\\Kernel->{closure:Illuminate\\Foundation\\Http\\Kernel::dispatchToRouter():197}()
+#20 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->{closure:Illuminate\\Pipeline\\Pipeline::prepareDestination():167}()
+#21 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#22 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(208): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#23 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():183}:184}()
+#24 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(51): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#25 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(208): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#26 /var/www/html/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():183}:184}()
+#27 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(208): Illuminate\\Http\\Middleware\\ValidatePostSize->handle()
+#28 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(109): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():183}:184}()
+#29 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(208): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#30 /var/www/html/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(61): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():183}:184}()
+#31 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(208): Illuminate\\Http\\Middleware\\HandleCors->handle()
+#32 /var/www/html/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(58): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():183}:184}()
+#33 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(208): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#34 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks.php(22): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():183}:184}()
+#35 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(208): Illuminate\\Foundation\\Http\\Middleware\\InvokeDeferredCallbacks->handle()
+#36 /var/www/html/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePathEncoding.php(26): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():183}:184}()
+#37 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(208): Illuminate\\Http\\Middleware\\ValidatePathEncoding->handle()
+#38 /var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(126): Illuminate\\Pipeline\\Pipeline->{closure:{closure:Illuminate\\Pipeline\\Pipeline::carry():183}:184}()
+#39 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(175): Illuminate\\Pipeline\\Pipeline->then()
+#40 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#41 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1219): Illuminate\\Foundation\\Http\\Kernel->handle()
+#42 /var/www/html/public/index.php(20): Illuminate\\Foundation\\Application->handleRequest()
+#43 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php(23): require_once('...')
+#44 {main}
+"}
+Нужно ее исправить с минимальными изменениями в коде.
+
+
+
+
+Ошибка Malformed UTF-8 characters, possibly incorrectly encoded возникает из-за проблем с кодировкой символов при обработке русских символов в методе generateLessons. В предоставленном коде проблема связана с тем, как строка new_chars обрабатывается и сохраняется в базе данных. В частности, метод str_split может некорректно разделять многобайтовые UTF-8 символы, такие как кириллица, если не настроена правильная обработка кодировки.
+
+Для исправления ошибки с минимальными изменениями нужно использовать функцию mb_str_split вместо str_split, чтобы корректно разделять строку на символы с учетом UTF-8.
+
+Исправленный код LessonService:
+php
+
+Копировать
+<?php
+
+namespace App\Services;
+
+use App\Models\Lesson;
+
+class LessonService
+{
+    protected $charSets = [
+        'en' => 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=[]{}|;:,.<>?',
+        'ru' => 'абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ0123456789!@#$%^&*()_+-=[]{}|;:,.<>?',
+    ];
+
+    public function generateLessons(string $language, int $lessonCount): void
+    {
+        $chars = mb_str_split($this->charSets[$language] ?? $this->charSets['en'], 1, 'UTF-8');
+        $charsPerLesson = ceil(count($chars) / $lessonCount);
+
+        Lesson::where('language', $language)->delete();
+
+        for ($i = 0; $i < $lessonCount; $i++) {
+            $start = $i * $charsPerLesson;
+            $newChars = array_slice($chars, $start, $charsPerLesson);
+            if ($newChars) {
+                Lesson::create([
+                    'number' => $i + 1,
+                    'language' => $language,
+                    'new_chars' => implode('', $newChars),
+                ]);
+            }
+        }
+    }
+
+    public function generateLessonText(string $language, int $lessonNumber, int $length = 100): string
+    {
+        $lesson = Lesson::where('language', $language)->where('number', $lessonNumber)->firstOrFail();
+        $availableChars = '';
+        foreach (Lesson::where('language', $language)->where('number', '<=', $lessonNumber)->get() as $l) {
+            $availableChars .= $l->new_chars;
+        }
+
+        $availableChars = mb_str_split($availableChars, 1, 'UTF-8');
+        $text = '';
+        for ($i = 0; $i < $length; $i++) {
+            $text .= $availableChars[random_int(0, count($availableChars) - 1)];
+        }
+
+        return $text;
+    }
+}
+Изменения:
+Замена str_split на mb_str_split:
+В методе generateLessons строка $chars = str_split(...) заменена на $chars = mb_str_split($this->charSets[$language] ?? $this->charSets['en'], 1, 'UTF-8'). Это обеспечивает корректное разделение многобайтовых символов, таких как кириллица.
+В методе generateLessonText строка $availableChars также разделяется с помощью mb_str_split($availableChars, 1, 'UTF-8'), чтобы гарантировать корректную работу с UTF-8 символами.
+Использование count вместо strlen:
+В методе generateLessonText для получения длины массива символов используется count($availableChars) вместо strlen($availableChars), так как strlen возвращает количество байт, а не символов, что может привести к ошибкам с UTF-8.
+Дополнительные рекомендации:
+Убедитесь, что база данных настроена на использование UTF-8 (например, utf8mb4 в MySQL). Проверьте конфигурацию в файле config/database.php и убедитесь, что для соединения с базой данных установлена кодировка utf8mb4.
+Проверьте, что файл с исходным кодом сохранен в кодировке UTF-8 без BOM.
+Если ошибка сохраняется, убедитесь, что в LessonController данные, возвращаемые в JSON-ответе, обрабатываются с правильной кодировкой. Например, используйте response()->json($data, 200, [], JSON_UNESCAPED_UNICODE) для предотвращения проблем с кодировкой символов.
+Эти изменения должны устранить ошибку с минимальными модификациями кода.
+
+
+
+
+
+
+
+
+Чем я могу помочь?
+
+
+DeepSearch
+
+
+Think
+
+Grok 3
+
