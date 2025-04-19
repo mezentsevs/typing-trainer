@@ -13,7 +13,7 @@ class LessonService
 
     public function generateLessons(string $language, int $lessonCount): void
     {
-        $chars = str_split($this->charSets[$language] ?? $this->charSets['en']);
+        $chars = mb_str_split($this->charSets[$language] ?? $this->charSets['en'], 1, 'UTF-8');
         $charsPerLesson = ceil(count($chars) / $lessonCount);
 
         Lesson::where('language', $language)->delete();
@@ -33,15 +33,15 @@ class LessonService
 
     public function generateLessonText(string $language, int $lessonNumber, int $length = 100): string
     {
-        $lesson = Lesson::where('language', $language)->where('number', $lessonNumber)->firstOrFail();
         $availableChars = '';
         foreach (Lesson::where('language', $language)->where('number', '<=', $lessonNumber)->get() as $l) {
             $availableChars .= $l->new_chars;
         }
 
+        $availableChars = mb_str_split($availableChars, 1, 'UTF-8');
         $text = '';
         for ($i = 0; $i < $length; $i++) {
-            $text .= $availableChars[random_int(0, strlen($availableChars) - 1)];
+            $text .= $availableChars[random_int(0, count($availableChars) - 1)];
         }
 
         return $text;
