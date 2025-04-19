@@ -12,12 +12,34 @@
                         {{ char }}
                     </span>
                 </div>
-                <input v-model="typed" @input="handleInput" class="w-full p-2 border rounded mt-4" ref="input" autofocus />
+                <input
+                    v-model="typed"
+                    @input="handleInput"
+                    class="w-full p-2 border rounded mt-4"
+                    ref="input"
+                    autofocus
+                    :disabled="isLessonCompleted"
+                />
             </div>
-            <router-link v-if="nextLesson" :to="`/lesson/${language}/${nextLesson.number}`" class="mt-4 inline-block bg-blue-500 text-white p-2 rounded">
+            <div v-if="isLessonCompleted" class="mt-4 text-green-600 font-bold">
+                Lesson Completed!
+            </div>
+            <router-link
+                v-if="nextLesson"
+                :to="`/lesson/${language}/${nextLesson.number}`"
+                class="mt-4 inline-block bg-blue-500 text-white p-2 rounded"
+                :class="{ 'opacity-50 cursor-not-allowed': !isLessonCompleted }"
+                :disabled="!isLessonCompleted"
+            >
                 Next Lesson
             </router-link>
-            <router-link v-else to="/test" class="mt-4 inline-block bg-green-500 text-white p-2 rounded">
+            <router-link
+                v-else
+                to="/test"
+                class="mt-4 inline-block bg-green-500 text-white p-2 rounded"
+                :class="{ 'opacity-50 cursor-not-allowed': !isLessonCompleted }"
+                :disabled="!isLessonCompleted"
+            >
                 Take Final Test
             </router-link>
         </div>
@@ -33,7 +55,7 @@ const route = useRoute();
 const router = useRouter();
 const language = route.params.language as string;
 const lessonNumber = parseInt(route.params.number as string);
-const lesson = ref<{ id: number; number: number; new_chars: string }>({id: 0, number: lessonNumber, new_chars: '' });
+const lesson = ref<{ id: number; number: number; new_chars: string }>({ id: 0, number: lessonNumber, new_chars: '' });
 const text = ref('');
 const typed = ref('');
 const startTime = ref(0);
@@ -42,11 +64,12 @@ const errors = ref(0);
 const speed = ref(0);
 const input = ref<HTMLInputElement | null>(null);
 const lessons = ref<any[]>([]);
+const isLessonCompleted = ref(false);
 
 const nextLesson = computed(() => lessons.value.find(l => l.number === lessonNumber + 1));
 
 const fetchLesson = async () => {
-    const [lessonsRes, textRes, ] = await Promise.all([
+    const [lessonsRes, textRes] = await Promise.all([
         axios.get(`/lessons/${language}`),
         axios.get(`/lessons/${language}/${lessonNumber}/text`),
     ]);
@@ -75,6 +98,7 @@ const handleInput = async () => {
     speed.value = time.value > 0 ? Math.round((words / time.value) * 60) : 0;
 
     if (typed.value.length === text.value.length) {
+        isLessonCompleted.value = true;
         await axios.post('/lessons/progress', {
             lesson_id: lesson.value.id,
             time_seconds: time.value,
