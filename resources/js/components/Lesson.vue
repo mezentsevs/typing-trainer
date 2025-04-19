@@ -20,6 +20,7 @@
                     autofocus
                     :disabled="isLessonCompleted"
                 />
+                <VirtualKeyboard :language="language as 'en' | 'ru'" :typed="typed" :text="text" />
             </div>
             <div v-if="isLessonCompleted" class="mt-4 text-green-600 font-bold">
                 Lesson Completed!
@@ -47,6 +48,7 @@
 import { ref, computed, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import axios from 'axios';
+import VirtualKeyboard from './VirtualKeyboard.vue';
 
 const route = useRoute();
 const language = route.params.language as string;

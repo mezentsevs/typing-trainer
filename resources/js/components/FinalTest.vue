@@ -26,6 +26,7 @@
                     </span>
                 </div>
                 <input v-model="typed" @input="handleInput" class="w-full p-2 border rounded mt-4" ref="input" :disabled="isTestCompleted" autofocus />
+                <VirtualKeyboard :language="language as 'en' | 'ru'" :typed="typed" :text="text" />
                 <p v-if="isTestCompleted" class="text-green-500 font-bold mt-2">Test completed!</p>
                 <router-link v-if="isTestCompleted" to="/" class="bg-blue-500 text-white p-2 rounded mt-2 inline-block">Back to Home</router-link>
             </div>
@@ -37,6 +38,7 @@
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import axios from 'axios';
+import VirtualKeyboard from './VirtualKeyboard.vue';
 
 const route = useRoute();
 const language = ref(route.params.language as string);
@@ -68,7 +70,7 @@ const uploadFile = async (event: Event) => {
         formData.append('file', file);
         formData.append('language', language.value);
         await axios.post('/test/upload', formData);
-        fetchText();
+        await fetchText();
     }
 };
 
