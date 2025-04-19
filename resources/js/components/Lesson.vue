@@ -27,6 +27,7 @@
             <router-link
                 v-if="nextLesson"
                 :to="`/lesson/${language}/${nextLesson.number}`"
+                @click="resetAndLoadNext"
                 class="mt-4 inline-block bg-blue-500 text-white p-2 rounded"
                 :class="{ 'opacity-50 cursor-not-allowed': !isLessonCompleted }"
                 :disabled="!isLessonCompleted"
@@ -54,8 +55,8 @@ import axios from 'axios';
 const route = useRoute();
 const router = useRouter();
 const language = route.params.language as string;
-const lessonNumber = parseInt(route.params.number as string);
-const lesson = ref<{ id: number; number: number; new_chars: string }>({ id: 0, number: lessonNumber, new_chars: '' });
+const lessonNumber = ref(parseInt(route.params.number as string));
+const lesson = ref<{ id: number; number: number; new_chars: string }>({ id: 0, number: lessonNumber.value, new_chars: '' });
 const text = ref('');
 const typed = ref('');
 const startTime = ref(0);
@@ -66,16 +67,26 @@ const input = ref<HTMLInputElement | null>(null);
 const lessons = ref<any[]>([]);
 const isLessonCompleted = ref(false);
 
-const nextLesson = computed(() => lessons.value.find(l => l.number === lessonNumber + 1));
+const nextLesson = computed(() => lessons.value.find(l => l.number === lessonNumber.value + 1));
+
+const resetState = () => {
+    text.value = '';
+    typed.value = '';
+    startTime.value = 0;
+    time.value = 0;
+    errors.value = 0;
+    speed.value = 0;
+    isLessonCompleted.value = false;
+};
 
 const fetchLesson = async () => {
     const [lessonsRes, textRes] = await Promise.all([
         axios.get(`/lessons/${language}`),
-        axios.get(`/lessons/${language}/${lessonNumber}/text`),
+        axios.get(`/lessons/${language}/${lessonNumber.value}/text`),
     ]);
 
     lessons.value = lessonsRes.data;
-    lesson.value = lessonsRes.data.find((l: any) => l.number === lessonNumber);
+    lesson.value = lessonsRes.data.find((l: any) => l.number === lessonNumber.value);
     text.value = textRes.data.text;
 };
 
@@ -111,8 +122,19 @@ const handleInput = async () => {
     }
 };
 
-onMounted(() => {
-    fetchLesson();
+const resetAndLoadNext = async () => {
+    if (!isLessonCompleted.value) return;
+    lessonNumber.value++;
+    resetState();
+    await fetchLesson();
+    if (input.value) {
+        input.value.focus();
+    }
+};
+
+onMounted(async () => {
+    resetState();
+    await fetchLesson();
     if (input.value) {
         input.value.focus();
     }
