@@ -3,13 +3,6 @@
         <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
             <h2 class="text-2xl font-bold mb-4">Final Typing Test</h2>
             <div class="mb-4">
-                <label class="block text-gray-700">Language</label>
-                <select v-model="language" class="p-2 border rounded">
-                    <option value="en">English</option>
-                    <option value="ru">Russian</option>
-                </select>
-            </div>
-            <div class="mb-4">
                 <label class="block text-gray-700">Genre (optional)</label>
                 <select v-model="genre" class="p-2 border rounded">
                     <option value="">None</option>
@@ -41,9 +34,11 @@
 
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
 import axios from 'axios';
 
-const language = ref('en');
+const route = useRoute();
+const language = ref(route.params.language as string);
 const genre = ref('');
 const text = ref('');
 const typed = ref('');

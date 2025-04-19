@@ -12,7 +12,7 @@ const routes = [
     { path: '/register', component: Register },
     { path: '/setup', component: LessonSetup, meta: { requiresAuth: true } },
     { path: '/lesson/:language/:number', component: Lesson, meta: { requiresAuth: true } },
-    { path: '/test', component: FinalTest, meta: { requiresAuth: true } },
+    { path: '/test/:language', component: FinalTest, meta: { requiresAuth: true } },
 ];
 
 const router = createRouter({

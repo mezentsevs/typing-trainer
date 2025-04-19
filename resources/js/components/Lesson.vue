@@ -34,7 +34,7 @@
             </router-link>
             <router-link
                 v-else-if="isLessonCompleted"
-                to="/test"
+                :to="`/test/${language}`"
                 class="mt-4 inline-block bg-green-500 text-white p-2 rounded"
             >
                 Take Final Test
