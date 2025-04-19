@@ -25,21 +25,17 @@
                 Lesson Completed!
             </div>
             <router-link
-                v-if="nextLesson"
+                v-if="nextLesson && isLessonCompleted"
                 :to="`/lesson/${language}/${nextLesson.number}`"
                 @click="resetAndLoadNext"
                 class="mt-4 inline-block bg-blue-500 text-white p-2 rounded"
-                :class="{ 'opacity-50 cursor-not-allowed': !isLessonCompleted }"
-                :disabled="!isLessonCompleted"
             >
                 Next Lesson
             </router-link>
             <router-link
-                v-else
+                v-else-if="isLessonCompleted"
                 to="/test"
                 class="mt-4 inline-block bg-green-500 text-white p-2 rounded"
-                :class="{ 'opacity-50 cursor-not-allowed': !isLessonCompleted }"
-                :disabled="!isLessonCompleted"
             >
                 Take Final Test
             </router-link>
@@ -49,11 +45,10 @@
 
 <script lang="ts" setup>
 import { ref, computed, onMounted } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
+import { useRoute } from 'vue-router';
 import axios from 'axios';
 
 const route = useRoute();
-const router = useRouter();
 const language = route.params.language as string;
 const lessonNumber = ref(parseInt(route.params.number as string));
 const lesson = ref<{ id: number; number: number; new_chars: string }>({ id: 0, number: lessonNumber.value, new_chars: '' });
@@ -116,9 +111,6 @@ const handleInput = async () => {
             speed_wpm: speed.value,
             errors: errors.value,
         });
-        if (!nextLesson.value) {
-            router.push('/test');
-        }
     }
 };
 
