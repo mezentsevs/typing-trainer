@@ -32,7 +32,8 @@
                         {{ char }}
                     </span>
                 </div>
-                <input v-model="typed" @input="handleInput" class="w-full p-2 border rounded mt-4" ref="input" autofocus />
+                <input v-model="typed" @input="handleInput" class="w-full p-2 border rounded mt-4" ref="input" :disabled="isTestCompleted" autofocus />
+                <p v-if="isTestCompleted" class="text-green-500 font-bold mt-2">Test completed!</p>
             </div>
         </div>
     </div>
@@ -51,6 +52,7 @@ const time = ref(0);
 const errors = ref(0);
 const speed = ref(0);
 const input = ref<HTMLInputElement | null>(null);
+const isTestCompleted = ref(false);
 
 const fetchText = async () => {
     const response = await axios.get('/test/text', { params: { language: language.value, genre: genre.value } });
@@ -60,6 +62,7 @@ const fetchText = async () => {
     time.value = 0;
     errors.value = 0;
     speed.value = 0;
+    isTestCompleted.value = false;
 };
 
 const uploadFile = async (event: Event) => {
@@ -91,14 +94,13 @@ const handleInput = async () => {
     const words = typed.value.length / 5;
     speed.value = time.value > 0 ? Math.round((words / time.value) * 60) : 0;
 
-    if (typed.value === text.value) {
+    if (typed.value.length === text.value.length) {
         await axios.post('/test/result', {
             language: language.value,
             speed_wpm: speed.value,
             errors: errors.value,
         });
-        alert('Test completed!');
-        text.value = '';
+        isTestCompleted.value = true;
     }
 };
 
