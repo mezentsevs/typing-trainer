@@ -27,6 +27,7 @@
                 </div>
                 <input v-model="typed" @input="handleInput" class="w-full p-2 border rounded mt-4" ref="input" :disabled="isTestCompleted" autofocus />
                 <p v-if="isTestCompleted" class="text-green-500 font-bold mt-2">Test completed!</p>
+                <router-link v-if="isTestCompleted" to="/" class="bg-blue-500 text-white p-2 rounded mt-2 inline-block">Back to Home</router-link>
             </div>
         </div>
     </div>
