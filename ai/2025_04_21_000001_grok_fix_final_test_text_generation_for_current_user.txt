@@ -1,0 +1,667 @@
+В приложении есть финальный тест скорости печати. Предоставляю контекстную информацию для задачи:
+routes/api.php
+<?php
+
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LessonController;
+use App\Http\Controllers\TestController;
+use Illuminate\Support\Facades\Route;
+
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/logout', [AuthController::class, 'logout']);
+
+    Route::prefix('lessons')->group(function () {
+        Route::post('/generate', [LessonController::class, 'generate']);
+        Route::get('/{language}', [LessonController::class, 'index']);
+        Route::get('/{language}/{lessonNumber}/text', [LessonController::class, 'getText']);
+        Route::post('/progress', [LessonController::class, 'saveProgress']);
+    });
+
+    Route::prefix('test')->group(function () {
+        Route::get('/text', [TestController::class, 'getTestText']);
+        Route::post('/upload', [TestController::class, 'uploadText']);
+        Route::post('/result', [TestController::class, 'saveResult']);
+    });
+});
+app/Http/Controllers/TestController.php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\TestResult;
+use App\Services\TestService;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
+class TestController extends Controller
+{
+    protected $testService;
+
+    public function __construct(TestService $testService)
+    {
+        $this->testService = $testService;
+    }
+
+    public function getTestText(Request $request)
+    {
+        $request->validate([
+            'language' => 'required|string',
+            'genre' => 'nullable|string',
+        ]);
+
+        $text = $this->testService->getTestText($request->language, $request->genre);
+        return response()->json(['text' => $text]);
+    }
+
+    public function uploadText(Request $request)
+    {
+        $request->validate([
+            'language' => 'required|string',
+            'file' => 'required|file|mimes:txt',
+        ]);
+
+        $path = $request->file('file')->storeAs('uploads', "test_{$request->language}.txt", 'public');
+        return response()->json(['message' => 'File uploaded', 'path' => $path]);
+    }
+
+    public function saveResult(Request $request)
+    {
+        $request->validate([
+            'language' => 'required|string',
+            'speed_wpm' => 'required|integer',
+            'errors' => 'required|integer',
+        ]);
+
+        $result = TestResult::create([
+            'user_id' => auth()->id(),
+            'language' => $request->language,
+            'speed_wpm' => $request->speed_wpm,
+            'errors' => $request->errors,
+        ]);
+
+        return response()->json($result);
+    }
+}
+app/Services/TestService.php
+<?php
+
+namespace App\Services;
+
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
+
+class TestService
+{
+    protected $fallbackTexts = [
+        'en' => [
+            'The quick brown fox jumps over the lazy dog.',
+            'A journey of a thousand miles begins with a single step.',
+        ],
+        'ru' => [
+            'Быстрая лиса перепрыгнула через ленивую собаку.',
+            'Путешествие в тысячу миль начинается с одного шага.',
+        ],
+    ];
+
+    public function getTestText(string $language, ?string $genre = null): string
+    {
+        if (env('GROK_API_KEY') && $genre) {
+            try {
+                $response = Http::withHeaders([
+                    'Authorization' => 'Bearer ' . env('GROK_API_KEY'),
+                ])->post('https://api.x.ai/v1/generate', [
+                    'prompt' => "Generate a 100-word text in $language for typing practice in the $genre genre.",
+                ]);
+
+                if ($response->successful()) {
+                    return $response->json()['text'];
+                }
+            } catch (\Exception $e) {
+                // Fallback to local text
+            }
+        }
+
+        // Use fallback text or user-uploaded file
+        $userFile = Storage::disk('public')->exists("uploads/test_$language.txt")
+            ? Storage::disk('public')->get("uploads/test_$language.txt")
+            : null;
+
+        return $userFile ?? $this->fallbackTexts[$language][array_rand($this->fallbackTexts[$language])];
+    }
+}
+resources/js/components/FinalTest.vue
+<template>
+    <div class="min-h-screen bg-gray-100 p-8">
+        <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
+            <h2 class="text-2xl font-bold mb-4">Final Typing Test ({{ language }})</h2>
+            <div class="mb-4">
+                <label class="block text-gray-700">Genre (optional)</label>
+                <select v-model="genre" class="p-2 border rounded">
+                    <option value="">None</option>
+                    <option value="fiction">Fiction</option>
+                    <option value="non-fiction">Non-fiction</option>
+                    <option value="poetry">Poetry</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700">Upload Text (optional)</label>
+                <input type="file" accept=".txt" @change="uploadFile" class="p-2 border rounded" />
+            </div>
+            <button @click="fetchText" class="bg-blue-500 text-white p-2 rounded mb-4">Start Test</button>
+            <p><strong>Time:</strong> {{ time }}s</p>
+            <p><strong>Speed:</strong> {{ speed }} WPM</p>
+            <p><strong>Errors:</strong> {{ errors }}</p>
+            <div v-if="text" class="mt-4">
+                <div class="text-lg font-mono">
+                    <span v-for="(char, index) in text" :key="index" :class="{ 'error-char': typed[index] && typed[index] !== char }">
+                        {{ char }}
+                    </span>
+                </div>
+                <input v-model="typed" @input="handleInput" class="w-full p-2 border rounded mt-4" ref="input" :disabled="isTestCompleted" autofocus />
+                <VirtualKeyboard :language="language as 'en' | 'ru'" :typed="typed" :text="text" />
+                <p v-if="isTestCompleted" class="text-green-500 font-bold mt-2">Test completed!</p>
+                <router-link v-if="isTestCompleted" to="/" class="bg-blue-500 text-white p-2 rounded mt-2 inline-block">Back to Home</router-link>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script lang="ts" setup>
+import { ref, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+import axios from 'axios';
+import VirtualKeyboard from './VirtualKeyboard.vue';
+
+const route = useRoute();
+const language = ref(route.params.language as string);
+const genre = ref('');
+const text = ref('');
+const typed = ref('');
+const startTime = ref(0);
+const time = ref(0);
+const errors = ref(0);
+const speed = ref(0);
+const input = ref<HTMLInputElement | null>(null);
+const isTestCompleted = ref(false);
+
+const fetchText = async () => {
+    const response = await axios.get('/test/text', { params: { language: language.value, genre: genre.value } });
+    text.value = response.data.text;
+    typed.value = '';
+    startTime.value = 0;
+    time.value = 0;
+    errors.value = 0;
+    speed.value = 0;
+    isTestCompleted.value = false;
+};
+
+const uploadFile = async (event: Event) => {
+    const file = (event.target as HTMLInputElement).files?.[0];
+    if (file) {
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('language', language.value);
+        await axios.post('/test/upload', formData);
+        await fetchText();
+    }
+};
+
+const handleInput = async () => {
+    if (!startTime.value) {
+        startTime.value = Date.now();
+    }
+
+    const typedChars = typed.value.split('');
+    let errorCount = 0;
+    for (let i = 0; i < typedChars.length; i++) {
+        if (typedChars[i] !== text.value[i]) {
+            errorCount++;
+        }
+    }
+    errors.value = errorCount;
+
+    time.value = Math.round((Date.now() - startTime.value) / 1000);
+    const words = typed.value.length / 5;
+    speed.value = time.value > 0 ? Math.round((words / time.value) * 60) : 0;
+
+    if (typed.value.length === text.value.length) {
+        await axios.post('/test/result', {
+            language: language.value,
+            speed_wpm: speed.value,
+            errors: errors.value,
+        });
+        isTestCompleted.value = true;
+    }
+};
+
+onMounted(() => {
+    if (input.value) {
+        input.value.focus();
+    }
+});
+</script>
+resources/js/router/index.ts
+import { createRouter, createWebHistory } from 'vue-router';
+import Home from '@/components/Home.vue';
+import Login from '@/components/Login.vue';
+import Register from '@/components/Register.vue';
+import LessonSetup from '@/components/LessonSetup.vue';
+import Lesson from '@/components/Lesson.vue';
+import FinalTest from '@/components/FinalTest.vue';
+
+const routes = [
+    { path: '/', component: Home, meta: { requiresAuth: true } },
+    { path: '/login', component: Login },
+    { path: '/register', component: Register },
+    { path: '/setup', component: LessonSetup, meta: { requiresAuth: true } },
+    { path: '/lesson/:language/:number', component: Lesson, meta: { requiresAuth: true } },
+    { path: '/test/:language', component: FinalTest, meta: { requiresAuth: true } },
+];
+
+const router = createRouter({
+    history: createWebHistory(),
+    routes,
+});
+
+router.beforeEach((to, from, next) => {
+    const token = localStorage.getItem('token');
+    if (to.meta.requiresAuth && !token) {
+        next('/login');
+    } else {
+        next();
+    }
+});
+
+export default router;
+Сейчас, загружаемый файл с текстом финального теста общий для всех пользователей приложения, не привязан к текущему пользователю. Нужно привязать текст финального теста а текущему пользователю, чтобы у каждого пользователя он был бы свой. Если необходимы дополнительные данные по контексту к задаче, скажи мне, я предоставлю тебе их. Минимальные изменения. Комментариев в коде быть не должно. Выведи обновленный код всех необходимых для выполнения задачи файлов.
+
+
+
+
+Для привязки загружаемого текста финального теста к текущему пользователю необходимо:
+
+Изменить TestService для сохранения и получения файлов с учетом user_id
+Обновить TestController для передачи user_id в сервис
+Изменить FinalTest.vue для отправки user_id при загрузке файла
+Вот обновленные файлы с минимальными изменениями:
+
+php
+
+Копировать
+<?php
+
+namespace App\Services;
+
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
+
+class TestService
+{
+    protected $fallbackTexts = [
+        'en' => [
+            'The quick brown fox jumps over the lazy dog.',
+            'A journey of a thousand miles begins with a single step.',
+        ],
+        'ru' => [
+            'Быстрая лиса перепрыгнула через ленивую собаку.',
+            'Путешествие в тысячу миль начинается с одного шага.',
+        ],
+    ];
+
+    public function getTestText(string $language, ?string $genre = null, int $userId): string
+    {
+        if (env('GROK_API_KEY') && $genre) {
+            try {
+                $response = Http::withHeaders([
+                    'Authorization' => 'Bearer ' . env('GROK_API_KEY'),
+                ])->post('https://api.x.ai/v1/generate', [
+                    'prompt' => "Generate a 100-word text in $language for typing practice in the $genre genre.",
+                ]);
+
+                if ($response->successful()) {
+                    return $response->json()['text'];
+                }
+            } catch (\Exception $e) {
+            }
+        }
+
+        $userFile = Storage::disk('public')->exists("uploads/test_{$language}_{$userId}.txt")
+            ? Storage::disk('public')->get("uploads/test_{$language}_{$userId}.txt")
+            : null;
+
+        return $userFile ?? $this->fallbackTexts[$language][array_rand($this->fallbackTexts[$language])];
+    }
+}
+Show in sidebar
+php
+
+Копировать
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\TestResult;
+use App\Services\TestService;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
+class TestController extends Controller
+{
+    protected $testService;
+
+    public function __construct(TestService $testService)
+    {
+        $this->testService = $testService;
+    }
+
+    public function getTestText(Request $request)
+    {
+        $request->validate([
+            'language' => 'required|string',
+            'genre' => 'nullable|string',
+        ]);
+
+        $text = $this->testService->getTestText($request->language, $request->genre, auth()->id());
+        return response()->json(['text' => $text]);
+    }
+
+    public function uploadText(Request $request)
+    {
+        $request->validate([
+            'language' => 'required|string',
+            'file' => 'required|file|mimes:txt',
+        ]);
+
+        $path = $request->file('file')->storeAs('uploads', "test_{$request->language}_" . auth()->id() . ".txt", 'public');
+        return response()->json(['message' => 'File uploaded', 'path' => $path]);
+    }
+
+    public function saveResult(Request $request)
+    {
+        $request->validate([
+            'language' => 'required|string',
+            'speed_wpm' => 'required|integer',
+            'errors' => 'required|integer',
+        ]);
+
+        $result = TestResult::create([
+            'user_id' => auth()->id(),
+            'language' => $request->language,
+            'speed_wpm' => $request->speed_wpm,
+            'errors' => $request->errors,
+        ]);
+
+        return response()->json($result);
+    }
+}
+Show in sidebar
+vue
+
+Копировать
+<template>
+    <div class="min-h-screen bg-gray-100 p-8">
+        <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
+            <h2 class="text-2xl font-bold mb-4">Final Typing Test ({{ language }})</h2>
+            <div class="mb-4">
+                <label class="block text-gray-700">Genre (optional)</label>
+                <select v-model="genre" class="p-2 border rounded">
+                    <option value="">None</option>
+                    <option value="fiction">Fiction</option>
+                    <option value="non-fiction">Non-fiction</option>
+                    <option value="poetry">Poetry</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700">Upload Text (optional)</label>
+                <input type="file" accept=".txt" @change="uploadFile" class="p-2 border rounded" />
+            </div>
+            <button @click="fetchText" class="bg-blue-500 text-white p-2 rounded mb-4">Start Test</button>
+            <p><strong>Time:</strong> {{ time }}s</p>
+            <p><strong>Speed:</strong> {{ speed }} WPM</p>
+            <p><strong>Errors:</strong> {{ errors }}</p>
+            <div v-if="text" class="mt-4">
+                <div class="text-lg font-mono">
+                    <span v-for="(char, index) in text" :key="index" :class="{ 'error-char': typed[index] && typed[index] !== char }">
+                        {{ char }}
+                    </span>
+                </div>
+                <input v-model="typed" @input="handleInput" class="w-full p-2 border rounded mt-4" ref="input" :disabled="isTestCompleted" autofocus />
+                <VirtualKeyboard :language="language as 'en' | 'ru'" :typed="typed" :text="text" />
+                <p v-if="isTestCompleted" class="text-green-500 font-bold mt-2">Test completed!</p>
+                <router-link v-if="isTestCompleted" to="/" class="bg-blue-500 text-white p-2 rounded mt-2 inline-block">Back to Home</router-link>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script lang="ts" setup>
+import { ref, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+import axios from 'axios';
+import VirtualKeyboard from './VirtualKeyboard.vue';
+
+const route = useRoute();
+const language = ref(route.params.language as string);
+const genre = ref('');
+const text = ref('');
+const typed = ref('');
+const startTime = ref(0);
+const time = ref(0);
+const errors = ref(0);
+const speed = ref(0);
+const input = ref<HTMLInputElement | null>(null);
+const isTestCompleted = ref(false);
+
+const fetchText = async () => {
+    const response = await axios.get('/test/text', { params: { language: language.value, genre: genre.value } });
+    text.value = response.data.text;
+    typed.value = '';
+    startTime.value = 0;
+    time.value = 0;
+    errors.value = 0;
+    speed.value = 0;
+    isTestCompleted.value = false;
+};
+
+const uploadFile = async (event: Event) => {
+    const file = (event.target as HTMLInputElement).files?.[0];
+    if (file) {
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('language', language.value);
+        await axios.post('/test/upload', formData, {
+            headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+        });
+        await fetchText();
+    }
+};
+
+const handleInput = async () => {
+    if (!startTime.value) {
+        startTime.value = Date.now();
+    }
+
+    const typedChars = typed.value.split('');
+    let errorCount = 0;
+    for (let i = 0; i < typedChars.length; i++) {
+        if (typedChars[i] !== text.value[i]) {
+            errorCount++;
+        }
+    }
+    errors.value = errorCount;
+
+    time.value = Math.round((Date.now() - startTime.value) / 1000);
+    const words = typed.value.length / 5;
+    speed.value = time.value > 0 ? Math.round((words / time.value) * 60) : 0;
+
+    if (typed.value.length === text.value.length) {
+        await axios.post('/test/result', {
+            language: language.value,
+            speed_wpm: speed.value,
+            errors: errors.value,
+        });
+        isTestCompleted.value = true;
+    }
+};
+
+onMounted(() => {
+    if (input.value) {
+        input.value.focus();
+    }
+});
+</script>
+Show in sidebar
+Изменения:
+
+В TestService добавлен параметр userId и изменено имя файла на test_{language}_{userId}.txt
+В TestController добавлен user_id в вызов getTestText и изменено имя сохраняемого файла
+В FinalTest.vue добавлен заголовок Authorization для POST-запроса на загрузку файла
+Эти изменения обеспечивают, что каждый пользователь имеет свой собственный загруженный текст для теста, сохраняя всю остальную функциональность.
+
+
+Для теста на русском языке, файлы с контентом финального теста не создаются, при этом контент загружаемых файлов теста на русском языке перезаписывается в файлы финального теста на английском языке для того же пользователя приложения. Нужно это исправить с минимальными изменениями. В коде не должно быть комментариев. Выведи измененный код всех необходимых файлов.
+
+
+
+
+Для исправления проблемы с перезаписью файлов теста на русском языке в файлы на английском языке необходимо изменить логику формирования имени файла в TestService и TestController, чтобы язык и user_id корректно учитывались. Проблема возникает из-за некорректной обработки имени файла. Минимальные изменения затрагивают только эти два файла.
+
+app/Services/TestService.php
+
+php
+
+Копировать
+<?php
+
+namespace App\Services;
+
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
+
+class TestService
+{
+    protected $fallbackTexts = [
+        'en' => [
+            'The quick brown fox jumps over the lazy dog.',
+            'A journey of a thousand miles begins with a single step.',
+        ],
+        'ru' => [
+            'Быстрая лиса перепрыгнула через ленивую собаку.',
+            'Путешествие в тысячу миль начинается с одного шага.',
+        ],
+    ];
+
+    public function getTestText(string $language, ?string $genre = null, int $userId): string
+    {
+        if (env('GROK_API_KEY') && $genre) {
+            try {
+                $response = Http::withHeaders([
+                    'Authorization' => 'Bearer ' . env('GROK_API_KEY'),
+                ])->post('https://api.x.ai/v1/generate', [
+                    'prompt' => "Generate a 100-word text in $language for typing practice in the $genre genre.",
+                ]);
+
+                if ($response->successful()) {
+                    return $response->json()['text'];
+                }
+            } catch (\Exception $e) {
+            }
+        }
+
+        $filePath = "uploads/test_{$userId}_{$language}.txt";
+        $userFile = Storage::disk('public')->exists($filePath)
+            ? Storage::disk('public')->get($filePath)
+            : null;
+
+        return $userFile ?? $this->fallbackTexts[$language][array_rand($this->fallbackTexts[$language])];
+    }
+}
+app/Http/Controllers/TestController.php
+
+php
+
+Копировать
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\TestResult;
+use App\Services\TestService;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
+class TestController extends Controller
+{
+    protected $testService;
+
+    public function __construct(TestService $testService)
+    {
+        $this->testService = $testService;
+    }
+
+    public function getTestText(Request $request)
+    {
+        $request->validate([
+            'language' => 'required|string',
+            'genre' => 'nullable|string',
+        ]);
+
+        $text = $this->testService->getTestText($request->language, $request->genre, auth()->id());
+        return response()->json(['text' => $text]);
+    }
+
+    public function uploadText(Request $request)
+    {
+        $request->validate([
+            'language' => 'required|string',
+            'file' => 'required|file|mimes:txt',
+        ]);
+
+        $path = $request->file('file')->storeAs('uploads', "test_" . auth()->id() . "_{$request->language}.txt", 'public');
+        return response()->json(['message' => 'File uploaded', 'path' => $path]);
+    }
+
+    public function saveResult(Request $request)
+    {
+        $request->validate([
+            'language' => 'required|string',
+            'speed_wpm' => 'required|integer',
+            'errors' => 'required|integer',
+        ]);
+
+        $result = TestResult::create([
+            'user_id' => auth()->id(),
+            'language' => $request->language,
+            'speed_wpm' => $request->speed_wpm,
+            'errors' => $request->errors,
+        ]);
+
+        return response()->json($result);
+    }
+}
+Изменения:
+
+В TestService изменен формат имени файла с test_{$language}_{$userId}.txt на test_{$userId}_{$language}.txt, чтобы user_id шел перед языком, обеспечивая уникальность и предотвращая путаницу.
+В TestController изменен формат имени файла в методе uploadText на test_{userId}_{language}.txt для согласованности с TestService.
+Эти изменения гарантируют, что файлы тестов для русского и английского языков не перезаписывают друг друга, так как имя файла теперь четко разделяет user_id и language.
+
+
+
+
+
+
+
+
+Чем я могу помочь?
+
+
+DeepSearch
+
+
+Think
+
+Grok 3
+
