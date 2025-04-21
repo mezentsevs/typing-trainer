@@ -92,6 +92,18 @@ const handleInput = async () => {
         startTime.value = Date.now();
     }
 
+    if (typed.value.length >= text.value.length) {
+        typed.value = typed.value.slice(0, text.value.length);
+        isLessonCompleted.value = true;
+        await axios.post('/lessons/progress', {
+            lesson_id: lesson.value.id,
+            time_seconds: time.value,
+            speed_wpm: speed.value,
+            errors: errors.value,
+        });
+        return;
+    }
+
     const typedChars = typed.value.split('');
     let errorCount = 0;
     for (let i = 0; i < typedChars.length; i++) {
@@ -104,16 +116,6 @@ const handleInput = async () => {
     time.value = Math.round((Date.now() - startTime.value) / 1000);
     const words = typed.value.length / 5;
     speed.value = time.value > 0 ? Math.round((words / time.value) * 60) : 0;
-
-    if (typed.value.length === text.value.length) {
-        isLessonCompleted.value = true;
-        await axios.post('/lessons/progress', {
-            lesson_id: lesson.value.id,
-            time_seconds: time.value,
-            speed_wpm: speed.value,
-            errors: errors.value,
-        });
-    }
 };
 
 const resetAndLoadNext = async () => {
