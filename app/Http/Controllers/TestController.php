@@ -23,7 +23,7 @@ class TestController extends Controller
             'genre' => 'nullable|string',
         ]);
 
-        $text = $this->testService->getTestText($request->language, $request->genre);
+        $text = $this->testService->getTestText($request->language, $request->genre, auth()->id());
         return response()->json(['text' => $text]);
     }
 
@@ -34,7 +34,7 @@ class TestController extends Controller
             'file' => 'required|file|mimes:txt',
         ]);
 
-        $path = $request->file('file')->storeAs('uploads', "test_{$request->language}.txt", 'public');
+        $path = $request->file('file')->storeAs('uploads', "test_" . auth()->id() . "_{$request->language}.txt", 'public');
         return response()->json(['message' => 'File uploaded', 'path' => $path]);
     }
 

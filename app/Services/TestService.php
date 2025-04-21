@@ -18,7 +18,7 @@ class TestService
         ],
     ];
 
-    public function getTestText(string $language, ?string $genre = null): string
+    public function getTestText(string $language, ?string $genre = null, int $userId): string
     {
         if (env('GROK_API_KEY') && $genre) {
             try {
@@ -36,9 +36,9 @@ class TestService
             }
         }
 
-        // Use fallback text or user-uploaded file
-        $userFile = Storage::disk('public')->exists("uploads/test_$language.txt")
-            ? Storage::disk('public')->get("uploads/test_$language.txt")
+        $filePath = "uploads/test_{$userId}_{$language}.txt";
+        $userFile = Storage::disk('public')->exists($filePath)
+            ? Storage::disk('public')->get($filePath)
             : null;
 
         return $userFile ?? $this->fallbackTexts[$language][array_rand($this->fallbackTexts[$language])];
