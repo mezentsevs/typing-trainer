@@ -9,10 +9,15 @@ class Lesson extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['number', 'language', 'new_chars'];
+    protected $fillable = ['user_id', 'number', 'language', 'new_chars'];
 
     public function progresses()
     {
         return $this->hasMany(LessonProgress::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

@@ -23,20 +23,20 @@ class LessonController extends Controller
             'lesson_count' => 'required|integer|min:1',
         ]);
 
-        $this->lessonService->generateLessons($request->language, $request->lesson_count);
+        $this->lessonService->generateLessons($request->language, $request->lesson_count, auth()->id());
 
         return response()->json(['message' => 'Lessons generated']);
     }
 
     public function index(string $language)
     {
-        $lessons = Lesson::where('language', $language)->get();
+        $lessons = Lesson::where('language', $language)->where('user_id', auth()->id())->get();
         return response()->json($lessons);
     }
 
     public function getText(string $language, int $lessonNumber)
     {
-        $text = $this->lessonService->generateLessonText($language, $lessonNumber);
+        $text = $this->lessonService->generateLessonText($language, $lessonNumber, auth()->id());
         return response()->json(['text' => $text]);
     }
 

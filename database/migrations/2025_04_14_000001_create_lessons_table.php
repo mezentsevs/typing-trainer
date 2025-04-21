@@ -9,6 +9,7 @@ return new class extends Migration {
     {
         Schema::create('lessons', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->unsignedInteger('number');
             $table->string('language');
             $table->string('new_chars');
