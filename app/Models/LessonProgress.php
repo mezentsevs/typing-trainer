@@ -11,7 +11,7 @@ class LessonProgress extends Model
 
     protected $table = 'lesson_progresses';
 
-    protected $fillable = ['user_id', 'lesson_id', 'time_seconds', 'speed_wpm', 'errors'];
+    protected $fillable = ['user_id', 'lesson_id', 'language', 'time_seconds', 'speed_wpm', 'errors'];
 
     public function user()
     {

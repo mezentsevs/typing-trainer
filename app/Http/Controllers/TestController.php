@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\TestResult;
 use App\Services\TestService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class TestController extends Controller
 {
@@ -42,6 +41,7 @@ class TestController extends Controller
     {
         $request->validate([
             'language' => 'required|string',
+            'time_seconds' => 'required|integer',
             'speed_wpm' => 'required|integer',
             'errors' => 'required|integer',
         ]);
@@ -49,6 +49,7 @@ class TestController extends Controller
         $result = TestResult::create([
             'user_id' => auth()->id(),
             'language' => $request->language,
+            'time_seconds' => $request->time_seconds,
             'speed_wpm' => $request->speed_wpm,
             'errors' => $request->errors,
         ]);

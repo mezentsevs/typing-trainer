@@ -97,6 +97,7 @@ const handleInput = async () => {
         isLessonCompleted.value = true;
         await axios.post('/lessons/progress', {
             lesson_id: lesson.value.id,
+            language: language,
             time_seconds: time.value,
             speed_wpm: speed.value,
             errors: errors.value,

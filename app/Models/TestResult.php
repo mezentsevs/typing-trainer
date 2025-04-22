@@ -9,7 +9,7 @@ class TestResult extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'language', 'speed_wpm', 'errors'];
+    protected $fillable = ['user_id', 'language', 'time_seconds', 'speed_wpm', 'errors'];
 
     public function user()
     {

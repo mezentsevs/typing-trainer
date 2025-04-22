@@ -84,6 +84,7 @@ const handleInput = async () => {
         isTestCompleted.value = true;
         await axios.post('/test/result', {
             language: language.value,
+            time_seconds: time.value,
             speed_wpm: speed.value,
             errors: errors.value,
         });

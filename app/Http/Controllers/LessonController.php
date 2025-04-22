@@ -44,6 +44,7 @@ class LessonController extends Controller
     {
         $request->validate([
             'lesson_id' => 'required|exists:lessons,id',
+            'language' => 'required|string',
             'time_seconds' => 'required|integer',
             'speed_wpm' => 'required|integer',
             'errors' => 'required|integer',
@@ -52,6 +53,7 @@ class LessonController extends Controller
         $progress = LessonProgress::create([
             'user_id' => auth()->id(),
             'lesson_id' => $request->lesson_id,
+            'language' => $request->language,
             'time_seconds' => $request->time_seconds,
             'speed_wpm' => $request->speed_wpm,
             'errors' => $request->errors,

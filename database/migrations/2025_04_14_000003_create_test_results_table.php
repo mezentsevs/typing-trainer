@@ -11,6 +11,7 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('language');
+            $table->unsignedInteger('time_seconds');
             $table->unsignedInteger('speed_wpm');
             $table->unsignedInteger('errors');
             $table->timestamps();
