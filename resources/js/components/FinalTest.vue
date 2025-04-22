@@ -69,9 +69,7 @@ const uploadFile = async (event: Event) => {
         const formData = new FormData();
         formData.append('file', file);
         formData.append('language', language.value);
-        await axios.post('/test/upload', formData, {
-            headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
-        });
+        await axios.post('/test/upload', formData);
         await fetchText();
     }
 };
