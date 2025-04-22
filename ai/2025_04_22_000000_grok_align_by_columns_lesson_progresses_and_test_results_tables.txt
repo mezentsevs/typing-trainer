@@ -1,0 +1,1288 @@
+В web приложении для тренировки навыка слепой печати есть уроки и финальный тест. Предоставляю контекстные данные для выполнения задачи:
+ database/migrations/2025_04_14_000002_create_lesson_progresses_table.php
+ <?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration {
+    public function up(): void
+    {
+        Schema::create('lesson_progresses', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('lesson_id')->constrained()->onDelete('cascade');
+            $table->unsignedInteger('time_seconds');
+            $table->unsignedInteger('speed_wpm');
+            $table->unsignedInteger('errors');
+            $table->timestamps();
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('lesson_progresses');
+    }
+};
+database/migrations/2025_04_14_000003_create_test_results_table.php
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration {
+    public function up(): void
+    {
+        Schema::create('test_results', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('language');
+            $table->unsignedInteger('speed_wpm');
+            $table->unsignedInteger('errors');
+            $table->timestamps();
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('test_results');
+    }
+};
+routes/api.php
+<?php
+
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LessonController;
+use App\Http\Controllers\TestController;
+use Illuminate\Support\Facades\Route;
+
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/logout', [AuthController::class, 'logout']);
+
+    Route::prefix('lessons')->group(function () {
+        Route::post('/generate', [LessonController::class, 'generate']);
+        Route::get('/{language}', [LessonController::class, 'index']);
+        Route::get('/{language}/{lessonNumber}/text', [LessonController::class, 'getText']);
+        Route::post('/progress', [LessonController::class, 'saveProgress']);
+    });
+
+    Route::prefix('test')->group(function () {
+        Route::get('/text', [TestController::class, 'getTestText']);
+        Route::post('/upload', [TestController::class, 'uploadText']);
+        Route::post('/result', [TestController::class, 'saveResult']);
+    });
+});
+resources/js/router/index.ts
+import { createRouter, createWebHistory } from 'vue-router';
+import Home from '@/components/Home.vue';
+import Login from '@/components/Login.vue';
+import Register from '@/components/Register.vue';
+import LessonSetup from '@/components/LessonSetup.vue';
+import Lesson from '@/components/Lesson.vue';
+import FinalTest from '@/components/FinalTest.vue';
+
+const routes = [
+    { path: '/', component: Home, meta: { requiresAuth: true } },
+    { path: '/login', component: Login },
+    { path: '/register', component: Register },
+    { path: '/setup', component: LessonSetup, meta: { requiresAuth: true } },
+    { path: '/lesson/:language/:number', component: Lesson, meta: { requiresAuth: true } },
+    { path: '/test/:language', component: FinalTest, meta: { requiresAuth: true } },
+];
+
+const router = createRouter({
+    history: createWebHistory(),
+    routes,
+});
+
+router.beforeEach((to, from, next) => {
+    const token = localStorage.getItem('token');
+    if (to.meta.requiresAuth && !token) {
+        next('/login');
+    } else {
+        next();
+    }
+});
+
+export default router;
+app/Models/LessonProgress.php
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class LessonProgress extends Model
+{
+    use HasFactory;
+
+    protected $table = 'lesson_progresses';
+
+    protected $fillable = ['user_id', 'lesson_id', 'time_seconds', 'speed_wpm', 'errors'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function lesson()
+    {
+        return $this->belongsTo(Lesson::class);
+    }
+}
+app/Models/TestResult.php
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class TestResult extends Model
+{
+    use HasFactory;
+
+    protected $fillable = ['user_id', 'language', 'speed_wpm', 'errors'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+}
+app/Http/Controllers/LessonController.php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Lesson;
+use App\Models\LessonProgress;
+use App\Services\LessonService;
+use Illuminate\Http\Request;
+
+class LessonController extends Controller
+{
+    protected $lessonService;
+
+    public function __construct(LessonService $lessonService)
+    {
+        $this->lessonService = $lessonService;
+    }
+
+    public function generate(Request $request)
+    {
+        $request->validate([
+            'language' => 'required|string',
+            'lesson_count' => 'required|integer|min:1',
+        ]);
+
+        $this->lessonService->generateLessons($request->language, $request->lesson_count, auth()->id());
+
+        return response()->json(['message' => 'Lessons generated']);
+    }
+
+    public function index(string $language)
+    {
+        $lessons = Lesson::where('language', $language)->where('user_id', auth()->id())->get();
+        return response()->json($lessons);
+    }
+
+    public function getText(string $language, int $lessonNumber)
+    {
+        $text = $this->lessonService->generateLessonText($language, $lessonNumber, auth()->id());
+        return response()->json(['text' => $text]);
+    }
+
+    public function saveProgress(Request $request)
+    {
+        $request->validate([
+            'lesson_id' => 'required|exists:lessons,id',
+            'time_seconds' => 'required|integer',
+            'speed_wpm' => 'required|integer',
+            'errors' => 'required|integer',
+        ]);
+
+        $progress = LessonProgress::create([
+            'user_id' => auth()->id(),
+            'lesson_id' => $request->lesson_id,
+            'time_seconds' => $request->time_seconds,
+            'speed_wpm' => $request->speed_wpm,
+            'errors' => $request->errors,
+        ]);
+
+        return response()->json($progress);
+    }
+}
+app/Http/Controllers/TestController.php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\TestResult;
+use App\Services\TestService;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
+class TestController extends Controller
+{
+    protected $testService;
+
+    public function __construct(TestService $testService)
+    {
+        $this->testService = $testService;
+    }
+
+    public function getTestText(Request $request)
+    {
+        $request->validate([
+            'language' => 'required|string',
+            'genre' => 'nullable|string',
+        ]);
+
+        $text = $this->testService->getTestText($request->language, $request->genre, auth()->id());
+        return response()->json(['text' => $text]);
+    }
+
+    public function uploadText(Request $request)
+    {
+        $request->validate([
+            'language' => 'required|string',
+            'file' => 'required|file|mimes:txt',
+        ]);
+
+        $path = $request->file('file')->storeAs('uploads', "test_" . auth()->id() . "_{$request->language}.txt", 'public');
+        return response()->json(['message' => 'File uploaded', 'path' => $path]);
+    }
+
+    public function saveResult(Request $request)
+    {
+        $request->validate([
+            'language' => 'required|string',
+            'speed_wpm' => 'required|integer',
+            'errors' => 'required|integer',
+        ]);
+
+        $result = TestResult::create([
+            'user_id' => auth()->id(),
+            'language' => $request->language,
+            'speed_wpm' => $request->speed_wpm,
+            'errors' => $request->errors,
+        ]);
+
+        return response()->json($result);
+    }
+}
+app/Services/TestService.php
+<?php
+
+namespace App\Services;
+
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
+
+class TestService
+{
+    protected $fallbackTexts = [
+        'en' => [
+            'The quick brown fox jumps over the lazy dog.',
+            'A journey of a thousand miles begins with a single step.',
+        ],
+        'ru' => [
+            'Быстрая лиса перепрыгнула через ленивую собаку.',
+            'Путешествие в тысячу миль начинается с одного шага.',
+        ],
+    ];
+
+    public function getTestText(string $language, ?string $genre = null, int $userId): string
+    {
+        if (env('GROK_API_KEY') && $genre) {
+            try {
+                $response = Http::withHeaders([
+                    'Authorization' => 'Bearer ' . env('GROK_API_KEY'),
+                ])->post('https://api.x.ai/v1/generate', [
+                    'prompt' => "Generate a 100-word text in $language for typing practice in the $genre genre.",
+                ]);
+
+                if ($response->successful()) {
+                    return $response->json()['text'];
+                }
+            } catch (\Exception $e) {
+                // Fallback to local text
+            }
+        }
+
+        $filePath = "uploads/test_{$userId}_{$language}.txt";
+        $userFile = Storage::disk('public')->exists($filePath)
+            ? Storage::disk('public')->get($filePath)
+            : null;
+
+        return $userFile ?? $this->fallbackTexts[$language][array_rand($this->fallbackTexts[$language])];
+    }
+}
+app/Models/Lesson.php
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Lesson extends Model
+{
+    use HasFactory;
+
+    protected $fillable = ['user_id', 'number', 'language', 'new_chars'];
+
+    public function progresses()
+    {
+        return $this->hasMany(LessonProgress::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+}
+app/Services/LessonService.php
+<?php
+
+namespace App\Services;
+
+use App\Models\Lesson;
+
+class LessonService
+{
+    protected $charSets = [
+        'en' => 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=[]{}|;:,.<>?',
+        'ru' => 'абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ0123456789!@#$%^&*()_+-=[]{}|;:,.<>?',
+    ];
+
+    public function generateLessons(string $language, int $lessonCount, int $userId): void
+    {
+        $chars = mb_str_split($this->charSets[$language] ?? $this->charSets['en'], 1, 'UTF-8');
+        $charsPerLesson = ceil(count($chars) / $lessonCount);
+
+        Lesson::where('language', $language)->where('user_id', $userId)->delete();
+
+        for ($i = 0; $i < $lessonCount; $i++) {
+            $start = $i * $charsPerLesson;
+            $newChars = array_slice($chars, $start, $charsPerLesson);
+            if ($newChars) {
+                Lesson::create([
+                    'user_id' => $userId,
+                    'number' => $i + 1,
+                    'language' => $language,
+                    'new_chars' => implode('', $newChars),
+                ]);
+            }
+        }
+    }
+
+    public function generateLessonText(string $language, int $lessonNumber, int $userId, int $length = 100): string
+    {
+        $availableChars = '';
+        foreach (Lesson::where('language', $language)->where('user_id', $userId)->where('number', '<=', $lessonNumber)->get() as $l) {
+            $availableChars .= $l->new_chars;
+        }
+
+        $availableChars = mb_str_split($availableChars, 1, 'UTF-8');
+        $text = '';
+        for ($i = 0; $i < $length; $i++) {
+            $text .= $availableChars[random_int(0, count($availableChars) - 1)];
+        }
+
+        return $text;
+    }
+}
+Нужно привести к единообразию результаты уроков и финального теста, то-есть чтобы все поля из результатов уроков, кроме специфичных только для уроков (например, lesson_id), присутствовали бы в результатах финального теста и наоборот. Минимальные изменения. Выведи обновленный код всех необходимых файлов.
+
+
+
+
+To align the fields of lesson_progresses and test_results tables, we need to ensure that both have the same fields except for those specific to each context (lesson_id for lessons and language for tests). Based on the provided migrations:
+
+lesson_progresses has: user_id, lesson_id, time_seconds, speed_wpm, errors.
+test_results has: user_id, language, speed_wpm, errors.
+The missing fields are:
+
+Add time_seconds to test_results.
+Add language to lesson_progresses.
+We need to update the migrations, models, and controllers for both LessonProgress and TestResult to reflect these changes. Below are the updated files with minimal changes.
+
+x
+
+Копировать
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration {
+    public function up(): void
+    {
+        Schema::create('lesson_progresses', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('lesson_id')->constrained()->onDelete('cascade');
+            $table->string('language');
+            $table->unsignedInteger('time_seconds');
+            $table->unsignedInteger('speed_wpm');
+            $table->unsignedInteger('errors');
+            $table->timestamps();
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('lesson_progresses');
+    }
+};
+Show in sidebar
+x
+
+Копировать
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration {
+    public function up(): void
+    {
+        Schema::create('test_results', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('language');
+            $table->unsignedInteger('time_seconds');
+            $table->unsignedInteger('speed_wpm');
+            $table->unsignedInteger('errors');
+            $table->timestamps();
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('test_results');
+    }
+};
+Show in sidebar
+x
+
+Копировать
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class LessonProgress extends Model
+{
+    use HasFactory;
+
+    protected $table = 'lesson_progresses';
+
+    protected $fillable = ['user_id', 'lesson_id', 'language', 'time_seconds', 'speed_wpm', 'errors'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function lesson()
+    {
+        return $this->belongsTo(Lesson::class);
+    }
+}
+Show in sidebar
+x
+
+Копировать
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class TestResult extends Model
+{
+    use HasFactory;
+
+    protected $fillable = ['user_id', 'language', 'time_seconds', 'speed_wpm', 'errors'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+}
+Show in sidebar
+x
+
+Копировать
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Lesson;
+use App\Models\LessonProgress;
+use App\Services\LessonService;
+use Illuminate\Http\Request;
+
+class LessonController extends Controller
+{
+    protected $lessonService;
+
+    public function __construct(LessonService $lessonService)
+    {
+        $this->lessonService = $lessonService;
+    }
+
+    public function generate(Request $request)
+    {
+        $request->validate([
+            'language' => 'required|string',
+            'lesson_count' => 'required|integer|min:1',
+        ]);
+
+        $this->lessonService->generateLessons($request->language, $request->lesson_count, auth()->id());
+
+        return response()->json(['message' => 'Lessons generated']);
+    }
+
+    public function index(string $language)
+    {
+        $lessons = Lesson::where('language', $language)->where('user_id', auth()->id())->get();
+        return response()->json($lessons);
+    }
+
+    public function getText(string $language, int $lessonNumber)
+    {
+        $text = $this->lessonService->generateLessonText($language, $lessonNumber, auth()->id());
+        return response()->json(['text' => $text]);
+    }
+
+    public function saveProgress(Request $request)
+    {
+        $request->validate([
+            'lesson_id' => 'required|exists:lessons,id',
+            'language' => 'required|string',
+            'time_seconds' => 'required|integer',
+            'speed_wpm' => 'required|integer',
+            'errors' => 'required|integer',
+        ]);
+
+        $progress = LessonProgress::create([
+            'user_id' => auth()->id(),
+            'lesson_id' => $request->lesson_id,
+            'language' => $request->language,
+            'time_seconds' => $request->time_seconds,
+            'speed_wpm' => $request->speed_wpm,
+            'errors' => $request->errors,
+        ]);
+
+        return response()->json($progress);
+    }
+}
+Show in sidebar
+x
+
+Копировать
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\TestResult;
+use App\Services\TestService;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
+class TestController extends Controller
+{
+    protected $testService;
+
+    public function __construct(TestService $testService)
+    {
+        $this->testService = $testService;
+    }
+
+    public function getTestText(Request $request)
+    {
+        $request->validate([
+            'language' => 'required|string',
+            'genre' => 'nullable|string',
+        ]);
+
+        $text = $this->testService->getTestText($request->language, $request->genre, auth()->id());
+        return response()->json(['text' => $text]);
+    }
+
+    public function uploadText(Request $request)
+    {
+        $request->validate([
+            'language' => 'required|string',
+            'file' => 'required|file|mimes:txt',
+        ]);
+
+        $path = $request->file('file')->storeAs('uploads', "test_" . auth()->id() . "_{$request->language}.txt", 'public');
+        return response()->json(['message' => 'File uploaded', 'path' => $path]);
+    }
+
+    public function saveResult(Request $request)
+    {
+        $request->validate([
+            'language' => 'required|string',
+            'time_seconds' => 'required|integer',
+            'speed_wpm' => 'required|integer',
+            'errors' => 'required|integer',
+        ]);
+
+        $result = TestResult::create([
+            'user_id' => auth()->id(),
+            'language' => $request->language,
+            'time_seconds' => $request->time_seconds,
+            'speed_wpm' => $request->speed_wpm,
+            'errors' => $request->errors,
+        ]);
+
+        return response()->json($result);
+    }
+}
+Show in sidebar
+These changes:
+
+Add language to lesson_progresses table and time_seconds to test_results table in migrations.
+Update LessonProgress and TestResult models to include the new fields in $fillable.
+Update LessonController::saveProgress to validate and save language.
+Update TestController::saveResult to validate and save time_seconds.
+The changes are minimal, preserving all existing functionality while aligning the fields. You may need to create a new migration to alter existing tables if the database is already set up, or drop and recreate the tables if in development.
+
+
+
+
+
+
+
+Предпочитаю общаться на русском. Возникла ошибка при завершении первого урока: app-BWpRvn7q.js:19
+ POST http://localhost/api/lessons/progress 422 (Unprocessable Content)
+
+app-BWpRvn7q.js:13
+q {message: 'Request failed with status code 422', name: 'AxiosError', code: 'ERR_BAD_REQUEST', config: {…}, request: XMLHttpRequest, …}
+﻿
+Предоставляю контекстные данные для задачи:
+app/Models/Lesson.php
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Lesson extends Model
+{
+    use HasFactory;
+
+    protected $fillable = ['user_id', 'number', 'language', 'new_chars'];
+
+    public function progresses()
+    {
+        return $this->hasMany(LessonProgress::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+}
+resources/js/components/Lesson.vue
+<template>
+    <div class="min-h-screen bg-gray-100 p-8">
+        <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
+            <h2 class="text-2xl font-bold mb-4">Lesson {{ lesson.number }} ({{ language }})</h2>
+            <p><strong>New Characters:</strong> {{ lesson.new_chars }}</p>
+            <p><strong>Time:</strong> {{ time }}s</p>
+            <p><strong>Speed:</strong> {{ speed }} WPM</p>
+            <p><strong>Errors:</strong> {{ errors }}</p>
+            <div class="mt-4">
+                <div class="text-lg font-mono">
+                    <span v-for="(char, index) in text" :key="index" :class="{ 'error-char': typed[index] && typed[index] !== char }">
+                        {{ char }}
+                    </span>
+                </div>
+                <input
+                    v-model="typed"
+                    @input="handleInput"
+                    class="w-full p-2 border rounded mt-4"
+                    ref="input"
+                    autofocus
+                    :disabled="isLessonCompleted"
+                />
+                <VirtualKeyboard :language="language as 'en' | 'ru'" :typed="typed" :text="text" />
+            </div>
+            <div v-if="isLessonCompleted" class="mt-4 text-green-600 font-bold">
+                Lesson Completed!
+            </div>
+            <router-link
+                v-if="nextLesson && isLessonCompleted"
+                :to="`/lesson/${language}/${nextLesson.number}`"
+                @click="resetAndLoadNext"
+                class="mt-4 inline-block bg-blue-500 text-white p-2 rounded"
+            >
+                Next Lesson
+            </router-link>
+            <router-link
+                v-else-if="isLessonCompleted"
+                :to="`/test/${language}`"
+                class="mt-4 inline-block bg-green-500 text-white p-2 rounded"
+            >
+                Take Final Test
+            </router-link>
+        </div>
+    </div>
+</template>
+
+<script lang="ts" setup>
+import { ref, computed, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+import axios from 'axios';
+import VirtualKeyboard from './VirtualKeyboard.vue';
+
+const route = useRoute();
+const language = route.params.language as string;
+const lessonNumber = ref(parseInt(route.params.number as string));
+const lesson = ref<{ id: number; number: number; new_chars: string }>({ id: 0, number: lessonNumber.value, new_chars: '' });
+const text = ref('');
+const typed = ref('');
+const startTime = ref(0);
+const time = ref(0);
+const errors = ref(0);
+const speed = ref(0);
+const input = ref<HTMLInputElement | null>(null);
+const lessons = ref<any[]>([]);
+const isLessonCompleted = ref(false);
+
+const nextLesson = computed(() => lessons.value.find(l => l.number === lessonNumber.value + 1));
+
+const resetState = () => {
+    text.value = '';
+    typed.value = '';
+    startTime.value = 0;
+    time.value = 0;
+    errors.value = 0;
+    speed.value = 0;
+    isLessonCompleted.value = false;
+};
+
+const fetchLesson = async () => {
+    const [lessonsRes, textRes] = await Promise.all([
+        axios.get(`/lessons/${language}`),
+        axios.get(`/lessons/${language}/${lessonNumber.value}/text`),
+    ]);
+
+    lessons.value = lessonsRes.data;
+    lesson.value = lessonsRes.data.find((l: any) => l.number === lessonNumber.value);
+    text.value = textRes.data.text;
+};
+
+const handleInput = async () => {
+    if (!startTime.value) {
+        startTime.value = Date.now();
+    }
+
+    if (typed.value.length >= text.value.length) {
+        typed.value = typed.value.slice(0, text.value.length);
+        isLessonCompleted.value = true;
+        await axios.post('/lessons/progress', {
+            lesson_id: lesson.value.id,
+            time_seconds: time.value,
+            speed_wpm: speed.value,
+            errors: errors.value,
+        });
+        return;
+    }
+
+    const typedChars = typed.value.split('');
+    let errorCount = 0;
+    for (let i = 0; i < typedChars.length; i++) {
+        if (typedChars[i] !== text.value[i]) {
+            errorCount++;
+        }
+    }
+    errors.value = errorCount;
+
+    time.value = Math.round((Date.now() - startTime.value) / 1000);
+    const words = typed.value.length / 5;
+    speed.value = time.value > 0 ? Math.round((words / time.value) * 60) : 0;
+};
+
+const resetAndLoadNext = async () => {
+    if (!isLessonCompleted.value) return;
+    lessonNumber.value++;
+    resetState();
+    await fetchLesson();
+    if (input.value) {
+        input.value.focus();
+    }
+};
+
+onMounted(async () => {
+    resetState();
+    await fetchLesson();
+    if (input.value) {
+        input.value.focus();
+    }
+});
+</script>
+Если нужно что-то еще, скажи мне об этом. Необходимо исправить ошибку с минимальными изменениями в коде. Выведи измененный код всех необходимых файлов.
+
+
+
+
+Ошибка 422 (Unprocessable Content) при выполнении запроса POST /api/lessons/progress указывает на проблему с валидацией данных, отправляемых на сервер. Согласно контроллеру LessonController::saveProgress, для успешного сохранения прогресса урока требуются поля: lesson_id, language, time_seconds, speed_wpm, errors. Однако в компоненте Lesson.vue в запросе axios.post('/lessons/progress', ...) передаются только lesson_id, time_seconds, speed_wpm и errors, а поле language отсутствует. Это вызывает сбой валидации, так как language является обязательным (required|string).
+
+Чтобы исправить ошибку, нужно добавить поле language в данные, отправляемые в запросе axios.post в Lesson.vue. Это минимальное изменение, которое решает проблему, не затрагивая другие части приложения.
+
+Измененный файл: resources/js/components/Lesson.vue
+x
+
+Копировать
+<template>
+    <div class="min-h-screen bg-gray-100 p-8">
+        <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
+            <h2 class="text-2xl font-bold mb-4">Lesson {{ lesson.number }} ({{ language }})</h2>
+            <p><strong>New Characters:</strong> {{ lesson.new_chars }}</p>
+            <p><strong>Time:</strong> {{ time }}s</p>
+            <p><strong>Speed:</strong> {{ speed }} WPM</p>
+            <p><strong>Errors:</strong> {{ errors }}</p>
+            <div class="mt-4">
+                <div class="text-lg font-mono">
+                    <span v-for="(char, index) in text" :key="index" :class="{ 'error-char': typed[index] && typed[index] !== char }">
+                        {{ char }}
+                    </span>
+                </div>
+                <input
+                    v-model="typed"
+                    @input="handleInput"
+                    class="w-full p-2 border rounded mt-4"
+                    ref="input"
+                    autofocus
+                    :disabled="isLessonCompleted"
+                />
+                <VirtualKeyboard :language="language as 'en' | 'ru'" :typed="typed" :text="text" />
+            </div>
+            <div v-if="isLessonCompleted" class="mt-4 text-green-600 font-bold">
+                Lesson Completed!
+            </div>
+            <router-link
+                v-if="nextLesson && isLessonCompleted"
+                :to="`/lesson/${language}/${nextLesson.number}`"
+                @click="resetAndLoadNext"
+                class="mt-4 inline-block bg-blue-500 text-white p-2 rounded"
+            >
+                Next Lesson
+            </router-link>
+            <router-link
+                v-else-if="isLessonCompleted"
+                :to="`/test/${language}`"
+                class="mt-4 inline-block bg-green-500 text-white p-2 rounded"
+            >
+                Take Final Test
+            </router-link>
+        </div>
+    </div>
+</template>
+
+<script lang="ts" setup>
+import { ref, computed, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+import axios from 'axios';
+import VirtualKeyboard from './VirtualKeyboard.vue';
+
+const route = useRoute();
+const language = route.params.language as string;
+const lessonNumber = ref(parseInt(route.params.number as string));
+const lesson = ref<{ id: number; number: number; new_chars: string }>({ id: 0, number: lessonNumber.value, new_chars: '' });
+const text = ref('');
+const typed = ref('');
+const startTime = ref(0);
+const time = ref(0);
+const errors = ref(0);
+const speed = ref(0);
+const input = ref<HTMLInputElement | null>(null);
+const lessons = ref<any[]>([]);
+const isLessonCompleted = ref(false);
+
+const nextLesson = computed(() => lessons.value.find(l => l.number === lessonNumber.value + 1));
+
+const resetState = () => {
+    text.value = '';
+    typed.value = '';
+    startTime.value = 0;
+    time.value = 0;
+    errors.value = 0;
+    speed.value = 0;
+    isLessonCompleted.value = false;
+};
+
+const fetchLesson = async () => {
+    const [lessonsRes, textRes] = await Promise.all([
+        axios.get(`/lessons/${language}`),
+        axios.get(`/lessons/${language}/${lessonNumber.value}/text`),
+    ]);
+
+    lessons.value = lessonsRes.data;
+    lesson.value = lessonsRes.data.find((l: any) => l.number === lessonNumber.value);
+    text.value = textRes.data.text;
+};
+
+const handleInput = async () => {
+    if (!startTime.value) {
+        startTime.value = Date.now();
+    }
+
+    if (typed.value.length >= text.value.length) {
+        typed.value = typed.value.slice(0, text.value.length);
+        isLessonCompleted.value = true;
+        await axios.post('/lessons/progress', {
+            lesson_id: lesson.value.id,
+            language: language,
+            time_seconds: time.value,
+            speed_wpm: speed.value,
+            errors: errors.value,
+        });
+        return;
+    }
+
+    const typedChars = typed.value.split('');
+    let errorCount = 0;
+    for (let i = 0; i < typedChars.length; i++) {
+        if (typedChars[i] !== text.value[i]) {
+            errorCount++;
+        }
+    }
+    errors.value = errorCount;
+
+    time.value = Math.round((Date.now() - startTime.value) / 1000);
+    const words = typed.value.length / 5;
+    speed.value = time.value > 0 ? Math.round((words / time.value) * 60) : 0;
+};
+
+const resetAndLoadNext = async () => {
+    if (!isLessonCompleted.value) return;
+    lessonNumber.value++;
+    resetState();
+    await fetchLesson();
+    if (input.value) {
+        input.value.focus();
+    }
+};
+
+onMounted(async () => {
+    resetState();
+    await fetchLesson();
+    if (input.value) {
+        input.value.focus();
+    }
+});
+</script>
+Show in sidebar
+Описание изменений
+В функции handleInput в Lesson.vue добавлено поле language: language в объект, передаваемый в axios.post('/lessons/progress', ...). Значение language берется из route.params.language, которое уже доступно в компоненте.
+Никакие другие файлы не изменены, так как ошибка связана исключительно с отсутствием обязательного поля language в запросе.
+Пояснение
+Ошибка 422 возникает из-за того, что сервер ожидает поле language, но клиент его не отправляет. Валидация в LessonController::saveProgress требует language как required|string.
+Добавление language в запрос решает проблему, так как это поле уже доступно в компоненте через route.params.language.
+Если ошибка сохраняется, рекомендуется проверить:
+Логи сервера (например, storage/logs/laravel.log) для получения деталей валидации.
+Консоль браузера для точного содержимого отправляемого запроса.
+Убедиться, что language имеет корректное значение (например, 'en' или 'ru').
+Если нужны дополнительные данные (например, код VirtualKeyboard.vue или фронтенд-логи), пожалуйста, предоставьте их, и я уточню решение.
+
+
+
+
+
+
+
+При завершении финального теста возникла ошибка:app-DsBLeRvu.js:19
+ POST http://localhost/api/test/result 422 (Unprocessable Content)
+
+app-DsBLeRvu.js:13
+q {message: 'Request failed with status code 422', name: 'AxiosError', code: 'ERR_BAD_REQUEST', config: {…}, request: XMLHttpRequest, …}
+﻿
+Предоставляю контекстную информацию по задаче:
+resources/js/components/FinalTest.vue
+<template>
+    <div class="min-h-screen bg-gray-100 p-8">
+        <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
+            <h2 class="text-2xl font-bold mb-4">Final Typing Test ({{ language }})</h2>
+            <div class="mb-4">
+                <label class="block text-gray-700">Genre (optional)</label>
+                <select v-model="genre" class="p-2 border rounded">
+                    <option value="">None</option>
+                    <option value="fiction">Fiction</option>
+                    <option value="non-fiction">Non-fiction</option>
+                    <option value="poetry">Poetry</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700">Upload Text (optional)</label>
+                <input type="file" accept=".txt" @change="uploadFile" class="p-2 border rounded" />
+            </div>
+            <button @click="fetchText" class="bg-blue-500 text-white p-2 rounded mb-4">Start Test</button>
+            <p><strong>Time:</strong> {{ time }}s</p>
+            <p><strong>Speed:</strong> {{ speed }} WPM</p>
+            <p><strong>Errors:</strong> {{ errors }}</p>
+            <div v-if="text" class="mt-4">
+                <div class="text-lg font-mono">
+                    <span v-for="(char, index) in text" :key="index" :class="{ 'error-char': typed[index] && typed[index] !== char }">
+                        {{ char }}
+                    </span>
+                </div>
+                <input v-model="typed" @input="handleInput" class="w-full p-2 border rounded mt-4" ref="input" :disabled="isTestCompleted" autofocus />
+                <VirtualKeyboard :language="language as 'en' | 'ru'" :typed="typed" :text="text" />
+                <p v-if="isTestCompleted" class="text-green-500 font-bold mt-2">Test completed!</p>
+                <router-link v-if="isTestCompleted" to="/" class="bg-blue-500 text-white p-2 rounded mt-2 inline-block">Back to Home</router-link>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script lang="ts" setup>
+import { ref, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+import axios from 'axios';
+import VirtualKeyboard from './VirtualKeyboard.vue';
+
+const route = useRoute();
+const language = ref(route.params.language as string);
+const genre = ref('');
+const text = ref('');
+const typed = ref('');
+const startTime = ref(0);
+const time = ref(0);
+const errors = ref(0);
+const speed = ref(0);
+const input = ref<HTMLInputElement | null>(null);
+const isTestCompleted = ref(false);
+
+const fetchText = async () => {
+    const response = await axios.get('/test/text', { params: { language: language.value, genre: genre.value } });
+    text.value = response.data.text;
+    typed.value = '';
+    startTime.value = 0;
+    time.value = 0;
+    errors.value = 0;
+    speed.value = 0;
+    isTestCompleted.value = false;
+};
+
+const uploadFile = async (event: Event) => {
+    const file = (event.target as HTMLInputElement).files?.[0];
+    if (file) {
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('language', language.value);
+        await axios.post('/test/upload', formData);
+        await fetchText();
+    }
+};
+
+const handleInput = async () => {
+    if (!startTime.value) {
+        startTime.value = Date.now();
+    }
+
+    if (typed.value.length >= text.value.length) {
+        typed.value = typed.value.slice(0, text.value.length);
+        isTestCompleted.value = true;
+        await axios.post('/test/result', {
+            language: language.value,
+            speed_wpm: speed.value,
+            errors: errors.value,
+        });
+        return;
+    }
+
+    const typedChars = typed.value.split('');
+    let errorCount = 0;
+    for (let i = 0; i < typedChars.length; i++) {
+        if (typedChars[i] !== text.value[i]) {
+            errorCount++;
+        }
+    }
+    errors.value = errorCount;
+
+    time.value = Math.round((Date.now() - startTime.value) / 1000);
+    const words = typed.value.length / 5;
+    speed.value = time.value > 0 ? Math.round((words / time.value) * 60) : 0;
+};
+
+onMounted(() => {
+    if (input.value) {
+        input.value.focus();
+    }
+});
+</script>
+Нужно исправить ошибку с минимальными изменениями в коде. Выведи обновленный код всех необходимых файлов.
+
+
+Ошибка 422 (Unprocessable Content) при выполнении запроса POST /api/test/result указывает на проблему с валидацией данных, отправляемых на сервер. Согласно контроллеру TestController::saveResult, для успешного сохранения результата теста требуются поля: language, time_seconds, speed_wpm, errors. Однако в компоненте FinalTest.vue в запросе axios.post('/test/result', ...) передаются только language, speed_wpm и errors, а поле time_seconds отсутствует. Это вызывает сбой валидации, так как time_seconds является обязательным (required|integer).
+
+Чтобы исправить ошибку, нужно добавить поле time_seconds в данные, отправляемые в запросе axios.post в FinalTest.vue. Это минимальное изменение, которое решает проблему, не затрагивая другие части приложения.
+
+Измененный файл: resources/js/components/FinalTest.vue
+x
+
+Копировать
+<template>
+    <div class="min-h-screen bg-gray-100 p-8">
+        <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
+            <h2 class="text-2xl font-bold mb-4">Final Typing Test ({{ language }})</h2>
+            <div class="mb-4">
+                <label class="block text-gray-700">Genre (optional)</label>
+                <select v-model="genre" class="p-2 border rounded">
+                    <option value="">None</option>
+                    <option value="fiction">Fiction</option>
+                    <option value="non-fiction">Non-fiction</option>
+                    <option value="poetry">Poetry</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700">Upload Text (optional)</label>
+                <input type="file" accept=".txt" @change="uploadFile" class="p-2 border rounded" />
+            </div>
+            <button @click="fetchText" class="bg-blue-500 text-white p-2 rounded mb-4">Start Test</button>
+            <p><strong>Time:</strong> {{ time }}s</p>
+            <p><strong>Speed:</strong> {{ speed }} WPM</p>
+            <p><strong>Errors:</strong> {{ errors }}</p>
+            <div v-if="text" class="mt-4">
+                <div class="text-lg font-mono">
+                    <span v-for="(char, index) in text" :key="index" :class="{ 'error-char': typed[index] && typed[index] !== char }">
+                        {{ char }}
+                    </span>
+                </div>
+                <input v-model="typed" @input="handleInput" class="w-full p-2 border rounded mt-4" ref="input" :disabled="isTestCompleted" autofocus />
+                <VirtualKeyboard :language="language as 'en' | 'ru'" :typed="typed" :text="text" />
+                <p v-if="isTestCompleted" class="text-green-500 font-bold mt-2">Test completed!</p>
+                <router-link v-if="isTestCompleted" to="/" class="bg-blue-500 text-white p-2 rounded mt-2 inline-block">Back to Home</router-link>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script lang="ts" setup>
+import { ref, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+import axios from 'axios';
+import VirtualKeyboard from './VirtualKeyboard.vue';
+
+const route = useRoute();
+const language = ref(route.params.language as string);
+const genre = ref('');
+const text = ref('');
+const typed = ref('');
+const startTime = ref(0);
+const time = ref(0);
+const errors = ref(0);
+const speed = ref(0);
+const input = ref<HTMLInputElement | null>(null);
+const isTestCompleted = ref(false);
+
+const fetchText = async () => {
+    const response = await axios.get('/test/text', { params: { language: language.value, genre: genre.value } });
+    text.value = response.data.text;
+    typed.value = '';
+    startTime.value = 0;
+    time.value = 0;
+    errors.value = 0;
+    speed.value = 0;
+    isTestCompleted.value = false;
+};
+
+const uploadFile = async (event: Event) => {
+    const file = (event.target as HTMLInputElement).files?.[0];
+    if (file) {
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('language', language.value);
+        await axios.post('/test/upload', formData);
+        await fetchText();
+    }
+};
+
+const handleInput = async () => {
+    if (!startTime.value) {
+        startTime.value = Date.now();
+    }
+
+    if (typed.value.length >= text.value.length) {
+        typed.value = typed.value.slice(0, text.value.length);
+        isTestCompleted.value = true;
+        await axios.post('/test/result', {
+            language: language.value,
+            time_seconds: time.value,
+            speed_wpm: speed.value,
+            errors: errors.value,
+        });
+        return;
+    }
+
+    const typedChars = typed.value.split('');
+    let errorCount = 0;
+    for (let i = 0; i < typedChars.length; i++) {
+        if (typedChars[i] !== text.value[i]) {
+            errorCount++;
+        }
+    }
+    errors.value = errorCount;
+
+    time.value = Math.round((Date.now() - startTime.value) / 1000);
+    const words = typed.value.length / 5;
+    speed.value = time.value > 0 ? Math.round((words / time.value) * 60) : 0;
+};
+
+onMounted(() => {
+    if (input.value) {
+        input.value.focus();
+    }
+});
+</script>
+Show in sidebar
+Описание изменений
+В функции handleInput в FinalTest.vue добавлено поле time_seconds: time.value в объект, передаваемый в axios.post('/test/result', ...). Значение time.value уже рассчитывается в компоненте и представляет время в секундах, что соответствует требованиям валидации.
+Никакие другие файлы не изменены, так как ошибка связана исключительно с отсутствием обязательного поля time_seconds в запросе.
+Пояснение
+Ошибка 422 возникает из-за того, что сервер ожидает поле time_seconds, но клиент его не отправляет. Валидация в TestController::saveResult требует time_seconds как required|integer.
+Добавление time_seconds в запрос решает проблему, так как это поле уже доступно в компоненте через time.value.
+Если ошибка сохраняется, рекомендуется:
+Проверить логи сервера (storage/logs/laravel.log) для деталей валидации.
+Проверить консоль браузера, чтобы убедиться, что отправляемые данные включают все необходимые поля.
+Убедиться, что time.value — целое число (что уже гарантируется округлением в Math.round).
+Если нужны дополнительные данные (например, код VirtualKeyboard.vue или серверные логи), сообщите, и я уточню решение.
+
+
+
+
+
+
+
+
+Чем я могу помочь?
+
+
+DeepSearch
+
+
+Think
+
+Grok 3
+
+
