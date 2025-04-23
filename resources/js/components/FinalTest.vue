@@ -2,20 +2,7 @@
     <div class="min-h-screen bg-gray-100 p-8">
         <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
             <h2 class="text-2xl font-bold mb-4">Final Test</h2>
-            <div class="mb-4">
-                <label class="block text-gray-700">Genre (optional)</label>
-                <select v-model="genre" class="p-2 border rounded">
-                    <option value="">None</option>
-                    <option value="fiction">Fiction</option>
-                    <option value="non-fiction">Non-fiction</option>
-                    <option value="poetry">Poetry</option>
-                </select>
-            </div>
-            <div class="mb-4">
-                <label class="block text-gray-700">Upload Text (optional)</label>
-                <input type="file" accept=".txt" @change="uploadFile" class="p-2 border rounded" />
-            </div>
-            <button @click="fetchText" class="bg-blue-500 text-white p-2 rounded mb-4">Start Test</button>
+            <FinalTestSetup v-if="!text" :upload-file="uploadFile" @start-test="fetchText" />
             <Statistics v-if="text" :language="language" :time="time" :speed="speed" :errors="errors" />
             <div v-if="text" class="mt-4">
                 <div class="text-lg font-mono">
@@ -38,6 +25,7 @@ import { useRoute } from 'vue-router';
 import axios from 'axios';
 import VirtualKeyboard from './VirtualKeyboard.vue';
 import Statistics from './Statistics.vue';
+import FinalTestSetup from './FinalTestSetup.vue';
 
 const route = useRoute();
 const language = ref(route.params.language as string);
