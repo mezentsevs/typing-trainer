@@ -6,7 +6,7 @@
                 <span v-if="isTestCompleted" class="absolute left-1/2 transform -translate-x-1/2 text-green-600 text-3xl font-bold">Completed!</span>
             </div>
             <FinalTestSetup v-if="!text" :upload-file="uploadFile" @start-test="fetchText" />
-            <Statistics v-if="text" :language="language" :time="time" :speed="speed" :errors="errors" />
+            <Statistics v-if="text" :language="language" :time="time" :speed="speed" :errors="errors" :progress="progress" />
             <div v-if="text" class="mt-4">
                 <div class="text-lg font-mono">
                     <span v-for="(char, index) in text" :key="index" :class="{ 'error-char': typed[index] && typed[index] !== char }">
@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import axios from 'axios';
 import VirtualKeyboard from './VirtualKeyboard.vue';
@@ -40,6 +40,8 @@ const errors = ref(0);
 const speed = ref(0);
 const input = ref<HTMLInputElement | null>(null);
 const isTestCompleted = ref(false);
+
+const progress = computed(() => text.value.length ? Math.round((typed.value.length / text.value.length) * 100) : 0);
 
 const fetchText = async () => {
     const response = await axios.get('/test/text', { params: { language: language.value, genre: genre.value } });

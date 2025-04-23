@@ -6,7 +6,7 @@
                 <span v-if="isLessonCompleted" class="absolute left-1/2 transform -translate-x-1/2 text-green-600 text-3xl font-bold">Completed!</span>
             </div>
             <NewCharacters :new-chars="lesson.new_chars" />
-            <Statistics :language="language" :time="time" :speed="speed" :errors="errors" />
+            <Statistics :language="language" :time="time" :speed="speed" :errors="errors" :progress="progress" />
             <div class="mt-4">
                 <div class="text-lg font-mono">
                     <span v-for="(char, index) in text" :key="index" :class="{ 'error-char': typed[index] && typed[index] !== char }">
@@ -65,6 +65,7 @@ const lessons = ref<any[]>([]);
 const isLessonCompleted = ref(false);
 
 const nextLesson = computed(() => lessons.value.find(l => l.number === lessonNumber.value + 1));
+const progress = computed(() => text.value.length ? Math.round((typed.value.length / text.value.length) * 100) : 0);
 
 const resetState = () => {
     text.value = '';
