@@ -16,7 +16,7 @@
                 <input type="file" accept=".txt" @change="uploadFile" class="p-2 border rounded" />
             </div>
             <button @click="fetchText" class="bg-blue-500 text-white p-2 rounded mb-4">Start Test</button>
-            <Statistics :language="language" :time="time" :speed="speed" :errors="errors" />
+            <Statistics v-if="text" :language="language" :time="time" :speed="speed" :errors="errors" />
             <div v-if="text" class="mt-4">
                 <div class="text-lg font-mono">
                     <span v-for="(char, index) in text" :key="index" :class="{ 'error-char': typed[index] && typed[index] !== char }">
