@@ -3,7 +3,7 @@
         <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
             <div class="relative flex items-center mb-4">
                 <h2 class="text-2xl font-bold">Lesson {{ lesson.number }}</h2>
-                <span v-if="isLessonCompleted" class="absolute left-1/2 transform -translate-x-1/2 text-green-600 text-3xl font-bold">Completed!</span>
+                <span v-if="isLessonCompleted" class="absolute left-1/2 transform -translate-x-1/2 text-green-500 text-3xl font-bold">Completed!</span>
             </div>
             <NewCharacters :new-chars="lesson.new_chars" />
             <Statistics :language="language" :time="time" :speed="speed" :errors="errors" :progress="progress" />
