@@ -1,0 +1,1070 @@
+В web приложении для тренировки навыка слепой печати есть уроки и финальный тест:
+ resources/js/components/Lesson.vue
+ <template>
+    <div class="min-h-screen bg-gray-100 p-8">
+        <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
+            <h2 class="text-2xl font-bold mb-4">Lesson {{ lesson.number }}</h2>
+            <NewCharacters :new-chars="lesson.new_chars" />
+            <Statistics :language="language" :time="time" :speed="speed" :errors="errors" />
+            <div class="mt-4">
+                <div class="text-lg font-mono">
+                    <span v-for="(char, index) in text" :key="index" :class="{ 'error-char': typed[index] && typed[index] !== char }">
+                        {{ char }}
+                    </span>
+                </div>
+                <input
+                    v-model="typed"
+                    @input="handleInput"
+                    class="w-full p-2 border rounded mt-4"
+                    ref="input"
+                    autofocus
+                    :disabled="isLessonCompleted"
+                />
+                <VirtualKeyboard :language="language as 'en' | 'ru'" :typed="typed" :text="text" />
+            </div>
+            <div v-if="isLessonCompleted" class="mt-4 text-green-600 font-bold">
+                Lesson Completed!
+            </div>
+            <router-link
+                v-if="nextLesson && isLessonCompleted"
+                :to="`/lesson/${language}/${nextLesson.number}`"
+                @click="resetAndLoadNext"
+                class="mt-4 inline-block bg-blue-500 text-white p-2 rounded"
+            >
+                Next Lesson
+            </router-link>
+            <router-link
+                v-else-if="isLessonCompleted"
+                :to="`/test/${language}`"
+                class="mt-4 inline-block bg-green-500 text-white p-2 rounded"
+            >
+                Take Final Test
+            </router-link>
+        </div>
+    </div>
+</template>
+
+<script lang="ts" setup>
+import { ref, computed, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+import axios from 'axios';
+import VirtualKeyboard from './VirtualKeyboard.vue';
+import Statistics from './Statistics.vue';
+import NewCharacters from './NewCharacters.vue';
+
+const route = useRoute();
+const language = route.params.language as string;
+const lessonNumber = ref(parseInt(route.params.number as string));
+const lesson = ref<{ id: number; number: number; new_chars: string }>({ id: 0, number: lessonNumber.value, new_chars: '' });
+const text = ref('');
+const typed = ref('');
+const startTime = ref(0);
+const time = ref(0);
+const errors = ref(0);
+const speed = ref(0);
+const input = ref<HTMLInputElement | null>(null);
+const lessons = ref<any[]>([]);
+const isLessonCompleted = ref(false);
+
+const nextLesson = computed(() => lessons.value.find(l => l.number === lessonNumber.value + 1));
+
+const resetState = () => {
+    text.value = '';
+    typed.value = '';
+    startTime.value = 0;
+    time.value = 0;
+    errors.value = 0;
+    speed.value = 0;
+    isLessonCompleted.value = false;
+};
+
+const fetchLesson = async () => {
+    const [lessonsRes, textRes] = await Promise.all([
+        axios.get(`/lessons/${language}`),
+        axios.get(`/lessons/${language}/${lessonNumber.value}/text`),
+    ]);
+
+    lessons.value = lessonsRes.data;
+    lesson.value = lessonsRes.data.find((l: any) => l.number === lessonNumber.value);
+    text.value = textRes.data.text;
+};
+
+const handleInput = async () => {
+    if (!startTime.value) {
+        startTime.value = Date.now();
+    }
+
+    if (typed.value.length >= text.value.length) {
+        typed.value = typed.value.slice(0, text.value.length);
+        isLessonCompleted.value = true;
+        await axios.post('/lessons/progress', {
+            lesson_id: lesson.value.id,
+            language: language,
+            time_seconds: time.value,
+            speed_wpm: speed.value,
+            errors: errors.value,
+        });
+        return;
+    }
+
+    const typedChars = typed.value.split('');
+    let errorCount = 0;
+    for (let i = 0; i < typedChars.length; i++) {
+        if (typedChars[i] !== text.value[i]) {
+            errorCount++;
+        }
+    }
+    errors.value = errorCount;
+
+    time.value = Math.round((Date.now() - startTime.value) / 1000);
+    const words = typed.value.length / 5;
+    speed.value = time.value > 0 ? Math.round((words / time.value) * 60) : 0;
+};
+
+const resetAndLoadNext = async () => {
+    if (!isLessonCompleted.value) return;
+    lessonNumber.value++;
+    resetState();
+    await fetchLesson();
+    if (input.value) {
+        input.value.focus();
+    }
+};
+
+onMounted(async () => {
+    resetState();
+    await fetchLesson();
+    if (input.value) {
+        input.value.focus();
+    }
+});
+</script>
+resources/js/components/FinalTest.vue
+<template>
+    <div class="min-h-screen bg-gray-100 p-8">
+        <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
+            <h2 class="text-2xl font-bold mb-4">Final Test</h2>
+            <FinalTestSetup v-if="!text" :upload-file="uploadFile" @start-test="fetchText" />
+            <Statistics v-if="text" :language="language" :time="time" :speed="speed" :errors="errors" />
+            <div v-if="text" class="mt-4">
+                <div class="text-lg font-mono">
+                    <span v-for="(char, index) in text" :key="index" :class="{ 'error-char': typed[index] && typed[index] !== char }">
+                        {{ char }}
+                    </span>
+                </div>
+                <input v-model="typed" @input="handleInput" class="w-full p-2 border rounded mt-4" ref="input" :disabled="isTestCompleted" autofocus />
+                <VirtualKeyboard :language="language as 'en' | 'ru'" :typed="typed" :text="text" />
+                <p v-if="isTestCompleted" class="text-green-500 font-bold mt-2">Test completed!</p>
+                <router-link v-if="isTestCompleted" to="/" class="bg-blue-500 text-white p-2 rounded mt-2 inline-block">Back to Home</router-link>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script lang="ts" setup>
+import { ref, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+import axios from 'axios';
+import VirtualKeyboard from './VirtualKeyboard.vue';
+import Statistics from './Statistics.vue';
+import FinalTestSetup from './FinalTestSetup.vue';
+
+const route = useRoute();
+const language = ref(route.params.language as string);
+const genre = ref('');
+const text = ref('');
+const typed = ref('');
+const startTime = ref(0);
+const time = ref(0);
+const errors = ref(0);
+const speed = ref(0);
+const input = ref<HTMLInputElement | null>(null);
+const isTestCompleted = ref(false);
+
+const fetchText = async () => {
+    const response = await axios.get('/test/text', { params: { language: language.value, genre: genre.value } });
+    text.value = response.data.text;
+    typed.value = '';
+    startTime.value = 0;
+    time.value = 0;
+    errors.value = 0;
+    speed.value = 0;
+    isTestCompleted.value = false;
+};
+
+const uploadFile = async (event: Event) => {
+    const file = (event.target as HTMLInputElement).files?.[0];
+    if (file) {
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('language', language.value);
+        await axios.post('/test/upload', formData);
+        await fetchText();
+    }
+};
+
+const handleInput = async () => {
+    if (!startTime.value) {
+        startTime.value = Date.now();
+    }
+
+    if (typed.value.length >= text.value.length) {
+        typed.value = typed.value.slice(0, text.value.length);
+        isTestCompleted.value = true;
+        await axios.post('/test/result', {
+            language: language.value,
+            time_seconds: time.value,
+            speed_wpm: speed.value,
+            errors: errors.value,
+        });
+        return;
+    }
+
+    const typedChars = typed.value.split('');
+    let errorCount = 0;
+    for (let i = 0; i < typedChars.length; i++) {
+        if (typedChars[i] !== text.value[i]) {
+            errorCount++;
+        }
+    }
+    errors.value = errorCount;
+
+    time.value = Math.round((Date.now() - startTime.value) / 1000);
+    const words = typed.value.length / 5;
+    speed.value = time.value > 0 ? Math.round((words / time.value) * 60) : 0;
+};
+
+onMounted(() => {
+    if (input.value) {
+        input.value.focus();
+    }
+});
+</script>
+Нужно перенести сообщения о том что урок или тест завершен в одну строку с названием урока или финального теста. Нужно выровнять сообщение по центру родительского блока. Нужно увеличить шрифт, чтобы сообщение сразу бросалось в глаза пользователю. Выведи обновленный код компонентов.
+
+
+
+
+I'll update both components to move the completion messages to the same line as the title, center them, and increase the font size. Here's the updated code for both components:
+
+html
+
+Копировать
+<template>
+    <div class="min-h-screen bg-gray-100 p-8">
+        <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
+            <div class="flex justify-center items-center mb-4">
+                <h2 class="text-2xl font-bold">Lesson {{ lesson.number }}</h2>
+                <span v-if="isLessonCompleted" class="text-green-600 text-3xl font-bold ml-4">Completed!</span>
+            </div>
+            <NewCharacters :new-chars="lesson.new_chars" />
+            <Statistics :language="language" :time="time" :speed="speed" :errors="errors" />
+            <div class="mt-4">
+                <div class="text-lg font-mono">
+                    <span v-for="(char, index) in text" :key="index" :class="{ 'error-char': typed[index] && typed[index] !== char }">
+                        {{ char }}
+                    </span>
+                </div>
+                <input
+                    v-model="typed"
+                    @input="handleInput"
+                    class="w-full p-2 border rounded mt-4"
+                    ref="input"
+                    autofocus
+                    :disabled="isLessonCompleted"
+                />
+                <VirtualKeyboard :language="language as 'en' | 'ru'" :typed="typed" :text="text" />
+            </div>
+            <router-link
+                v-if="nextLesson && isLessonCompleted"
+                :to="`/lesson/${language}/${nextLesson.number}`"
+                @click="resetAndLoadNext"
+                class="mt-4 inline-block bg-blue-500 text-white p-2 rounded"
+            >
+                Next Lesson
+            </router-link>
+            <router-link
+                v-else-if="isLessonCompleted"
+                :to="`/test/${language}`"
+                class="mt-4 inline-block bg-green-500 text-white p-2 rounded"
+            >
+                Take Final Test
+            </router-link>
+        </div>
+    </div>
+</template>
+
+<script lang="ts" setup>
+import { ref, computed, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+import axios from 'axios';
+import VirtualKeyboard from './VirtualKeyboard.vue';
+import Statistics from './Statistics.vue';
+import NewCharacters from './NewCharacters.vue';
+
+const route = useRoute();
+const language = route.params.language as string;
+const lessonNumber = ref(parseInt(route.params.number as string));
+const lesson = ref<{ id: number; number: number; new_chars: string }>({ id: 0, number: lessonNumber.value, new_chars: '' });
+const text = ref('');
+const typed = ref('');
+const startTime = ref(0);
+const time = ref(0);
+const errors = ref(0);
+const speed = ref(0);
+const input = ref<HTMLInputElement | null>(null);
+const lessons = ref<any[]>([]);
+const isLessonCompleted = ref(false);
+
+const nextLesson = computed(() => lessons.value.find(l => l.number === lessonNumber.value + 1));
+
+const resetState = () => {
+    text.value = '';
+    typed.value = '';
+    startTime.value = 0;
+    time.value = 0;
+    errors.value = 0;
+    speed.value = 0;
+    isLessonCompleted.value = false;
+};
+
+const fetchLesson = async () => {
+    const [lessonsRes, textRes] = await Promise.all([
+        axios.get(`/lessons/${language}`),
+        axios.get(`/lessons/${language}/${lessonNumber.value}/text`),
+    ]);
+
+    lessons.value = lessonsRes.data;
+    lesson.value = lessonsRes.data.find((l: any) => l.number === lessonNumber.value);
+    text.value = textRes.data.text;
+};
+
+const handleInput = async () => {
+    if (!startTime.value) {
+        startTime.value = Date.now();
+    }
+
+    if (typed.value.length >= text.value.length) {
+        typed.value = typed.value.slice(0, text.value.length);
+        isLessonCompleted.value = true;
+        await axios.post('/lessons/progress', {
+            lesson_id: lesson.value.id,
+            language: language,
+            time_seconds: time.value,
+            speed_wpm: speed.value,
+            errors: errors.value,
+        });
+        return;
+    }
+
+    const typedChars = typed.value.split('');
+    let errorCount = 0;
+    for (let i = 0; i < typedChars.length; i++) {
+        if (typedChars[i] !== text.value[i]) {
+            errorCount++;
+        }
+    }
+    errors.value = errorCount;
+
+    time.value = Math.round((Date.now() - startTime.value) / 1000);
+    const words = typed.value.length / 5;
+    speed.value = time.value > 0 ? Math.round((words / time.value) * 60) : 0;
+};
+
+const resetAndLoadNext = async () => {
+    if (!isLessonCompleted.value) return;
+    lessonNumber.value++;
+    resetState();
+    await fetchLesson();
+    if (input.value) {
+        input.value.focus();
+    }
+};
+
+onMounted(async () => {
+    resetState();
+    await fetchLesson();
+    if (input.value) {
+        input.value.focus();
+    }
+});
+</script>
+Показать в боковой панели
+html
+
+Копировать
+<template>
+    <div class="min-h-screen bg-gray-100 p-8">
+        <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
+            <div class="flex justify-center items-center mb-4">
+                <h2 class="text-2xl font-bold">Final Test</h2>
+                <span v-if="isTestCompleted" class="text-green-600 text-3xl font-bold ml-4">Completed!</span>
+            </div>
+            <FinalTestSetup v-if="!text" :upload-file="uploadFile" @start-test="fetchText" />
+            <Statistics v-if="text" :language="language" :time="time" :speed="speed" :errors="errors" />
+            <div v-if="text" class="mt-4">
+                <div class="text-lg font-mono">
+                    <span v-for="(char, index) in text" :key="index" :class="{ 'error-char': typed[index] && typed[index] !== char }">
+                        {{ char }}
+                    </span>
+                </div>
+                <input v-model="typed" @input="handleInput" class="w-full p-2 border rounded mt-4" ref="input" :disabled="isTestCompleted" autofocus />
+                <VirtualKeyboard :language="language as 'en' | 'ru'" :typed="typed" :text="text" />
+                <router-link v-if="isTestCompleted" to="/" class="bg-blue-500 text-white p-2 rounded mt-2 inline-block">Back to Home</router-link>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script lang="ts" setup>
+import { ref, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+import axios from 'axios';
+import VirtualKeyboard from './VirtualKeyboard.vue';
+import Statistics from './Statistics.vue';
+import FinalTestSetup from './FinalTestSetup.vue';
+
+const route = useRoute();
+const language = ref(route.params.language as string);
+const genre = ref('');
+const text = ref('');
+const typed = ref('');
+const startTime = ref(0);
+const time = ref(0);
+const errors = ref(0);
+const speed = ref(0);
+const input = ref<HTMLInputElement | null>(null);
+const isTestCompleted = ref(false);
+
+const fetchText = async () => {
+    const response = await axios.get('/test/text', { params: { language: language.value, genre: genre.value } });
+    text.value = response.data.text;
+    typed.value = '';
+    startTime.value = 0;
+    time.value = 0;
+    errors.value = 0;
+    speed.value = 0;
+    isTestCompleted.value = false;
+};
+
+const uploadFile = async (event: Event) => {
+    const file = (event.target as HTMLInputElement).files?.[0];
+    if (file) {
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('language', language.value);
+        await axios.post('/test/upload', formData);
+        await fetchText();
+    }
+};
+
+const handleInput = async () => {
+    if (!startTime.value) {
+        startTime.value = Date.now();
+    }
+
+    if (typed.value.length >= text.value.length) {
+        typed.value = typed.value.slice(0, text.value.length);
+        isTestCompleted.value = true;
+        await axios.post('/test/result', {
+            language: language.value,
+            time_seconds: time.value,
+            speed_wpm: speed.value,
+            errors: errors.value,
+        });
+        return;
+    }
+
+    const typedChars = typed.value.split('');
+    let errorCount = 0;
+    for (let i = 0; i < typedChars.length; i++) {
+        if (typedChars[i] !== text.value[i]) {
+            errorCount++;
+        }
+    }
+    errors.value = errorCount;
+
+    time.value = Math.round((Date.now() - startTime.value) / 1000);
+    const words = typed.value.length / 5;
+    speed.value = time.value > 0 ? Math.round((words / time.value) * 60) : 0;
+};
+
+onMounted(() => {
+    if (input.value) {
+        input.value.focus();
+    }
+});
+</script>
+Показать в боковой панели
+text
+
+Копировать
+
+Changes made to both components:
+1. Moved the completion message from its separate div/p to be inside a new flex container with the title
+2. Wrapped the title and completion message in a `<div class="flex justify-center items-center mb-4">`
+3. Changed the completion message to a `<span>` with classes `text-green-600 text-3xl font-bold ml-4`
+4. Removed the original completion message div/p elements
+5. Kept all other functionality and styling unchanged
+6. Increased font size to `text-3xl` to make it more prominent
+7. Added `ml-4` to create spacing between the title and completion message
+
+The completion messages now appear on the same line as the titles, centered in their parent container, with a larger, bold font that stands out to the user.
+
+
+
+
+
+
+Само название урока и финального теста должно оставаться на прежнем месте слева. Выведи обновленный код компонентов.
+
+
+
+
+I'll modify the components to keep the lesson and test titles aligned to the left while placing the completion messages on the same line, centered in the remaining space, with increased font size for visibility.
+
+html
+
+Копировать
+<template>
+    <div class="min-h-screen bg-gray-100 p-8">
+        <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
+            <div class="flex items-center mb-4">
+                <h2 class="text-2xl font-bold">Lesson {{ lesson.number }}</h2>
+                <span v-if="isLessonCompleted" class="text-green-600 text-3xl font-bold flex-1 text-center">Completed!</span>
+            </div>
+            <NewCharacters :new-chars="lesson.new_chars" />
+            <Statistics :language="language" :time="time" :speed="speed" :errors="errors" />
+            <div class="mt-4">
+                <div class="text-lg font-mono">
+                    <span v-for="(char, index) in text" :key="index" :class="{ 'error-char': typed[index] && typed[index] !== char }">
+                        {{ char }}
+                    </span>
+                </div>
+                <input
+                    v-model="typed"
+                    @input="handleInput"
+                    class="w-full p-2 border rounded mt-4"
+                    ref="input"
+                    autofocus
+                    :disabled="isLessonCompleted"
+                />
+                <VirtualKeyboard :language="language as 'en' | 'ru'" :typed="typed" :text="text" />
+            </div>
+            <router-link
+                v-if="nextLesson && isLessonCompleted"
+                :to="`/lesson/${language}/${nextLesson.number}`"
+                @click="resetAndLoadNext"
+                class="mt-4 inline-block bg-blue-500 text-white p-2 rounded"
+            >
+                Next Lesson
+            </router-link>
+            <router-link
+                v-else-if="isLessonCompleted"
+                :to="`/test/${language}`"
+                class="mt-4 inline-block bg-green-500 text-white p-2 rounded"
+            >
+                Take Final Test
+            </router-link>
+        </div>
+    </div>
+</template>
+
+<script lang="ts" setup>
+import { ref, computed, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+import axios from 'axios';
+import VirtualKeyboard from './VirtualKeyboard.vue';
+import Statistics from './Statistics.vue';
+import NewCharacters from './NewCharacters.vue';
+
+const route = useRoute();
+const language = route.params.language as string;
+const lessonNumber = ref(parseInt(route.params.number as string));
+const lesson = ref<{ id: number; number: number; new_chars: string }>({ id: 0, number: lessonNumber.value, new_chars: '' });
+const text = ref('');
+const typed = ref('');
+const startTime = ref(0);
+const time = ref(0);
+const errors = ref(0);
+const speed = ref(0);
+const input = ref<HTMLInputElement | null>(null);
+const lessons = ref<any[]>([]);
+const isLessonCompleted = ref(false);
+
+const nextLesson = computed(() => lessons.value.find(l => l.number === lessonNumber.value + 1));
+
+const resetState = () => {
+    text.value = '';
+    typed.value = '';
+    startTime.value = 0;
+    time.value = 0;
+    errors.value = 0;
+    speed.value = 0;
+    isLessonCompleted.value = false;
+};
+
+const fetchLesson = async () => {
+    const [lessonsRes, textRes] = await Promise.all([
+        axios.get(`/lessons/${language}`),
+        axios.get(`/lessons/${language}/${lessonNumber.value}/text`),
+    ]);
+
+    lessons.value = lessonsRes.data;
+    lesson.value = lessonsRes.data.find((l: any) => l.number === lessonNumber.value);
+    text.value = textRes.data.text;
+};
+
+const handleInput = async () => {
+    if (!startTime.value) {
+        startTime.value = Date.now();
+    }
+
+    if (typed.value.length >= text.value.length) {
+        typed.value = typed.value.slice(0, text.value.length);
+        isLessonCompleted.value = true;
+        await axios.post('/lessons/progress', {
+            lesson_id: lesson.value.id,
+            language: language,
+            time_seconds: time.value,
+            speed_wpm: speed.value,
+            errors: errors.value,
+        });
+        return;
+    }
+
+    const typedChars = typed.value.split('');
+    let errorCount = 0;
+    for (let i = 0; i < typedChars.length; i++) {
+        if (typedChars[i] !== text.value[i]) {
+            errorCount++;
+        }
+    }
+    errors.value = errorCount;
+
+    time.value = Math.round((Date.now() - startTime.value) / 1000);
+    const words = typed.value.length / 5;
+    speed.value = time.value > 0 ? Math.round((words / time.value) * 60) : 0;
+};
+
+const resetAndLoadNext = async () => {
+    if (!isLessonCompleted.value) return;
+    lessonNumber.value++;
+    resetState();
+    await fetchLesson();
+    if (input.value) {
+        input.value.focus();
+    }
+};
+
+onMounted(async () => {
+    resetState();
+    await fetchLesson();
+    if (input.value) {
+        input.value.focus();
+    }
+});
+</script>
+Показать в боковой панели
+html
+
+Копировать
+<template>
+    <div class="min-h-screen bg-gray-100 p-8">
+        <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
+            <div class="flex items-center mb-4">
+                <h2 class="text-2xl font-bold">Final Test</h2>
+                <span v-if="isTestCompleted" class="text-green-600 text-3xl font-bold flex-1 text-center">Completed!</span>
+            </div>
+            <FinalTestSetup v-if="!text" :upload-file="uploadFile" @start-test="fetchText" />
+            <Statistics v-if="text" :language="language" :time="time" :speed="speed" :errors="errors" />
+            <div v-if="text" class="mt-4">
+                <div class="text-lg font-mono">
+                    <span v-for="(char, index) in text" :key="index" :class="{ 'error-char': typed[index] && typed[index] !== char }">
+                        {{ char }}
+                    </span>
+                </div>
+                <input v-model="typed" @input="handleInput" class="w-full p-2 border rounded mt-4" ref="input" :disabled="isTestCompleted" autofocus />
+                <VirtualKeyboard :language="language as 'en' | 'ru'" :typed="typed" :text="text" />
+                <router-link v-if="isTestCompleted" to="/" class="bg-blue-500 text-white p-2 rounded mt-2 inline-block">Back to Home</router-link>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script lang="ts" setup>
+import { ref, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+import axios from 'axios';
+import VirtualKeyboard from './VirtualKeyboard.vue';
+import Statistics from './Statistics.vue';
+import FinalTestSetup from './FinalTestSetup.vue';
+
+const route = useRoute();
+const language = ref(route.params.language as string);
+const genre = ref('');
+const text = ref('');
+const typed = ref('');
+const startTime = ref(0);
+const time = ref(0);
+const errors = ref(0);
+const speed = ref(0);
+const input = ref<HTMLInputElement | null>(null);
+const isTestCompleted = ref(false);
+
+const fetchText = async () => {
+    const response = await axios.get('/test/text', { params: { language: language.value, genre: genre.value } });
+    text.value = response.data.text;
+    typed.value = '';
+    startTime.value = 0;
+    time.value = 0;
+    errors.value = 0;
+    speed.value = 0;
+    isTestCompleted.value = false;
+};
+
+const uploadFile = async (event: Event) => {
+    const file = (event.target as HTMLInputElement).files?.[0];
+    if (file) {
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('language', language.value);
+        await axios.post('/test/upload', formData);
+        await fetchText();
+    }
+};
+
+const handleInput = async () => {
+    if (!startTime.value) {
+        startTime.value = Date.now();
+    }
+
+    if (typed.value.length >= text.value.length) {
+        typed.value = typed.value.slice(0, text.value.length);
+        isTestCompleted.value = true;
+        await axios.post('/test/result', {
+            language: language.value,
+            time_seconds: time.value,
+            speed_wpm: speed.value,
+            errors: errors.value,
+        });
+        return;
+    }
+
+    const typedChars = typed.value.split('');
+    let errorCount = 0;
+    for (let i = 0; i < typedChars.length; i++) {
+        if (typedChars[i] !== text.value[i]) {
+            errorCount++;
+        }
+    }
+    errors.value = errorCount;
+
+    time.value = Math.round((Date.now() - startTime.value) / 1000);
+    const words = typed.value.length / 5;
+    speed.value = time.value > 0 ? Math.round((words / time.value) * 60) : 0;
+};
+
+onMounted(() => {
+    if (input.value) {
+        input.value.focus();
+    }
+});
+</script>
+Показать в боковой панели
+Changes made to both components:
+Modified the header div to use <div class="flex items-center mb-4">, removing justify-center to keep the title left-aligned.
+Kept the <h2> title as is for left alignment.
+Added flex-1 text-center to the completion <span> to make it occupy the remaining space and center the text within that space.
+Retained text-green-600 text-3xl font-bold for the completion message to ensure it stands out.
+Removed the original completion message div/p elements.
+Kept all other functionality and styling unchanged.
+This ensures the titles ("Lesson X" and "Final Test") remain left-aligned, while the "Completed!" message appears on the same line, centered in the remaining space of the parent container, with a larger, bold font for visibility.
+
+
+
+
+
+
+
+Сообщение о завершении урока или финального теста нужно выровнять по центру страницы.
+
+
+
+
+I'll update the components to keep the lesson and test titles aligned to the left, while ensuring the completion message is centered on the page (relative to the entire width of the parent container) on the same line, with increased font size for visibility.
+
+html
+
+Копировать
+<template>
+    <div class="min-h-screen bg-gray-100 p-8">
+        <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
+            <div class="relative flex items-center mb-4">
+                <h2 class="text-2xl font-bold">Lesson {{ lesson.number }}</h2>
+                <span v-if="isLessonCompleted" class="absolute left-1/2 transform -translate-x-1/2 text-green-600 text-3xl font-bold">Completed!</span>
+            </div>
+            <NewCharacters :new-chars="lesson.new_chars" />
+            <Statistics :language="language" :time="time" :speed="speed" :errors="errors" />
+            <div class="mt-4">
+                <div class="text-lg font-mono">
+                    <span v-for="(char, index) in text" :key="index" :class="{ 'error-char': typed[index] && typed[index] !== char }">
+                        {{ char }}
+                    </span>
+                </div>
+                <input
+                    v-model="typed"
+                    @input="handleInput"
+                    class="w-full p-2 border rounded mt-4"
+                    ref="input"
+                    autofocus
+                    :disabled="isLessonCompleted"
+                />
+                <VirtualKeyboard :language="language as 'en' | 'ru'" :typed="typed" :text="text" />
+            </div>
+            <router-link
+                v-if="nextLesson && isLessonCompleted"
+                :to="`/lesson/${language}/${nextLesson.number}`"
+                @click="resetAndLoadNext"
+                class="mt-4 inline-block bg-blue-500 text-white p-2 rounded"
+            >
+                Next Lesson
+            </router-link>
+            <router-link
+                v-else-if="isLessonCompleted"
+                :to="`/test/${language}`"
+                class="mt-4 inline-block bg-green-500 text-white p-2 rounded"
+            >
+                Take Final Test
+            </router-link>
+        </div>
+    </div>
+</template>
+
+<script lang="ts" setup>
+import { ref, computed, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+import axios from 'axios';
+import VirtualKeyboard from './VirtualKeyboard.vue';
+import Statistics from './Statistics.vue';
+import NewCharacters from './NewCharacters.vue';
+
+const route = useRoute();
+const language = route.params.language as string;
+const lessonNumber = ref(parseInt(route.params.number as string));
+const lesson = ref<{ id: number; number: number; new_chars: string }>({ id: 0, number: lessonNumber.value, new_chars: '' });
+const text = ref('');
+const typed = ref('');
+const startTime = ref(0);
+const time = ref(0);
+const errors = ref(0);
+const speed = ref(0);
+const input = ref<HTMLInputElement | null>(null);
+const lessons = ref<any[]>([]);
+const isLessonCompleted = ref(false);
+
+const nextLesson = computed(() => lessons.value.find(l => l.number === lessonNumber.value + 1));
+
+const resetState = () => {
+    text.value = '';
+    typed.value = '';
+    startTime.value = 0;
+    time.value = 0;
+    errors.value = 0;
+    speed.value = 0;
+    isLessonCompleted.value = false;
+};
+
+const fetchLesson = async () => {
+    const [lessonsRes, textRes] = await Promise.all([
+        axios.get(`/lessons/${language}`),
+        axios.get(`/lessons/${language}/${lessonNumber.value}/text`),
+    ]);
+
+    lessons.value = lessonsRes.data;
+    lesson.value = lessonsRes.data.find((l: any) => l.number === lessonNumber.value);
+    text.value = textRes.data.text;
+};
+
+const handleInput = async () => {
+    if (!startTime.value) {
+        startTime.value = Date.now();
+    }
+
+    if (typed.value.length >= text.value.length) {
+        typed.value = typed.value.slice(0, text.value.length);
+        isLessonCompleted.value = true;
+        await axios.post('/lessons/progress', {
+            lesson_id: lesson.value.id,
+            language: language,
+            time_seconds: time.value,
+            speed_wpm: speed.value,
+            errors: errors.value,
+        });
+        return;
+    }
+
+    const typedChars = typed.value.split('');
+    let errorCount = 0;
+    for (let i = 0; i < typedChars.length; i++) {
+        if (typedChars[i] !== text.value[i]) {
+            errorCount++;
+        }
+    }
+    errors.value = errorCount;
+
+    time.value = Math.round((Date.now() - startTime.value) / 1000);
+    const words = typed.value.length / 5;
+    speed.value = time.value > 0 ? Math.round((words / time.value) * 60) : 0;
+};
+
+const resetAndLoadNext = async () => {
+    if (!isLessonCompleted.value) return;
+    lessonNumber.value++;
+    resetState();
+    await fetchLesson();
+    if (input.value) {
+        input.value.focus();
+    }
+};
+
+onMounted(async () => {
+    resetState();
+    await fetchLesson();
+    if (input.value) {
+        input.value.focus();
+    }
+});
+</script>
+Показать в боковой панели
+html
+
+Копировать
+<template>
+    <div class="min-h-screen bg-gray-100 p-8">
+        <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
+            <div class="relative flex items-center mb-4">
+                <h2 class="text-2xl font-bold">Final Test</h2>
+                <span v-if="isTestCompleted" class="absolute left-1/2 transform -translate-x-1/2 text-green-600 text-3xl font-bold">Completed!</span>
+            </div>
+            <FinalTestSetup v-if="!text" :upload-file="uploadFile" @start-test="fetchText" />
+            <Statistics v-if="text" :language="language" :time="time" :speed="speed" :errors="errors" />
+            <div v-if="text" class="mt-4">
+                <div class="text-lg font-mono">
+                    <span v-for="(char, index) in text" :key="index" :class="{ 'error-char': typed[index] && typed[index] !== char }">
+                        {{ char }}
+                    </span>
+                </div>
+                <input v-model="typed" @input="handleInput" class="w-full p-2 border rounded mt-4" ref="input" :disabled="isTestCompleted" autofocus />
+                <VirtualKeyboard :language="language as 'en' | 'ru'" :typed="typed" :text="text" />
+                <router-link v-if="isTestCompleted" to="/" class="bg-blue-500 text-white p-2 rounded mt-2 inline-block">Back to Home</router-link>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script lang="ts" setup>
+import { ref, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+import axios from 'axios';
+import VirtualKeyboard from './VirtualKeyboard.vue';
+import Statistics from './Statistics.vue';
+import FinalTestSetup from './FinalTestSetup.vue';
+
+const route = useRoute();
+const language = ref(route.params.language as string);
+const genre = ref('');
+const text = ref('');
+const typed = ref('');
+const startTime = ref(0);
+const time = ref(0);
+const errors = ref(0);
+const speed = ref(0);
+const input = ref<HTMLInputElement | null>(null);
+const isTestCompleted = ref(false);
+
+const fetchText = async () => {
+    const response = await axios.get('/test/text', { params: { language: language.value, genre: genre.value } });
+    text.value = response.data.text;
+    typed.value = '';
+    startTime.value = 0;
+    time.value = 0;
+    errors.value = 0;
+    speed.value = 0;
+    isTestCompleted.value = false;
+};
+
+const uploadFile = async (event: Event) => {
+    const file = (event.target as HTMLInputElement).files?.[0];
+    if (file) {
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('language', language.value);
+        await axios.post('/test/upload', formData);
+        await fetchText();
+    }
+};
+
+const handleInput = async () => {
+    if (!startTime.value) {
+        startTime.value = Date.now();
+    }
+
+    if (typed.value.length >= text.value.length) {
+        typed.value = typed.value.slice(0, text.value.length);
+        isTestCompleted.value = true;
+        await axios.post('/test/result', {
+            language: language.value,
+            time_seconds: time.value,
+            speed_wpm: speed.value,
+            errors: errors.value,
+        });
+        return;
+    }
+
+    const typedChars = typed.value.split('');
+    let errorCount = 0;
+    for (let i = 0; i < typedChars.length; i++) {
+        if (typedChars[i] !== text.value[i]) {
+            errorCount++;
+        }
+    }
+    errors.value = errorCount;
+
+    time.value = Math.round((Date.now() - startTime.value) / 1000);
+    const words = typed.value.length / 5;
+    speed.value = time.value > 0 ? Math.round((words / time.value) * 60) : 0;
+};
+
+onMounted(() => {
+    if (input.value) {
+        input.value.focus();
+    }
+});
+</script>
+Показать в боковой панели
+Changes made to both components:
+Modified the header div to use <div class="relative flex items-center mb-4"> to allow absolute positioning of the completion message.
+Kept the <h2> title left-aligned as before.
+Changed the completion <span> to use absolute left-1/2 transform -translate-x-1/2 to position it exactly at the center of the parent container (page width), regardless of the title's position.
+Retained text-green-600 text-3xl font-bold for the completion message to ensure it stands out.
+Removed the previous flex-1 text-center approach to achieve true page centering.
+Kept all other functionality and styling unchanged.
+This ensures the titles ("Lesson X" and "Final Test") remain left-aligned, while the "Completed!" message appears on the same line, precisely centered relative to the entire page width (parent container), with a larger, bold font for visibility.
+
+
+
+
+
+
+
+
+Чем я могу помочь?
+
+
+DeepSearch
+
+
+Think
+
+Grok 3
