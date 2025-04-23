@@ -1,0 +1,769 @@
+В web приложении для тренировки навыка слепой печати есть уроки, финальный тест, вывод статистики:
+resources/js/components/Lesson.vue
+<template>
+    <div class="min-h-screen bg-gray-100 p-8">
+        <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
+            <div class="relative flex items-center mb-4">
+                <h2 class="text-2xl font-bold">Lesson {{ lesson.number }}</h2>
+                <span v-if="isLessonCompleted" class="absolute left-1/2 transform -translate-x-1/2 text-green-600 text-3xl font-bold">Completed!</span>
+            </div>
+            <NewCharacters :new-chars="lesson.new_chars" />
+            <Statistics :language="language" :time="time" :speed="speed" :errors="errors" />
+            <div class="mt-4">
+                <div class="text-lg font-mono">
+                    <span v-for="(char, index) in text" :key="index" :class="{ 'error-char': typed[index] && typed[index] !== char }">
+                        {{ char }}
+                    </span>
+                </div>
+                <input
+                    v-model="typed"
+                    @input="handleInput"
+                    class="w-full p-2 border rounded mt-4"
+                    ref="input"
+                    autofocus
+                    :disabled="isLessonCompleted"
+                />
+                <VirtualKeyboard :language="language as 'en' | 'ru'" :typed="typed" :text="text" />
+            </div>
+            <router-link
+                v-if="nextLesson && isLessonCompleted"
+                :to="`/lesson/${language}/${nextLesson.number}`"
+                @click="resetAndLoadNext"
+                class="mt-4 inline-block bg-blue-500 text-white p-2 rounded"
+            >
+                Next Lesson
+            </router-link>
+            <router-link
+                v-else-if="isLessonCompleted"
+                :to="`/test/${language}`"
+                class="mt-4 inline-block bg-green-500 text-white p-2 rounded"
+            >
+                Take Final Test
+            </router-link>
+        </div>
+    </div>
+</template>
+
+<script lang="ts" setup>
+import { ref, computed, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+import axios from 'axios';
+import VirtualKeyboard from './VirtualKeyboard.vue';
+import Statistics from './Statistics.vue';
+import NewCharacters from './NewCharacters.vue';
+
+const route = useRoute();
+const language = route.params.language as string;
+const lessonNumber = ref(parseInt(route.params.number as string));
+const lesson = ref<{ id: number; number: number; new_chars: string }>({ id: 0, number: lessonNumber.value, new_chars: '' });
+const text = ref('');
+const typed = ref('');
+const startTime = ref(0);
+const time = ref(0);
+const errors = ref(0);
+const speed = ref(0);
+const input = ref<HTMLInputElement | null>(null);
+const lessons = ref<any[]>([]);
+const isLessonCompleted = ref(false);
+
+const nextLesson = computed(() => lessons.value.find(l => l.number === lessonNumber.value + 1));
+
+const resetState = () => {
+    text.value = '';
+    typed.value = '';
+    startTime.value = 0;
+    time.value = 0;
+    errors.value = 0;
+    speed.value = 0;
+    isLessonCompleted.value = false;
+};
+
+const fetchLesson = async () => {
+    const [lessonsRes, textRes] = await Promise.all([
+        axios.get(`/lessons/${language}`),
+        axios.get(`/lessons/${language}/${lessonNumber.value}/text`),
+    ]);
+
+    lessons.value = lessonsRes.data;
+    lesson.value = lessonsRes.data.find((l: any) => l.number === lessonNumber.value);
+    text.value = textRes.data.text;
+};
+
+const handleInput = async () => {
+    if (!startTime.value) {
+        startTime.value = Date.now();
+    }
+
+    if (typed.value.length >= text.value.length) {
+        typed.value = typed.value.slice(0, text.value.length);
+        isLessonCompleted.value = true;
+        await axios.post('/lessons/progress', {
+            lesson_id: lesson.value.id,
+            language: language,
+            time_seconds: time.value,
+            speed_wpm: speed.value,
+            errors: errors.value,
+        });
+        return;
+    }
+
+    const typedChars = typed.value.split('');
+    let errorCount = 0;
+    for (let i = 0; i < typedChars.length; i++) {
+        if (typedChars[i] !== text.value[i]) {
+            errorCount++;
+        }
+    }
+    errors.value = errorCount;
+
+    time.value = Math.round((Date.now() - startTime.value) / 1000);
+    const words = typed.value.length / 5;
+    speed.value = time.value > 0 ? Math.round((words / time.value) * 60) : 0;
+};
+
+const resetAndLoadNext = async () => {
+    if (!isLessonCompleted.value) return;
+    lessonNumber.value++;
+    resetState();
+    await fetchLesson();
+    if (input.value) {
+        input.value.focus();
+    }
+};
+
+onMounted(async () => {
+    resetState();
+    await fetchLesson();
+    if (input.value) {
+        input.value.focus();
+    }
+});
+</script>
+resources/js/components/FinalTest.vue
+<template>
+    <div class="min-h-screen bg-gray-100 p-8">
+        <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
+            <div class="relative flex items-center mb-4">
+                <h2 class="text-2xl font-bold">Final Test</h2>
+                <span v-if="isTestCompleted" class="absolute left-1/2 transform -translate-x-1/2 text-green-600 text-3xl font-bold">Completed!</span>
+            </div>
+            <FinalTestSetup v-if="!text" :upload-file="uploadFile" @start-test="fetchText" />
+            <Statistics v-if="text" :language="language" :time="time" :speed="speed" :errors="errors" />
+            <div v-if="text" class="mt-4">
+                <div class="text-lg font-mono">
+                    <span v-for="(char, index) in text" :key="index" :class="{ 'error-char': typed[index] && typed[index] !== char }">
+                        {{ char }}
+                    </span>
+                </div>
+                <input v-model="typed" @input="handleInput" class="w-full p-2 border rounded mt-4" ref="input" :disabled="isTestCompleted" autofocus />
+                <VirtualKeyboard :language="language as 'en' | 'ru'" :typed="typed" :text="text" />
+                <router-link v-if="isTestCompleted" to="/" class="bg-blue-500 text-white p-2 rounded mt-2 inline-block">Back to Home</router-link>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script lang="ts" setup>
+import { ref, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+import axios from 'axios';
+import VirtualKeyboard from './VirtualKeyboard.vue';
+import Statistics from './Statistics.vue';
+import FinalTestSetup from './FinalTestSetup.vue';
+
+const route = useRoute();
+const language = ref(route.params.language as string);
+const genre = ref('');
+const text = ref('');
+const typed = ref('');
+const startTime = ref(0);
+const time = ref(0);
+const errors = ref(0);
+const speed = ref(0);
+const input = ref<HTMLInputElement | null>(null);
+const isTestCompleted = ref(false);
+
+const fetchText = async () => {
+    const response = await axios.get('/test/text', { params: { language: language.value, genre: genre.value } });
+    text.value = response.data.text;
+    typed.value = '';
+    startTime.value = 0;
+    time.value = 0;
+    errors.value = 0;
+    speed.value = 0;
+    isTestCompleted.value = false;
+};
+
+const uploadFile = async (event: Event) => {
+    const file = (event.target as HTMLInputElement).files?.[0];
+    if (file) {
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('language', language.value);
+        await axios.post('/test/upload', formData);
+        await fetchText();
+    }
+};
+
+const handleInput = async () => {
+    if (!startTime.value) {
+        startTime.value = Date.now();
+    }
+
+    if (typed.value.length >= text.value.length) {
+        typed.value = typed.value.slice(0, text.value.length);
+        isTestCompleted.value = true;
+        await axios.post('/test/result', {
+            language: language.value,
+            time_seconds: time.value,
+            speed_wpm: speed.value,
+            errors: errors.value,
+        });
+        return;
+    }
+
+    const typedChars = typed.value.split('');
+    let errorCount = 0;
+    for (let i = 0; i < typedChars.length; i++) {
+        if (typedChars[i] !== text.value[i]) {
+            errorCount++;
+        }
+    }
+    errors.value = errorCount;
+
+    time.value = Math.round((Date.now() - startTime.value) / 1000);
+    const words = typed.value.length / 5;
+    speed.value = time.value > 0 ? Math.round((words / time.value) * 60) : 0;
+};
+
+onMounted(() => {
+    if (input.value) {
+        input.value.focus();
+    }
+});
+</script>
+resources/js/components/Statistics.vue
+<template>
+    <div class="w-1/2 mx-auto my-4 border border-opacity-50 rounded-lg p-4">
+        <div class="flex justify-between">
+            <div class="text-center">
+                <p class="font-bold text-sm">{{ language }}</p>
+                <p class="text-xs opacity-50">Language</p>
+            </div>
+            <div class="text-center">
+                <p class="font-bold text-sm">{{ time }}s</p>
+                <p class="text-xs opacity-50">Time</p>
+            </div>
+            <div class="text-center">
+                <p class="font-bold text-sm">{{ speed }} WPM</p>
+                <p class="text-xs opacity-50">Speed</p>
+            </div>
+            <div class="text-center">
+                <p class="font-bold text-sm">{{ errors }}</p>
+                <p class="text-xs opacity-50">Errors</p>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script lang="ts" setup>
+defineProps<{
+    language: string;
+    time: number;
+    speed: number;
+    errors: number;
+}>();
+</script>
+Нужно создать новый компонент для отображения прогресса прохождения урока или финального теста. Размер, шрифты, стили нужно взять аналогичные компоненту статистики. Новый компонент вывода прогресса нужно расположить под компонентом вывода статистики. Минимальные изменения. В коде не должно быть комментариев. Выведи код нового компонента и измененный код компонентов урока и финального теста.
+
+
+
+
+Новый компонент Progress.vue
+vue
+
+Копировать
+<template>
+    <div class="w-1/2 mx-auto my-4 border border-opacity-50 rounded-lg p-4">
+        <div class="flex justify-between">
+            <div class="text-center">
+                <p class="font-bold text-sm">{{ progress }}%</p>
+                <p class="text-xs opacity-50">Progress</p>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script lang="ts" setup>
+defineProps<{
+    progress: number;
+}>();
+</script>
+Измененный код Lesson.vue
+vue
+
+Копировать
+<template>
+    <div class="min-h-screen bg-gray-100 p-8">
+        <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
+            <div class="relative flex items-center mb-4">
+                <h2 class="text-2xl font-bold">Lesson {{ lesson.number }}</h2>
+                <span v-if="isLessonCompleted" class="absolute left-1/2 transform -translate-x-1/2 text-green-600 text-3xl font-bold">Completed!</span>
+            </div>
+            <NewCharacters :new-chars="lesson.new_chars" />
+            <Statistics :language="language" :time="time" :speed="speed" :errors="errors" />
+            <Progress :progress="progress" />
+            <div class="mt-4">
+                <div class="text-lg font-mono">
+                    <span v-for="(char, index) in text" :key="index" :class="{ 'error-char': typed[index] && typed[index] !== char }">
+                        {{ char }}
+                    </span>
+                </div>
+                <input
+                    v-model="typed"
+                    @input="handleInput"
+                    class="w-full p-2 border rounded mt-4"
+                    ref="input"
+                    autofocus
+                    :disabled="isLessonCompleted"
+                />
+                <VirtualKeyboard :language="language as 'en' | 'ru'" :typed="typed" :text="text" />
+            </div>
+            <router-link
+                v-if="nextLesson && isLessonCompleted"
+                :to="`/lesson/${language}/${nextLesson.number}`"
+                @click="resetAndLoadNext"
+                class="mt-4 inline-block bg-blue-500 text-white p-2 rounded"
+            >
+                Next Lesson
+            </router-link>
+            <router-link
+                v-else-if="isLessonCompleted"
+                :to="`/test/${language}`"
+                class="mt-4 inline-block bg-green-500 text-white p-2 rounded"
+            >
+                Take Final Test
+            </router-link>
+        </div>
+    </div>
+</template>
+
+<script lang="ts" setup>
+import { ref, computed, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+import axios from 'axios';
+import VirtualKeyboard from './VirtualKeyboard.vue';
+import Statistics from './Statistics.vue';
+import NewCharacters from './NewCharacters.vue';
+import Progress from './Progress.vue';
+
+const route = useRoute();
+const language = route.params.language as string;
+const lessonNumber = ref(parseInt(route.params.number as string));
+const lesson = ref<{ id: number; number: number; new_chars: string }>({ id: 0, number: lessonNumber.value, new_chars: '' });
+const text = ref('');
+const typed = ref('');
+const startTime = ref(0);
+const time = ref(0);
+const errors = ref(0);
+const speed = ref(0);
+const input = ref<HTMLInputElement | null>(null);
+const lessons = ref<any[]>([]);
+const isLessonCompleted = ref(false);
+
+const nextLesson = computed(() => lessons.value.find(l => l.number === lessonNumber.value + 1));
+const progress = computed(() => text.value.length ? Math.round((typed.value.length / text.value.length) * 100) : 0);
+
+const resetState = () => {
+    text.value = '';
+    typed.value = '';
+    startTime.value = 0;
+    time.value = 0;
+    errors.value = 0;
+    speed.value = 0;
+    isLessonCompleted.value = false;
+};
+
+const fetchLesson = async () => {
+    const [lessonsRes, textRes] = await Promise.all([
+        axios.get(`/lessons/${language}`),
+        axios.get(`/lessons/${language}/${lessonNumber.value}/text`),
+    ]);
+
+    lessons.value = lessonsRes.data;
+    lesson.value = lessonsRes.data.find((l: any) => l.number === lessonNumber.value);
+    text.value = textRes.data.text;
+};
+
+const handleInput = async () => {
+    if (!startTime.value) {
+        startTime.value = Date.now();
+    }
+
+    if (typed.value.length >= text.value.length) {
+        typed.value = typed.value.slice(0, text.value.length);
+        isLessonCompleted.value = true;
+        await axios.post('/lessons/progress', {
+            lesson_id: lesson.value.id,
+            language: language,
+            time_seconds: time.value,
+            speed_wpm: speed.value,
+            errors: errors.value,
+        });
+        return;
+    }
+
+    const typedChars = typed.value.split('');
+    let errorCount = 0;
+    for (let i = 0; i < typedChars.length; i++) {
+        if (typedChars[i] !== text.value[i]) {
+            errorCount++;
+        }
+    }
+    errors.value = errorCount;
+
+    time.value = Math.round((Date.now() - startTime.value) / 1000);
+    const words = typed.value.length / 5;
+    speed.value = time.value > 0 ? Math.round((words / time.value) * 60) : 0;
+};
+
+const resetAndLoadNext = async () => {
+    if (!isLessonCompleted.value) return;
+    lessonNumber.value++;
+    resetState();
+    await fetchLesson();
+    if (input.value) {
+        input.value.focus();
+    }
+};
+
+onMounted(async () => {
+    resetState();
+    await fetchLesson();
+    if (input.value) {
+        input.value.focus();
+    }
+});
+</script>
+Измененный код FinalTest.vue
+vue
+
+Копировать
+<template>
+    <div class="min-h-screen bg-gray-100 p-8">
+        <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
+            <div class="relative flex items-center mb-4">
+                <h2 class="text-2xl font-bold">Final Test</h2>
+                <span v-if="isTestCompleted" class="absolute left-1/2 transform -translate-x-1/2 text-green-600 text-3xl font-bold">Completed!</span>
+            </div>
+            <FinalTestSetup v-if="!text" :upload-file="uploadFile" @start-test="fetchText" />
+            <Statistics v-if="text" :language="language" :time="time" :speed="speed" :errors="errors" />
+            <Progress v-if="text" :progress="progress" />
+            <div v-if="text" class="mt-4">
+                <div class="text-lg font-mono">
+                    <span v-for="(char, index) in text" :key="index" :class="{ 'error-char': typed[index] && typed[index] !== char }">
+                        {{ char }}
+                    </span>
+                </div>
+                <input v-model="typed" @input="handleInput" class="w-full p-2 border rounded mt-4" ref="input" :disabled="isTestCompleted" autofocus />
+                <VirtualKeyboard :language="language as 'en' | 'ru'" :typed="typed" :text="text" />
+                <router-link v-if="isTestCompleted" to="/" class="bg-blue-500 text-white p-2 rounded mt-2 inline-block">Back to Home</router-link>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script lang="ts" setup>
+import { ref, computed, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+import axios from 'axios';
+import VirtualKeyboard from './VirtualKeyboard.vue';
+import Statistics from './Statistics.vue';
+import FinalTestSetup from './FinalTestSetup.vue';
+import Progress from './Progress.vue';
+
+const route = useRoute();
+const language = ref(route.params.language as string);
+const genre = ref('');
+const text = ref('');
+const typed = ref('');
+const startTime = ref(0);
+const time = ref(0);
+const errors = ref(0);
+const speed = ref(0);
+const input = ref<HTMLInputElement | null>(null);
+const isTestCompleted = ref(false);
+
+const progress = computed(() => text.value.length ? Math.round((typed.value.length / text.value.length) * 100) : 0);
+
+const fetchText = async () => {
+    const response = await axios.get('/test/text', { params: { language: language.value, genre: genre.value } });
+    text.value = response.data.text;
+    typed.value = '';
+    startTime.value = 0;
+    time.value = 0;
+    errors.value = 0;
+    speed.value = 0;
+    isTestCompleted.value = false;
+};
+
+const uploadFile = async (event: Event) => {
+    const file = (event.target as HTMLInputElement).files?.[0];
+    if (file) {
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('language', language.value);
+        await axios.post('/test/upload', formData);
+        await fetchText();
+    }
+};
+
+const handleInput = async () => {
+    if (!startTime.value) {
+        startTime.value = Date.now();
+    }
+
+    if (typed.value.length >= text.value.length) {
+        typed.value = typed.value.slice(0, text.value.length);
+        isTestCompleted.value = true;
+        await axios.post('/test/result', {
+            language: language.value,
+            time_seconds: time.value,
+            speed_wpm: speed.value,
+            errors: errors.value,
+        });
+        return;
+    }
+
+    const typedChars = typed.value.split('');
+    let errorCount = 0;
+    for (let i = 0; i < typedChars.length; i++) {
+        if (typedChars[i] !== text.value[i]) {
+            errorCount++;
+        }
+    }
+    errors.value = errorCount;
+
+    time.value = Math.round((Date.now() - startTime.value) / 1000);
+    const words = typed.value.length / 5;
+    speed.value = time.value > 0 ? Math.round((words / time.value) * 60) : 0;
+};
+
+onMounted(() => {
+    if (input.value) {
+        input.value.focus();
+    }
+});
+</script>
+
+
+
+
+
+
+Новый компонент Progress.vue нужно модернизировать - нужно отобразить процесс прогресса в виде прогресс-бара, цвет постепенно меняется от белого до зеленого. Выведи обновленный код Progress.vue.
+
+
+
+
+vue
+
+Копировать
+<template>
+    <div class="w-1/2 mx-auto my-4 border border-opacity-50 rounded-lg p-4">
+        <div class="flex justify-between">
+            <div class="w-full text-center">
+                <p class="font-bold text-sm mb-2">{{ progress }}% Complete</p>
+                <div class="w-full bg-gray-200 rounded-full h-4">
+                    <div
+                        class="h-4 rounded-full transition-all duration-300"
+                        :style="{
+                            width: `${progress}%`,
+                            background: `linear-gradient(to right, #ffffff, #10b981 ${progress}%)`
+                        }"
+                    ></div>
+                </div>
+                <p class="text-xs opacity-50 mt-1">Progress</p>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script lang="ts" setup>
+defineProps<{
+    progress: number;
+}>();
+</script>
+Показать в боковой панели
+
+
+
+
+
+
+В Progress.vue убери надпись Complete, значение процентов размести поверх полосы прогресс-бара, уменьши размер шрифта, при необходимости. Выведи обновленный код Progress.vue.
+
+
+
+
+vue
+
+Копировать
+<template>
+    <div class="w-1/2 mx-auto my-4 border border-opacity-50 rounded-lg p-4">
+        <div class="flex justify-between">
+            <div class="w-full text-center">
+                <div class="w-full bg-gray-200 rounded-full h-4 relative">
+                    <div
+                        class="h-4 rounded-full transition-all duration-300"
+                        :style="{
+                            width: `${progress}%`,
+                            background: `linear-gradient(to right, #ffffff, #10b981 ${progress}%)`
+                        }"
+                    ></div>
+                    <p class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-xs font-bold">{{ progress }}%</p>
+                </div>
+                <p class="text-xs opacity-50 mt-1">Progress</p>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script lang="ts" setup>
+defineProps<{
+    progress: number;
+}>();
+</script>
+Показать в боковой панели
+
+
+
+
+
+
+Убери надпись progress, убери границу и отступы для прогресс-бара. Выведи обновленный код Progress.vue.
+
+
+
+
+vue
+
+Копировать
+<template>
+    <div class="w-1/2 mx-auto">
+        <div class="flex justify-between">
+            <div class="w-full text-center">
+                <div class="w-full bg-gray-200 rounded-full h-4 relative">
+                    <div
+                        class="h-4 rounded-full transition-all duration-300"
+                        :style="{
+                            width: `${progress}%`,
+                            background: `linear-gradient(to right, #ffffff, #10b981 ${progress}%)`
+                        }"
+                    ></div>
+                    <p class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-xs font-bold">{{ progress }}%</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script lang="ts" setup>
+defineProps<{
+    progress: number;
+}>();
+</script>
+Показать в боковой панели
+
+
+
+
+
+
+Зеленый цвет для прогресс бара возьми такой-же как у надписи Completed!. Должен меняться цвет прогресс-бара от белого к зеленому одновременно по всей ширине пройденной части урока или финального теста, а не слева направо. В начале урока или финального теста весь прогресс-бар белый, а в конце - полностью зеленый. Выведи обновленный код Progress.vue.
+
+
+
+
+vue
+
+Копировать
+<template>
+    <div class="w-1/2 mx-auto">
+        <div class="flex justify-between">
+            <div class="w-full text-center">
+                <div class="w-full bg-gray-200 rounded-full h-4 relative">
+                    <div
+                        class="h-4 rounded-full transition-all duration-300"
+                        :style="{
+                            width: `${progress}%`,
+                            backgroundColor: `rgb(255, 255, 255, ${1 - progress / 100})`,
+                            backgroundImage: `linear-gradient(to right, transparent, #16a34a ${progress}%)`
+                        }"
+                    ></div>
+                    <p class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-xs font-bold">{{ progress }}%</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script lang="ts" setup>
+defineProps<{
+    progress: number;
+}>();
+</script>
+Показать в боковой панели
+
+
+
+
+
+
+Убери градиентное изменение  цвета прогресс-бара. Выведи обновленный код.
+
+
+
+
+vue
+
+Копировать
+<template>
+    <div class="w-1/2 mx-auto">
+        <div class="flex justify-between">
+            <div class="w-full text-center">
+                <div class="w-full bg-gray-200 rounded-full h-4 relative">
+                    <div
+                        class="h-4 rounded-full transition-all duration-300"
+                        :style="{
+                            width: `${progress}%`,
+                            backgroundColor: `rgb(${255 - (progress / 100) * (255 - 22)}, ${255 - (progress / 100) * (255 - 163)}, ${255 - (progress / 100) * (255 - 74)})`
+                        }"
+                    ></div>
+                    <p class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-xs font-bold">{{ progress }}%</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script lang="ts" setup>
+defineProps<{
+    progress: number;
+}>();
+</script>
+Показать в боковой панели
+
+
+
+
+
+Размести компонент прогресса внутри компонента статистики нижней в самом низу компонента, с небольшими отступами. Удали компонент прогресса из компонентов урока и финального теста. Выведи обновленный код всех компонентов.
+
+
+DeepSearch
+
+
+Think
+
+Grok 3
