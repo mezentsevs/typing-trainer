@@ -1,0 +1,599 @@
+В web приложении для тренировки скорости печати слепым методом есть уроки и финальный тест скорости, по которым выводится динамическая статистика в процессе выполнения пользователем урока или финального теста. Представляю контекстные данные для выполнения задачи:
+resources/js/components/Lesson.vue
+<template>
+    <div class="min-h-screen bg-gray-100 p-8">
+        <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
+            <h2 class="text-2xl font-bold mb-4">Lesson {{ lesson.number }} ({{ language }})</h2>
+            <p><strong>New Characters:</strong> {{ lesson.new_chars }}</p>
+            <Statistics :language="language" :time="time" :speed="speed" :errors="errors" />
+            <div class="mt-4">
+                <div class="text-lg font-mono">
+                    <span v-for="(char, index) in text" :key="index" :class="{ 'error-char': typed[index] && typed[index] !== char }">
+                        {{ char }}
+                    </span>
+                </div>
+                <input
+                    v-model="typed"
+                    @input="handleInput"
+                    class="w-full p-2 border rounded mt-4"
+                    ref="input"
+                    autofocus
+                    :disabled="isLessonCompleted"
+                />
+                <VirtualKeyboard :language="language as 'en' | 'ru'" :typed="typed" :text="text" />
+            </div>
+            <div v-if="isLessonCompleted" class="mt-4 text-green-600 font-bold">
+                Lesson Completed!
+            </div>
+            <router-link
+                v-if="nextLesson && isLessonCompleted"
+                :to="`/lesson/${language}/${nextLesson.number}`"
+                @click="resetAndLoadNext"
+                class="mt-4 inline-block bg-blue-500 text-white p-2 rounded"
+            >
+                Next Lesson
+            </router-link>
+            <router-link
+                v-else-if="isLessonCompleted"
+                :to="`/test/${language}`"
+                class="mt-4 inline-block bg-green-500 text-white p-2 rounded"
+            >
+                Take Final Test
+            </router-link>
+        </div>
+    </div>
+</template>
+
+<script lang="ts" setup>
+import { ref, computed, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+import axios from 'axios';
+import VirtualKeyboard from './VirtualKeyboard.vue';
+import Statistics from './Statistics.vue';
+
+const route = useRoute();
+const language = route.params.language as string;
+const lessonNumber = ref(parseInt(route.params.number as string));
+const lesson = ref<{ id: number; number: number; new_chars: string }>({ id: 0, number: lessonNumber.value, new_chars: '' });
+const text = ref('');
+const typed = ref('');
+const startTime = ref(0);
+const time = ref(0);
+const errors = ref(0);
+const speed = ref(0);
+const input = ref<HTMLInputElement | null>(null);
+const lessons = ref<any[]>([]);
+const isLessonCompleted = ref(false);
+
+const nextLesson = computed(() => lessons.value.find(l => l.number === lessonNumber.value + 1));
+
+const resetState = () => {
+    text.value = '';
+    typed.value = '';
+    startTime.value = 0;
+    time.value = 0;
+    errors.value = 0;
+    speed.value = 0;
+    isLessonCompleted.value = false;
+};
+
+const fetchLesson = async () => {
+    const [lessonsRes, textRes] = await Promise.all([
+        axios.get(`/lessons/${language}`),
+        axios.get(`/lessons/${language}/${lessonNumber.value}/text`),
+    ]);
+
+    lessons.value = lessonsRes.data;
+    lesson.value = lessonsRes.data.find((l: any) => l.number === lessonNumber.value);
+    text.value = textRes.data.text;
+};
+
+const handleInput = async () => {
+    if (!startTime.value) {
+        startTime.value = Date.now();
+    }
+
+    if (typed.value.length >= text.value.length) {
+        typed.value = typed.value.slice(0, text.value.length);
+        isLessonCompleted.value = true;
+        await axios.post('/lessons/progress', {
+            lesson_id: lesson.value.id,
+            language: language,
+            time_seconds: time.value,
+            speed_wpm: speed.value,
+            errors: errors.value,
+        });
+        return;
+    }
+
+    const typedChars = typed.value.split('');
+    let errorCount = 0;
+    for (let i = 0; i < typedChars.length; i++) {
+        if (typedChars[i] !== text.value[i]) {
+            errorCount++;
+        }
+    }
+    errors.value = errorCount;
+
+    time.value = Math.round((Date.now() - startTime.value) / 1000);
+    const words = typed.value.length / 5;
+    speed.value = time.value > 0 ? Math.round((words / time.value) * 60) : 0;
+};
+
+const resetAndLoadNext = async () => {
+    if (!isLessonCompleted.value) return;
+    lessonNumber.value++;
+    resetState();
+    await fetchLesson();
+    if (input.value) {
+        input.value.focus();
+    }
+};
+
+onMounted(async () => {
+    resetState();
+    await fetchLesson();
+    if (input.value) {
+        input.value.focus();
+    }
+});
+</script>
+resources/js/components/FinalTest.vue
+<template>
+    <div class="min-h-screen bg-gray-100 p-8">
+        <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
+            <h2 class="text-2xl font-bold mb-4">Final Typing Test ({{ language }})</h2>
+            <div class="mb-4">
+                <label class="block text-gray-700">Genre (optional)</label>
+                <select v-model="genre" class="p-2 border rounded">
+                    <option value="">None</option>
+                    <option value="fiction">Fiction</option>
+                    <option value="non-fiction">Non-fiction</option>
+                    <option value="poetry">Poetry</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700">Upload Text (optional)</label>
+                <input type="file" accept=".txt" @change="uploadFile" class="p-2 border rounded" />
+            </div>
+            <button @click="fetchText" class="bg-blue-500 text-white p-2 rounded mb-4">Start Test</button>
+            <Statistics :language="language" :time="time" :speed="speed" :errors="errors" />
+            <div v-if="text" class="mt-4">
+                <div class="text-lg font-mono">
+                    <span v-for="(char, index) in text" :key="index" :class="{ 'error-char': typed[index] && typed[index] !== char }">
+                        {{ char }}
+                    </span>
+                </div>
+                <input v-model="typed" @input="handleInput" class="w-full p-2 border rounded mt-4" ref="input" :disabled="isTestCompleted" autofocus />
+                <VirtualKeyboard :language="language as 'en' | 'ru'" :typed="typed" :text="text" />
+                <p v-if="isTestCompleted" class="text-green-500 font-bold mt-2">Test completed!</p>
+                <router-link v-if="isTestCompleted" to="/" class="bg-blue-500 text-white p-2 rounded mt-2 inline-block">Back to Home</router-link>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script lang="ts" setup>
+import { ref, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+import axios from 'axios';
+import VirtualKeyboard from './VirtualKeyboard.vue';
+import Statistics from './Statistics.vue';
+
+const route = useRoute();
+const language = ref(route.params.language as string);
+const genre = ref('');
+const text = ref('');
+const typed = ref('');
+const startTime = ref(0);
+const time = ref(0);
+const errors = ref(0);
+const speed = ref(0);
+const input = ref<HTMLInputElement | null>(null);
+const isTestCompleted = ref(false);
+
+const fetchText = async () => {
+    const response = await axios.get('/test/text', { params: { language: language.value, genre: genre.value } });
+    text.value = response.data.text;
+    typed.value = '';
+    startTime.value = 0;
+    time.value = 0;
+    errors.value = 0;
+    speed.value = 0;
+    isTestCompleted.value = false;
+};
+
+const uploadFile = async (event: Event) => {
+    const file = (event.target as HTMLInputElement).files?.[0];
+    if (file) {
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('language', language.value);
+        await axios.post('/test/upload', formData);
+        await fetchText();
+    }
+};
+
+const handleInput = async () => {
+    if (!startTime.value) {
+        startTime.value = Date.now();
+    }
+
+    if (typed.value.length >= text.value.length) {
+        typed.value = typed.value.slice(0, text.value.length);
+        isTestCompleted.value = true;
+        await axios.post('/test/result', {
+            language: language.value,
+            time_seconds: time.value,
+            speed_wpm: speed.value,
+            errors: errors.value,
+        });
+        return;
+    }
+
+    const typedChars = typed.value.split('');
+    let errorCount = 0;
+    for (let i = 0; i < typedChars.length; i++) {
+        if (typedChars[i] !== text.value[i]) {
+            errorCount++;
+        }
+    }
+    errors.value = errorCount;
+
+    time.value = Math.round((Date.now() - startTime.value) / 1000);
+    const words = typed.value.length / 5;
+    speed.value = time.value > 0 ? Math.round((words / time.value) * 60) : 0;
+};
+
+onMounted(() => {
+    if (input.value) {
+        input.value.focus();
+    }
+});
+</script>
+resources/js/components/Statistics.vue
+<template>
+    <div class="flex justify-between max-w-1/2 mx-auto">
+        <div class="text-center">
+            <p class="font-bold">{{ language }}</p>
+            <p class="text-sm opacity-50">Language</p>
+        </div>
+        <div class="text-center">
+            <p class="font-bold">{{ time }}s</p>
+            <p class="text-sm opacity-50">Time</p>
+        </div>
+        <div class="text-center">
+            <p class="font-bold">{{ speed }} WPM</p>
+            <p class="text-sm opacity-50">Speed</p>
+        </div>
+        <div class="text-center">
+            <p class="font-bold">{{ errors }}</p>
+            <p class="text-sm opacity-50">Errors</p>
+        </div>
+    </div>
+</template>
+
+<script lang="ts" setup>
+defineProps<{
+    language: string;
+    time: number;
+    speed: number;
+    errors: number;
+}>();
+</script>
+Для компонента статистики нужно уменьшить ширину до половины ширины родительского блока, добавить отступы сверху и снизу, добавить рамку с закругленными краями, прозрачность рамки пониженная, уменьшить размер шрифта. Выведи обновленный код компонента.
+
+
+
+
+Вот обновленный код компонента Statistics.vue с примененными изменениями:
+
+vue
+
+Копировать
+<template>
+    <div class="w-1/2 mx-auto my-4 border border-opacity-50 rounded-lg p-4">
+        <div class="flex justify-between">
+            <div class="text-center">
+                <p class="font-bold text-sm">{{ language }}</p>
+                <p class="text-xs opacity-50">Language</p>
+            </div>
+            <div class="text-center">
+                <p class="font-bold text-sm">{{ time }}s</p>
+                <p class="text-xs opacity-50">Time</p>
+            </div>
+            <div class="text-center">
+                <p class="font-bold text-sm">{{ speed }} WPM</p>
+                <p class="text-xs opacity-50">Speed</p>
+            </div>
+            <div class="text-center">
+                <p class="font-bold text-sm">{{ errors }}</p>
+                <p class="text-xs opacity-50">Errors</p>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script lang="ts" setup>
+defineProps<{
+    language: string;
+    time: number;
+    speed: number;
+    errors: number;
+}>();
+</script>
+Основные изменения:
+
+Заменил класс max-w-1/2 на w-1/2 для явной установки ширины в половину родительского блока
+Добавил my-4 для отступов сверху и снизу (16px)
+Добавил border border-opacity-50 для рамки с пониженной прозрачностью
+Добавил rounded-lg для закругленных краев
+Добавил p-4 для внутреннего отступа (16px)
+Уменьшил размер шрифта:
+Для основных значений с font-bold установил text-sm (14px)
+Для подписей с opacity-50 установил text-xs (12px)
+Переместил mx-auto на внешний div для центрирования всего блока
+Сохранил flex justify-between для равномерного распределения элементов внутри
+
+
+
+
+
+
+В финальном тесте FinalTest.vue
+<template>
+    <div class="min-h-screen bg-gray-100 p-8">
+        <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
+            <h2 class="text-2xl font-bold mb-4">Final Typing Test ({{ language }})</h2>
+            <div class="mb-4">
+                <label class="block text-gray-700">Genre (optional)</label>
+                <select v-model="genre" class="p-2 border rounded">
+                    <option value="">None</option>
+                    <option value="fiction">Fiction</option>
+                    <option value="non-fiction">Non-fiction</option>
+                    <option value="poetry">Poetry</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700">Upload Text (optional)</label>
+                <input type="file" accept=".txt" @change="uploadFile" class="p-2 border rounded" />
+            </div>
+            <button @click="fetchText" class="bg-blue-500 text-white p-2 rounded mb-4">Start Test</button>
+            <Statistics :language="language" :time="time" :speed="speed" :errors="errors" />
+            <div v-if="text" class="mt-4">
+                <div class="text-lg font-mono">
+                    <span v-for="(char, index) in text" :key="index" :class="{ 'error-char': typed[index] && typed[index] !== char }">
+                        {{ char }}
+                    </span>
+                </div>
+                <input v-model="typed" @input="handleInput" class="w-full p-2 border rounded mt-4" ref="input" :disabled="isTestCompleted" autofocus />
+                <VirtualKeyboard :language="language as 'en' | 'ru'" :typed="typed" :text="text" />
+                <p v-if="isTestCompleted" class="text-green-500 font-bold mt-2">Test completed!</p>
+                <router-link v-if="isTestCompleted" to="/" class="bg-blue-500 text-white p-2 rounded mt-2 inline-block">Back to Home</router-link>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script lang="ts" setup>
+import { ref, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+import axios from 'axios';
+import VirtualKeyboard from './VirtualKeyboard.vue';
+import Statistics from './Statistics.vue';
+
+const route = useRoute();
+const language = ref(route.params.language as string);
+const genre = ref('');
+const text = ref('');
+const typed = ref('');
+const startTime = ref(0);
+const time = ref(0);
+const errors = ref(0);
+const speed = ref(0);
+const input = ref<HTMLInputElement | null>(null);
+const isTestCompleted = ref(false);
+
+const fetchText = async () => {
+    const response = await axios.get('/test/text', { params: { language: language.value, genre: genre.value } });
+    text.value = response.data.text;
+    typed.value = '';
+    startTime.value = 0;
+    time.value = 0;
+    errors.value = 0;
+    speed.value = 0;
+    isTestCompleted.value = false;
+};
+
+const uploadFile = async (event: Event) => {
+    const file = (event.target as HTMLInputElement).files?.[0];
+    if (file) {
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('language', language.value);
+        await axios.post('/test/upload', formData);
+        await fetchText();
+    }
+};
+
+const handleInput = async () => {
+    if (!startTime.value) {
+        startTime.value = Date.now();
+    }
+
+    if (typed.value.length >= text.value.length) {
+        typed.value = typed.value.slice(0, text.value.length);
+        isTestCompleted.value = true;
+        await axios.post('/test/result', {
+            language: language.value,
+            time_seconds: time.value,
+            speed_wpm: speed.value,
+            errors: errors.value,
+        });
+        return;
+    }
+
+    const typedChars = typed.value.split('');
+    let errorCount = 0;
+    for (let i = 0; i < typedChars.length; i++) {
+        if (typedChars[i] !== text.value[i]) {
+            errorCount++;
+        }
+    }
+    errors.value = errorCount;
+
+    time.value = Math.round((Date.now() - startTime.value) / 1000);
+    const words = typed.value.length / 5;
+    speed.value = time.value > 0 ? Math.round((words / time.value) * 60) : 0;
+};
+
+onMounted(() => {
+    if (input.value) {
+        input.value.focus();
+    }
+});
+</script>
+нужно скрыть компонент вывода статистики, пока не будет доступно поле для ввода.
+
+
+Чтобы скрыть компонент Statistics, пока не отображается поле для ввода (input), можно использовать директиву v-if и проверять наличие текста (text.value). Поле ввода отображается только когда text существует (см. условие v-if="text" в шаблоне). Таким образом, мы можем связать отображение компонента Statistics с тем же условием.
+
+Вот обновленный код компонента FinalTest.vue:
+
+vue
+
+Копировать
+<template>
+    <div class="min-h-screen bg-gray-100 p-8">
+        <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
+            <h2 class="text-2xl font-bold mb-4">Final Typing Test ({{ language }})</h2>
+            <div class="mb-4">
+                <label class="block text-gray-700">Genre (optional)</label>
+                <select v-model="genre" class="p-2 border rounded">
+                    <option value="">None</option>
+                    <option value="fiction">Fiction</option>
+                    <option value="non-fiction">Non-fiction</option>
+                    <option value="poetry">Poetry</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700">Upload Text (optional)</label>
+                <input type="file" accept=".txt" @change="uploadFile" class="p-2 border rounded" />
+            </div>
+            <button @click="fetchText" class="bg-blue-500 text-white p-2 rounded mb-4">Start Test</button>
+            <Statistics v-if="text" :language="language" :time="time" :speed="speed" :errors="errors" />
+            <div v-if="text" class="mt-4">
+                <div class="text-lg font-mono">
+                    <span v-for="(char, index) in text" :key="index" :class="{ 'error-char': typed[index] && typed[index] !== char }">
+                        {{ char }}
+                    </span>
+                </div>
+                <input v-model="typed" @input="handleInput" class="w-full p-2 border rounded mt-4" ref="input" :disabled="isTestCompleted" autofocus />
+                <VirtualKeyboard :language="language as 'en' | 'ru'" :typed="typed" :text="text" />
+                <p v-if="isTestCompleted" class="text-green-500 font-bold mt-2">Test completed!</p>
+                <router-link v-if="isTestCompleted" to="/" class="bg-blue-500 text-white p-2 rounded mt-2 inline-block">Back to Home</router-link>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script lang="ts" setup>
+import { ref, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+import axios from 'axios';
+import VirtualKeyboard from './VirtualKeyboard.vue';
+import Statistics from './Statistics.vue';
+
+const route = useRoute();
+const language = ref(route.params.language as string);
+const genre = ref('');
+const text = ref('');
+const typed = ref('');
+const startTime = ref(0);
+const time = ref(0);
+const errors = ref(0);
+const speed = ref(0);
+const input = ref<HTMLInputElement | null>(null);
+const isTestCompleted = ref(false);
+
+const fetchText = async () => {
+    const response = await axios.get('/test/text', { params: { language: language.value, genre: genre.value } });
+    text.value = response.data.text;
+    typed.value = '';
+    startTime.value = 0;
+    time.value = 0;
+    errors.value = 0;
+    speed.value = 0;
+    isTestCompleted.value = false;
+};
+
+const uploadFile = async (event: Event) => {
+    const file = (event.target as HTMLInputElement).files?.[0];
+    if (file) {
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('language', language.value);
+        await axios.post('/test/upload', formData);
+        await fetchText();
+    }
+};
+
+const handleInput = async () => {
+    if (!startTime.value) {
+        startTime.value = Date.now();
+    }
+
+    if (typed.value.length >= text.value.length) {
+        typed.value = typed.value.slice(0, text.value.length);
+        isTestCompleted.value = true;
+        await axios.post('/test/result', {
+            language: language.value,
+            time_seconds: time.value,
+            speed_wpm: speed.value,
+            errors: errors.value,
+        });
+        return;
+    }
+
+    const typedChars = typed.value.split('');
+    let errorCount = 0;
+    for (let i = 0; i < typedChars.length; i++) {
+        if (typedChars[i] !== text.value[i]) {
+            errorCount++;
+        }
+    }
+    errors.value = errorCount;
+
+    time.value = Math.round((Date.now() - startTime.value) / 1000);
+    const words = typed.value.length / 5;
+    speed.value = time.value > 0 ? Math.round((words / time.value) * 60) : 0;
+};
+
+onMounted(() => {
+    if (input.value) {
+        input.value.focus();
+    }
+});
+</script>
+Показать в боковой панели
+Изменения:
+Добавлено условие v-if="text" к компоненту <Statistics />, чтобы он отображался только при наличии текста (text.value), синхронизировав его с появлением поля ввода.
+Остальная часть кода осталась без изменений, так как требовалось только скрыть компонент Statistics до появления поля ввода.
+Теперь статистика будет отображаться одновременно с полем ввода, когда текст загружен (после нажатия "Start Test" или загрузки файла).
+
+
+
+
+
+
+
+
+Чем я могу помочь?
+
+
+DeepSearch
+
+
+Think
+
+Grok 3
