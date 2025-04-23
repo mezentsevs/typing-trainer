@@ -1,7 +1,10 @@
 <template>
     <div class="min-h-screen bg-gray-100 p-8">
         <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
-            <h2 class="text-2xl font-bold mb-4">Lesson {{ lesson.number }}</h2>
+            <div class="relative flex items-center mb-4">
+                <h2 class="text-2xl font-bold">Lesson {{ lesson.number }}</h2>
+                <span v-if="isLessonCompleted" class="absolute left-1/2 transform -translate-x-1/2 text-green-600 text-3xl font-bold">Completed!</span>
+            </div>
             <NewCharacters :new-chars="lesson.new_chars" />
             <Statistics :language="language" :time="time" :speed="speed" :errors="errors" />
             <div class="mt-4">
@@ -19,9 +22,6 @@
                     :disabled="isLessonCompleted"
                 />
                 <VirtualKeyboard :language="language as 'en' | 'ru'" :typed="typed" :text="text" />
-            </div>
-            <div v-if="isLessonCompleted" class="mt-4 text-green-600 font-bold">
-                Lesson Completed!
             </div>
             <router-link
                 v-if="nextLesson && isLessonCompleted"

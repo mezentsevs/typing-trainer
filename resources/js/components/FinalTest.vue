@@ -1,7 +1,10 @@
 <template>
     <div class="min-h-screen bg-gray-100 p-8">
         <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
-            <h2 class="text-2xl font-bold mb-4">Final Test</h2>
+            <div class="relative flex items-center mb-4">
+                <h2 class="text-2xl font-bold">Final Test</h2>
+                <span v-if="isTestCompleted" class="absolute left-1/2 transform -translate-x-1/2 text-green-600 text-3xl font-bold">Completed!</span>
+            </div>
             <FinalTestSetup v-if="!text" :upload-file="uploadFile" @start-test="fetchText" />
             <Statistics v-if="text" :language="language" :time="time" :speed="speed" :errors="errors" />
             <div v-if="text" class="mt-4">
@@ -12,7 +15,6 @@
                 </div>
                 <input v-model="typed" @input="handleInput" class="w-full p-2 border rounded mt-4" ref="input" :disabled="isTestCompleted" autofocus />
                 <VirtualKeyboard :language="language as 'en' | 'ru'" :typed="typed" :text="text" />
-                <p v-if="isTestCompleted" class="text-green-500 font-bold mt-2">Test completed!</p>
                 <router-link v-if="isTestCompleted" to="/" class="bg-blue-500 text-white p-2 rounded mt-2 inline-block">Back to Home</router-link>
             </div>
         </div>
