@@ -1,7 +1,7 @@
 <template>
     <div class="min-h-screen bg-gray-100 p-8">
         <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
-            <h2 class="text-2xl font-bold mb-4">Final Typing Test ({{ language }})</h2>
+            <h2 class="text-2xl font-bold mb-4">Final Test</h2>
             <div class="mb-4">
                 <label class="block text-gray-700">Genre (optional)</label>
                 <select v-model="genre" class="p-2 border rounded">

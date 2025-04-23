@@ -1,8 +1,8 @@
 <template>
     <div class="min-h-screen bg-gray-100 p-8">
         <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
-            <h2 class="text-2xl font-bold mb-4">Lesson {{ lesson.number }} ({{ language }})</h2>
-            <p><strong>New Characters:</strong> {{ lesson.new_chars }}</p>
+            <h2 class="text-2xl font-bold mb-4">Lesson {{ lesson.number }}</h2>
+            <NewCharacters :new-chars="lesson.new_chars" />
             <Statistics :language="language" :time="time" :speed="speed" :errors="errors" />
             <div class="mt-4">
                 <div class="text-lg font-mono">
@@ -48,6 +48,7 @@ import { useRoute } from 'vue-router';
 import axios from 'axios';
 import VirtualKeyboard from './VirtualKeyboard.vue';
 import Statistics from './Statistics.vue';
+import NewCharacters from './NewCharacters.vue';
 
 const route = useRoute();
 const language = route.params.language as string;
