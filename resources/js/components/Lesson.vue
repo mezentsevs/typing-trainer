@@ -3,9 +3,7 @@
         <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
             <h2 class="text-2xl font-bold mb-4">Lesson {{ lesson.number }} ({{ language }})</h2>
             <p><strong>New Characters:</strong> {{ lesson.new_chars }}</p>
-            <p><strong>Time:</strong> {{ time }}s</p>
-            <p><strong>Speed:</strong> {{ speed }} WPM</p>
-            <p><strong>Errors:</strong> {{ errors }}</p>
+            <Statistics :language="language" :time="time" :speed="speed" :errors="errors" />
             <div class="mt-4">
                 <div class="text-lg font-mono">
                     <span v-for="(char, index) in text" :key="index" :class="{ 'error-char': typed[index] && typed[index] !== char }">
@@ -49,6 +47,7 @@ import { ref, computed, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import axios from 'axios';
 import VirtualKeyboard from './VirtualKeyboard.vue';
+import Statistics from './Statistics.vue';
 
 const route = useRoute();
 const language = route.params.language as string;

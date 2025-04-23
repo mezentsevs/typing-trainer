@@ -16,9 +16,7 @@
                 <input type="file" accept=".txt" @change="uploadFile" class="p-2 border rounded" />
             </div>
             <button @click="fetchText" class="bg-blue-500 text-white p-2 rounded mb-4">Start Test</button>
-            <p><strong>Time:</strong> {{ time }}s</p>
-            <p><strong>Speed:</strong> {{ speed }} WPM</p>
-            <p><strong>Errors:</strong> {{ errors }}</p>
+            <Statistics :language="language" :time="time" :speed="speed" :errors="errors" />
             <div v-if="text" class="mt-4">
                 <div class="text-lg font-mono">
                     <span v-for="(char, index) in text" :key="index" :class="{ 'error-char': typed[index] && typed[index] !== char }">
@@ -39,6 +37,7 @@ import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import axios from 'axios';
 import VirtualKeyboard from './VirtualKeyboard.vue';
+import Statistics from './Statistics.vue';
 
 const route = useRoute();
 const language = ref(route.params.language as string);
