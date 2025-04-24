@@ -5,8 +5,10 @@
                 <h2 class="text-2xl font-bold">Lesson {{ lesson.number }}</h2>
                 <span v-if="isLessonCompleted" class="absolute left-1/2 transform -translate-x-1/2 text-green-500 text-3xl font-bold">Completed!</span>
             </div>
-            <NewCharacters :new-chars="lesson.new_chars" />
-            <Statistics :language="language" :time="time" :speed="speed" :errors="errors" :progress="progress" />
+            <div class="flex flex-row items-stretch space-x-4 mb-4">
+                <NewCharacters :new-chars="lesson.new_chars" class="flex items-center justify-center" />
+                <Statistics :language :time :speed :errors :progress />
+            </div>
             <div class="mt-4">
                 <div ref="textContainer" class="text-lg font-mono break-words whitespace-pre-wrap h-28 overflow-y-auto bg-gray-50 p-2">
                     <span v-for="(char, index) in text" :key="index" :class="{ 'error-char': typed[index] && typed[index] !== char }">
