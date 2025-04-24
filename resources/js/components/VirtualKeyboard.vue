@@ -184,7 +184,7 @@ const isHighlighted = (keyValue: string | undefined, zone?: 'left' | 'right') =>
     if (keyValue === 'enter') return nextChar.value === '\n';
 
     const isUpperOrSpecial = nextChar.value.match(/[A-ZА-ЯЁ~!@#$%^&*()_+{}|:"<>?]/);
-    const isControlChar = nextChar.value.match(/[\x00-\x1F\x7F]/);
+    const isControlChar = nextChar.value !== '\n' && nextChar.value.match(/[\x00-\x1F\x7F]/);
 
     if (keyValue === 'shift') {
         if (!isUpperOrSpecial) return false;
