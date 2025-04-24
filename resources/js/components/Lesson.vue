@@ -25,22 +25,24 @@
                     rows="3"
                 />
                 <VirtualKeyboard :language="language as 'en' | 'ru'" :typed="typed" :text="text" />
+                <div v-if="isLessonCompleted" class="flex justify-center mt-4">
+                    <router-link
+                        v-if="nextLesson"
+                        :to="`/lesson/${language}/${nextLesson.number}`"
+                        @click="resetAndLoadNext"
+                        class="bg-blue-500 text-white p-2 rounded"
+                    >
+                        Next Lesson
+                    </router-link>
+                    <router-link
+                        v-else
+                        :to="`/test/${language}`"
+                        class="bg-green-500 text-white p-2 rounded"
+                    >
+                        Take Final Test
+                    </router-link>
+                </div>
             </div>
-            <router-link
-                v-if="nextLesson && isLessonCompleted"
-                :to="`/lesson/${language}/${nextLesson.number}`"
-                @click="resetAndLoadNext"
-                class="mt-4 inline-block bg-blue-500 text-white p-2 rounded"
-            >
-                Next Lesson
-            </router-link>
-            <router-link
-                v-else-if="isLessonCompleted"
-                :to="`/test/${language}`"
-                class="mt-4 inline-block bg-green-500 text-white p-2 rounded"
-            >
-                Take Final Test
-            </router-link>
         </div>
     </div>
 </template>

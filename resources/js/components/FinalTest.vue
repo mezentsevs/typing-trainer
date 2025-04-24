@@ -23,7 +23,9 @@
                     rows="3"
                 />
                 <VirtualKeyboard :language="language as 'en' | 'ru'" :typed="typed" :text="text" />
-                <router-link v-if="isTestCompleted" to="/" class="bg-blue-500 text-white p-2 rounded mt-2 inline-block">Back to Home</router-link>
+                <div v-if="isTestCompleted" class="flex justify-center mt-2">
+                    <router-link to="/" class="bg-blue-500 text-white p-2 rounded">Back to Home</router-link>
+                </div>
             </div>
         </div>
     </div>
