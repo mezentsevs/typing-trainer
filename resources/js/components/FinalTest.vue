@@ -8,7 +8,7 @@
             <FinalTestSetup v-if="!text" :upload-file="uploadFile" @start-test="fetchText" />
             <Statistics v-if="text" :language="language" :time="time" :speed="speed" :errors="errors" :progress="progress" />
             <div v-if="text" class="mt-4">
-                <div ref="textContainer" class="text-lg font-mono break-words whitespace-pre-wrap h-28 overflow-y-auto">
+                <div ref="textContainer" class="text-lg font-mono break-words whitespace-pre-wrap h-28 overflow-y-auto bg-gray-50 p-2">
                     <span v-for="(char, index) in text" :key="index" :class="{ 'error-char': typed[index] && typed[index] !== char }">
                         {{ char }}
                     </span>
