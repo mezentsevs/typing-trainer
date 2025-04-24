@@ -21,7 +21,7 @@
                     :disabled="isTestCompleted"
                     autofocus
                     rows="3"
-                ></textarea>
+                />
                 <VirtualKeyboard :language="language as 'en' | 'ru'" :typed="typed" :text="text" />
                 <router-link v-if="isTestCompleted" to="/" class="bg-blue-500 text-white p-2 rounded mt-2 inline-block">Back to Home</router-link>
             </div>

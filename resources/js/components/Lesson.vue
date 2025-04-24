@@ -21,7 +21,7 @@
                     autofocus
                     :disabled="isLessonCompleted"
                     rows="3"
-                ></textarea>
+                />
                 <VirtualKeyboard :language="language as 'en' | 'ru'" :typed="typed" :text="text" />
             </div>
             <router-link
