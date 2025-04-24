@@ -11,7 +11,7 @@
             </div>
             <div class="mt-4">
                 <div ref="textContainer" class="text-lg font-mono break-words whitespace-pre-wrap h-28 overflow-y-auto bg-gray-50 p-2">
-                    <span v-for="(char, index) in text" :key="index" :class="{ 'error-char': typed[index] && typed[index] !== char }">
+                    <span v-for="(char, index) in text" :key="index" :class="{ 'error-char': typed[index] && typed[index] !== char, 'current-word': isCurrentWord[index], 'space': char === ' ', 'line-break': char === '\n' }">
                         {{ char }}
                     </span>
                 </div>
@@ -55,6 +55,7 @@ import VirtualKeyboard from './VirtualKeyboard.vue';
 import Statistics from './Statistics.vue';
 import NewCharacters from './NewCharacters.vue';
 import { scrollToCurrentChar } from '@/helpers/DomHelper';
+import { getCurrentTypingUnit } from '@/helpers/StringHelper';
 
 const route = useRoute();
 const language = route.params.language as string;
@@ -147,5 +148,17 @@ onMounted(async () => {
     if (input.value) {
         input.value.focus();
     }
+});
+
+const currentTypingUnit = computed(() => getCurrentTypingUnit(text.value, typed.value.length));
+
+const isCurrentWord = computed(() => {
+    const range = currentTypingUnit.value;
+    if (!range) return Array(text.value.length).fill(false);
+    const arr = Array(text.value.length).fill(false);
+    for (let i = range.start; i <= range.end; i++) {
+        arr[i] = true;
+    }
+    return arr;
 });
 </script>

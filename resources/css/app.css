@@ -5,3 +5,18 @@
 .error-char {
     @apply bg-red-200 text-red-800;
 }
+
+.current-word {
+    text-decoration: underline;
+    text-decoration-color: #ccc;
+}
+
+.current-word.space {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 2px;
+}
+
+.current-word.line-break::before {
+    content: "↵";
+    color: #ccc;
+}
