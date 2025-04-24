@@ -13,14 +13,15 @@
                         {{ char }}
                     </span>
                 </div>
-                <input
+                <textarea
                     v-model="typed"
                     @input="handleInput"
-                    class="w-full p-2 border rounded mt-4"
+                    class="w-full p-2 border rounded mt-4 resize-none"
                     ref="input"
                     autofocus
                     :disabled="isLessonCompleted"
-                />
+                    rows="3"
+                ></textarea>
                 <VirtualKeyboard :language="language as 'en' | 'ru'" :typed="typed" :text="text" />
             </div>
             <router-link
@@ -61,7 +62,7 @@ const startTime = ref(0);
 const time = ref(0);
 const errors = ref(0);
 const speed = ref(0);
-const input = ref<HTMLInputElement | null>(null);
+const input = ref<HTMLTextAreaElement | null>(null);
 const textContainer = ref<HTMLElement | null>(null);
 const lessons = ref<any[]>([]);
 const isLessonCompleted = ref(false);

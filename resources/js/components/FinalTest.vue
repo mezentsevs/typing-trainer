@@ -13,7 +13,15 @@
                         {{ char }}
                     </span>
                 </div>
-                <input v-model="typed" @input="handleInput" class="w-full p-2 border rounded mt-4" ref="input" :disabled="isTestCompleted" autofocus />
+                <textarea
+                    v-model="typed"
+                    @input="handleInput"
+                    class="w-full p-2 border rounded mt-4 resize-none"
+                    ref="input"
+                    :disabled="isTestCompleted"
+                    autofocus
+                    rows="3"
+                ></textarea>
                 <VirtualKeyboard :language="language as 'en' | 'ru'" :typed="typed" :text="text" />
                 <router-link v-if="isTestCompleted" to="/" class="bg-blue-500 text-white p-2 rounded mt-2 inline-block">Back to Home</router-link>
             </div>
@@ -39,7 +47,7 @@ const startTime = ref(0);
 const time = ref(0);
 const errors = ref(0);
 const speed = ref(0);
-const input = ref<HTMLInputElement | null>(null);
+const input = ref<HTMLTextAreaElement | null>(null);
 const textContainer = ref<HTMLElement | null>(null);
 const isTestCompleted = ref(false);
 
