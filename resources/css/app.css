@@ -7,13 +7,12 @@
 }
 
 .current-word {
-    text-decoration: underline;
+    @apply underline;
     text-decoration-color: #ccc;
 }
 
 .current-word.space {
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 2px;
+    @apply border-b border-gray-300 pb-0.5;
 }
 
 .current-word.line-break::before {
