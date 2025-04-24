@@ -8,7 +8,7 @@
             <FinalTestSetup v-if="!text" :upload-file="uploadFile" @start-test="fetchText" />
             <Statistics v-if="text" :language="language" :time="time" :speed="speed" :errors="errors" :progress="progress" />
             <div v-if="text" class="mt-4">
-                <div class="text-lg font-mono break-words whitespace-pre-wrap">
+                <div ref="textContainer" class="text-lg font-mono break-words whitespace-pre-wrap h-28 overflow-y-auto">
                     <span v-for="(char, index) in text" :key="index" :class="{ 'error-char': typed[index] && typed[index] !== char }">
                         {{ char }}
                     </span>
@@ -28,6 +28,7 @@ import axios from 'axios';
 import VirtualKeyboard from './VirtualKeyboard.vue';
 import Statistics from './Statistics.vue';
 import FinalTestSetup from './FinalTestSetup.vue';
+import { scrollToCurrentChar } from '@/helpers/DomHelper';
 
 const route = useRoute();
 const language = ref(route.params.language as string);
@@ -39,6 +40,7 @@ const time = ref(0);
 const errors = ref(0);
 const speed = ref(0);
 const input = ref<HTMLInputElement | null>(null);
+const textContainer = ref<HTMLElement | null>(null);
 const isTestCompleted = ref(false);
 
 const progress = computed(() => text.value.length ? Math.round((typed.value.length / text.value.length) * 100) : 0);
@@ -94,6 +96,8 @@ const handleInput = async () => {
     time.value = Math.round((Date.now() - startTime.value) / 1000);
     const words = typed.value.length / 5;
     speed.value = time.value > 0 ? Math.round((words / time.value) * 60) : 0;
+
+    scrollToCurrentChar(textContainer.value, typed.value.length);
 };
 
 onMounted(() => {
