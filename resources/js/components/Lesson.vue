@@ -8,7 +8,7 @@
             <NewCharacters :new-chars="lesson.new_chars" />
             <Statistics :language="language" :time="time" :speed="speed" :errors="errors" :progress="progress" />
             <div class="mt-4">
-                <div class="text-lg font-mono">
+                <div class="text-lg font-mono break-words whitespace-pre-wrap">
                     <span v-for="(char, index) in text" :key="index" :class="{ 'error-char': typed[index] && typed[index] !== char }">
                         {{ char }}
                     </span>
