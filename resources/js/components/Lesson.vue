@@ -2,7 +2,7 @@
     <div class="min-h-screen bg-gray-100 p-8">
         <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
             <div class="relative flex items-center mb-4">
-                <h2 class="text-2xl font-bold">Lesson {{ lesson.number }}</h2>
+                <h2 class="text-2xl font-bold">Lesson {{ lesson.number }}/{{ totalLessons }}</h2>
                 <span v-if="isLessonCompleted" class="absolute left-1/2 transform -translate-x-1/2 text-green-500 text-3xl font-bold">Completed!</span>
             </div>
             <div class="flex flex-row items-stretch space-x-4 mb-4">
@@ -68,6 +68,7 @@ const input = ref<HTMLTextAreaElement | null>(null);
 const textContainer = ref<HTMLElement | null>(null);
 const lessons = ref<any[]>([]);
 const isLessonCompleted = ref(false);
+const totalLessons = ref(0);
 
 const nextLesson = computed(() => lessons.value.find(l => l.number === lessonNumber.value + 1));
 const progress = computed(() => text.value.length ? Math.round((typed.value.length / text.value.length) * 100) : 0);
@@ -89,6 +90,7 @@ const fetchLesson = async () => {
     ]);
 
     lessons.value = lessonsRes.data;
+    totalLessons.value = lessonsRes.data.length;
     lesson.value = lessonsRes.data.find((l: any) => l.number === lessonNumber.value);
     text.value = textRes.data.text;
 };
