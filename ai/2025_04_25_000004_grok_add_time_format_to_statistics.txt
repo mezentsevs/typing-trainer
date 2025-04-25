@@ -1,0 +1,118 @@
+В компоненте вывода статистики resources/js/components/Statistics.vue
+<template>
+    <div class="w-1/2 mx-auto my-4 border border-opacity-50 rounded-lg p-4">
+        <div class="flex justify-between">
+            <div class="text-center">
+                <p class="font-bold text-sm">{{ language }}</p>
+                <p class="text-xs opacity-50">Language</p>
+            </div>
+            <div class="text-center">
+                <p class="font-bold text-sm">{{ time }}s</p>
+                <p class="text-xs opacity-50">Time</p>
+            </div>
+            <div class="text-center">
+                <p class="font-bold text-sm">{{ speed }} WPM</p>
+                <p class="text-xs opacity-50">Speed</p>
+            </div>
+            <div class="text-center">
+                <p class="font-bold text-sm">{{ errors }}</p>
+                <p class="text-xs opacity-50">Errors</p>
+            </div>
+        </div>
+        <Progress :progress="progress" />
+    </div>
+</template>
+
+<script lang="ts" setup>
+import Progress from '@/components/Progress.vue';
+
+defineProps<{
+    language: string;
+    time: number;
+    speed: number;
+    errors: number;
+    progress: number;
+}>();
+</script>
+время Time выводится сейчас в секундах s. Нужно это исправить. Нужно сделать так, чтобы время выводилось в формате часы минуты секунды, например 3h 16m 59s, то-есть если время становится равным или превышает минуту добавляется m, а если время становится равным или превышает час - добавляется еще и h. Реализуй для этого функцию и помести ее в отдельный файл resources/js/helpers/DateTimeHelper.ts, а затем импортируй и используй в компоненте статистики. Выведи полный обновленный код обоих файлов.
+
+
+
+
+typescript
+
+Копировать
+export function formatTime(seconds: number): string {
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const remainingSeconds = seconds % 60;
+
+    const parts: string[] = [];
+
+    if (hours > 0) {
+        parts.push(`${hours}h`);
+    }
+    if (minutes > 0 || hours > 0) {
+        parts.push(`${minutes}m`);
+    }
+    parts.push(`${remainingSeconds}s`);
+
+    return parts.join(' ');
+}
+Показать в боковой панели
+x
+
+Копировать
+<template>
+    <div class="w-1/2 mx-auto my-4 border border-opacity-50 rounded-lg p-4">
+        <div class="flex justify-between">
+            <div class="text-center">
+                <p class="font-bold text-sm">{{ language }}</p>
+                <p class="text-xs opacity-50">Language</p>
+            </div>
+            <div class="text-center">
+                <p class="font-bold text-sm">{{ formattedTime }}</p>
+                <p class="text-xs opacity-50">Time</p>
+            </div>
+            <div class="text-center">
+                <p class="font-bold text-sm">{{ speed }} WPM</p>
+                <p class="text-xs opacity-50">Speed</p>
+            </div>
+            <div class="text-center">
+                <p class="font-bold text-sm">{{ errors }}</p>
+                <p class="text-xs opacity-50">Errors</p>
+            </div>
+        </div>
+        <Progress :progress="progress" />
+    </div>
+</template>
+
+<script lang="ts" setup>
+import Progress from '@/components/Progress.vue';
+import { formatTime } from '@/helpers/DateTimeHelper';
+
+defineProps<{
+    language: string;
+    time: number;
+    speed: number;
+    errors: number;
+    progress: number;
+}>();
+
+const formattedTime = computed(() => formatTime(time));
+</script>
+Показать в боковой панели
+
+
+
+
+
+Чем я могу помочь?
+
+
+DeepSearch
+
+
+Think
+
+Grok 3
