@@ -1,21 +1,63 @@
 <template>
-    <div class="keyboard flex flex-col gap-2 p-4">
-        <div v-for="(row, rowIndex) in keyboardLayout" :key="rowIndex" class="flex justify-center gap-1">
-            <button
-                v-for="key in row"
-                :key="key.value"
-                :class="[
-                    'p-2 border rounded text-center relative',
-                    isHighlighted(key.value, key.zone) || isHighlighted(key.special, key.zone) ? 'bg-green-500 text-white' : 'bg-gray-200',
-                    key.width ? `w-${key.width}` : 'w-10'
-                ]"
-                :style="{ minWidth: key.width ? `${key.width}px` : '40px' }"
-            >
-                <span class="block">{{ key.display }}</span>
-                <span v-if="key.special" class="absolute text-xs" :class="key.specialPosition === 'top-left' ? 'top-0 left-1' : 'top-0 right-1'">
-                    {{ key.special }}
-                </span>
-            </button>
+    <div class="keyboard flex flex-col gap-2 p-4" style="max-width: 680px; margin: 0 auto;">
+        <div v-for="(row, rowIndex) in keyboardLayout" :key="rowIndex" class="flex gap-1" style="justify-content: space-between;">
+            <template v-if="rowIndex === 4">
+                <!-- Fifth row: Ctrl | (Alt Space Alt) | Ctrl -->
+                <button
+                    :key="row[0].value"
+                    :class="[
+                        'p-2 border rounded text-center relative',
+                        isHighlighted(row[0].value, row[0].zone) ? 'bg-green-500 text-white' : 'bg-gray-200',
+                        row[0].width ? `w-${row[0].width}` : 'w-10'
+                    ]"
+                    :style="{ minWidth: row[0].width ? `${row[0].width}px` : '40px' }"
+                >
+                    <span class="block">{{ row[0].display }}</span>
+                </button>
+                <div class="flex gap-1">
+                    <button
+                        v-for="key in row.slice(1, 4)"
+                        :key="key.value"
+                        :class="[
+                            'p-2 border rounded text-center relative',
+                            isHighlighted(key.value, key.zone) ? 'bg-green-500 text-white' : 'bg-gray-200',
+                            key.width ? `w-${key.width}` : 'w-10'
+                        ]"
+                        :style="{ minWidth: key.width ? `${key.width}px` : '40px' }"
+                    >
+                        <span class="block">{{ key.display }}</span>
+                    </button>
+                </div>
+                <button
+                    :key="row[4].value"
+                    :class="[
+                        'p-2 border rounded text-center relative',
+                        isHighlighted(row[4].value, row[4].zone) ? 'bg-green-500 text-white' : 'bg-gray-200',
+                        row[4].width ? `w-${row[4].width}` : 'w-10'
+                    ]"
+                    :style="{ minWidth: row[4].width ? `${row[4].width}px` : '40px' }"
+                >
+                    <span class="block">{{ row[4].display }}</span>
+                </button>
+            </template>
+            <template v-else>
+                <!-- Other rows -->
+                <button
+                    v-for="key in row"
+                    :key="key.value"
+                    :class="[
+                        'p-2 border rounded text-center relative',
+                        isHighlighted(key.value, key.zone) || isHighlighted(key.special, key.zone) ? 'bg-green-500 text-white' : 'bg-gray-200',
+                        key.width ? `w-${key.width}` : 'w-10'
+                    ]"
+                    :style="{ minWidth: key.width ? `${key.width}px` : '40px' }"
+                >
+                    <span class="block">{{ key.display }}</span>
+                    <span v-if="key.special" class="absolute text-xs" :class="key.specialPosition === 'top-left' ? 'top-0 left-1' : 'top-0 right-1'">
+                        {{ key.special }}
+                    </span>
+                </button>
+            </template>
         </div>
     </div>
 </template>
@@ -76,7 +118,7 @@ const keyboardLayouts: Record<'en' | 'ru', { value: string; display: string; spe
             { value: 'l', display: 'l', special: 'L', specialPosition: 'top-left', zone: 'right' },
             { value: ';', display: ';', special: ':', specialPosition: 'top-left', zone: 'right' },
             { value: '\'', display: '\'', special: '"', specialPosition: 'top-left', zone: 'right' },
-            { value: 'enter', display: 'Enter', width: 80, zone: 'right' }
+            { value: 'enter', display: 'Enter', width: 90, zone: 'right' }
         ],
         [
             { value: 'shift', display: 'Shift', width: 90, zone: 'left' },
@@ -90,14 +132,14 @@ const keyboardLayouts: Record<'en' | 'ru', { value: string; display: string; spe
             { value: ',', display: ',', special: '<', specialPosition: 'top-left', zone: 'right' },
             { value: '.', display: '.', special: '>', specialPosition: 'top-left', zone: 'right' },
             { value: '/', display: '/', special: '?', specialPosition: 'top-left', zone: 'right' },
-            { value: 'shift', display: 'Shift', width: 90, zone: 'right' }
+            { value: 'shift', display: 'Shift', width: 110, zone: 'right' }
         ],
         [
-            { value: 'ctrl', display: 'Ctrl', width: 60, zone: 'left' },
-            { value: 'alt', display: 'Alt', width: 60, zone: 'left' },
-            { value: ' ', display: 'Space', width: 200 },
-            { value: 'alt', display: 'Alt', width: 60, zone: 'right' },
-            { value: 'ctrl', display: 'Ctrl', width: 60, zone: 'right' }
+            { value: 'ctrl', display: 'Ctrl', width: 50, zone: 'left' },
+            { value: 'alt', display: 'Alt', width: 50, zone: 'left' },
+            { value: ' ', display: 'Space', width: 250 },
+            { value: 'alt', display: 'Alt', width: 50, zone: 'right' },
+            { value: 'ctrl', display: 'Ctrl', width: 50, zone: 'right' }
         ]
     ],
     ru: [
@@ -146,7 +188,7 @@ const keyboardLayouts: Record<'en' | 'ru', { value: string; display: string; spe
             { value: 'д', display: 'д', special: 'Д', specialPosition: 'top-left', zone: 'right' },
             { value: 'ж', display: 'ж', special: 'Ж', specialPosition: 'top-left', zone: 'right' },
             { value: 'э', display: 'э', special: 'Э', specialPosition: 'top-left', zone: 'right' },
-            { value: 'enter', display: 'Enter', width: 80, zone: 'right' }
+            { value: 'enter', display: 'Enter', width: 90, zone: 'right' }
         ],
         [
             { value: 'shift', display: 'Shift', width: 90, zone: 'left' },
@@ -160,14 +202,14 @@ const keyboardLayouts: Record<'en' | 'ru', { value: string; display: string; spe
             { value: 'б', display: 'б', special: 'Б', specialPosition: 'top-left', zone: 'right' },
             { value: 'ю', display: 'ю', special: 'Ю', specialPosition: 'top-left', zone: 'right' },
             { value: '.', display: '.', special: ',', specialPosition: 'top-left', zone: 'right' },
-            { value: 'shift', display: 'Shift', width: 90, zone: 'right' }
+            { value: 'shift', display: 'Shift', width: 110, zone: 'right' }
         ],
         [
-            { value: 'ctrl', display: 'Ctrl', width: 60, zone: 'left' },
-            { value: 'alt', display: 'Alt', width: 60, zone: 'left' },
-            { value: ' ', display: 'Space', width: 200 },
-            { value: 'alt', display: 'Alt', width: 60, zone: 'right' },
-            { value: 'ctrl', display: 'Ctrl', width: 60, zone: 'right' }
+            { value: 'ctrl', display: 'Ctrl', width: 50, zone: 'left' },
+            { value: 'alt', display: 'Alt', width: 50, zone: 'left' },
+            { value: ' ', display: 'Space', width: 250 },
+            { value: 'alt', display: 'Alt', width: 50, zone: 'right' },
+            { value: 'ctrl', display: 'Ctrl', width: 50, zone: 'right' }
         ]
     ]
 };
