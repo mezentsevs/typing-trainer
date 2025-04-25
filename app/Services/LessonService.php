@@ -156,7 +156,9 @@ class LessonService
             }
         }
 
-        $text = rtrim($text, " \n");
+        $lines = explode("\n", $text);
+        $lines = array_map('rtrim', $lines);
+        $text = implode("\n", $lines);
 
         return mb_substr($text, 0, $length);
     }
