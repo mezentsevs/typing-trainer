@@ -1,7 +1,26 @@
 <template>
     <div class="keyboard flex flex-col gap-2 p-4" style="max-width: 680px; margin: 0 auto;">
         <div v-for="(row, rowIndex) in keyboardLayout" :key="rowIndex" class="flex gap-1" style="justify-content: space-between;">
-            <template v-if="rowIndex === 4">
+            <template v-if="rowIndex === 0">
+                <!-- First row with Backspace -->
+                <button
+                    v-for="key in row"
+                    :key="key.value"
+                    :class="[
+                        'p-2 border rounded text-center relative',
+                        isHighlighted(key.value, key.zone) || isHighlighted(key.special, key.zone) ? 'bg-green-500 text-white' : 'bg-gray-200',
+                        key.width ? `w-${key.width}` : 'w-10',
+                        key.value === 'backspace' ? 'text-sm' : ''
+                    ]"
+                    :style="{ minWidth: key.width ? `${key.width}px` : '40px' }"
+                >
+                    <span class="block">{{ key.display }}</span>
+                    <span v-if="key.special" class="absolute text-xs" :class="key.specialPosition === 'top-left' ? 'top-0 left-1' : 'top-0 right-1'">
+                        {{ key.special }}
+                    </span>
+                </button>
+            </template>
+            <template v-else-if="rowIndex === 4">
                 <!-- Fifth row: Ctrl | (Alt Space Alt) | Ctrl -->
                 <button
                     :key="row[0].value"
