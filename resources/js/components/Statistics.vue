@@ -6,7 +6,7 @@
                 <p class="text-xs opacity-50">Language</p>
             </div>
             <div class="text-center">
-                <p class="font-bold text-sm">{{ time }}s</p>
+                <p class="font-bold text-sm">{{ formattedTime }}</p>
                 <p class="text-xs opacity-50">Time</p>
             </div>
             <div class="text-center">
@@ -24,12 +24,16 @@
 
 <script lang="ts" setup>
 import Progress from '@/components/Progress.vue';
+import { computed } from 'vue';
+import { formatTime } from '@/helpers/DateTimeHelper';
 
-defineProps<{
+const props = defineProps<{
     language: string;
     time: number;
     speed: number;
     errors: number;
     progress: number;
 }>();
+
+const formattedTime = computed(() => formatTime(props.time));
 </script>
