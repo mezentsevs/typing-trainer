@@ -22,7 +22,7 @@ class TestController extends Controller
             'genre' => 'nullable|string',
         ]);
 
-        $text = $this->testService->getTestText($request->language, $request->genre, auth()->id());
+        $text = $this->testService->getTestText(auth()->id(), $request->language, $request->genre);
         return response()->json(['text' => $text]);
     }
 

@@ -56,7 +56,8 @@ const isTestCompleted = ref(false);
 
 const progress = computed(() => text.value.length ? Math.round((typed.value.length / text.value.length) * 100) : 0);
 
-const fetchText = async () => {
+const fetchText = async (selectedGenre: string) => {
+    genre.value = selectedGenre;
     const response = await axios.get('/test/text', { params: { language: language.value, genre: genre.value } });
     text.value = response.data.text;
     typed.value = '';
@@ -74,7 +75,7 @@ const uploadFile = async (event: Event) => {
         formData.append('file', file);
         formData.append('language', language.value);
         await axios.post('/test/upload', formData);
-        await fetchText();
+        await fetchText(genre.value);
     }
 };
 

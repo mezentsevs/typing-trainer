@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Storage;
 
 class TestService
 {
-    public function getTestText(string $language, ?string $genre = null, int $userId): string
+    public function getTestText(int $userId, string $language, ?string $genre = null): string
     {
         $filePath = "uploads/test_{$userId}_{$language}.txt";
         $userFile = Storage::disk('public')->exists($filePath)
