@@ -20,7 +20,7 @@
                     ref="input"
                     :disabled="isTestCompleted"
                     autofocus
-                    rows="3"
+                    rows="4"
                 />
                 <VirtualKeyboard :language="language as 'en' | 'ru'" :typed="typed" :text="text" />
                 <div v-if="isTestCompleted" class="flex justify-center mt-2">

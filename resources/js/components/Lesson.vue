@@ -22,7 +22,7 @@
                     ref="input"
                     autofocus
                     :disabled="isLessonCompleted"
-                    rows="3"
+                    rows="4"
                 />
                 <VirtualKeyboard :language="language as 'en' | 'ru'" :typed="typed" :text="text" />
                 <div v-if="isLessonCompleted" class="flex justify-center mt-4">
