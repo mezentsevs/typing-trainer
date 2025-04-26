@@ -1,0 +1,25 @@
+Generate a ten 500-word texts in en for typing practice in the Fiction genre.
+
+Generate a ten 500-word texts in en for typing practice in the Non-fiction genre.
+
+Generate a ten 500-word texts in en for typing practice in the Poetry genre.
+
+Сгенерируй десять текстов из 500 слов на русском языке для тренировки навыка слепой печати в жанре Fiction.
+
+Сгенерируй десять текстов из 500 слов на русском языке для тренировки навыка слепой печати в жанре Non-fiction.
+
+Сгенерируй десять текстов из 500 слов на русском языке для тренировки навыка слепой печати в жанре Poetry.
+
+
+Выведи сразу все тексты, разделенные заголовками.
+
+
+Чем я могу помочь?
+
+
+DeepSearch
+
+
+Think
+
+Grok 3
