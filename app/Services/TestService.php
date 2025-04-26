@@ -15,7 +15,7 @@ class TestService
                 $response = Http::withHeaders([
                     'Authorization' => 'Bearer ' . env('GROK_API_KEY'),
                 ])->post('https://api.x.ai/v1/generate', [
-                    'prompt' => "Generate a 1000-word text in $language for typing practice in the $genre genre.",
+                    'prompt' => "Generate a 500-word text in $language for typing practice in the $genre genre.",
                 ]);
 
                 if ($response->successful()) {
