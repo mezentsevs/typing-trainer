@@ -10,10 +10,10 @@ class TestService
 {
     public function getTestText(string $language, ?string $genre = null, int $userId): string
     {
-        if (env('GROK_API_KEY') && $genre) {
+        if (config('services.grok.key') && $genre) {
             try {
                 $response = Http::withHeaders([
-                    'Authorization' => 'Bearer ' . env('GROK_API_KEY'),
+                    'Authorization' => 'Bearer ' . config('services.grok.key'),
                 ])->post('https://api.x.ai/v1/generate', [
                     'prompt' => "Generate a 500-word text in $language for typing practice in the $genre genre.",
                 ]);

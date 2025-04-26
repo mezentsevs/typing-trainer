@@ -14,6 +14,10 @@ return [
     |
     */
 
+    'grok' => [
+        'key' => env('GROK_API_KEY'),
+    ],
+
     'postmark' => [
         'token' => env('POSTMARK_TOKEN'),
     ],
