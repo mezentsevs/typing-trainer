@@ -1,94 +1,132 @@
 <template>
-    <div class="keyboard flex flex-col gap-2 p-4" style="max-width: 680px; margin: 0 auto;">
-        <div v-for="(row, rowIndex) in keyboardLayout" :key="rowIndex" class="flex gap-1" style="justify-content: space-between;">
-            <template v-if="rowIndex === 0">
-                <!-- First row with Backspace -->
-                <button
-                    v-for="key in row"
-                    :key="key.value"
-                    :class="[
-                        'p-2 border rounded text-center relative',
-                        isHighlighted(key.value, key.zone) || isHighlighted(key.special, key.zone) ? 'bg-green-500 text-white' : 'bg-gray-200',
-                        key.width ? `w-${key.width}` : 'w-10',
-                        key.value === 'backspace' ? 'text-sm' : ''
-                    ]"
-                    :style="{ minWidth: key.width ? `${key.width}px` : '40px' }"
-                >
-                    <span class="block">{{ key.display }}</span>
-                    <span v-if="key.special" class="absolute text-xs" :class="key.specialPosition === 'top-left' ? 'top-0 left-1' : 'top-0 right-1'">
-                        {{ key.special }}
-                    </span>
-                </button>
-            </template>
-            <template v-else-if="rowIndex === 4">
-                <!-- Fifth row: Ctrl | (Alt Space Alt) | Ctrl -->
-                <button
-                    :key="row[0].value"
-                    :class="[
-                        'p-2 border rounded text-center relative',
-                        isHighlighted(row[0].value, row[0].zone) ? 'bg-green-500 text-white' : 'bg-gray-200',
-                        row[0].width ? `w-${row[0].width}` : 'w-10'
-                    ]"
-                    :style="{ minWidth: row[0].width ? `${row[0].width}px` : '40px' }"
-                >
-                    <span class="block">{{ row[0].display }}</span>
-                </button>
-                <div class="flex gap-1">
+    <div class="relative">
+        <!-- Keyboard Preview -->
+        <div
+            v-if="isMinimized"
+            class="keyboard-preview flex justify-center items-center gap-2 p-2 bg-gray-50 rounded-lg cursor-pointer my-4 mx-auto"
+            style="max-width: 200px;"
+            @click="toggleKeyboard"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6 text-gray-500"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+            >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13 10V3L4 14h7v7l9-11h-7z"
+                />
+            </svg>
+            <span class="text-gray-500 text-sm font-medium">Keyboard</span>
+        </div>
+
+        <!-- Keyboard -->
+        <div
+            v-else
+            class="keyboard flex flex-col gap-2 p-4 cursor-pointer"
+            style="max-width: 680px; margin: 0 auto;"
+            @click="toggleKeyboard"
+        >
+            <div v-for="(row, rowIndex) in keyboardLayout" :key="rowIndex" class="flex gap-1" style="justify-content: space-between;">
+                <template v-if="rowIndex === 0">
+                    <!-- First row with Backspace -->
                     <button
-                        v-for="key in row.slice(1, 4)"
+                        v-for="key in row"
                         :key="key.value"
                         :class="[
                             'p-2 border rounded text-center relative',
-                            isHighlighted(key.value, key.zone) ? 'bg-green-500 text-white' : 'bg-gray-200',
+                            isHighlighted(key.value, key.zone) || isHighlighted(key.special, key.zone) ? 'bg-green-500 text-white' : 'bg-gray-200',
+                            key.width ? `w-${key.width}` : 'w-10',
+                            key.value === 'backspace' ? 'text-sm' : ''
+                        ]"
+                        :style="{ minWidth: key.width ? `${key.width}px` : '40px' }"
+                    >
+                        <span class="block">{{ key.display }}</span>
+                        <span v-if="key.special" class="absolute text-xs" :class="key.specialPosition === 'top-left' ? 'top-0 left-1' : 'top-0 right-1'">
+                            {{ key.special }}
+                        </span>
+                    </button>
+                </template>
+                <template v-else-if="rowIndex === 4">
+                    <!-- Fifth row: Ctrl | (Alt Space Alt) | Ctrl -->
+                    <button
+                        :key="row[0].value"
+                        :class="[
+                            'p-2 border rounded text-center relative',
+                            isHighlighted(row[0].value, row[0].zone) ? 'bg-green-500 text-white' : 'bg-gray-200',
+                            row[0].width ? `w-${row[0].width}` : 'w-10'
+                        ]"
+                        :style="{ minWidth: row[0].width ? `${row[0].width}px` : '40px' }"
+                    >
+                        <span class="block">{{ row[0].display }}</span>
+                    </button>
+                    <div class="flex gap-1">
+                        <button
+                            v-for="key in row.slice(1, 4)"
+                            :key="key.value"
+                            :class="[
+                                'p-2 border rounded text-center relative',
+                                isHighlighted(key.value, key.zone) ? 'bg-green-500 text-white' : 'bg-gray-200',
+                                key.width ? `w-${key.width}` : 'w-10'
+                            ]"
+                            :style="{ minWidth: key.width ? `${key.width}px` : '40px' }"
+                        >
+                            <span class="block">{{ key.display }}</span>
+                        </button>
+                    </div>
+                    <button
+                        :key="row[4].value"
+                        :class="[
+                            'p-2 border rounded text-center relative',
+                            isHighlighted(row[4].value, row[4].zone) ? 'bg-green-500 text-white' : 'bg-gray-200',
+                            row[4].width ? `w-${row[4].width}` : 'w-10'
+                        ]"
+                        :style="{ minWidth: row[4].width ? `${row[4].width}px` : '40px' }"
+                    >
+                        <span class="block">{{ row[4].display }}</span>
+                    </button>
+                </template>
+                <template v-else>
+                    <!-- Other rows -->
+                    <button
+                        v-for="key in row"
+                        :key="key.value"
+                        :class="[
+                            'p-2 border rounded text-center relative',
+                            isHighlighted(key.value, key.zone) || isHighlighted(key.special, key.zone) ? 'bg-green-500 text-white' : 'bg-gray-200',
                             key.width ? `w-${key.width}` : 'w-10'
                         ]"
                         :style="{ minWidth: key.width ? `${key.width}px` : '40px' }"
                     >
                         <span class="block">{{ key.display }}</span>
+                        <span v-if="key.special" class="absolute text-xs" :class="key.specialPosition === 'top-left' ? 'top-0 left-1' : 'top-0 right-1'">
+                            {{ key.special }}
+                        </span>
                     </button>
-                </div>
-                <button
-                    :key="row[4].value"
-                    :class="[
-                        'p-2 border rounded text-center relative',
-                        isHighlighted(row[4].value, row[4].zone) ? 'bg-green-500 text-white' : 'bg-gray-200',
-                        row[4].width ? `w-${row[4].width}` : 'w-10'
-                    ]"
-                    :style="{ minWidth: row[4].width ? `${row[4].width}px` : '40px' }"
-                >
-                    <span class="block">{{ row[4].display }}</span>
-                </button>
-            </template>
-            <template v-else>
-                <!-- Other rows -->
-                <button
-                    v-for="key in row"
-                    :key="key.value"
-                    :class="[
-                        'p-2 border rounded text-center relative',
-                        isHighlighted(key.value, key.zone) || isHighlighted(key.special, key.zone) ? 'bg-green-500 text-white' : 'bg-gray-200',
-                        key.width ? `w-${key.width}` : 'w-10'
-                    ]"
-                    :style="{ minWidth: key.width ? `${key.width}px` : '40px' }"
-                >
-                    <span class="block">{{ key.display }}</span>
-                    <span v-if="key.special" class="absolute text-xs" :class="key.specialPosition === 'top-left' ? 'top-0 left-1' : 'top-0 right-1'">
-                        {{ key.special }}
-                    </span>
-                </button>
-            </template>
+                </template>
+            </div>
         </div>
     </div>
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 
 const props = defineProps<{
     language: 'en' | 'ru';
     typed: string;
     text: string;
 }>();
+
+const isMinimized = ref(false);
+
+const toggleKeyboard = () => {
+    isMinimized.value = !isMinimized.value;
+};
 
 const keyboardLayouts: Record<'en' | 'ru', { value: string; display: string; special?: string; specialPosition?: 'top-left' | 'top-right'; width?: number; zone?: 'left' | 'right' }[][]> = {
     en: [
