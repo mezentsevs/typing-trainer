@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\TestText;
+use Exception;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 
@@ -10,6 +11,15 @@ class TestService
 {
     public function getTestText(string $language, ?string $genre = null, int $userId): string
     {
+        $filePath = "uploads/test_{$userId}_{$language}.txt";
+        $userFile = Storage::disk('public')->exists($filePath)
+            ? Storage::disk('public')->get($filePath)
+            : null;
+
+        if ($userFile && Storage::disk('public')->lastModified($filePath) >= now()->subMinute()->timestamp) {
+            return $userFile;
+        }
+
         if (config('services.grok.key') && $genre) {
             try {
                 $response = Http::withHeaders([
@@ -21,18 +31,9 @@ class TestService
                 if ($response->successful()) {
                     return $response->json()['text'];
                 }
-            } catch (\Exception $e) {
-                // Fallback to database text
+            } catch (Exception $e) {
+                logger()->error($e->getMessage());
             }
-        }
-
-        $filePath = "uploads/test_{$userId}_{$language}.txt";
-        $userFile = Storage::disk('public')->exists($filePath)
-            ? Storage::disk('public')->get($filePath)
-            : null;
-
-        if ($userFile) {
-            return $userFile;
         }
 
         $query = TestText::where('language', $language);
