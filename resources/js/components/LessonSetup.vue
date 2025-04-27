@@ -12,7 +12,7 @@
                 </div>
                 <div class="mb-4">
                     <label class="block text-gray-700">Number of Lessons</label>
-                    <input v-model.number="form.lesson_count" type="number" min="1" class="w-full p-2 border rounded" required />
+                    <input v-model.number="form.lesson_count" type="number" min="1" max="100" class="w-full p-2 border rounded" required />
                 </div>
                 <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded">Generate Lessons</button>
             </form>
