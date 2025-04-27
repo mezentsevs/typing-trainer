@@ -49,21 +49,25 @@ class LessonService
     public function generateLessons(string $language, int $lessonCount, int $userId): void
     {
         $chars = $this->introductionOrder[$language] ?? $this->introductionOrder['en'];
-        $charsPerLesson = ceil(count($chars) / $lessonCount);
+        $totalChars = count($chars);
 
         Lesson::where('language', $language)->where('user_id', $userId)->delete();
 
         for ($i = 0; $i < $lessonCount; $i++) {
-            $start = $i * $charsPerLesson;
-            $newChars = array_slice($chars, $start, $charsPerLesson);
-            if ($newChars) {
-                Lesson::create([
-                    'user_id' => $userId,
-                    'number' => $i + 1,
-                    'language' => $language,
-                    'new_chars' => implode('', $newChars),
-                ]);
+            $charsPerLesson = max(1, ceil($totalChars / max(1, $lessonCount - $i)));
+            $newChars = [];
+            for ($j = 0; $j < $charsPerLesson && !empty($chars); $j++) {
+                $newChars[] = array_shift($chars);
             }
+            if (empty($newChars) && !empty($this->introductionOrder[$language])) {
+                $newChars = array_slice($this->introductionOrder[$language], 0, max(1, ceil($totalChars / $lessonCount)));
+            }
+            Lesson::create([
+                'user_id' => $userId,
+                'number' => $i + 1,
+                'language' => $language,
+                'new_chars' => implode('', $newChars),
+            ]);
         }
     }
 
