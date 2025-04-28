@@ -21,6 +21,7 @@
                 </div>
                 <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded">Register</button>
             </form>
+            <Error :message="error" />
             <p class="mt-4">
                 Already have an account? <router-link to="/login" class="text-blue-500">Login</router-link>
             </p>
@@ -32,17 +33,19 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useAuthStore } from '@/stores/auth';
+import Error from './Error.vue';
 
 const authStore = useAuthStore();
 const router = useRouter();
 const form = ref({ name: '', email: '', password: '', password_confirmation: '' });
+const error = ref('');
 
 const register = async () => {
     try {
         await authStore.register(form.value.name, form.value.email, form.value.password, form.value.password_confirmation);
-        router.push('/');
-    } catch (error) {
-        alert('Registration failed');
+        await router.push('/');
+    } catch (err) {
+        error.value = 'Registration failed';
     }
 };
 </script>
