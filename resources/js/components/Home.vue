@@ -10,13 +10,13 @@
             <div class="flex flex-col items-center gap-6">
                 <router-link
                     to="/setup"
-                    class="w-48 bg-transparent border-2 border-cyan-500 text-cyan-400 text-lg font-mono py-2 px-4 rounded-lg hover:bg-cyan-500/10 hover:text-cyan-300 transition-all duration-200 ease-in-out text-center"
+                    class="w-48 bg-transparent border-2 border-cyan-500 text-cyan-400 text-lg font-mono py-2 px-4 rounded-lg hover:bg-cyan-500/10 hover:text-cyan-300 transition-all duration-200 ease-in-out text-center shadow-[0_0_10px_0_rgba(6,182,212,0.5)] hover:shadow-[0_0_15px_0_rgba(6,182,212,0.7)]"
                 >
                     Start
                 </router-link>
                 <button
                     @click="logout"
-                    class="w-48 bg-transparent border-2 border-red-500 text-red-400 text-lg font-mono py-2 px-4 rounded-lg hover:bg-red-500/10 hover:text-red-300 transition-all duration-200 ease-in-out text-center"
+                    class="w-48 bg-transparent border-2 border-red-500 text-red-400 text-lg font-mono py-2 px-4 rounded-lg hover:bg-red-500/10 hover:text-red-300 transition-all duration-200 ease-in-out text-center shadow-[0_0_10px_0_rgba(239,68,68,0.5)] hover:shadow-[0_0_15px_0_rgba(239,68,68,0.7)]"
                 >
                     Logout
                 </button>
