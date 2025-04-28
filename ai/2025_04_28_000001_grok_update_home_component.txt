@@ -1,0 +1,278 @@
+В веб приложении на тренировки навыка слепой печати есть домашняя страница:
+ resources/js/components/Home.vue
+ <template>
+    <div class="min-h-screen bg-gray-100 p-8">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-3xl font-bold mb-6">Typing Trainer</h1>
+            <button @click="logout" class="mb-4 bg-red-500 text-white p-2 rounded">Logout</button>
+            <router-link to="/setup" class="bg-blue-500 text-white p-2 rounded">Start New Lesson</router-link>
+        </div>
+    </div>
+</template>
+
+<script lang="ts" setup>
+import { useRouter } from 'vue-router';
+import { useAuthStore } from '@/stores/auth';
+
+const authStore = useAuthStore();
+const router = useRouter();
+
+const logout = async () => {
+    await authStore.logout();
+    router.push('/login');
+};
+</script>
+Сейчас её дизайн минимален. Нужно это исправить. Измени дизайн этой страницы средствами tailwindcss. Стиль должен быть футуристичным, с отсылками к программированию, к литературе, журналистике и всему, что может быть связано с навыком печати слепым методом. Добавь немного анимации на страницу. Название приложения Typing Trainer сделай покрупнее, оно должно как-бы выпечатываться постепенно, с отсылкой к печатной машинке, увеличивая скорость, анимация должна быть зациклена. Предпочитаю, чтобы элементы были по центру страницы. Основной функционал должен остаться без изменений. Выведи полный обновленный код компонента.
+
+
+
+
+html
+
+Копировать
+<template>
+    <div class="min-h-screen bg-gradient-to-br from-gray-900 via-blue-950 to-purple-950 flex items-center justify-center p-8">
+        <div class="max-w-4xl mx-auto text-center">
+            <!-- Animated Typing Trainer Title -->
+            <h1 class="text-5xl md:text-7xl font-mono text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 mb-8">
+                <span class="inline-block animate-typewriter">Typing Trainer</span>
+            </h1>
+
+            <!-- Subtitle with thematic references -->
+            <p class="text-lg md:text-xl text-gray-300 mb-12 font-sans animate-pulse-slow">
+                Master the art of blind typing: code like a hacker, write like a novelist, report like a journalist.
+            </p>
+
+            <!-- Buttons with futuristic styling -->
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <router-link
+                    to="/setup"
+                    class="relative bg-transparent border-2 border-cyan-500 text-cyan-400 text-lg font-mono py-3 px-6 rounded-lg hover:bg-cyan-500 hover:text-gray-900 transition-all duration-300 ease-in-out transform hover:scale-105 animate-glow"
+                >
+                    Start New Lesson
+                    <span class="absolute inset-0 bg-cyan-500 opacity-0 hover:opacity-20 transition-opacity duration-300 rounded-lg"></span>
+                </router-link>
+
+                <button
+                    @click="logout"
+                    class="relative bg-transparent border-2 border-red-500 text-red-400 text-lg font-mono py-3 px-6 rounded-lg hover:bg-red-500 hover:text-gray-900 transition-all duration-300 ease-in-out transform hover:scale-105 animate-glow"
+                >
+                    Logout
+                    <span class="absolute inset-0 bg-red-500 opacity-0 hover:opacity-20 transition-opacity duration-300 rounded-lg"></span>
+                </button>
+            </div>
+
+            <!-- Decorative Background Elements -->
+            <div class="absolute inset-0 pointer-events-none overflow-hidden">
+                <div class="absolute top-10 left-10 w-24 h-24 bg-cyan-500 opacity-10 rounded-full animate-float"></div>
+                <div class="absolute bottom-20 right-20 w-32 h-32 bg-purple-500 opacity-10 rounded-full animate-float delay-1000"></div>
+                <div class="absolute top-1/2 left-1/4 w-16 h-16 bg-red-500 opacity-10 rounded-full animate-float delay-500"></div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script lang="ts" setup>
+import { useRouter } from 'vue-router';
+import { useAuthStore } from '@/stores/auth';
+
+const authStore = useAuthStore();
+const router = useRouter();
+
+const logout = async () => {
+    await authStore.logout();
+    router.push('/login');
+};
+</script>
+
+<style scoped>
+/* Typewriter Animation */
+.animate-typewriter {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 0.15em solid cyan;
+    animation: typing 3s steps(20, end) infinite, blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    0% { width: 0; }
+    50% { width: 100%; }
+    100% { width: 100%; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: cyan; }
+}
+
+/* Subtle Pulse Animation for Subtitle */
+.animate-pulse-slow {
+    animation: pulse 6s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+
+/* Glow Animation for Buttons */
+.animate-glow {
+    animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+    0%, 100% { box-shadow: 0 0 5px rgba(0, 255, 255, 0.3); }
+    50% { box-shadow: 0 0 20px rgba(0, 255, 255, 0.6); }
+}
+
+/* Floating Background Elements */
+.animate-float {
+    animation: float 8s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0); }
+}
+
+.delay-500 {
+    animation-delay: 0.5s;
+}
+
+.delay-1000 {
+    animation-delay: 1s;
+}
+</style>
+Показать в боковой панели
+
+
+
+
+
+Кнопку Logout расположи под Start new lesson. Кнопки Start New Lesson и Logout должны быть расположены в одну колонку, быть одной ширины и должный быть выровнены по горизонтали по центру страницы. Используй только средства tailwindcss (флексы). Минимальные изменения. Выведи обновленный код всего компонента.
+
+
+
+
+html
+
+Копировать
+<template>
+    <div class="min-h-screen bg-gradient-to-br from-gray-900 via-blue-950 to-purple-950 flex items-center justify-center p-8">
+        <div class="max-w-4xl mx-auto text-center">
+            <!-- Animated Typing Trainer Title -->
+            <h1 class="text-5xl md:text-7xl font-mono text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 mb-8">
+                <span class="inline-block animate-typewriter">Typing Trainer</span>
+            </h1>
+
+            <!-- Subtitle with thematic references -->
+            <p class="text-lg md:text-xl text-gray-300 mb-12 font-sans animate-pulse-slow">
+                Master the art of blind typing: code like a hacker, write like a novelist, report like a journalist.
+            </p>
+
+            <!-- Buttons with Tailwind styling -->
+            <div class="flex flex-col items-center gap-6">
+                <router-link
+                    to="/setup"
+                    class="w-48 bg-transparent border-2 border-cyan-500 text-cyan-400 text-lg font-mono py-2 px-4 rounded-lg hover:bg-cyan-500/10 hover:text-cyan-300 transition-all duration-200 ease-in-out text-center"
+                >
+                    Start New Lesson
+                </router-link>
+
+                <button
+                    @click="logout"
+                    class="w-48 bg-transparent border-2 border-red-500 text-red-400 text-lg font-mono py-2 px-4 rounded-lg hover:bg-red-500/10 hover:text-red-300 transition-all duration-200 ease-in-out text-center"
+                >
+                    Logout
+                </button>
+            </div>
+
+            <!-- Decorative Background Elements -->
+            <div class="absolute inset-0 pointer-events-none overflow-hidden">
+                <div class="absolute top-10 left-10 w-24 h-24 bg-cyan-500 opacity-10 rounded-full animate-float"></div>
+                <div class="absolute bottom-20 right-20 w-32 h-32 bg-purple-500 opacity-10 rounded-full animate-float delay-1000"></div>
+                <div class="absolute top-1/2 left-1/4 w-16 h-16 bg-red-500 opacity-10 rounded-full animate-float delay-500"></div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script lang="ts" setup>
+import { useRouter } from 'vue-router';
+import { useAuthStore } from '@/stores/auth';
+
+const authStore = useAuthStore();
+const router = useRouter();
+
+const logout = async () => {
+    await authStore.logout();
+    await router.push('/login');
+};
+</script>
+
+<style scoped>
+/* Typewriter Animation */
+.animate-typewriter {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 0.15em solid cyan;
+    animation: typing 3s steps(20, end) infinite, blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    0% { width: 0; }
+    50% { width: 100%; }
+    100% { width: 100%; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: cyan; }
+}
+
+/* Subtle Pulse Animation for Subtitle */
+.animate-pulse-slow {
+    animation: pulse 6s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+
+/* Floating Background Elements */
+.animate-float {
+    animation: float 8s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0); }
+}
+
+.delay-500 {
+    animation-delay: 0.5s;
+}
+
+.delay-1000 {
+    animation-delay: 1s;
+}
+</style>
+Показать в боковой панели
+
+
+
+
+
+
+Чем я могу помочь?
+
+
+DeepSearch
+
+
+Think
+
+Grok 3
