@@ -1,17 +1,12 @@
 <template>
     <div class="min-h-screen bg-gradient-to-br from-gray-900 via-blue-950 to-purple-950 flex items-center justify-center p-8">
         <div class="max-w-4xl mx-auto text-center">
-            <!-- Animated Typing Trainer Title -->
-            <h1 class="text-5xl md:text-7xl font-mono text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 mb-8">
-                <span class="inline-block animate-typewriter">Typing Trainer</span>
+            <h1 class="text-5xl md:text-7xl font-mono text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 mb-8 pb-2">
+                <span>{{ currentText }}</span><span class="cursor"></span>
             </h1>
-
-            <!-- Subtitle with thematic references -->
             <p class="text-lg md:text-xl text-gray-300 mb-12 font-sans animate-pulse-slow">
                 Master the art of blind typing: code like a hacker, write like a novelist, report like a journalist.
             </p>
-
-            <!-- Buttons with Tailwind styling -->
             <div class="flex flex-col items-center gap-6">
                 <router-link
                     to="/setup"
@@ -19,7 +14,6 @@
                 >
                     Start
                 </router-link>
-
                 <button
                     @click="logout"
                     class="w-48 bg-transparent border-2 border-red-500 text-red-400 text-lg font-mono py-2 px-4 rounded-lg hover:bg-red-500/10 hover:text-red-300 transition-all duration-200 ease-in-out text-center"
@@ -27,8 +21,6 @@
                     Logout
                 </button>
             </div>
-
-            <!-- Decorative Background Elements -->
             <div class="absolute inset-0 pointer-events-none overflow-hidden">
                 <div class="absolute top-10 left-10 w-24 h-24 bg-cyan-500 opacity-10 rounded-full animate-float"></div>
                 <div class="absolute bottom-20 right-20 w-32 h-32 bg-purple-500 opacity-10 rounded-full animate-float delay-1000"></div>
@@ -39,11 +31,34 @@
 </template>
 
 <script lang="ts" setup>
+import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { useAuthStore } from '@/stores/auth';
 
 const authStore = useAuthStore();
 const router = useRouter();
+
+const fullText = 'Typing Trainer';
+const currentText = ref('');
+
+onMounted(() => {
+    function typeWriter() {
+        let i = 0;
+        const interval = setInterval(() => {
+            if (i < fullText.length) {
+                currentText.value += fullText[i];
+                i++;
+            } else {
+                clearInterval(interval);
+                setTimeout(() => {
+                    currentText.value = '';
+                    typeWriter();
+                }, 2000);
+            }
+        }, 100);
+    }
+    typeWriter();
+});
 
 const logout = async () => {
     await authStore.logout();
@@ -52,18 +67,11 @@ const logout = async () => {
 </script>
 
 <style scoped>
-/* Typewriter Animation */
-.animate-typewriter {
-    overflow: hidden;
-    white-space: nowrap;
+.cursor {
+    display: inline-block;
+    height: 1em;
     border-right: 0.15em solid cyan;
-    animation: typing 3s steps(20, end) infinite, blink-caret 0.75s step-end infinite;
-}
-
-@keyframes typing {
-    0% { width: 0; }
-    50% { width: 100%; }
-    100% { width: 100%; }
+    animation: blink-caret 0.75s step-end infinite;
 }
 
 @keyframes blink-caret {
@@ -71,7 +79,6 @@ const logout = async () => {
     50% { border-color: cyan; }
 }
 
-/* Subtle Pulse Animation for Subtitle */
 .animate-pulse-slow {
     animation: pulse 6s ease-in-out infinite;
 }
@@ -81,7 +88,6 @@ const logout = async () => {
     50% { opacity: 1; }
 }
 
-/* Floating Background Elements */
 .animate-float {
     animation: float 8s ease-in-out infinite;
 }
