@@ -1,0 +1,342 @@
+В веб приложении есть страницы логина и регистрации:
+ resources/js/components/Login.vue
+ <template>
+    <div class="min-h-screen flex items-center justify-center bg-gray-100">
+        <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
+            <h2 class="text-2xl font-bold mb-6">Login</h2>
+            <form @submit.prevent="login">
+                <div class="mb-4">
+                    <label class="block text-gray-700">Email</label>
+                    <input v-model="form.email" type="email" class="w-full p-2 border rounded" required />
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700">Password</label>
+                    <input v-model="form.password" type="password" class="w-full p-2 border rounded" required />
+                </div>
+                <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded">Login</button>
+            </form>
+            <p class="mt-4">
+                Don't have an account? <router-link to="/register" class="text-blue-500">Register</router-link>
+            </p>
+        </div>
+    </div>
+</template>
+
+<script lang="ts" setup>
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+import { useAuthStore } from '@/stores/auth';
+
+const authStore = useAuthStore();
+const router = useRouter();
+const form = ref({ email: '', password: '' });
+
+const login = async () => {
+    try {
+        await authStore.login(form.value.email, form.value.password);
+        router.push('/');
+    } catch (error) {
+        alert('Login failed');
+    }
+};
+</script>
+resources/js/components/Register.vue
+<template>
+    <div class="min-h-screen flex items-center justify-center bg-gray-100">
+        <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
+            <h2 class="text-2xl font-bold mb-6">Register</h2>
+            <form @submit.prevent="register">
+                <div class="mb-4">
+                    <label class="block text-gray-700">Name</label>
+                    <input v-model="form.name" type="text" class="w-full p-2 border rounded" required />
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700">Email</label>
+                    <input v-model="form.email" type="email" class="w-full p-2 border rounded" required />
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700">Password</label>
+                    <input v-model="form.password" type="password" class="w-full p-2 border rounded" required />
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700">Confirm Password</label>
+                    <input v-model="form.password_confirmation" type="password" class="w-full p-2 border rounded" required />
+                </div>
+                <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded">Register</button>
+            </form>
+            <p class="mt-4">
+                Already have an account? <router-link to="/login" class="text-blue-500">Login</router-link>
+            </p>
+        </div>
+    </div>
+</template>
+
+<script lang="ts" setup>
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+import { useAuthStore } from '@/stores/auth';
+
+const authStore = useAuthStore();
+const router = useRouter();
+const form = ref({ name: '', email: '', password: '', password_confirmation: '' });
+
+const register = async () => {
+    try {
+        await authStore.register(form.value.name, form.value.email, form.value.password, form.value.password_confirmation);
+        router.push('/');
+    } catch (error) {
+        alert('Registration failed');
+    }
+};
+</script>
+Сейчас, ошибки вводятся с помощью alert(). Нужно это исправить. Нужно сделать так, чтобы ошибки логина и регистрации выводились бы сообщением на странице. Цвет сообщения - красный. Минимальные изменения. Остальную логику изменять не нужно. Все изменения нужно выполнить средствами tailwindcss. Выведи полный обновленный код компонентов.
+
+
+
+
+Я обновлю компоненты Login.vue и Register.vue, добавив отображение ошибок на странице с использованием TailwindCSS. Сообщения об ошибках будут отображаться в красном цвете под формой, минимально изменяя существующую структуру и логику.
+
+html
+
+Копировать
+<template>
+    <div class="min-h-screen flex items-center justify-center bg-gray-100">
+        <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
+            <h2 class="text-2xl font-bold mb-6">Login</h2>
+            <form @submit.prevent="login">
+                <div class="mb-4">
+                    <label class="block text-gray-700">Email</label>
+                    <input v-model="form.email" type="email" class="w-full p-2 border rounded" required />
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700">Password</label>
+                    <input v-model="form.password" type="password" class="w-full p-2 border rounded" required />
+                </div>
+                <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded">Login</button>
+            </form>
+            <p v-if="error" class="mt-4 text-red-500">{{ error }}</p>
+            <p class="mt-4">
+                Don't have an account? <router-link to="/register" class="text-blue-500">Register</router-link>
+            </p>
+        </div>
+    </div>
+</template>
+
+<script lang="ts" setup>
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+import { useAuthStore } from '@/stores/auth';
+
+const authStore = useAuthStore();
+const router = useRouter();
+const form = ref({ email: '', password: '' });
+const error = ref('');
+
+const login = async () => {
+    try {
+        await authStore.login(form.value.email, form.value.password);
+        router.push('/');
+    } catch (err) {
+        error.value = 'Login failed';
+    }
+};
+</script>
+Показать в боковой панели
+html
+
+Копировать
+<template>
+    <div class="min-h-screen flex items-center justify-center bg-gray-100">
+        <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
+            <h2 class="text-2xl font-bold mb-6">Register</h2>
+            <form @submit.prevent="register">
+                <div class="mb-4">
+                    <label class="block text-gray-700">Name</label>
+                    <input v-model="form.name" type="text" class="w-full p-2 border rounded" required />
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700">Email</label>
+                    <input v-model="form.email" type="email" class="w-full p-2 border rounded" required />
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700">Password</label>
+                    <input v-model="form.password" type="password" class="w-full p-2 border rounded" required />
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700">Confirm Password</label>
+                    <input v-model="form.password_confirmation" type="password" class="w-full p-2 border rounded" required />
+                </div>
+                <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded">Register</button>
+            </form>
+            <p v-if="error" class="mt-4 text-red-500">{{ error }}</p>
+            <p class="mt-4">
+                Already have an account? <router-link to="/login" class="text-blue-500">Login</router-link>
+            </p>
+        </div>
+    </div>
+</template>
+
+<script lang="ts" setup>
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+import { useAuthStore } from '@/stores/auth';
+
+const authStore = useAuthStore();
+const router = useRouter();
+const form = ref({ name: '', email: '', password: '', password_confirmation: '' });
+const error = ref('');
+
+const register = async () => {
+    try {
+        await authStore.register(form.value.name, form.value.email, form.value.password, form.value.password_confirmation);
+        router.push('/');
+    } catch (err) {
+        error.value = 'Registration failed';
+    }
+};
+</script>
+Показать в боковой панели
+
+
+
+
+
+
+Создай отдельный компонент для Error в этой же папке. Выведи обновленный код.
+
+
+
+
+Я создам отдельный компонент Error.vue в той же папке (resources/js/components/) и обновлю компоненты Login.vue и Register.vue, чтобы использовать новый компонент для отображения ошибок. Изменения будут минимальными, сохраняя существующую логику и стили TailwindCSS.
+
+html
+
+Копировать
+<template>
+    <p v-if="message" class="mt-4 text-red-500">{{ message }}</p>
+</template>
+
+<script lang="ts" setup>
+import { defineProps } from 'vue';
+
+defineProps<{
+    message: string;
+}>();
+</script>
+Показать в боковой панели
+html
+
+Копировать
+<template>
+    <div class="min-h-screen flex items-center justify-center bg-gray-100">
+        <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
+            <h2 class="text-2xl font-bold mb-6">Login</h2>
+            <form @submit.prevent="login">
+                <div class="mb-4">
+                    <label class="block text-gray-700">Email</label>
+                    <input v-model="form.email" type="email" class="w-full p-2 border rounded" required />
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700">Password</label>
+                    <input v-model="form.password" type="password" class="w-full p-2 border rounded" required />
+                </div>
+                <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded">Login</button>
+            </form>
+            <Error :message="error" />
+            <p class="mt-4">
+                Don't have an account? <router-link to="/register" class="text-blue-500">Register</router-link>
+            </p>
+        </div>
+    </div>
+</template>
+
+<script lang="ts" setup>
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+import { useAuthStore } from '@/stores/auth';
+import Error from './Error.vue';
+
+const authStore = useAuthStore();
+const router = useRouter();
+const form = ref({ email: '', password: '' });
+const error = ref('');
+
+const login = async () => {
+    try {
+        await authStore.login(form.value.email, form.value.password);
+        router.push('/');
+    } catch (err) {
+        error.value = 'Login failed';
+    }
+};
+</script>
+Показать в боковой панели
+html
+
+Копировать
+<template>
+    <div class="min-h-screen flex items-center justify-center bg-gray-100">
+        <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
+            <h2 class="text-2xl font-bold mb-6">Register</h2>
+            <form @submit.prevent="register">
+                <div class="mb-4">
+                    <label class="block text-gray-700">Name</label>
+                    <input v-model="form.name" type="text" class="w-full p-2 border rounded" required />
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700">Email</label>
+                    <input v-model="form.email" type="email" class="w-full p-2 border rounded" required />
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700">Password</label>
+                    <input v-model="form.password" type="password" class="w-full p-2 border rounded" required />
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700">Confirm Password</label>
+                    <input v-model="form.password_confirmation" type="password" class="w-full p-2 border rounded" required />
+                </div>
+                <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded">Register</button>
+            </form>
+            <Error :message="error" />
+            <p class="mt-4">
+                Already have an account? <router-link to="/login" class="text-blue-500">Login</router-link>
+            </p>
+        </div>
+    </div>
+</template>
+
+<script lang="ts" setup>
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+import { useAuthStore } from '@/stores/auth';
+import Error from './Error.vue';
+
+const authStore = useAuthStore();
+const router = useRouter();
+const form = ref({ name: '', email: '', password: '', password_confirmation: '' });
+const error = ref('');
+
+const register = async () => {
+    try {
+        await authStore.register(form.value.name, form.value.email, form.value.password, form.value.password_confirmation);
+        router.push('/');
+    } catch (err) {
+        error.value = 'Registration failed';
+    }
+};
+</script>
+Показать в боковой панели
+
+
+
+
+
+Чем я могу помочь?
+
+
+DeepSearch
+
+
+Think
+
+Grok 3
