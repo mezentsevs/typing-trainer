@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class TestResult extends Model
 {
@@ -11,7 +12,7 @@ class TestResult extends Model
 
     protected $fillable = ['user_id', 'language', 'time_seconds', 'speed_wpm', 'errors'];
 
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }

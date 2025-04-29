@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Lesson extends Model
 {
@@ -11,12 +13,12 @@ class Lesson extends Model
 
     protected $fillable = ['user_id', 'number', 'language', 'new_chars'];
 
-    public function progresses()
+    public function progresses(): HasMany
     {
         return $this->hasMany(LessonProgress::class);
     }
 
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
