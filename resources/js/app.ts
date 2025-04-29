@@ -1,5 +1,4 @@
 import '../css/app.css';
-
 import App from '@/App.vue';
 import axios from 'axios';
 import router from '@/router';

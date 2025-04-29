@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\TestText;
+use Illuminate\Database\Seeder;
 
 class TestTextSeeder extends Seeder
 {

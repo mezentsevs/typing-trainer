@@ -32,14 +32,14 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, onMounted } from 'vue';
-import { useRoute } from 'vue-router';
-import axios from 'axios';
-import VirtualKeyboard from './VirtualKeyboard.vue';
-import Statistics from './Statistics.vue';
 import FinalTestSetup from './FinalTestSetup.vue';
-import { scrollToCurrentChar } from '@/helpers/DomHelper';
+import Statistics from './Statistics.vue';
+import VirtualKeyboard from './VirtualKeyboard.vue';
+import axios from 'axios';
 import { getCurrentTypingUnit } from '@/helpers/StringHelper';
+import { ref, computed, onMounted } from 'vue';
+import { scrollToCurrentChar } from '@/helpers/DomHelper';
+import { useRoute } from 'vue-router';
 
 const route = useRoute();
 const language = ref(route.params.language as string);

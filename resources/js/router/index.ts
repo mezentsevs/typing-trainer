@@ -1,10 +1,10 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import FinalTest from '@/components/FinalTest.vue';
 import Home from '@/components/Home.vue';
+import Lesson from '@/components/Lesson.vue';
+import LessonSetup from '@/components/LessonSetup.vue';
 import Login from '@/components/Login.vue';
 import Register from '@/components/Register.vue';
-import LessonSetup from '@/components/LessonSetup.vue';
-import Lesson from '@/components/Lesson.vue';
-import FinalTest from '@/components/FinalTest.vue';
+import { createRouter, createWebHistory } from 'vue-router';
 
 const routes = [
     { path: '/', component: Home, meta: { requiresAuth: true } },
