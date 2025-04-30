@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Lesson;
 use App\Models\LessonProgress;
 use App\Services\LessonService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class LessonController extends Controller
@@ -16,7 +17,7 @@ class LessonController extends Controller
         $this->lessonService = $lessonService;
     }
 
-    public function generate(Request $request)
+    public function generate(Request $request): JsonResponse
     {
         $request->validate([
             'language' => 'required|string',
@@ -28,19 +29,21 @@ class LessonController extends Controller
         return response()->json(['message' => 'Lessons generated']);
     }
 
-    public function index(string $language)
+    public function index(string $language): JsonResponse
     {
         $lessons = Lesson::where('language', $language)->where('user_id', auth()->id())->get();
+
         return response()->json($lessons);
     }
 
-    public function getText(string $language, int $lessonNumber)
+    public function getText(string $language, int $lessonNumber): JsonResponse
     {
         $text = $this->lessonService->generateLessonText($language, $lessonNumber, auth()->id());
+
         return response()->json(['text' => $text]);
     }
 
-    public function saveProgress(Request $request)
+    public function saveProgress(Request $request): JsonResponse
     {
         $request->validate([
             'lesson_id' => 'required|exists:lessons,id',

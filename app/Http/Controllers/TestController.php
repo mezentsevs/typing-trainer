@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\TestResult;
 use App\Services\TestService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class TestController extends Controller
@@ -15,7 +16,7 @@ class TestController extends Controller
         $this->testService = $testService;
     }
 
-    public function getTestText(Request $request)
+    public function getTestText(Request $request): JsonResponse
     {
         $request->validate([
             'language' => 'required|string',
@@ -23,10 +24,11 @@ class TestController extends Controller
         ]);
 
         $text = $this->testService->getTestText(auth()->id(), $request->language, $request->genre);
+
         return response()->json(['text' => $text]);
     }
 
-    public function uploadText(Request $request)
+    public function uploadText(Request $request): JsonResponse
     {
         $request->validate([
             'language' => 'required|string',
@@ -34,10 +36,11 @@ class TestController extends Controller
         ]);
 
         $path = $request->file('file')->storeAs('uploads', "test_" . auth()->id() . "_{$request->language}.txt", 'public');
+
         return response()->json(['message' => 'File uploaded', 'path' => $path]);
     }
 
-    public function saveResult(Request $request)
+    public function saveResult(Request $request): JsonResponse
     {
         $request->validate([
             'language' => 'required|string',
