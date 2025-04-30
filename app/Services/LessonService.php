@@ -6,7 +6,7 @@ use App\Models\Lesson;
 
 class LessonService
 {
-    protected $introductionOrder = [
+    protected array $introductionOrder = [
         'en' => [
             'a', 's', 'd', 'f', 'j', 'k', 'l', ';',
             'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p',
@@ -31,7 +31,7 @@ class LessonService
         ],
     ];
 
-    protected $pairedMap = [
+    protected array $pairedMap = [
         '(' => ')',
         '[' => ']',
         '{' => '}',
@@ -41,10 +41,10 @@ class LessonService
         '`' => '`'
     ];
 
-    protected $minLessonLength = 100;
-    protected $maxLessonLength = 1000;
-    protected $minWordsPerLine = 2;
-    protected $maxWordsPerLine = 8;
+    protected int $minLessonLength = 100;
+    protected int $maxLessonLength = 1000;
+    protected int $minWordsPerLine = 2;
+    protected int $maxWordsPerLine = 8;
 
     public function generateLessons(string $language, int $lessonCount, int $userId): void
     {
@@ -56,12 +56,15 @@ class LessonService
         for ($i = 0; $i < $lessonCount; $i++) {
             $charsPerLesson = max(1, ceil($totalChars / max(1, $lessonCount - $i)));
             $newChars = [];
+
             for ($j = 0; $j < $charsPerLesson && !empty($chars); $j++) {
                 $newChars[] = array_shift($chars);
             }
+
             if (empty($newChars) && !empty($this->introductionOrder[$language])) {
                 $newChars = array_slice($this->introductionOrder[$language], 0, max(1, ceil($totalChars / $lessonCount)));
             }
+
             Lesson::create([
                 'user_id' => $userId,
                 'number' => $i + 1,
@@ -77,8 +80,10 @@ class LessonService
         $newChars = '';
 
         $lessons = Lesson::where('language', $language)->where('user_id', $userId)->where('number', '<=', $lessonNumber)->get();
+
         foreach ($lessons as $lesson) {
             $availableChars .= $lesson->new_chars;
+
             if ($lesson->number == $lessonNumber) {
                 $newChars = $lesson->new_chars;
             }
@@ -92,6 +97,7 @@ class LessonService
         }
 
         $totalLessons = Lesson::where('language', $language)->where('user_id', $userId)->max('number') ?? 1;
+
         if ($length === null) {
             if ($totalLessons <= 1) {
                 $length = $this->minLessonLength;
@@ -116,9 +122,11 @@ class LessonService
                 } else {
                     $separator = " ";
                 }
+
                 if (mb_strlen($text) + mb_strlen($separator) > $length) {
                     break;
                 }
+
                 $text .= $separator;
             }
 
@@ -128,9 +136,11 @@ class LessonService
                 $isFirstOfPair = false;
 
                 $remainingAfterFirst = $length - mb_strlen($text) - mb_strlen($currentWord);
+
                 if ($wordsAdded > 0) {
                     $remainingAfterFirst -= mb_strlen($separator);
                 }
+
                 $remainingAfterSecond = $remainingAfterFirst - mb_strlen(" ") - mb_strlen($currentWord);
 
                 if ($remainingAfterFirst < 0 || $remainingAfterSecond < 0) {
@@ -148,6 +158,7 @@ class LessonService
             }
 
             $remaining = $length - mb_strlen($text);
+
             if (mb_strlen($currentWord) > $remaining) {
                 $currentWord = mb_substr($currentWord, 0, $remaining);
             }
@@ -226,6 +237,7 @@ class LessonService
             }
 
             $useNumber = !empty($availableNumbers) && rand(0, 99) < 30;
+
             if ($useNumber) {
                 if (!empty($newNumbers) && rand(0, 99) < 70) {
                     $letterPart .= $newNumbers[array_rand($newNumbers)];
@@ -259,9 +271,11 @@ class LessonService
         }
 
         $totalOptions = ['none'];
+
         if (!empty($singleSpecials)) {
             $totalOptions[] = 'single';
         }
+
         if (!empty($availablePaired)) {
             $totalOptions[] = 'paired';
         }
@@ -272,14 +286,18 @@ class LessonService
             return $letterPart;
         } elseif ($type == 'single') {
             $special = $singleSpecials[array_rand($singleSpecials)];
+
             if ($this->isPunctuation($special)) {
                 return $letterPart . $special;
             }
+
             $position = rand(0, 1) == 0 ? 'start' : 'end';
+
             return $position == 'start' ? $special . $letterPart : $letterPart . $special;
         } else {
             $opening = $availablePaired[array_rand($availablePaired)];
             $closing = $this->pairedMap[$opening];
+
             return $opening . $letterPart . $closing;
         }
     }
@@ -296,6 +314,7 @@ class LessonService
         } elseif ($language == 'en') {
             return ['a', 'e', 'i', 'o', 'u', 'y', 'A', 'E', 'I', 'O', 'U', 'Y'];
         }
+
         return [];
     }
 
@@ -306,6 +325,7 @@ class LessonService
         } elseif ($language == 'en') {
             return array_diff($this->getEnglishLetters(), $this->getVowels('en'));
         }
+
         return [];
     }
 
@@ -313,7 +333,7 @@ class LessonService
     {
         return array_merge(
             ['а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я'],
-            ['А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ъ', 'Ы', 'Ь', 'Э', 'Ю', 'Я']
+            ['А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ъ', 'Ы', 'Ь', 'Э', 'Ю', 'Я'],
         );
     }
 
@@ -321,7 +341,7 @@ class LessonService
     {
         return array_merge(
             range('a', 'z'),
-            range('A', 'Z')
+            range('A', 'Z'),
         );
     }
 }

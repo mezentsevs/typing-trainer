@@ -37,9 +37,11 @@ class TestService
         }
 
         $query = TestText::where('language', $language);
+
         if ($genre) {
             $query->where('genre', $genre);
         }
+
         $text = $query->inRandomOrder()->first();
 
         return $text ? $text->text : 'No text available for the selected language and genre.';
