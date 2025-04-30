@@ -11,9 +11,10 @@ class LessonTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_user_can_generate_lessons()
+    public function test_user_can_generate_lessons(): void
     {
         $user = User::factory()->create();
+
         $token = $user->createToken('test')->plainTextToken;
 
         $response = $this->withHeaders(['Authorization' => "Bearer $token"])
@@ -23,13 +24,16 @@ class LessonTest extends TestCase
             ]);
 
         $response->assertStatus(200);
+
         $this->assertCount(5, Lesson::where('language', 'en')->get());
     }
 
-    public function test_user_can_get_lesson_text()
+    public function test_user_can_get_lesson_text(): void
     {
         $user = User::factory()->create();
+
         $token = $user->createToken('test')->plainTextToken;
+
         Lesson::create(['number' => 1, 'language' => 'en', 'new_chars' => 'abc']);
 
         $response = $this->withHeaders(['Authorization' => "Bearer $token"])

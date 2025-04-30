@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -9,7 +10,7 @@ class AuthTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_user_can_register()
+    public function test_user_can_register(): void
     {
         $response = $this->postJson('/api/register', [
             'name' => 'Test User',
@@ -22,9 +23,9 @@ class AuthTest extends TestCase
             ->assertJsonStructure(['token', 'user']);
     }
 
-    public function test_user_can_login()
+    public function test_user_can_login(): void
     {
-        $user = \App\Models\User::factory()->create([
+        $user = User::factory()->create([
             'email' => 'test@example.com',
             'password' => bcrypt('password'),
         ]);
@@ -38,9 +39,10 @@ class AuthTest extends TestCase
             ->assertJsonStructure(['token', 'user']);
     }
 
-    public function test_user_can_logout()
+    public function test_user_can_logout(): void
     {
-        $user = \App\Models\User::factory()->create();
+        $user = User::factory()->create();
+
         $token = $user->createToken('test')->plainTextToken;
 
         $response = $this->withHeaders(['Authorization' => "Bearer $token"])
