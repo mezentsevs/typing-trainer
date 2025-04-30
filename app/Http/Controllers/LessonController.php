@@ -26,16 +26,12 @@ class LessonController extends Controller
 
     public function index(string $language): JsonResponse
     {
-        $lessons = Lesson::where('language', $language)->where('user_id', auth()->id())->get();
-
-        return response()->json($lessons);
+        return response()->json(Lesson::where('language', $language)->where('user_id', auth()->id())->get());
     }
 
     public function getText(string $language, int $lessonNumber): JsonResponse
     {
-        $text = $this->lessonService->generateLessonText($language, $lessonNumber, auth()->id());
-
-        return response()->json(['text' => $text]);
+        return response()->json(['text' => $this->lessonService->generateLessonText($language, $lessonNumber, auth()->id())]);
     }
 
     public function saveProgress(Request $request): JsonResponse
@@ -48,15 +44,13 @@ class LessonController extends Controller
             'errors' => 'required|integer',
         ]);
 
-        $progress = LessonProgress::create([
+        return response()->json(LessonProgress::create([
             'user_id' => auth()->id(),
             'lesson_id' => $request->lesson_id,
             'language' => $request->language,
             'time_seconds' => $request->time_seconds,
             'speed_wpm' => $request->speed_wpm,
             'errors' => $request->errors,
-        ]);
-
-        return response()->json($progress);
+        ]));
     }
 }

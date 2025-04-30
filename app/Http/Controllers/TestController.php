@@ -18,9 +18,7 @@ class TestController extends Controller
             'genre' => 'nullable|string',
         ]);
 
-        $text = $this->testService->getTestText(auth()->id(), $request->language, $request->genre);
-
-        return response()->json(['text' => $text]);
+        return response()->json(['text' => $this->testService->getTestText(auth()->id(), $request->language, $request->genre)]);
     }
 
     public function uploadText(Request $request): JsonResponse
@@ -30,11 +28,9 @@ class TestController extends Controller
             'file' => 'required|file|mimes:txt',
         ]);
 
-        $path = $request->file('file')->storeAs('uploads', "test_" . auth()->id() . "_{$request->language}.txt", 'public');
-
         return response()->json([
             'message' => 'File uploaded',
-            'path' => $path,
+            'path' => $request->file('file')->storeAs('uploads', "test_" . auth()->id() . "_{$request->language}.txt", 'public'),
         ]);
     }
 
@@ -47,14 +43,12 @@ class TestController extends Controller
             'errors' => 'required|integer',
         ]);
 
-        $result = TestResult::create([
+        return response()->json(TestResult::create([
             'user_id' => auth()->id(),
             'language' => $request->language,
             'time_seconds' => $request->time_seconds,
             'speed_wpm' => $request->speed_wpm,
             'errors' => $request->errors,
-        ]);
-
-        return response()->json($result);
+        ]));
     }
 }
