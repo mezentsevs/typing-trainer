@@ -32,7 +32,10 @@ class TestController extends Controller
 
         $path = $request->file('file')->storeAs('uploads', "test_" . auth()->id() . "_{$request->language}.txt", 'public');
 
-        return response()->json(['message' => 'File uploaded', 'path' => $path]);
+        return response()->json([
+            'message' => 'File uploaded',
+            'path' => $path,
+        ]);
     }
 
     public function saveResult(Request $request): JsonResponse
