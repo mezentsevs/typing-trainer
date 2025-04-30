@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Lesson;
+use Random\RandomException;
 
 class LessonService
 {
@@ -74,6 +75,9 @@ class LessonService
         }
     }
 
+    /**
+     * @throws RandomException
+     */
     public function generateLessonText(string $language, int $lessonNumber, int $userId, ?int $length = null): string
     {
         $availableChars = '';
@@ -178,6 +182,9 @@ class LessonService
         return mb_substr($text, 0, $length);
     }
 
+    /**
+     * @throws RandomException
+     */
     private function generateEnhancedWord(array $availableCharsArray, array $newCharsArray, string $language): string
     {
         $availableLetters = array_filter($availableCharsArray, function ($char) {
