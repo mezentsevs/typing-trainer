@@ -23,9 +23,11 @@
 import { ref } from 'vue';
 
 const genre = ref('');
+
 defineProps<{
     uploadFile: (event: Event) => void;
 }>();
+
 defineEmits<{
     (e: 'start-test', genre: string): void;
 }>();
