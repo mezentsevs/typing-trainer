@@ -42,17 +42,31 @@ import { scrollToCurrentChar } from '@/helpers/DomHelper';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
-const language = ref(route.params.language as string);
-const genre = ref('');
-const text = ref('');
-const typed = ref('');
-const startTime = ref(0);
-const time = ref(0);
+
 const errors = ref(0);
-const speed = ref(0);
+const genre = ref('');
 const input = ref<HTMLTextAreaElement | null>(null);
-const textContainer = ref<HTMLElement | null>(null);
 const isTestCompleted = ref(false);
+const language = ref(route.params.language as string);
+const speed = ref(0);
+const startTime = ref(0);
+const text = ref('');
+const textContainer = ref<HTMLElement | null>(null);
+const time = ref(0);
+const typed = ref('');
+
+const currentTypingUnit = computed(() => getCurrentTypingUnit(text.value, typed.value.length));
+
+const isCurrentWord = computed(() => {
+    const range = currentTypingUnit.value;
+    const arr = Array(text.value.length).fill(false);
+
+    if (!range) { return arr; }
+
+    for (let i = range.start; i <= range.end; i++) { arr[i] = true; }
+
+    return arr;
+});
 
 const progress = computed(() => text.value.length ? Math.round((typed.value.length / text.value.length) * 100) : 0);
 
@@ -120,18 +134,5 @@ const handleInput = async () => {
 
 onMounted(() => {
     if (input.value) { input.value.focus(); }
-});
-
-const currentTypingUnit = computed(() => getCurrentTypingUnit(text.value, typed.value.length));
-
-const isCurrentWord = computed(() => {
-    const range = currentTypingUnit.value;
-    const arr = Array(text.value.length).fill(false);
-
-    if (!range) { return arr; }
-
-    for (let i = range.start; i <= range.end; i++) { arr[i] = true; }
-
-    return arr;
 });
 </script>
