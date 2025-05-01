@@ -29,7 +29,12 @@
             style="max-width: 680px; margin: 0 auto;"
             @click="toggleKeyboard"
         >
-            <div v-for="(row, rowIndex) in keyboardLayout" :key="rowIndex" class="flex gap-1" style="justify-content: space-between;">
+            <div
+                v-for="(row, rowIndex) in keyboardLayout"
+                :key="rowIndex"
+                class="flex gap-1"
+                style="justify-content: space-between;"
+            >
                 <template v-if="rowIndex === 0">
                     <button
                         v-for="key in row"
@@ -43,7 +48,11 @@
                         :style="{ minWidth: key.width ? `${key.width}px` : '40px' }"
                     >
                         <span class="block">{{ key.display }}</span>
-                        <span v-if="key.special" class="absolute text-xs" :class="key.specialPosition === 'top-left' ? 'top-0 left-1' : 'top-0 right-1'">
+                        <span
+                            v-if="key.special"
+                            class="absolute text-xs"
+                            :class="key.specialPosition === 'top-left' ? 'top-0 left-1' : 'top-0 right-1'"
+                        >
                             {{ key.special }}
                         </span>
                     </button>
@@ -98,7 +107,11 @@
                         :style="{ minWidth: key.width ? `${key.width}px` : '40px' }"
                     >
                         <span class="block">{{ key.display }}</span>
-                        <span v-if="key.special" class="absolute text-xs" :class="key.specialPosition === 'top-left' ? 'top-0 left-1' : 'top-0 right-1'">
+                        <span
+                            v-if="key.special"
+                            class="absolute text-xs"
+                            :class="key.specialPosition === 'top-left' ? 'top-0 left-1' : 'top-0 right-1'"
+                        >
                             {{ key.special }}
                         </span>
                     </button>
@@ -118,10 +131,6 @@ const props = defineProps<{
 }>();
 
 const isMinimized = ref(false);
-
-const toggleKeyboard = () => {
-    isMinimized.value = !isMinimized.value;
-};
 
 const keyboardLayouts: Record<'en' | 'ru', { value: string; display: string; special?: string; specialPosition?: 'top-left' | 'top-right'; width?: number; zone?: 'left' | 'right' }[][]> = {
     en: [
@@ -268,37 +277,42 @@ const keyboardLayouts: Record<'en' | 'ru', { value: string; display: string; spe
 
 const keyboardLayout = computed(() => keyboardLayouts[props.language]);
 
-const nextChar = computed(() => {
-    return props.typed.length < props.text.length ? props.text[props.typed.length] : '';
-});
+const nextChar = computed(() => props.typed.length < props.text.length ? props.text[props.typed.length] : '');
+
+const toggleKeyboard = () => isMinimized.value = !isMinimized.value;
 
 const isHighlighted = (keyValue: string | undefined, zone?: 'left' | 'right') => {
-    if (!keyValue) return false;
-    if (keyValue === ' ') return nextChar.value === ' ';
-    if (keyValue === 'enter') return nextChar.value === '\n';
+    if (!keyValue) { return false; }
+    if (keyValue === ' ') { return nextChar.value === ' '; }
+    if (keyValue === 'enter') { return nextChar.value === '\n'; }
 
     const isUpperOrSpecial = nextChar.value.match(/[A-ZА-ЯЁ~!@#$%^&*()_+{}|:"<>?]/);
     const isControlChar = nextChar.value !== '\n' && nextChar.value.match(/[\x00-\x1F\x7F]/);
 
     if (keyValue === 'shift') {
-        if (!isUpperOrSpecial) return false;
+        if (!isUpperOrSpecial) { return false; }
+
+        //TODO: move keyZone logic to function
         const keyZone = keyboardLayout.value.flat().find(k =>
             k.value === nextChar.value ||
             (k.special && k.special === nextChar.value) ||
             k.value.toLowerCase() === nextChar.value.toLowerCase() ||
             (k.special && k.special.toLowerCase() === nextChar.value.toLowerCase())
         )?.zone;
+
         return keyZone === 'left' ? zone === 'right' : zone === 'left';
     }
 
     if (['ctrl', 'alt', 'capslock'].includes(keyValue)) {
-        if (!isControlChar) return false;
+        if (!isControlChar) { return false; }
+
         const keyZone = keyboardLayout.value.flat().find(k =>
             k.value === nextChar.value ||
             (k.special && k.special === nextChar.value) ||
             k.value.toLowerCase() === nextChar.value.toLowerCase() ||
             (k.special && k.special.toLowerCase() === nextChar.value.toLowerCase())
         )?.zone;
+
         return keyZone === 'left' ? zone === 'right' : zone === 'left';
     }
 
