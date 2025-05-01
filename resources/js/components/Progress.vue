@@ -7,8 +7,10 @@
                     width: `${progress}%`,
                     backgroundColor: `rgb(${255 - (progress / 100) * (255 - 34)}, ${255 - (progress / 100) * (255 - 197)}, ${255 - (progress / 100) * (255 - 94)})`
                 }"
-            ></div>
-            <p class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-xs font-bold">{{ progress }}%</p>
+            />
+            <p class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-xs font-bold">
+                {{ progress }}%
+            </p>
         </div>
     </div>
 </template>
