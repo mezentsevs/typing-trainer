@@ -29,6 +29,7 @@ import { useRouter } from 'vue-router';
 
 const authStore = useAuthStore();
 const router = useRouter();
+
 const form = ref({ email: '', password: '' });
 const error = ref('');
 
