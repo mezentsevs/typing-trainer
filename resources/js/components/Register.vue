@@ -37,8 +37,9 @@ import { useRouter } from 'vue-router';
 
 const authStore = useAuthStore();
 const router = useRouter();
-const form = ref({ name: '', email: '', password: '', password_confirmation: '' });
+
 const error = ref('');
+const form = ref({ name: '', email: '', password: '', password_confirmation: '' });
 
 const register = async () => {
     try {
