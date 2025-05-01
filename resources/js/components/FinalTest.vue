@@ -58,51 +58,57 @@ const progress = computed(() => text.value.length ? Math.round((typed.value.leng
 
 const fetchText = async (selectedGenre: string) => {
     genre.value = selectedGenre;
+
     const response = await axios.get('/test/text', { params: { language: language.value, genre: genre.value } });
+
     text.value = response.data.text;
-    typed.value = '';
+
+    errors.value = 0;
+    isTestCompleted.value = false;
+    speed.value = 0;
     startTime.value = 0;
     time.value = 0;
-    errors.value = 0;
-    speed.value = 0;
-    isTestCompleted.value = false;
+    typed.value = '';
 };
 
 const uploadFile = async (event: Event) => {
     const file = (event.target as HTMLInputElement).files?.[0];
+
     if (file) {
         const formData = new FormData();
+
         formData.append('file', file);
         formData.append('language', language.value);
+
         await axios.post('/test/upload', formData);
         await fetchText(genre.value);
     }
 };
 
 const handleInput = async () => {
-    if (!startTime.value) {
-        startTime.value = Date.now();
-    }
+    if (!startTime.value) { startTime.value = Date.now(); }
 
     if (typed.value.length >= text.value.length) {
         typed.value = typed.value.slice(0, text.value.length);
         isTestCompleted.value = true;
+
         await axios.post('/test/result', {
             language: language.value,
             time_seconds: time.value,
             speed_wpm: speed.value,
             errors: errors.value,
         });
+
         return;
     }
 
     const typedChars = typed.value.split('');
     let errorCount = 0;
+
     for (let i = 0; i < typedChars.length; i++) {
-        if (typedChars[i] !== text.value[i]) {
-            errorCount++;
-        }
+        if (typedChars[i] !== text.value[i]) { errorCount++; }
     }
+
     errors.value = errorCount;
 
     time.value = Math.round((Date.now() - startTime.value) / 1000);
@@ -113,20 +119,20 @@ const handleInput = async () => {
 };
 
 onMounted(() => {
-    if (input.value) {
-        input.value.focus();
-    }
+    if (input.value) { input.value.focus(); }
 });
 
 const currentTypingUnit = computed(() => getCurrentTypingUnit(text.value, typed.value.length));
 
 const isCurrentWord = computed(() => {
     const range = currentTypingUnit.value;
-    if (!range) return Array(text.value.length).fill(false);
+
+    if (!range) { return Array(text.value.length).fill(false); }
+
     const arr = Array(text.value.length).fill(false);
-    for (let i = range.start; i <= range.end; i++) {
-        arr[i] = true;
-    }
+
+    for (let i = range.start; i <= range.end; i++) { arr[i] = true; }
+
     return arr;
 });
 </script>
