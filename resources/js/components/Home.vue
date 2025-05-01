@@ -2,7 +2,7 @@
     <div class="min-h-screen bg-gradient-to-br from-gray-900 via-blue-950 to-purple-950 flex items-center justify-center p-8">
         <div class="max-w-4xl mx-auto text-center">
             <h1 class="text-5xl md:text-7xl font-mono text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 mb-8 pb-2">
-                <span>{{ currentText }}</span><span class="cursor"></span>
+                <span>{{ currentText }}</span><span class="cursor" />
             </h1>
             <p class="text-lg md:text-xl text-gray-300 mb-12 font-sans animate-pulse-slow">
                 Master the art of blind typing: code like a hacker, write like a novelist, report like a journalist.
@@ -22,9 +22,9 @@
                 </button>
             </div>
             <div class="absolute inset-0 pointer-events-none overflow-hidden">
-                <div class="absolute top-10 left-10 w-24 h-24 bg-cyan-500 opacity-10 rounded-full animate-float"></div>
-                <div class="absolute bottom-20 right-20 w-32 h-32 bg-purple-500 opacity-10 rounded-full animate-float delay-1000"></div>
-                <div class="absolute top-1/2 left-1/4 w-16 h-16 bg-red-500 opacity-10 rounded-full animate-float delay-500"></div>
+                <div class="absolute top-10 left-10 w-24 h-24 bg-cyan-500 opacity-10 rounded-full animate-float" />
+                <div class="absolute bottom-20 right-20 w-32 h-32 bg-purple-500 opacity-10 rounded-full animate-float delay-1000" />
+                <div class="absolute top-1/2 left-1/4 w-16 h-16 bg-red-500 opacity-10 rounded-full animate-float delay-500" />
             </div>
         </div>
     </div>
@@ -41,29 +41,33 @@ const router = useRouter();
 const fullText = 'Typing Trainer';
 const currentText = ref('');
 
+const logout = async () => {
+    await authStore.logout();
+    await router.push('/login');
+};
+
 onMounted(() => {
     function typeWriter() {
         let i = 0;
+
         const interval = setInterval(() => {
             if (i < fullText.length) {
                 currentText.value += fullText[i];
                 i++;
             } else {
                 clearInterval(interval);
+
                 setTimeout(() => {
                     currentText.value = '';
+
                     typeWriter();
                 }, 2000);
             }
         }, 100);
     }
+
     typeWriter();
 });
-
-const logout = async () => {
-    await authStore.logout();
-    await router.push('/login');
-};
 </script>
 
 <style scoped>
