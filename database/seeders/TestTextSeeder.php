@@ -295,7 +295,7 @@ To etch its might within her fragile frame.
 Each step a verse, each breath a sacred vow,
 To capture truth that only heights allow.
 The wind howls fierce, a chorus of the wild,
-Yet in its roar, the poet finds a child-
+Yet in its roar, the poet finds a child.
 A spark of wonder, buried deep within,
 That calls her on, through tempest and through din.
 The summit gleams, a beacon in the mist,
