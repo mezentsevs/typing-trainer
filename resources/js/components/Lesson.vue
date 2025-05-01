@@ -3,7 +3,9 @@
         <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
             <div class="relative flex items-center mb-4">
                 <h2 class="text-2xl font-bold">Lesson {{ lesson.number }}/{{ totalLessons }}</h2>
-                <span v-if="isLessonCompleted" class="absolute left-1/2 transform -translate-x-1/2 text-green-500 text-3xl font-bold">Completed!</span>
+                <span v-if="isLessonCompleted" class="absolute left-1/2 transform -translate-x-1/2 text-green-500 text-3xl font-bold">
+                    Completed!
+                </span>
             </div>
             <div class="flex flex-row items-stretch space-x-4 mb-4">
                 <NewCharacters :new-chars="lesson.new_chars" class="flex items-center justify-center" />
@@ -11,7 +13,10 @@
             </div>
             <div class="mt-4">
                 <div ref="textContainer" class="text-lg font-mono break-words whitespace-pre-wrap h-28 overflow-y-auto bg-gray-50 p-2">
-                    <span v-for="(char, index) in text" :key="index" :class="{ 'error-char': typed[index] && typed[index] !== char, 'current-word': isCurrentWord[index], 'space': char === ' ', 'line-break': char === '\n' }">
+                    <span v-for="(char, index) in text"
+                          :key="index"
+                          :class="{ 'error-char': typed[index] && typed[index] !== char, 'current-word': isCurrentWord[index], 'space': char === ' ', 'line-break': char === '\n' }"
+                    >
                         {{ char }}
                     </span>
                 </div>
@@ -24,7 +29,7 @@
                     :disabled="isLessonCompleted"
                     rows="4"
                 />
-                <VirtualKeyboard :language="language as 'en' | 'ru'" :typed="typed" :text="text" />
+                <VirtualKeyboard :language="language as 'en' | 'ru'" :typed :text />
                 <div v-if="isLessonCompleted" class="flex justify-center mt-4">
                     <router-link
                         v-if="nextLesson"
@@ -58,32 +63,47 @@ import { scrollToCurrentChar } from '@/helpers/DomHelper';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
+
+const errors = ref(0);
+const input = ref<HTMLTextAreaElement | null>(null);
+const isLessonCompleted = ref(false);
 const language = route.params.language as string;
 const lessonNumber = ref(parseInt(route.params.number as string));
 const lesson = ref<{ id: number; number: number; new_chars: string }>({ id: 0, number: lessonNumber.value, new_chars: '' });
-const text = ref('');
-const typed = ref('');
-const startTime = ref(0);
-const time = ref(0);
-const errors = ref(0);
-const speed = ref(0);
-const input = ref<HTMLTextAreaElement | null>(null);
-const textContainer = ref<HTMLElement | null>(null);
 const lessons = ref<any[]>([]);
-const isLessonCompleted = ref(false);
+const speed = ref(0);
+const startTime = ref(0);
+const text = ref('');
+const textContainer = ref<HTMLElement | null>(null);
+const time = ref(0);
 const totalLessons = ref(0);
+const typed = ref('');
+
+const currentTypingUnit = computed(() => getCurrentTypingUnit(text.value, typed.value.length));
+
+const isCurrentWord = computed(() => {
+    const range = currentTypingUnit.value;
+    const arr = Array(text.value.length).fill(false);
+
+    if (!range) { return arr; }
+
+    for (let i = range.start; i <= range.end; i++) { arr[i] = true; }
+
+    return arr;
+});
 
 const nextLesson = computed(() => lessons.value.find(l => l.number === lessonNumber.value + 1));
+
 const progress = computed(() => text.value.length ? Math.round((typed.value.length / text.value.length) * 100) : 0);
 
 const resetState = () => {
-    text.value = '';
-    typed.value = '';
-    startTime.value = 0;
-    time.value = 0;
     errors.value = 0;
-    speed.value = 0;
     isLessonCompleted.value = false;
+    speed.value = 0;
+    startTime.value = 0;
+    text.value = '';
+    time.value = 0;
+    typed.value = '';
 };
 
 const fetchLesson = async () => {
@@ -94,18 +114,19 @@ const fetchLesson = async () => {
 
     lessons.value = lessonsRes.data;
     totalLessons.value = lessonsRes.data.length;
+
     lesson.value = lessonsRes.data.find((l: any) => l.number === lessonNumber.value);
     text.value = textRes.data.text;
 };
 
+//TODO: move duplications in Lesson.vue and FinalTest.vue to helper if possible
 const handleInput = async () => {
-    if (!startTime.value) {
-        startTime.value = Date.now();
-    }
+    if (!startTime.value) { startTime.value = Date.now(); }
 
     if (typed.value.length >= text.value.length) {
         typed.value = typed.value.slice(0, text.value.length);
         isLessonCompleted.value = true;
+
         await axios.post('/lessons/progress', {
             lesson_id: lesson.value.id,
             language: language,
@@ -113,16 +134,17 @@ const handleInput = async () => {
             speed_wpm: speed.value,
             errors: errors.value,
         });
+
         return;
     }
 
     const typedChars = typed.value.split('');
     let errorCount = 0;
+
     for (let i = 0; i < typedChars.length; i++) {
-        if (typedChars[i] !== text.value[i]) {
-            errorCount++;
-        }
+        if (typedChars[i] !== text.value[i]) { errorCount++; }
     }
+
     errors.value = errorCount;
 
     time.value = Math.round((Date.now() - startTime.value) / 1000);
@@ -133,32 +155,22 @@ const handleInput = async () => {
 };
 
 const resetAndLoadNext = async () => {
-    if (!isLessonCompleted.value) return;
+    if (!isLessonCompleted.value) { return; }
+
     lessonNumber.value++;
+
     resetState();
+
     await fetchLesson();
-    if (input.value) {
-        input.value.focus();
-    }
+
+    if (input.value) { input.value.focus(); }
 };
 
 onMounted(async () => {
     resetState();
+
     await fetchLesson();
-    if (input.value) {
-        input.value.focus();
-    }
-});
 
-const currentTypingUnit = computed(() => getCurrentTypingUnit(text.value, typed.value.length));
-
-const isCurrentWord = computed(() => {
-    const range = currentTypingUnit.value;
-    if (!range) return Array(text.value.length).fill(false);
-    const arr = Array(text.value.length).fill(false);
-    for (let i = range.start; i <= range.end; i++) {
-        arr[i] = true;
-    }
-    return arr;
+    if (input.value) { input.value.focus(); }
 });
 </script>

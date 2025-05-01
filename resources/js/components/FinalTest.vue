@@ -106,6 +106,7 @@ const uploadFile = async (event: Event) => {
     }
 };
 
+//TODO: move duplications in Lesson.vue and FinalTest.vue to helper if possible
 const handleInput = async () => {
     if (!startTime.value) { startTime.value = Date.now(); }
 
