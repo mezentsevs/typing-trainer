@@ -140,6 +140,7 @@ const handleInput = async () => {
     scrollToCurrentChar(textContainer.value, typed.value.length);
 };
 
+//TODO: fix input autofocus
 onMounted(() => {
     if (input.value) { input.value.focus(); }
 });
