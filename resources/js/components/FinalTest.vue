@@ -126,10 +126,9 @@ const currentTypingUnit = computed(() => getCurrentTypingUnit(text.value, typed.
 
 const isCurrentWord = computed(() => {
     const range = currentTypingUnit.value;
-
-    if (!range) { return Array(text.value.length).fill(false); }
-
     const arr = Array(text.value.length).fill(false);
+
+    if (!range) { return arr; }
 
     for (let i = range.start; i <= range.end; i++) { arr[i] = true; }
 
