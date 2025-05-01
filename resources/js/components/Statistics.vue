@@ -18,7 +18,7 @@
                 <p class="text-xs opacity-50">Errors</p>
             </div>
         </div>
-        <Progress :progress="progress" />
+        <Progress :progress />
     </div>
 </template>
 
