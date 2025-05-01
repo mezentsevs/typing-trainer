@@ -1,6 +1,5 @@
 <template>
     <div class="relative">
-        <!-- Keyboard Preview -->
         <div
             v-if="isMinimized"
             class="keyboard-preview flex justify-center items-center gap-2 p-2 bg-gray-50 rounded-lg cursor-pointer my-4 mx-auto"
@@ -24,7 +23,6 @@
             <span class="text-gray-500 text-sm font-medium">Keyboard</span>
         </div>
 
-        <!-- Keyboard -->
         <div
             v-else
             class="keyboard flex flex-col gap-2 p-4 cursor-pointer"
@@ -33,7 +31,6 @@
         >
             <div v-for="(row, rowIndex) in keyboardLayout" :key="rowIndex" class="flex gap-1" style="justify-content: space-between;">
                 <template v-if="rowIndex === 0">
-                    <!-- First row with Backspace -->
                     <button
                         v-for="key in row"
                         :key="key.value"
@@ -52,7 +49,6 @@
                     </button>
                 </template>
                 <template v-else-if="rowIndex === 4">
-                    <!-- Fifth row: Ctrl | (Alt Space Alt) | Ctrl -->
                     <button
                         :key="row[0].value"
                         :class="[
@@ -91,7 +87,6 @@
                     </button>
                 </template>
                 <template v-else>
-                    <!-- Other rows -->
                     <button
                         v-for="key in row"
                         :key="key.value"
