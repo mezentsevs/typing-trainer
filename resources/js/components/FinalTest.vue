@@ -3,13 +3,20 @@
         <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
             <div class="relative flex items-center mb-4">
                 <h2 class="text-2xl font-bold">Final Test</h2>
-                <span v-if="isTestCompleted" class="absolute left-1/2 transform -translate-x-1/2 text-green-500 text-3xl font-bold">Completed!</span>
+                <span v-if="isTestCompleted"
+                      class="absolute left-1/2 transform -translate-x-1/2 text-green-500 text-3xl font-bold"
+                >
+                    Completed!
+                </span>
             </div>
             <FinalTestSetup v-if="!text" :upload-file="uploadFile" @start-test="fetchText" />
-            <Statistics v-if="text" :language="language" :time="time" :speed="speed" :errors="errors" :progress="progress" />
+            <Statistics v-if="text" :language :time :speed :errors :progress />
             <div v-if="text" class="mt-4">
                 <div ref="textContainer" class="text-lg font-mono break-words whitespace-pre-wrap h-28 overflow-y-auto bg-gray-50 p-2">
-                    <span v-for="(char, index) in text" :key="index" :class="{ 'error-char': typed[index] && typed[index] !== char, 'current-word': isCurrentWord[index], 'space': char === ' ', 'line-break': char === '\n' }">
+                    <span v-for="(char, index) in text"
+                          :key="index"
+                          :class="{ 'error-char': typed[index] && typed[index] !== char, 'current-word': isCurrentWord[index], 'space': char === ' ', 'line-break': char === '\n' }"
+                    >
                         {{ char }}
                     </span>
                 </div>
@@ -22,7 +29,7 @@
                     autofocus
                     rows="4"
                 />
-                <VirtualKeyboard :language="language as 'en' | 'ru'" :typed="typed" :text="text" />
+                <VirtualKeyboard :language="language as 'en' | 'ru'" :typed :text />
                 <div v-if="isTestCompleted" class="flex justify-center mt-2">
                     <router-link to="/" class="bg-blue-500 text-white p-2 rounded">Back to Home</router-link>
                 </div>
