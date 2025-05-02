@@ -22,11 +22,10 @@
                 </div>
                 <textarea
                     v-model="typed"
+                    v-focus
                     @input="handleInput"
                     class="w-full p-2 border rounded mt-4 resize-none"
-                    ref="input"
                     :disabled="isTestCompleted"
-                    autofocus
                     rows="4"
                 />
                 <VirtualKeyboard :language="language as 'en' | 'ru'" :typed :text />
@@ -52,7 +51,6 @@ const route = useRoute();
 
 const errors = ref(0);
 const genre = ref('');
-const input = ref<HTMLTextAreaElement | null>(null);
 const isTestCompleted = ref(false);
 const language = ref(route.params.language as string);
 const speed = ref(0);
@@ -139,9 +137,4 @@ const handleInput = async () => {
 
     scrollToCurrentChar(textContainer.value, typed.value.length);
 };
-
-//TODO: fix input autofocus
-onMounted(() => {
-    if (input.value) { input.value.focus(); }
-});
 </script>

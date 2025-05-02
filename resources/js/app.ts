@@ -13,6 +13,9 @@ if (token) {
 }
 
 createApp(App)
+    .directive('focus', {
+        mounted: (el: HTMLElement) => el.focus(),
+    })
     .use(createPinia())
     .use(router)
     .mount('#app');

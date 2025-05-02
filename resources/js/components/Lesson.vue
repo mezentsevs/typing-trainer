@@ -22,10 +22,10 @@
                 </div>
                 <textarea
                     v-model="typed"
+                    v-focus
                     @input="handleInput"
                     class="w-full p-2 border rounded mt-4 resize-none"
                     ref="input"
-                    autofocus
                     :disabled="isLessonCompleted"
                     rows="4"
                 />
@@ -170,7 +170,5 @@ onMounted(async () => {
     resetState();
 
     await fetchLesson();
-
-    if (input.value) { input.value.focus(); }
 });
 </script>
