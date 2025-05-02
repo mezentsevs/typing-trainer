@@ -28,6 +28,7 @@
                     ref="input"
                     :disabled="isLessonCompleted"
                     rows="4"
+                    spellcheck="false"
                 />
                 <VirtualKeyboard :language="language as 'en' | 'ru'" :typed :text />
                 <div v-if="isLessonCompleted" class="flex justify-center mt-4">

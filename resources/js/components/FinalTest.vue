@@ -27,6 +27,7 @@
                     class="w-full p-2 border rounded mt-4 resize-none"
                     :disabled="isTestCompleted"
                     rows="4"
+                    spellcheck="false"
                 />
                 <VirtualKeyboard :language="language as 'en' | 'ru'" :typed :text />
                 <div v-if="isTestCompleted" class="flex justify-center mt-2">
