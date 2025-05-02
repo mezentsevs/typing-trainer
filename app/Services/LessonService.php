@@ -63,7 +63,7 @@ class LessonService
             }
 
             if (empty($newChars) && !empty($this->introductionOrder[$language])) {
-                $newChars = array_slice($this->introductionOrder[$language], 0, max(1, ceil($totalChars / $lessonCount)));
+                $newChars = $this->introductionOrder[$language];
             }
 
             Lesson::create([
