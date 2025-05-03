@@ -11,9 +11,13 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->unsignedInteger('number');
+            $table->unsignedInteger('total');
             $table->string('language');
             $table->string('new_chars');
+            $table->text('text')->nullable();
             $table->timestamps();
+
+            $table->index(['user_id', 'language', 'number']);
         });
     }
 

@@ -36,7 +36,7 @@ class Lesson extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'number', 'language', 'new_chars'];
+    protected $fillable = ['user_id', 'number', 'total', 'language', 'new_chars', 'text'];
 
     public function progresses(): HasMany
     {

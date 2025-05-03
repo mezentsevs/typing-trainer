@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Lesson;
+use App\Models\LessonProgress;
 use Random\RandomException;
 
 class LessonService
@@ -43,16 +44,23 @@ class LessonService
     ];
 
     protected int $minLessonLength = 100;
-    protected int $maxLessonLength = 1000;
+    protected int $maxLessonLength = 300;
     protected int $minWordsPerLine = 2;
     protected int $maxWordsPerLine = 8;
 
+    /**
+     * @throws RandomException
+     */
     public function generateLessons(string $language, int $lessonCount, int $userId): void
     {
         $chars = $this->introductionOrder[$language] ?? $this->introductionOrder['en'];
         $totalChars = count($chars);
 
-        Lesson::where('language', $language)->where('user_id', $userId)->delete();
+        Lesson::where('user_id', $userId)->where('language', $language)->delete();
+        LessonProgress::where('user_id', $userId)->where('language', $language)->delete();
+
+        $lessons = [];
+        $availableCharsString = '';
 
         for ($i = 0; $i < $lessonCount; $i++) {
             $charsPerLesson = max(1, ceil($totalChars / max(1, $lessonCount - $i)));
@@ -66,41 +74,41 @@ class LessonService
                 $newChars = $this->introductionOrder[$language];
             }
 
-            Lesson::create([
+            $newCharsString = implode('', $newChars);
+            $availableCharsString .= $newCharsString;
+
+            $lessons[] = [
                 'user_id' => $userId,
                 'number' => $i + 1,
+                'total' => $lessonCount,
                 'language' => $language,
-                'new_chars' => implode('', $newChars),
-            ]);
+                'new_chars' => $newCharsString,
+                'text' => $this->generateLessonText(
+                    $language,
+                    $i + 1,
+                    $lessonCount,
+                    $availableCharsString,
+                    $newCharsString
+                ),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ];
         }
+
+        Lesson::insert($lessons);
     }
 
     /**
      * @throws RandomException
      */
-    public function generateLessonText(string $language, int $lessonNumber, int $userId, ?int $length = null): string
+    public function generateLessonText(string $language, int $lessonNumber, int $totalLessons, string $availableChars, string $newChars, ?int $length = null): string
     {
-        $availableChars = '';
-        $newChars = '';
-
-        $lessons = Lesson::where('language', $language)->where('user_id', $userId)->where('number', '<=', $lessonNumber)->get();
-
-        foreach ($lessons as $lesson) {
-            $availableChars .= $lesson->new_chars;
-
-            if ($lesson->number == $lessonNumber) {
-                $newChars = $lesson->new_chars;
-            }
-        }
-
         $availableCharsArray = mb_str_split($availableChars, 1, 'UTF-8');
         $newCharsArray = mb_str_split($newChars, 1, 'UTF-8');
 
         if (empty($availableCharsArray)) {
             return '';
         }
-
-        $totalLessons = Lesson::where('language', $language)->where('user_id', $userId)->max('number') ?? 1;
 
         if ($length === null) {
             if ($totalLessons <= 1) {
@@ -124,7 +132,7 @@ class LessonService
                     $lineWordCount = 0;
                     $currentLineWords = random_int($this->minWordsPerLine, $this->maxWordsPerLine);
                 } else {
-                    $separator = " ";
+                    $separator = ' ';
                 }
 
                 if (mb_strlen($text) + mb_strlen($separator) > $length) {
@@ -142,10 +150,10 @@ class LessonService
                 $remainingAfterFirst = $length - mb_strlen($text) - mb_strlen($currentWord);
 
                 if ($wordsAdded > 0) {
-                    $remainingAfterFirst -= mb_strlen($separator);
+                    $remainingAfterFirst -= mb_strlen($separator ?? ' ');
                 }
 
-                $remainingAfterSecond = $remainingAfterFirst - mb_strlen(" ") - mb_strlen($currentWord);
+                $remainingAfterSecond = $remainingAfterFirst - mb_strlen(' ') - mb_strlen($currentWord);
 
                 if ($remainingAfterFirst < 0 || $remainingAfterSecond < 0) {
                     break;
@@ -188,11 +196,11 @@ class LessonService
     private function generateEnhancedWord(array $availableCharsArray, array $newCharsArray, string $language): string
     {
         $availableLetters = array_filter($availableCharsArray, function ($char) {
-            return preg_match('/[a-zA-Zа-яА-ЯёЁ0-9]/u', $char);
+            return preg_match('/[a-zA-ZА-яёЁ0-9]/u', $char);
         });
 
         $newLetters = array_filter($newCharsArray, function ($char) {
-            return preg_match('/[a-zA-Zа-яА-ЯёЁ0-9]/u', $char);
+            return preg_match('/[a-zA-ZА-яёЁ0-9]/u', $char);
         });
 
         $allVowels = $this->getVowels($language);
@@ -261,7 +269,7 @@ class LessonService
         }
 
         $availableSpecials = array_filter($availableCharsArray, function ($char) {
-            return !preg_match('/[a-zA-Z0-9а-яА-ЯёЁ]/u', $char);
+            return !preg_match('/[a-zA-Z0-9А-яёЁ]/u', $char);
         });
 
         $pairedSymbols = array_merge(array_keys($this->pairedMap), array_values($this->pairedMap));

@@ -12,6 +12,16 @@ class LessonController extends Controller
 {
     public function __construct(protected LessonService $lessonService) {}
 
+    public function show(string $language, int $lessonNumber): JsonResponse
+    {
+        return response()->json([
+            'lesson' => Lesson::where('user_id', auth()->id())
+                ->where('language', $language)
+                ->where('number', $lessonNumber)
+                ->firstOrFail(),
+        ]);
+    }
+
     public function generate(Request $request): JsonResponse
     {
         $request->validate([
@@ -22,16 +32,6 @@ class LessonController extends Controller
         $this->lessonService->generateLessons($request->language, $request->lesson_count, auth()->id());
 
         return response()->json(['message' => 'Lessons generated']);
-    }
-
-    public function index(string $language): JsonResponse
-    {
-        return response()->json(Lesson::where('language', $language)->where('user_id', auth()->id())->get());
-    }
-
-    public function getText(string $language, int $lessonNumber): JsonResponse
-    {
-        return response()->json(['text' => $this->lessonService->generateLessonText($language, $lessonNumber, auth()->id())]);
     }
 
     public function saveProgress(Request $request): JsonResponse

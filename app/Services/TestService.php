@@ -12,12 +12,13 @@ class TestService
     public function getTestText(int $userId, string $language, ?string $genre = null): string
     {
         $filePath = "uploads/test_{$userId}_{$language}.txt";
-        $userFile = Storage::disk('public')->exists($filePath)
-            ? Storage::disk('public')->get($filePath)
-            : null;
 
-        if ($userFile && Storage::disk('public')->lastModified($filePath) >= now()->subMinute()->timestamp) {
-            return $userFile;
+        if (Storage::disk('public')->exists($filePath)) {
+            if (Storage::disk('public')->lastModified($filePath) < now()->subMinute()->timestamp) {
+                Storage::disk('public')->delete($filePath);
+            } else {
+                return Storage::disk('public')->get($filePath);
+            }
         }
 
         if (config('services.grok.key') && $genre) {

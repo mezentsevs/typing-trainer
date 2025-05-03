@@ -12,9 +12,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
 
     Route::prefix('lessons')->group(function () {
+        Route::get('/{language}/{lessonNumber}', [LessonController::class, 'show']);
         Route::post('/generate', [LessonController::class, 'generate']);
-        Route::get('/{language}', [LessonController::class, 'index']);
-        Route::get('/{language}/{lessonNumber}/text', [LessonController::class, 'getText']);
         Route::post('/progress', [LessonController::class, 'saveProgress']);
     });
 

@@ -34,7 +34,7 @@
                 <div v-if="isLessonCompleted" class="flex justify-center mt-4">
                     <router-link
                         v-if="nextLesson"
-                        :to="`/lesson/${language}/${nextLesson.number}`"
+                        :to="`/lesson/${language}/${nextLesson}`"
                         @click="resetAndLoadNext"
                         class="bg-blue-500 text-white p-2 rounded"
                     >
@@ -71,7 +71,6 @@ const isLessonCompleted = ref(false);
 const language = route.params.language as string;
 const lessonNumber = ref(parseInt(route.params.number as string));
 const lesson = ref<{ id: number; number: number; new_chars: string }>({ id: 0, number: lessonNumber.value, new_chars: '' });
-const lessons = ref<any[]>([]);
 const speed = ref(0);
 const startTime = ref(0);
 const text = ref('');
@@ -93,7 +92,7 @@ const isCurrentWord = computed(() => {
     return arr;
 });
 
-const nextLesson = computed(() => lessons.value.find(l => l.number === lessonNumber.value + 1));
+const nextLesson = computed(() => (totalLessons.value - lessonNumber.value) ? lessonNumber.value + 1 : 0);
 
 const progress = computed(() => text.value.length ? Math.round((typed.value.length / text.value.length) * 100) : 0);
 
@@ -105,19 +104,15 @@ const resetState = () => {
     text.value = '';
     time.value = 0;
     typed.value = '';
+    lesson.value = { id: 0, number: lessonNumber.value, new_chars: '' };
 };
 
 const fetchLesson = async () => {
-    const [lessonsRes, textRes] = await Promise.all([
-        axios.get(`/lessons/${language}`),
-        axios.get(`/lessons/${language}/${lessonNumber.value}/text`),
-    ]);
+    const response = await axios.get(`/lessons/${language}/${lessonNumber.value}`);
 
-    lessons.value = lessonsRes.data;
-    totalLessons.value = lessonsRes.data.length;
-
-    lesson.value = lessonsRes.data.find((l: any) => l.number === lessonNumber.value);
-    text.value = textRes.data.text;
+    lesson.value = response.data.lesson;
+    totalLessons.value = response.data.lesson.total;
+    text.value = response.data.lesson.text;
 };
 
 //TODO: move duplications in Lesson.vue and FinalTest.vue to helper if possible

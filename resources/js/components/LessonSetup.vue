@@ -16,7 +16,7 @@
                         v-model.number="form.lesson_count"
                         type="number"
                         min="1"
-                        max="100"
+                        max="20"
                         class="w-full p-2 border rounded"
                         required
                     />
