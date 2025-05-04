@@ -1,0 +1,99 @@
+В веб приложении на основе Laravel 12 есть маршруты:
+routes/api.php
+<?php
+
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LessonController;
+use App\Http\Controllers\TestController;
+use Illuminate\Support\Facades\Route;
+
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/logout', [AuthController::class, 'logout']);
+
+    Route::prefix('lessons')->group(function () {
+        Route::get('/{language}/{lessonNumber}', [LessonController::class, 'show']);
+        Route::post('/generate', [LessonController::class, 'generate']);
+        Route::post('/progress', [LessonController::class, 'saveProgress']);
+    });
+
+    Route::prefix('test')->group(function () {
+        Route::get('/text', [TestController::class, 'getTestText']);
+        Route::post('/upload', [TestController::class, 'uploadText']);
+        Route::post('/result', [TestController::class, 'saveResult']);
+    });
+});
+routes/web.php
+<?php
+
+use Illuminate\Support\Facades\Route;
+
+Route::get('/', function () {
+    return view('app');
+});
+Изучи информацию о том, как Laravel предлагает давать имена маршрутам. Нужно дать всем маршрутам имена. Выведи полностью обновленный код всех файлов.
+
+
+
+
+В Laravel рекомендуется давать имена маршрутам с использованием метода name(), чтобы упростить их использование в коде (например, при генерации URL или редиректах). Имена маршрутов обычно следуют понятной и последовательной структуре, отражающей их назначение. Для API маршрутов принято использовать имена, начинающиеся с api., а для веб-маршрутов — более общие названия. Имена должны быть уникальными и описательными, часто используя snake_case или точку для разделения слов.
+
+Ниже приведены обновленные файлы routes/api.php и routes/web.php с добавленными именами для всех маршрутов. Имена выбраны в соответствии с назначением маршрутов и лучшими практиками Laravel.
+
+php
+
+Копировать
+<?php
+
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LessonController;
+use App\Http\Controllers\TestController;
+use Illuminate\Support\Facades\Route;
+
+Route::post('/register', [AuthController::class, 'register'])->name('api.register');
+Route::post('/login', [AuthController::class, 'login'])->name('api.login');
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/logout', [AuthController::class, 'logout'])->name('api.logout');
+
+    Route::prefix('lessons')->group(function () {
+        Route::get('/{language}/{lessonNumber}', [LessonController::class, 'show'])->name('api.lessons.show');
+        Route::post('/generate', [LessonController::class, 'generate'])->name('api.lessons.generate');
+        Route::post('/progress', [LessonController::class, 'saveProgress'])->name('api.lessons.progress');
+    });
+
+    Route::prefix('test')->group(function () {
+        Route::get('/text', [TestController::class, 'getTestText'])->name('api.test.text');
+        Route::post('/upload', [TestController::class, 'uploadText'])->name('api.test.upload');
+        Route::post('/result', [TestController::class, 'saveResult'])->name('api.test.result');
+    });
+});
+Показать в боковой панели
+php
+
+Копировать
+<?php
+
+use Illuminate\Support\Facades\Route;
+
+Route::get('/', function () {
+    return view('app');
+})->name('home');
+Показать в боковой панели
+
+
+
+
+
+
+Чем я могу помочь?
+
+
+DeepSearch
+
+
+Think
+
+Grok 3
