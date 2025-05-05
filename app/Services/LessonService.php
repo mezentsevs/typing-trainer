@@ -185,9 +185,11 @@ class LessonService
 
         $lines = explode("\n", $text);
         $lines = array_map('rtrim', $lines);
-        $text = implode("\n", $lines);
+        $text = implode("\n", array_filter($lines, function($line) {
+            return !empty($line);
+        }));
 
-        return mb_substr($text, 0, $length);
+        return rtrim(mb_substr($text, 0, $length), "\n");
     }
 
     /**
