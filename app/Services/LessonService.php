@@ -8,6 +8,10 @@ use Random\RandomException;
 
 class LessonService
 {
+    protected const array VALID_SPECIALS_EN = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '[', ']', '{', '}', '|', '/', '\\', ':', '"', '\'', '<', '>', '?', '~', '`', ',', '.', ';'];
+
+    protected const array VALID_SPECIALS_RU = ['!', '"', '№', ';', '%', ':', '?', '*', '(', ')', '-', '_', '=', '+', '/', '\\', ',', '.'];
+
     protected array $introductionOrder = [
         'en' => [
             'a', 's', 'd', 'f', 'j', 'k', 'l', ';',
@@ -17,7 +21,7 @@ class LessonService
             'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P',
             'H', 'G', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', ',', '.', '/',
             '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=',
-            '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', '[', ']', '{', '}', '|', '\\', ':', '"', '\'', '<', '>', '?', '~', '`'
+            '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', '[', ']', '{', '}', '|', '\\', ':', '"', '\'', '<', '>', '?', '~', '`',
         ],
         'ru' => [
             'ф', 'ы', 'в', 'а', 'о', 'л', 'д', 'ж',
@@ -29,7 +33,7 @@ class LessonService
             'Я', 'Ч', 'С', 'М', 'И', 'Т', 'Ь', 'Б', 'Ю', 'П', 'Р', 'Э',
             'Ё',
             '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=',
-            '!', '"', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', '[', ']', '{', '}', '|', '/', ',', '.', '<', '>', '?', ':', ';'
+            '!', '"', '№', ';', '%', ':', '?', '*', '(', ')', '_', '+', '/', '\\', ',', '.',
         ],
     ];
 
@@ -270,8 +274,14 @@ class LessonService
             }
         }
 
-        $availableSpecials = array_filter($availableCharsArray, function ($char) {
-            return !preg_match('/[a-zA-Z0-9А-яёЁ]/u', $char);
+        $availableSpecials = array_filter($availableCharsArray, function ($char) use ($language) {
+            $validSpecials = match ($language) {
+                'en' => self::VALID_SPECIALS_EN,
+                'ru' => self::VALID_SPECIALS_RU,
+                default => [],
+            };
+
+            return in_array($char, $validSpecials);
         });
 
         $pairedSymbols = array_merge(array_keys($this->pairedMap), array_values($this->pairedMap));
