@@ -128,9 +128,10 @@ const props = defineProps<{
     language: 'en' | 'ru';
     typed: string;
     text: string;
+    isMinimized?: boolean;
 }>();
 
-const isMinimized = ref(false);
+const isMinimized = ref(props.isMinimized ?? false);
 
 const keyboardLayouts: Record<'en' | 'ru', { value: string; display: string; special?: string; specialPosition?: 'top-left' | 'top-right'; width?: number; zone?: 'left' | 'right' }[][]> = {
     en: [

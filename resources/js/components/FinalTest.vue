@@ -29,7 +29,7 @@
                     rows="4"
                     spellcheck="false"
                 />
-                <VirtualKeyboard :language="language as 'en' | 'ru'" :typed :text />
+                <VirtualKeyboard :language="language as 'en' | 'ru'" :typed :text :is-minimized="true" />
                 <div v-if="isTestCompleted" class="flex justify-center mt-2">
                     <router-link to="/" class="bg-blue-500 text-white p-2 rounded">Back to Home</router-link>
                 </div>
