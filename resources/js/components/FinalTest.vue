@@ -44,7 +44,7 @@ import Statistics from './Statistics.vue';
 import VirtualKeyboard from './VirtualKeyboard.vue';
 import axios from 'axios';
 import { getCurrentTypingUnit } from '@/helpers/StringHelper';
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed } from 'vue';
 import { scrollToCurrentChar } from '@/helpers/DomHelper';
 import { useRoute } from 'vue-router';
 
@@ -109,6 +109,15 @@ const uploadFile = async (event: Event) => {
 const handleInput = async () => {
     if (!startTime.value) { startTime.value = Date.now(); }
 
+    const typedChars = typed.value.split('');
+    let errorCount = 0;
+
+    for (let i = 0; i < Math.min(typedChars.length, text.value.length); i++) {
+        if (typedChars[i] !== text.value[i]) { errorCount++; }
+    }
+
+    errors.value = errorCount;
+
     if (typed.value.length >= text.value.length) {
         typed.value = typed.value.slice(0, text.value.length);
         isTestCompleted.value = true;
@@ -122,15 +131,6 @@ const handleInput = async () => {
 
         return;
     }
-
-    const typedChars = typed.value.split('');
-    let errorCount = 0;
-
-    for (let i = 0; i < typedChars.length; i++) {
-        if (typedChars[i] !== text.value[i]) { errorCount++; }
-    }
-
-    errors.value = errorCount;
 
     time.value = Math.round((Date.now() - startTime.value) / 1000);
     const words = typed.value.length / 5;
