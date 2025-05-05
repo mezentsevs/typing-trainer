@@ -74,7 +74,11 @@ const isCurrentWord = computed(() => {
     return arr;
 });
 
-const progress = computed(() => text.value.length ? Math.round((typed.value.length / text.value.length) * 100) : 0);
+const progress = computed(() => {
+    if (isTestCompleted.value) { return 100; }
+
+    return text.value.length ? Math.floor((typed.value.length / text.value.length) * 100) : 0;
+});
 
 const fetchText = async (selectedGenre: string) => {
     genre.value = selectedGenre;

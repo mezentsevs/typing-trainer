@@ -94,7 +94,11 @@ const isCurrentWord = computed(() => {
 
 const nextLesson = computed(() => (totalLessons.value - lessonNumber.value) ? lessonNumber.value + 1 : 0);
 
-const progress = computed(() => text.value.length ? Math.round((typed.value.length / text.value.length) * 100) : 0);
+const progress = computed(() => {
+    if (isLessonCompleted.value) { return 100; }
+
+    return text.value.length ? Math.floor((typed.value.length / text.value.length) * 100) : 0;
+});
 
 const resetState = () => {
     errors.value = 0;
