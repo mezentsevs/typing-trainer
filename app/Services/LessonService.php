@@ -8,6 +8,8 @@ use Random\RandomException;
 
 class LessonService
 {
+    protected const string ENCODING = 'UTF-8';
+
     protected const array INTRODUCTION_ORDER = [
         'en' => [
             'a', 's', 'd', 'f', 'j', 'k', 'l', ';',
@@ -120,8 +122,8 @@ class LessonService
      */
     public function generateLessonText(string $language, int $lessonNumber, int $totalLessons, string $availableChars, string $newChars, ?int $length = null): string
     {
-        $availableCharsArray = mb_str_split($availableChars, 1, 'UTF-8');
-        $newCharsArray = mb_str_split($newChars, 1, 'UTF-8');
+        $availableCharsArray = mb_str_split($availableChars, 1, self::ENCODING);
+        $newCharsArray = mb_str_split($newChars, 1, self::ENCODING);
 
         if (empty($availableCharsArray)) {
             return '';
