@@ -55,6 +55,8 @@ class LessonService
         '`' => '`'
     ];
 
+    protected const array PUNCTUATION = [',', '.', ';', ':', '!', '?'];
+
     protected const int MIN_LESSON_LENGTH = 100;
 
     protected const int MAX_LESSON_LENGTH = 300;
@@ -376,6 +378,6 @@ class LessonService
 
     private function isPunctuation(string $char): bool
     {
-        return in_array($char, [',', '.', ';', ':', '!', '?']);
+        return in_array($char, self::PUNCTUATION);
     }
 }
