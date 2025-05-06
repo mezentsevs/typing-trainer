@@ -10,6 +10,8 @@ class LessonService
 {
     protected const string ENCODING = 'UTF-8';
 
+    protected const string DEFAULT_LANGUAGE = 'en';
+
     protected const array INTRODUCTION_ORDER = [
         'en' => [
             'a', 's', 'd', 'f', 'j', 'k', 'l', ';',
@@ -72,7 +74,7 @@ class LessonService
      */
     public function generateLessons(string $language, int $lessonCount, int $userId): void
     {
-        $chars = self::INTRODUCTION_ORDER[$language] ?? self::INTRODUCTION_ORDER['en'];
+        $chars = self::INTRODUCTION_ORDER[$language] ?? self::INTRODUCTION_ORDER[self::DEFAULT_LANGUAGE];
         $totalChars = count($chars);
 
         Lesson::where('user_id', $userId)->where('language', $language)->delete();
