@@ -51,9 +51,9 @@ class LessonService
 
     protected const int MAX_LESSON_LENGTH = 300;
 
-    protected int $minWordsPerLine = 2;
+    protected const int MIN_WORDS_PER_LINE = 2;
 
-    protected int $maxWordsPerLine = 8;
+    protected const int MAX_WORDS_PER_LINE = 8;
 
     /**
      * @throws RandomException
@@ -128,7 +128,7 @@ class LessonService
         $text = '';
         $wordsAdded = 0;
         $lineWordCount = 0;
-        $currentLineWords = random_int($this->minWordsPerLine, $this->maxWordsPerLine);
+        $currentLineWords = random_int(self::MIN_WORDS_PER_LINE, self::MAX_WORDS_PER_LINE);
         $isFirstOfPair = true;
         $baseWord = null;
 
@@ -137,7 +137,7 @@ class LessonService
                 if ($lineWordCount >= $currentLineWords) {
                     $separator = "\n";
                     $lineWordCount = 0;
-                    $currentLineWords = random_int($this->minWordsPerLine, $this->maxWordsPerLine);
+                    $currentLineWords = random_int(self::MIN_WORDS_PER_LINE, self::MAX_WORDS_PER_LINE);
                 } else {
                     $separator = ' ';
                 }
@@ -169,7 +169,7 @@ class LessonService
                 if ($lineWordCount + 2 > $currentLineWords) {
                     $text .= "\n";
                     $lineWordCount = 0;
-                    $currentLineWords = random_int($this->minWordsPerLine, $this->maxWordsPerLine);
+                    $currentLineWords = random_int(self::MIN_WORDS_PER_LINE, self::MAX_WORDS_PER_LINE);
                 }
             } else {
                 $currentWord = $baseWord;
