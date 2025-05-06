@@ -8,9 +8,9 @@ use Random\RandomException;
 
 class LessonService
 {
-    protected const array VALID_SPECIALS_EN = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '[', ']', '{', '}', '|', '/', '\\', ':', '"', '\'', '<', '>', '?', '~', '`', ',', '.', ';'];
+    protected const array SPECIALS_EN = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '[', ']', '{', '}', '|', '/', '\\', ':', '"', '\'', '<', '>', '?', '~', '`', ',', '.', ';'];
 
-    protected const array VALID_SPECIALS_RU = ['!', '"', '№', ';', '%', ':', '?', '*', '(', ')', '-', '_', '=', '+', '/', '\\', ',', '.'];
+    protected const array SPECIALS_RU = ['!', '"', '№', ';', '%', ':', '?', '*', '(', ')', '-', '_', '=', '+', '/', '\\', ',', '.'];
 
     protected array $introductionOrder = [
         'en' => [
@@ -276,8 +276,8 @@ class LessonService
 
         $availableSpecials = array_filter($availableCharsArray, function ($char) use ($language) {
             $validSpecials = match ($language) {
-                'en' => self::VALID_SPECIALS_EN,
-                'ru' => self::VALID_SPECIALS_RU,
+                'en' => self::SPECIALS_EN,
+                'ru' => self::SPECIALS_RU,
                 default => [],
             };
 
