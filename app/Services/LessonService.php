@@ -47,9 +47,12 @@ class LessonService
         '`' => '`'
     ];
 
-    protected int $minLessonLength = 100;
-    protected int $maxLessonLength = 300;
+    protected const int MIN_LESSON_LENGTH = 100;
+
+    protected const int MAX_LESSON_LENGTH = 300;
+
     protected int $minWordsPerLine = 2;
+
     protected int $maxWordsPerLine = 8;
 
     /**
@@ -116,9 +119,9 @@ class LessonService
 
         if ($length === null) {
             if ($totalLessons <= 1) {
-                $length = $this->minLessonLength;
+                $length = self::MIN_LESSON_LENGTH;
             } else {
-                $length = $this->minLessonLength + ($this->maxLessonLength - $this->minLessonLength) * ($lessonNumber - 1) / ($totalLessons - 1);
+                $length = self::MIN_LESSON_LENGTH + (self::MAX_LESSON_LENGTH - self::MIN_LESSON_LENGTH) * ($lessonNumber - 1) / ($totalLessons - 1);
             }
         }
 
