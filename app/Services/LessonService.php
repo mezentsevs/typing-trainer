@@ -300,7 +300,7 @@ class LessonService
         $pairedSymbols = array_merge(array_keys(self::PAIRED), array_values(self::PAIRED));
         $singleSpecials = array_diff($availableSpecials, $pairedSymbols);
 
-        $possiblePairedOpenings = ['(', '[', '{', '<', '"', "'", '`'];
+        $possiblePairedOpenings = array_keys(self::PAIRED);
         $availablePairedOpenings = array_intersect($possiblePairedOpenings, $availableSpecials);
         $availablePaired = [];
 
