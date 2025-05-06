@@ -37,7 +37,7 @@ class LessonService
 
     protected const array SPECIALS_RU = ['!', '"', '№', ';', '%', ':', '?', '*', '(', ')', '-', '_', '=', '+', '/', '\\', ',', '.'];
 
-    protected array $pairedMap = [
+    protected const array PAIRED = [
         '(' => ')',
         '[' => ']',
         '{' => '}',
@@ -284,7 +284,7 @@ class LessonService
             return in_array($char, $validSpecials);
         });
 
-        $pairedSymbols = array_merge(array_keys($this->pairedMap), array_values($this->pairedMap));
+        $pairedSymbols = array_merge(array_keys(self::PAIRED), array_values(self::PAIRED));
         $singleSpecials = array_diff($availableSpecials, $pairedSymbols);
 
         $possiblePairedOpenings = ['(', '[', '{', '<', '"', "'", '`'];
@@ -292,7 +292,7 @@ class LessonService
         $availablePaired = [];
 
         foreach ($availablePairedOpenings as $opening) {
-            if (in_array($this->pairedMap[$opening], $availableSpecials)) {
+            if (in_array(self::PAIRED[$opening], $availableSpecials)) {
                 $availablePaired[] = $opening;
             }
         }
@@ -323,7 +323,7 @@ class LessonService
             return $position == 'start' ? $special . $letterPart : $letterPart . $special;
         } else {
             $opening = $availablePaired[array_rand($availablePaired)];
-            $closing = $this->pairedMap[$opening];
+            $closing = self::PAIRED[$opening];
 
             return $opening . $letterPart . $closing;
         }
