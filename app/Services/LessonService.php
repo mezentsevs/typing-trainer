@@ -12,7 +12,7 @@ class LessonService
 
     protected const array SPECIALS_RU = ['!', '"', '№', ';', '%', ':', '?', '*', '(', ')', '-', '_', '=', '+', '/', '\\', ',', '.'];
 
-    protected array $introductionOrder = [
+    protected const array INTRODUCTION_ORDER = [
         'en' => [
             'a', 's', 'd', 'f', 'j', 'k', 'l', ';',
             'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p',
@@ -57,7 +57,7 @@ class LessonService
      */
     public function generateLessons(string $language, int $lessonCount, int $userId): void
     {
-        $chars = $this->introductionOrder[$language] ?? $this->introductionOrder['en'];
+        $chars = self::INTRODUCTION_ORDER[$language] ?? self::INTRODUCTION_ORDER['en'];
         $totalChars = count($chars);
 
         Lesson::where('user_id', $userId)->where('language', $language)->delete();
@@ -74,8 +74,8 @@ class LessonService
                 $newChars[] = array_shift($chars);
             }
 
-            if (empty($newChars) && !empty($this->introductionOrder[$language])) {
-                $newChars = $this->introductionOrder[$language];
+            if (empty($newChars) && !empty(self::INTRODUCTION_ORDER[$language])) {
+                $newChars = self::INTRODUCTION_ORDER[$language];
             }
 
             $newCharsString = implode('', $newChars);
