@@ -356,13 +356,11 @@ class LessonService
 
     private function getConsonants(string $language): array
     {
-        if ($language == 'ru') {
-            return array_diff($this->getRussianLetters(), $this->getVowels('ru'));
-        } elseif ($language == 'en') {
-            return array_diff($this->getEnglishLetters(), $this->getVowels('en'));
-        }
-
-        return [];
+        return match ($language) {
+            'en' => array_diff($this->getEnglishLetters(), $this->getVowels('en')),
+            'ru' => array_diff($this->getRussianLetters(), $this->getVowels('ru')),
+            default => [],
+        };
     }
 
     private function getRussianLetters(): array
