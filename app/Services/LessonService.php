@@ -246,11 +246,11 @@ class LessonService
         $letterPart = '';
 
         if (!empty($availableVowels) && !empty($availableConsonants)) {
-            $startType = rand(0, 1) == 0 ? 'V' : 'C';
-            $startSet = $startType == 'V' ? $availableVowels : $availableConsonants;
-            $startSetNew = $startType == 'V' ? $newVowels : $newConsonants;
-            $otherSet = $startType == 'V' ? $availableConsonants : $availableVowels;
-            $otherSetNew = $startType == 'V' ? $newConsonants : $newVowels;
+            $startType = rand(0, 1) === 0 ? 'V' : 'C';
+            $startSet = $startType === 'V' ? $availableVowels : $availableConsonants;
+            $startSetNew = $startType === 'V' ? $newVowels : $newConsonants;
+            $otherSet = $startType === 'V' ? $availableConsonants : $availableVowels;
+            $otherSetNew = $startType === 'V' ? $newConsonants : $newVowels;
         } elseif (!empty($availableVowels)) {
             $startSet = $availableVowels;
             $startSetNew = $newVowels;
@@ -266,8 +266,8 @@ class LessonService
         }
 
         for ($i = 0; $i < $wordLength; $i++) {
-            $set = ($i % 2 == 0) ? $startSet : $otherSet;
-            $setNew = ($i % 2 == 0) ? $startSetNew : $otherSetNew;
+            $set = ($i % 2 === 0) ? $startSet : $otherSet;
+            $setNew = ($i % 2 === 0) ? $startSetNew : $otherSetNew;
 
             if (empty($set)) {
                 $set = $availableLetters;
@@ -326,18 +326,18 @@ class LessonService
 
         $type = $totalOptions[array_rand($totalOptions)];
 
-        if ($type == 'none') {
+        if ($type === 'none') {
             return $letterPart;
-        } elseif ($type == 'single') {
+        } elseif ($type === 'single') {
             $special = $singleSpecials[array_rand($singleSpecials)];
 
             if ($this->isPunctuation($special)) {
                 return $letterPart . $special;
             }
 
-            $position = rand(0, 1) == 0 ? 'start' : 'end';
+            $position = rand(0, 1) === 0 ? 'start' : 'end';
 
-            return $position == 'start' ? $special . $letterPart : $letterPart . $special;
+            return $position === 'start' ? $special . $letterPart : $letterPart . $special;
         } else {
             $opening = $availablePaired[array_rand($availablePaired)];
             $closing = self::PAIRED[$opening];
