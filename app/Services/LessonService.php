@@ -340,9 +340,20 @@ class LessonService
         }
     }
 
-    private function isPunctuation(string $char): bool
+    private function getEnglishLetters(): array
     {
-        return in_array($char, [',', '.', ';', ':', '!', '?']);
+        return array_merge(
+            range('a', 'z'),
+            range('A', 'Z'),
+        );
+    }
+
+    private function getRussianLetters(): array
+    {
+        return array_merge(
+            self::LETTERS_LC_RU,
+            self::LETTERS_UC_RU,
+        );
     }
 
     private function getVowels(string $language): array
@@ -363,19 +374,8 @@ class LessonService
         };
     }
 
-    private function getRussianLetters(): array
+    private function isPunctuation(string $char): bool
     {
-        return array_merge(
-            self::LETTERS_LC_RU,
-            self::LETTERS_UC_RU,
-        );
-    }
-
-    private function getEnglishLetters(): array
-    {
-        return array_merge(
-            range('a', 'z'),
-            range('A', 'Z'),
-        );
+        return in_array($char, [',', '.', ';', ':', '!', '?']);
     }
 }
