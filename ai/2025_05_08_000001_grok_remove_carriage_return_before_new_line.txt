@@ -1,0 +1,547 @@
+В веб приложении для тренировки навыка слепой печати есть финальный тест. Предоставляю контекстные данные для выполнения задачи:
+routes/api.php
+<?php
+
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LessonController;
+use App\Http\Controllers\TestController;
+use Illuminate\Support\Facades\Route;
+
+Route::post('/register', [AuthController::class, 'register'])->name('api.register');
+Route::post('/login', [AuthController::class, 'login'])->name('api.login');
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/logout', [AuthController::class, 'logout'])->name('api.logout');
+
+    Route::prefix('lessons')->group(function () {
+        Route::get('/{language}/{lessonNumber}', [LessonController::class, 'show'])->name('api.lessons.show');
+        Route::post('/generate', [LessonController::class, 'generate'])->name('api.lessons.generate');
+        Route::post('/progress', [LessonController::class, 'saveProgress'])->name('api.lessons.progress');
+    });
+
+    Route::prefix('test')->group(function () {
+        Route::get('/text', [TestController::class, 'getTestText'])->name('api.test.text');
+        Route::post('/upload', [TestController::class, 'uploadText'])->name('api.test.upload');
+        Route::post('/result', [TestController::class, 'saveResult'])->name('api.test.result');
+    });
+});
+app/Http/Controllers/TestController.php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\TestResult;
+use App\Services\TestService;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+
+class TestController extends Controller
+{
+    public function __construct(protected TestService $testService) {}
+
+    public function getTestText(Request $request): JsonResponse
+    {
+        $request->validate([
+            'language' => 'required|string',
+            'genre' => 'nullable|string',
+        ]);
+
+        return response()->json(['text' => $this->testService->getTestText(auth()->id(), $request->language, $request->genre)]);
+    }
+
+    public function uploadText(Request $request): JsonResponse
+    {
+        $request->validate([
+            'language' => 'required|string',
+            'file' => 'required|file|mimes:txt',
+        ]);
+
+        return response()->json([
+            'message' => 'File uploaded',
+            'path' => $request->file('file')->storeAs('uploads', "test_" . auth()->id() . "_{$request->language}.txt", 'public'),
+        ]);
+    }
+
+    public function saveResult(Request $request): JsonResponse
+    {
+        $request->validate([
+            'language' => 'required|string',
+            'time_seconds' => 'required|integer',
+            'speed_wpm' => 'required|integer',
+            'errors' => 'required|integer',
+        ]);
+
+        return response()->json(TestResult::create([
+            'user_id' => auth()->id(),
+            'language' => $request->language,
+            'time_seconds' => $request->time_seconds,
+            'speed_wpm' => $request->speed_wpm,
+            'errors' => $request->errors,
+        ]));
+    }
+}
+app/Services/TestService.php
+<?php
+
+namespace App\Services;
+
+use App\Helpers\StringHelper;
+use App\Models\TestText;
+use Exception;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
+
+class TestService
+{
+    public function getTestText(int $userId, string $language, ?string $genre = null): string
+    {
+        $filePath = "uploads/test_{$userId}_{$language}.txt";
+
+        if (Storage::disk('public')->exists($filePath)) {
+            if (Storage::disk('public')->lastModified($filePath) < now()->subMinute()->timestamp) {
+                Storage::disk('public')->delete($filePath);
+            } else {
+                return StringHelper::sanitize(Storage::disk('public')->get($filePath));
+            }
+        }
+
+        if (config('services.grok.key') && $genre) {
+            try {
+                $response = Http::withHeaders([
+                    'Authorization' => 'Bearer ' . config('services.grok.key'),
+                ])->post('https://api.x.ai/v1/generate', [
+                    'prompt' => "Generate a 500-word text in $language for typing practice in the $genre genre.",
+                ]);
+
+                if ($response->successful()) {
+                    return StringHelper::sanitize($response->json()['text']);
+                }
+            } catch (Exception $e) {
+                logger()->error($e->getMessage());
+            }
+        }
+
+        $query = TestText::where('language', $language);
+
+        if ($genre) {
+            $query->where('genre', $genre);
+        }
+
+        $text = $query->inRandomOrder()->first();
+
+        return $text ? $text->text : 'No text available for the selected language and genre.';
+    }
+}
+app/Helpers/StringHelper.php
+<?php
+
+namespace App\Helpers;
+
+class StringHelper
+{
+    public static function sanitize(string $rawString, string $encoding = 'UTF-8'): string
+    {
+        $detectedEncoding = mb_detect_encoding($rawString, mb_list_encodings(), true);
+
+        if (!$detectedEncoding) { return ''; }
+
+        $result = $detectedEncoding !== $encoding
+            ? mb_convert_encoding($rawString, $encoding, $detectedEncoding)
+            : $rawString;
+
+        return trim(htmlspecialchars(strip_tags($result), ENT_QUOTES | ENT_HTML5, $encoding));
+    }
+}
+resources/js/components/FinalTestSetup.vue
+<template>
+    <div class="w-1/2 mx-auto my-4 border border-opacity-50 rounded-lg p-4">
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold">Genre (optional)</label>
+            <select v-model="genre" class="p-2 border rounded w-full text-sm">
+                <option value="">None</option>
+                <option value="fiction">Fiction</option>
+                <option value="non-fiction">Non-fiction</option>
+                <option value="poetry">Poetry</option>
+            </select>
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold">Upload Text (optional)</label>
+            <input type="file" accept=".txt" @change="uploadFile" class="p-2 border rounded w-full text-sm" />
+        </div>
+        <button @click="$emit('start-test', genre)" class="bg-blue-500 text-white p-2 rounded w-full text-sm">
+            Start Test
+        </button>
+    </div>
+</template>
+
+<script lang="ts" setup>
+import { ref } from 'vue';
+
+const genre = ref('');
+
+defineProps<{
+    uploadFile: (event: Event) => void;
+}>();
+
+defineEmits<{
+    (e: 'start-test', genre: string): void;
+}>();
+</script>
+resources/js/components/FinalTest.vue
+<template>
+    <div class="min-h-screen bg-gray-100 p-8">
+        <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
+            <div class="relative flex items-center mb-4">
+                <h2 class="text-2xl font-bold">Final Test</h2>
+                <span v-if="isTestCompleted"
+                      class="absolute left-1/2 transform -translate-x-1/2 text-green-500 text-3xl font-bold"
+                >
+                    Completed!
+                </span>
+            </div>
+            <FinalTestSetup v-if="!text" :upload-file="uploadFile" @start-test="fetchText" />
+            <Statistics v-if="text" :language :time :speed :errors :progress />
+            <div v-if="text" class="mt-4">
+                <div ref="textContainer" class="text-lg font-mono break-words whitespace-pre-wrap h-28 overflow-y-auto bg-gray-50 p-2">
+                    <span v-for="(char, index) in text"
+                          :key="index"
+                          :class="{ 'error-char': typed[index] && typed[index] !== char, 'current-word': isCurrentWord[index], 'space': char === ' ', 'line-break': char === '\n' }"
+                    >
+                        {{ char }}
+                    </span>
+                </div>
+                <textarea
+                    v-model="typed"
+                    v-focus
+                    @input="handleInput"
+                    class="w-full p-2 border rounded mt-4 resize-none"
+                    :disabled="isTestCompleted"
+                    rows="4"
+                    spellcheck="false"
+                />
+                <VirtualKeyboard :language="language as 'en' | 'ru'" :typed :text :is-minimized="true" />
+                <div v-if="isTestCompleted" class="flex justify-center mt-2">
+                    <router-link to="/" class="bg-blue-500 text-white p-2 rounded">Back to Home</router-link>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script lang="ts" setup>
+import FinalTestSetup from './FinalTestSetup.vue';
+import Statistics from './Statistics.vue';
+import VirtualKeyboard from './VirtualKeyboard.vue';
+import axios from 'axios';
+import { getCurrentTypingUnit } from '@/helpers/StringHelper';
+import { ref, computed } from 'vue';
+import { scrollToCurrentChar } from '@/helpers/DomHelper';
+import { useRoute } from 'vue-router';
+
+const route = useRoute();
+
+const errors = ref(0);
+const genre = ref('');
+const isTestCompleted = ref(false);
+const language = ref(route.params.language as string);
+const speed = ref(0);
+const startTime = ref(0);
+const text = ref('');
+const textContainer = ref<HTMLElement | null>(null);
+const time = ref(0);
+const typed = ref('');
+
+const currentTypingUnit = computed(() => getCurrentTypingUnit(text.value, typed.value.length));
+
+const isCurrentWord = computed(() => {
+    const range = currentTypingUnit.value;
+    const arr = Array(text.value.length).fill(false);
+
+    if (!range) { return arr; }
+
+    for (let i = range.start; i <= range.end; i++) { arr[i] = true; }
+
+    return arr;
+});
+
+const progress = computed(() => {
+    if (isTestCompleted.value) { return 100; }
+
+    return text.value.length ? Math.floor((typed.value.length / text.value.length) * 100) : 0;
+});
+
+const fetchText = async (selectedGenre: string) => {
+    genre.value = selectedGenre;
+
+    const response = await axios.get('/test/text', { params: { language: language.value, genre: genre.value } });
+
+    text.value = response.data.text;
+
+    errors.value = 0;
+    isTestCompleted.value = false;
+    speed.value = 0;
+    startTime.value = 0;
+    time.value = 0;
+    typed.value = '';
+};
+
+const uploadFile = async (event: Event) => {
+    const file = (event.target as HTMLInputElement).files?.[0];
+
+    if (file) {
+        const formData = new FormData();
+
+        formData.append('file', file);
+        formData.append('language', language.value);
+
+        await axios.post('/test/upload', formData);
+        await fetchText(genre.value);
+    }
+};
+
+//TODO: move duplications in Lesson.vue and FinalTest.vue to helper if possible
+const handleInput = async () => {
+    if (!startTime.value) { startTime.value = Date.now(); }
+
+    const typedChars = typed.value.split('');
+    let errorCount = 0;
+
+    for (let i = 0; i < Math.min(typedChars.length, text.value.length); i++) {
+        if (typedChars[i] !== text.value[i]) { errorCount++; }
+    }
+
+    errors.value = errorCount;
+
+    if (typed.value.length >= text.value.length) {
+        typed.value = typed.value.slice(0, text.value.length);
+        isTestCompleted.value = true;
+
+        await axios.post('/test/result', {
+            language: language.value,
+            time_seconds: time.value,
+            speed_wpm: speed.value,
+            errors: errors.value,
+        });
+
+        return;
+    }
+
+    time.value = Math.round((Date.now() - startTime.value) / 1000);
+    const words = typed.value.length / 5;
+    speed.value = time.value > 0 ? Math.round((words / time.value) * 60) : 0;
+
+    scrollToCurrentChar(textContainer.value, typed.value.length);
+};
+</script>
+Сейчас при загрузке пользователем файла в отличной от UTF-8 кодировке с содержимым:TEST & TEST > TEST
+TEST < TEST ~!@#$%^&*/\| TEST
+TEST TEST TEST
+-
+<p>TEST TEST TEST</p>
+<b>TEST TEST TEST</b>
+<h1>TEST TEST TEST</h1>
+на странице финального теста получаем такой html:<div class="text-lg font-mono break-words whitespace-pre-wrap h-28 overflow-y-auto bg-gray-50 p-2"><span class="current-word">T</span><span class="current-word">E</span><span class="current-word">S</span><span class="current-word">T</span><span class="space"> </span><span class="">&amp;</span><span class="">a</span><span class="">m</span><span class="">p</span><span class="">;</span><span class="space"> </span><span class="">T</span><span class="">E</span><span class="">S</span><span class="">T</span><span class="space"> </span><span class="">&amp;</span><span class="">g</span><span class="">t</span><span class="">;</span><span class="space"> </span><span class="">T</span><span class="">E</span><span class="">S</span><span class="">T</span><span class="">
+</span><span class="line-break">
+</span><span class="">T</span><span class="">E</span><span class="">S</span><span class="">T</span><span class="space"> </span><span class="">&amp;</span><span class="">l</span><span class="">t</span><span class="">;</span><span class="space"> </span><span class="">T</span><span class="">E</span><span class="">S</span><span class="">T</span><span class="space"> </span><span class="">~</span><span class="">!</span><span class="">@</span><span class="">#</span><span class="">$</span><span class="">%</span><span class="">^</span><span class="">&amp;</span><span class="">a</span><span class="">m</span><span class="">p</span><span class="">;</span><span class="">*</span><span class="">/</span><span class="">\</span><span class="">|</span><span class="space"> </span><span class="">T</span><span class="">E</span><span class="">S</span><span class="">T</span><span class="">
+</span><span class="line-break">
+</span><span class="">T</span><span class="">E</span><span class="">S</span><span class="">T</span><span class="space"> </span><span class="">T</span><span class="">E</span><span class="">S</span><span class="">T</span><span class="space"> </span><span class="">T</span><span class="">E</span><span class="">S</span><span class="">T</span><span class="">
+</span><span class="line-break">
+</span><span class="">-</span><span class="">
+</span><span class="line-break">
+</span><span class="">T</span><span class="">E</span><span class="">S</span><span class="">T</span><span class="space"> </span><span class="">T</span><span class="">E</span><span class="">S</span><span class="">T</span><span class="space"> </span><span class="">T</span><span class="">E</span><span class="">S</span><span class="">T</span><span class="">
+</span><span class="line-break">
+</span><span class="">T</span><span class="">E</span><span class="">S</span><span class="">T</span><span class="space"> </span><span class="">T</span><span class="">E</span><span class="">S</span><span class="">T</span><span class="space"> </span><span class="">T</span><span class="">E</span><span class="">S</span><span class="">T</span><span class="">
+</span><span class="line-break">
+</span><span class="">T</span><span class="">E</span><span class="">S</span><span class="">T</span><span class="space"> </span><span class="">T</span><span class="">E</span><span class="">S</span><span class="">T</span><span class="space"> </span><span class="">T</span><span class="">E</span><span class="">S</span><span class="">T</span></div>
+
+Перед символом перевода строки добавляется дополнительный элемент, которого нет в исходном тексте. Нужно это исправить с минимальными изменениями в коде. В коде не должно быть комментариев. Выведи полный обновленный код всех измененных файлов.
+
+
+
+
+vue
+
+Копировать
+<template>
+    <div class="min-h-screen bg-gray-100 p-8">
+        <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
+            <div class="relative flex items-center mb-4">
+                <h2 class="text-2xl font-bold">Final Test</h2>
+                <span v-if="isTestCompleted"
+                      class="absolute left-1/2 transform -translate-x-1/2 text-green-500 text-3xl font-bold"
+                >
+                    Completed!
+                </span>
+            </div>
+            <FinalTestSetup v-if="!text" :upload-file="uploadFile" @start-test="fetchText" />
+            <Statistics v-if="text" :language :time :speed :errors :progress />
+            <div v-if="text" class="mt-4">
+                <div ref="textContainer" class="text-lg font-mono break-words whitespace-pre-wrap h-28 overflow-y-auto bg-gray-50 p-2">
+                    <span v-for="(char, index) in text"
+                          :key="index"
+                          :class="{ 'error-char': typed[index] && typed[index] !== char, 'current-word': isCurrentWord[index], 'space': char === ' ', 'line-break': char === '\n' }"
+                    >
+                        {{ char }}
+                    </span>
+                </div>
+                <textarea
+                    v-model="typed"
+                    v-focus
+                    @input="handleInput"
+                    class="w-full p-2 border rounded mt-4 resize-none"
+                    :disabled="isTestCompleted"
+                    rows="4"
+                    spellcheck="false"
+                />
+                <VirtualKeyboard :language="language as 'en' | 'ru'" :typed :text :is-minimized="true" />
+                <div v-if="isTestCompleted" class="flex justify-center mt-2">
+                    <router-link to="/" class="bg-blue-500 text-white p-2 rounded">Back to Home</router-link>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script lang="ts" setup>
+import FinalTestSetup from './FinalTestSetup.vue';
+import Statistics from './Statistics.vue';
+import VirtualKeyboard from './VirtualKeyboard.vue';
+import axios from 'axios';
+import { getCurrentTypingUnit } from '@/helpers/StringHelper';
+import { ref, computed } from 'vue';
+import { scrollToCurrentChar } from '@/helpers/DomHelper';
+import { useRoute } from 'vue-router';
+
+const route = useRoute();
+
+const errors = ref(0);
+const genre = ref('');
+const isTestCompleted = ref(false);
+const language = ref(route.params.language as string);
+const speed = ref(0);
+const startTime = ref(0);
+const text = ref('');
+const textContainer = ref<HTMLElement | null>(null);
+const time = ref(0);
+const typed = ref('');
+
+const currentTypingUnit = computed(() => getCurrentTypingUnit(text.value, typed.value.length));
+
+const isCurrentWord = computed(() => {
+    const range = currentTypingUnit.value;
+    const arr = Array(text.value.length).fill(false);
+
+    if (!range) { return arr; }
+
+    for (let i = range.start; i <= range.end; i++) { arr[i] = true; }
+
+    return arr;
+});
+
+const progress = computed(() => {
+    if (isTestCompleted.value) { return 100; }
+
+    return text.value.length ? Math.floor((typed.value.length / text.value.length) * 100) : 0;
+});
+
+const fetchText = async (selectedGenre: string) => {
+    genre.value = selectedGenre;
+
+    const response = await axios.get('/test/text', { params: { language: language.value, genre: genre.value } });
+
+    text.value = response.data.text;
+
+    errors.value = 0;
+    isTestCompleted.value = false;
+    speed.value = 0;
+    startTime.value = 0;
+    time.value = 0;
+    typed.value = '';
+};
+
+const uploadFile = async (event: Event) => {
+    const file = (event.target as HTMLInputElement).files?.[0];
+
+    if (file) {
+        const formData = new FormData();
+
+        formData.append('file', file);
+        formData.append('language', language.value);
+
+        await axios.post('/test/upload', formData);
+        await fetchText(genre.value);
+    }
+};
+
+const handleInput = async () => {
+    if (!startTime.value) { startTime.value = Date.now(); }
+
+    const typedChars = typed.value.split('');
+    let errorCount = 0;
+
+    for (let i = 0; i < Math.min(typedChars.length, text.value.length); i++) {
+        if (typedChars[i] !== text.value[i]) { errorCount++; }
+    }
+
+    errors.value = errorCount;
+
+    if (typed.value.length >= text.value.length) {
+        typed.value = typed.value.slice(0, text.value.length);
+        isTestCompleted.value = true;
+
+        await axios.post('/test/result', {
+            language: language.value,
+            time_seconds: time.value,
+            speed_wpm: speed.value,
+            errors: errors.value,
+        });
+
+        return;
+    }
+
+    time.value = Math.round((Date.now() - startTime.value) / 1000);
+    const words = typed.value.length / 5;
+    speed.value = time.value > 0 ? Math.round((words / time.value) * 60) : 0;
+
+    scrollToCurrentChar(textContainer.value, typed.value.length);
+};
+</script>
+Показать в боковой панели
+php
+
+Копировать
+<?php
+
+namespace App\Helpers;
+
+class StringHelper
+{
+    public static function sanitize(string $rawString, string $encoding = 'UTF-8'): string
+    {
+        $detectedEncoding = mb_detect_encoding($rawString, mb_list_encodings(), true);
+
+        if (!$detectedEncoding) { return ''; }
+
+        $result = $detectedEncoding !== $encoding
+            ? mb_convert_encoding($rawString, $encoding, $detectedEncoding)
+            : $rawString;
+
+        return str_replace("\r\n", "\n", trim(htmlspecialchars(strip_tags($result), ENT_QUOTES | ENT_HTML5, $encoding)));
+    }
+}
+Показать в боковой панели
+
+
+
+
+
+
+Чем я могу помочь?
+
+
+DeepSearch
+
+
+Think
+
+Grok 3
