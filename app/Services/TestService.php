@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Helpers\StringHelper;
 use App\Models\TestText;
 use Exception;
 use Illuminate\Support\Facades\Http;
@@ -17,7 +18,7 @@ class TestService
             if (Storage::disk('public')->lastModified($filePath) < now()->subMinute()->timestamp) {
                 Storage::disk('public')->delete($filePath);
             } else {
-                return Storage::disk('public')->get($filePath);
+                return StringHelper::sanitize(Storage::disk('public')->get($filePath));
             }
         }
 
@@ -30,7 +31,7 @@ class TestService
                 ]);
 
                 if ($response->successful()) {
-                    return $response->json()['text'];
+                    return StringHelper::sanitize($response->json()['text']);
                 }
             } catch (Exception $e) {
                 logger()->error($e->getMessage());
