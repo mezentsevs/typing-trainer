@@ -14,6 +14,6 @@ class StringHelper
             ? mb_convert_encoding($rawString, $encoding, $detectedEncoding)
             : $rawString;
 
-        return trim(htmlspecialchars(strip_tags($result), ENT_QUOTES | ENT_HTML5, $encoding));
+        return str_replace("\r\n", "\n", trim(htmlspecialchars(strip_tags($result), ENT_QUOTES | ENT_HTML5, $encoding)));
     }
 }
