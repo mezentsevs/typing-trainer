@@ -6,7 +6,7 @@ class StringHelper
 {
     public static function sanitize(string $rawString, string $encoding = 'UTF-8'): string
     {
-        $detectedEncoding = mb_detect_encoding($rawString, mb_list_encodings(), true);
+        $detectedEncoding = mb_detect_encoding($rawString, ['UTF-8', 'Windows-1251', 'ISO-8859-1'], true);
 
         if (!$detectedEncoding) { return ''; }
 
