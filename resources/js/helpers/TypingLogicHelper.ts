@@ -9,17 +9,13 @@ export const handleTypingInput = async (
     postUrl: string,
     payload: LessonsProgressPayloadInterface | TestResultPayloadInterface
 ): Promise<void> => {
-    if (!state.startTime.value) {
-        state.startTime.value = Date.now();
-    }
+    if (!state.startTime.value) { state.startTime.value = Date.now(); }
 
     const typedChars = state.typed.value.split('');
     let errorCount = 0;
 
     for (let i = 0; i < Math.min(typedChars.length, state.text.value.length); i++) {
-        if (typedChars[i] !== state.text.value[i]) {
-            errorCount++;
-        }
+        if (typedChars[i] !== state.text.value[i]) { errorCount++; }
     }
 
     state.errors.value = errorCount;
@@ -29,6 +25,7 @@ export const handleTypingInput = async (
         state.isCompleted.value = true;
 
         await axios.post(postUrl, payload);
+
         return;
     }
 
