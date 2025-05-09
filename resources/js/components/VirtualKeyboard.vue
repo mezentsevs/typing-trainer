@@ -2,11 +2,10 @@
     <div class="relative">
         <div
             v-if="isMinimized"
-            class="keyboard-preview flex justify-center items-center gap-2 p-2 bg-gray-50 rounded-lg cursor-pointer my-4 mx-auto"
-            style="max-width: 200px;"
+            class="keyboard-preview flex justify-center items-center gap-2 max-w-32 mx-auto my-4 p-2 bg-gray-50 rounded-lg cursor-pointer"
             @click="toggleKeyboard"
         >
-            <VirtualKeyboardIcon class="h-6 w-6 text-gray-500" />
+            <VirtualKeyboardIcon class="h-6 w-6 fill-gray-500 shrink-0" />
             <span class="text-gray-500 text-sm font-medium">Keyboard</span>
         </div>
 
