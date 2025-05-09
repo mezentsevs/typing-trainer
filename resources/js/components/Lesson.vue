@@ -59,8 +59,8 @@ import Statistics from './Statistics.vue';
 import VirtualKeyboard from './VirtualKeyboard.vue';
 import axios from 'axios';
 import { getCurrentTypingUnit } from '@/helpers/StringHelper';
+import { handleTypingInput } from '@/helpers/TypingLogicHelper';
 import { ref, computed, onMounted } from 'vue';
-import { scrollToCurrentChar } from '@/helpers/DomHelper';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
@@ -119,39 +119,29 @@ const fetchLesson = async () => {
     text.value = response.data.lesson.text;
 };
 
-//TODO: move duplications in Lesson.vue and FinalTest.vue to helper if possible
 const handleInput = async () => {
-    if (!startTime.value) { startTime.value = Date.now(); }
-
-    const typedChars = typed.value.split('');
-    let errorCount = 0;
-
-    for (let i = 0; i < Math.min(typedChars.length, text.value.length); i++) {
-        if (typedChars[i] !== text.value[i]) { errorCount++; }
-    }
-
-    errors.value = errorCount;
-
-    if (typed.value.length >= text.value.length) {
-        typed.value = typed.value.slice(0, text.value.length);
-        isLessonCompleted.value = true;
-
-        await axios.post('/lessons/progress', {
+    await handleTypingInput(
+        {
+            errors,
+            isCompleted: isLessonCompleted,
+            language,
+            speed,
+            startTime,
+            text,
+            textContainer,
+            time,
+            typed,
+            progress,
+        },
+        '/lessons/progress',
+        {
             lesson_id: lesson.value.id,
-            language: language,
+            language,
             time_seconds: time.value,
             speed_wpm: speed.value,
             errors: errors.value,
-        });
-
-        return;
-    }
-
-    time.value = Math.round((Date.now() - startTime.value) / 1000);
-    const words = typed.value.length / 5;
-    speed.value = time.value > 0 ? Math.round((words / time.value) * 60) : 0;
-
-    scrollToCurrentChar(textContainer.value, typed.value.length);
+        }
+    );
 };
 
 const resetAndLoadNext = async () => {

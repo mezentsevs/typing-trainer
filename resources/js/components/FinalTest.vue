@@ -44,8 +44,8 @@ import Statistics from './Statistics.vue';
 import VirtualKeyboard from './VirtualKeyboard.vue';
 import axios from 'axios';
 import { getCurrentTypingUnit } from '@/helpers/StringHelper';
+import { handleTypingInput } from '@/helpers/TypingLogicHelper';
 import { ref, computed } from 'vue';
-import { scrollToCurrentChar } from '@/helpers/DomHelper';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
@@ -53,7 +53,7 @@ const route = useRoute();
 const errors = ref(0);
 const genre = ref('');
 const isTestCompleted = ref(false);
-const language = ref(route.params.language as string);
+const language = route.params.language as string;
 const speed = ref(0);
 const startTime = ref(0);
 const text = ref('');
@@ -83,7 +83,7 @@ const progress = computed(() => {
 const fetchText = async (selectedGenre: string) => {
     genre.value = selectedGenre;
 
-    const response = await axios.get('/test/text', { params: { language: language.value, genre: genre.value } });
+    const response = await axios.get('/test/text', { params: { language, genre: genre.value } });
 
     text.value = response.data.text;
 
@@ -102,44 +102,34 @@ const uploadFile = async (event: Event) => {
         const formData = new FormData();
 
         formData.append('file', file);
-        formData.append('language', language.value);
+        formData.append('language', language);
 
         await axios.post('/test/upload', formData);
         await fetchText(genre.value);
     }
 };
 
-//TODO: move duplications in Lesson.vue and FinalTest.vue to helper if possible
 const handleInput = async () => {
-    if (!startTime.value) { startTime.value = Date.now(); }
-
-    const typedChars = typed.value.split('');
-    let errorCount = 0;
-
-    for (let i = 0; i < Math.min(typedChars.length, text.value.length); i++) {
-        if (typedChars[i] !== text.value[i]) { errorCount++; }
-    }
-
-    errors.value = errorCount;
-
-    if (typed.value.length >= text.value.length) {
-        typed.value = typed.value.slice(0, text.value.length);
-        isTestCompleted.value = true;
-
-        await axios.post('/test/result', {
-            language: language.value,
+    await handleTypingInput(
+        {
+            errors,
+            isCompleted: isTestCompleted,
+            language,
+            speed,
+            startTime,
+            text,
+            textContainer,
+            time,
+            typed,
+            progress,
+        },
+        '/test/result',
+        {
+            language,
             time_seconds: time.value,
             speed_wpm: speed.value,
             errors: errors.value,
-        });
-
-        return;
-    }
-
-    time.value = Math.round((Date.now() - startTime.value) / 1000);
-    const words = typed.value.length / 5;
-    speed.value = time.value > 0 ? Math.round((words / time.value) * 60) : 0;
-
-    scrollToCurrentChar(textContainer.value, typed.value.length);
+        }
+    );
 };
 </script>
