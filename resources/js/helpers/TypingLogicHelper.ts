@@ -4,11 +4,11 @@ import TypingStateInterface from '@/interfaces/TypingStateInterface';
 import axios from 'axios';
 import { scrollToCurrentChar } from '@/helpers/DomHelper';
 
-export const handleTypingInput = async (
+export async function handleTypingInput(
     state: TypingStateInterface,
     postUrl: string,
     payload: LessonsProgressPayloadInterface | TestResultPayloadInterface
-): Promise<void> => {
+): Promise<void> {
     if (!state.startTime.value) { state.startTime.value = Date.now(); }
 
     const typedChars = state.typed.value.split('');
@@ -34,4 +34,4 @@ export const handleTypingInput = async (
     state.speed.value = state.time.value > 0 ? Math.round((words / state.time.value) * 60) : 0;
 
     scrollToCurrentChar(state.textContainer.value, state.typed.value.length);
-};
+}
