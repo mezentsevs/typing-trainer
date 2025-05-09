@@ -1,39 +1,13 @@
-import { Ref, ComputedRef } from 'vue';
 import axios from 'axios';
+import { LessonsProgressPayloadInterface } from '@/interfaces/LessonsProgressPayloadInterface';
+import { TestResultPayloadInterface } from '@/interfaces/TestResultPayloadInterface';
+import { TypingStateInterface } from '@/interfaces/TypingStateInterface';
 import { scrollToCurrentChar } from '@/helpers/DomHelper';
 
-interface TypingState {
-    errors: Ref<number>;
-    isCompleted: Ref<boolean>;
-    language: string;
-    speed: Ref<number>;
-    startTime: Ref<number>;
-    text: Ref<string>;
-    textContainer: Ref<HTMLElement | null>;
-    time: Ref<number>;
-    typed: Ref<string>;
-    progress: ComputedRef<number>;
-}
-
-interface LessonPayload {
-    lesson_id: number;
-    language: string;
-    time_seconds: number;
-    speed_wpm: number;
-    errors: number;
-}
-
-interface TestPayload {
-    language: string;
-    time_seconds: number;
-    speed_wpm: number;
-    errors: number;
-}
-
 export const handleTypingInput = async (
-    state: TypingState,
+    state: TypingStateInterface,
     postUrl: string,
-    payload: LessonPayload | TestPayload
+    payload: LessonsProgressPayloadInterface | TestResultPayloadInterface
 ) => {
     if (!state.startTime.value) {
         state.startTime.value = Date.now();
