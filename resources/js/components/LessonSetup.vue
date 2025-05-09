@@ -23,11 +23,13 @@
                 </div>
                 <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded">Generate Lessons</button>
             </form>
+            <Error :message="error" />
         </div>
     </div>
 </template>
 
 <script lang="ts" setup>
+import Error from './Error.vue';
 import axios from 'axios';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
@@ -35,14 +37,14 @@ import { useRouter } from 'vue-router';
 const router = useRouter();
 
 const form = ref({ language: 'en', lesson_count: 10 });
+const error = ref('');
 
-//TODO: replace alert with message
 const generateLessons = async () => {
     try {
         await axios.post('/lessons/generate', form.value);
         await router.push(`/lesson/${form.value.language}/1`);
-    } catch (error) {
-        alert('Failed to generate lessons');
+    } catch (err) {
+        error.value = 'Failed to generate lessons';
     }
 };
 </script>
