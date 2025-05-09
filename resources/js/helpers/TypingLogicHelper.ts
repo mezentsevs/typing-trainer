@@ -8,7 +8,7 @@ export const handleTypingInput = async (
     state: TypingStateInterface,
     postUrl: string,
     payload: LessonsProgressPayloadInterface | TestResultPayloadInterface
-) => {
+): Promise<void> => {
     if (!state.startTime.value) {
         state.startTime.value = Date.now();
     }
