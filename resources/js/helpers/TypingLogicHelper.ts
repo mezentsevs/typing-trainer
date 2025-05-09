@@ -1,7 +1,7 @@
+import LessonsProgressPayloadInterface from '@/interfaces/LessonsProgressPayloadInterface';
+import TestResultPayloadInterface from '@/interfaces/TestResultPayloadInterface';
+import TypingStateInterface from '@/interfaces/TypingStateInterface';
 import axios from 'axios';
-import { LessonsProgressPayloadInterface } from '@/interfaces/LessonsProgressPayloadInterface';
-import { TestResultPayloadInterface } from '@/interfaces/TestResultPayloadInterface';
-import { TypingStateInterface } from '@/interfaces/TypingStateInterface';
 import { scrollToCurrentChar } from '@/helpers/DomHelper';
 
 export const handleTypingInput = async (
