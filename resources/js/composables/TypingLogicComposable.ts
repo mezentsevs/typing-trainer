@@ -4,7 +4,7 @@ import TypingStateInterface from '@/interfaces/TypingStateInterface';
 import axios from 'axios';
 import { scrollToCurrentChar } from '@/helpers/DomHelper';
 
-export default function useTypingLogic(): any {
+export function useHandleTypingInput(): any {
     const handleTypingInput = async (
         state: TypingStateInterface,
         postUrl: string,
