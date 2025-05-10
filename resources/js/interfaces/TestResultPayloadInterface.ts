@@ -1,6 +1,6 @@
 export default interface TestResultPayloadInterface {
     language: string;
-    timeSeconds: number;
-    speedWpm: number;
+    time_seconds: number;
+    speed_wpm: number;
     errors: number;
 }

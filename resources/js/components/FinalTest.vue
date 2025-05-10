@@ -43,12 +43,13 @@ import FinalTestSetup from './FinalTestSetup.vue';
 import Statistics from './Statistics.vue';
 import VirtualKeyboard from './VirtualKeyboard.vue';
 import axios from 'axios';
+import useTypingLogic from '@/composables/useTypingLogic';
 import { getCurrentTypingUnit } from '@/helpers/StringHelper';
-import { handleTypingInput } from '@/helpers/TypingLogicHelper';
 import { ref, computed } from 'vue';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
+const { handleTypingInput } = useTypingLogic();
 
 const errors = ref(0);
 const genre = ref('');

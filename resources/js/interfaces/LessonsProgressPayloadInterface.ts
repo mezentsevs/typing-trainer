@@ -1,7 +1,7 @@
 export default interface LessonsProgressPayloadInterface {
-    lessonId: number;
+    lesson_id: number;
     language: string;
-    timeSeconds: number;
-    speedWpm: number;
+    time_seconds: number;
+    speed_wpm: number;
     errors: number;
 }
