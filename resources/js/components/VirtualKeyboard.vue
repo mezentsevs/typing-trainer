@@ -109,12 +109,12 @@
 
 <script lang="ts" setup>
 import VirtualKeyboardIcon from '@/icons/VirtualKeyboardIcon.vue';
-import { KeyboardSpecialPositionEnum, KeyboardZoneEnum } from '@/enums/KeyboardEnums';
+import { KeyboardLanguageEnum, KeyboardSpecialPositionEnum, KeyboardZoneEnum } from '@/enums/KeyboardEnums';
 import { KeyboardSpecialPositionType, KeyboardZoneType } from '@/types/KeyboardTypes';
 import { computed, ref } from 'vue';
 
 const props = defineProps<{
-    language: 'en' | 'ru';
+    language: KeyboardLanguageEnum;
     typed: string;
     text: string;
     isMinimized?: boolean;
@@ -122,7 +122,7 @@ const props = defineProps<{
 
 const isMinimized = ref(props.isMinimized ?? false);
 
-const keyboardLayouts: Record<'en' | 'ru', { value: string; display: string; special?: string; specialPosition?: KeyboardSpecialPositionType; width?: number; zone?: KeyboardZoneType }[][]> = {
+const keyboardLayouts: Record<KeyboardLanguageEnum, { value: string; display: string; special?: string; specialPosition?: KeyboardSpecialPositionType; width?: number; zone?: KeyboardZoneType }[][]> = {
     en: [
         [
             { value: '`', display: '`', special: '~', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
