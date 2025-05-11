@@ -1,3 +1,5 @@
-import { KeyboardZoneEnum } from '@/enums/KeyboardEnums';
+import { KeyboardSpecialPositionEnum, KeyboardZoneEnum } from '@/enums/KeyboardEnums';
 
-export type KeyboardZoneType = KeyboardZoneEnum.Left | KeyboardZoneEnum.Right;
+export type KeyboardSpecialPositionType = KeyboardSpecialPositionEnum.TopLeft | KeyboardSpecialPositionEnum.TopRight | null;
+
+export type KeyboardZoneType = KeyboardZoneEnum.Left | KeyboardZoneEnum.Right | null;
