@@ -269,6 +269,17 @@ const nextChar = computed(() => props.typed.length < props.text.length ? props.t
 
 const toggleKeyboard = () => isMinimized.value = !isMinimized.value;
 
+const getOppositeZone = (): 'left' | 'right' => {
+    const keyZone = keyboardLayout.value.flat().find(k =>
+        k.value === nextChar.value ||
+        (k.special && k.special === nextChar.value) ||
+        k.value.toLowerCase() === nextChar.value.toLowerCase() ||
+        (k.special && k.special.toLowerCase() === nextChar.value.toLowerCase())
+    )?.zone;
+
+    return keyZone === 'left' ? 'right' : 'left';
+};
+
 const isHighlighted = (keyValue: string | undefined, zone?: 'left' | 'right') => {
     if (!keyValue) { return false; }
     if (keyValue === ' ') { return nextChar.value === ' '; }
@@ -280,28 +291,13 @@ const isHighlighted = (keyValue: string | undefined, zone?: 'left' | 'right') =>
     if (keyValue === 'shift') {
         if (!isUpperOrSpecial) { return false; }
 
-        //TODO: move keyZone logic to function
-        const keyZone = keyboardLayout.value.flat().find(k =>
-            k.value === nextChar.value ||
-            (k.special && k.special === nextChar.value) ||
-            k.value.toLowerCase() === nextChar.value.toLowerCase() ||
-            (k.special && k.special.toLowerCase() === nextChar.value.toLowerCase())
-        )?.zone;
-
-        return keyZone === 'left' ? zone === 'right' : zone === 'left';
+        return getOppositeZone() === zone;
     }
 
     if (['ctrl', 'alt', 'capslock'].includes(keyValue)) {
         if (!isControlChar) { return false; }
 
-        const keyZone = keyboardLayout.value.flat().find(k =>
-            k.value === nextChar.value ||
-            (k.special && k.special === nextChar.value) ||
-            k.value.toLowerCase() === nextChar.value.toLowerCase() ||
-            (k.special && k.special.toLowerCase() === nextChar.value.toLowerCase())
-        )?.zone;
-
-        return keyZone === 'left' ? zone === 'right' : zone === 'left';
+        return getOppositeZone() === zone;
     }
 
     return nextChar.value === keyValue || nextChar.value.toLowerCase() === keyValue.toLowerCase();
