@@ -1,10 +1,13 @@
+import CurrentTypingUnitInterface from '@/interfaces/CurrentTypingUnitInterface';
 import LessonsProgressPayloadInterface from '@/interfaces/LessonsProgressPayloadInterface';
 import TestResultPayloadInterface from '@/interfaces/TestResultPayloadInterface';
 import TypingStateInterface from '@/interfaces/TypingStateInterface';
 import axios from 'axios';
+import { computed, ComputedRef, Ref } from 'vue';
+import { getCurrentTypingUnit } from '@/helpers/StringHelper';
 import { scrollToCurrentChar } from '@/helpers/DomHelper';
 
-export function useHandleTypingInput(): any {
+export function useHandleTypingInput(): Record<string, Function> {
     const handleTypingInput = async (
         state: TypingStateInterface,
         postUrl: string,
@@ -38,4 +41,25 @@ export function useHandleTypingInput(): any {
     };
 
     return { handleTypingInput };
+}
+
+export function useCurrentWord(text: Ref<string>, typed: Ref<string>): Record<string, ComputedRef> {
+    const currentTypingUnit = computed(
+        (): CurrentTypingUnitInterface | null => getCurrentTypingUnit(text.value, typed.value.length),
+    );
+
+    const isCurrentWord = computed(
+        (): boolean[] => {
+            const range = currentTypingUnit.value;
+            const arr = Array(text.value.length).fill(false);
+
+            if (!range) { return arr; }
+
+            for (let i = range.start; i <= range.end; i++) { arr[i] = true; }
+
+            return arr;
+        },
+    );
+
+    return { isCurrentWord };
 }

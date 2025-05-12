@@ -59,9 +59,8 @@ import Statistics from './Statistics.vue';
 import VirtualKeyboard from './VirtualKeyboard.vue';
 import axios from 'axios';
 import { KeyboardLanguageEnum } from '@/enums/KeyboardEnums';
-import { getCurrentTypingUnit } from '@/helpers/StringHelper';
 import { ref, computed, onMounted } from 'vue';
-import { useHandleTypingInput } from '@/composables/TypingLogicComposable';
+import { useHandleTypingInput, useCurrentWord } from '@/composables/TypingLogicComposable';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
@@ -81,18 +80,7 @@ const time = ref(0);
 const totalLessons = ref(0);
 const typed = ref('');
 
-const currentTypingUnit = computed(() => getCurrentTypingUnit(text.value, typed.value.length));
-
-const isCurrentWord = computed(() => {
-    const range = currentTypingUnit.value;
-    const arr = Array(text.value.length).fill(false);
-
-    if (!range) { return arr; }
-
-    for (let i = range.start; i <= range.end; i++) { arr[i] = true; }
-
-    return arr;
-});
+const { isCurrentWord } = useCurrentWord(text, typed);
 
 const nextLesson = computed(() => (totalLessons.value - lessonNumber.value) ? lessonNumber.value + 1 : 0);
 

@@ -1,8 +1,10 @@
+import CurrentTypingUnitInterface from '@/interfaces/CurrentTypingUnitInterface';
+
 function isSeparator(char: string): boolean {
     return char === ' ' || char === '\n';
 }
 
-export function getCurrentTypingUnit(text: string, pos: number): { start: number; end: number } | null {
+export function getCurrentTypingUnit(text: string, pos: number): CurrentTypingUnitInterface | null {
     if (pos >= text.length) { return null; }
 
     if (isSeparator(text[pos])) {
