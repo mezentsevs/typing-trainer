@@ -30,7 +30,7 @@
                     rows="4"
                     spellcheck="false"
                 />
-                <VirtualKeyboard :language="language as 'en' | 'ru'" :typed :text />
+                <VirtualKeyboard :language :typed :text />
                 <div v-if="isLessonCompleted" class="flex justify-center mt-4">
                     <router-link
                         v-if="nextLesson"
@@ -58,6 +58,7 @@ import NewCharacters from './NewCharacters.vue';
 import Statistics from './Statistics.vue';
 import VirtualKeyboard from './VirtualKeyboard.vue';
 import axios from 'axios';
+import { KeyboardLanguageEnum } from '@/enums/KeyboardEnums'
 import { getCurrentTypingUnit } from '@/helpers/StringHelper';
 import { ref, computed, onMounted } from 'vue';
 import { useHandleTypingInput } from '@/composables/TypingLogicComposable';
@@ -69,7 +70,7 @@ const { handleTypingInput } = useHandleTypingInput();
 const errors = ref(0);
 const input = ref<HTMLTextAreaElement | null>(null);
 const isLessonCompleted = ref(false);
-const language = route.params.language as string;
+const language = route.params.language as KeyboardLanguageEnum;
 const lessonNumber = ref(parseInt(route.params.number as string));
 const lesson = ref<{ id: number; number: number; new_chars: string }>({ id: 0, number: lessonNumber.value, new_chars: '' });
 const speed = ref(0);
