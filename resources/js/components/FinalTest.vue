@@ -29,7 +29,7 @@
                     rows="4"
                     spellcheck="false"
                 />
-                <VirtualKeyboard :language="language as 'en' | 'ru'" :typed :text :is-minimized="true" />
+                <VirtualKeyboard :language :typed :text :is-minimized="true" />
                 <div v-if="isTestCompleted" class="flex justify-center mt-2">
                     <router-link to="/" class="bg-blue-500 text-white p-2 rounded">Back to Home</router-link>
                 </div>
@@ -43,6 +43,7 @@ import FinalTestSetup from './FinalTestSetup.vue';
 import Statistics from './Statistics.vue';
 import VirtualKeyboard from './VirtualKeyboard.vue';
 import axios from 'axios';
+import { KeyboardLanguageEnum } from '@/enums/KeyboardEnums';
 import { getCurrentTypingUnit } from '@/helpers/StringHelper';
 import { ref, computed } from 'vue';
 import { useHandleTypingInput } from '@/composables/TypingLogicComposable';
@@ -54,7 +55,7 @@ const { handleTypingInput } = useHandleTypingInput();
 const errors = ref(0);
 const genre = ref('');
 const isTestCompleted = ref(false);
-const language = route.params.language as string;
+const language = route.params.language as KeyboardLanguageEnum;
 const speed = ref(0);
 const startTime = ref(0);
 const text = ref('');

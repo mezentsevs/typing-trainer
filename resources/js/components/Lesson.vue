@@ -58,7 +58,7 @@ import NewCharacters from './NewCharacters.vue';
 import Statistics from './Statistics.vue';
 import VirtualKeyboard from './VirtualKeyboard.vue';
 import axios from 'axios';
-import { KeyboardLanguageEnum } from '@/enums/KeyboardEnums'
+import { KeyboardLanguageEnum } from '@/enums/KeyboardEnums';
 import { getCurrentTypingUnit } from '@/helpers/StringHelper';
 import { ref, computed, onMounted } from 'vue';
 import { useHandleTypingInput } from '@/composables/TypingLogicComposable';
