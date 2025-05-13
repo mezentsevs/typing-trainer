@@ -45,7 +45,7 @@ import VirtualKeyboard from './VirtualKeyboard.vue';
 import axios from 'axios';
 import { KeyboardLanguageEnum } from '@/enums/KeyboardEnums';
 import { ref } from 'vue';
-import { useHandleTypingInput, useCurrentWord, useProgress } from '@/composables/TypingLogicComposable';
+import { useHandleTypingInput, useCurrentWord, useProgress } from '@/composables/TypingLogicComposables';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
