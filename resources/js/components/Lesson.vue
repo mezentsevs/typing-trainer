@@ -60,7 +60,7 @@ import VirtualKeyboard from './VirtualKeyboard.vue';
 import axios from 'axios';
 import { KeyboardLanguageEnum } from '@/enums/KeyboardEnums';
 import { ref, computed, onMounted } from 'vue';
-import { useHandleTypingInput, useCurrentWord } from '@/composables/TypingLogicComposable';
+import { useHandleTypingInput, useCurrentWord, useProgress } from '@/composables/TypingLogicComposable';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
@@ -81,14 +81,9 @@ const totalLessons = ref(0);
 const typed = ref('');
 
 const { isCurrentWord } = useCurrentWord(text, typed);
+const { progress } = useProgress(text, typed, isLessonCompleted);
 
 const nextLesson = computed(() => (totalLessons.value - lessonNumber.value) ? lessonNumber.value + 1 : 0);
-
-const progress = computed(() => {
-    if (isLessonCompleted.value) { return 100; }
-
-    return text.value.length ? Math.floor((typed.value.length / text.value.length) * 100) : 0;
-});
 
 const resetState = () => {
     errors.value = 0;

@@ -44,8 +44,8 @@ import Statistics from './Statistics.vue';
 import VirtualKeyboard from './VirtualKeyboard.vue';
 import axios from 'axios';
 import { KeyboardLanguageEnum } from '@/enums/KeyboardEnums';
-import { ref, computed } from 'vue';
-import { useHandleTypingInput, useCurrentWord } from '@/composables/TypingLogicComposable';
+import { ref } from 'vue';
+import { useHandleTypingInput, useCurrentWord, useProgress } from '@/composables/TypingLogicComposable';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
@@ -63,12 +63,7 @@ const time = ref(0);
 const typed = ref('');
 
 const { isCurrentWord } = useCurrentWord(text, typed);
-
-const progress = computed(() => {
-    if (isTestCompleted.value) { return 100; }
-
-    return text.value.length ? Math.floor((typed.value.length / text.value.length) * 100) : 0;
-});
+const { progress } = useProgress(text, typed, isTestCompleted);
 
 const fetchText = async (selectedGenre: string) => {
     genre.value = selectedGenre;

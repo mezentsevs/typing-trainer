@@ -43,7 +43,7 @@ export function useHandleTypingInput(): Record<string, Function> {
     return { handleTypingInput };
 }
 
-export function useCurrentWord(text: Ref<string>, typed: Ref<string>): Record<string, ComputedRef> {
+export function useCurrentWord(text: Ref<string>, typed: Ref<string>): Record<string, ComputedRef<boolean[]>> {
     const currentTypingUnit = computed(
         (): CurrentTypingUnitInterface | null => getCurrentTypingUnit(text.value, typed.value.length),
     );
@@ -62,4 +62,14 @@ export function useCurrentWord(text: Ref<string>, typed: Ref<string>): Record<st
     );
 
     return { isCurrentWord };
+}
+
+export function useProgress(text: Ref<string>, typed: Ref<string>, isCompleted: Ref<boolean>): Record<string, ComputedRef<number>> {
+    const progress = computed((): number => {
+        if (isCompleted.value) { return 100; }
+
+        return text.value.length ? Math.floor((typed.value.length / text.value.length) * 100) : 0;
+    });
+
+    return { progress };
 }
