@@ -65,6 +65,15 @@ const typed = ref('');
 const { isCurrentWord } = useCurrentWord(text, typed);
 const { progress } = useProgress(text, typed, isTestCompleted);
 
+const resetState = (): void => {
+    errors.value = 0;
+    isTestCompleted.value = false;
+    speed.value = 0;
+    startTime.value = 0;
+    time.value = 0;
+    typed.value = '';
+};
+
 const fetchText = async (selectedGenre: string) => {
     genre.value = selectedGenre;
 
@@ -72,12 +81,7 @@ const fetchText = async (selectedGenre: string) => {
 
     text.value = response.data.text;
 
-    errors.value = 0;
-    isTestCompleted.value = false;
-    speed.value = 0;
-    startTime.value = 0;
-    time.value = 0;
-    typed.value = '';
+    resetState();
 };
 
 const uploadFile = async (event: Event) => {

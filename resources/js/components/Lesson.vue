@@ -85,7 +85,7 @@ const { progress } = useProgress(text, typed, isLessonCompleted);
 
 const nextLesson = computed(() => (totalLessons.value - lessonNumber.value) ? lessonNumber.value + 1 : 0);
 
-const resetState = () => {
+const resetState = (): void => {
     errors.value = 0;
     isLessonCompleted.value = false;
     speed.value = 0;
