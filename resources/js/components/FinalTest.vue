@@ -9,7 +9,7 @@
                     Completed!
                 </span>
             </div>
-            <FinalTestSetup v-if="!text" :upload-file="uploadFile" @start-test="resetAndLoad" />
+            <FinalTestSetup v-if="!text" :upload-file="uploadFile" @start="onStart" />
             <Statistics v-if="text" :language :time :speed :errors :progress />
             <div v-if="text" class="mt-4">
                 <div ref="textContainer" class="text-lg font-mono break-words whitespace-pre-wrap h-28 overflow-y-auto bg-gray-50 p-2">
@@ -120,7 +120,7 @@ const onInput = async (): Promise<void> => {
     );
 };
 
-const resetAndLoad = async (): Promise<void> => {
+const onStart = async (): Promise<void> => {
     resetState();
 
     await fetchText(genre.value);

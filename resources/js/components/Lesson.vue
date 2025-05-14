@@ -35,7 +35,7 @@
                     <router-link
                         v-if="nextLesson"
                         :to="`/lesson/${language}/${nextLesson}`"
-                        @click="resetAndLoadNext"
+                        @click="onNext"
                         class="bg-blue-500 text-white p-2 rounded"
                     >
                         Next Lesson
@@ -129,7 +129,7 @@ const onInput = async (): Promise<void> => {
     );
 };
 
-const resetAndLoadNext = async (): Promise<void> => {
+const onNext = async (): Promise<void> => {
     if (!isLessonCompleted.value) { return; }
 
     lessonNumber.value++;

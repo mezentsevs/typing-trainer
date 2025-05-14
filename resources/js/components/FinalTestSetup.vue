@@ -13,7 +13,7 @@
             <label class="block text-gray-700 text-sm font-bold">Upload Text (optional)</label>
             <input type="file" accept=".txt" @change="uploadFile" class="p-2 border rounded w-full text-sm" />
         </div>
-        <button @click="$emit('start-test', genre)" class="bg-blue-500 text-white p-2 rounded w-full text-sm">
+        <button @click="$emit('start', genre)" class="bg-blue-500 text-white p-2 rounded w-full text-sm">
             Start Test
         </button>
     </div>
@@ -29,6 +29,6 @@ defineProps<{
 }>();
 
 defineEmits<{
-    (e: 'start-test', genre: string): void;
+    (e: 'start', genre: string): void;
 }>();
 </script>
