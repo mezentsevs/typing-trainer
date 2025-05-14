@@ -36,14 +36,14 @@
                         v-if="nextLesson"
                         :to="`/lesson/${language}/${nextLesson}`"
                         @click="onNext"
-                        class="bg-blue-500 text-white p-2 rounded"
+                        class="w-32 bg-blue-500 text-center text-white p-2 rounded"
                     >
                         Next Lesson
                     </router-link>
                     <router-link
                         v-else
                         :to="`/test/${language}`"
-                        class="bg-green-500 text-white p-2 rounded"
+                        class="w-32 bg-green-500 text-center text-white p-2 rounded"
                     >
                         Final Test
                     </router-link>

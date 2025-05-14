@@ -31,7 +31,9 @@
                 />
                 <VirtualKeyboard :language :typed :text :is-minimized="true" />
                 <div v-if="isTestCompleted" class="flex justify-center mt-2">
-                    <router-link to="/" class="bg-blue-500 text-white p-2 rounded">Back to Home</router-link>
+                    <router-link to="/" class="w-32 bg-blue-500 text-center text-white p-2 rounded">
+                        Back to Home
+                    </router-link>
                 </div>
             </div>
         </div>
