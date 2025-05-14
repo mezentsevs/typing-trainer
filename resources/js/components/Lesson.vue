@@ -129,7 +129,7 @@ const handleInput = async () => {
     );
 };
 
-const resetAndLoadNext = async () => {
+const resetAndLoadNext = async (): Promise<void> => {
     if (!isLessonCompleted.value) { return; }
 
     lessonNumber.value++;

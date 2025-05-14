@@ -9,7 +9,7 @@
                     Completed!
                 </span>
             </div>
-            <FinalTestSetup v-if="!text" :upload-file="uploadFile" @start-test="fetchText" />
+            <FinalTestSetup v-if="!text" :upload-file="uploadFile" @start-test="resetAndLoad" />
             <Statistics v-if="text" :language :time :speed :errors :progress />
             <div v-if="text" class="mt-4">
                 <div ref="textContainer" class="text-lg font-mono break-words whitespace-pre-wrap h-28 overflow-y-auto bg-gray-50 p-2">
@@ -80,8 +80,6 @@ const fetchText = async (selectedGenre: string) => {
     const response = await axios.get('/test/text', { params: { language, genre: genre.value } });
 
     text.value = response.data.text;
-
-    resetState();
 };
 
 const uploadFile = async (event: Event) => {
@@ -120,5 +118,11 @@ const handleInput = async () => {
             errors: errors.value,
         }
     );
+};
+
+const resetAndLoad = async (): Promise<void> => {
+    resetState();
+
+    await fetchText(genre.value);
 };
 </script>
