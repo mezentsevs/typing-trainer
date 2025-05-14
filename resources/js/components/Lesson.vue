@@ -23,7 +23,7 @@
                 <textarea
                     v-model="typed"
                     v-focus
-                    @input="handleInput"
+                    @input="onInput"
                     class="w-full p-2 border rounded mt-4 resize-none"
                     ref="input"
                     :disabled="isLessonCompleted"
@@ -104,7 +104,7 @@ const fetchLesson = async (): Promise<void> => {
     text.value = response.data.lesson.text;
 };
 
-const handleInput = async (): Promise<void> => {
+const onInput = async (): Promise<void> => {
     await handleTypingInput(
         {
             errors,

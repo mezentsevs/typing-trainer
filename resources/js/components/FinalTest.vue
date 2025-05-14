@@ -23,7 +23,7 @@
                 <textarea
                     v-model="typed"
                     v-focus
-                    @input="handleInput"
+                    @input="onInput"
                     class="w-full p-2 border rounded mt-4 resize-none"
                     :disabled="isTestCompleted"
                     rows="4"
@@ -96,7 +96,7 @@ const uploadFile = async (event: Event): Promise<void> => {
     }
 };
 
-const handleInput = async (): Promise<void> => {
+const onInput = async (): Promise<void> => {
     await handleTypingInput(
         {
             errors,
