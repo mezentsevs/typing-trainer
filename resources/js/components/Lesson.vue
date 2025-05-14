@@ -96,7 +96,7 @@ const resetState = (): void => {
     lesson.value = { id: 0, number: lessonNumber.value, new_chars: '' };
 };
 
-const fetchLesson = async () => {
+const fetchLesson = async (): Promise<void> => {
     const response = await axios.get(`/lessons/${language}/${lessonNumber.value}`);
 
     lesson.value = response.data.lesson;
@@ -104,7 +104,7 @@ const fetchLesson = async () => {
     text.value = response.data.lesson.text;
 };
 
-const handleInput = async () => {
+const handleInput = async (): Promise<void> => {
     await handleTypingInput(
         {
             errors,

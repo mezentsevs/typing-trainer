@@ -74,7 +74,7 @@ const resetState = (): void => {
     typed.value = '';
 };
 
-const fetchText = async (selectedGenre: string) => {
+const fetchText = async (selectedGenre: string): Promise<void> => {
     genre.value = selectedGenre;
 
     const response = await axios.get('/test/text', { params: { language, genre: genre.value } });
@@ -82,7 +82,7 @@ const fetchText = async (selectedGenre: string) => {
     text.value = response.data.text;
 };
 
-const uploadFile = async (event: Event) => {
+const uploadFile = async (event: Event): Promise<void> => {
     const file = (event.target as HTMLInputElement).files?.[0];
 
     if (file) {
@@ -96,7 +96,7 @@ const uploadFile = async (event: Event) => {
     }
 };
 
-const handleInput = async () => {
+const handleInput = async (): Promise<void> => {
     await handleTypingInput(
         {
             errors,
