@@ -141,7 +141,7 @@ const resetAndLoadNext = async (): Promise<void> => {
     if (input.value) { input.value.focus(); }
 };
 
-onMounted(async () => {
+onMounted(async (): Promise<void> => {
     resetState();
 
     await fetchLesson();
