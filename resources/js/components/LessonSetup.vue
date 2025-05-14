@@ -21,7 +21,9 @@
                         required
                     />
                 </div>
-                <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded">Generate Lessons</button>
+                <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded">
+                    Generate
+                </button>
             </form>
             <Error :message="error" />
         </div>
