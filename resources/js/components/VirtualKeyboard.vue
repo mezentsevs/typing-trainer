@@ -224,7 +224,7 @@ const keyboardLayouts: Record<KeyboardLanguageEnum, { value: string; display: st
             { value: 'з', display: 'з', special: 'З', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
             { value: 'х', display: 'х', special: 'Х', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
             { value: 'ъ', display: 'ъ', special: 'Ъ', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: '/', display: '/', special: '|', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right }
+            { value: '\\', display: '\\', special: '/', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right }
         ],
         [
             { value: 'capslock', display: 'Caps', width: 70, zone: KeyboardZoneEnum.Left },
