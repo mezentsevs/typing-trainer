@@ -38,7 +38,7 @@
                         @click="onNext"
                         class="w-32 bg-blue-500 text-center text-white p-2 rounded"
                     >
-                        Next Lesson
+                        Next
                     </router-link>
                     <router-link
                         v-else
