@@ -287,7 +287,9 @@ const isHighlighted = (keyValue: string | undefined, zone?: KeyboardZoneType) =>
     if (keyValue === ' ') { return nextChar.value === ' '; }
     if (keyValue === 'enter') { return nextChar.value === '\n'; }
 
-    const isUpperOrSpecial = nextChar.value.match(/[A-ZА-ЯЁ~!@#$%^&*()_+{}|:"<>?]/);
+    const isUpperOrSpecial = nextChar.value.match(/[A-ZА-ЯЁ~!@#$%^&*()_+{}|:"<>?]/)
+        || (props.language === KeyboardLanguageEnum.Ru && nextChar.value === '/');
+
     const isControlChar = nextChar.value !== '\n' && nextChar.value.match(/[\x00-\x1F\x7F]/);
 
     if (keyValue === 'shift') {
