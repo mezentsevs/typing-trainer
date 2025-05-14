@@ -45,7 +45,7 @@
                         :to="`/test/${language}`"
                         class="bg-green-500 text-white p-2 rounded"
                     >
-                        Take Final Test
+                        Final Test
                     </router-link>
                 </div>
             </div>
