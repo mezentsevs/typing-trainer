@@ -123,7 +123,7 @@ const props = defineProps<{
 const isMinimized = ref(props.isMinimized ?? false);
 
 const keyboardLayouts: Record<KeyboardLanguageEnum, { value: string; display: string; special?: string; specialPosition?: KeyboardSpecialPositionType; width?: number; zone?: KeyboardZoneType }[][]> = {
-    en: [
+    [KeyboardLanguageEnum.En]: [
         [
             { value: '`', display: '`', special: '~', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
             { value: '1', display: '1', special: '!', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
@@ -193,7 +193,7 @@ const keyboardLayouts: Record<KeyboardLanguageEnum, { value: string; display: st
             { value: 'ctrl', display: 'Ctrl', width: 50, zone: KeyboardZoneEnum.Right }
         ]
     ],
-    ru: [
+    [KeyboardLanguageEnum.Ru]: [
         [
             { value: 'ё', display: 'ё', special: 'Ё', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
             { value: '1', display: '1', special: '!', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
@@ -265,6 +265,11 @@ const keyboardLayouts: Record<KeyboardLanguageEnum, { value: string; display: st
     ]
 };
 
+const upperOrSpecialRegex: Record<KeyboardLanguageEnum, RegExp> = {
+    [KeyboardLanguageEnum.En]: /[A-Z~!@#$%^&*()_+{}|:"<>?]/,
+    [KeyboardLanguageEnum.Ru]: /[А-ЯЁ!"№;%:?*()_+/,]/,
+};
+
 const keyboardLayout = computed(() => keyboardLayouts[props.language]);
 
 const nextChar = computed(() => props.typed.length < props.text.length ? props.text[props.typed.length] : '');
@@ -287,9 +292,7 @@ const isHighlighted = (keyValue: string | undefined, zone?: KeyboardZoneType) =>
     if (keyValue === ' ') { return nextChar.value === ' '; }
     if (keyValue === 'enter') { return nextChar.value === '\n'; }
 
-    const isUpperOrSpecial = nextChar.value.match(/[A-ZА-ЯЁ~!@#$%^&*()_+{}|:"<>?]/)
-        || (props.language === KeyboardLanguageEnum.Ru && nextChar.value === '/');
-
+    const isUpperOrSpecial = nextChar.value.match(upperOrSpecialRegex[props.language]);
     const isControlChar = nextChar.value !== '\n' && nextChar.value.match(/[\x00-\x1F\x7F]/);
 
     if (keyValue === 'shift') {
