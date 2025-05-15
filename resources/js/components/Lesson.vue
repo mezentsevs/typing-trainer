@@ -59,12 +59,12 @@ import Statistics from './Statistics.vue';
 import VirtualKeyboard from './VirtualKeyboard.vue';
 import axios from 'axios';
 import { KeyboardLanguageEnum } from '@/enums/KeyboardEnums';
-import { ref, computed, onMounted, Ref } from 'vue';
+import { RouteLocationNormalizedLoaded, useRoute } from 'vue-router';
+import { ref, computed, onMounted, Ref, ComputedRef } from 'vue';
 import { useHandleTypingInput, useCurrentWord, useProgress } from '@/composables/TypingLogicComposables';
-import { useRoute } from 'vue-router';
 
-const route = useRoute();
-const { handleTypingInput } = useHandleTypingInput();
+const route: RouteLocationNormalizedLoaded<string | symbol> = useRoute();
+const { handleTypingInput }: Record<string, Function> = useHandleTypingInput();
 
 const errors: Ref<number> = ref(0);
 const input: Ref<HTMLTextAreaElement | null> = ref(null);
@@ -80,10 +80,12 @@ const time: Ref<number> = ref(0);
 const totalLessons: Ref<number> = ref(0);
 const typed: Ref<string> = ref('');
 
-const { isCurrentWord } = useCurrentWord(text, typed);
-const { progress } = useProgress(text, typed, isLessonCompleted);
+const { isCurrentWord }: Record<string, ComputedRef<boolean[]>> = useCurrentWord(text, typed);
+const { progress }: Record<string, ComputedRef<number>> = useProgress(text, typed, isLessonCompleted);
 
-const nextLesson = computed((): number => (totalLessons.value - lessonNumber.value) ? lessonNumber.value + 1 : 0);
+const nextLesson: ComputedRef<number> = computed(
+    (): number => (totalLessons.value - lessonNumber.value) ? lessonNumber.value + 1 : 0,
+);
 
 const resetState = (): void => {
     errors.value = 0;
