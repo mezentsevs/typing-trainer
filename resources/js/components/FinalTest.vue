@@ -46,23 +46,23 @@ import Statistics from './Statistics.vue';
 import VirtualKeyboard from './VirtualKeyboard.vue';
 import axios from 'axios';
 import { KeyboardLanguageEnum } from '@/enums/KeyboardEnums';
-import { ref } from 'vue';
+import { Ref, ref } from 'vue';
 import { useHandleTypingInput, useCurrentWord, useProgress } from '@/composables/TypingLogicComposables';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
 const { handleTypingInput } = useHandleTypingInput();
 
-const errors = ref(0);
-const genre = ref('');
-const isTestCompleted = ref(false);
-const language = route.params.language as KeyboardLanguageEnum;
-const speed = ref(0);
-const startTime = ref(0);
-const text = ref('');
-const textContainer = ref<HTMLElement | null>(null);
-const time = ref(0);
-const typed = ref('');
+const errors: Ref<number> = ref(0);
+const genre: Ref<string> = ref('');
+const isTestCompleted: Ref<boolean> = ref(false);
+const language: KeyboardLanguageEnum = route.params.language as KeyboardLanguageEnum;
+const speed: Ref<number> = ref(0);
+const startTime: Ref<number> = ref(0);
+const text: Ref<string> = ref('');
+const textContainer: Ref<HTMLElement | null> = ref(null);
+const time: Ref<number> = ref(0);
+const typed: Ref<string> = ref('');
 
 const { isCurrentWord } = useCurrentWord(text, typed);
 const { progress } = useProgress(text, typed, isTestCompleted);
