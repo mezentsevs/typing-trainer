@@ -83,7 +83,7 @@ const typed = ref('');
 const { isCurrentWord } = useCurrentWord(text, typed);
 const { progress } = useProgress(text, typed, isLessonCompleted);
 
-const nextLesson = computed(() => (totalLessons.value - lessonNumber.value) ? lessonNumber.value + 1 : 0);
+const nextLesson = computed((): number => (totalLessons.value - lessonNumber.value) ? lessonNumber.value + 1 : 0);
 
 const resetState = (): void => {
     errors.value = 0;
