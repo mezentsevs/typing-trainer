@@ -947,7 +947,7 @@ Let every tap lift your spirit higher!
 Blind typing hones both heart and hand,
 A craft to conquer in every land.
 Type on, brave soul, through the misty vale,
-Your saga awaits-let no key fail!
+Your saga awaits - let no key fail!
 EOT,
                 ],
                 [
