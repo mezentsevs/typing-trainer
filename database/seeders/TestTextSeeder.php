@@ -937,7 +937,7 @@ A saga lives in the keys you've played.
 Through katas of yoga, breathe and align,
 Each keystroke flows like a river divine.
 The ethernet hums with a pirate's tune,
-Of sails and stars ‘neath a crimson moon.
+Of sails and stars 'neath a crimson moon.
 In Rome's great halls, where the muses sing,
 Your fingers carve what the fates shall bring.
 Odin's ravens and circuits entwine,
