@@ -1,4 +1,4 @@
-export default interface LessonProgressPayloadInterface {
+export default interface LessonResultPayloadInterface {
     lesson_id: number;
     language: string;
     time_seconds: number;

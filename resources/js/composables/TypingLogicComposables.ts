@@ -1,8 +1,7 @@
 import CurrentTypingUnitInterface from '@/interfaces/CurrentTypingUnitInterface';
-import LessonProgressPayloadInterface from '@/interfaces/LessonProgressPayloadInterface';
-import TestResultPayloadInterface from '@/interfaces/TestResultPayloadInterface';
 import TypingStateInterface from '@/interfaces/TypingStateInterface';
 import axios from 'axios';
+import { ResultPayloadType } from '@/types/PayloadTypes';
 import { computed, ComputedRef, Ref } from 'vue';
 import { getCurrentTypingUnit } from '@/helpers/StringHelper';
 import { scrollToCurrentChar } from '@/helpers/DomHelper';
@@ -11,7 +10,7 @@ export function useHandleTypingInput(): Record<string, Function> {
     const handleTypingInput = async (
         state: TypingStateInterface,
         postUrl: string,
-        payload: LessonProgressPayloadInterface | TestResultPayloadInterface
+        payload: ResultPayloadType,
     ): Promise<void> => {
         if (!state.startTime.value) { state.startTime.value = Date.now(); }
 

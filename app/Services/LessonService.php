@@ -3,7 +3,7 @@
 namespace App\Services;
 
 use App\Models\Lesson;
-use App\Models\LessonProgress;
+use App\Models\LessonResult;
 use Random\RandomException;
 
 class LessonService
@@ -78,7 +78,7 @@ class LessonService
         $totalChars = count($chars);
 
         Lesson::where('user_id', $userId)->where('language', $language)->delete();
-        LessonProgress::where('user_id', $userId)->where('language', $language)->delete();
+        LessonResult::where('user_id', $userId)->where('language', $language)->delete();
 
         $lessons = [];
         $availableCharsString = '';

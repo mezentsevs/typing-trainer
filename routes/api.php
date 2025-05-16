@@ -14,7 +14,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('lessons')->group(function () {
         Route::get('/{language}/{lessonNumber}', [LessonController::class, 'show'])->name('api.lessons.show');
         Route::post('/generate', [LessonController::class, 'generate'])->name('api.lessons.generate');
-        Route::post('/progress', [LessonController::class, 'saveProgress'])->name('api.lessons.progress');
+        Route::post('/result', [LessonController::class, 'saveResult'])->name('api.lessons.result');
     });
 
     Route::prefix('test')->group(function () {

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Lesson;
-use App\Models\LessonProgress;
+use App\Models\LessonResult;
 use App\Services\LessonService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -34,7 +34,7 @@ class LessonController extends Controller
         return response()->json(['message' => 'Lessons generated']);
     }
 
-    public function saveProgress(Request $request): JsonResponse
+    public function saveResult(Request $request): JsonResponse
     {
         $request->validate([
             'lesson_id' => 'required|exists:lessons,id',
@@ -44,7 +44,7 @@ class LessonController extends Controller
             'errors' => 'required|integer',
         ]);
 
-        return response()->json(LessonProgress::create([
+        return response()->json(LessonResult::create([
             'user_id' => auth()->id(),
             'lesson_id' => $request->lesson_id,
             'language' => $request->language,

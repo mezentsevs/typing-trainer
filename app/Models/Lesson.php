@@ -18,8 +18,8 @@ use Illuminate\Support\Carbon;
  * @property string $new_chars
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
- * @property-read Collection<int, LessonProgress> $progresses
- * @property-read int|null $progresses_count
+ * @property-read Collection<int, LessonResult> $results
+ * @property-read int|null $results_count
  * @property-read User $user
  * @method static Builder<static>|Lesson newModelQuery()
  * @method static Builder<static>|Lesson newQuery()
@@ -38,9 +38,9 @@ class Lesson extends Model
 
     protected $fillable = ['user_id', 'number', 'total', 'language', 'new_chars', 'text'];
 
-    public function progresses(): HasMany
+    public function results(): HasMany
     {
-        return $this->hasMany(LessonProgress::class);
+        return $this->hasMany(LessonResult::class);
     }
 
     public function user(): BelongsTo

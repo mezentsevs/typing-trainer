@@ -20,24 +20,22 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $updated_at
  * @property-read Lesson $lesson
  * @property-read User $user
- * @method static Builder<static>|LessonProgress newModelQuery()
- * @method static Builder<static>|LessonProgress newQuery()
- * @method static Builder<static>|LessonProgress query()
- * @method static Builder<static>|LessonProgress whereCreatedAt($value)
- * @method static Builder<static>|LessonProgress whereErrors($value)
- * @method static Builder<static>|LessonProgress whereId($value)
- * @method static Builder<static>|LessonProgress whereLanguage($value)
- * @method static Builder<static>|LessonProgress whereLessonId($value)
- * @method static Builder<static>|LessonProgress whereSpeedWpm($value)
- * @method static Builder<static>|LessonProgress whereTimeSeconds($value)
- * @method static Builder<static>|LessonProgress whereUpdatedAt($value)
- * @method static Builder<static>|LessonProgress whereUserId($value)
+ * @method static Builder<static>|LessonResult newModelQuery()
+ * @method static Builder<static>|LessonResult newQuery()
+ * @method static Builder<static>|LessonResult query()
+ * @method static Builder<static>|LessonResult whereCreatedAt($value)
+ * @method static Builder<static>|LessonResult whereErrors($value)
+ * @method static Builder<static>|LessonResult whereId($value)
+ * @method static Builder<static>|LessonResult whereLanguage($value)
+ * @method static Builder<static>|LessonResult whereLessonId($value)
+ * @method static Builder<static>|LessonResult whereSpeedWpm($value)
+ * @method static Builder<static>|LessonResult whereTimeSeconds($value)
+ * @method static Builder<static>|LessonResult whereUpdatedAt($value)
+ * @method static Builder<static>|LessonResult whereUserId($value)
  */
-class LessonProgress extends Model
+class LessonResult extends Model
 {
     use HasFactory;
-
-    protected $table = 'lesson_progresses';
 
     protected $fillable = ['user_id', 'lesson_id', 'language', 'time_seconds', 'speed_wpm', 'errors'];
 

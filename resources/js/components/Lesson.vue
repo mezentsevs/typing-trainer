@@ -120,7 +120,7 @@ const onInput = async (): Promise<void> => {
             typed,
             progress,
         },
-        '/lessons/progress',
+        '/lessons/result',
         {
             lesson_id: lesson.value.id,
             language,
