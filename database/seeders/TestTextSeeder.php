@@ -875,7 +875,7 @@ On keys that dance like morning dew!
 In halls where Viking sagas soar,
 A warrior's heart beats evermore.
 Runes aglow with starlit fire,
-Carve the fates of gods掣setools wield,
+Carve the fates of god's tools wield,
 Axes clash, the ravens cry,
 Beneath a sky where dragons fly.
 Type, oh scribe, with lightning speed,
