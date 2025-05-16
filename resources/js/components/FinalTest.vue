@@ -45,13 +45,13 @@ import FinalTestSetup from './FinalTestSetup.vue';
 import Statistics from './Statistics.vue';
 import VirtualKeyboard from './VirtualKeyboard.vue';
 import axios from 'axios';
+import { ComputedRef, Ref, ref } from 'vue';
 import { KeyboardLanguageEnum } from '@/enums/KeyboardEnums';
-import { Ref, ref } from 'vue';
+import { RouteLocationNormalizedLoaded, useRoute } from 'vue-router';
 import { useHandleTypingInput, useCurrentWord, useProgress } from '@/composables/TypingLogicComposables';
-import { useRoute } from 'vue-router';
 
-const route = useRoute();
-const { handleTypingInput } = useHandleTypingInput();
+const route: RouteLocationNormalizedLoaded<string | symbol> = useRoute();
+const { handleTypingInput }: Record<string, Function> = useHandleTypingInput();
 
 const errors: Ref<number> = ref(0);
 const genre: Ref<string> = ref('');
@@ -64,8 +64,8 @@ const textContainer: Ref<HTMLElement | null> = ref(null);
 const time: Ref<number> = ref(0);
 const typed: Ref<string> = ref('');
 
-const { isCurrentWord } = useCurrentWord(text, typed);
-const { progress } = useProgress(text, typed, isTestCompleted);
+const { isCurrentWord }: Record<string, ComputedRef<boolean[]>> = useCurrentWord(text, typed);
+const { progress }: Record<string, ComputedRef<number>> = useProgress(text, typed, isTestCompleted);
 
 const resetState = (): void => {
     errors.value = 0;
