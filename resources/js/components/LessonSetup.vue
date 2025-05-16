@@ -32,16 +32,18 @@
 
 <script lang="ts" setup>
 import Error from './Error.vue';
+import LessonSetupFormInterface from '@/interfaces/LessonSetupFormInterface';
 import axios from 'axios';
-import { ref } from 'vue';
-import { useRouter } from 'vue-router';
+import { KeyboardLanguageEnum } from '@/enums/KeyboardEnums';
+import { Ref, ref } from 'vue';
+import { Router, useRouter } from 'vue-router';
 
-const router = useRouter();
+const router: Router = useRouter();
 
-const form = ref({ language: 'en', lesson_count: 10 });
-const error = ref('');
+const form: Ref<LessonSetupFormInterface> = ref({ language: KeyboardLanguageEnum.En, lesson_count: 10 });
+const error: Ref<string> = ref('');
 
-const generateLessons = async () => {
+const generateLessons = async (): Promise<void> => {
     try {
         await axios.post('/lessons/generate', form.value);
         await router.push(`/lesson/${form.value.language}/1`);

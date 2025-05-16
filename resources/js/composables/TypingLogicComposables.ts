@@ -1,5 +1,5 @@
 import CurrentTypingUnitInterface from '@/interfaces/CurrentTypingUnitInterface';
-import LessonsProgressPayloadInterface from '@/interfaces/LessonsProgressPayloadInterface';
+import LessonProgressPayloadInterface from '@/interfaces/LessonProgressPayloadInterface';
 import TestResultPayloadInterface from '@/interfaces/TestResultPayloadInterface';
 import TypingStateInterface from '@/interfaces/TypingStateInterface';
 import axios from 'axios';
@@ -11,7 +11,7 @@ export function useHandleTypingInput(): Record<string, Function> {
     const handleTypingInput = async (
         state: TypingStateInterface,
         postUrl: string,
-        payload: LessonsProgressPayloadInterface | TestResultPayloadInterface
+        payload: LessonProgressPayloadInterface | TestResultPayloadInterface
     ): Promise<void> => {
         if (!state.startTime.value) { state.startTime.value = Date.now(); }
 
