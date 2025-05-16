@@ -368,7 +368,7 @@ A realm where even gods have sometimes drowned.
 Yet still it calls, with beauty and with dread,
 To weave its tale within the poet's head.
 The stars reflect upon the water's face,
-A mirror held to heavens' boundless grace.
+A mirror held to heavens boundless grace.
 Each ripple holds a fragment of the sky,
 A fleeting glimpse of worlds that soar on high.
 The poet writes, her ink as dark as night,
