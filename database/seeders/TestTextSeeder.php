@@ -981,7 +981,7 @@ In Japan's old heart, the shogun's reign,
 Honor binds through joy and pain.
 The keys align, your focus sharp,
 Each tap a note on fate's grand harp.
-From frost-bit fjords to deserts vast,
+From frostbit fjords to deserts vast,
 Type the tales of ages past.
 The keyboard's might, your sacred quest,
 To conquer all, to be the best.
