@@ -1,15 +1,16 @@
+import AuthStateInterface from '@/interfaces/AuthStateInterface';
 import AuthStateUserInterface from '@/interfaces/AuthStateUserInterface';
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import { defineStore } from 'pinia';
 
 export const useAuthStore = defineStore('auth', {
-    state: () => ({
+    state: (): AuthStateInterface => ({
         user: null as AuthStateUserInterface | null,
         token: localStorage.getItem('token') || null,
     }),
     actions: {
-        async login(email: string, password: string) {
-            const response = await axios.post('/login', { email, password });
+        async login(email: string, password: string): Promise<void> {
+            const response: AxiosResponse<any, any> = await axios.post('/login', { email, password });
 
             this.token = response.data.token;
             this.user = response.data.user;
@@ -17,8 +18,13 @@ export const useAuthStore = defineStore('auth', {
             localStorage.setItem('token', this.token!);
             axios.defaults.headers.common['Authorization'] = `Bearer ${this.token}`;
         },
-        async register(name: string, email: string, password: string, password_confirmation: string) {
-            const response = await axios.post('/register', { name, email, password, password_confirmation });
+        async register(name: string, email: string, password: string, password_confirmation: string): Promise<void> {
+            const response: AxiosResponse<any, any> = await axios.post('/register', {
+                name,
+                email,
+                password,
+                password_confirmation,
+            });
 
             this.token = response.data.token;
             this.user = response.data.user;
@@ -26,7 +32,7 @@ export const useAuthStore = defineStore('auth', {
             localStorage.setItem('token', this.token!);
             axios.defaults.headers.common['Authorization'] = `Bearer ${this.token}`;
         },
-        async logout() {
+        async logout(): Promise<void> {
             await axios.post('/logout');
 
             this.token = null;
