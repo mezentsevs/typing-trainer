@@ -44,7 +44,7 @@
 import FinalTestSetup from './FinalTestSetup.vue';
 import Statistics from './Statistics.vue';
 import VirtualKeyboard from './VirtualKeyboard.vue';
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import { ComputedRef, Ref, ref } from 'vue';
 import { KeyboardLanguageEnum } from '@/enums/KeyboardEnums';
 import { RouteLocationNormalizedLoaded, useRoute } from 'vue-router';
@@ -77,7 +77,7 @@ const resetState = (): void => {
 };
 
 const fetchText = async (): Promise<void> => {
-    const response = await axios.get('/test/text', { params: { language, genre: genre.value } });
+    const response: AxiosResponse<any, any> = await axios.get('/test/text', { params: { language, genre: genre.value } });
 
     text.value = response.data.text;
 };

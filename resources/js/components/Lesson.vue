@@ -57,7 +57,7 @@
 import NewCharacters from './NewCharacters.vue';
 import Statistics from './Statistics.vue';
 import VirtualKeyboard from './VirtualKeyboard.vue';
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import { KeyboardLanguageEnum } from '@/enums/KeyboardEnums';
 import { RouteLocationNormalizedLoaded, useRoute } from 'vue-router';
 import { ref, computed, onMounted, Ref, ComputedRef } from 'vue';
@@ -99,7 +99,7 @@ const resetState = (): void => {
 };
 
 const fetchLesson = async (): Promise<void> => {
-    const response = await axios.get(`/lessons/${language}/${lessonNumber.value}`);
+    const response: AxiosResponse<any, any> = await axios.get(`/lessons/${language}/${lessonNumber.value}`);
 
     lesson.value = response.data.lesson;
     totalLessons.value = response.data.lesson.total;
