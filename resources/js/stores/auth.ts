@@ -1,9 +1,10 @@
+import AuthStateUserInterface from '@/interfaces/AuthStateUserInterface';
 import axios from 'axios';
 import { defineStore } from 'pinia';
 
 export const useAuthStore = defineStore('auth', {
     state: () => ({
-        user: null as { id: number; name: string; email: string } | null,
+        user: null as AuthStateUserInterface | null,
         token: localStorage.getItem('token') || null,
     }),
     actions: {
