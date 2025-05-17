@@ -1,4 +1,4 @@
-import AuthStateUserInterface from '@/interfaces/AuthStateUserInterface';
+import AuthStateUserInterface from '@/interfaces/auth/AuthStateUserInterface';
 
 export default interface AuthStateInterface {
     user: AuthStateUserInterface | null;

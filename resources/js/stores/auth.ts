@@ -1,13 +1,18 @@
-import AuthStateInterface from '@/interfaces/AuthStateInterface';
-import AuthStateUserInterface from '@/interfaces/AuthStateUserInterface';
+import AuthActionsInterface from '@/interfaces/auth/AuthActionsInterface';
+import AuthGettersInterface from '@/interfaces/auth/AuthGettersInterface';
+import AuthStateInterface from '@/interfaces/auth/AuthStateInterface';
+import AuthStateUserInterface from '@/interfaces/auth/AuthStateUserInterface';
 import axios, { AxiosResponse } from 'axios';
-import { defineStore } from 'pinia';
+import { defineStore, StoreDefinition } from 'pinia';
 
-export const useAuthStore = defineStore('auth', {
+export const useAuthStore: StoreDefinition<string, AuthStateInterface, AuthGettersInterface, AuthActionsInterface> = defineStore('auth', {
     state: (): AuthStateInterface => ({
         user: null as AuthStateUserInterface | null,
         token: localStorage.getItem('token') || null,
     }),
+    getters: {
+        //
+    },
     actions: {
         async login(email: string, password: string): Promise<void> {
             const response: AxiosResponse<any, any> = await axios.post('/login', { email, password });
