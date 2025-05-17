@@ -974,7 +974,7 @@ Your hands the key to victory!
 In distant stars, where futures bloom,
 Sci-fi worlds defy the tomb.
 The epic pulse of bygone days,
-Were-wolves howl, and magic sways.
+Werewolves howl, and magic sways.
 Your fingers dance, a rhythmic trance,
 Through ethnic tales of mystic dance.
 In Japan's old heart, the shogun's reign,
@@ -1346,7 +1346,7 @@ Through yoga's peace, the mind's hum.
 In sci-fi stars, where futures bloom,
 Your typing skill defies the tomb.
 The epic pulse of bygone days,
-Were-wolves howl, and magic sways.
+Werewolves howl, and magic sways.
 From ethnic tales of desert's breath,
 To frost-kissed sagas defying death.
 Japan's old soul, the warrior's way,
