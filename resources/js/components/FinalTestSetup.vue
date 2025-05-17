@@ -20,12 +20,12 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { Ref, ref } from 'vue';
 
-const genre = ref('');
+const genre: Ref<string> = ref('');
 
 defineProps<{
-    uploadFile: (event: Event) => void;
+    uploadFile: (event: Event) => Promise<void>;
 }>();
 
 defineEmits<{
