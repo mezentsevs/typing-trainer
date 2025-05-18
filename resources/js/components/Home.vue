@@ -31,41 +31,45 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue';
+import AuthActionsInterface from '@/interfaces/auth/AuthActionsInterface';
+import AuthGettersInterface from '@/interfaces/auth/AuthGettersInterface';
+import AuthStateInterface from '@/interfaces/auth/AuthStateInterface';
+import { Router, useRouter } from 'vue-router';
+import { Store } from 'pinia';
+import { ref, onMounted, Ref } from 'vue';
 import { useAuthStore } from '@/stores/auth';
-import { useRouter } from 'vue-router';
 
-const authStore = useAuthStore();
-const router = useRouter();
+const authStore: Store<string, AuthStateInterface, AuthGettersInterface, AuthActionsInterface> = useAuthStore();
+const router: Router = useRouter();
 
-const fullText = 'Typing Trainer';
-const currentText = ref('');
+const fullText: string = 'Typing Trainer';
+const currentText: Ref<string> = ref('');
 
-const logout = async () => {
+const logout = async (): Promise<void> => {
     await authStore.logout();
     await router.push('/login');
 };
 
-onMounted(() => {
-    function typeWriter() {
-        let i = 0;
+const typeWriter = (): void => {
+    let i: number = 0;
 
-        const interval = setInterval(() => {
-            if (i < fullText.length) {
-                currentText.value += fullText[i];
-                i++;
-            } else {
-                clearInterval(interval);
+    const interval: NodeJS.Timeout = setInterval((): void => {
+        if (i < fullText.length) {
+            currentText.value += fullText[i];
+            i++;
+        } else {
+            clearInterval(interval);
 
-                setTimeout(() => {
-                    currentText.value = '';
+            setTimeout((): void => {
+                currentText.value = '';
 
-                    typeWriter();
-                }, 2000);
-            }
-        }, 100);
-    }
+                typeWriter();
+            }, 2000);
+        }
+    }, 100);
+};
 
+onMounted((): void => {
     typeWriter();
 });
 </script>
