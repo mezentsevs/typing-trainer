@@ -30,20 +30,31 @@
 </template>
 
 <script lang="ts" setup>
+import AuthActionsInterface from '@/interfaces/auth/AuthActionsInterface';
+import AuthGettersInterface from '@/interfaces/auth/AuthGettersInterface';
+import AuthStateInterface from '@/interfaces/auth/AuthStateInterface';
 import Error from './Error.vue';
-import { ref } from 'vue';
+import RegisterFormInterface from '@/interfaces/auth/RegisterFormInterface';
+import { Ref, ref } from 'vue';
+import { Router, useRouter } from 'vue-router';
+import { Store } from 'pinia';
 import { useAuthStore } from '@/stores/auth';
-import { useRouter } from 'vue-router';
 
-const authStore = useAuthStore();
-const router = useRouter();
+const authStore: Store<string, AuthStateInterface, AuthGettersInterface, AuthActionsInterface> = useAuthStore();
+const router: Router = useRouter();
 
-const error = ref('');
-const form = ref({ name: '', email: '', password: '', password_confirmation: '' });
+const error: Ref<string> = ref('');
+const form: Ref<RegisterFormInterface> = ref({ name: '', email: '', password: '', password_confirmation: '' });
 
-const register = async () => {
+const register = async (): Promise<void> => {
     try {
-        await authStore.register(form.value.name, form.value.email, form.value.password, form.value.password_confirmation);
+        await authStore.register(
+            form.value.name,
+            form.value.email,
+            form.value.password,
+            form.value.password_confirmation,
+        );
+
         await router.push('/');
     } catch (err) {
         error.value = 'Registration failed';

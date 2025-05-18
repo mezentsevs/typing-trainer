@@ -40,7 +40,11 @@ const form: Ref<LoginFormInterface> = ref({ email: '', password: '' });
 
 const login = async (): Promise<void> => {
     try {
-        await authStore.login(form.value.email, form.value.password);
+        await authStore.login(
+            form.value.email,
+            form.value.password,
+        );
+
         await router.push('/');
     } catch (err) {
         error.value = 'Login failed';
