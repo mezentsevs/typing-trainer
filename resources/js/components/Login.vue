@@ -22,18 +22,23 @@
 </template>
 
 <script lang="ts" setup>
+import AuthActionsInterface from '@/interfaces/auth/AuthActionsInterface';
+import AuthGettersInterface from '@/interfaces/auth/AuthGettersInterface';
+import AuthStateInterface from '@/interfaces/auth/AuthStateInterface';
 import Error from './Error.vue';
-import { ref } from 'vue';
+import LoginFormInterface from '@/interfaces/auth/LoginFormInterface';
+import { Ref, ref } from 'vue';
+import { Router, useRouter } from 'vue-router';
+import { Store } from 'pinia';
 import { useAuthStore } from '@/stores/auth';
-import { useRouter } from 'vue-router';
 
-const authStore = useAuthStore();
-const router = useRouter();
+const authStore: Store<string, AuthStateInterface, AuthGettersInterface, AuthActionsInterface> = useAuthStore();
+const router: Router = useRouter();
 
-const error = ref('');
-const form = ref({ email: '', password: '' });
+const error: Ref<string> = ref('');
+const form: Ref<LoginFormInterface> = ref({ email: '', password: '' });
 
-const login = async () => {
+const login = async (): Promise<void> => {
     try {
         await authStore.login(form.value.email, form.value.password);
         await router.push('/');
