@@ -24,7 +24,7 @@
 
 <script lang="ts" setup>
 import Progress from '@/components/Progress.vue';
-import { computed } from 'vue';
+import { computed, ComputedRef } from 'vue';
 import { formatTime } from '@/helpers/DateTimeHelper';
 
 const props = defineProps<{
@@ -35,5 +35,5 @@ const props = defineProps<{
     progress: number;
 }>();
 
-const formattedTime = computed(() => formatTime(props.time));
+const formattedTime: ComputedRef<string> = computed((): string => formatTime(props.time));
 </script>
