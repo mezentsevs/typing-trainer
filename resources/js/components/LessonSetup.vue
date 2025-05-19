@@ -25,13 +25,13 @@
                     Generate
                 </button>
             </form>
-            <Error :message="error" />
+            <ErrorMessage :message="error" />
         </div>
     </div>
 </template>
 
 <script lang="ts" setup>
-import Error from './Error.vue';
+import ErrorMessage from './ErrorMessage.vue';
 import LessonSetupFormInterface from '@/interfaces/LessonSetupFormInterface';
 import axios from 'axios';
 import { KeyboardLanguageEnum } from '@/enums/KeyboardEnums';

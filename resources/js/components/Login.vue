@@ -13,7 +13,7 @@
                 </div>
                 <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded">Login</button>
             </form>
-            <Error :message="error" />
+            <ErrorMessage :message="error" />
             <p class="mt-4">
                 Don't have an account? <router-link to="/register" class="text-blue-500">Register</router-link>
             </p>
@@ -25,7 +25,7 @@
 import AuthActionsInterface from '@/interfaces/auth/AuthActionsInterface';
 import AuthGettersInterface from '@/interfaces/auth/AuthGettersInterface';
 import AuthStateInterface from '@/interfaces/auth/AuthStateInterface';
-import Error from './Error.vue';
+import ErrorMessage from './ErrorMessage.vue';
 import LoginFormInterface from '@/interfaces/auth/LoginFormInterface';
 import { Ref, ref } from 'vue';
 import { Router, useRouter } from 'vue-router';
