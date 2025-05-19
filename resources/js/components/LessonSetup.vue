@@ -47,8 +47,8 @@ const generateLessons = async (): Promise<void> => {
     try {
         await axios.post('/lessons/generate', form.value);
         await router.push(`/lesson/${form.value.language}/1`);
-    } catch (err) {
-        error.value = 'Failed to generate lessons';
+    } catch (err: any) {
+        error.value = 'Lessons generation failed';
     }
 };
 </script>

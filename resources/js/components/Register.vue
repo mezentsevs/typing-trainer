@@ -56,7 +56,7 @@ const register = async (): Promise<void> => {
         );
 
         await router.push('/');
-    } catch (err) {
+    } catch (err: any) {
         error.value = 'Registration failed';
     }
 };

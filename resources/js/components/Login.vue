@@ -46,7 +46,7 @@ const login = async (): Promise<void> => {
         );
 
         await router.push('/');
-    } catch (err) {
+    } catch (err: any) {
         error.value = 'Login failed';
     }
 };
