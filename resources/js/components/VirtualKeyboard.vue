@@ -110,8 +110,8 @@
 <script lang="ts" setup>
 import VirtualKeyboardIcon from '@/icons/VirtualKeyboardIcon.vue';
 import { KeyboardLanguageEnum, KeyboardSpecialPositionEnum, KeyboardZoneEnum } from '@/enums/KeyboardEnums';
-import { KeyboardSpecialPositionType, KeyboardZoneType } from '@/types/KeyboardTypes';
-import { computed, ref } from 'vue';
+import { KeyboardLayoutType, KeyboardZoneType } from '@/types/KeyboardTypes';
+import { computed, ComputedRef, Ref, ref } from 'vue';
 
 const props = defineProps<{
     language: KeyboardLanguageEnum;
@@ -120,9 +120,9 @@ const props = defineProps<{
     isMinimized?: boolean;
 }>();
 
-const isMinimized = ref(props.isMinimized ?? false);
+const isMinimized: Ref<boolean> = ref(props.isMinimized ?? false);
 
-const keyboardLayouts: Record<KeyboardLanguageEnum, { value: string; display: string; special?: string; specialPosition?: KeyboardSpecialPositionType; width?: number; zone?: KeyboardZoneType }[][]> = {
+const keyboardLayouts: Record<KeyboardLanguageEnum, KeyboardLayoutType> = {
     [KeyboardLanguageEnum.En]: [
         [
             { value: '`', display: '`', special: '~', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
@@ -270,11 +270,11 @@ const upperOrSpecialRegex: Record<KeyboardLanguageEnum, RegExp> = {
     [KeyboardLanguageEnum.Ru]: /[А-ЯЁ!"№;%:?*()_+/,]/,
 };
 
-const keyboardLayout = computed(() => keyboardLayouts[props.language]);
+const keyboardLayout: ComputedRef<KeyboardLayoutType> = computed((): KeyboardLayoutType => keyboardLayouts[props.language]);
 
-const nextChar = computed(() => props.typed.length < props.text.length ? props.text[props.typed.length] : '');
+const nextChar: ComputedRef<string> = computed((): string => props.typed.length < props.text.length ? props.text[props.typed.length] : '');
 
-const toggleKeyboard = () => isMinimized.value = !isMinimized.value;
+const toggleKeyboard = (): void => { isMinimized.value = !isMinimized.value; };
 
 const getOppositeZone = (): KeyboardZoneType => {
     const keyZone = keyboardLayout.value.flat().find(k =>
@@ -287,7 +287,7 @@ const getOppositeZone = (): KeyboardZoneType => {
     return keyZone === KeyboardZoneEnum.Left ? KeyboardZoneEnum.Right : KeyboardZoneEnum.Left;
 };
 
-const isHighlighted = (keyValue: string | undefined, zone?: KeyboardZoneType) => {
+const isHighlighted = (keyValue: string | undefined, zone?: KeyboardZoneType): boolean => {
     if (!keyValue) { return false; }
     if (keyValue === ' ') { return nextChar.value === ' '; }
     if (keyValue === 'enter') { return nextChar.value === '\n'; }
