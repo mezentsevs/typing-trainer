@@ -61,7 +61,7 @@ import axios, { AxiosResponse } from 'axios';
 import { KeyboardLanguageEnum } from '@/enums/KeyboardEnums';
 import { RouteLocationNormalizedLoaded, useRoute } from 'vue-router';
 import { ref, computed, onMounted, Ref, ComputedRef } from 'vue';
-import { useHandleTypingInput, useCurrentWord, useProgress } from '@/composables/TypingLogicComposables';
+import { useHandleTypingInput, useCurrentWord, useProgress } from '@/composables/TypingComposables';
 
 const route: RouteLocationNormalizedLoaded<string | symbol> = useRoute();
 const { handleTypingInput }: Record<string, Function> = useHandleTypingInput();
