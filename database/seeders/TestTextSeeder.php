@@ -17,7 +17,7 @@ class TestTextSeeder extends Seeder
                 ],
                 [
                     'genre' => 'fiction',
-                    'text' => 'The old house on Willow Lane stood silent under the weight of a hundred winters, its warped wooden beams groaning softly in the night. Paint peeled from the walls like dead skin, curling into brittle flakes that drifted to the warped porch below. Nobody had lived there since the summer of 1962, when the last of the Harrow family vanished without a trace. The townsfolk of Eldridge whispered stories about that night-stories of strange lights flickering in the attic, of screams that weren\'t quite human, of shadows that moved against the moonlight without a source. Kids dared each other to knock on the door, but none ever stepped inside. Not until Lila.',
+                    'text' => 'The old house on Willow Lane stood silent under the weight of a hundred winters, its warped wooden beams groaning softly in the night. Paint peeled from the walls like dead skin, curling into brittle flakes that drifted to the warped porch below. Nobody had lived there since the summer of 1962, when the last of the Harrow family vanished without a trace. The townsfolk of Eldridge whispered stories about that night - stories of strange lights flickering in the attic, of screams that weren\'t quite human, of shadows that moved against the moonlight without a source. Kids dared each other to knock on the door, but none ever stepped inside. Not until Lila.',
                 ],
                 [
                     'genre' => 'fiction',
