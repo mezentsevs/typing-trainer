@@ -10,6 +10,8 @@ const applyToken = (token: AuthStateTokenType): void => {
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 };
 
+const retrieveToken = (): AuthStateTokenType => localStorage.getItem('token') || null;
+
 const purgeToken = (): void => {
     localStorage.removeItem('token');
     delete axios.defaults.headers.common['Authorization'];
@@ -18,7 +20,7 @@ const purgeToken = (): void => {
 export const useAuthStore: StoreDefinition<string, AuthStateInterface, AuthGettersInterface, AuthActionsInterface> = defineStore('auth', {
     state: (): AuthStateInterface => ({
         user: null as AuthStateUserType,
-        token: (localStorage.getItem('token') || null) as AuthStateTokenType,
+        token: retrieveToken(),
     }),
     getters: {
         //
