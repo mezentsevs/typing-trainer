@@ -1,14 +1,24 @@
 import AuthActionsInterface from '@/interfaces/auth/AuthActionsInterface';
 import AuthGettersInterface from '@/interfaces/auth/AuthGettersInterface';
 import AuthStateInterface from '@/interfaces/auth/AuthStateInterface';
-import AuthStateUserInterface from '@/interfaces/auth/AuthStateUserInterface';
 import axios, { AxiosResponse } from 'axios';
+import { AuthStateTokenType, AuthStateUserType } from '@/types/AuthTypes';
 import { defineStore, StoreDefinition } from 'pinia';
+
+const applyToken = (token: AuthStateTokenType): void => {
+    localStorage.setItem('token', token!);
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+};
+
+const purgeToken = (): void => {
+    localStorage.removeItem('token');
+    delete axios.defaults.headers.common['Authorization'];
+};
 
 export const useAuthStore: StoreDefinition<string, AuthStateInterface, AuthGettersInterface, AuthActionsInterface> = defineStore('auth', {
     state: (): AuthStateInterface => ({
-        user: null as AuthStateUserInterface | null,
-        token: localStorage.getItem('token') || null,
+        user: null as AuthStateUserType,
+        token: (localStorage.getItem('token') || null) as AuthStateTokenType,
     }),
     getters: {
         //
@@ -20,8 +30,7 @@ export const useAuthStore: StoreDefinition<string, AuthStateInterface, AuthGette
             this.token = response.data.token;
             this.user = response.data.user;
 
-            localStorage.setItem('token', this.token!);
-            axios.defaults.headers.common['Authorization'] = `Bearer ${this.token}`;
+            applyToken(this.token);
         },
         async register(name: string, email: string, password: string, password_confirmation: string): Promise<void> {
             const response: AxiosResponse<any, any> = await axios.post('/register', {
@@ -34,8 +43,7 @@ export const useAuthStore: StoreDefinition<string, AuthStateInterface, AuthGette
             this.token = response.data.token;
             this.user = response.data.user;
 
-            localStorage.setItem('token', this.token!);
-            axios.defaults.headers.common['Authorization'] = `Bearer ${this.token}`;
+            applyToken(this.token);
         },
         async logout(): Promise<void> {
             await axios.post('/logout');
@@ -43,8 +51,7 @@ export const useAuthStore: StoreDefinition<string, AuthStateInterface, AuthGette
             this.token = null;
             this.user = null;
 
-            localStorage.removeItem('token');
-            delete axios.defaults.headers.common['Authorization'];
+            purgeToken();
         },
     },
 });

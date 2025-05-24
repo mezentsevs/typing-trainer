@@ -1,6 +1,6 @@
-import AuthStateUserInterface from '@/interfaces/auth/AuthStateUserInterface';
+import { AuthStateTokenType, AuthStateUserType } from '@/types/AuthTypes';
 
 export default interface AuthStateInterface {
-    user: AuthStateUserInterface | null;
-    token: string | null;
+    user: AuthStateUserType;
+    token: AuthStateTokenType;
 }
