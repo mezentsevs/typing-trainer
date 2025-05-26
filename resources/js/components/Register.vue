@@ -17,7 +17,7 @@
                 </div>
                 <div class="mb-4">
                     <label class="block text-gray-700">Confirm Password</label>
-                    <input v-model="form.password_confirmation" type="password" class="w-full p-2 border rounded" required />
+                    <input v-model="form.passwordConfirmation" type="password" class="w-full p-2 border rounded" required />
                 </div>
                 <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded">Register</button>
             </form>
@@ -44,7 +44,7 @@ const authStore: Store<string, AuthStateInterface, AuthGettersInterface, AuthAct
 const router: Router = useRouter();
 
 const error: Ref<string> = ref('');
-const form: Ref<RegisterFormInterface> = ref({ name: '', email: '', password: '', password_confirmation: '' });
+const form: Ref<RegisterFormInterface> = ref({ name: '', email: '', password: '', passwordConfirmation: '' });
 
 const register = async (): Promise<void> => {
     try {
@@ -52,7 +52,7 @@ const register = async (): Promise<void> => {
             form.value.name,
             form.value.email,
             form.value.password,
-            form.value.password_confirmation,
+            form.value.passwordConfirmation,
         );
 
         await router.push('/');

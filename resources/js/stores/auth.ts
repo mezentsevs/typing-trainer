@@ -34,12 +34,12 @@ export const useAuthStore: StoreDefinition<string, AuthStateInterface, AuthGette
 
             applyToken(this.token);
         },
-        async register(name: string, email: string, password: string, password_confirmation: string): Promise<void> {
+        async register(name: string, email: string, password: string, passwordConfirmation: string): Promise<void> {
             const response: AxiosResponse<any, any> = await axios.post('/register', {
                 name,
                 email,
                 password,
-                password_confirmation,
+                password_confirmation: passwordConfirmation,
             });
 
             this.token = response.data.token;
