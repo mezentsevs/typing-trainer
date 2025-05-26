@@ -10,7 +10,7 @@ const applyToken = (token: AuthStateTokenType): void => {
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 };
 
-const retrieveToken = (): AuthStateTokenType => localStorage.getItem('token') || null;
+const retrieveToken = (): AuthStateTokenType => localStorage.getItem('token');
 
 const purgeToken = (): void => {
     localStorage.removeItem('token');
