@@ -2,20 +2,9 @@ import AuthActionsInterface from '@/interfaces/auth/AuthActionsInterface';
 import AuthGettersInterface from '@/interfaces/auth/AuthGettersInterface';
 import AuthStateInterface from '@/interfaces/auth/AuthStateInterface';
 import axios, { AxiosResponse } from 'axios';
-import { AuthStateTokenType, AuthStateUserType } from '@/types/AuthTypes';
+import { AuthStateUserType } from '@/types/AuthTypes';
+import { applyToken, purgeToken, retrieveToken } from '@/helpers/TokenHelper';
 import { defineStore, StoreDefinition } from 'pinia';
-
-const applyToken = (token: AuthStateTokenType): void => {
-    localStorage.setItem('token', token!);
-    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-};
-
-const retrieveToken = (): AuthStateTokenType => localStorage.getItem('token');
-
-const purgeToken = (): void => {
-    localStorage.removeItem('token');
-    delete axios.defaults.headers.common['Authorization'];
-};
 
 export const useAuthStore: StoreDefinition<string, AuthStateInterface, AuthGettersInterface, AuthActionsInterface> = defineStore('auth', {
     state: (): AuthStateInterface => ({
