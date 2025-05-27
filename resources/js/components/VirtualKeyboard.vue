@@ -17,8 +17,7 @@
             <div
                 v-for="(row, rowIndex) in keyboardLayout"
                 :key="rowIndex"
-                class="flex gap-1"
-                style="justify-content: space-between;"
+                class="flex justify-between gap-1"
             >
                 <template v-if="rowIndex === 0">
                     <button
