@@ -49,7 +49,7 @@
                             isHighlighted(row[0].value, row[0].zone) ? 'bg-green-500 text-white' : 'bg-gray-200',
                             row[0].width ? `w-${row[0].width}` : 'w-10'
                         ]"
-                        :style="{ minWidth: row[0].width ? `${row[0].width}px` : '40px' }"
+                        :style="getKeyStyle(row[0])"
                     >
                         <span class="block">{{ row[0].display }}</span>
                     </button>
@@ -74,7 +74,7 @@
                             isHighlighted(row[4].value, row[4].zone) ? 'bg-green-500 text-white' : 'bg-gray-200',
                             row[4].width ? `w-${row[4].width}` : 'w-10'
                         ]"
-                        :style="{ minWidth: row[4].width ? `${row[4].width}px` : '40px' }"
+                        :style="getKeyStyle(row[4])"
                     >
                         <span class="block">{{ row[4].display }}</span>
                     </button>
@@ -275,7 +275,9 @@ const nextChar: ComputedRef<string> = computed((): string => props.typed.length 
 
 const toggleKeyboard = (): void => { isMinimized.value = !isMinimized.value; };
 
-const getKeyStyle = (key: KeyboardLayoutKeyInterface): Record<string, string> => ({ minWidth: key.width ? `${key.width}px` : '40px' });
+const getKeyStyle = (key: KeyboardLayoutKeyInterface): Record<string, string> => {
+    return { minWidth: key.width ? `${key.width}px` : '40px' };
+};
 
 const getOppositeZone = (): KeyboardZoneType => {
     const keyZone = keyboardLayout.value.flat().find(k =>
