@@ -29,7 +29,7 @@
                             key.width ? `w-${key.width}` : 'w-10',
                             key.value === 'backspace' ? 'text-sm' : ''
                         ]"
-                        :style="{ minWidth: key.width ? `${key.width}px` : '40px' }"
+                        :style="getKeyStyle(key)"
                     >
                         <span class="block">{{ key.display }}</span>
                         <span
@@ -62,7 +62,7 @@
                                 isHighlighted(key.value, key.zone) ? 'bg-green-500 text-white' : 'bg-gray-200',
                                 key.width ? `w-${key.width}` : 'w-10'
                             ]"
-                            :style="{ minWidth: key.width ? `${key.width}px` : '40px' }"
+                            :style="getKeyStyle(key)"
                         >
                             <span class="block">{{ key.display }}</span>
                         </button>
@@ -88,7 +88,7 @@
                             isHighlighted(key.value, key.zone) || isHighlighted(key.special, key.zone) ? 'bg-green-500 text-white' : 'bg-gray-200',
                             key.width ? `w-${key.width}` : 'w-10'
                         ]"
-                        :style="{ minWidth: key.width ? `${key.width}px` : '40px' }"
+                        :style="getKeyStyle(key)"
                     >
                         <span class="block">{{ key.display }}</span>
                         <span
@@ -106,6 +106,7 @@
 </template>
 
 <script lang="ts" setup>
+import KeyboardLayoutKeyInterface from '@/interfaces/KeyboardLayoutKeyInterface';
 import VirtualKeyboardIcon from '@/icons/VirtualKeyboardIcon.vue';
 import { KeyboardLanguageEnum, KeyboardSpecialPositionEnum, KeyboardZoneEnum } from '@/enums/KeyboardEnums';
 import { KeyboardLayoutType, KeyboardZoneType } from '@/types/KeyboardTypes';
@@ -273,6 +274,8 @@ const keyboardLayout: ComputedRef<KeyboardLayoutType> = computed((): KeyboardLay
 const nextChar: ComputedRef<string> = computed((): string => props.typed.length < props.text.length ? props.text[props.typed.length] : '');
 
 const toggleKeyboard = (): void => { isMinimized.value = !isMinimized.value; };
+
+const getKeyStyle = (key: KeyboardLayoutKeyInterface): Record<string, string> => ({ minWidth: key.width ? `${key.width}px` : '40px' });
 
 const getOppositeZone = (): KeyboardZoneType => {
     const keyZone = keyboardLayout.value.flat().find(k =>
