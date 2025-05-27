@@ -11,8 +11,7 @@
 
         <div
             v-else
-            class="keyboard flex flex-col gap-2 p-4 cursor-pointer"
-            style="max-width: 680px; margin: 0 auto;"
+            class="keyboard max-w-[680px] mx-auto flex flex-col gap-2 p-4 cursor-pointer"
             @click="toggleKeyboard"
         >
             <div
