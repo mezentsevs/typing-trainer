@@ -16,15 +16,18 @@
         <button @click="$emit('start', genre)" class="bg-blue-500 text-white p-2 rounded w-full text-sm">
             Start
         </button>
+        <ErrorMessage :message="error" />
     </div>
 </template>
 
 <script lang="ts" setup>
+import ErrorMessage from '@/components/ErrorMessage.vue';
 import { Ref, ref } from 'vue';
 
 const genre: Ref<string> = ref('');
 
 defineProps<{
+    error: string;
     uploadFile: (event: Event) => Promise<void>;
 }>();
 

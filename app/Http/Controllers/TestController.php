@@ -25,7 +25,7 @@ class TestController extends Controller
     {
         $request->validate([
             'language' => 'required|string',
-            'file' => 'required|file|mimes:txt',
+            'file' => 'required|file|mimes:txt|max:3',
         ]);
 
         return response()->json([

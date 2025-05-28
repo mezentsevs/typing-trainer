@@ -9,7 +9,7 @@
                     Completed!
                 </span>
             </div>
-            <FinalTestSetup v-if="!text" :uploadFile @start="onStart" />
+            <FinalTestSetup v-if="!text" :uploadFile :error @start="onStart" />
             <Statistics v-if="text" :language :time :speed :errors :progress />
             <div v-if="text" class="mt-4">
                 <div ref="textContainer" class="text-lg font-mono break-words whitespace-pre-wrap h-28 overflow-y-auto bg-gray-50 p-2">
@@ -53,6 +53,7 @@ import { useHandleTypingInput, useCurrentWord, useProgress } from '@/composables
 const route: RouteLocationNormalizedLoaded<string | symbol> = useRoute();
 const { handleTypingInput }: Record<string, Function> = useHandleTypingInput();
 
+const error: Ref<string> = ref('');
 const errors: Ref<number> = ref(0);
 const genre: Ref<string> = ref('');
 const isTestCompleted: Ref<boolean> = ref(false);
@@ -83,16 +84,20 @@ const fetchText = async (): Promise<void> => {
 };
 
 const uploadFile = async (event: Event): Promise<void> => {
-    const file = (event.target as HTMLInputElement).files?.[0];
+    try {
+        const file = (event.target as HTMLInputElement).files?.[0];
 
-    if (file) {
-        const formData = new FormData();
+        if (file) {
+            const formData = new FormData();
 
-        formData.append('file', file);
-        formData.append('language', language);
+            formData.append('file', file);
+            formData.append('language', language);
 
-        await axios.post('/test/upload', formData);
-        await fetchText();
+            await axios.post('/test/upload', formData);
+            await fetchText();
+        }
+    } catch (err: any) {
+        error.value = 'Upload failed';
     }
 };
 
