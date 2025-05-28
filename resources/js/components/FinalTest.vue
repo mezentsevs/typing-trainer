@@ -53,12 +53,12 @@ import { useHandleTypingInput, useCurrentWord, useProgress } from '@/composables
 const route: RouteLocationNormalizedLoaded<string | symbol> = useRoute();
 const { handleTypingInput }: Record<string, Function> = useHandleTypingInput();
 
+const MAX_FILE_SIZE_KB: number = 3;
 const error: Ref<string> = ref('');
 const errors: Ref<number> = ref(0);
 const genre: Ref<string> = ref('');
 const isTestCompleted: Ref<boolean> = ref(false);
 const language: KeyboardLanguageEnum = route.params.language as KeyboardLanguageEnum;
-const maxFileSizeInKiloBytes: number = 3;
 const speed: Ref<number> = ref(0);
 const startTime: Ref<number> = ref(0);
 const text: Ref<string> = ref('');
@@ -89,8 +89,8 @@ const uploadFile = async (event: Event): Promise<void> => {
         const file = (event.target as HTMLInputElement).files?.[0];
 
         if (file) {
-            if (file.size > maxFileSizeInKiloBytes * 1024) {
-                error.value = `Uploaded file size exceeded (max ${maxFileSizeInKiloBytes} KB)`;
+            if (file.size > MAX_FILE_SIZE_KB * 1024) {
+                error.value = `Uploaded file size exceeded (max ${MAX_FILE_SIZE_KB} KB)`;
 
                 return;
             }
