@@ -4,12 +4,12 @@
             <h2 class="text-2xl font-bold mb-6">Login</h2>
             <form @submit.prevent="login">
                 <div class="mb-4">
-                    <label class="block text-gray-700">Email</label>
-                    <input v-model="form.email" type="email" class="w-full p-2 border rounded" required />
+                    <label for="email" class="block text-gray-700">Email</label>
+                    <input id="email" v-model="form.email" type="email" class="w-full p-2 border rounded" required autocomplete="on" />
                 </div>
                 <div class="mb-4">
-                    <label class="block text-gray-700">Password</label>
-                    <input v-model="form.password" type="password" class="w-full p-2 border rounded" required />
+                    <label for="password" class="block text-gray-700">Password</label>
+                    <input id="password" v-model="form.password" type="password" class="w-full p-2 border rounded" required />
                 </div>
                 <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded">Login</button>
             </form>
