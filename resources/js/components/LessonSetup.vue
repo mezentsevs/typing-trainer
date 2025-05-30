@@ -4,15 +4,16 @@
             <h2 class="text-2xl font-bold mb-6">Setup Lessons</h2>
             <form @submit.prevent="generateLessons">
                 <div class="mb-4">
-                    <label class="block text-gray-700">Language</label>
-                    <select v-model="form.language" class="w-full p-2 border rounded" required>
+                    <label for="language" class="block text-gray-700">Language</label>
+                    <select id="language" v-model="form.language" class="w-full p-2 border rounded" required>
                         <option value="en">English</option>
                         <option value="ru">Russian</option>
                     </select>
                 </div>
                 <div class="mb-4">
-                    <label class="block text-gray-700">Number of Lessons</label>
+                    <label for="lessonCount" class="block text-gray-700">Number of Lessons</label>
                     <input
+                        id="lessonCount"
                         v-model.number="form.lessonCount"
                         type="number"
                         min="1"
