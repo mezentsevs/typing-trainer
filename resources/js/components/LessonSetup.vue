@@ -13,7 +13,7 @@
                 <div class="mb-4">
                     <label class="block text-gray-700">Number of Lessons</label>
                     <input
-                        v-model.number="form.lesson_count"
+                        v-model.number="form.lessonCount"
                         type="number"
                         min="1"
                         max="20"
@@ -40,12 +40,16 @@ import { Router, useRouter } from 'vue-router';
 
 const router: Router = useRouter();
 
-const form: Ref<LessonSetupFormInterface> = ref({ language: KeyboardLanguageEnum.En, lesson_count: 10 });
+const form: Ref<LessonSetupFormInterface> = ref({ language: KeyboardLanguageEnum.En, lessonCount: 10 });
 const error: Ref<string> = ref('');
 
 const generateLessons = async (): Promise<void> => {
     try {
-        await axios.post('/lessons/generate', form.value);
+        await axios.post('/lessons/generate', {
+            language: form.value.language,
+            lesson_count: form.value.lessonCount,
+        });
+
         await router.push(`/lesson/${form.value.language}/1`);
     } catch (err: any) {
         error.value = 'Lessons generation failed';
