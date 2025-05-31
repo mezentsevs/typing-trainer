@@ -55,6 +55,7 @@
 </template>
 
 <script lang="ts" setup>
+import LessonInterface from '@/interfaces/LessonInterface';
 import NewCharacters from './NewCharacters.vue';
 import Statistics from './Statistics.vue';
 import VirtualKeyboard from './VirtualKeyboard.vue';
@@ -72,7 +73,7 @@ const input: Ref<HTMLTextAreaElement | null> = ref(null);
 const isLessonCompleted: Ref<boolean> = ref(false);
 const language: KeyboardLanguageEnum = route.params.language as KeyboardLanguageEnum;
 const lessonNumber: Ref<number> = ref(parseInt(route.params.number as string));
-const lesson: Ref<{ id: number; number: number; newChars: string }> = ref({ id: 0, number: lessonNumber.value, newChars: '' });
+const lesson: Ref<LessonInterface> = ref({ id: 0, number: lessonNumber.value, newChars: '' });
 const speed: Ref<number> = ref(0);
 const startTime: Ref<number> = ref(0);
 const text: Ref<string> = ref('');
