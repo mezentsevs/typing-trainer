@@ -97,7 +97,7 @@ const resetState = (): void => {
     text.value = '';
     time.value = 0;
     typed.value = '';
-    lesson.value = { id: 0, number: lessonNumber.value, newChars: '' };
+    lesson.value = { id: 0, number: lessonNumber.value, newChars: '' } as LessonInterface;
 };
 
 const fetchLesson = async (): Promise<void> => {
