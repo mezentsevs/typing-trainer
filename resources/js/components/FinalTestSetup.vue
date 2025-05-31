@@ -10,7 +10,7 @@
             </select>
         </div>
         <div class="mb-4">
-            <label for="file" class="block text-gray-700">Upload Text <Remark text="optional, max 3 KB" /></label>
+            <label for="file" class="block text-gray-700">Text <Remark text="optional, max 3 KB" /></label>
             <input id="file" type="file" accept=".txt" @change="uploadFile" class="p-2 border rounded w-full text-sm" />
         </div>
         <button @click="$emit('start', genre)" class="bg-blue-500 text-white p-2 rounded w-full text-sm">
