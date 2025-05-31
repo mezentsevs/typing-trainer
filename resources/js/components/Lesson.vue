@@ -103,8 +103,8 @@ const resetState = (): void => {
 const fetchLesson = async (): Promise<void> => {
     const response: AxiosResponse<any, any> = await axios.get(`/lessons/${language}/${lessonNumber.value}`);
 
-    const { id, number, new_chars: newChars } = response.data.lesson;
-    lesson.value = { id, number, newChars };
+    const { id, number, new_chars: newChars }: { id: number, number: number, new_chars: string } = response.data.lesson;
+    lesson.value = { id, number, newChars } as LessonInterface;
 
     totalLessons.value = response.data.lesson.total;
     text.value = response.data.lesson.text;
