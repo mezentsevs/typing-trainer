@@ -21,6 +21,7 @@
                     </span>
                 </div>
                 <textarea
+                    id="typed"
                     v-model="typed"
                     v-focus
                     @input="onInput"
