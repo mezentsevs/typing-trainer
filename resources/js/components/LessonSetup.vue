@@ -11,7 +11,7 @@
                     </select>
                 </div>
                 <div class="mb-4">
-                    <label for="lessonCount" class="block text-gray-700">Number of Lessons</label>
+                    <label for="lessonCount" class="block text-gray-700">Number</label>
                     <input
                         id="lessonCount"
                         v-model.number="form.lessonCount"
