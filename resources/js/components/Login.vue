@@ -11,7 +11,7 @@
                     <label for="password" class="block text-gray-700">Password</label>
                     <input id="password" v-model="form.password" type="password" class="w-full p-2 border rounded" required />
                 </div>
-                <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded">Login</button>
+                <PrimaryButton class="w-full">Login</PrimaryButton>
             </form>
             <ErrorMessage :message="error" />
             <p class="mt-4">
@@ -27,6 +27,7 @@ import AuthGettersInterface from '@/interfaces/auth/AuthGettersInterface';
 import AuthStateInterface from '@/interfaces/auth/AuthStateInterface';
 import ErrorMessage from './ErrorMessage.vue';
 import LoginFormInterface from '@/interfaces/auth/LoginFormInterface';
+import PrimaryButton from '@/components/uikit/PrimaryButton.vue';
 import { Ref, ref } from 'vue';
 import { Router, useRouter } from 'vue-router';
 import { Store } from 'pinia';
