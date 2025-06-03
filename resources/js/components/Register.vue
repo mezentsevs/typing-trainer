@@ -19,7 +19,7 @@
                     <label for="passwordConfirmation" class="block text-gray-700">Confirm Password</label>
                     <input id="passwordConfirmation" v-model="form.passwordConfirmation" type="password" class="w-full p-2 border rounded" required />
                 </div>
-                <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded">Register</button>
+                <PrimaryButton class="w-full">Register</PrimaryButton>
             </form>
             <ErrorMessage :message="error" />
             <p class="mt-4">
@@ -34,6 +34,7 @@ import AuthActionsInterface from '@/interfaces/auth/AuthActionsInterface';
 import AuthGettersInterface from '@/interfaces/auth/AuthGettersInterface';
 import AuthStateInterface from '@/interfaces/auth/AuthStateInterface';
 import ErrorMessage from './ErrorMessage.vue';
+import PrimaryButton from '@/components/uikit/PrimaryButton.vue';
 import RegisterFormInterface from '@/interfaces/auth/RegisterFormInterface';
 import { Ref, ref } from 'vue';
 import { Router, useRouter } from 'vue-router';
