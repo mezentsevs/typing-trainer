@@ -22,9 +22,7 @@
                         required
                     />
                 </div>
-                <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded">
-                    Generate
-                </button>
+                <PrimaryButton class="w-full">Generate</PrimaryButton>
             </form>
             <ErrorMessage :message="error" />
         </div>
@@ -34,6 +32,7 @@
 <script lang="ts" setup>
 import ErrorMessage from './ErrorMessage.vue';
 import LessonSetupFormInterface from '@/interfaces/LessonSetupFormInterface';
+import PrimaryButton from '@/components/uikit/PrimaryButton.vue';
 import axios from 'axios';
 import { KeyboardLanguageEnum } from '@/enums/KeyboardEnums';
 import { Ref, ref } from 'vue';
