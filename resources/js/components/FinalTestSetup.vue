@@ -13,15 +13,14 @@
             <label for="file" class="block text-gray-700">Text <Remark text="optional, max 3 KB" /></label>
             <input id="file" type="file" accept=".txt" @change="uploadFile" class="p-2 border rounded w-full" />
         </div>
-        <button @click="$emit('start', genre)" class="bg-blue-500 text-white p-2 rounded w-full">
-            Start
-        </button>
+        <PrimaryButton @click="$emit('start', genre)" class="w-full">Start</PrimaryButton>
         <ErrorMessage :message="error" />
     </div>
 </template>
 
 <script lang="ts" setup>
 import ErrorMessage from '@/components/ErrorMessage.vue';
+import PrimaryButton from '@/components/uikit/PrimaryButton.vue';
 import Remark from '@/components/Remark.vue';
 import { Ref, ref } from 'vue';
 
