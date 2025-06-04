@@ -32,9 +32,7 @@
                 />
                 <VirtualKeyboard :language :typed :text :is-minimized="true" />
                 <div v-if="isTestCompleted" class="flex justify-center mt-2">
-                    <router-link to="/" class="w-32 bg-blue-500 text-center text-white p-2 rounded">
-                        Finish
-                    </router-link>
+                    <PrimaryRouterLink class="w-32">Finish</PrimaryRouterLink>
                 </div>
             </div>
         </div>
@@ -43,6 +41,7 @@
 
 <script lang="ts" setup>
 import FinalTestSetup from './FinalTestSetup.vue';
+import PrimaryRouterLink from '@/components/uikit/PrimaryRouterLink.vue';
 import Statistics from './Statistics.vue';
 import VirtualKeyboard from './VirtualKeyboard.vue';
 import axios, { AxiosResponse } from 'axios';
