@@ -41,13 +41,13 @@
                     >
                         Next
                     </PrimaryRouterLink>
-                    <router-link
+                    <SuccessRouterLink
                         v-else
                         :to="`/test/${language}`"
-                        class="w-32 bg-green-500 text-center text-white p-2 rounded"
+                        class="w-32"
                     >
                         Final Test
-                    </router-link>
+                    </SuccessRouterLink>
                 </div>
             </div>
         </div>
@@ -59,6 +59,7 @@ import LessonInterface from '@/interfaces/LessonInterface';
 import NewCharacters from './NewCharacters.vue';
 import PrimaryRouterLink from '@/components/uikit/PrimaryRouterLink.vue';
 import Statistics from './Statistics.vue';
+import SuccessRouterLink from '@/components/uikit/SuccessRouterLink.vue';
 import VirtualKeyboard from './VirtualKeyboard.vue';
 import axios, { AxiosResponse } from 'axios';
 import { KeyboardLanguageEnum } from '@/enums/KeyboardEnums';
