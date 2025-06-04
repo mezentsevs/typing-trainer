@@ -33,14 +33,14 @@
                 />
                 <VirtualKeyboard :language :typed :text />
                 <div v-if="isLessonCompleted" class="flex justify-center mt-4">
-                    <router-link
+                    <PrimaryRouterLink
                         v-if="nextLesson"
                         :to="`/lesson/${language}/${nextLesson}`"
                         @click="onNext"
-                        class="w-32 bg-blue-500 text-center text-white p-2 rounded"
+                        class="w-32"
                     >
                         Next
-                    </router-link>
+                    </PrimaryRouterLink>
                     <router-link
                         v-else
                         :to="`/test/${language}`"
@@ -57,6 +57,7 @@
 <script lang="ts" setup>
 import LessonInterface from '@/interfaces/LessonInterface';
 import NewCharacters from './NewCharacters.vue';
+import PrimaryRouterLink from '@/components/uikit/PrimaryRouterLink.vue';
 import Statistics from './Statistics.vue';
 import VirtualKeyboard from './VirtualKeyboard.vue';
 import axios, { AxiosResponse } from 'axios';
