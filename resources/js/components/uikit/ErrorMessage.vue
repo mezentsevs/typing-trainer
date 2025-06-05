@@ -1,8 +1,12 @@
 <template>
-    <p v-if="message" class="mt-4 text-red-500">{{ message }}</p>
+    <BaseMessage v-if="message" class="text-red-500">
+        {{ message }}
+    </BaseMessage>
 </template>
 
 <script lang="ts" setup>
+import BaseMessage from '@/components/uikit/BaseMessage.vue';
+
 defineProps<{
     message: string;
 }>();
