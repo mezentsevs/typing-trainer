@@ -30,7 +30,7 @@
 </template>
 
 <script lang="ts" setup>
-import ErrorMessage from './ErrorMessage.vue';
+import ErrorMessage from '@/components/uikit/ErrorMessage.vue';
 import LessonSetupFormInterface from '@/interfaces/LessonSetupFormInterface';
 import PrimaryButton from '@/components/uikit/PrimaryButton.vue';
 import axios from 'axios';

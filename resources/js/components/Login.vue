@@ -25,7 +25,7 @@
 import AuthActionsInterface from '@/interfaces/auth/AuthActionsInterface';
 import AuthGettersInterface from '@/interfaces/auth/AuthGettersInterface';
 import AuthStateInterface from '@/interfaces/auth/AuthStateInterface';
-import ErrorMessage from './ErrorMessage.vue';
+import ErrorMessage from '@/components/uikit/ErrorMessage.vue';
 import LoginFormInterface from '@/interfaces/auth/LoginFormInterface';
 import PrimaryButton from '@/components/uikit/PrimaryButton.vue';
 import { Ref, ref } from 'vue';

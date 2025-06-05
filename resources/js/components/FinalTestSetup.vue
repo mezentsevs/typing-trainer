@@ -19,7 +19,7 @@
 </template>
 
 <script lang="ts" setup>
-import ErrorMessage from '@/components/ErrorMessage.vue';
+import ErrorMessage from '@/components/uikit/ErrorMessage.vue';
 import PrimaryButton from '@/components/uikit/PrimaryButton.vue';
 import Remark from '@/components/Remark.vue';
 import { Ref, ref } from 'vue';
