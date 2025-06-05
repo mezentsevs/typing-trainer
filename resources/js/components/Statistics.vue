@@ -18,12 +18,12 @@
                 <p class="text-xs opacity-50">Errors</p>
             </div>
         </div>
-        <Progress :progress />
+        <ProgressBar :progress />
     </div>
 </template>
 
 <script lang="ts" setup>
-import Progress from '@/components/Progress.vue';
+import ProgressBar from '@/components/uikit/ProgressBar.vue';
 import { computed, ComputedRef } from 'vue';
 import { formatTime } from '@/helpers/DateTimeHelper';
 
