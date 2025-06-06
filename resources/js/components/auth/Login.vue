@@ -4,11 +4,11 @@
             <h2 class="text-2xl font-bold mb-6">Login</h2>
             <form @submit.prevent="login">
                 <div class="mb-4">
-                    <label for="email" class="block text-gray-700">Email</label>
+                    <InputLabel for="email" value="Email" />
                     <input id="email" v-model="form.email" type="email" class="w-full p-2 border rounded" required autocomplete="on" />
                 </div>
                 <div class="mb-4">
-                    <label for="password" class="block text-gray-700">Password</label>
+                    <InputLabel for="password" value="Password" />
                     <input id="password" v-model="form.password" type="password" class="w-full p-2 border rounded" required />
                 </div>
                 <PrimaryButton class="w-full">Login</PrimaryButton>
@@ -26,6 +26,7 @@ import AuthActionsInterface from '@/interfaces/auth/AuthActionsInterface';
 import AuthGettersInterface from '@/interfaces/auth/AuthGettersInterface';
 import AuthStateInterface from '@/interfaces/auth/AuthStateInterface';
 import ErrorMessage from '@/components/uikit/ErrorMessage.vue';
+import InputLabel from '@/components/uikit/InputLabel.vue';
 import LoginFormInterface from '@/interfaces/auth/LoginFormInterface';
 import PrimaryButton from '@/components/uikit/PrimaryButton.vue';
 import { Ref, ref } from 'vue';
