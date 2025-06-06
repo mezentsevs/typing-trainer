@@ -1,9 +1,10 @@
 <template>
-    <span v-if="text" class="opacity-50">({{ text }})</span>
+    <span v-if="value" class="opacity-50">{{ value }}</span>
+    <span v-else class="opacity-50"><slot /></span>
 </template>
 
 <script lang="ts" setup>
 defineProps<{
-    text: string;
+    value?: string;
 }>();
 </script>
