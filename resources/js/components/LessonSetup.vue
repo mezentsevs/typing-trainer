@@ -4,14 +4,14 @@
             <h2 class="text-2xl font-bold mb-6">Setup Lessons</h2>
             <form @submit.prevent="generateLessons">
                 <div class="mb-4">
-                    <label for="language" class="block text-gray-700">Language</label>
+                    <InputLabel for="language" value="Language" />
                     <select id="language" v-model="form.language" class="w-full p-2 border rounded" required>
                         <option value="en">English</option>
                         <option value="ru">Russian</option>
                     </select>
                 </div>
                 <div class="mb-4">
-                    <label for="lessonCount" class="block text-gray-700">Number</label>
+                    <InputLabel for="lessonCount" value="Number" />
                     <input
                         id="lessonCount"
                         v-model.number="form.lessonCount"
@@ -31,6 +31,7 @@
 
 <script lang="ts" setup>
 import ErrorMessage from '@/components/uikit/ErrorMessage.vue';
+import InputLabel from '@/components/uikit/InputLabel.vue';
 import LessonSetupFormInterface from '@/interfaces/LessonSetupFormInterface';
 import PrimaryButton from '@/components/uikit/PrimaryButton.vue';
 import axios from 'axios';
