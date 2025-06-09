@@ -5,11 +5,25 @@
             <form @submit.prevent="login">
                 <div class="mb-4">
                     <InputLabel for="email" value="Email" />
-                    <input id="email" v-model="form.email" type="email" class="w-full p-2 border rounded" required autocomplete="on" />
+                    <TextInput
+                        id="email"
+                        v-model="form.email"
+                        v-focus
+                        type="email"
+                        class="w-full"
+                        required
+                        autocomplete
+                    />
                 </div>
                 <div class="mb-4">
                     <InputLabel for="password" value="Password" />
-                    <input id="password" v-model="form.password" type="password" class="w-full p-2 border rounded" required />
+                    <TextInput
+                        id="password"
+                        v-model="form.password"
+                        type="password"
+                        class="w-full"
+                        required
+                    />
                 </div>
                 <PrimaryButton class="w-full">Login</PrimaryButton>
             </form>
@@ -29,6 +43,7 @@ import ErrorMessage from '@/components/uikit/ErrorMessage.vue';
 import InputLabel from '@/components/uikit/InputLabel.vue';
 import LoginFormInterface from '@/interfaces/auth/LoginFormInterface';
 import PrimaryButton from '@/components/uikit/PrimaryButton.vue';
+import TextInput from '@/components/uikit/TextInput.vue';
 import { Ref, ref } from 'vue';
 import { Router, useRouter } from 'vue-router';
 import { Store } from 'pinia';
