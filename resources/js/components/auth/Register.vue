@@ -12,7 +12,7 @@
                         type="text"
                         class="w-full"
                         required
-                        autocomplete
+                        autocomplete="on"
                     />
                 </div>
                 <div class="mb-4">
@@ -23,7 +23,7 @@
                         type="email"
                         class="w-full"
                         required
-                        autocomplete
+                        autocomplete="on"
                     />
                 </div>
                 <div class="mb-4">
