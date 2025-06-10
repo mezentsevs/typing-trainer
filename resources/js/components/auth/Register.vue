@@ -5,19 +5,46 @@
             <form @submit.prevent="register">
                 <div class="mb-4">
                     <InputLabel for="name" value="Name" />
-                    <input id="name" v-model="form.name" type="text" class="w-full p-2 border rounded" required autocomplete="on" />
+                    <TextInput
+                        id="name"
+                        v-model="form.name"
+                        v-focus
+                        type="text"
+                        class="w-full"
+                        required
+                        autocomplete
+                    />
                 </div>
                 <div class="mb-4">
                     <InputLabel for="email" value="Email" />
-                    <input id="email" v-model="form.email" type="email" class="w-full p-2 border rounded" required autocomplete="on" />
+                    <TextInput
+                        id="email"
+                        v-model="form.email"
+                        type="email"
+                        class="w-full"
+                        required
+                        autocomplete
+                    />
                 </div>
                 <div class="mb-4">
                     <InputLabel for="password" value="Password" />
-                    <input id="password" v-model="form.password" type="password" class="w-full p-2 border rounded" required />
+                    <TextInput
+                        id="password"
+                        v-model="form.password"
+                        type="password"
+                        class="w-full"
+                        required
+                    />
                 </div>
                 <div class="mb-4">
                     <InputLabel for="passwordConfirmation" value="Confirm Password" />
-                    <input id="passwordConfirmation" v-model="form.passwordConfirmation" type="password" class="w-full p-2 border rounded" required />
+                    <TextInput
+                        id="passwordConfirmation"
+                        v-model="form.passwordConfirmation"
+                        type="password"
+                        class="w-full"
+                        required
+                    />
                 </div>
                 <PrimaryButton class="w-full">Register</PrimaryButton>
             </form>
@@ -37,6 +64,7 @@ import ErrorMessage from '@/components/uikit/ErrorMessage.vue';
 import InputLabel from '@/components/uikit/InputLabel.vue';
 import PrimaryButton from '@/components/uikit/PrimaryButton.vue';
 import RegisterFormInterface from '@/interfaces/auth/RegisterFormInterface';
+import TextInput from '@/components/uikit/TextInput.vue';
 import { Ref, ref } from 'vue';
 import { Router, useRouter } from 'vue-router';
 import { Store } from 'pinia';
