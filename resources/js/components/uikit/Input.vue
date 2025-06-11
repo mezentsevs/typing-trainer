@@ -6,5 +6,5 @@
 </template>
 
 <script lang="ts" setup>
-const model = defineModel();
+const model = defineModel<string | number>();
 </script>
