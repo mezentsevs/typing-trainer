@@ -5,11 +5,10 @@
             <form @submit.prevent="register">
                 <div class="mb-4">
                     <InputLabel for="name" value="Name" />
-                    <TextInput
+                    <Input
                         id="name"
                         v-model="form.name"
                         v-focus
-                        type="text"
                         class="w-full"
                         required
                         autocomplete="on"
@@ -17,7 +16,7 @@
                 </div>
                 <div class="mb-4">
                     <InputLabel for="email" value="Email" />
-                    <TextInput
+                    <Input
                         id="email"
                         v-model="form.email"
                         type="email"
@@ -28,7 +27,7 @@
                 </div>
                 <div class="mb-4">
                     <InputLabel for="password" value="Password" />
-                    <TextInput
+                    <Input
                         id="password"
                         v-model="form.password"
                         type="password"
@@ -38,7 +37,7 @@
                 </div>
                 <div class="mb-4">
                     <InputLabel for="passwordConfirmation" value="Confirm Password" />
-                    <TextInput
+                    <Input
                         id="passwordConfirmation"
                         v-model="form.passwordConfirmation"
                         type="password"
@@ -61,10 +60,10 @@ import AuthActionsInterface from '@/interfaces/auth/AuthActionsInterface';
 import AuthGettersInterface from '@/interfaces/auth/AuthGettersInterface';
 import AuthStateInterface from '@/interfaces/auth/AuthStateInterface';
 import ErrorMessage from '@/components/uikit/ErrorMessage.vue';
+import Input from '@/components/uikit/Input.vue';
 import InputLabel from '@/components/uikit/InputLabel.vue';
 import PrimaryButton from '@/components/uikit/PrimaryButton.vue';
 import RegisterFormInterface from '@/interfaces/auth/RegisterFormInterface';
-import TextInput from '@/components/uikit/TextInput.vue';
 import { Ref, ref } from 'vue';
 import { Router, useRouter } from 'vue-router';
 import { Store } from 'pinia';

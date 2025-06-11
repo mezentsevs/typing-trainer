@@ -12,9 +12,10 @@
                 </div>
                 <div class="mb-4">
                     <InputLabel for="lessonCount" value="Number" />
-                    <NumberInput
+                    <Input
                         id="lessonCount"
                         v-model.number="form.lessonCount"
+                        type="number"
                         min="1"
                         max="20"
                         class="w-full"
@@ -30,9 +31,9 @@
 
 <script lang="ts" setup>
 import ErrorMessage from '@/components/uikit/ErrorMessage.vue';
+import Input from '@/components/uikit/Input.vue';
 import InputLabel from '@/components/uikit/InputLabel.vue';
 import LessonSetupFormInterface from '@/interfaces/LessonSetupFormInterface';
-import NumberInput from '@/components/uikit/NumberInput.vue';
 import PrimaryButton from '@/components/uikit/PrimaryButton.vue';
 import axios from 'axios';
 import { KeyboardLanguageEnum } from '@/enums/KeyboardEnums';
