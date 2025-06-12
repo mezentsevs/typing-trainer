@@ -113,10 +113,10 @@ import { KeyboardLayoutType, KeyboardZoneType } from '@/types/KeyboardTypes';
 import { computed, ComputedRef, Ref, ref } from 'vue';
 
 const props = defineProps<{
-    language: KeyboardLanguageEnum;
-    typed: string;
-    text: string;
-    isMinimized?: boolean;
+    language: KeyboardLanguageEnum,
+    typed: string,
+    text: string,
+    isMinimized?: boolean,
 }>();
 
 const isMinimized: Ref<boolean> = ref(props.isMinimized ?? false);

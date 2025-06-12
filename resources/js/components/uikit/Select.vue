@@ -20,6 +20,6 @@ import UIKitSelectOptionInterface from '@/interfaces/uikit/UIKitSelectOptionInte
 const model = defineModel<string | number | null>();
 
 defineProps<{
-    options: UIKitSelectOptionInterface[];
+    options: UIKitSelectOptionInterface[],
 }>();
 </script>

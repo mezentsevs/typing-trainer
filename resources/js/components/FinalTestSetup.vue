@@ -28,8 +28,8 @@ import { Ref, ref } from 'vue';
 const genre: Ref<string> = ref('');
 
 defineProps<{
-    error: string;
-    uploadFile: (event: Event) => Promise<void>;
+    error: string,
+    uploadFile: (event: Event) => Promise<void>,
 }>();
 
 defineEmits<{

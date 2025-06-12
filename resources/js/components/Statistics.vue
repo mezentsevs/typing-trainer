@@ -28,11 +28,11 @@ import { computed, ComputedRef } from 'vue';
 import { formatTime } from '@/helpers/DateTimeHelper';
 
 const props = defineProps<{
-    language: string;
-    time: number;
-    speed: number;
-    errors: number;
-    progress: number;
+    language: string,
+    time: number,
+    speed: number,
+    errors: number,
+    progress: number,
 }>();
 
 const formattedTime: ComputedRef<string> = computed((): string => formatTime(props.time));

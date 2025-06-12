@@ -13,7 +13,7 @@
 import { computed, ComputedRef } from 'vue';
 
 const props = defineProps<{
-    progress: number;
+    progress: number,
 }>();
 
 const style: ComputedRef<Record<string, string>> = computed((): Record<string, string> => ({
