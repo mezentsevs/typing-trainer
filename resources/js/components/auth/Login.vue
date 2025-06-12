@@ -38,11 +38,11 @@
 <script lang="ts" setup>
 import AuthActionsInterface from '@/interfaces/auth/AuthActionsInterface';
 import AuthGettersInterface from '@/interfaces/auth/AuthGettersInterface';
+import AuthLoginFormInterface from '@/interfaces/auth/AuthLoginFormInterface';
 import AuthStateInterface from '@/interfaces/auth/AuthStateInterface';
 import ErrorMessage from '@/components/uikit/ErrorMessage.vue';
 import Input from '@/components/uikit/Input.vue';
 import InputLabel from '@/components/uikit/InputLabel.vue';
-import LoginFormInterface from '@/interfaces/auth/LoginFormInterface';
 import PrimaryButton from '@/components/uikit/PrimaryButton.vue';
 import { Ref, ref } from 'vue';
 import { Router, useRouter } from 'vue-router';
@@ -53,7 +53,7 @@ const authStore: Store<string, AuthStateInterface, AuthGettersInterface, AuthAct
 const router: Router = useRouter();
 
 const error: Ref<string> = ref('');
-const form: Ref<LoginFormInterface> = ref({ email: '', password: '' });
+const form: Ref<AuthLoginFormInterface> = ref({ email: '', password: '' });
 
 const login = async (): Promise<void> => {
     try {
