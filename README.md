@@ -7,7 +7,6 @@
 This is a typing trainer, written in and for educational and demonstrational purposes.
 
 Based on tech stack:
-- [Grok](https://grok.com/),
 - [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML),
 - [PHP](https://www.php.net),
 - [Laravel](https://laravel.com),
