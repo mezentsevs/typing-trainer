@@ -5,10 +5,14 @@
             <form @submit.prevent="generateLessons">
                 <div class="mb-4">
                     <InputLabel for="language" value="Language" />
-                    <select id="language" v-model="form.language" class="w-full p-2 border rounded" required>
-                        <option value="en">English</option>
-                        <option value="ru">Russian</option>
-                    </select>
+                    <Select
+                        id="language"
+                        v-model="form.language"
+                        v-focus
+                        :options="languages"
+                        class="w-full"
+                        required
+                    />
                 </div>
                 <div class="mb-4">
                     <InputLabel for="lessonCount" value="Number" />
@@ -35,6 +39,8 @@ import Input from '@/components/uikit/Input.vue';
 import InputLabel from '@/components/uikit/InputLabel.vue';
 import LessonSetupFormInterface from '@/interfaces/LessonSetupFormInterface';
 import PrimaryButton from '@/components/uikit/PrimaryButton.vue';
+import Select from '@/components/uikit/Select.vue';
+import UIKitSelectOptionInterface from '@/interfaces/uikit/UIKitSelectOptionInterface';
 import axios from 'axios';
 import { KeyboardLanguageEnum } from '@/enums/KeyboardEnums';
 import { Ref, ref } from 'vue';
@@ -44,6 +50,11 @@ const router: Router = useRouter();
 
 const form: Ref<LessonSetupFormInterface> = ref({ language: KeyboardLanguageEnum.En, lessonCount: 10 });
 const error: Ref<string> = ref('');
+
+const languages: UIKitSelectOptionInterface[] = [
+    {label: 'English', value: KeyboardLanguageEnum.En},
+    {label: 'Russian', value: KeyboardLanguageEnum.Ru},
+];
 
 const generateLessons = async (): Promise<void> => {
     try {
