@@ -16,8 +16,9 @@
 
 <script lang="ts" setup>
 import UIKitSelectOptionInterface from '@/interfaces/uikit/UIKitSelectOptionInterface';
+import { UIKitSelectModelType } from '@/types/UIKitTypes';
 
-const model = defineModel<string | number | null>();
+const model = defineModel<UIKitSelectModelType>();
 
 defineProps<{
     options: UIKitSelectOptionInterface[],

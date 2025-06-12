@@ -6,5 +6,7 @@
 </template>
 
 <script lang="ts" setup>
-const model = defineModel<string | number>();
+import { UIKitInputModelType } from '@/types/UIKitTypes';
+
+const model = defineModel<UIKitInputModelType>();
 </script>
