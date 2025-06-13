@@ -2,12 +2,13 @@
     <div class="w-1/2 mx-auto my-4 border border-opacity-50 rounded-lg p-4">
         <div class="mb-4">
             <InputLabel for="genre">Genre <Remark value="(optional)" /></InputLabel>
-            <select id="genre" v-model="genre" class="p-2 border rounded w-full">
-                <option value="">None</option>
-                <option value="fiction">Fiction</option>
-                <option value="non-fiction">Non-fiction</option>
-                <option value="poetry">Poetry</option>
-            </select>
+            <Select
+                id="genre"
+                v-model="genre"
+                v-focus
+                :options="genres"
+                class="w-full"
+            />
         </div>
         <div class="mb-4">
             <InputLabel for="file">Text <Remark value="(optional, max 3 KB)" /></InputLabel>
@@ -23,9 +24,10 @@ import ErrorMessage from '@/components/uikit/ErrorMessage.vue';
 import InputLabel from '@/components/uikit/InputLabel.vue';
 import PrimaryButton from '@/components/uikit/PrimaryButton.vue';
 import Remark from '@/components/uikit/Remark.vue';
+import Select from '@/components/uikit/Select.vue';
+import UIKitSelectOptionInterface from '@/interfaces/uikit/UIKitSelectOptionInterface';
+import { FinalTestGenreEnum } from '@/enums/FinalTestEnums';
 import { Ref, ref } from 'vue';
-
-const genre: Ref<string> = ref('');
 
 defineProps<{
     error: string,
@@ -35,4 +37,13 @@ defineProps<{
 defineEmits<{
     (e: 'start', genre: string): void;
 }>();
+
+const genre: Ref<string> = ref('');
+
+const genres: UIKitSelectOptionInterface[] = [
+    { label: 'None', value: FinalTestGenreEnum.None },
+    { label: 'Fiction', value: FinalTestGenreEnum.Fiction },
+    { label: 'Non-fiction', value: FinalTestGenreEnum.NonFiction },
+    { label: 'Poetry', value: FinalTestGenreEnum.Poetry },
+];
 </script>
