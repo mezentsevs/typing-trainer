@@ -52,8 +52,8 @@ const form: Ref<LessonSetupFormInterface> = ref({ language: KeyboardLanguageEnum
 const error: Ref<string> = ref('');
 
 const languages: UIKitSelectOptionInterface[] = [
-    {label: 'English', value: KeyboardLanguageEnum.En},
-    {label: 'Russian', value: KeyboardLanguageEnum.Ru},
+    { label: 'English', value: KeyboardLanguageEnum.En },
+    { label: 'Russian', value: KeyboardLanguageEnum.Ru },
 ];
 
 const generateLessons = async (): Promise<void> => {
