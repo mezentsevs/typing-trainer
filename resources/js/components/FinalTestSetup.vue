@@ -12,7 +12,14 @@
         </div>
         <div class="mb-4">
             <InputLabel for="file">Text <Remark value="(optional, max 3 KB)" /></InputLabel>
-            <input id="file" type="file" accept=".txt" @change="uploadFile" class="p-2 border rounded w-full" />
+            <Input
+                id="file"
+                type="file"
+                accept=".txt"
+                @change="uploadFile"
+                class="w-full"
+                style="border-radius: 0.15rem"
+            />
         </div>
         <PrimaryButton @click="$emit('start', genre)" class="w-full">Start</PrimaryButton>
         <ErrorMessage :message="error" />
@@ -21,6 +28,7 @@
 
 <script lang="ts" setup>
 import ErrorMessage from '@/components/uikit/ErrorMessage.vue';
+import Input from '@/components/uikit/Input.vue';
 import InputLabel from '@/components/uikit/InputLabel.vue';
 import PrimaryButton from '@/components/uikit/PrimaryButton.vue';
 import Remark from '@/components/uikit/Remark.vue';
