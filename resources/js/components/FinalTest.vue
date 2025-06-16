@@ -2,7 +2,7 @@
     <div class="min-h-screen bg-gray-100 p-8">
         <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
             <div class="relative flex items-center mb-4">
-                <h2 class="text-2xl font-bold">Final Test</h2>
+                <Heading :level="2" class="text-2xl">Final Test</Heading>
                 <span v-if="isTestCompleted"
                       class="absolute left-1/2 transform -translate-x-1/2 text-green-500 text-3xl font-bold"
                 >
@@ -41,6 +41,7 @@
 
 <script lang="ts" setup>
 import FinalTestSetup from './FinalTestSetup.vue';
+import Heading from '@/components/uikit/Heading.vue';
 import PrimaryRouterLink from '@/components/uikit/PrimaryRouterLink.vue';
 import Statistics from './Statistics.vue';
 import VirtualKeyboard from './VirtualKeyboard.vue';
