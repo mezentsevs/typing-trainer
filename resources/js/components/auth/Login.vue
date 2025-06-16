@@ -1,7 +1,7 @@
 <template>
     <div class="min-h-screen flex items-center justify-center bg-gray-100">
         <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
-            <h2 class="text-2xl font-bold mb-6">Login</h2>
+            <Heading :level="2" class="text-2xl mb-6">Login</Heading>
             <form @submit.prevent="login">
                 <div class="mb-4">
                     <InputLabel for="email" value="Email" />
@@ -41,6 +41,7 @@ import AuthGettersInterface from '@/interfaces/auth/AuthGettersInterface';
 import AuthLoginFormInterface from '@/interfaces/auth/AuthLoginFormInterface';
 import AuthStateInterface from '@/interfaces/auth/AuthStateInterface';
 import ErrorMessage from '@/components/uikit/ErrorMessage.vue';
+import Heading from '@/components/uikit/Heading.vue';
 import Input from '@/components/uikit/Input.vue';
 import InputLabel from '@/components/uikit/InputLabel.vue';
 import PrimaryButton from '@/components/uikit/PrimaryButton.vue';
