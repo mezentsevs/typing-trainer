@@ -2,7 +2,7 @@
     <div class="min-h-screen bg-gray-100 p-8">
         <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
             <div class="relative flex items-center mb-4">
-                <h2 class="text-2xl font-bold">Lesson {{ lesson.number }}/{{ totalLessons }}</h2>
+                <Heading :level="2" class="text-2xl">Lesson {{ lesson.number }}/{{ totalLessons }}</Heading>
                 <span v-if="isLessonCompleted" class="absolute left-1/2 transform -translate-x-1/2 text-green-500 text-3xl font-bold">
                     Completed!
                 </span>
@@ -55,6 +55,7 @@
 </template>
 
 <script lang="ts" setup>
+import Heading from '@/components/uikit/Heading.vue';
 import LessonInterface from '@/interfaces/LessonInterface';
 import NewCharacters from './NewCharacters.vue';
 import PrimaryRouterLink from '@/components/uikit/PrimaryRouterLink.vue';
