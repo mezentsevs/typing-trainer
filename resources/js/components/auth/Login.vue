@@ -29,7 +29,7 @@
             </form>
             <ErrorMessage :message="error" />
             <p class="mt-4">
-                Don't have an account? <router-link to="/register" class="text-blue-500">Register</router-link>
+                Don't have an account? <PrimaryRouterLink to="/register">Register</PrimaryRouterLink>
             </p>
         </div>
     </div>
@@ -45,6 +45,7 @@ import Heading from '@/components/uikit/Heading.vue';
 import Input from '@/components/uikit/Input.vue';
 import InputLabel from '@/components/uikit/InputLabel.vue';
 import PrimaryButton from '@/components/uikit/PrimaryButton.vue';
+import PrimaryRouterLink from '@/components/uikit/PrimaryRouterLink.vue';
 import { Ref, ref } from 'vue';
 import { Router, useRouter } from 'vue-router';
 import { Store } from 'pinia';
