@@ -33,21 +33,21 @@
                 />
                 <VirtualKeyboard :language :typed :text />
                 <div v-if="isLessonCompleted" class="flex justify-center mt-4">
-                    <PrimaryRouterLink
+                    <PrimaryRouterLinkButton
                         v-if="nextLesson"
                         :to="`/lesson/${language}/${nextLesson}`"
                         @click="onNext"
                         class="w-32"
                     >
                         Next
-                    </PrimaryRouterLink>
-                    <SuccessRouterLink
+                    </PrimaryRouterLinkButton>
+                    <SuccessRouterLinkButton
                         v-else
                         :to="`/test/${language}`"
                         class="w-32"
                     >
                         Final Test
-                    </SuccessRouterLink>
+                    </SuccessRouterLinkButton>
                 </div>
             </div>
         </div>
@@ -58,9 +58,9 @@
 import Heading from '@/components/uikit/Heading.vue';
 import LessonInterface from '@/interfaces/LessonInterface';
 import NewCharacters from './NewCharacters.vue';
-import PrimaryRouterLink from '@/components/uikit/PrimaryRouterLink.vue';
+import PrimaryRouterLinkButton from '@/components/uikit/PrimaryRouterLinkButton.vue';
 import Statistics from './Statistics.vue';
-import SuccessRouterLink from '@/components/uikit/SuccessRouterLink.vue';
+import SuccessRouterLinkButton from '@/components/uikit/SuccessRouterLinkButton.vue';
 import VirtualKeyboard from './VirtualKeyboard.vue';
 import axios, { AxiosResponse } from 'axios';
 import { KeyboardLanguageEnum } from '@/enums/KeyboardEnums';
