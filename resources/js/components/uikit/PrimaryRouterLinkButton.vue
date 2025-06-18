@@ -1,5 +1,5 @@
 <template>
-    <BaseRouterLinkButton :to class="bg-blue-500 dark:bg-gray-200">
+    <BaseRouterLinkButton :to class="bg-indigo-500 dark:bg-gray-200">
         <slot />
     </BaseRouterLinkButton>
 </template>
