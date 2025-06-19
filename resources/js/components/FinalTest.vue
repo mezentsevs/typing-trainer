@@ -20,12 +20,12 @@
                         {{ char }}
                     </span>
                 </div>
-                <textarea
+                <TextArea
                     id="typed"
                     v-model="typed"
                     v-focus
+                    class="w-full p-2 mt-4 resize-none"
                     @input="onInput"
-                    class="w-full p-2 border rounded mt-4 resize-none"
                     :disabled="isTestCompleted"
                     rows="4"
                     spellcheck="false"
@@ -44,6 +44,7 @@ import FinalTestSetup from './FinalTestSetup.vue';
 import Heading from '@/components/uikit/Heading.vue';
 import PrimaryRouterLinkButton from '@/components/uikit/PrimaryRouterLinkButton.vue';
 import Statistics from './Statistics.vue';
+import TextArea from '@/components/uikit/TextArea.vue';
 import VirtualKeyboard from './VirtualKeyboard.vue';
 import axios, { AxiosResponse } from 'axios';
 import { ComputedRef, Ref, ref } from 'vue';
