@@ -19,3 +19,7 @@
     content: "↵";
     color: #ccc;
 }
+
+::selection {
+    @apply bg-indigo-500 text-white;
+}
