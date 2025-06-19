@@ -20,13 +20,13 @@
                         {{ char }}
                     </span>
                 </div>
-                <textarea
+                <TextArea
                     id="typed"
+                    ref="textArea"
                     v-model="typed"
                     v-focus
+                    class="w-full p-2 mt-4 resize-none"
                     @input="onInput"
-                    class="w-full p-2 border rounded mt-4 resize-none"
-                    ref="input"
                     :disabled="isLessonCompleted"
                     rows="4"
                     spellcheck="false"
@@ -61,6 +61,7 @@ import NewCharacters from './NewCharacters.vue';
 import PrimaryRouterLinkButton from '@/components/uikit/PrimaryRouterLinkButton.vue';
 import Statistics from './Statistics.vue';
 import SuccessRouterLinkButton from '@/components/uikit/SuccessRouterLinkButton.vue';
+import TextArea from '@/components/uikit/TextArea.vue';
 import VirtualKeyboard from './VirtualKeyboard.vue';
 import axios, { AxiosResponse } from 'axios';
 import { KeyboardLanguageEnum } from '@/enums/KeyboardEnums';
@@ -72,7 +73,6 @@ const route: RouteLocationNormalizedLoaded<string | symbol> = useRoute();
 const { handleTypingInput }: Record<string, Function> = useHandleTypingInput();
 
 const errors: Ref<number> = ref(0);
-const input: Ref<HTMLTextAreaElement | null> = ref(null);
 const isLessonCompleted: Ref<boolean> = ref(false);
 const language: KeyboardLanguageEnum = route.params.language as KeyboardLanguageEnum;
 const lessonNumber: Ref<number> = ref(parseInt(route.params.number as string));
@@ -80,6 +80,7 @@ const lesson: Ref<LessonInterface> = ref({ id: 0, number: lessonNumber.value, ne
 const speed: Ref<number> = ref(0);
 const startTime: Ref<number> = ref(0);
 const text: Ref<string> = ref('');
+const textArea: Ref<typeof TextArea | null> = ref(null);
 const textContainer: Ref<HTMLElement | null> = ref(null);
 const time: Ref<number> = ref(0);
 const totalLessons: Ref<number> = ref(0);
@@ -147,7 +148,7 @@ const onNext = async (): Promise<void> => {
 
     await fetchLesson();
 
-    if (input.value) { input.value.focus(); }
+    if (textArea.value) { textArea.value.area.focus(); }
 };
 
 onMounted(async (): Promise<void> => {
