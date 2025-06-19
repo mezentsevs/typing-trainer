@@ -7,3 +7,5 @@ export type UIKitInputModelType = string | number;
 export type UIKitRouterLinkToType = string | Object;
 
 export type UIKitSelectModelType = string | number | null;
+
+export type UIKitTextAreaModelType = string;
