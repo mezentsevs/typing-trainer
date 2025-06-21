@@ -1,5 +1,5 @@
 <template>
-    <BaseRouterLink :to class="text-indigo-500 dark:text-gray-200">
+    <BaseRouterLink :to class="text-blue-500 dark:text-gray-200">
         <slot />
     </BaseRouterLink>
 </template>

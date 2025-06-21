@@ -1,5 +1,5 @@
 <template>
-    <BaseButton :type class="bg-indigo-500 dark:bg-gray-200">
+    <BaseButton :type class="bg-blue-500 dark:bg-gray-200">
         <slot />
     </BaseButton>
 </template>
