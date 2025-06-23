@@ -2,7 +2,7 @@ import AuthActionsInterface from '@/interfaces/auth/AuthActionsInterface';
 import AuthGettersInterface from '@/interfaces/auth/AuthGettersInterface';
 import AuthStateInterface from '@/interfaces/auth/AuthStateInterface';
 import axios, { AxiosResponse } from 'axios';
-import { AuthStateUserType } from '@/types/AuthTypes';
+import { AuthStateTokenType, AuthStateUserType } from '@/types/AuthTypes';
 import { applyToken, purgeToken, retrieveToken } from '@/helpers/TokenHelper';
 import { defineStore, StoreDefinition } from 'pinia';
 
@@ -16,7 +16,10 @@ export const useAuthStore: StoreDefinition<string, AuthStateInterface, AuthGette
     },
     actions: {
         async login(email: string, password: string): Promise<void> {
-            const response: AxiosResponse<any, any> = await axios.post('/login', { email, password });
+            const response: AxiosResponse<{
+                token: AuthStateTokenType;
+                user: AuthStateUserType;
+            }> = await axios.post('/login', { email, password });
 
             this.token = response.data.token;
             this.user = response.data.user;
@@ -24,7 +27,10 @@ export const useAuthStore: StoreDefinition<string, AuthStateInterface, AuthGette
             applyToken(this.token);
         },
         async register(name: string, email: string, password: string, passwordConfirmation: string): Promise<void> {
-            const response: AxiosResponse<any, any> = await axios.post('/register', {
+            const response: AxiosResponse<{
+                token: AuthStateTokenType;
+                user: AuthStateUserType;
+            }> = await axios.post('/register', {
                 name,
                 email,
                 password,
