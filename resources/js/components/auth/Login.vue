@@ -65,8 +65,8 @@ const login = async (): Promise<void> => {
         );
 
         await router.push('/');
-    } catch (err: any) {
-        error.value = 'Login failed';
+    } catch (err) {
+        if (err instanceof Error) { error.value = 'Login failed'; }
     }
 };
 </script>

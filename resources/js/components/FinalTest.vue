@@ -105,8 +105,8 @@ const uploadFile = async (event: Event): Promise<void> => {
             await axios.post('/test/upload', formData);
             await fetchText();
         }
-    } catch (err: any) {
-        error.value = 'Upload failed';
+    } catch (err) {
+        if (err instanceof Error) { error.value = 'Upload failed'; }
     }
 };
 

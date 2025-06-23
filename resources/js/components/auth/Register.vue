@@ -87,8 +87,8 @@ const register = async (): Promise<void> => {
         );
 
         await router.push('/');
-    } catch (err: any) {
-        error.value = 'Registration failed';
+    } catch (err) {
+        if (err instanceof Error) { error.value = 'Registration failed'; }
     }
 };
 </script>
