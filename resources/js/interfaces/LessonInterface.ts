@@ -6,7 +6,7 @@ export default interface LessonInterface {
     number: number;
     total: number;
     language: KeyboardLanguageEnum;
-    newChars: string;
+    new_chars: string;
     text: string;
     created_at: string;
     updated_at: string;

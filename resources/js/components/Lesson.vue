@@ -8,7 +8,7 @@
                 </span>
             </div>
             <div class="flex flex-row items-stretch space-x-4 mb-4">
-                <NewCharacters :new-chars="lesson.newChars" class="flex items-center justify-center" />
+                <NewCharacters :new-chars="lesson.new_chars" class="flex items-center justify-center" />
                 <Statistics :language :time :speed :errors :progress />
             </div>
             <div class="mt-4">
@@ -56,6 +56,7 @@
 
 <script lang="ts" setup>
 import Heading from '@/components/uikit/Heading.vue';
+import LessonInterface from '@/interfaces/LessonInterface';
 import NewCharacters from './NewCharacters.vue';
 import PrimaryRouterLinkButton from '@/components/uikit/PrimaryRouterLinkButton.vue';
 import Statistics from './Statistics.vue';
@@ -76,7 +77,7 @@ const errors: Ref<number> = ref(0);
 const isLessonCompleted: Ref<boolean> = ref(false);
 const language: KeyboardLanguageEnum = route.params.language as KeyboardLanguageEnum;
 const lessonNumber: Ref<number> = ref(parseInt(route.params.number as string));
-const lesson: Ref<LessonInfoType> = ref({ id: 0, number: lessonNumber.value, newChars: '' });
+const lesson: Ref<LessonInfoType> = ref({ id: 0, number: lessonNumber.value, new_chars: '' });
 const speed: Ref<number> = ref(0);
 const startTime: Ref<number> = ref(0);
 const text: Ref<string> = ref('');
@@ -101,14 +102,16 @@ const resetState = (): void => {
     text.value = '';
     time.value = 0;
     typed.value = '';
-    lesson.value = { id: 0, number: lessonNumber.value, newChars: '' } as LessonInfoType;
+    lesson.value = { id: 0, number: lessonNumber.value, new_chars: '' } as LessonInfoType;
 };
 
 const fetchLesson = async (): Promise<void> => {
-    const response: AxiosResponse<any, any> = await axios.get(`/lessons/${language}/${lessonNumber.value}`);
+    const response: AxiosResponse<{
+        lesson: LessonInterface;
+    }> = await axios.get(`/lessons/${language}/${lessonNumber.value}`);
 
-    const { id, number, new_chars: newChars }: { id: number, number: number, new_chars: string } = response.data.lesson;
-    lesson.value = { id, number, newChars } as LessonInfoType;
+    const { id, number, new_chars }: LessonInfoType = response.data.lesson;
+    lesson.value = { id, number, new_chars } as LessonInfoType;
 
     totalLessons.value = response.data.lesson.total;
     text.value = response.data.lesson.text;
