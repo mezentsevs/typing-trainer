@@ -56,7 +56,6 @@
 
 <script lang="ts" setup>
 import Heading from '@/components/uikit/Heading.vue';
-import LessonInterface from '@/interfaces/LessonInterface';
 import NewCharacters from './NewCharacters.vue';
 import PrimaryRouterLinkButton from '@/components/uikit/PrimaryRouterLinkButton.vue';
 import Statistics from './Statistics.vue';
@@ -65,6 +64,7 @@ import TextArea from '@/components/uikit/TextArea.vue';
 import VirtualKeyboard from './VirtualKeyboard.vue';
 import axios, { AxiosResponse } from 'axios';
 import { KeyboardLanguageEnum } from '@/enums/KeyboardEnums';
+import { LessonInfoType } from '@/types/LessonTypes';
 import { RouteLocationNormalizedLoaded, useRoute } from 'vue-router';
 import { ref, computed, onMounted, Ref, ComputedRef } from 'vue';
 import { useHandleTypingInput, useCurrentWord, useProgress } from '@/composables/TypingComposables';
@@ -76,7 +76,7 @@ const errors: Ref<number> = ref(0);
 const isLessonCompleted: Ref<boolean> = ref(false);
 const language: KeyboardLanguageEnum = route.params.language as KeyboardLanguageEnum;
 const lessonNumber: Ref<number> = ref(parseInt(route.params.number as string));
-const lesson: Ref<LessonInterface> = ref({ id: 0, number: lessonNumber.value, newChars: '' });
+const lesson: Ref<LessonInfoType> = ref({ id: 0, number: lessonNumber.value, newChars: '' });
 const speed: Ref<number> = ref(0);
 const startTime: Ref<number> = ref(0);
 const text: Ref<string> = ref('');
@@ -101,14 +101,14 @@ const resetState = (): void => {
     text.value = '';
     time.value = 0;
     typed.value = '';
-    lesson.value = { id: 0, number: lessonNumber.value, newChars: '' } as LessonInterface;
+    lesson.value = { id: 0, number: lessonNumber.value, newChars: '' } as LessonInfoType;
 };
 
 const fetchLesson = async (): Promise<void> => {
     const response: AxiosResponse<any, any> = await axios.get(`/lessons/${language}/${lessonNumber.value}`);
 
     const { id, number, new_chars: newChars }: { id: number, number: number, new_chars: string } = response.data.lesson;
-    lesson.value = { id, number, newChars } as LessonInterface;
+    lesson.value = { id, number, newChars } as LessonInfoType;
 
     totalLessons.value = response.data.lesson.total;
     text.value = response.data.lesson.text;
