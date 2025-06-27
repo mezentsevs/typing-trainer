@@ -1,5 +1,6 @@
 <template>
     <div class="w-1/2 mx-auto my-4 border border-opacity-50 rounded-lg p-4">
+        <Heading :level="3" class="text-xl mb-4">Setup</Heading>
         <form @submit.prevent>
             <InputLabel for="genre">Genre <Remark value="(optional)" /></InputLabel>
             <Select
@@ -26,6 +27,7 @@
 
 <script lang="ts" setup>
 import ErrorMessage from '@/components/uikit/ErrorMessage.vue';
+import Heading from '@/components/uikit/Heading.vue';
 import Input from '@/components/uikit/Input.vue';
 import InputLabel from '@/components/uikit/InputLabel.vue';
 import PrimaryButton from '@/components/uikit/PrimaryButton.vue';
