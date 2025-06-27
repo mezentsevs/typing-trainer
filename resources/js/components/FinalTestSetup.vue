@@ -1,27 +1,25 @@
 <template>
     <div class="w-1/2 mx-auto my-4 border border-opacity-50 rounded-lg p-4">
-        <div class="mb-4">
+        <form @submit.prevent>
             <InputLabel for="genre">Genre <Remark value="(optional)" /></InputLabel>
             <Select
                 id="genre"
                 v-model="genre"
                 v-focus
                 :options="genres"
-                class="w-full"
+                class="mb-4 w-full"
             />
-        </div>
-        <div class="mb-4">
             <InputLabel for="file">Text <Remark value="(optional, max 3 KB)" /></InputLabel>
             <Input
                 id="file"
                 type="file"
                 accept=".txt"
                 @change="uploadFile"
-                class="w-full"
+                class="mb-4 w-full"
                 style="border-radius: 0.15rem"
             />
-        </div>
-        <PrimaryButton @click="$emit('start', genre)" class="w-full">Start</PrimaryButton>
+            <PrimaryButton @click="$emit('start', genre)" class="w-full">Start</PrimaryButton>
+        </form>
         <ErrorMessage :message="error" />
     </div>
 </template>
