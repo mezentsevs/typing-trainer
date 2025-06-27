@@ -3,28 +3,24 @@
         <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
             <Heading :level="2" class="text-2xl mb-6">Login</Heading>
             <form @submit.prevent="login">
-                <div class="mb-4">
-                    <InputLabel for="email" value="Email" />
-                    <Input
-                        id="email"
-                        v-model="form.email"
-                        v-focus
-                        type="email"
-                        class="w-full"
-                        required
-                        autocomplete="on"
-                    />
-                </div>
-                <div class="mb-4">
-                    <InputLabel for="password" value="Password" />
-                    <Input
-                        id="password"
-                        v-model="form.password"
-                        type="password"
-                        class="w-full"
-                        required
-                    />
-                </div>
+                <InputLabel for="email" value="Email" />
+                <Input
+                    id="email"
+                    v-model="form.email"
+                    v-focus
+                    type="email"
+                    class="mb-4 w-full"
+                    required
+                    autocomplete="on"
+                />
+                <InputLabel for="password" value="Password" />
+                <Input
+                    id="password"
+                    v-model="form.password"
+                    type="password"
+                    class="mb-4 w-full"
+                    required
+                />
                 <PrimaryButton class="w-full">Login</PrimaryButton>
             </form>
             <ErrorMessage :message="error" />
