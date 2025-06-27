@@ -3,29 +3,25 @@
         <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
             <Heading :level="2" class="text-2xl mb-6">Setup Lessons</Heading>
             <form @submit.prevent="generateLessons">
-                <div class="mb-4">
-                    <InputLabel for="language" value="Language" />
-                    <Select
-                        id="language"
-                        v-model="form.language"
-                        v-focus
-                        :options="languages"
-                        class="w-full"
-                        required
-                    />
-                </div>
-                <div class="mb-4">
-                    <InputLabel for="lessonCount" value="Number" />
-                    <Input
-                        id="lessonCount"
-                        v-model.number="form.lessonCount"
-                        type="number"
-                        min="1"
-                        max="20"
-                        class="w-full"
-                        required
-                    />
-                </div>
+                <InputLabel for="language" value="Language" />
+                <Select
+                    id="language"
+                    v-model="form.language"
+                    v-focus
+                    :options="languages"
+                    class="mb-4 w-full"
+                    required
+                />
+                <InputLabel for="lessonCount" value="Number" />
+                <Input
+                    id="lessonCount"
+                    v-model.number="form.lessonCount"
+                    type="number"
+                    min="1"
+                    max="20"
+                    class="mb-4 w-full"
+                    required
+                />
                 <PrimaryButton class="w-full">Generate</PrimaryButton>
             </form>
             <ErrorMessage :message="error" />
