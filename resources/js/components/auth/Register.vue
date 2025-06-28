@@ -1,6 +1,10 @@
 <template>
     <div class="min-h-screen flex items-center justify-center bg-gray-100">
-        <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
+        <AuthenticationCard>
+            <template #logo>
+                <!--Logo-->
+            </template>
+
             <Heading :level="2" class="text-2xl mb-6">Register</Heading>
             <form @submit.prevent="register">
                 <InputLabel for="name" value="Name" />
@@ -43,7 +47,7 @@
             <p class="mt-4">
                 Already have an account? <PrimaryRouterLink to="/login">Login</PrimaryRouterLink>
             </p>
-        </div>
+        </AuthenticationCard>
     </div>
 </template>
 
@@ -52,6 +56,7 @@ import AuthActionsInterface from '@/interfaces/auth/AuthActionsInterface';
 import AuthGettersInterface from '@/interfaces/auth/AuthGettersInterface';
 import AuthRegisterFormInterface from '@/interfaces/auth/AuthRegisterFormInterface';
 import AuthStateInterface from '@/interfaces/auth/AuthStateInterface';
+import AuthenticationCard from '@/components/auth/AuthenticationCard.vue';
 import ErrorMessage from '@/components/uikit/ErrorMessage.vue';
 import Heading from '@/components/uikit/Heading.vue';
 import Input from '@/components/uikit/Input.vue';
