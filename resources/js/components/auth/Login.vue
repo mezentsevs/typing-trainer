@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-screen flex items-center justify-center bg-gray-100">
+    <AuthenticationLayout>
         <AuthenticationCard>
             <template #logo>
                 <!--Logo-->
@@ -32,7 +32,7 @@
                 Don't have an account? <PrimaryRouterLink to="/register">Register</PrimaryRouterLink>
             </p>
         </AuthenticationCard>
-    </div>
+    </AuthenticationLayout>
 </template>
 
 <script lang="ts" setup>
@@ -41,6 +41,7 @@ import AuthGettersInterface from '@/interfaces/auth/AuthGettersInterface';
 import AuthLoginFormInterface from '@/interfaces/auth/AuthLoginFormInterface';
 import AuthStateInterface from '@/interfaces/auth/AuthStateInterface';
 import AuthenticationCard from '@/components/auth/AuthenticationCard.vue';
+import AuthenticationLayout from '@/layouts/AuthenticationLayout.vue';
 import ErrorMessage from '@/components/uikit/ErrorMessage.vue';
 import Heading from '@/components/uikit/Heading.vue';
 import Input from '@/components/uikit/Input.vue';
