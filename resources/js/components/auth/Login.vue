@@ -1,6 +1,6 @@
 <template>
-    <AuthenticationLayout>
-        <AuthenticationCard>
+    <AuthLayout>
+        <AuthCard>
             <template #logo>
                 <!--Logo-->
             </template>
@@ -31,17 +31,17 @@
             <p class="mt-4">
                 Don't have an account? <PrimaryRouterLink to="/register">Register</PrimaryRouterLink>
             </p>
-        </AuthenticationCard>
-    </AuthenticationLayout>
+        </AuthCard>
+    </AuthLayout>
 </template>
 
 <script lang="ts" setup>
 import AuthActionsInterface from '@/interfaces/auth/AuthActionsInterface';
+import AuthCard from '@/components/auth/AuthCard.vue';
 import AuthGettersInterface from '@/interfaces/auth/AuthGettersInterface';
+import AuthLayout from '@/layouts/AuthLayout.vue';
 import AuthLoginFormInterface from '@/interfaces/auth/AuthLoginFormInterface';
 import AuthStateInterface from '@/interfaces/auth/AuthStateInterface';
-import AuthenticationCard from '@/components/auth/AuthenticationCard.vue';
-import AuthenticationLayout from '@/layouts/AuthenticationLayout.vue';
 import ErrorMessage from '@/components/uikit/ErrorMessage.vue';
 import Heading from '@/components/uikit/Heading.vue';
 import Input from '@/components/uikit/Input.vue';
