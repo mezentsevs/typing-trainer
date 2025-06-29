@@ -2,13 +2,13 @@
     <div class="min-h-screen bg-gray-100 p-8">
         <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
             <div class="relative flex items-center mb-4">
-                <Heading :level="2" class="text-2xl">Lesson {{ lesson.number }}/{{ totalLessons }}</Heading>
+                <Heading :level="2" class="text-2xl">Lesson {{ lessonPartialInfo.number }}/{{ totalLessons }}</Heading>
                 <span v-if="isLessonCompleted" class="absolute left-1/2 transform -translate-x-1/2 text-green-500 text-3xl font-bold">
                     Completed!
                 </span>
             </div>
             <div class="flex flex-row items-stretch space-x-4 mb-4">
-                <NewCharacters :new-chars="lesson.new_chars" class="flex items-center justify-center" />
+                <NewCharacters :new-chars="lessonPartialInfo.new_chars" class="flex items-center justify-center" />
                 <Statistics :language :time :speed :errors :progress />
             </div>
             <div class="mt-4">
@@ -77,7 +77,7 @@ const errors: Ref<number> = ref(0);
 const isLessonCompleted: Ref<boolean> = ref(false);
 const language: KeyboardLanguageEnum = route.params.language as KeyboardLanguageEnum;
 const lessonNumber: Ref<number> = ref(parseInt(route.params.number as string));
-const lesson: Ref<LessonPartialInfoType> = ref({ id: 0, number: lessonNumber.value, new_chars: '' });
+const lessonPartialInfo: Ref<LessonPartialInfoType> = ref({ id: 0, number: lessonNumber.value, new_chars: '' });
 const speed: Ref<number> = ref(0);
 const startTime: Ref<number> = ref(0);
 const text: Ref<string> = ref('');
@@ -102,7 +102,7 @@ const resetState = (): void => {
     text.value = '';
     time.value = 0;
     typed.value = '';
-    lesson.value = { id: 0, number: lessonNumber.value, new_chars: '' } as LessonPartialInfoType;
+    lessonPartialInfo.value = { id: 0, number: lessonNumber.value, new_chars: '' } as LessonPartialInfoType;
 };
 
 const fetchLesson = async (): Promise<void> => {
@@ -111,7 +111,7 @@ const fetchLesson = async (): Promise<void> => {
     }> = await axios.get(`/lessons/${language}/${lessonNumber.value}`);
 
     const { id, number, new_chars }: LessonPartialInfoType = response.data.lesson;
-    lesson.value = { id, number, new_chars } as LessonPartialInfoType;
+    lessonPartialInfo.value = { id, number, new_chars } as LessonPartialInfoType;
 
     totalLessons.value = response.data.lesson.total;
     text.value = response.data.lesson.text;
@@ -133,7 +133,7 @@ const onInput = async (): Promise<void> => {
         },
         '/lessons/result',
         {
-            lesson_id: lesson.value.id,
+            lesson_id: lessonPartialInfo.value.id,
             language,
             time_seconds: time.value,
             speed_wpm: speed.value,
