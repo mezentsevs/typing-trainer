@@ -65,7 +65,7 @@ import TextArea from '@/components/uikit/TextArea.vue';
 import VirtualKeyboard from './VirtualKeyboard.vue';
 import axios, { AxiosResponse } from 'axios';
 import { KeyboardLanguageEnum } from '@/enums/KeyboardEnums';
-import { LessonInfoType } from '@/types/LessonTypes';
+import { LessonPartialInfoType } from '@/types/LessonTypes';
 import { RouteLocationNormalizedLoaded, useRoute } from 'vue-router';
 import { ref, computed, onMounted, Ref, ComputedRef } from 'vue';
 import { useHandleTypingInput, useCurrentWord, useProgress } from '@/composables/TypingComposables';
@@ -77,7 +77,7 @@ const errors: Ref<number> = ref(0);
 const isLessonCompleted: Ref<boolean> = ref(false);
 const language: KeyboardLanguageEnum = route.params.language as KeyboardLanguageEnum;
 const lessonNumber: Ref<number> = ref(parseInt(route.params.number as string));
-const lesson: Ref<LessonInfoType> = ref({ id: 0, number: lessonNumber.value, new_chars: '' });
+const lesson: Ref<LessonPartialInfoType> = ref({ id: 0, number: lessonNumber.value, new_chars: '' });
 const speed: Ref<number> = ref(0);
 const startTime: Ref<number> = ref(0);
 const text: Ref<string> = ref('');
@@ -102,7 +102,7 @@ const resetState = (): void => {
     text.value = '';
     time.value = 0;
     typed.value = '';
-    lesson.value = { id: 0, number: lessonNumber.value, new_chars: '' } as LessonInfoType;
+    lesson.value = { id: 0, number: lessonNumber.value, new_chars: '' } as LessonPartialInfoType;
 };
 
 const fetchLesson = async (): Promise<void> => {
@@ -110,8 +110,8 @@ const fetchLesson = async (): Promise<void> => {
         lesson: LessonInterface;
     }> = await axios.get(`/lessons/${language}/${lessonNumber.value}`);
 
-    const { id, number, new_chars }: LessonInfoType = response.data.lesson;
-    lesson.value = { id, number, new_chars } as LessonInfoType;
+    const { id, number, new_chars }: LessonPartialInfoType = response.data.lesson;
+    lesson.value = { id, number, new_chars } as LessonPartialInfoType;
 
     totalLessons.value = response.data.lesson.total;
     text.value = response.data.lesson.text;
