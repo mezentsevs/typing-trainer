@@ -31,15 +31,15 @@
 </template>
 
 <script lang="ts" setup>
-import AuthActionsInterface from '@/interfaces/auth/AuthActionsInterface';
-import AuthGettersInterface from '@/interfaces/auth/AuthGettersInterface';
-import AuthStateInterface from '@/interfaces/auth/AuthStateInterface';
+import AuthActions from '@/interfaces/auth/AuthActions';
+import AuthGetters from '@/interfaces/auth/AuthGetters';
+import AuthState from '@/interfaces/auth/AuthState';
 import { Router, useRouter } from 'vue-router';
 import { Store } from 'pinia';
 import { ref, onMounted, Ref } from 'vue';
 import { useAuthStore } from '@/stores/auth';
 
-const authStore: Store<string, AuthStateInterface, AuthGettersInterface, AuthActionsInterface> = useAuthStore();
+const authStore: Store<string, AuthState, AuthGetters, AuthActions> = useAuthStore();
 const router: Router = useRouter();
 
 const fullText: string = 'Typing Trainer';

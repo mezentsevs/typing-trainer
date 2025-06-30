@@ -36,12 +36,12 @@
 </template>
 
 <script lang="ts" setup>
-import AuthActionsInterface from '@/interfaces/auth/AuthActionsInterface';
+import AuthActions from '@/interfaces/auth/AuthActions';
 import AuthCard from '@/components/auth/AuthCard.vue';
-import AuthGettersInterface from '@/interfaces/auth/AuthGettersInterface';
+import AuthGetters from '@/interfaces/auth/AuthGetters';
 import AuthLayout from '@/layouts/AuthLayout.vue';
-import AuthLoginFormInterface from '@/interfaces/auth/AuthLoginFormInterface';
-import AuthStateInterface from '@/interfaces/auth/AuthStateInterface';
+import AuthLoginForm from '@/interfaces/auth/AuthLoginForm';
+import AuthState from '@/interfaces/auth/AuthState';
 import ErrorMessage from '@/components/uikit/ErrorMessage.vue';
 import Heading from '@/components/uikit/Heading.vue';
 import Input from '@/components/uikit/Input.vue';
@@ -53,11 +53,11 @@ import { Router, useRouter } from 'vue-router';
 import { Store } from 'pinia';
 import { useAuthStore } from '@/stores/auth';
 
-const authStore: Store<string, AuthStateInterface, AuthGettersInterface, AuthActionsInterface> = useAuthStore();
+const authStore: Store<string, AuthState, AuthGetters, AuthActions> = useAuthStore();
 const router: Router = useRouter();
 
 const error: Ref<string> = ref('');
-const form: Ref<AuthLoginFormInterface> = ref({ email: '', password: '' });
+const form: Ref<AuthLoginForm> = ref({ email: '', password: '' });
 
 const login = async (): Promise<void> => {
     try {

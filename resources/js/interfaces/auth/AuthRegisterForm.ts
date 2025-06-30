@@ -1,4 +1,4 @@
-export default interface AuthRegisterFormInterface {
+export default interface AuthRegisterForm {
     name: string;
     email: string;
     password: string;

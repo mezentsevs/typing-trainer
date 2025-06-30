@@ -1,13 +1,13 @@
-import AuthActionsInterface from '@/interfaces/auth/AuthActionsInterface';
-import AuthGettersInterface from '@/interfaces/auth/AuthGettersInterface';
-import AuthStateInterface from '@/interfaces/auth/AuthStateInterface';
+import AuthActions from '@/interfaces/auth/AuthActions';
+import AuthGetters from '@/interfaces/auth/AuthGetters';
+import AuthState from '@/interfaces/auth/AuthState';
 import axios, { AxiosResponse } from 'axios';
 import { AuthStateTokenType, AuthStateUserType } from '@/types/AuthTypes';
 import { applyToken, purgeToken, retrieveToken } from '@/helpers/TokenHelper';
 import { defineStore, StoreDefinition } from 'pinia';
 
-export const useAuthStore: StoreDefinition<string, AuthStateInterface, AuthGettersInterface, AuthActionsInterface> = defineStore('auth', {
-    state: (): AuthStateInterface => ({
+export const useAuthStore: StoreDefinition<string, AuthState, AuthGetters, AuthActions> = defineStore('auth', {
+    state: (): AuthState => ({
         user: null as AuthStateUserType,
         token: retrieveToken(),
     }),
