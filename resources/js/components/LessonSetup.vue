@@ -37,7 +37,7 @@ import InputLabel from '@/components/uikit/InputLabel.vue';
 import LessonSetupFormInterface from '@/interfaces/LessonSetupFormInterface';
 import PrimaryButton from '@/components/uikit/PrimaryButton.vue';
 import Select from '@/components/uikit/Select.vue';
-import UIKitSelectOptionInterface from '@/interfaces/uikit/UIKitSelectOptionInterface';
+import UIKitSelectOption from '@/interfaces/uikit/UIKitSelectOption';
 import axios from 'axios';
 import { KeyboardLanguageEnum } from '@/enums/KeyboardEnums';
 import { Ref, ref } from 'vue';
@@ -48,7 +48,7 @@ const router: Router = useRouter();
 const form: Ref<LessonSetupFormInterface> = ref({ language: KeyboardLanguageEnum.En, lessonCount: 10 });
 const error: Ref<string> = ref('');
 
-const languages: UIKitSelectOptionInterface[] = [
+const languages: UIKitSelectOption[] = [
     { label: 'English', value: KeyboardLanguageEnum.En },
     { label: 'Russian', value: KeyboardLanguageEnum.Ru },
 ];

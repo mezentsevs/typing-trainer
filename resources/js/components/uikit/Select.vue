@@ -15,12 +15,12 @@
 </template>
 
 <script lang="ts" setup>
-import UIKitSelectOptionInterface from '@/interfaces/uikit/UIKitSelectOptionInterface';
+import UIKitSelectOption from '@/interfaces/uikit/UIKitSelectOption';
 import { UIKitSelectModelType } from '@/types/UIKitTypes';
 
 const model = defineModel<UIKitSelectModelType>();
 
 defineProps<{
-    options: UIKitSelectOptionInterface[],
+    options: UIKitSelectOption[],
 }>();
 </script>

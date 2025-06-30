@@ -33,7 +33,7 @@ import InputLabel from '@/components/uikit/InputLabel.vue';
 import PrimaryButton from '@/components/uikit/PrimaryButton.vue';
 import Remark from '@/components/uikit/Remark.vue';
 import Select from '@/components/uikit/Select.vue';
-import UIKitSelectOptionInterface from '@/interfaces/uikit/UIKitSelectOptionInterface';
+import UIKitSelectOption from '@/interfaces/uikit/UIKitSelectOption';
 import { FinalTestGenreEnum } from '@/enums/FinalTestEnums';
 import { Ref, ref } from 'vue';
 
@@ -48,7 +48,7 @@ defineEmits<{
 
 const genre: Ref<string> = ref('');
 
-const genres: UIKitSelectOptionInterface[] = [
+const genres: UIKitSelectOption[] = [
     { label: 'None', value: FinalTestGenreEnum.None },
     { label: 'Fiction', value: FinalTestGenreEnum.Fiction },
     { label: 'Non-fiction', value: FinalTestGenreEnum.NonFiction },
