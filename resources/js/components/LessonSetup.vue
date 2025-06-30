@@ -34,7 +34,7 @@ import ErrorMessage from '@/components/uikit/ErrorMessage.vue';
 import Heading from '@/components/uikit/Heading.vue';
 import Input from '@/components/uikit/Input.vue';
 import InputLabel from '@/components/uikit/InputLabel.vue';
-import LessonSetupFormInterface from '@/interfaces/LessonSetupFormInterface';
+import LessonSetupForm from '@/interfaces/LessonSetupForm';
 import PrimaryButton from '@/components/uikit/PrimaryButton.vue';
 import Select from '@/components/uikit/Select.vue';
 import UIKitSelectOption from '@/interfaces/uikit/UIKitSelectOption';
@@ -45,7 +45,7 @@ import { Router, useRouter } from 'vue-router';
 
 const router: Router = useRouter();
 
-const form: Ref<LessonSetupFormInterface> = ref({ language: KeyboardLanguageEnum.En, lessonCount: 10 });
+const form: Ref<LessonSetupForm> = ref({ language: KeyboardLanguageEnum.En, lessonCount: 10 });
 const error: Ref<string> = ref('');
 
 const languages: UIKitSelectOption[] = [

@@ -1,6 +1,6 @@
 import { KeyboardSpecialPositionType, KeyboardZoneType } from '@/types/KeyboardTypes';
 
-export default interface KeyboardLayoutKeyInterface {
+export default interface KeyboardLayoutKey {
     value: string;
     display: string;
     special?: string;

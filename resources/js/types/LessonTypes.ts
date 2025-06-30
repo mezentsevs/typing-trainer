@@ -1,3 +1,3 @@
-import LessonInterface from '@/interfaces/LessonInterface';
+import Lesson from '@/interfaces/Lesson';
 
-export type LessonPartialInfoType = Pick<LessonInterface, 'id' | 'number' | 'new_chars'>;
+export type LessonPartialInfoType = Pick<Lesson, 'id' | 'number' | 'new_chars'>;

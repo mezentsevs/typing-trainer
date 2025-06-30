@@ -56,7 +56,7 @@
 
 <script lang="ts" setup>
 import Heading from '@/components/uikit/Heading.vue';
-import LessonInterface from '@/interfaces/LessonInterface';
+import Lesson from '@/interfaces/Lesson';
 import NewCharacters from './NewCharacters.vue';
 import PrimaryRouterLinkButton from '@/components/uikit/PrimaryRouterLinkButton.vue';
 import Statistics from './Statistics.vue';
@@ -105,10 +105,10 @@ const resetState = (): void => {
     lessonPartialInfo.value = { id: 0, number: lessonNumber.value, new_chars: '' } as LessonPartialInfoType;
 };
 
-// TODO: Try to use only LessonInterface anywhere
+// TODO: Try to use only Lesson interface anywhere
 const fetchLesson = async (): Promise<void> => {
     const response: AxiosResponse<{
-        lesson: LessonInterface;
+        lesson: Lesson;
     }> = await axios.get(`/lessons/${language}/${lessonNumber.value}`);
 
     const { id, number, new_chars }: LessonPartialInfoType = response.data.lesson;

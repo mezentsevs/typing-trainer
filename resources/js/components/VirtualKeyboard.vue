@@ -106,7 +106,7 @@
 </template>
 
 <script lang="ts" setup>
-import KeyboardLayoutKeyInterface from '@/interfaces/KeyboardLayoutKeyInterface';
+import KeyboardLayoutKey from '@/interfaces/KeyboardLayoutKey';
 import VirtualKeyboardIcon from '@/icons/VirtualKeyboardIcon.vue';
 import { KeyboardLanguageEnum, KeyboardSpecialPositionEnum, KeyboardZoneEnum } from '@/enums/KeyboardEnums';
 import { KeyboardLayoutType, KeyboardZoneType } from '@/types/KeyboardTypes';
@@ -275,7 +275,7 @@ const nextChar: ComputedRef<string> = computed((): string => props.typed.length 
 
 const toggleKeyboard = (): void => { isMinimized.value = !isMinimized.value; };
 
-const getKeyStyle = (key: KeyboardLayoutKeyInterface): Record<string, string> => {
+const getKeyStyle = (key: KeyboardLayoutKey): Record<string, string> => {
     return { minWidth: key.width ? `${key.width}px` : '40px' };
 };
 

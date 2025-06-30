@@ -1,7 +1,7 @@
-import KeyboardLayoutKeyInterface from '@/interfaces/KeyboardLayoutKeyInterface';
+import KeyboardLayoutKey from '@/interfaces/KeyboardLayoutKey';
 import { KeyboardSpecialPositionEnum, KeyboardZoneEnum } from '@/enums/KeyboardEnums';
 
-export type KeyboardLayoutType = KeyboardLayoutKeyInterface[][];
+export type KeyboardLayoutType = KeyboardLayoutKey[][];
 
 export type KeyboardSpecialPositionType = KeyboardSpecialPositionEnum | null;
 

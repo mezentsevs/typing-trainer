@@ -1,6 +1,6 @@
 import { KeyboardLanguageEnum } from '@/enums/KeyboardEnums';
 
-export default interface LessonSetupFormInterface {
+export default interface LessonSetupForm {
     language: KeyboardLanguageEnum;
     lessonCount: number;
 }
