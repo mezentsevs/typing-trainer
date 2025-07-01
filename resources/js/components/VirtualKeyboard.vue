@@ -107,7 +107,7 @@
 
 <script lang="ts" setup>
 import KeyboardLayoutKey from '@/interfaces/KeyboardLayoutKey';
-import VirtualKeyboardIcon from '@/icons/VirtualKeyboardIcon.vue';
+import VirtualKeyboardIcon from '@/components/icons/VirtualKeyboardIcon.vue';
 import { KeyboardLanguageEnum, KeyboardSpecialPositionEnum, KeyboardZoneEnum } from '@/enums/KeyboardEnums';
 import { KeyboardLayoutType, KeyboardZoneType } from '@/types/KeyboardTypes';
 import { computed, ComputedRef, Ref, ref } from 'vue';

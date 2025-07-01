@@ -30,7 +30,7 @@
 </template>
 
 <script lang="ts" setup>
-import AppLayout from '@/layouts/AppLayout.vue';
+import AppLayout from '@/components/layouts/AppLayout.vue';
 import ErrorMessage from '@/components/uikit/ErrorMessage.vue';
 import Heading from '@/components/uikit/Heading.vue';
 import Input from '@/components/uikit/Input.vue';
@@ -38,7 +38,7 @@ import InputLabel from '@/components/uikit/InputLabel.vue';
 import LessonSetupForm from '@/interfaces/LessonSetupForm';
 import PrimaryButton from '@/components/uikit/PrimaryButton.vue';
 import Select from '@/components/uikit/Select.vue';
-import SetupCard from '@/components/SetupCard.vue';
+import SetupCard from '@/components/cards/SetupCard.vue';
 import UIKitSelectOption from '@/interfaces/uikit/UIKitSelectOption';
 import axios from 'axios';
 import { KeyboardLanguageEnum } from '@/enums/KeyboardEnums';

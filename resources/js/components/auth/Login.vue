@@ -37,9 +37,9 @@
 
 <script lang="ts" setup>
 import AuthActions from '@/interfaces/auth/AuthActions';
-import AuthCard from '@/components/auth/AuthCard.vue';
+import AuthCard from '@/components/cards/AuthCard.vue';
 import AuthGetters from '@/interfaces/auth/AuthGetters';
-import AuthLayout from '@/layouts/AuthLayout.vue';
+import AuthLayout from '@/components/layouts/AuthLayout.vue';
 import AuthLoginForm from '@/interfaces/auth/AuthLoginForm';
 import AuthState from '@/interfaces/auth/AuthState';
 import ErrorMessage from '@/components/uikit/ErrorMessage.vue';
