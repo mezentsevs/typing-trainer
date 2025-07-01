@@ -1,6 +1,6 @@
 <template>
-    <div class="min-h-screen flex items-center justify-center bg-gray-100">
-        <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
+    <AppLayout>
+        <SetupCard>
             <Heading :level="2" class="text-2xl mb-6">Setup Lessons</Heading>
             <form @submit.prevent="generateLessons">
                 <InputLabel for="language" value="Language" />
@@ -25,11 +25,12 @@
                 <PrimaryButton class="w-full">Generate</PrimaryButton>
             </form>
             <ErrorMessage :message="error" />
-        </div>
-    </div>
+        </SetupCard>
+    </AppLayout>
 </template>
 
 <script lang="ts" setup>
+import AppLayout from '@/layouts/AppLayout.vue';
 import ErrorMessage from '@/components/uikit/ErrorMessage.vue';
 import Heading from '@/components/uikit/Heading.vue';
 import Input from '@/components/uikit/Input.vue';
@@ -37,6 +38,7 @@ import InputLabel from '@/components/uikit/InputLabel.vue';
 import LessonSetupForm from '@/interfaces/LessonSetupForm';
 import PrimaryButton from '@/components/uikit/PrimaryButton.vue';
 import Select from '@/components/uikit/Select.vue';
+import SetupCard from '@/components/SetupCard.vue';
 import UIKitSelectOption from '@/interfaces/uikit/UIKitSelectOption';
 import axios from 'axios';
 import { KeyboardLanguageEnum } from '@/enums/KeyboardEnums';
