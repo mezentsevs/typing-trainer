@@ -1,39 +1,37 @@
 <template>
-    <div class="min-h-screen bg-gray-100 p-8">
-        <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
-            <div class="relative flex items-center mb-4">
-                <Heading :level="2" class="text-2xl">Final Test</Heading>
-                <span v-if="isTestCompleted"
-                      class="absolute left-1/2 transform -translate-x-1/2 text-green-500 text-3xl font-bold"
-                >
+    <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
+        <div class="relative flex items-center mb-4">
+            <Heading :level="2" class="text-2xl">Final Test</Heading>
+            <span v-if="isTestCompleted"
+                  class="absolute left-1/2 transform -translate-x-1/2 text-green-500 text-3xl font-bold"
+            >
                     Completed!
                 </span>
-            </div>
-            <FinalTestSetup v-if="!text" :uploadFile :error @start="onStart" />
-            <Statistics v-if="text" :language :time :speed :errors :progress />
-            <div v-if="text" class="mt-4">
-                <div ref="textContainer" class="text-lg font-mono break-words whitespace-pre-wrap h-28 overflow-y-auto bg-gray-50 p-2">
+        </div>
+        <FinalTestSetup v-if="!text" :uploadFile :error @start="onStart" />
+        <Statistics v-if="text" :language :time :speed :errors :progress />
+        <div v-if="text" class="mt-4">
+            <div ref="textContainer" class="text-lg font-mono break-words whitespace-pre-wrap h-28 overflow-y-auto bg-gray-50 p-2">
                     <span v-for="(char, index) in text"
                           :key="index"
                           :class="{ 'error-char': typed[index] && typed[index] !== char, 'current-word': isCurrentWord[index], 'space': char === ' ', 'line-break': char === '\n' }"
                     >
                         {{ char }}
                     </span>
-                </div>
-                <TextArea
-                    id="typed"
-                    v-model="typed"
-                    v-focus
-                    class="w-full p-2 mt-4 resize-none"
-                    @input="onInput"
-                    :disabled="isTestCompleted"
-                    rows="4"
-                    spellcheck="false"
-                />
-                <VirtualKeyboard :language :typed :text :is-minimized="true" />
-                <div v-if="isTestCompleted" class="flex justify-center mt-2">
-                    <PrimaryRouterLinkButton class="w-32">Finish</PrimaryRouterLinkButton>
-                </div>
+            </div>
+            <TextArea
+                id="typed"
+                v-model="typed"
+                v-focus
+                class="w-full p-2 mt-4 resize-none"
+                @input="onInput"
+                :disabled="isTestCompleted"
+                rows="4"
+                spellcheck="false"
+            />
+            <VirtualKeyboard :language :typed :text :is-minimized="true" />
+            <div v-if="isTestCompleted" class="flex justify-center mt-2">
+                <PrimaryRouterLinkButton class="w-32">Finish</PrimaryRouterLinkButton>
             </div>
         </div>
     </div>

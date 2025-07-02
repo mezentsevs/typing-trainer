@@ -1,5 +1,5 @@
 <template>
-    <div class="w-1/2 mx-auto my-4 border border-opacity-50 rounded-lg p-4">
+    <SetupCard>
         <Heading :level="3" class="text-xl mb-4">Setup</Heading>
         <form @submit.prevent>
             <InputLabel for="genre">Genre <Remark value="(optional)" /></InputLabel>
@@ -22,7 +22,7 @@
             <PrimaryButton @click="$emit('start', genre)" class="w-full">Start</PrimaryButton>
         </form>
         <ErrorMessage :message="error" />
-    </div>
+    </SetupCard>
 </template>
 
 <script lang="ts" setup>
@@ -33,6 +33,7 @@ import InputLabel from '@/components/uikit/InputLabel.vue';
 import PrimaryButton from '@/components/uikit/PrimaryButton.vue';
 import Remark from '@/components/uikit/Remark.vue';
 import Select from '@/components/uikit/Select.vue';
+import SetupCard from '@/components/cards/SetupCard.vue';
 import UIKitSelectOption from '@/interfaces/uikit/UIKitSelectOption';
 import { FinalTestGenreEnum } from '@/enums/FinalTestEnums';
 import { Ref, ref } from 'vue';

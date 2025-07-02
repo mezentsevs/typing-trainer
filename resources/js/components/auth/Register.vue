@@ -1,61 +1,58 @@
 <template>
-    <AuthLayout>
-        <AuthCard>
-            <template #logo>
-                <!--Logo-->
-            </template>
+    <AuthCard>
+        <template #logo>
+            <!--Logo-->
+        </template>
 
-            <Heading :level="2" class="text-2xl mb-6">Register</Heading>
-            <form @submit.prevent="register">
-                <InputLabel for="name" value="Name" />
-                <Input
-                    id="name"
-                    v-model="form.name"
-                    v-focus
-                    class="mb-4 w-full"
-                    required
-                    autocomplete="on"
-                />
-                <InputLabel for="email" value="Email" />
-                <Input
-                    id="email"
-                    v-model="form.email"
-                    type="email"
-                    class="mb-4 w-full"
-                    required
-                    autocomplete="on"
-                />
-                <InputLabel for="password" value="Password" />
-                <Input
-                    id="password"
-                    v-model="form.password"
-                    type="password"
-                    class="mb-4 w-full"
-                    required
-                />
-                <InputLabel for="passwordConfirmation" value="Confirm Password" />
-                <Input
-                    id="passwordConfirmation"
-                    v-model="form.passwordConfirmation"
-                    type="password"
-                    class="mb-4 w-full"
-                    required
-                />
-                <PrimaryButton class="w-full">Register</PrimaryButton>
-            </form>
-            <ErrorMessage :message="error" />
-            <p class="mt-4">
-                Already have an account? <PrimaryRouterLink to="/login">Login</PrimaryRouterLink>
-            </p>
-        </AuthCard>
-    </AuthLayout>
+        <Heading :level="2" class="text-2xl mb-6">Register</Heading>
+        <form @submit.prevent="register">
+            <InputLabel for="name" value="Name" />
+            <Input
+                id="name"
+                v-model="form.name"
+                v-focus
+                class="mb-4 w-full"
+                required
+                autocomplete="on"
+            />
+            <InputLabel for="email" value="Email" />
+            <Input
+                id="email"
+                v-model="form.email"
+                type="email"
+                class="mb-4 w-full"
+                required
+                autocomplete="on"
+            />
+            <InputLabel for="password" value="Password" />
+            <Input
+                id="password"
+                v-model="form.password"
+                type="password"
+                class="mb-4 w-full"
+                required
+            />
+            <InputLabel for="passwordConfirmation" value="Confirm Password" />
+            <Input
+                id="passwordConfirmation"
+                v-model="form.passwordConfirmation"
+                type="password"
+                class="mb-4 w-full"
+                required
+            />
+            <PrimaryButton class="w-full">Register</PrimaryButton>
+        </form>
+        <ErrorMessage :message="error" />
+        <p class="mt-4">
+            Already have an account? <PrimaryRouterLink to="/login">Login</PrimaryRouterLink>
+        </p>
+    </AuthCard>
 </template>
 
 <script lang="ts" setup>
 import AuthActions from '@/interfaces/auth/AuthActions';
 import AuthCard from '@/components/cards/AuthCard.vue';
 import AuthGetters from '@/interfaces/auth/AuthGetters';
-import AuthLayout from '@/components/layouts/AuthLayout.vue';
 import AuthRegisterForm from '@/interfaces/auth/AuthRegisterForm';
 import AuthState from '@/interfaces/auth/AuthState';
 import ErrorMessage from '@/components/uikit/ErrorMessage.vue';

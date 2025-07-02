@@ -1,36 +1,33 @@
 <template>
-    <AppLayout>
-        <SetupCard>
-            <Heading :level="2" class="text-2xl mb-6">Setup Lessons</Heading>
-            <form @submit.prevent="generateLessons">
-                <InputLabel for="language" value="Language" />
-                <Select
-                    id="language"
-                    v-model="form.language"
-                    v-focus
-                    :options="languages"
-                    class="mb-4 w-full"
-                    required
-                />
-                <InputLabel for="lessonCount" value="Number" />
-                <Input
-                    id="lessonCount"
-                    v-model.number="form.lessonCount"
-                    type="number"
-                    min="1"
-                    max="20"
-                    class="mb-4 w-full"
-                    required
-                />
-                <PrimaryButton class="w-full">Generate</PrimaryButton>
-            </form>
-            <ErrorMessage :message="error" />
-        </SetupCard>
-    </AppLayout>
+    <SetupCard>
+        <Heading :level="2" class="text-2xl mb-6">Setup Lessons</Heading>
+        <form @submit.prevent="generateLessons">
+            <InputLabel for="language" value="Language" />
+            <Select
+                id="language"
+                v-model="form.language"
+                v-focus
+                :options="languages"
+                class="mb-4 w-full"
+                required
+            />
+            <InputLabel for="lessonCount" value="Number" />
+            <Input
+                id="lessonCount"
+                v-model.number="form.lessonCount"
+                type="number"
+                min="1"
+                max="20"
+                class="mb-4 w-full"
+                required
+            />
+            <PrimaryButton class="w-full">Generate</PrimaryButton>
+        </form>
+        <ErrorMessage :message="error" />
+    </SetupCard>
 </template>
 
 <script lang="ts" setup>
-import AppLayout from '@/components/layouts/AppLayout.vue';
 import ErrorMessage from '@/components/uikit/ErrorMessage.vue';
 import Heading from '@/components/uikit/Heading.vue';
 import Input from '@/components/uikit/Input.vue';
