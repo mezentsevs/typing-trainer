@@ -1,5 +1,6 @@
 <template>
-    <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
+    <FinalTestSetup v-if="!text" :uploadFile :error @start="onStart" />
+    <div v-else class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
         <div class="relative flex items-center mb-4">
             <Heading :level="2" class="text-2xl">Final Test</Heading>
             <span v-if="isTestCompleted"
@@ -8,7 +9,6 @@
                     Completed!
                 </span>
         </div>
-        <FinalTestSetup v-if="!text" :uploadFile :error @start="onStart" />
         <Statistics v-if="text" :language :time :speed :errors :progress />
         <div v-if="text" class="mt-4">
             <div ref="textContainer" class="text-lg font-mono break-words whitespace-pre-wrap h-28 overflow-y-auto bg-gray-50 p-2">

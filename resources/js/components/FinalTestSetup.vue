@@ -1,6 +1,6 @@
 <template>
     <SetupCard>
-        <Heading :level="3" class="text-xl mb-4">Setup</Heading>
+        <Heading :level="2" class="text-2xl mb-6">Setup Final Test</Heading>
         <form @submit.prevent>
             <InputLabel for="genre">Genre <Remark value="(optional)" /></InputLabel>
             <Select
