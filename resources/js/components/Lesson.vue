@@ -1,5 +1,5 @@
 <template>
-    <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
+    <ContentCard>
         <div class="relative flex items-center mb-4">
             <Heading :level="2" class="text-2xl">Lesson {{ lessonPartialInfo.number }}/{{ totalLessons }}</Heading>
             <span v-if="isLessonCompleted" class="absolute left-1/2 transform -translate-x-1/2 text-green-500 text-3xl font-bold">
@@ -49,10 +49,11 @@
                 </SuccessRouterLinkButton>
             </div>
         </div>
-    </div>
+    </ContentCard>
 </template>
 
 <script lang="ts" setup>
+import ContentCard from '@/components/cards/ContentCard.vue';
 import Heading from '@/components/uikit/Heading.vue';
 import Lesson from '@/interfaces/Lesson';
 import NewCharacters from './NewCharacters.vue';

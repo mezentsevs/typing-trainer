@@ -1,6 +1,6 @@
 <template>
     <FinalTestSetup v-if="!text" :uploadFile :error @start="onStart" />
-    <div v-else class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
+    <ContentCard v-else>
         <div class="relative flex items-center mb-4">
             <Heading :level="2" class="text-2xl">Final Test</Heading>
             <span v-if="isTestCompleted"
@@ -34,10 +34,11 @@
                 <PrimaryRouterLinkButton class="w-32">Finish</PrimaryRouterLinkButton>
             </div>
         </div>
-    </div>
+    </ContentCard>
 </template>
 
 <script lang="ts" setup>
+import ContentCard from '@/components/cards/ContentCard.vue';
 import FinalTestSetup from './FinalTestSetup.vue';
 import Heading from '@/components/uikit/Heading.vue';
 import PrimaryRouterLinkButton from '@/components/uikit/PrimaryRouterLinkButton.vue';
