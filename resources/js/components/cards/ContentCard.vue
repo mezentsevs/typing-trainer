@@ -1,5 +1,5 @@
 <template>
-    <BaseCard class="w-80">
+    <BaseCard class="w-1/2 min-w-max">
         <slot />
     </BaseCard>
 </template>
