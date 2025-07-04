@@ -1,6 +1,5 @@
 <template>
-    <FinalTestSetup v-if="!text" :uploadFile :error @start="onStart" />
-    <ContentCard v-else>
+    <ContentCard v-if="text">
         <header class="mb-4 relative flex items-center">
             <Heading :level="2" class="text-2xl">Final Test</Heading>
             <SuccessBanner v-if="isTestCompleted" class="absolute left-1/2 transform -translate-x-1/2">
@@ -8,33 +7,32 @@
             </SuccessBanner>
         </header>
         <aside class="mb-8">
-            <Statistics v-if="text" :language :time :speed :errors :progress />
+            <Statistics :language :time :speed :errors :progress />
         </aside>
-        <template v-if="text">
-            <section ref="textContainer" class="mb-4 text-lg font-mono break-words whitespace-pre-wrap h-28 overflow-y-auto bg-gray-50 p-2">
+        <section ref="textContainer" class="mb-4 text-lg font-mono break-words whitespace-pre-wrap h-28 overflow-y-auto bg-gray-50 p-2">
                     <span v-for="(char, index) in text"
                           :key="index"
                           :class="{ 'error-char': typed[index] && typed[index] !== char, 'current-word': isCurrentWord[index], 'space': char === ' ', 'line-break': char === '\n' }"
                     >
                         {{ char }}
                     </span>
-            </section>
-            <TextArea
-                id="typed"
-                v-model="typed"
-                v-focus
-                class="w-full p-2 mt-4 resize-none"
-                @input="onInput"
-                :disabled="isTestCompleted"
-                rows="4"
-                spellcheck="false"
-            />
-            <VirtualKeyboard :language :typed :text :is-minimized="true" />
-            <div v-if="isTestCompleted" class="flex justify-center mt-2">
-                <PrimaryRouterLinkButton class="w-32">Finish</PrimaryRouterLinkButton>
-            </div>
-        </template>
+        </section>
+        <TextArea
+            id="typed"
+            v-model="typed"
+            v-focus
+            class="w-full p-2 mt-4 resize-none"
+            @input="onInput"
+            :disabled="isTestCompleted"
+            rows="4"
+            spellcheck="false"
+        />
+        <VirtualKeyboard :language :typed :text :is-minimized="true" />
+        <div v-if="isTestCompleted" class="flex justify-center mt-2">
+            <PrimaryRouterLinkButton class="w-32">Finish</PrimaryRouterLinkButton>
+        </div>
     </ContentCard>
+    <FinalTestSetup v-else :uploadFile :error @start="onStart" />
 </template>
 
 <script lang="ts" setup>
