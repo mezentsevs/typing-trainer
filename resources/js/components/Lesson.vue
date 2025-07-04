@@ -13,14 +13,14 @@
         </aside>
 
         <main>
-            <section ref="textContainer" class="mb-4 text-lg font-mono break-words whitespace-pre-wrap h-28 overflow-y-auto bg-gray-50 p-2">
-                    <span v-for="(char, index) in text"
-                          :key="index"
-                          :class="{ 'error-char': typed[index] && typed[index] !== char, 'current-word': isCurrentWord[index], 'space': char === ' ', 'line-break': char === '\n' }"
-                    >
-                        {{ char }}
-                    </span>
-            </section>
+            <TextContainer ref="textContainerRef" class="h-28 mb-4 p-2 text-lg font-mono">
+                <span v-for="(char, index) in text"
+                      :key="index"
+                      :class="{ 'error-char': typed[index] && typed[index] !== char, 'current-word': isCurrentWord[index], 'space': char === ' ', 'line-break': char === '\n' }"
+                >
+                    {{ char }}
+                </span>
+            </TextContainer>
             <TextArea
                 id="typed"
                 ref="textArea"
@@ -64,12 +64,13 @@ import Statistics from './Statistics.vue';
 import SuccessBanner from '@/components/uikit/SuccessBanner.vue';
 import SuccessRouterLinkButton from '@/components/uikit/SuccessRouterLinkButton.vue';
 import TextArea from '@/components/uikit/TextArea.vue';
+import TextContainer from '@/components/uikit/TextContainer.vue';
 import VirtualKeyboard from './VirtualKeyboard.vue';
 import axios, { AxiosResponse } from 'axios';
 import { KeyboardLanguageEnum } from '@/enums/KeyboardEnums';
 import { LessonPartialInfoType } from '@/types/LessonTypes';
 import { RouteLocationNormalizedLoaded, useRoute } from 'vue-router';
-import { ref, computed, onMounted, Ref, ComputedRef } from 'vue';
+import { ref, computed, onMounted, Ref, ComputedRef, watchEffect } from 'vue';
 import { useHandleTypingInput, useCurrentWord, useProgress } from '@/composables/TypingComposables';
 
 const route: RouteLocationNormalizedLoaded<string | symbol> = useRoute();
@@ -85,12 +86,19 @@ const startTime: Ref<number> = ref(0);
 const text: Ref<string> = ref('');
 const textArea: Ref<typeof TextArea | null> = ref(null);
 const textContainer: Ref<HTMLElement | null> = ref(null);
+const textContainerRef: Ref<typeof TextContainer | null> = ref(null);
 const time: Ref<number> = ref(0);
 const totalLessons: Ref<number> = ref(0);
 const typed: Ref<string> = ref('');
 
 const { isCurrentWord }: Record<string, ComputedRef<boolean[]>> = useCurrentWord(text, typed);
 const { progress }: Record<string, ComputedRef<number>> = useProgress(text, typed, isLessonCompleted);
+
+watchEffect(() => {
+    if (textContainerRef.value) {
+        textContainer.value = textContainerRef.value.getContainerElement();
+    }
+});
 
 const nextLesson: ComputedRef<number> = computed(
     (): number => (totalLessons.value - lessonNumber.value) ? lessonNumber.value + 1 : 0,
