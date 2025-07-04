@@ -7,7 +7,9 @@
                 Completed!
             </SuccessBanner>
         </header>
-        <Statistics class="mb-8" v-if="text" :language :time :speed :errors :progress />
+        <aside class="mb-8">
+            <Statistics v-if="text" :language :time :speed :errors :progress />
+        </aside>
         <template v-if="text">
             <section ref="textContainer" class="mb-4 text-lg font-mono break-words whitespace-pre-wrap h-28 overflow-y-auto bg-gray-50 p-2">
                     <span v-for="(char, index) in text"

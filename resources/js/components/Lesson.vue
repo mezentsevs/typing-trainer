@@ -6,10 +6,10 @@
                 Completed!
             </SuccessBanner>
         </header>
-        <div class="mb-4 flex flex-row items-stretch space-x-4">
+        <aside class="mb-4 flex flex-row items-stretch space-x-4">
             <NewCharacters :new-chars="lessonPartialInfo.new_chars" class="flex items-center justify-center" />
             <Statistics :language :time :speed :errors :progress />
-        </div>
+        </aside>
         <section ref="textContainer" class="mb-4 text-lg font-mono break-words whitespace-pre-wrap h-28 overflow-y-auto bg-gray-50 p-2">
                     <span v-for="(char, index) in text"
                           :key="index"
