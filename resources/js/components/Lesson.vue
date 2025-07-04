@@ -1,23 +1,23 @@
 <template>
     <ContentCard>
-        <div class="mb-4 relative flex items-center">
+        <header class="mb-4 relative flex items-center">
             <Heading :level="2" class="text-2xl">Lesson {{ lessonPartialInfo.number }}/{{ totalLessons }}</Heading>
             <span v-if="isLessonCompleted" class="absolute left-1/2 transform -translate-x-1/2 text-green-500 text-3xl font-bold">
                     Completed!
                 </span>
-        </div>
+        </header>
         <div class="mb-4 flex flex-row items-stretch space-x-4">
             <NewCharacters :new-chars="lessonPartialInfo.new_chars" class="flex items-center justify-center" />
             <Statistics :language :time :speed :errors :progress />
         </div>
-        <div ref="textContainer" class="mb-4 text-lg font-mono break-words whitespace-pre-wrap h-28 overflow-y-auto bg-gray-50 p-2">
+        <section ref="textContainer" class="mb-4 text-lg font-mono break-words whitespace-pre-wrap h-28 overflow-y-auto bg-gray-50 p-2">
                     <span v-for="(char, index) in text"
                           :key="index"
                           :class="{ 'error-char': typed[index] && typed[index] !== char, 'current-word': isCurrentWord[index], 'space': char === ' ', 'line-break': char === '\n' }"
                     >
                         {{ char }}
                     </span>
-        </div>
+        </section>
         <TextArea
             id="typed"
             ref="textArea"
