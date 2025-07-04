@@ -2,9 +2,9 @@
     <ContentCard>
         <header class="mb-4 relative flex items-center">
             <Heading :level="2" class="text-2xl">Lesson {{ lessonPartialInfo.number }}/{{ totalLessons }}</Heading>
-            <span v-if="isLessonCompleted" class="absolute left-1/2 transform -translate-x-1/2 text-green-500 text-3xl font-bold">
-                    Completed!
-                </span>
+            <SuccessBanner v-if="isLessonCompleted" class="absolute left-1/2 transform -translate-x-1/2">
+                Completed!
+            </SuccessBanner>
         </header>
         <div class="mb-4 flex flex-row items-stretch space-x-4">
             <NewCharacters :new-chars="lessonPartialInfo.new_chars" class="flex items-center justify-center" />
@@ -57,6 +57,7 @@ import Lesson from '@/interfaces/Lesson';
 import NewCharacters from './NewCharacters.vue';
 import PrimaryRouterLinkButton from '@/components/uikit/PrimaryRouterLinkButton.vue';
 import Statistics from './Statistics.vue';
+import SuccessBanner from '@/components/uikit/SuccessBanner.vue';
 import SuccessRouterLinkButton from '@/components/uikit/SuccessRouterLinkButton.vue';
 import TextArea from '@/components/uikit/TextArea.vue';
 import VirtualKeyboard from './VirtualKeyboard.vue';

@@ -3,11 +3,9 @@
     <ContentCard v-else>
         <header class="mb-4 relative flex items-center">
             <Heading :level="2" class="text-2xl">Final Test</Heading>
-            <span v-if="isTestCompleted"
-                  class="absolute left-1/2 transform -translate-x-1/2 text-green-500 text-3xl font-bold"
-            >
-                    Completed!
-                </span>
+            <SuccessBanner v-if="isTestCompleted" class="absolute left-1/2 transform -translate-x-1/2">
+                Completed!
+            </SuccessBanner>
         </header>
         <Statistics class="mb-8" v-if="text" :language :time :speed :errors :progress />
         <template v-if="text">
@@ -43,6 +41,7 @@ import FinalTestSetup from './FinalTestSetup.vue';
 import Heading from '@/components/uikit/Heading.vue';
 import PrimaryRouterLinkButton from '@/components/uikit/PrimaryRouterLinkButton.vue';
 import Statistics from './Statistics.vue';
+import SuccessBanner from '@/components/uikit/SuccessBanner.vue';
 import TextArea from '@/components/uikit/TextArea.vue';
 import VirtualKeyboard from './VirtualKeyboard.vue';
 import axios, { AxiosResponse } from 'axios';
