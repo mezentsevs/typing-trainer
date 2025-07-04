@@ -6,31 +6,35 @@
                 Completed!
             </SuccessBanner>
         </header>
+
         <aside class="mb-8">
             <Statistics :language :time :speed :errors :progress />
         </aside>
-        <section ref="textContainer" class="mb-4 text-lg font-mono break-words whitespace-pre-wrap h-28 overflow-y-auto bg-gray-50 p-2">
+
+        <main>
+            <section ref="textContainer" class="mb-4 text-lg font-mono break-words whitespace-pre-wrap h-28 overflow-y-auto bg-gray-50 p-2">
                     <span v-for="(char, index) in text"
                           :key="index"
                           :class="{ 'error-char': typed[index] && typed[index] !== char, 'current-word': isCurrentWord[index], 'space': char === ' ', 'line-break': char === '\n' }"
                     >
                         {{ char }}
                     </span>
-        </section>
-        <TextArea
-            id="typed"
-            v-model="typed"
-            v-focus
-            class="w-full p-2 mt-4 resize-none"
-            @input="onInput"
-            :disabled="isTestCompleted"
-            rows="4"
-            spellcheck="false"
-        />
-        <VirtualKeyboard :language :typed :text :is-minimized="true" />
-        <div v-if="isTestCompleted" class="flex justify-center mt-2">
-            <PrimaryRouterLinkButton class="w-32">Finish</PrimaryRouterLinkButton>
-        </div>
+            </section>
+            <TextArea
+                id="typed"
+                v-model="typed"
+                v-focus
+                class="w-full p-2 mt-4 resize-none"
+                @input="onInput"
+                :disabled="isTestCompleted"
+                rows="4"
+                spellcheck="false"
+            />
+            <VirtualKeyboard :language :typed :text :is-minimized="true" />
+            <div v-if="isTestCompleted" class="flex justify-center mt-2">
+                <PrimaryRouterLinkButton class="w-32">Finish</PrimaryRouterLinkButton>
+            </div>
+        </main>
     </ContentCard>
     <FinalTestSetup v-else :uploadFile :error @start="onStart" />
 </template>
