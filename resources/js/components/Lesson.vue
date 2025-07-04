@@ -104,7 +104,7 @@ const resetState = (): void => {
     lessonPartialInfo.value = { id: 0, number: lessonNumber.value, new_chars: '' } as LessonPartialInfoType;
 };
 
-// TODO: Try to use only Lesson interface anywhere
+// TODO: Try to use only Lesson interface everywhere
 const fetchLesson = async (): Promise<void> => {
     const response: AxiosResponse<{
         lesson: Lesson;
