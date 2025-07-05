@@ -16,7 +16,12 @@
             <TextContainer ref="textContainerRef" class="h-28 mb-4 p-2 text-lg font-mono">
                 <span v-for="(char, index) in text"
                       :key="index"
-                      :class="{ 'error-char': typed[index] && typed[index] !== char, 'current-word': isCurrentWord[index], 'space': char === ' ', 'line-break': char === '\n' }"
+                      :class="{
+                          'error-char': typed[index] && typed[index] !== char,
+                           'current-word': isCurrentWord[index],
+                           'space': char === ' ',
+                           'line-break': char === '\n',
+                      }"
                 >
                     {{ char }}
                 </span>
