@@ -12,19 +12,19 @@
         </aside>
 
         <main>
-            <section ref="textContainer" class="mb-4 text-lg font-mono break-words whitespace-pre-wrap h-28 overflow-y-auto bg-gray-50 p-2">
-                    <span v-for="(char, index) in text"
-                          :key="index"
-                          :class="{
-                              'error-char': typed[index] && typed[index] !== char,
-                              'current-word': isCurrentWord[index],
-                              'space': char === ' ',
-                              'line-break': char === '\n',
-                          }"
-                    >
-                        {{ char }}
-                    </span>
-            </section>
+            <TextContainer ref="textContainerRef" class="h-28 mb-4 p-2 text-lg font-mono">
+                <span v-for="(char, index) in text"
+                      :key="index"
+                      :class="{
+                          'error-char': typed[index] && typed[index] !== char,
+                          'current-word': isCurrentWord[index],
+                          'space': char === ' ',
+                          'line-break': char === '\n',
+                      }"
+                >
+                    {{ char }}
+                </span>
+            </TextContainer>
             <TextArea
                 id="typed"
                 v-model="typed"
@@ -52,6 +52,7 @@ import PrimaryRouterLinkButton from '@/components/uikit/PrimaryRouterLinkButton.
 import Statistics from './Statistics.vue';
 import SuccessBanner from '@/components/uikit/SuccessBanner.vue';
 import TextArea from '@/components/uikit/TextArea.vue';
+import TextContainer from '@/components/uikit/TextContainer.vue';
 import VirtualKeyboard from './VirtualKeyboard.vue';
 import axios, { AxiosResponse } from 'axios';
 import { ComputedRef, Ref, ref } from 'vue';
@@ -72,6 +73,7 @@ const speed: Ref<number> = ref(0);
 const startTime: Ref<number> = ref(0);
 const text: Ref<string> = ref('');
 const textContainer: Ref<HTMLElement | null> = ref(null);
+const textContainerRef: Ref<typeof TextContainer | null> = ref(null);
 const time: Ref<number> = ref(0);
 const typed: Ref<string> = ref('');
 
@@ -149,5 +151,7 @@ const onStart = async (selectedGenre: string): Promise<void> => {
     genre.value = selectedGenre;
 
     await fetchText();
+
+    if (textContainerRef.value) { textContainer.value = textContainerRef.value.getContainerElement(); }
 };
 </script>
