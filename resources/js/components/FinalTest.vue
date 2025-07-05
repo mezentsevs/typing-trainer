@@ -8,7 +8,7 @@
         </header>
 
         <aside class="mb-8">
-            <Statistics :language :time :speed :errors :progress />
+            <Statistics :language :time :speed :errors :progress class="w-1/2 mx-auto my-4" />
         </aside>
 
         <main>

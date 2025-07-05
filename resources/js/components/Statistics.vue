@@ -1,5 +1,5 @@
 <template>
-    <div class="w-1/2 mx-auto my-4 border border-opacity-50 rounded-lg p-4">
+    <section class="p-4 border border-opacity-50 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 rounded-lg">
         <div class="flex justify-between">
             <div class="text-center">
                 <p class="font-bold text-sm">{{ language }}</p>
@@ -19,7 +19,7 @@
             </div>
         </div>
         <ProgressBar :progress />
-    </div>
+    </section>
 </template>
 
 <script lang="ts" setup>

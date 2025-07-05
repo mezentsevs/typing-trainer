@@ -9,7 +9,7 @@
 
         <aside class="mb-4 flex flex-row items-stretch space-x-4">
             <NewCharacters :new-chars="lessonPartialInfo.new_chars" class="w-1/2 my-4" />
-            <Statistics :language :time :speed :errors :progress />
+            <Statistics :language :time :speed :errors :progress class="w-1/2 my-4" />
         </aside>
 
         <main>
