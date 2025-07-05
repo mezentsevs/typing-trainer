@@ -1,4 +1,4 @@
-export default interface ResultPayload {
+export default interface ResultRequestPayload {
     lesson_id?: number;
     language: string;
     time_seconds: number;

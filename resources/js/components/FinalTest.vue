@@ -49,6 +49,8 @@ import ContentCard from '@/components/cards/ContentCard.vue';
 import FinalTestSetup from './FinalTestSetup.vue';
 import Heading from '@/components/uikit/Heading.vue';
 import PrimaryRouterLinkButton from '@/components/uikit/PrimaryRouterLinkButton.vue';
+import ResultRequestPayload from '@/interfaces/payloads/ResultRequestPayload';
+import State from '@/interfaces/typing/State';
 import Statistics from './Statistics.vue';
 import SuccessBanner from '@/components/uikit/SuccessBanner.vue';
 import TextArea from '@/components/uikit/TextArea.vue';
@@ -134,14 +136,14 @@ const onInput = async (): Promise<void> => {
             time,
             typed,
             progress,
-        },
+        } as State,
         '/test/result',
         {
             language,
             time_seconds: time.value,
             speed_wpm: speed.value,
             errors: errors.value,
-        }
+        } as ResultRequestPayload,
     );
 };
 

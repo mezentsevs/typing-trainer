@@ -1,4 +1,4 @@
-import ResultPayload from '@/interfaces/ResultPayload';
+import ResultRequestPayload from '@/interfaces/payloads/ResultRequestPayload';
 import State from '@/interfaces/typing/State';
 import axios from 'axios';
 import { TypingUnit } from '@/types/TypingTypes';
@@ -10,7 +10,7 @@ export function useHandleTypingInput(): Record<string, Function> {
     const handleTypingInput = async (
         state: State,
         postUrl: string,
-        payload: ResultPayload,
+        payload: ResultRequestPayload,
     ): Promise<void> => {
         if (!state.startTime.value) { state.startTime.value = Date.now(); }
 
