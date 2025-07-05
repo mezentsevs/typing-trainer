@@ -1,5 +1,5 @@
 <template>
-    <section class="p-4 border border-opacity-50 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 rounded-lg">
+    <section class="p-4 border border-opacity-50 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 rounded-lg shadow-sm">
         <div class="flex justify-between">
             <StatisticsItem v-for="item in items" :key="item.name">
                 <template #name>{{ item.name }}</template>
