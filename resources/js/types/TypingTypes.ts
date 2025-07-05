@@ -1,3 +1,3 @@
-import TypingUnit from '@/interfaces/TypingUnit';
+import Unit from '@/interfaces/typing/Unit';
 
-export type TypingUnitType = TypingUnit | null;
+export type TypingUnit = Unit | null;
