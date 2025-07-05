@@ -1,4 +1,4 @@
-export enum FinalTestGenreEnum {
+export enum Genre {
     None = '',
     Fiction = 'fiction',
     NonFiction = 'non-fiction',

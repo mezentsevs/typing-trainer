@@ -35,7 +35,7 @@ import Remark from '@/components/uikit/Remark.vue';
 import Select from '@/components/uikit/Select.vue';
 import SetupCard from '@/components/cards/SetupCard.vue';
 import UIKitSelectOption from '@/interfaces/uikit/UIKitSelectOption';
-import { FinalTestGenreEnum } from '@/enums/FinalTestEnums';
+import { Genre } from '@/enums/FinalTestEnums';
 import { Ref, ref } from 'vue';
 
 defineProps<{
@@ -50,9 +50,9 @@ defineEmits<{
 const genre: Ref<string> = ref('');
 
 const genres: UIKitSelectOption[] = [
-    { label: 'None', value: FinalTestGenreEnum.None },
-    { label: 'Fiction', value: FinalTestGenreEnum.Fiction },
-    { label: 'Non-fiction', value: FinalTestGenreEnum.NonFiction },
-    { label: 'Poetry', value: FinalTestGenreEnum.Poetry },
+    { label: 'None', value: Genre.None },
+    { label: 'Fiction', value: Genre.Fiction },
+    { label: 'Non-fiction', value: Genre.NonFiction },
+    { label: 'Poetry', value: Genre.Poetry },
 ];
 </script>
