@@ -15,7 +15,12 @@
             <section ref="textContainer" class="mb-4 text-lg font-mono break-words whitespace-pre-wrap h-28 overflow-y-auto bg-gray-50 p-2">
                     <span v-for="(char, index) in text"
                           :key="index"
-                          :class="{ 'error-char': typed[index] && typed[index] !== char, 'current-word': isCurrentWord[index], 'space': char === ' ', 'line-break': char === '\n' }"
+                          :class="{
+                              'error-char': typed[index] && typed[index] !== char,
+                              'current-word': isCurrentWord[index],
+                              'space': char === ' ',
+                              'line-break': char === '\n',
+                          }"
                     >
                         {{ char }}
                     </span>
