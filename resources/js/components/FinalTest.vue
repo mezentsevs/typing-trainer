@@ -29,7 +29,7 @@
                 id="typed"
                 v-model="typed"
                 v-focus
-                class="w-full p-2 mt-4 resize-none"
+                class="w-full mt-4 resize-none"
                 @input="onInput"
                 :disabled="isTestCompleted"
                 rows="4"
