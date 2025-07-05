@@ -24,8 +24,8 @@
                         v-for="key in row"
                         :key="key.value"
                         :class="[
-                            'p-2 border rounded text-center relative',
-                            isHighlighted(key.value, key.zone) || isHighlighted(key.special, key.zone) ? 'bg-green-500 text-white' : 'bg-gray-200',
+                            BUTTON_DEFAULT_CLASS,
+                            isHighlighted(key.value, key.zone) || isHighlighted(key.special, key.zone) ? BUTTON_HIGHLIGHTED_CLASS : BUTTON_NORMAL_CLASS,
                             key.width ? `w-${key.width}` : 'w-10',
                             key.value === 'backspace' ? 'text-sm' : ''
                         ]"
@@ -45,8 +45,8 @@
                     <button
                         :key="row[0].value"
                         :class="[
-                            'p-2 border rounded text-center relative',
-                            isHighlighted(row[0].value, row[0].zone) ? 'bg-green-500 text-white' : 'bg-gray-200',
+                            BUTTON_DEFAULT_CLASS,
+                            isHighlighted(row[0].value, row[0].zone) ? BUTTON_HIGHLIGHTED_CLASS : BUTTON_NORMAL_CLASS,
                             row[0].width ? `w-${row[0].width}` : 'w-10'
                         ]"
                         :style="getKeyStyle(row[0])"
@@ -58,8 +58,8 @@
                             v-for="key in row.slice(1, 4)"
                             :key="key.value"
                             :class="[
-                                'p-2 border rounded text-center relative',
-                                isHighlighted(key.value, key.zone) ? 'bg-green-500 text-white' : 'bg-gray-200',
+                                BUTTON_DEFAULT_CLASS,
+                                isHighlighted(key.value, key.zone) ? BUTTON_HIGHLIGHTED_CLASS : BUTTON_NORMAL_CLASS,
                                 key.width ? `w-${key.width}` : 'w-10'
                             ]"
                             :style="getKeyStyle(key)"
@@ -70,8 +70,8 @@
                     <button
                         :key="row[4].value"
                         :class="[
-                            'p-2 border rounded text-center relative',
-                            isHighlighted(row[4].value, row[4].zone) ? 'bg-green-500 text-white' : 'bg-gray-200',
+                            BUTTON_DEFAULT_CLASS,
+                            isHighlighted(row[4].value, row[4].zone) ? BUTTON_HIGHLIGHTED_CLASS : BUTTON_NORMAL_CLASS,
                             row[4].width ? `w-${row[4].width}` : 'w-10'
                         ]"
                         :style="getKeyStyle(row[4])"
@@ -84,8 +84,8 @@
                         v-for="key in row"
                         :key="key.value"
                         :class="[
-                            'p-2 border rounded text-center relative',
-                            isHighlighted(key.value, key.zone) || isHighlighted(key.special, key.zone) ? 'bg-green-500 text-white' : 'bg-gray-200',
+                            BUTTON_DEFAULT_CLASS,
+                            isHighlighted(key.value, key.zone) || isHighlighted(key.special, key.zone) ? BUTTON_HIGHLIGHTED_CLASS : BUTTON_NORMAL_CLASS,
                             key.width ? `w-${key.width}` : 'w-10'
                         ]"
                         :style="getKeyStyle(key)"
@@ -120,6 +120,10 @@ const props = defineProps<{
 }>();
 
 const isMinimized: Ref<boolean> = ref(props.isMinimized ?? false);
+
+const BUTTON_DEFAULT_CLASS: string = 'p-2 border rounded text-center relative';
+const BUTTON_NORMAL_CLASS: string = 'bg-gray-200 dark:bg-gray-900';
+const BUTTON_HIGHLIGHTED_CLASS: string = 'bg-green-500 text-white';
 
 const keyboardLayouts: Record<KeyboardLanguageEnum, KeyboardLayoutType> = {
     [KeyboardLanguageEnum.En]: [
