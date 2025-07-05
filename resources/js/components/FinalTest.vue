@@ -12,7 +12,7 @@
         </aside>
 
         <main>
-            <TextContainer ref="textContainerRef" class="h-28 mb-4 p-2 text-lg font-mono">
+            <TextContainer ref="textContainerRef" class="h-28 mb-4 text-lg font-mono">
                 <span v-for="(char, index) in text"
                       :key="index"
                       :class="{
