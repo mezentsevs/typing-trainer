@@ -119,13 +119,10 @@ const props = defineProps<{
     isMinimized?: boolean,
 }>();
 
-const isMinimized: Ref<boolean> = ref(props.isMinimized ?? false);
-
-const BUTTON_DEFAULT_CLASS: string = 'p-2 border rounded text-center relative';
-const BUTTON_NORMAL_CLASS: string = 'bg-gray-200 dark:bg-gray-900';
-const BUTTON_HIGHLIGHTED_CLASS: string = 'bg-green-500 text-white';
-
-const keyboardLayouts: Record<KeyboardLanguageEnum, KeyboardLayoutType> = {
+const BUTTON_DEFAULT_CLASS: string = 'p-2 border border-opacity-50 border-gray-300 dark:border-gray-700 text-center rounded shadow-sm relative';
+const BUTTON_HIGHLIGHTED_CLASS: string = 'bg-green-500 text-white dark:text-black';
+const BUTTON_NORMAL_CLASS: string = 'bg-gray-50 dark:bg-gray-900 dark:text-gray-300';
+const KEYBOARD_LAYOUTS: Record<KeyboardLanguageEnum, KeyboardLayoutType> = {
     [KeyboardLanguageEnum.En]: [
         [
             { value: '`', display: '`', special: '~', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
@@ -267,13 +264,13 @@ const keyboardLayouts: Record<KeyboardLanguageEnum, KeyboardLayoutType> = {
         ]
     ]
 };
-
-const upperOrSpecialRegex: Record<KeyboardLanguageEnum, RegExp> = {
+const UPPER_OR_SPECIAL_REGEX: Record<KeyboardLanguageEnum, RegExp> = {
     [KeyboardLanguageEnum.En]: /[A-Z~!@#$%^&*()_+{}|:"<>?]/,
     [KeyboardLanguageEnum.Ru]: /[А-ЯЁ!"№;%:?*()_+/,]/,
 };
+const isMinimized: Ref<boolean> = ref(props.isMinimized ?? false);
 
-const keyboardLayout: ComputedRef<KeyboardLayoutType> = computed((): KeyboardLayoutType => keyboardLayouts[props.language]);
+const keyboardLayout: ComputedRef<KeyboardLayoutType> = computed((): KeyboardLayoutType => KEYBOARD_LAYOUTS[props.language]);
 
 const nextChar: ComputedRef<string> = computed((): string => props.typed.length < props.text.length ? props.text[props.typed.length] : '');
 
@@ -299,7 +296,7 @@ const isHighlighted = (keyValue: string | undefined, zone?: KeyboardZoneType): b
     if (keyValue === ' ') { return nextChar.value === ' '; }
     if (keyValue === 'enter') { return nextChar.value === '\n'; }
 
-    const isUpperOrSpecial = nextChar.value.match(upperOrSpecialRegex[props.language]);
+    const isUpperOrSpecial = nextChar.value.match(UPPER_OR_SPECIAL_REGEX[props.language]);
     const isControlChar = nextChar.value !== '\n' && nextChar.value.match(/[\x00-\x1F\x7F]/);
 
     if (keyValue === 'shift') {
