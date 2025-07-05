@@ -38,18 +38,18 @@ import Select from '@/components/uikit/Select.vue';
 import SetupCard from '@/components/cards/SetupCard.vue';
 import UIKitSelectOption from '@/interfaces/uikit/UIKitSelectOption';
 import axios from 'axios';
-import { KeyboardLanguageEnum } from '@/enums/KeyboardEnums';
+import { Language } from '@/enums/KeyboardEnums';
 import { Ref, ref } from 'vue';
 import { Router, useRouter } from 'vue-router';
 
 const router: Router = useRouter();
 
-const form: Ref<LessonSetupForm> = ref({ language: KeyboardLanguageEnum.En, lessonCount: 10 });
+const form: Ref<LessonSetupForm> = ref({ language: Language.En, lessonCount: 10 });
 const error: Ref<string> = ref('');
 
 const languages: UIKitSelectOption[] = [
-    { label: 'English', value: KeyboardLanguageEnum.En },
-    { label: 'Russian', value: KeyboardLanguageEnum.Ru },
+    { label: 'English', value: Language.En },
+    { label: 'Russian', value: Language.Ru },
 ];
 
 const generateLessons = async (): Promise<void> => {

@@ -35,7 +35,7 @@
                         <span
                             v-if="key.special"
                             class="absolute text-xs"
-                            :class="key.specialPosition === KeyboardSpecialPositionEnum.TopLeft ? 'top-0 left-1' : 'top-0 right-1'"
+                            :class="key.specialPosition === SpecialPosition.TopLeft ? 'top-0 left-1' : 'top-0 right-1'"
                         >
                             {{ key.special }}
                         </span>
@@ -94,7 +94,7 @@
                         <span
                             v-if="key.special"
                             class="absolute text-xs"
-                            :class="key.specialPosition === KeyboardSpecialPositionEnum.TopLeft ? 'top-0 left-1' : 'top-0 right-1'"
+                            :class="key.specialPosition === SpecialPosition.TopLeft ? 'top-0 left-1' : 'top-0 right-1'"
                         >
                             {{ key.special }}
                         </span>
@@ -106,14 +106,14 @@
 </template>
 
 <script lang="ts" setup>
-import KeyboardLayoutKey from '@/interfaces/KeyboardLayoutKey';
+import KeyboardKey from '@/interfaces/KeyboardKey';
 import VirtualKeyboardIcon from '@/components/icons/VirtualKeyboardIcon.vue';
-import { KeyboardLanguageEnum, KeyboardSpecialPositionEnum, KeyboardZoneEnum } from '@/enums/KeyboardEnums';
-import { KeyboardLayoutType, KeyboardZoneType } from '@/types/KeyboardTypes';
+import { KeyboardLayout, KeyboardZone } from '@/types/KeyboardTypes';
+import { Language, SpecialPosition, Zone } from '@/enums/KeyboardEnums';
 import { computed, ComputedRef, Ref, ref } from 'vue';
 
 const props = defineProps<{
-    language: KeyboardLanguageEnum,
+    language: Language,
     typed: string,
     text: string,
     isMinimized?: boolean,
@@ -122,165 +122,165 @@ const props = defineProps<{
 const BUTTON_DEFAULT_CLASS: string = 'p-2 border border-opacity-50 border-gray-300 dark:border-gray-700 text-center rounded shadow-sm relative';
 const BUTTON_HIGHLIGHTED_CLASS: string = 'bg-green-500 text-white dark:text-black';
 const BUTTON_NORMAL_CLASS: string = 'bg-gray-50 dark:bg-gray-900 dark:text-gray-300';
-const KEYBOARD_LAYOUTS: Record<KeyboardLanguageEnum, KeyboardLayoutType> = {
-    [KeyboardLanguageEnum.En]: [
+const KEYBOARD_LAYOUTS: Record<Language, KeyboardLayout> = {
+    [Language.En]: [
         [
-            { value: '`', display: '`', special: '~', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
-            { value: '1', display: '1', special: '!', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
-            { value: '2', display: '2', special: '@', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
-            { value: '3', display: '3', special: '#', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
-            { value: '4', display: '4', special: '$', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
-            { value: '5', display: '5', special: '%', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
-            { value: '6', display: '6', special: '^', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: '7', display: '7', special: '&', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: '8', display: '8', special: '*', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: '9', display: '9', special: '(', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: '0', display: '0', special: ')', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: '-', display: '-', special: '_', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: '=', display: '=', special: '+', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: 'backspace', display: 'Backspace', width: 80, zone: KeyboardZoneEnum.Right }
+            { value: '`', display: '`', special: '~', specialPosition: SpecialPosition.TopLeft, zone: Zone.Left },
+            { value: '1', display: '1', special: '!', specialPosition: SpecialPosition.TopLeft, zone: Zone.Left },
+            { value: '2', display: '2', special: '@', specialPosition: SpecialPosition.TopLeft, zone: Zone.Left },
+            { value: '3', display: '3', special: '#', specialPosition: SpecialPosition.TopLeft, zone: Zone.Left },
+            { value: '4', display: '4', special: '$', specialPosition: SpecialPosition.TopLeft, zone: Zone.Left },
+            { value: '5', display: '5', special: '%', specialPosition: SpecialPosition.TopLeft, zone: Zone.Left },
+            { value: '6', display: '6', special: '^', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: '7', display: '7', special: '&', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: '8', display: '8', special: '*', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: '9', display: '9', special: '(', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: '0', display: '0', special: ')', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: '-', display: '-', special: '_', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: '=', display: '=', special: '+', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: 'backspace', display: 'Backspace', width: 80, zone: Zone.Right }
         ],
         [
-            { value: 'tab', display: 'Tab', width: 60, zone: KeyboardZoneEnum.Left },
-            { value: 'q', display: 'q', special: 'Q', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
-            { value: 'w', display: 'w', special: 'W', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
-            { value: 'e', display: 'e', special: 'E', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
-            { value: 'r', display: 'r', special: 'R', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
-            { value: 't', display: 't', special: 'T', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
-            { value: 'y', display: 'y', special: 'Y', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: 'u', display: 'u', special: 'U', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: 'i', display: 'i', special: 'I', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: 'o', display: 'o', special: 'O', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: 'p', display: 'p', special: 'P', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: '[', display: '[', special: '{', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: ']', display: ']', special: '}', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: '\\', display: '\\', special: '|', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right }
+            { value: 'tab', display: 'Tab', width: 60, zone: Zone.Left },
+            { value: 'q', display: 'q', special: 'Q', specialPosition: SpecialPosition.TopLeft, zone: Zone.Left },
+            { value: 'w', display: 'w', special: 'W', specialPosition: SpecialPosition.TopLeft, zone: Zone.Left },
+            { value: 'e', display: 'e', special: 'E', specialPosition: SpecialPosition.TopLeft, zone: Zone.Left },
+            { value: 'r', display: 'r', special: 'R', specialPosition: SpecialPosition.TopLeft, zone: Zone.Left },
+            { value: 't', display: 't', special: 'T', specialPosition: SpecialPosition.TopLeft, zone: Zone.Left },
+            { value: 'y', display: 'y', special: 'Y', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: 'u', display: 'u', special: 'U', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: 'i', display: 'i', special: 'I', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: 'o', display: 'o', special: 'O', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: 'p', display: 'p', special: 'P', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: '[', display: '[', special: '{', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: ']', display: ']', special: '}', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: '\\', display: '\\', special: '|', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right }
         ],
         [
-            { value: 'capslock', display: 'Caps', width: 70, zone: KeyboardZoneEnum.Left },
-            { value: 'a', display: 'a', special: 'A', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
-            { value: 's', display: 's', special: 'S', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
-            { value: 'd', display: 'd', special: 'D', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
-            { value: 'f', display: 'f', special: 'F', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
-            { value: 'g', display: 'g', special: 'G', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
-            { value: 'h', display: 'h', special: 'H', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: 'j', display: 'j', special: 'J', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: 'k', display: 'k', special: 'K', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: 'l', display: 'l', special: 'L', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: ';', display: ';', special: ':', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: '\'', display: '\'', special: '"', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: 'enter', display: 'Enter', width: 90, zone: KeyboardZoneEnum.Right }
+            { value: 'capslock', display: 'Caps', width: 70, zone: Zone.Left },
+            { value: 'a', display: 'a', special: 'A', specialPosition: SpecialPosition.TopLeft, zone: Zone.Left },
+            { value: 's', display: 's', special: 'S', specialPosition: SpecialPosition.TopLeft, zone: Zone.Left },
+            { value: 'd', display: 'd', special: 'D', specialPosition: SpecialPosition.TopLeft, zone: Zone.Left },
+            { value: 'f', display: 'f', special: 'F', specialPosition: SpecialPosition.TopLeft, zone: Zone.Left },
+            { value: 'g', display: 'g', special: 'G', specialPosition: SpecialPosition.TopLeft, zone: Zone.Left },
+            { value: 'h', display: 'h', special: 'H', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: 'j', display: 'j', special: 'J', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: 'k', display: 'k', special: 'K', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: 'l', display: 'l', special: 'L', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: ';', display: ';', special: ':', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: '\'', display: '\'', special: '"', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: 'enter', display: 'Enter', width: 90, zone: Zone.Right }
         ],
         [
-            { value: 'shift', display: 'Shift', width: 90, zone: KeyboardZoneEnum.Left },
-            { value: 'z', display: 'z', special: 'Z', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
-            { value: 'x', display: 'x', special: 'X', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
-            { value: 'c', display: 'c', special: 'C', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
-            { value: 'v', display: 'v', special: 'V', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
-            { value: 'b', display: 'b', special: 'B', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
-            { value: 'n', display: 'n', special: 'N', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: 'm', display: 'm', special: 'M', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: ',', display: ',', special: '<', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: '.', display: '.', special: '>', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: '/', display: '/', special: '?', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: 'shift', display: 'Shift', width: 110, zone: KeyboardZoneEnum.Right }
+            { value: 'shift', display: 'Shift', width: 90, zone: Zone.Left },
+            { value: 'z', display: 'z', special: 'Z', specialPosition: SpecialPosition.TopLeft, zone: Zone.Left },
+            { value: 'x', display: 'x', special: 'X', specialPosition: SpecialPosition.TopLeft, zone: Zone.Left },
+            { value: 'c', display: 'c', special: 'C', specialPosition: SpecialPosition.TopLeft, zone: Zone.Left },
+            { value: 'v', display: 'v', special: 'V', specialPosition: SpecialPosition.TopLeft, zone: Zone.Left },
+            { value: 'b', display: 'b', special: 'B', specialPosition: SpecialPosition.TopLeft, zone: Zone.Left },
+            { value: 'n', display: 'n', special: 'N', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: 'm', display: 'm', special: 'M', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: ',', display: ',', special: '<', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: '.', display: '.', special: '>', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: '/', display: '/', special: '?', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: 'shift', display: 'Shift', width: 110, zone: Zone.Right }
         ],
         [
-            { value: 'ctrl', display: 'Ctrl', width: 50, zone: KeyboardZoneEnum.Left },
-            { value: 'alt', display: 'Alt', width: 50, zone: KeyboardZoneEnum.Left },
+            { value: 'ctrl', display: 'Ctrl', width: 50, zone: Zone.Left },
+            { value: 'alt', display: 'Alt', width: 50, zone: Zone.Left },
             { value: ' ', display: 'Space', width: 250 },
-            { value: 'alt', display: 'Alt', width: 50, zone: KeyboardZoneEnum.Right },
-            { value: 'ctrl', display: 'Ctrl', width: 50, zone: KeyboardZoneEnum.Right }
+            { value: 'alt', display: 'Alt', width: 50, zone: Zone.Right },
+            { value: 'ctrl', display: 'Ctrl', width: 50, zone: Zone.Right }
         ]
     ],
-    [KeyboardLanguageEnum.Ru]: [
+    [Language.Ru]: [
         [
-            { value: 'ё', display: 'ё', special: 'Ё', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
-            { value: '1', display: '1', special: '!', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
-            { value: '2', display: '2', special: '"', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
-            { value: '3', display: '3', special: '№', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
-            { value: '4', display: '4', special: ';', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
-            { value: '5', display: '5', special: '%', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
-            { value: '6', display: '6', special: ':', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: '7', display: '7', special: '?', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: '8', display: '8', special: '*', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: '9', display: '9', special: '(', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: '0', display: '0', special: ')', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: '-', display: '-', special: '_', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: '=', display: '=', special: '+', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: 'backspace', display: 'Backspace', width: 80, zone: KeyboardZoneEnum.Right }
+            { value: 'ё', display: 'ё', special: 'Ё', specialPosition: SpecialPosition.TopLeft, zone: Zone.Left },
+            { value: '1', display: '1', special: '!', specialPosition: SpecialPosition.TopLeft, zone: Zone.Left },
+            { value: '2', display: '2', special: '"', specialPosition: SpecialPosition.TopLeft, zone: Zone.Left },
+            { value: '3', display: '3', special: '№', specialPosition: SpecialPosition.TopLeft, zone: Zone.Left },
+            { value: '4', display: '4', special: ';', specialPosition: SpecialPosition.TopLeft, zone: Zone.Left },
+            { value: '5', display: '5', special: '%', specialPosition: SpecialPosition.TopLeft, zone: Zone.Left },
+            { value: '6', display: '6', special: ':', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: '7', display: '7', special: '?', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: '8', display: '8', special: '*', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: '9', display: '9', special: '(', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: '0', display: '0', special: ')', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: '-', display: '-', special: '_', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: '=', display: '=', special: '+', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: 'backspace', display: 'Backspace', width: 80, zone: Zone.Right }
         ],
         [
-            { value: 'tab', display: 'Tab', width: 60, zone: KeyboardZoneEnum.Left },
-            { value: 'й', display: 'й', special: 'Й', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
-            { value: 'ц', display: 'ц', special: 'Ц', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
-            { value: 'у', display: 'у', special: 'У', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
-            { value: 'к', display: 'к', special: 'К', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
-            { value: 'е', display: 'е', special: 'Е', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
-            { value: 'н', display: 'н', special: 'Н', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: 'г', display: 'г', special: 'Г', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: 'ш', display: 'ш', special: 'Ш', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: 'щ', display: 'щ', special: 'Щ', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: 'з', display: 'з', special: 'З', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: 'х', display: 'х', special: 'Х', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: 'ъ', display: 'ъ', special: 'Ъ', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: '\\', display: '\\', special: '/', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right }
+            { value: 'tab', display: 'Tab', width: 60, zone: Zone.Left },
+            { value: 'й', display: 'й', special: 'Й', specialPosition: SpecialPosition.TopLeft, zone: Zone.Left },
+            { value: 'ц', display: 'ц', special: 'Ц', specialPosition: SpecialPosition.TopLeft, zone: Zone.Left },
+            { value: 'у', display: 'у', special: 'У', specialPosition: SpecialPosition.TopLeft, zone: Zone.Left },
+            { value: 'к', display: 'к', special: 'К', specialPosition: SpecialPosition.TopLeft, zone: Zone.Left },
+            { value: 'е', display: 'е', special: 'Е', specialPosition: SpecialPosition.TopLeft, zone: Zone.Left },
+            { value: 'н', display: 'н', special: 'Н', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: 'г', display: 'г', special: 'Г', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: 'ш', display: 'ш', special: 'Ш', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: 'щ', display: 'щ', special: 'Щ', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: 'з', display: 'з', special: 'З', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: 'х', display: 'х', special: 'Х', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: 'ъ', display: 'ъ', special: 'Ъ', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: '\\', display: '\\', special: '/', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right }
         ],
         [
-            { value: 'capslock', display: 'Caps', width: 70, zone: KeyboardZoneEnum.Left },
-            { value: 'ф', display: 'ф', special: 'Ф', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
-            { value: 'ы', display: 'ы', special: 'Ы', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
-            { value: 'в', display: 'в', special: 'В', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
-            { value: 'а', display: 'а', special: 'А', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
-            { value: 'п', display: 'п', special: 'П', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
-            { value: 'р', display: 'р', special: 'Р', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: 'о', display: 'о', special: 'О', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: 'л', display: 'л', special: 'Л', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: 'д', display: 'д', special: 'Д', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: 'ж', display: 'ж', special: 'Ж', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: 'э', display: 'э', special: 'Э', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: 'enter', display: 'Enter', width: 90, zone: KeyboardZoneEnum.Right }
+            { value: 'capslock', display: 'Caps', width: 70, zone: Zone.Left },
+            { value: 'ф', display: 'ф', special: 'Ф', specialPosition: SpecialPosition.TopLeft, zone: Zone.Left },
+            { value: 'ы', display: 'ы', special: 'Ы', specialPosition: SpecialPosition.TopLeft, zone: Zone.Left },
+            { value: 'в', display: 'в', special: 'В', specialPosition: SpecialPosition.TopLeft, zone: Zone.Left },
+            { value: 'а', display: 'а', special: 'А', specialPosition: SpecialPosition.TopLeft, zone: Zone.Left },
+            { value: 'п', display: 'п', special: 'П', specialPosition: SpecialPosition.TopLeft, zone: Zone.Left },
+            { value: 'р', display: 'р', special: 'Р', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: 'о', display: 'о', special: 'О', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: 'л', display: 'л', special: 'Л', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: 'д', display: 'д', special: 'Д', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: 'ж', display: 'ж', special: 'Ж', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: 'э', display: 'э', special: 'Э', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: 'enter', display: 'Enter', width: 90, zone: Zone.Right }
         ],
         [
-            { value: 'shift', display: 'Shift', width: 90, zone: KeyboardZoneEnum.Left },
-            { value: 'я', display: 'я', special: 'Я', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
-            { value: 'ч', display: 'ч', special: 'Ч', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
-            { value: 'с', display: 'с', special: 'С', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
-            { value: 'м', display: 'м', special: 'М', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
-            { value: 'и', display: 'и', special: 'И', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Left },
-            { value: 'т', display: 'т', special: 'Т', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: 'ь', display: 'ь', special: 'Ь', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: 'б', display: 'б', special: 'Б', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: 'ю', display: 'ю', special: 'Ю', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: '.', display: '.', special: ',', specialPosition: KeyboardSpecialPositionEnum.TopLeft, zone: KeyboardZoneEnum.Right },
-            { value: 'shift', display: 'Shift', width: 110, zone: KeyboardZoneEnum.Right }
+            { value: 'shift', display: 'Shift', width: 90, zone: Zone.Left },
+            { value: 'я', display: 'я', special: 'Я', specialPosition: SpecialPosition.TopLeft, zone: Zone.Left },
+            { value: 'ч', display: 'ч', special: 'Ч', specialPosition: SpecialPosition.TopLeft, zone: Zone.Left },
+            { value: 'с', display: 'с', special: 'С', specialPosition: SpecialPosition.TopLeft, zone: Zone.Left },
+            { value: 'м', display: 'м', special: 'М', specialPosition: SpecialPosition.TopLeft, zone: Zone.Left },
+            { value: 'и', display: 'и', special: 'И', specialPosition: SpecialPosition.TopLeft, zone: Zone.Left },
+            { value: 'т', display: 'т', special: 'Т', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: 'ь', display: 'ь', special: 'Ь', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: 'б', display: 'б', special: 'Б', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: 'ю', display: 'ю', special: 'Ю', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: '.', display: '.', special: ',', specialPosition: SpecialPosition.TopLeft, zone: Zone.Right },
+            { value: 'shift', display: 'Shift', width: 110, zone: Zone.Right }
         ],
         [
-            { value: 'ctrl', display: 'Ctrl', width: 50, zone: KeyboardZoneEnum.Left },
-            { value: 'alt', display: 'Alt', width: 50, zone: KeyboardZoneEnum.Left },
+            { value: 'ctrl', display: 'Ctrl', width: 50, zone: Zone.Left },
+            { value: 'alt', display: 'Alt', width: 50, zone: Zone.Left },
             { value: ' ', display: 'Space', width: 250 },
-            { value: 'alt', display: 'Alt', width: 50, zone: KeyboardZoneEnum.Right },
-            { value: 'ctrl', display: 'Ctrl', width: 50, zone: KeyboardZoneEnum.Right }
+            { value: 'alt', display: 'Alt', width: 50, zone: Zone.Right },
+            { value: 'ctrl', display: 'Ctrl', width: 50, zone: Zone.Right }
         ]
     ]
 };
-const UPPER_OR_SPECIAL_REGEX: Record<KeyboardLanguageEnum, RegExp> = {
-    [KeyboardLanguageEnum.En]: /[A-Z~!@#$%^&*()_+{}|:"<>?]/,
-    [KeyboardLanguageEnum.Ru]: /[А-ЯЁ!"№;%:?*()_+/,]/,
+const UPPER_OR_SPECIAL_REGEX: Record<Language, RegExp> = {
+    [Language.En]: /[A-Z~!@#$%^&*()_+{}|:"<>?]/,
+    [Language.Ru]: /[А-ЯЁ!"№;%:?*()_+/,]/,
 };
 const isMinimized: Ref<boolean> = ref(props.isMinimized ?? false);
 
-const keyboardLayout: ComputedRef<KeyboardLayoutType> = computed((): KeyboardLayoutType => KEYBOARD_LAYOUTS[props.language]);
+const keyboardLayout: ComputedRef<KeyboardLayout> = computed((): KeyboardLayout => KEYBOARD_LAYOUTS[props.language]);
 
 const nextChar: ComputedRef<string> = computed((): string => props.typed.length < props.text.length ? props.text[props.typed.length] : '');
 
 const toggleKeyboard = (): void => { isMinimized.value = !isMinimized.value; };
 
-const getKeyStyle = (key: KeyboardLayoutKey): Record<string, string> => {
+const getKeyStyle = (key: KeyboardKey): Record<string, string> => {
     return { minWidth: key.width ? `${key.width}px` : '40px' };
 };
 
-const getOppositeZone = (): KeyboardZoneType => {
+const getOppositeZone = (): KeyboardZone => {
     const keyZone = keyboardLayout.value.flat().find(k =>
         k.value === nextChar.value ||
         (k.special && k.special === nextChar.value) ||
@@ -288,10 +288,10 @@ const getOppositeZone = (): KeyboardZoneType => {
         (k.special && k.special.toLowerCase() === nextChar.value.toLowerCase())
     )?.zone;
 
-    return keyZone === KeyboardZoneEnum.Left ? KeyboardZoneEnum.Right : KeyboardZoneEnum.Left;
+    return keyZone === Zone.Left ? Zone.Right : Zone.Left;
 };
 
-const isHighlighted = (keyValue: string | undefined, zone?: KeyboardZoneType): boolean => {
+const isHighlighted = (keyValue: string | undefined, zone?: KeyboardZone): boolean => {
     if (!keyValue) { return false; }
     if (keyValue === ' ') { return nextChar.value === ' '; }
     if (keyValue === 'enter') { return nextChar.value === '\n'; }

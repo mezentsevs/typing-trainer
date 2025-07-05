@@ -1,14 +1,14 @@
-export enum KeyboardLanguageEnum {
+export enum Language {
     En = 'en',
     Ru = 'ru',
 }
 
-export enum KeyboardSpecialPositionEnum {
+export enum SpecialPosition {
     TopLeft = 'top-left',
     TopRight = 'top-right',
 }
 
-export enum KeyboardZoneEnum {
+export enum Zone {
     Left = 'left',
     Right = 'right',
 }

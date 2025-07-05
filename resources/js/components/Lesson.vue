@@ -72,7 +72,7 @@ import TextArea from '@/components/uikit/TextArea.vue';
 import TextContainer from '@/components/uikit/TextContainer.vue';
 import VirtualKeyboard from './VirtualKeyboard.vue';
 import axios, { AxiosResponse } from 'axios';
-import { KeyboardLanguageEnum } from '@/enums/KeyboardEnums';
+import { Language } from '@/enums/KeyboardEnums';
 import { LessonPartialInfoType } from '@/types/LessonTypes';
 import { RouteLocationNormalizedLoaded, useRoute } from 'vue-router';
 import { ref, computed, onMounted, Ref, ComputedRef } from 'vue';
@@ -83,7 +83,7 @@ const { handleTypingInput }: Record<string, Function> = useHandleTypingInput();
 
 const errors: Ref<number> = ref(0);
 const isLessonCompleted: Ref<boolean> = ref(false);
-const language: KeyboardLanguageEnum = route.params.language as KeyboardLanguageEnum;
+const language: Language = route.params.language as Language;
 const lessonNumber: Ref<number> = ref(parseInt(route.params.number as string));
 const lessonPartialInfo: Ref<LessonPartialInfoType> = ref({ id: 0, number: lessonNumber.value, new_chars: '' });
 const speed: Ref<number> = ref(0);

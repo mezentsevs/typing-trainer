@@ -56,7 +56,7 @@ import TextContainer from '@/components/uikit/TextContainer.vue';
 import VirtualKeyboard from './VirtualKeyboard.vue';
 import axios, { AxiosResponse } from 'axios';
 import { ComputedRef, Ref, ref } from 'vue';
-import { KeyboardLanguageEnum } from '@/enums/KeyboardEnums';
+import { Language } from '@/enums/KeyboardEnums';
 import { RouteLocationNormalizedLoaded, useRoute } from 'vue-router';
 import { useHandleTypingInput, useCurrentWord, useProgress } from '@/composables/TypingComposables';
 
@@ -68,7 +68,7 @@ const error: Ref<string> = ref('');
 const errors: Ref<number> = ref(0);
 const genre: Ref<string> = ref('');
 const isTestCompleted: Ref<boolean> = ref(false);
-const language: KeyboardLanguageEnum = route.params.language as KeyboardLanguageEnum;
+const language: Language = route.params.language as Language;
 const speed: Ref<number> = ref(0);
 const startTime: Ref<number> = ref(0);
 const text: Ref<string> = ref('');
