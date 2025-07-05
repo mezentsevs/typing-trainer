@@ -1,22 +1,10 @@
 <template>
     <section class="p-4 border border-opacity-50 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 rounded-lg">
         <div class="flex justify-between">
-            <div class="text-center">
-                <p class="font-bold text-sm">{{ language }}</p>
-                <p class="text-xs opacity-50">Language</p>
-            </div>
-            <div class="text-center">
-                <p class="font-bold text-sm">{{ formattedTime }}</p>
-                <p class="text-xs opacity-50">Time</p>
-            </div>
-            <div class="text-center">
-                <p class="font-bold text-sm">{{ speed }} WPM</p>
-                <p class="text-xs opacity-50">Speed</p>
-            </div>
-            <div class="text-center">
-                <p class="font-bold text-sm">{{ errors }}</p>
-                <p class="text-xs opacity-50">Errors</p>
-            </div>
+            <StatisticsItem v-for="item in items" :key="item.name">
+                <template #name>{{ item.name }}</template>
+                {{ item.value }}
+            </StatisticsItem>
         </div>
         <ProgressBar :progress />
     </section>
@@ -24,6 +12,7 @@
 
 <script lang="ts" setup>
 import ProgressBar from '@/components/uikit/ProgressBar.vue';
+import StatisticsItem from '@/components/StatisticsItem.vue';
 import { computed, ComputedRef } from 'vue';
 import { formatTime } from '@/helpers/DateTimeHelper';
 
@@ -35,5 +24,10 @@ const props = defineProps<{
     progress: number,
 }>();
 
-const formattedTime: ComputedRef<string> = computed((): string => formatTime(props.time));
+const items: ComputedRef<Record<string, string | number>[]> = computed(() => [
+    { name: 'Language', value: props.language },
+    { name: 'Time', value: formatTime(props.time) },
+    { name: 'Speed', value: `${props.speed} WPM` },
+    { name: 'Errors', value: props.errors },
+]);
 </script>
