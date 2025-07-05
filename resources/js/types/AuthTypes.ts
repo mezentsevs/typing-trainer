@@ -1,5 +1,4 @@
-import AuthStateUser from '@/interfaces/auth/AuthStateUser';
+import User from '@/interfaces/User';
 
-export type AuthStateTokenType = string | null;
-
-export type AuthStateUserType = AuthStateUser | null;
+export type AuthStateToken = string | null;
+export type AuthStateUser = User | null;

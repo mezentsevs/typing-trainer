@@ -1,4 +1,4 @@
-export default interface AuthStateUser {
+export default interface User {
     id: number;
     name: string;
     email: string;
