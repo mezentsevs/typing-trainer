@@ -8,9 +8,9 @@
 
 <script lang="ts" setup>
 import { Ref, ref } from 'vue';
-import { UIKitTextAreaModelType } from '@/types/UIKitTypes';
+import { UIKitTextAreaModel } from '@/types/UIKitTypes';
 
-const model = defineModel<UIKitTextAreaModelType>();
+const model = defineModel<UIKitTextAreaModel>();
 
 const area: Ref<HTMLTextAreaElement | null> = ref(null);
 

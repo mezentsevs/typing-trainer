@@ -1,11 +1,7 @@
-import { UIKitButtonTypeEnum } from '@/enums/UIKitEnums';
+import { Button } from '@/enums/UIKitEnums';
 
-export type UIKitButtonType = UIKitButtonTypeEnum.Button | UIKitButtonTypeEnum.Reset | UIKitButtonTypeEnum.Submit | undefined;
-
-export type UIKitInputModelType = string | number;
-
-export type UIKitRouterLinkToType = string | Object;
-
-export type UIKitSelectModelType = string | number | null;
-
-export type UIKitTextAreaModelType = string;
+export type UIKitButton = Button.Button | Button.Reset | Button.Submit | undefined;
+export type UIKitInputModel = string | number;
+export type UIKitRouterLinkTo = string | Object;
+export type UIKitSelectModel = string | number | null;
+export type UIKitTextAreaModel = string;

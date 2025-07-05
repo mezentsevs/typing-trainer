@@ -5,9 +5,9 @@
 </template>
 
 <script lang="ts" setup>
-import { UIKitRouterLinkToType } from '@/types/UIKitTypes';
+import { UIKitRouterLinkTo } from '@/types/UIKitTypes';
 
 defineProps<{
-    to: UIKitRouterLinkToType,
+    to: UIKitRouterLinkTo,
 }>();
 </script>

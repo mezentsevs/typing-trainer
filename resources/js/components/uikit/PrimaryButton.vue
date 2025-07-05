@@ -6,12 +6,12 @@
 
 <script lang="ts" setup>
 import BaseButton from '@/components/uikit/BaseButton.vue';
-import { UIKitButtonType } from '@/types/UIKitTypes';
-import { UIKitButtonTypeEnum } from '@/enums/UIKitEnums';
+import { Button } from '@/enums/UIKitEnums';
+import { UIKitButton } from '@/types/UIKitTypes';
 
 withDefaults(defineProps<{
-    type?: UIKitButtonType,
+    type?: UIKitButton,
 }>(), {
-    type: UIKitButtonTypeEnum.Submit,
+    type: Button.Submit,
 });
 </script>

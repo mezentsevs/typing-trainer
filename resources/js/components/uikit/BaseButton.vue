@@ -5,9 +5,9 @@
 </template>
 
 <script lang="ts" setup>
-import { UIKitButtonType } from '@/types/UIKitTypes';
+import { UIKitButton } from '@/types/UIKitTypes';
 
 defineProps<{
-    type: UIKitButtonType,
+    type: UIKitButton,
 }>();
 </script>

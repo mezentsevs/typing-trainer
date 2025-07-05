@@ -6,10 +6,10 @@
 
 <script lang="ts" setup>
 import BaseRouterLinkButton from '@/components/uikit/BaseRouterLinkButton.vue';
-import { UIKitRouterLinkToType } from '@/types/UIKitTypes';
+import { UIKitRouterLinkTo } from '@/types/UIKitTypes';
 
 withDefaults(defineProps<{
-    to?: UIKitRouterLinkToType,
+    to?: UIKitRouterLinkTo,
 }>(), {
     to: '/',
 });
