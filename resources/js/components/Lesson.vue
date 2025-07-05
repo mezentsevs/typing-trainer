@@ -75,7 +75,7 @@ import axios, { AxiosResponse } from 'axios';
 import { KeyboardLanguageEnum } from '@/enums/KeyboardEnums';
 import { LessonPartialInfoType } from '@/types/LessonTypes';
 import { RouteLocationNormalizedLoaded, useRoute } from 'vue-router';
-import { ref, computed, onMounted, Ref, ComputedRef, watchEffect } from 'vue';
+import { ref, computed, onMounted, Ref, ComputedRef } from 'vue';
 import { useHandleTypingInput, useCurrentWord, useProgress } from '@/composables/TypingComposables';
 
 const route: RouteLocationNormalizedLoaded<string | symbol> = useRoute();
@@ -98,12 +98,6 @@ const typed: Ref<string> = ref('');
 
 const { isCurrentWord }: Record<string, ComputedRef<boolean[]>> = useCurrentWord(text, typed);
 const { progress }: Record<string, ComputedRef<number>> = useProgress(text, typed, isLessonCompleted);
-
-watchEffect(() => {
-    if (textContainerRef.value) {
-        textContainer.value = textContainerRef.value.getContainerElement();
-    }
-});
 
 const nextLesson: ComputedRef<number> = computed(
     (): number => (totalLessons.value - lessonNumber.value) ? lessonNumber.value + 1 : 0,
@@ -174,5 +168,7 @@ onMounted(async (): Promise<void> => {
     resetState();
 
     await fetchLesson();
+
+    if (textContainerRef.value) { textContainer.value = textContainerRef.value.getContainerElement(); }
 });
 </script>
