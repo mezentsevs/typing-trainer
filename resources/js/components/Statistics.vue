@@ -6,7 +6,7 @@
                 {{ item.value }}
             </StatisticsItem>
         </div>
-        <ProgressBar :progress />
+        <ProgressBar :progress class="w-full h-4 mt-4" />
     </section>
 </template>
 
@@ -24,7 +24,7 @@ const props = defineProps<{
     progress: number,
 }>();
 
-const items: ComputedRef<Record<string, string | number>[]> = computed(() => [
+const items: ComputedRef<Record<string, string | number>[]> = computed((): Record<string, string | number>[] => [
     { name: 'Language', value: props.language },
     { name: 'Time', value: formatTime(props.time) },
     { name: 'Speed', value: `${props.speed} WPM` },

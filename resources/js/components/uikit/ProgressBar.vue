@@ -1,11 +1,9 @@
 <template>
-    <div class="mt-4 w-full">
-        <div class="w-full bg-gray-200 rounded-full h-4 relative">
-            <div class="h-4 rounded-full transition-all duration-300" :style />
-            <p class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-xs font-bold">
-                {{ progress }}%
-            </p>
-        </div>
+    <div class="bg-gray-200 rounded-full overflow-hidden relative">
+        <div class="h-full transition-all duration-300" :style />
+        <span class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-xs font-bold dark:text-black">
+            {{ progress }}%
+        </span>
     </div>
 </template>
 
