@@ -73,7 +73,7 @@ import TextContainer from '@/components/uikit/TextContainer.vue';
 import VirtualKeyboard from './VirtualKeyboard.vue';
 import axios, { AxiosResponse } from 'axios';
 import { Language } from '@/enums/KeyboardEnums';
-import { LessonPartialInfoType } from '@/types/LessonTypes';
+import { LessonPartialInfo } from '@/types/LessonTypes';
 import { RouteLocationNormalizedLoaded, useRoute } from 'vue-router';
 import { ref, computed, onMounted, Ref, ComputedRef } from 'vue';
 import { useHandleTypingInput, useCurrentWord, useProgress } from '@/composables/TypingComposables';
@@ -85,7 +85,7 @@ const errors: Ref<number> = ref(0);
 const isLessonCompleted: Ref<boolean> = ref(false);
 const language: Language = route.params.language as Language;
 const lessonNumber: Ref<number> = ref(parseInt(route.params.number as string));
-const lessonPartialInfo: Ref<LessonPartialInfoType> = ref({ id: 0, number: lessonNumber.value, new_chars: '' });
+const lessonPartialInfo: Ref<LessonPartialInfo> = ref({ id: 0, number: lessonNumber.value, new_chars: '' });
 const speed: Ref<number> = ref(0);
 const startTime: Ref<number> = ref(0);
 const text: Ref<string> = ref('');
@@ -111,7 +111,7 @@ const resetState = (): void => {
     text.value = '';
     time.value = 0;
     typed.value = '';
-    lessonPartialInfo.value = { id: 0, number: lessonNumber.value, new_chars: '' } as LessonPartialInfoType;
+    lessonPartialInfo.value = { id: 0, number: lessonNumber.value, new_chars: '' } as LessonPartialInfo;
 };
 
 // TODO: Try to use only Lesson interface everywhere
@@ -120,8 +120,8 @@ const fetchLesson = async (): Promise<void> => {
         lesson: Lesson;
     }> = await axios.get(`/lessons/${language}/${lessonNumber.value}`);
 
-    const { id, number, new_chars }: LessonPartialInfoType = response.data.lesson;
-    lessonPartialInfo.value = { id, number, new_chars } as LessonPartialInfoType;
+    const { id, number, new_chars }: LessonPartialInfo = response.data.lesson;
+    lessonPartialInfo.value = { id, number, new_chars } as LessonPartialInfo;
 
     totalLessons.value = response.data.lesson.total;
     text.value = response.data.lesson.text;
