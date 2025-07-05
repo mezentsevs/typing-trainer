@@ -8,7 +8,7 @@
         </header>
 
         <aside class="mb-4 flex flex-row items-stretch space-x-4">
-            <NewCharacters :new-chars="lessonPartialInfo.new_chars" class="flex items-center justify-center" />
+            <NewCharacters :new-chars="lessonPartialInfo.new_chars" class="w-1/2 my-4" />
             <Statistics :language :time :speed :errors :progress />
         </aside>
 
