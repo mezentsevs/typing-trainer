@@ -1,6 +1,6 @@
 <template>
     <SetupCard>
-        <Heading :level="2" class="text-2xl mb-6">Setup Lessons</Heading>
+        <Heading :level="1" class="text-2xl mb-6">Setup Lessons</Heading>
         <form @submit.prevent="generateLessons">
             <InputLabel for="language" value="Language" />
             <Select

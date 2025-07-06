@@ -4,7 +4,7 @@
             <!--Logo-->
         </template>
 
-        <Heading :level="2" class="text-2xl mb-6">Register</Heading>
+        <Heading :level="1" class="text-2xl mb-6">Register</Heading>
         <form @submit.prevent="register">
             <InputLabel for="name" value="Name" />
             <Input

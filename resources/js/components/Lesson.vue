@@ -1,7 +1,7 @@
 <template>
     <ContentCard>
         <header class="mb-4 relative flex items-center">
-            <Heading :level="2" class="text-2xl">Lesson {{ lessonPartialInfo.number }}/{{ totalLessons }}</Heading>
+            <Heading :level="1" class="text-2xl">Lesson {{ lessonPartialInfo.number }}/{{ totalLessons }}</Heading>
             <SuccessBanner v-if="isLessonCompleted" class="absolute left-1/2 transform -translate-x-1/2">
                 Completed!
             </SuccessBanner>

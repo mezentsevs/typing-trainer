@@ -4,7 +4,7 @@
             <!--Logo-->
         </template>
 
-        <Heading :level="2" class="text-2xl mb-6">Login</Heading>
+        <Heading :level="1" class="text-2xl mb-6">Login</Heading>
         <form @submit.prevent="login">
             <InputLabel for="email" value="Email" />
             <Input

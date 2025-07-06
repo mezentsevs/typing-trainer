@@ -1,7 +1,7 @@
 <template>
     <ContentCard v-if="text">
         <header class="mb-4 relative flex items-center">
-            <Heading :level="2" class="text-2xl">Final Test</Heading>
+            <Heading :level="1" class="text-2xl">Final Test</Heading>
             <SuccessBanner v-if="isTestCompleted" class="absolute left-1/2 transform -translate-x-1/2">
                 Completed!
             </SuccessBanner>
