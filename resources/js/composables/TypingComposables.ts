@@ -1,7 +1,7 @@
 import ResultRequestPayload from '@/interfaces/payloads/ResultRequestPayload';
 import TypingState from '@/interfaces/typing/TypingState';
+import TypingUnit from '@/interfaces/typing/TypingUnit';
 import axios from 'axios';
-import { TypingUnit } from '@/types/TypingTypes';
 import { computed, ComputedRef, Ref } from 'vue';
 import { getCurrentTypingUnit } from '@/helpers/StringHelper';
 import { scrollToCurrentChar } from '@/helpers/DomHelper';
@@ -43,17 +43,18 @@ export function useHandleTypingInput(): Record<string, Function> {
 }
 
 export function useCurrentWord(text: Ref<string>, typed: Ref<string>): Record<string, ComputedRef<boolean[]>> {
-    const currentTypingUnit: ComputedRef<TypingUnit> = computed(
-        (): TypingUnit => getCurrentTypingUnit(text.value, typed.value.length),
+    const currentTypingUnit: ComputedRef<TypingUnit | null> = computed(
+        (): TypingUnit | null => getCurrentTypingUnit(text.value, typed.value.length),
     );
 
     const isCurrentWord: ComputedRef<boolean[]> = computed((): boolean[] => {
-        const range: TypingUnit = currentTypingUnit.value;
         const arr: boolean[] = Array(text.value.length).fill(false) as boolean[];
 
-        if (!range) { return arr; }
+        if (!currentTypingUnit.value) { return arr; }
 
-        for (let i: number = range.start; i <= range.end; i++) { arr[i] = true; }
+        for (let i: number = currentTypingUnit.value.start; i <= currentTypingUnit.value.end; i++) {
+            arr[i] = true;
+        }
 
         return arr;
     });

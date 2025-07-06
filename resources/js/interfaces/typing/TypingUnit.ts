@@ -1,4 +1,4 @@
-export default interface Unit {
+export default interface TypingUnit {
     start: number;
     end: number;
 }

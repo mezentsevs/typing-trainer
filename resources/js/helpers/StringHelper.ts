@@ -1,10 +1,10 @@
-import Unit from '@/interfaces/typing/Unit';
+import TypingUnit from '@/interfaces/typing/TypingUnit';
 
 function isSeparator(char: string): boolean {
     return char === ' ' || char === '\n';
 }
 
-export function getCurrentTypingUnit(text: string, pos: number): Unit | null {
+export function getCurrentTypingUnit(text: string, pos: number): TypingUnit | null {
     if (pos >= text.length) { return null; }
 
     let start: number = pos;
