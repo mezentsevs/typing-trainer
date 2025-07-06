@@ -108,7 +108,7 @@
 <script lang="ts" setup>
 import KeyboardKey from '@/interfaces/KeyboardKey';
 import VirtualKeyboardIcon from '@/components/icons/VirtualKeyboardIcon.vue';
-import { KeyboardLayout, KeyboardZone } from '@/types/KeyboardTypes';
+import { KeyboardLayout } from '@/types/KeyboardTypes';
 import { Language, SpecialPosition, Zone } from '@/enums/KeyboardEnums';
 import { computed, ComputedRef, Ref, ref } from 'vue';
 
@@ -280,7 +280,7 @@ const getKeyStyle = (key: KeyboardKey): Record<string, string> => {
     return { minWidth: key.width ? `${key.width}px` : '40px' };
 };
 
-const getOppositeZone = (): KeyboardZone => {
+const getOppositeZone = (): Zone | null => {
     const keyZone = keyboardLayout.value.flat().find(k =>
         k.value === nextChar.value ||
         (k.special && k.special === nextChar.value) ||
@@ -291,7 +291,7 @@ const getOppositeZone = (): KeyboardZone => {
     return keyZone === Zone.Left ? Zone.Right : Zone.Left;
 };
 
-const isHighlighted = (keyValue: string | undefined, zone?: KeyboardZone): boolean => {
+const isHighlighted = (keyValue: string | undefined, zone?: Zone | null): boolean => {
     if (!keyValue) { return false; }
     if (keyValue === ' ') { return nextChar.value === ' '; }
     if (keyValue === 'enter') { return nextChar.value === '\n'; }

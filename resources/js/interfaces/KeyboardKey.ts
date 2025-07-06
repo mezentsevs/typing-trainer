@@ -1,10 +1,10 @@
-import { KeyboardSpecialPosition, KeyboardZone } from '@/types/KeyboardTypes';
+import { SpecialPosition, Zone } from '@/enums/KeyboardEnums';
 
 export default interface KeyboardKey {
     value: string;
     display: string;
     special?: string;
-    specialPosition?: KeyboardSpecialPosition;
+    specialPosition?: SpecialPosition | null;
     width?: number;
-    zone?: KeyboardZone;
+    zone?: Zone | null;
 }
