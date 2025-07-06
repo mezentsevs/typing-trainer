@@ -49,12 +49,12 @@ import ContentCard from '@/components/cards/ContentCard.vue';
 import FinalTestSetup from './FinalTestSetup.vue';
 import Heading from '@/components/uikit/Heading.vue';
 import PrimaryRouterLinkButton from '@/components/uikit/PrimaryRouterLinkButton.vue';
-import ResultRequestPayload from '@/interfaces/payloads/ResultRequestPayload';
+import SaveResultRequestPayload from '@/interfaces/payloads/SaveResultRequestPayload';
 import Statistics from './Statistics.vue';
 import SuccessBanner from '@/components/uikit/SuccessBanner.vue';
 import TextArea from '@/components/uikit/TextArea.vue';
 import TextContainer from '@/components/uikit/TextContainer.vue';
-import TypingState from '@/interfaces/typing/TypingState';
+import TypingContext from '@/interfaces/typing/TypingContext';
 import VirtualKeyboard from './VirtualKeyboard.vue';
 import axios, { AxiosResponse } from 'axios';
 import { ComputedRef, Ref, ref } from 'vue';
@@ -136,14 +136,14 @@ const onInput = async (): Promise<void> => {
             time,
             typed,
             progress,
-        } as TypingState,
+        } as TypingContext,
         '/test/result',
         {
             language,
             time_seconds: time.value,
             speed_wpm: speed.value,
             errors: errors.value,
-        } as ResultRequestPayload,
+        } as SaveResultRequestPayload,
     );
 };
 

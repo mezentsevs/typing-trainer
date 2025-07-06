@@ -1,5 +1,5 @@
-import ResultRequestPayload from '@/interfaces/payloads/ResultRequestPayload';
-import TypingState from '@/interfaces/typing/TypingState';
+import SaveResultRequestPayload from '@/interfaces/payloads/SaveResultRequestPayload';
+import TypingContext from '@/interfaces/typing/TypingContext';
 import TypingUnit from '@/interfaces/typing/TypingUnit';
 import axios from 'axios';
 import { computed, ComputedRef, Ref } from 'vue';
@@ -8,35 +8,35 @@ import { scrollToCurrentChar } from '@/helpers/DomHelper';
 
 export function useHandleTypingInput(): Record<string, Function> {
     const handleTypingInput = async (
-        state: TypingState,
-        postUrl: string,
-        payload: ResultRequestPayload,
+        context: TypingContext,
+        saveResultRequestUrl: string,
+        saveResultRequestPayload: SaveResultRequestPayload,
     ): Promise<void> => {
-        if (!state.startTime.value) { state.startTime.value = Date.now(); }
+        if (!context.startTime.value) { context.startTime.value = Date.now(); }
 
-        const typedChars: string[] = state.typed.value.split('');
+        const typedChars: string[] = context.typed.value.split('');
         let errorCount: number = 0;
 
-        for (let i: number = 0; i < Math.min(typedChars.length, state.text.value.length); i++) {
-            if (typedChars[i] !== state.text.value[i]) { errorCount++; }
+        for (let i: number = 0; i < Math.min(typedChars.length, context.text.value.length); i++) {
+            if (typedChars[i] !== context.text.value[i]) { errorCount++; }
         }
 
-        state.errors.value = errorCount;
+        context.errors.value = errorCount;
 
-        if (state.typed.value.length >= state.text.value.length) {
-            state.typed.value = state.typed.value.slice(0, state.text.value.length);
-            state.isCompleted.value = true;
+        if (context.typed.value.length >= context.text.value.length) {
+            context.typed.value = context.typed.value.slice(0, context.text.value.length);
+            context.isCompleted.value = true;
 
-            await axios.post(postUrl, payload);
+            await axios.post(saveResultRequestUrl, saveResultRequestPayload);
 
             return;
         }
 
-        state.time.value = Math.round((Date.now() - state.startTime.value) / 1000);
-        const words: number = state.typed.value.length / 5;
-        state.speed.value = state.time.value > 0 ? Math.round((words / state.time.value) * 60) : 0;
+        context.time.value = Math.round((Date.now() - context.startTime.value) / 1000);
+        const words: number = context.typed.value.length / 5;
+        context.speed.value = context.time.value > 0 ? Math.round((words / context.time.value) * 60) : 0;
 
-        scrollToCurrentChar(state.textContainer.value, state.typed.value.length);
+        scrollToCurrentChar(context.textContainer.value, context.typed.value.length);
     };
 
     return { handleTypingInput };
