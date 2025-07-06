@@ -66,12 +66,12 @@ import Lesson from '@/interfaces/Lesson';
 import NewCharacters from './NewCharacters.vue';
 import PrimaryRouterLinkButton from '@/components/uikit/PrimaryRouterLinkButton.vue';
 import ResultRequestPayload from '@/interfaces/payloads/ResultRequestPayload';
-import State from '@/interfaces/typing/State';
 import Statistics from './Statistics.vue';
 import SuccessBanner from '@/components/uikit/SuccessBanner.vue';
 import SuccessRouterLinkButton from '@/components/uikit/SuccessRouterLinkButton.vue';
 import TextArea from '@/components/uikit/TextArea.vue';
 import TextContainer from '@/components/uikit/TextContainer.vue';
+import TypingState from '@/interfaces/typing/TypingState';
 import VirtualKeyboard from './VirtualKeyboard.vue';
 import axios, { AxiosResponse } from 'axios';
 import { Language } from '@/enums/KeyboardEnums';
@@ -142,7 +142,7 @@ const onInput = async (): Promise<void> => {
             time,
             typed,
             progress,
-        } as State,
+        } as TypingState,
         '/lessons/result',
         {
             lesson_id: lessonPartialInfo.value.id,

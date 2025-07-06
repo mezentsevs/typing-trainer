@@ -1,6 +1,6 @@
 import { ComputedRef, Ref } from 'vue';
 
-export default interface State {
+export default interface TypingState {
     errors: Ref<number>;
     isCompleted: Ref<boolean>;
     language: string;
