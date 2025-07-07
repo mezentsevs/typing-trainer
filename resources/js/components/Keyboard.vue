@@ -5,7 +5,7 @@
             class="keyboard-preview max-w-32 mx-auto my-4 p-2 flex justify-center items-center gap-2 border border-opacity-50 border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 hover:bg-white dark:hover:bg-gray-800 active:bg-gray-50 dark:active:bg-gray-900 text-gray-500 dark:text-gray-300 cursor-pointer select-none rounded-lg shadow-sm"
             @click="toggleKeyboard"
         >
-            <VirtualKeyboardIcon class="w-6 h-6 shrink-0 fill-gray-500 dark:fill-gray-300" />
+            <KeyboardIcon class="w-6 h-6 shrink-0 fill-gray-500 dark:fill-gray-300" />
             <span class="text-sm font-medium">Keyboard</span>
         </div>
 
@@ -106,8 +106,8 @@
 </template>
 
 <script lang="ts" setup>
+import KeyboardIcon from '@/components/icons/KeyboardIcon.vue';
 import KeyboardKey from '@/interfaces/KeyboardKey';
-import VirtualKeyboardIcon from '@/components/icons/VirtualKeyboardIcon.vue';
 import { KeyboardLayout } from '@/types/KeyboardTypes';
 import { Language, SpecialPosition, Zone } from '@/enums/KeyboardEnums';
 import { computed, ComputedRef, Ref, ref } from 'vue';
