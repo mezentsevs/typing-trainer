@@ -37,7 +37,7 @@
                 rows="4"
                 spellcheck="false"
             />
-            <VirtualKeyboard :language :typed :text />
+            <Keyboard :language :typed :text />
             <div v-if="isLessonCompleted" class="flex justify-center mt-4">
                 <PrimaryRouterLinkButton
                     v-if="nextLesson"
@@ -62,17 +62,17 @@
 <script lang="ts" setup>
 import ContentCard from '@/components/cards/ContentCard.vue';
 import Heading from '@/components/uikit/Heading.vue';
+import Keyboard from '@/components/Keyboard.vue';
 import Lesson from '@/interfaces/Lesson';
-import NewCharacters from './NewCharacters.vue';
+import NewCharacters from '@/components/NewCharacters.vue';
 import PrimaryRouterLinkButton from '@/components/uikit/PrimaryRouterLinkButton.vue';
 import SaveResultRequestPayload from '@/interfaces/payloads/SaveResultRequestPayload';
-import Statistics from './Statistics.vue';
+import Statistics from '@/components/Statistics.vue';
 import SuccessBanner from '@/components/uikit/SuccessBanner.vue';
 import SuccessRouterLinkButton from '@/components/uikit/SuccessRouterLinkButton.vue';
 import TextArea from '@/components/uikit/TextArea.vue';
 import TextContainer from '@/components/uikit/TextContainer.vue';
 import TypingContext from '@/interfaces/typing/TypingContext';
-import VirtualKeyboard from './VirtualKeyboard.vue';
 import axios, { AxiosResponse } from 'axios';
 import { Language } from '@/enums/KeyboardEnums';
 import { LessonPartialInfo } from '@/types/LessonTypes';

@@ -35,7 +35,7 @@
                 rows="4"
                 spellcheck="false"
             />
-            <VirtualKeyboard :language :typed :text :is-minimized="true" />
+            <Keyboard :language :typed :text :is-minimized="true" />
             <div v-if="isTestCompleted" class="flex justify-center mt-2">
                 <PrimaryRouterLinkButton class="w-32">Finish</PrimaryRouterLinkButton>
             </div>
@@ -46,16 +46,16 @@
 
 <script lang="ts" setup>
 import ContentCard from '@/components/cards/ContentCard.vue';
-import FinalTestSetup from './FinalTestSetup.vue';
+import FinalTestSetup from '@/components/FinalTestSetup.vue';
 import Heading from '@/components/uikit/Heading.vue';
+import Keyboard from '@/components/Keyboard.vue';
 import PrimaryRouterLinkButton from '@/components/uikit/PrimaryRouterLinkButton.vue';
 import SaveResultRequestPayload from '@/interfaces/payloads/SaveResultRequestPayload';
-import Statistics from './Statistics.vue';
+import Statistics from '@/components/Statistics.vue';
 import SuccessBanner from '@/components/uikit/SuccessBanner.vue';
 import TextArea from '@/components/uikit/TextArea.vue';
 import TextContainer from '@/components/uikit/TextContainer.vue';
 import TypingContext from '@/interfaces/typing/TypingContext';
-import VirtualKeyboard from './VirtualKeyboard.vue';
 import axios, { AxiosResponse } from 'axios';
 import { ComputedRef, Ref, ref } from 'vue';
 import { Language } from '@/enums/KeyboardEnums';
