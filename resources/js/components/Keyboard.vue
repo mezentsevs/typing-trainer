@@ -10,7 +10,7 @@
 
     <section
         v-else
-        class="keyboard max-w-[680px] mx-auto flex flex-col gap-2 p-4 cursor-pointer"
+        class="keyboard max-w-[680px] mx-auto flex flex-col gap-2 p-4 select-none cursor-pointer"
         @click="toggleKeyboard"
     >
         <div
