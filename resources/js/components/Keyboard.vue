@@ -1,108 +1,106 @@
 <template>
-    <div class="relative">
-        <div
-            v-if="isMinimized"
-            class="keyboard-preview max-w-32 mx-auto my-4 p-2 flex justify-center items-center gap-2 border border-opacity-50 border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 hover:bg-white dark:hover:bg-gray-800 active:bg-gray-50 dark:active:bg-gray-900 text-gray-500 dark:text-gray-300 cursor-pointer select-none rounded-lg shadow-sm"
-            @click="toggleKeyboard"
-        >
-            <KeyboardIcon class="w-6 h-6 shrink-0 fill-gray-500 dark:fill-gray-300" />
-            <span class="text-sm font-medium">Keyboard</span>
-        </div>
+    <button
+        v-if="isMinimized"
+        class="keyboard-preview-button max-w-32 mx-auto my-4 p-2 flex justify-center items-center gap-2 border border-opacity-50 border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 active:bg-gray-50 dark:active:bg-gray-900 text-gray-500 dark:text-gray-300 text-sm font-medium select-none cursor-pointer rounded-lg shadow-sm"
+        @click="toggleKeyboard"
+    >
+        <KeyboardIcon class="w-6 h-6 shrink-0 fill-gray-500 dark:fill-gray-300" />
+        Keyboard
+    </button>
 
+    <section
+        v-else
+        class="keyboard max-w-[680px] mx-auto flex flex-col gap-2 p-4 cursor-pointer"
+        @click="toggleKeyboard"
+    >
         <div
-            v-else
-            class="keyboard max-w-[680px] mx-auto flex flex-col gap-2 p-4 cursor-pointer"
-            @click="toggleKeyboard"
+            v-for="(row, rowIndex) in keyboardLayout"
+            :key="rowIndex"
+            class="flex justify-between gap-1"
         >
-            <div
-                v-for="(row, rowIndex) in keyboardLayout"
-                :key="rowIndex"
-                class="flex justify-between gap-1"
-            >
-                <template v-if="rowIndex === 0">
-                    <button
-                        v-for="key in row"
-                        :key="key.value"
-                        :class="[
+            <template v-if="rowIndex === 0">
+                <button
+                    v-for="key in row"
+                    :key="key.value"
+                    :class="[
                             BUTTON_DEFAULT_CLASS,
                             isHighlighted(key.value, key.zone) || isHighlighted(key.special, key.zone) ? BUTTON_HIGHLIGHTED_CLASS : BUTTON_NORMAL_CLASS,
                             key.width ? `w-${key.width}` : 'w-10',
                             key.value === 'backspace' ? 'text-sm' : ''
                         ]"
-                        :style="getKeyStyle(key)"
+                    :style="getKeyStyle(key)"
+                >
+                    <span class="block">{{ key.display }}</span>
+                    <span
+                        v-if="key.special"
+                        class="absolute text-xs"
+                        :class="key.specialPosition === SpecialPosition.TopLeft ? 'top-0 left-1' : 'top-0 right-1'"
                     >
-                        <span class="block">{{ key.display }}</span>
-                        <span
-                            v-if="key.special"
-                            class="absolute text-xs"
-                            :class="key.specialPosition === SpecialPosition.TopLeft ? 'top-0 left-1' : 'top-0 right-1'"
-                        >
                             {{ key.special }}
                         </span>
-                    </button>
-                </template>
-                <template v-else-if="rowIndex === 4">
-                    <button
-                        :key="row[0].value"
-                        :class="[
+                </button>
+            </template>
+            <template v-else-if="rowIndex === 4">
+                <button
+                    :key="row[0].value"
+                    :class="[
                             BUTTON_DEFAULT_CLASS,
                             isHighlighted(row[0].value, row[0].zone) ? BUTTON_HIGHLIGHTED_CLASS : BUTTON_NORMAL_CLASS,
                             row[0].width ? `w-${row[0].width}` : 'w-10'
                         ]"
-                        :style="getKeyStyle(row[0])"
-                    >
-                        <span class="block">{{ row[0].display }}</span>
-                    </button>
-                    <div class="flex gap-1">
-                        <button
-                            v-for="key in row.slice(1, 4)"
-                            :key="key.value"
-                            :class="[
+                    :style="getKeyStyle(row[0])"
+                >
+                    <span class="block">{{ row[0].display }}</span>
+                </button>
+                <div class="flex gap-1">
+                    <button
+                        v-for="key in row.slice(1, 4)"
+                        :key="key.value"
+                        :class="[
                                 BUTTON_DEFAULT_CLASS,
                                 isHighlighted(key.value, key.zone) ? BUTTON_HIGHLIGHTED_CLASS : BUTTON_NORMAL_CLASS,
                                 key.width ? `w-${key.width}` : 'w-10'
                             ]"
-                            :style="getKeyStyle(key)"
-                        >
-                            <span class="block">{{ key.display }}</span>
-                        </button>
-                    </div>
-                    <button
-                        :key="row[4].value"
-                        :class="[
+                        :style="getKeyStyle(key)"
+                    >
+                        <span class="block">{{ key.display }}</span>
+                    </button>
+                </div>
+                <button
+                    :key="row[4].value"
+                    :class="[
                             BUTTON_DEFAULT_CLASS,
                             isHighlighted(row[4].value, row[4].zone) ? BUTTON_HIGHLIGHTED_CLASS : BUTTON_NORMAL_CLASS,
                             row[4].width ? `w-${row[4].width}` : 'w-10'
                         ]"
-                        :style="getKeyStyle(row[4])"
-                    >
-                        <span class="block">{{ row[4].display }}</span>
-                    </button>
-                </template>
-                <template v-else>
-                    <button
-                        v-for="key in row"
-                        :key="key.value"
-                        :class="[
+                    :style="getKeyStyle(row[4])"
+                >
+                    <span class="block">{{ row[4].display }}</span>
+                </button>
+            </template>
+            <template v-else>
+                <button
+                    v-for="key in row"
+                    :key="key.value"
+                    :class="[
                             BUTTON_DEFAULT_CLASS,
                             isHighlighted(key.value, key.zone) || isHighlighted(key.special, key.zone) ? BUTTON_HIGHLIGHTED_CLASS : BUTTON_NORMAL_CLASS,
                             key.width ? `w-${key.width}` : 'w-10'
                         ]"
-                        :style="getKeyStyle(key)"
+                    :style="getKeyStyle(key)"
+                >
+                    <span class="block">{{ key.display }}</span>
+                    <span
+                        v-if="key.special"
+                        class="absolute text-xs"
+                        :class="key.specialPosition === SpecialPosition.TopLeft ? 'top-0 left-1' : 'top-0 right-1'"
                     >
-                        <span class="block">{{ key.display }}</span>
-                        <span
-                            v-if="key.special"
-                            class="absolute text-xs"
-                            :class="key.specialPosition === SpecialPosition.TopLeft ? 'top-0 left-1' : 'top-0 right-1'"
-                        >
                             {{ key.special }}
                         </span>
-                    </button>
-                </template>
-            </div>
+                </button>
+            </template>
         </div>
-    </div>
+    </section>
 </template>
 
 <script lang="ts" setup>
