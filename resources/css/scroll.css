@@ -1,0 +1,52 @@
+.scroll-container {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(156, 163, 175, 0.5) transparent;
+    scrollbar-gutter: stable;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.scroll-container::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+    background: transparent;
+    margin: 3px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+    background: rgba(156, 163, 175, 0.5);
+    border-radius: 5px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+}
+
+.scroll-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(156, 163, 175, 0.7);
+}
+
+@supports (-moz-appearance: none) {
+    .scroll-container {
+        clip-path: inset(0 0 0 0 round 0.5rem);
+    }
+}
+
+.dark .scroll-container {
+    scrollbar-color: rgba(75, 85, 99, 0.5) transparent;
+}
+
+.dark .scroll-container::-webkit-scrollbar-thumb {
+    background: rgba(75, 85, 99, 0.5);
+}
+
+.dark .scroll-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(75, 85, 99, 0.7);
+}
+
+@supports (-moz-appearance: none) {
+    .dark .scroll-container {
+        clip-path: inset(0 0 0 0 round 0.5rem);
+    }
+}
