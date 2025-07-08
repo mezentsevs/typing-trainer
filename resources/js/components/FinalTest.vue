@@ -1,18 +1,18 @@
 <template>
     <ContentCard v-if="text">
-        <header class="mb-4 relative flex items-center">
+        <header class="flex flex-row items-center relative">
             <Heading :level="1" class="text-2xl">Final Test</Heading>
             <SuccessBanner v-if="isTestCompleted" class="absolute left-1/2 transform -translate-x-1/2">
                 Completed!
             </SuccessBanner>
         </header>
 
-        <aside class="mb-8">
-            <Statistics :language :time :speed :errors :progress class="w-1/2 mx-auto my-4" />
+        <aside class="mt-4 flex flex-row justify-center">
+            <Statistics :language :time :speed :errors :progress class="w-1/2" />
         </aside>
 
         <main>
-            <TextContainer ref="textContainerRef" class="h-28 mb-4 text-lg font-mono">
+            <TextContainer ref="textContainerRef" class="h-28 mt-4 text-lg font-mono">
                 <span v-for="(char, index) in text"
                       :key="index"
                       :class="{
@@ -36,7 +36,7 @@
                 spellcheck="false"
             />
             <Keyboard :language :typed :text :is-minimized="true" />
-            <div v-if="isTestCompleted" class="flex justify-center mt-2">
+            <div v-if="isTestCompleted" class="mb-4 flex flex-row justify-center">
                 <PrimaryRouterLinkButton class="w-32">Finish</PrimaryRouterLinkButton>
             </div>
         </main>
