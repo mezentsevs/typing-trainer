@@ -1,52 +1,63 @@
-.scroll-container {
+.custom-scroll-container, .custom-scroll-textarea {
     scrollbar-width: thin;
     scrollbar-color: rgba(156, 163, 175, 0.5) transparent;
     scrollbar-gutter: stable;
     border-radius: 0.5rem;
-    overflow: hidden;
+    overflow: auto;
 }
 
-.scroll-container::-webkit-scrollbar {
+.custom-scroll-container::-webkit-scrollbar,
+.custom-scroll-textarea::-webkit-scrollbar {
     width: 10px;
     height: 10px;
 }
 
-.scroll-container::-webkit-scrollbar-track {
+.custom-scroll-container::-webkit-scrollbar-track,
+.custom-scroll-textarea::-webkit-scrollbar-track {
     background: transparent;
     margin: 3px;
 }
 
-.scroll-container::-webkit-scrollbar-thumb {
+.custom-scroll-container::-webkit-scrollbar-thumb,
+.custom-scroll-textarea::-webkit-scrollbar-thumb {
     background: rgba(156, 163, 175, 0.5);
     border-radius: 5px;
     border: 2px solid transparent;
     background-clip: content-box;
 }
 
-.scroll-container::-webkit-scrollbar-thumb:hover {
+.custom-scroll-container::-webkit-scrollbar-thumb:hover,
+.custom-scroll-textarea::-webkit-scrollbar-thumb:hover {
     background: rgba(156, 163, 175, 0.7);
 }
 
-@supports (-moz-appearance: none) {
-    .scroll-container {
-        clip-path: inset(0 0 0 0 round 0.5rem);
-    }
-}
-
-.dark .scroll-container {
+.dark .custom-scroll-container,
+.dark .custom-scroll-textarea {
     scrollbar-color: rgba(75, 85, 99, 0.5) transparent;
 }
 
-.dark .scroll-container::-webkit-scrollbar-thumb {
+.dark .custom-scroll-container::-webkit-scrollbar-thumb,
+.dark .custom-scroll-textarea::-webkit-scrollbar-thumb {
     background: rgba(75, 85, 99, 0.5);
 }
 
-.dark .scroll-container::-webkit-scrollbar-thumb:hover {
+.dark .custom-scroll-container::-webkit-scrollbar-thumb:hover,
+.dark .custom-scroll-textarea::-webkit-scrollbar-thumb:hover {
     background: rgba(75, 85, 99, 0.7);
 }
 
 @supports (-moz-appearance: none) {
-    .dark .scroll-container {
+    .custom-scroll-container {
         clip-path: inset(0 0 0 0 round 0.5rem);
+    }
+
+    .custom-scroll-container,
+    .custom-scroll-textarea {
+        scrollbar-color: rgba(156, 163, 175, 0.2) transparent;
+    }
+
+    .dark .custom-scroll-container,
+    .dark .custom-scroll-textarea {
+        scrollbar-color: rgba(75, 85, 99, 0.2) transparent;
     }
 }
