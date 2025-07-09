@@ -1,6 +1,7 @@
 import '../css/app.css';
 import App from '@/App.vue';
 import axios from 'axios';
+import darkMode from '@/plugins/darkMode';
 import router from '@/router';
 import { applyBearer, retrieveToken } from '@/helpers/TokenHelper';
 import { createApp } from 'vue';
@@ -15,4 +16,5 @@ createApp(App)
     })
     .use(createPinia())
     .use(router)
+    .use(darkMode)
     .mount('#app');
