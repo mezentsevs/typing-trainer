@@ -3,8 +3,7 @@
 }
 
 .current-word {
-    @apply underline;
-    text-decoration-color: #ccc;
+    @apply underline decoration-gray-300;
 }
 
 .current-word.space {
@@ -12,6 +11,19 @@
 }
 
 .current-word.line-break::before {
+    @apply text-gray-300;
     content: "↵";
-    color: #ccc;
+}
+
+.dark .current-word {
+    @apply underline decoration-gray-700;
+}
+
+.dark .current-word.space {
+    @apply border-b border-gray-700 pb-0.5;
+}
+
+.dark .current-word.line-break::before {
+    @apply text-gray-700;
+    content: "↵";
 }
