@@ -2,33 +2,27 @@
     scrollbar-width: thin;
     scrollbar-color: rgba(156, 163, 175, 0.5) transparent;
     scrollbar-gutter: stable;
-    border-radius: 0.5rem;
-    overflow: auto;
+    @apply rounded-lg overflow-auto;
 }
 
 .custom-scroll-container::-webkit-scrollbar,
 .custom-scroll-textarea::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+    @apply w-[10px] h-[10px];
 }
 
 .custom-scroll-container::-webkit-scrollbar-track,
 .custom-scroll-textarea::-webkit-scrollbar-track {
-    background: transparent;
-    margin: 3px;
+    @apply bg-transparent mx-[3px];
 }
 
 .custom-scroll-container::-webkit-scrollbar-thumb,
 .custom-scroll-textarea::-webkit-scrollbar-thumb {
-    background: rgba(156, 163, 175, 0.5);
-    border-radius: 5px;
-    border: 2px solid transparent;
-    background-clip: content-box;
+    @apply bg-gray-400/50 rounded-[5px] border-2 border-transparent bg-clip-content;
 }
 
 .custom-scroll-container::-webkit-scrollbar-thumb:hover,
 .custom-scroll-textarea::-webkit-scrollbar-thumb:hover {
-    background: rgba(156, 163, 175, 0.7);
+    @apply bg-gray-400/70;
 }
 
 .dark .custom-scroll-container,
@@ -38,12 +32,12 @@
 
 .dark .custom-scroll-container::-webkit-scrollbar-thumb,
 .dark .custom-scroll-textarea::-webkit-scrollbar-thumb {
-    background: rgba(75, 85, 99, 0.5);
+    @apply bg-gray-600/50;
 }
 
 .dark .custom-scroll-container::-webkit-scrollbar-thumb:hover,
 .dark .custom-scroll-textarea::-webkit-scrollbar-thumb:hover {
-    background: rgba(75, 85, 99, 0.7);
+    @apply bg-gray-600/70;
 }
 
 @supports (-moz-appearance: none) {
