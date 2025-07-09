@@ -1,27 +1,7 @@
-@import '../css/scroll.css';
+@import 'scroll.css';
+@import 'selection.css';
+@import 'typing.css';
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-.error-char {
-    @apply bg-red-200 text-red-800;
-}
-
-.current-word {
-    @apply underline;
-    text-decoration-color: #ccc;
-}
-
-.current-word.space {
-    @apply border-b border-gray-300 pb-0.5;
-}
-
-.current-word.line-break::before {
-    content: "↵";
-    color: #ccc;
-}
-
-::selection {
-    @apply bg-blue-500 text-white;
-}
