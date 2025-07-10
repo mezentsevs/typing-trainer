@@ -22,9 +22,12 @@
                 </button>
             </div>
             <div class="absolute inset-0 pointer-events-none overflow-hidden">
-                <div class="absolute top-10 left-10 w-24 h-24 bg-cyan-500 opacity-10 rounded-full animate-float" />
-                <div class="absolute bottom-20 right-20 w-32 h-32 bg-purple-500 opacity-10 rounded-full animate-float delay-1000" />
-                <div class="absolute top-1/2 left-1/4 w-16 h-16 bg-red-500 opacity-10 rounded-full animate-float delay-500" />
+                <div
+                    v-for="(circle, index) in circles"
+                    :key="index"
+                    class="absolute rounded-full animate-float opacity-10"
+                    :class="circle.class"
+                />
             </div>
         </div>
     </div>
@@ -44,6 +47,12 @@ const router: Router = useRouter();
 
 const fullText: string = 'Typing Trainer';
 const currentText: Ref<string> = ref('');
+
+const circles: Record<string, string>[] = [
+    { class: 'top-10 left-10 w-24 h-24 bg-cyan-500' },
+    { class: 'bottom-20 right-20 w-32 h-32 bg-purple-500 delay-1000' },
+    { class: 'top-1/2 left-1/4 w-16 h-16 bg-red-500 delay-500' },
+];
 
 const logout = async (): Promise<void> => {
     await authStore.logout();
