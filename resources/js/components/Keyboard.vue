@@ -23,8 +23,8 @@
                     v-for="key in row"
                     :key="key.value"
                     :class="[
-                            BUTTON_DEFAULT_CLASS,
-                            isHighlighted(key.value, key.zone) || isHighlighted(key.special, key.zone) ? BUTTON_HIGHLIGHTED_CLASS : BUTTON_NORMAL_CLASS,
+                            COMMON_BUTTON_CLASS,
+                            isHighlighted(key.value, key.zone) || isHighlighted(key.special, key.zone) ? HIGHLIGHTED_BUTTON_CLASS : NORMAL_BUTTON_CLASS,
                             key.width ? `w-${key.width}` : 'w-10',
                             key.value === 'backspace' ? 'text-sm' : ''
                         ]"
@@ -44,8 +44,8 @@
                 <button
                     :key="row[0].value"
                     :class="[
-                            BUTTON_DEFAULT_CLASS,
-                            isHighlighted(row[0].value, row[0].zone) ? BUTTON_HIGHLIGHTED_CLASS : BUTTON_NORMAL_CLASS,
+                            COMMON_BUTTON_CLASS,
+                            isHighlighted(row[0].value, row[0].zone) ? HIGHLIGHTED_BUTTON_CLASS : NORMAL_BUTTON_CLASS,
                             row[0].width ? `w-${row[0].width}` : 'w-10'
                         ]"
                     :style="getKeyStyle(row[0])"
@@ -57,8 +57,8 @@
                         v-for="key in row.slice(1, 4)"
                         :key="key.value"
                         :class="[
-                                BUTTON_DEFAULT_CLASS,
-                                isHighlighted(key.value, key.zone) ? BUTTON_HIGHLIGHTED_CLASS : BUTTON_NORMAL_CLASS,
+                                COMMON_BUTTON_CLASS,
+                                isHighlighted(key.value, key.zone) ? HIGHLIGHTED_BUTTON_CLASS : NORMAL_BUTTON_CLASS,
                                 key.width ? `w-${key.width}` : 'w-10'
                             ]"
                         :style="getKeyStyle(key)"
@@ -69,8 +69,8 @@
                 <button
                     :key="row[4].value"
                     :class="[
-                            BUTTON_DEFAULT_CLASS,
-                            isHighlighted(row[4].value, row[4].zone) ? BUTTON_HIGHLIGHTED_CLASS : BUTTON_NORMAL_CLASS,
+                            COMMON_BUTTON_CLASS,
+                            isHighlighted(row[4].value, row[4].zone) ? HIGHLIGHTED_BUTTON_CLASS : NORMAL_BUTTON_CLASS,
                             row[4].width ? `w-${row[4].width}` : 'w-10'
                         ]"
                     :style="getKeyStyle(row[4])"
@@ -83,8 +83,8 @@
                     v-for="key in row"
                     :key="key.value"
                     :class="[
-                            BUTTON_DEFAULT_CLASS,
-                            isHighlighted(key.value, key.zone) || isHighlighted(key.special, key.zone) ? BUTTON_HIGHLIGHTED_CLASS : BUTTON_NORMAL_CLASS,
+                            COMMON_BUTTON_CLASS,
+                            isHighlighted(key.value, key.zone) || isHighlighted(key.special, key.zone) ? HIGHLIGHTED_BUTTON_CLASS : NORMAL_BUTTON_CLASS,
                             key.width ? `w-${key.width}` : 'w-10'
                         ]"
                     :style="getKeyStyle(key)"
@@ -117,9 +117,10 @@ const props = defineProps<{
     isMinimized?: boolean,
 }>();
 
-const BUTTON_DEFAULT_CLASS: string = 'p-2 border border-opacity-50 border-gray-300 dark:border-gray-700 text-center rounded shadow-sm relative';
-const BUTTON_HIGHLIGHTED_CLASS: string = 'bg-green-500 text-white dark:text-black';
-const BUTTON_NORMAL_CLASS: string = 'bg-gray-50 dark:bg-gray-900 dark:text-gray-300';
+const COMMON_BUTTON_CLASS: string = 'p-2 border border-opacity-50 border-gray-300 dark:border-gray-700 text-center rounded shadow-sm relative';
+const HIGHLIGHTED_BUTTON_CLASS: string = 'bg-green-500 text-white dark:text-black';
+const NORMAL_BUTTON_CLASS: string = 'bg-gray-50 dark:bg-gray-900 dark:text-gray-300';
+
 const KEYBOARD_LAYOUTS: Record<Language, KeyboardLayout> = {
     [Language.En]: [
         [
@@ -262,10 +263,12 @@ const KEYBOARD_LAYOUTS: Record<Language, KeyboardLayout> = {
         ]
     ]
 };
+
 const UPPER_OR_SPECIAL_REGEX: Record<Language, RegExp> = {
     [Language.En]: /[A-Z~!@#$%^&*()_+{}|:"<>?]/,
     [Language.Ru]: /[А-ЯЁ!"№;%:?*()_+/,]/,
 };
+
 const isMinimized: Ref<boolean> = ref(props.isMinimized ?? false);
 
 const keyboardLayout: ComputedRef<KeyboardLayout> = computed((): KeyboardLayout => KEYBOARD_LAYOUTS[props.language]);
