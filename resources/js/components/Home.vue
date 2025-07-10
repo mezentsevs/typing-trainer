@@ -1,34 +1,32 @@
 <template>
-    <div class="min-h-screen grow bg-gradient-to-br from-gray-900 via-blue-950 to-purple-950 flex items-center justify-center">
-        <div class="max-w-4xl mx-auto text-center">
-            <h1 class="text-5xl md:text-7xl font-mono text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 mb-8 pb-2">
-                <span>{{ currentText }}</span><span class="cursor" />
-            </h1>
-            <p class="text-lg md:text-xl text-gray-300 mb-12 font-sans animate-pulse-slow">
-                Master the art of blind typing: code like a hacker, write like a novelist, report like a journalist.
-            </p>
-            <div class="flex flex-col items-center gap-6">
-                <router-link
-                    to="/setup"
-                    class="w-48 bg-transparent border-2 border-cyan-500 text-cyan-400 text-lg font-mono py-2 px-4 rounded-lg hover:bg-cyan-500/10 hover:text-cyan-300 transition-all duration-200 ease-in-out text-center shadow-[0_0_10px_0_rgba(6,182,212,0.5)] hover:shadow-[0_0_15px_0_rgba(6,182,212,0.7)]"
-                >
-                    Start
-                </router-link>
-                <button
-                    @click="logout"
-                    class="w-48 bg-transparent border-2 border-red-500 text-red-400 text-lg font-mono py-2 px-4 rounded-lg hover:bg-red-500/10 hover:text-red-300 transition-all duration-200 ease-in-out text-center shadow-[0_0_10px_0_rgba(239,68,68,0.5)] hover:shadow-[0_0_15px_0_rgba(239,68,68,0.7)]"
-                >
-                    Logout
-                </button>
-            </div>
-            <div class="absolute inset-0 pointer-events-none overflow-hidden">
-                <div
-                    v-for="(circle, index) in CIRCLES"
-                    :key="index"
-                    class="absolute rounded-full animate-float opacity-10"
-                    :class="circle.class"
-                />
-            </div>
+    <div class="min-h-screen grow bg-gradient-to-br from-gray-900 via-blue-950 to-purple-950 text-center flex flex-col items-center justify-center">
+        <h1 class="text-5xl md:text-7xl font-mono text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 mb-8 pb-2">
+            <span>{{ currentText }}</span><span class="cursor" />
+        </h1>
+        <p class="text-lg md:text-xl text-gray-300 mb-12 font-sans animate-pulse-slow">
+            Master the art of blind typing: code like a hacker, write like a novelist, report like a journalist.
+        </p>
+        <div class="flex flex-col items-center gap-6">
+            <router-link
+                to="/setup"
+                class="w-48 bg-transparent border-2 border-cyan-500 text-cyan-400 text-lg font-mono py-2 px-4 rounded-lg hover:bg-cyan-500/10 hover:text-cyan-300 transition-all duration-200 ease-in-out text-center shadow-[0_0_10px_0_rgba(6,182,212,0.5)] hover:shadow-[0_0_15px_0_rgba(6,182,212,0.7)]"
+            >
+                Start
+            </router-link>
+            <button
+                @click="logout"
+                class="w-48 bg-transparent border-2 border-red-500 text-red-400 text-lg font-mono py-2 px-4 rounded-lg hover:bg-red-500/10 hover:text-red-300 transition-all duration-200 ease-in-out text-center shadow-[0_0_10px_0_rgba(239,68,68,0.5)] hover:shadow-[0_0_15px_0_rgba(239,68,68,0.7)]"
+            >
+                Logout
+            </button>
+        </div>
+        <div class="absolute inset-0 pointer-events-none overflow-hidden">
+            <div
+                v-for="(circle, index) in CIRCLES"
+                :key="index"
+                class="absolute rounded-full animate-float opacity-10"
+                :class="circle.class"
+            />
         </div>
     </div>
 </template>
