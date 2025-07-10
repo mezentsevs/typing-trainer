@@ -1,7 +1,8 @@
 <template>
     <div class="min-h-screen grow bg-gradient-to-br from-gray-900 via-blue-950 to-purple-950 text-center flex flex-col items-center justify-center">
-        <h1 class="text-5xl md:text-7xl font-mono text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 mb-8 pb-2">
-            <span>{{ currentText }}</span><span class="cursor" />
+        <h1 class="mb-8 pb-2 text-5xl md:text-7xl font-mono text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
+            <span>{{ currentText }}</span>
+            <span class="cursor" />
         </h1>
         <p class="text-lg md:text-xl text-gray-300 mb-12 font-sans animate-pulse-slow">
             {{ APP_SLOGAN }}
