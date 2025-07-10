@@ -1,13 +1,13 @@
 <template>
     <div class="min-h-screen grow bg-gradient-to-br from-gray-900 via-blue-950 to-purple-950 text-center flex flex-col items-center justify-center">
-        <h1 class="mb-8 pb-2 text-5xl md:text-7xl font-mono text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
+        <h1 class="pb-2 text-5xl md:text-7xl font-mono text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
             <span>{{ currentText }}</span>
             <span class="cursor" />
         </h1>
-        <p class="text-lg md:text-xl text-gray-300 mb-12 font-sans animate-pulse-slow">
+        <p class="mt-8 text-lg md:text-xl text-gray-300 font-sans animate-pulse-slow">
             {{ APP_SLOGAN }}
         </p>
-        <div class="flex flex-col items-center gap-6">
+        <div class="mt-12 flex flex-col items-center gap-6">
             <router-link
                 to="/setup"
                 class="w-48 bg-transparent border-2 border-cyan-500 text-cyan-400 text-lg font-mono py-2 px-4 rounded-lg hover:bg-cyan-500/10 hover:text-cyan-300 transition-all duration-200 ease-in-out text-center shadow-[0_0_10px_0_rgba(6,182,212,0.5)] hover:shadow-[0_0_15px_0_rgba(6,182,212,0.7)]"
