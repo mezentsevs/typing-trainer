@@ -2,7 +2,7 @@
     <div class="min-h-screen grow bg-gradient-to-br from-gray-900 via-blue-950 to-purple-950 text-center flex flex-col items-center justify-center">
         <h1 class="pb-2 text-5xl md:text-7xl font-mono text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
             <span>{{ currentText }}</span>
-            <span class="cursor" />
+            <span class="typing-cursor" />
         </h1>
         <p class="mt-8 text-lg md:text-xl text-gray-300 font-sans animate-pulse-slow">
             {{ APP_SLOGAN }}
@@ -85,14 +85,14 @@ onMounted((): void => {
 </script>
 
 <style scoped>
-.cursor {
+.typing-cursor {
     display: inline-block;
     height: 1em;
     border-right: 0.15em solid cyan;
-    animation: blink-caret 0.75s step-end infinite;
+    animation: blink-typing-cursor 0.75s step-end infinite;
 }
 
-@keyframes blink-caret {
+@keyframes blink-typing-cursor {
     from, to { border-color: transparent; }
     50% { border-color: cyan; }
 }
