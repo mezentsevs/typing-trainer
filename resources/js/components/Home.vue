@@ -23,7 +23,7 @@
             </div>
             <div class="absolute inset-0 pointer-events-none overflow-hidden">
                 <div
-                    v-for="(circle, index) in circles"
+                    v-for="(circle, index) in CIRCLES"
                     :key="index"
                     class="absolute rounded-full animate-float opacity-10"
                     :class="circle.class"
@@ -46,13 +46,12 @@ import { useAuthStore } from '@/stores/auth';
 const authStore: Store<string, AuthState, AuthGetters, AuthActions> = useAuthStore();
 const router: Router = useRouter();
 
-const currentText: Ref<string> = ref('');
-
-const circles: Record<string, string>[] = [
+const CIRCLES: Record<string, string>[] = [
     { class: 'top-10 left-10 w-24 h-24 bg-cyan-500' },
     { class: 'bottom-20 right-20 w-32 h-32 bg-purple-500 delay-1000' },
     { class: 'top-1/2 left-1/4 w-16 h-16 bg-red-500 delay-500' },
 ];
+const currentText: Ref<string> = ref('');
 
 const logout = async (): Promise<void> => {
     await authStore.logout();
