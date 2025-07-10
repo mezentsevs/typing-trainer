@@ -4,7 +4,7 @@
             <span>{{ currentText }}</span><span class="cursor" />
         </h1>
         <p class="text-lg md:text-xl text-gray-300 mb-12 font-sans animate-pulse-slow">
-            Master the art of blind typing: code like a hacker, write like a novelist, report like a journalist.
+            {{ APP_SLOGAN }}
         </p>
         <div class="flex flex-col items-center gap-6">
             <router-link
@@ -35,7 +35,7 @@
 import AuthActions from '@/interfaces/auth/AuthActions';
 import AuthGetters from '@/interfaces/auth/AuthGetters';
 import AuthState from '@/interfaces/auth/AuthState';
-import { APP_NAME } from '@/consts/app';
+import { APP_NAME, APP_SLOGAN } from '@/consts/app';
 import { Router, useRouter } from 'vue-router';
 import { Store } from 'pinia';
 import { ref, onMounted, Ref } from 'vue';
