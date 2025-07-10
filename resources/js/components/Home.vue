@@ -35,7 +35,7 @@
 import AuthActions from '@/interfaces/auth/AuthActions';
 import AuthGetters from '@/interfaces/auth/AuthGetters';
 import AuthState from '@/interfaces/auth/AuthState';
-import { APP_NAME, APP_SLOGAN } from '@/consts/app';
+import { APP_NAME, APP_SLOGAN } from '@/consts/AppConsts';
 import { Router, useRouter } from 'vue-router';
 import { Store } from 'pinia';
 import { ref, onMounted, Ref } from 'vue';
