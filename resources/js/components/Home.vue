@@ -60,7 +60,7 @@ const logout = async (): Promise<void> => {
     await router.push('/login');
 };
 
-const typeWriter = (): void => {
+const runTypingAnimation = (): void => {
     let i: number = 0;
 
     const interval: NodeJS.Timeout = setInterval((): void => {
@@ -73,14 +73,14 @@ const typeWriter = (): void => {
             setTimeout((): void => {
                 currentText.value = '';
 
-                typeWriter();
+                runTypingAnimation();
             }, 2000);
         }
     }, 100);
 };
 
 onMounted((): void => {
-    typeWriter();
+    runTypingAnimation();
 });
 </script>
 
