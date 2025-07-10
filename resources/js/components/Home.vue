@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-screen grow bg-gradient-to-br from-gray-900 via-blue-950 to-purple-950 flex items-center justify-center p-8">
+    <div class="min-h-screen grow bg-gradient-to-br from-gray-900 via-blue-950 to-purple-950 flex items-center justify-center">
         <div class="max-w-4xl mx-auto text-center">
             <h1 class="text-5xl md:text-7xl font-mono text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 mb-8 pb-2">
                 <span>{{ currentText }}</span><span class="cursor" />
