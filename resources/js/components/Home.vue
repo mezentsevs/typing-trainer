@@ -37,6 +37,7 @@
 import AuthActions from '@/interfaces/auth/AuthActions';
 import AuthGetters from '@/interfaces/auth/AuthGetters';
 import AuthState from '@/interfaces/auth/AuthState';
+import { APP_NAME } from '@/consts/app';
 import { Router, useRouter } from 'vue-router';
 import { Store } from 'pinia';
 import { ref, onMounted, Ref } from 'vue';
@@ -45,7 +46,6 @@ import { useAuthStore } from '@/stores/auth';
 const authStore: Store<string, AuthState, AuthGetters, AuthActions> = useAuthStore();
 const router: Router = useRouter();
 
-const fullText: string = 'Typing Trainer';
 const currentText: Ref<string> = ref('');
 
 const circles: Record<string, string>[] = [
@@ -63,8 +63,8 @@ const typeWriter = (): void => {
     let i: number = 0;
 
     const interval: NodeJS.Timeout = setInterval((): void => {
-        if (i < fullText.length) {
-            currentText.value += fullText[i];
+        if (i < APP_NAME.length) {
+            currentText.value += APP_NAME[i];
             i++;
         } else {
             clearInterval(interval);
