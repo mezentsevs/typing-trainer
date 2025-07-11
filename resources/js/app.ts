@@ -10,7 +10,9 @@ import { createPinia } from 'pinia';
 axios.defaults.baseURL = '/api';
 applyBearer(retrieveToken());
 
-createApp(App)
+const app = createApp(App);
+
+app
     .directive('focus', {
         mounted: (el: HTMLElement): void => el.focus(),
     })
