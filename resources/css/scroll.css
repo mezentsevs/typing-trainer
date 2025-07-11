@@ -1,8 +1,14 @@
-.custom-scroll-container, .custom-scroll-textarea {
+.custom-scroll-container,
+.custom-scroll-textarea {
     scrollbar-width: thin;
     scrollbar-color: rgba(156, 163, 175, 0.5) transparent;
     scrollbar-gutter: stable;
     @apply rounded-lg overflow-auto;
+}
+
+.dark .custom-scroll-container,
+.dark .custom-scroll-textarea {
+    scrollbar-color: rgba(75, 85, 99, 0.5) transparent;
 }
 
 .custom-scroll-container::-webkit-scrollbar,
@@ -17,27 +23,12 @@
 
 .custom-scroll-container::-webkit-scrollbar-thumb,
 .custom-scroll-textarea::-webkit-scrollbar-thumb {
-    @apply bg-gray-400/50 rounded-[5px] border-2 border-transparent bg-clip-content;
+    @apply bg-gray-400/50 dark:bg-gray-600/50 rounded-[5px] border-2 border-transparent bg-clip-content;
 }
 
 .custom-scroll-container::-webkit-scrollbar-thumb:hover,
 .custom-scroll-textarea::-webkit-scrollbar-thumb:hover {
-    @apply bg-gray-400/70;
-}
-
-.dark .custom-scroll-container,
-.dark .custom-scroll-textarea {
-    scrollbar-color: rgba(75, 85, 99, 0.5) transparent;
-}
-
-.dark .custom-scroll-container::-webkit-scrollbar-thumb,
-.dark .custom-scroll-textarea::-webkit-scrollbar-thumb {
-    @apply bg-gray-600/50;
-}
-
-.dark .custom-scroll-container::-webkit-scrollbar-thumb:hover,
-.dark .custom-scroll-textarea::-webkit-scrollbar-thumb:hover {
-    @apply bg-gray-600/70;
+    @apply bg-gray-400/70 dark:bg-gray-600/70;
 }
 
 @supports (-moz-appearance: none) {
