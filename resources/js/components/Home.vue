@@ -90,7 +90,7 @@ onMounted((): void => {
 .typing-cursor {
     display: inline-block;
     height: 1em;
-    border-right: 0.15em solid currentColor;
+    border-right: 0.05em solid currentColor;
     animation: blink-typing-cursor 0.75s step-end infinite;
 }
 
