@@ -1,7 +1,9 @@
 <template>
     <AuthCard>
         <template #logo>
-            <!--Logo-->
+            <router-link to="/">
+                <LogoIcon class="w-12 h-12 text-blue-500 dark:text-blue-600" />
+            </router-link>
         </template>
 
         <Heading :level="1" class="text-2xl mb-6">Login</Heading>
@@ -43,6 +45,7 @@ import ErrorMessage from '@/components/uikit/ErrorMessage.vue';
 import Heading from '@/components/uikit/Heading.vue';
 import Input from '@/components/uikit/Input.vue';
 import InputLabel from '@/components/uikit/InputLabel.vue';
+import LogoIcon from '@/components/icons/LogoIcon.vue';
 import PrimaryButton from '@/components/uikit/PrimaryButton.vue';
 import PrimaryRouterLink from '@/components/uikit/PrimaryRouterLink.vue';
 import { Ref, ref } from 'vue';
