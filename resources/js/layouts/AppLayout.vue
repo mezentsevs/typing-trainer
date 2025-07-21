@@ -6,6 +6,6 @@
 </template>
 
 <script lang="ts" setup>
-import BaseLayout from '@/components/layouts/BaseLayout.vue';
-import ThemeToggle from '@/components/uikit/ThemeToggle.vue';
+import BaseLayout from '@/layouts/BaseLayout.vue';
+import ThemeToggle from '@/components/uikit/toggles/ThemeToggle.vue';
 </script>

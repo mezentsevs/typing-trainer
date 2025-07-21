@@ -8,8 +8,8 @@
         </header>
 
         <aside class="mt-4 flex flex-row items-stretch space-x-4">
-            <NewCharacters :new-chars="lessonPartialInfo.new_chars" class="w-1/2" />
-            <Statistics :language :time :speed :errors :progress class="w-1/2" />
+            <NewCharactersPanel :new-chars="lessonPartialInfo.new_chars" class="w-1/2" />
+            <StatisticsPanel :language :time :speed :errors :progress class="w-1/2" />
         </aside>
 
         <main>
@@ -60,18 +60,18 @@
 </template>
 
 <script lang="ts" setup>
-import ContentCard from '@/components/cards/ContentCard.vue';
-import Heading from '@/components/uikit/Heading.vue';
-import Keyboard from '@/components/Keyboard.vue';
+import ContentCard from '@/pages/partials/cards/ContentCard.vue';
+import Heading from '@/components/uikit/headings/Heading.vue';
+import Keyboard from '@/components/keyboards/Keyboard.vue';
 import Lesson from '@/interfaces/Lesson';
-import NewCharacters from '@/components/NewCharacters.vue';
-import PrimaryRouterLinkButton from '@/components/uikit/PrimaryRouterLinkButton.vue';
+import NewCharactersPanel from '@/components/panels/NewCharactersPanel.vue';
+import PrimaryRouterLinkButton from '@/components/uikit/buttons/PrimaryRouterLinkButton.vue';
 import SaveResultRequestPayload from '@/interfaces/payloads/SaveResultRequestPayload';
-import Statistics from '@/components/Statistics.vue';
-import SuccessBanner from '@/components/uikit/SuccessBanner.vue';
-import SuccessRouterLinkButton from '@/components/uikit/SuccessRouterLinkButton.vue';
-import TextArea from '@/components/uikit/TextArea.vue';
-import TextContainer from '@/components/uikit/TextContainer.vue';
+import StatisticsPanel from '@/components/panels/StatisticsPanel.vue';
+import SuccessBanner from '@/components/uikit/banners/SuccessBanner.vue';
+import SuccessRouterLinkButton from '@/components/uikit/buttons/SuccessRouterLinkButton.vue';
+import TextArea from '@/components/uikit/inputs/TextArea.vue';
+import TextContainer from '@/components/uikit/containers/TextContainer.vue';
 import TypingContext from '@/interfaces/typing/TypingContext';
 import axios, { AxiosResponse } from 'axios';
 import { Language } from '@/enums/KeyboardEnums';

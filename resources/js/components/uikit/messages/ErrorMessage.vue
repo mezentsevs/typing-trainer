@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts" setup>
-import BaseMessage from '@/components/uikit/BaseMessage.vue';
+import BaseMessage from '@/components/uikit/messages/BaseMessage.vue';
 
 defineProps<{
     message: string,

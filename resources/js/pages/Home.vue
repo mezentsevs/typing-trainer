@@ -40,7 +40,7 @@ import { APP_NAME, APP_SLOGAN } from '@/consts/AppConsts';
 import { Router, useRouter } from 'vue-router';
 import { Store } from 'pinia';
 import { ref, onMounted, Ref } from 'vue';
-import { useAuthStore } from '@/stores/auth';
+import { useAuthStore } from '@/stores/Auth';
 
 const authStore: Store<string, AuthState, AuthGetters, AuthActions> = useAuthStore();
 const router: Router = useRouter();

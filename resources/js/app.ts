@@ -1,8 +1,8 @@
 import '../css/app.css';
 import App from '@/App.vue';
 import axios from 'axios';
-import router from '@/router';
-import theme from '@/plugins/theme';
+import router from '@/router/Router';
+import theme from '@/plugins/Theme';
 import { applyBearer, retrieveToken } from '@/helpers/TokenHelper';
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';

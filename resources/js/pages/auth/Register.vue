@@ -53,21 +53,21 @@
 
 <script lang="ts" setup>
 import AuthActions from '@/interfaces/auth/AuthActions';
-import AuthCard from '@/components/cards/AuthCard.vue';
+import AuthCard from '@/pages/partials/cards/AuthCard.vue';
 import AuthGetters from '@/interfaces/auth/AuthGetters';
 import AuthRegisterForm from '@/interfaces/auth/AuthRegisterForm';
 import AuthState from '@/interfaces/auth/AuthState';
-import ErrorMessage from '@/components/uikit/ErrorMessage.vue';
-import Heading from '@/components/uikit/Heading.vue';
-import Input from '@/components/uikit/Input.vue';
-import InputLabel from '@/components/uikit/InputLabel.vue';
+import ErrorMessage from '@/components/uikit/messages/ErrorMessage.vue';
+import Heading from '@/components/uikit/headings/Heading.vue';
+import Input from '@/components/uikit/inputs/Input.vue';
+import InputLabel from '@/components/uikit/inputs/partials/InputLabel.vue';
 import LogoIcon from '@/components/icons/LogoIcon.vue';
-import PrimaryButton from '@/components/uikit/PrimaryButton.vue';
-import PrimaryRouterLink from '@/components/uikit/PrimaryRouterLink.vue';
+import PrimaryButton from '@/components/uikit/buttons/PrimaryButton.vue';
+import PrimaryRouterLink from '@/components/uikit/links/PrimaryRouterLink.vue';
 import { Ref, ref } from 'vue';
 import { Router, useRouter } from 'vue-router';
 import { Store } from 'pinia';
-import { useAuthStore } from '@/stores/auth';
+import { useAuthStore } from '@/stores/Auth';
 
 const authStore: Store<string, AuthState, AuthGetters, AuthActions> = useAuthStore();
 const router: Router = useRouter();

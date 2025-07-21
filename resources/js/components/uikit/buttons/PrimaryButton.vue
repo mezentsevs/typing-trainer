@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts" setup>
-import BaseButton from '@/components/uikit/BaseButton.vue';
+import BaseButton from '@/components/uikit/buttons/BaseButton.vue';
 import { Button } from '@/enums/UIKitEnums';
 import { UIKitButton } from '@/types/UIKitTypes';
 

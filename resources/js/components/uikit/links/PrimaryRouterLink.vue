@@ -1,11 +1,11 @@
 <template>
-    <BaseRouterLinkButton :to class="bg-green-500 dark:bg-gray-200">
+    <BaseRouterLink :to class="text-blue-500 dark:text-gray-200">
         <slot />
-    </BaseRouterLinkButton>
+    </BaseRouterLink>
 </template>
 
 <script lang="ts" setup>
-import BaseRouterLinkButton from '@/components/uikit/BaseRouterLinkButton.vue';
+import BaseRouterLink from '@/components/uikit/links/BaseRouterLink.vue';
 import { UIKitRouterLinkTo } from '@/types/UIKitTypes';
 
 withDefaults(defineProps<{

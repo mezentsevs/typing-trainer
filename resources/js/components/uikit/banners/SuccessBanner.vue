@@ -5,5 +5,5 @@
 </template>
 
 <script lang="ts" setup>
-import BaseBanner from '@/components/uikit/BaseBanner.vue';
+import BaseBanner from '@/components/uikit/banners/BaseBanner.vue';
 </script>

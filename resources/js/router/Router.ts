@@ -1,9 +1,9 @@
-import FinalTest from '@/components/FinalTest.vue';
-import Home from '@/components/Home.vue';
-import Lesson from '@/components/Lesson.vue';
-import LessonSetup from '@/components/LessonSetup.vue';
-import Login from '@/components/auth/Login.vue';
-import Register from '@/components/auth/Register.vue';
+import FinalTest from '@/pages/FinalTest.vue';
+import Home from '@/pages/Home.vue';
+import Lesson from '@/pages/Lesson.vue';
+import LessonSetup from '@/pages/LessonSetup.vue';
+import Login from '@/pages/auth/Login.vue';
+import Register from '@/pages/auth/Register.vue';
 import {
     NavigationGuardNext,
     NavigationGuardReturn,

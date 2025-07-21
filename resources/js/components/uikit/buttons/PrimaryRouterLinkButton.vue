@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts" setup>
-import BaseRouterLinkButton from '@/components/uikit/BaseRouterLinkButton.vue';
+import BaseRouterLinkButton from '@/components/uikit/buttons/BaseRouterLinkButton.vue';
 import { UIKitRouterLinkTo } from '@/types/UIKitTypes';
 
 withDefaults(defineProps<{

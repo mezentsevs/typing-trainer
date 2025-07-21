@@ -5,5 +5,5 @@
 </template>
 
 <script lang="ts" setup>
-import BaseCard from '@/components/cards/BaseCard.vue';
+import BaseCard from '@/pages/partials/cards/BaseCard.vue';
 </script>

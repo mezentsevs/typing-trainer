@@ -8,7 +8,7 @@
         </header>
 
         <aside class="mt-4 flex flex-row justify-center">
-            <Statistics :language :time :speed :errors :progress class="w-1/2" />
+            <StatisticsPanel :language :time :speed :errors :progress class="w-1/2" />
         </aside>
 
         <main>
@@ -45,16 +45,16 @@
 </template>
 
 <script lang="ts" setup>
-import ContentCard from '@/components/cards/ContentCard.vue';
-import FinalTestSetup from '@/components/FinalTestSetup.vue';
-import Heading from '@/components/uikit/Heading.vue';
-import Keyboard from '@/components/Keyboard.vue';
-import PrimaryRouterLinkButton from '@/components/uikit/PrimaryRouterLinkButton.vue';
+import ContentCard from '@/pages/partials/cards/ContentCard.vue';
+import FinalTestSetup from '@/pages/partials/FinalTestSetup.vue';
+import Heading from '@/components/uikit/headings/Heading.vue';
+import Keyboard from '@/components/keyboards/Keyboard.vue';
+import PrimaryRouterLinkButton from '@/components/uikit/buttons/PrimaryRouterLinkButton.vue';
 import SaveResultRequestPayload from '@/interfaces/payloads/SaveResultRequestPayload';
-import Statistics from '@/components/Statistics.vue';
-import SuccessBanner from '@/components/uikit/SuccessBanner.vue';
-import TextArea from '@/components/uikit/TextArea.vue';
-import TextContainer from '@/components/uikit/TextContainer.vue';
+import StatisticsPanel from '@/components/panels/StatisticsPanel.vue';
+import SuccessBanner from '@/components/uikit/banners/SuccessBanner.vue';
+import TextArea from '@/components/uikit/inputs/TextArea.vue';
+import TextContainer from '@/components/uikit/containers/TextContainer.vue';
 import TypingContext from '@/interfaces/typing/TypingContext';
 import axios, { AxiosResponse } from 'axios';
 import { ComputedRef, Ref, ref } from 'vue';
