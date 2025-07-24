@@ -6,7 +6,7 @@ import { computed, ComputedRef, Ref } from 'vue';
 import { getCurrentTypingUnit } from '@/helpers/StringHelper';
 import { scrollToCurrentChar } from '@/helpers/DomHelper';
 
-export function useHandleTypingInput(): Record<string, Function> {
+export const useHandleTypingInput = (): Record<string, Function> => {
     const handleTypingInput = async (
         context: TypingContext,
         saveResultRequestUrl: string,
@@ -40,9 +40,9 @@ export function useHandleTypingInput(): Record<string, Function> {
     };
 
     return { handleTypingInput };
-}
+};
 
-export function useCurrentWord(text: Ref<string>, typed: Ref<string>): Record<string, ComputedRef<boolean[]>> {
+export const useCurrentWord = (text: Ref<string>, typed: Ref<string>): Record<string, ComputedRef<boolean[]>> => {
     const currentTypingUnit: ComputedRef<TypingUnit | null> = computed(
         (): TypingUnit | null => getCurrentTypingUnit(text.value, typed.value.length),
     );
@@ -60,9 +60,9 @@ export function useCurrentWord(text: Ref<string>, typed: Ref<string>): Record<st
     });
 
     return { isCurrentWord };
-}
+};
 
-export function useProgress(text: Ref<string>, typed: Ref<string>, isCompleted: Ref<boolean>): Record<string, ComputedRef<number>> {
+export const useProgress = (text: Ref<string>, typed: Ref<string>, isCompleted: Ref<boolean>): Record<string, ComputedRef<number>> => {
     const progress: ComputedRef<number> = computed((): number => {
         if (isCompleted.value) { return 100; }
 
@@ -70,4 +70,4 @@ export function useProgress(text: Ref<string>, typed: Ref<string>, isCompleted: 
     });
 
     return { progress };
-}
+};

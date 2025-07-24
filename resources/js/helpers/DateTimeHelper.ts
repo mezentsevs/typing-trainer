@@ -1,4 +1,4 @@
-export function formatTime(seconds: number): string {
+export const formatTime = (seconds: number): string => {
     const hours: number = Math.floor(seconds / 3600);
     const minutes: number = Math.floor((seconds % 3600) / 60);
     const remainingSeconds: number = seconds % 60;
@@ -10,4 +10,4 @@ export function formatTime(seconds: number): string {
     parts.push(`${remainingSeconds}s`);
 
     return parts.join(' ');
-}
+};

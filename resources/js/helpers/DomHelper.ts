@@ -1,4 +1,4 @@
-export function scrollToCurrentChar (textContainer: HTMLElement | null, currentIndex: number): void {
+export const scrollToCurrentChar = (textContainer: HTMLElement | null, currentIndex: number): void => {
     if (!textContainer) { return; }
 
     const charElements: NodeListOf<HTMLSpanElement> = textContainer.querySelectorAll('span');
@@ -10,4 +10,4 @@ export function scrollToCurrentChar (textContainer: HTMLElement | null, currentI
 
         textContainer.scrollTo({ top: offset - containerRect.height / 2, behavior: 'smooth' });
     }
-}
+};
