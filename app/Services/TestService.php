@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Storage;
 
 class TestService
 {
-    public function getTestText(int $userId, string $language, ?string $genre = null): string
+    public function getText(int $userId, string $language, ?string $genre = null): string
     {
         $filePath = "uploads/test_{$userId}_{$language}.txt";
 

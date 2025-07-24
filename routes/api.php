@@ -18,7 +18,7 @@ Route::middleware('auth:sanctum')->group(function () {
     });
 
     Route::prefix('test')->group(function () {
-        Route::get('/text', [TestController::class, 'getTestText'])->name('api.test.text');
+        Route::get('/text', [TestController::class, 'getText'])->name('api.test.text');
         Route::post('/upload', [TestController::class, 'uploadText'])->name('api.test.upload');
         Route::post('/result', [TestController::class, 'saveResult'])->name('api.test.result');
     });

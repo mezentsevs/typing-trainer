@@ -11,14 +11,14 @@ class TestController extends Controller
 {
     public function __construct(protected TestService $testService) {}
 
-    public function getTestText(Request $request): JsonResponse
+    public function getText(Request $request): JsonResponse
     {
         $request->validate([
             'language' => 'required|string',
             'genre' => 'nullable|string',
         ]);
 
-        return response()->json(['text' => $this->testService->getTestText(auth()->id(), $request->language, $request->genre)]);
+        return response()->json(['text' => $this->testService->getText(auth()->id(), $request->language, $request->genre)]);
     }
 
     public function uploadText(Request $request): JsonResponse
