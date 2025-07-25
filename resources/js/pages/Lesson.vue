@@ -1,8 +1,13 @@
 <template>
     <ContentCard>
         <header class="flex flex-row items-center relative">
-            <Heading :level="1" class="text-2xl">Lesson {{ lessonPartialInfo.number }}/{{ totalLessons }}</Heading>
-            <SuccessBanner v-if="isLessonCompleted" class="absolute left-1/2 transform -translate-x-1/2">
+            <Heading :level="1" class="text-2xl"
+                >Lesson {{ lessonPartialInfo.number }}/{{ totalLessons }}</Heading
+            >
+            <SuccessBanner
+                v-if="isLessonCompleted"
+                class="absolute left-1/2 transform -translate-x-1/2"
+            >
                 Completed!
             </SuccessBanner>
         </header>
@@ -14,14 +19,15 @@
 
         <main>
             <TextContainer ref="textContainerRef" class="h-28 mt-4 text-lg font-mono">
-                <span v-for="(char, index) in text"
-                      :key="index"
-                      :class="{
-                          'error-char': typed[index] && typed[index] !== char,
-                          'current-word': isCurrentWord[index],
-                          'space': char === ' ',
-                          'line-break': char === '\n',
-                      }"
+                <span
+                    v-for="(char, index) in text"
+                    :key="index"
+                    :class="{
+                        'error-char': typed[index] && typed[index] !== char,
+                        'current-word': isCurrentWord[index],
+                        space: char === ' ',
+                        'line-break': char === '\n',
+                    }"
                 >
                     {{ char }}
                 </span>
@@ -32,26 +38,22 @@
                 v-model="typed"
                 v-focus
                 class="w-full mt-4 resize-none"
-                @input="onInput"
                 :disabled="isLessonCompleted"
                 rows="4"
                 spellcheck="false"
+                @input="onInput"
             />
             <Keyboard :language :typed :text />
             <div v-if="isLessonCompleted" class="mb-4 flex flex-row justify-center">
                 <PrimaryRouterLinkButton
                     v-if="nextLesson"
                     :to="`/lesson/${language}/${nextLesson}`"
-                    @click="onNext"
                     class="w-32"
+                    @click="onNext"
                 >
                     Next
                 </PrimaryRouterLinkButton>
-                <SuccessRouterLinkButton
-                    v-else
-                    :to="`/test/${language}`"
-                    class="w-32"
-                >
+                <SuccessRouterLinkButton v-else :to="`/test/${language}`" class="w-32">
                     Final Test
                 </SuccessRouterLinkButton>
             </div>
@@ -87,7 +89,11 @@ const errors: Ref<number> = ref(0);
 const isLessonCompleted: Ref<boolean> = ref(false);
 const language: Language = route.params.language as Language;
 const lessonNumber: Ref<number> = ref(parseInt(route.params.number as string));
-const lessonPartialInfo: Ref<LessonPartialInfo> = ref({ id: 0, number: lessonNumber.value, new_chars: '' });
+const lessonPartialInfo: Ref<LessonPartialInfo> = ref({
+    id: 0,
+    number: lessonNumber.value,
+    new_chars: '',
+});
 const speed: Ref<number> = ref(0);
 const startTime: Ref<number> = ref(0);
 const text: Ref<string> = ref('');
@@ -99,10 +105,12 @@ const totalLessons: Ref<number> = ref(0);
 const typed: Ref<string> = ref('');
 
 const { isCurrentWord }: Record<string, ComputedRef<boolean[]>> = useCurrentWord(text, typed);
-const { progress }: Record<string, ComputedRef<number>> = useProgress(text, typed, isLessonCompleted);
+const {
+    progress,
+}: Record<string, ComputedRef<number>> = useProgress(text, typed, isLessonCompleted);
 
-const nextLesson: ComputedRef<number> = computed(
-    (): number => (totalLessons.value - lessonNumber.value) ? lessonNumber.value + 1 : 0,
+const nextLesson: ComputedRef<number> = computed((): number =>
+    totalLessons.value - lessonNumber.value ? lessonNumber.value + 1 : 0,
 );
 
 const resetState = (): void => {
@@ -113,7 +121,11 @@ const resetState = (): void => {
     text.value = '';
     time.value = 0;
     typed.value = '';
-    lessonPartialInfo.value = { id: 0, number: lessonNumber.value, new_chars: '' } as LessonPartialInfo;
+    lessonPartialInfo.value = {
+        id: 0,
+        number: lessonNumber.value,
+        new_chars: '',
+    } as LessonPartialInfo;
 };
 
 // TODO: Try to use only Lesson interface everywhere
@@ -155,7 +167,9 @@ const onInput = async (): Promise<void> => {
 };
 
 const onNext = async (): Promise<void> => {
-    if (!isLessonCompleted.value) { return; }
+    if (!isLessonCompleted.value) {
+        return;
+    }
 
     lessonNumber.value++;
 
@@ -163,7 +177,9 @@ const onNext = async (): Promise<void> => {
 
     await fetchLesson();
 
-    if (textArea.value) { textArea.value.area.focus(); }
+    if (textArea.value) {
+        textArea.value.area.focus();
+    }
 };
 
 onMounted(async (): Promise<void> => {
@@ -171,6 +187,8 @@ onMounted(async (): Promise<void> => {
 
     await fetchLesson();
 
-    if (textContainerRef.value) { textContainer.value = textContainerRef.value.getContainerElement(); }
+    if (textContainerRef.value) {
+        textContainer.value = textContainerRef.value.getContainerElement();
+    }
 });
 </script>

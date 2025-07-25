@@ -3,23 +3,17 @@
         <Heading :level="1" class="text-2xl mb-6">Setup Final Test</Heading>
         <form @submit.prevent>
             <InputLabel for="genre">Genre <Remark value="(optional)" /></InputLabel>
-            <Select
-                id="genre"
-                v-model="genre"
-                v-focus
-                :options="genres"
-                class="mb-4 w-full"
-            />
+            <Select id="genre" v-model="genre" v-focus :options="genres" class="mb-4 w-full" />
             <InputLabel for="file">Text <Remark value="(optional, max 3 KB)" /></InputLabel>
             <Input
                 id="file"
                 type="file"
                 accept=".txt"
-                @change="uploadFile"
                 class="mb-4 w-full"
                 style="border-radius: 0.15rem"
+                @change="uploadFile"
             />
-            <PrimaryButton @click="$emit('start', genre)" class="w-full">Start</PrimaryButton>
+            <PrimaryButton class="w-full" @click="$emit('start', genre)">Start</PrimaryButton>
         </form>
         <ErrorMessage :message="error" />
     </SetupCard>
@@ -39,8 +33,8 @@ import { Genre } from '@/enums/FinalTestEnums';
 import { Ref, ref } from 'vue';
 
 defineProps<{
-    error: string,
-    uploadFile: (event: Event) => Promise<void>,
+    error: string;
+    uploadFile: (event: Event) => Promise<void>;
 }>();
 
 defineEmits<{

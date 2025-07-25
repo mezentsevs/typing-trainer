@@ -2,7 +2,10 @@
     <ContentCard v-if="text">
         <header class="flex flex-row items-center relative">
             <Heading :level="1" class="text-2xl">Final Test</Heading>
-            <SuccessBanner v-if="isTestCompleted" class="absolute left-1/2 transform -translate-x-1/2">
+            <SuccessBanner
+                v-if="isTestCompleted"
+                class="absolute left-1/2 transform -translate-x-1/2"
+            >
                 Completed!
             </SuccessBanner>
         </header>
@@ -13,14 +16,15 @@
 
         <main>
             <TextContainer ref="textContainerRef" class="h-28 mt-4 text-lg font-mono">
-                <span v-for="(char, index) in text"
-                      :key="index"
-                      :class="{
-                          'error-char': typed[index] && typed[index] !== char,
-                          'current-word': isCurrentWord[index],
-                          'space': char === ' ',
-                          'line-break': char === '\n',
-                      }"
+                <span
+                    v-for="(char, index) in text"
+                    :key="index"
+                    :class="{
+                        'error-char': typed[index] && typed[index] !== char,
+                        'current-word': isCurrentWord[index],
+                        space: char === ' ',
+                        'line-break': char === '\n',
+                    }"
                 >
                     {{ char }}
                 </span>
@@ -30,10 +34,10 @@
                 v-model="typed"
                 v-focus
                 class="w-full mt-4 resize-none"
-                @input="onInput"
                 :disabled="isTestCompleted"
                 rows="4"
                 spellcheck="false"
+                @input="onInput"
             />
             <Keyboard :language :typed :text :is-minimized="true" />
             <div v-if="isTestCompleted" class="mb-4 flex flex-row justify-center">
@@ -119,7 +123,9 @@ const uploadFile = async (event: Event): Promise<void> => {
             await fetchText();
         }
     } catch (err) {
-        if (err instanceof Error) { error.value = 'Upload failed'; }
+        if (err instanceof Error) {
+            error.value = 'Upload failed';
+        }
     }
 };
 
@@ -154,6 +160,8 @@ const onStart = async (selectedGenre: string): Promise<void> => {
 
     await fetchText();
 
-    if (textContainerRef.value) { textContainer.value = textContainerRef.value.getContainerElement(); }
+    if (textContainerRef.value) {
+        textContainer.value = textContainerRef.value.getContainerElement();
+    }
 };
 </script>

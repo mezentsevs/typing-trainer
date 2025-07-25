@@ -9,9 +9,12 @@ import BaseButton from '@/components/uikit/buttons/BaseButton.vue';
 import { Button } from '@/enums/UIKitEnums';
 import { UIKitButton } from '@/types/UIKitTypes';
 
-withDefaults(defineProps<{
-    type?: UIKitButton,
-}>(), {
-    type: Button.Submit,
-});
+withDefaults(
+    defineProps<{
+        type?: UIKitButton;
+    }>(),
+    {
+        type: Button.Submit,
+    },
+);
 </script>

@@ -7,11 +7,14 @@
 <script lang="ts" setup>
 import { computed, ComputedRef } from 'vue';
 
-const props = withDefaults(defineProps<{
-    level?: number,
-}>(), {
-    level: 1,
-});
+const props = withDefaults(
+    defineProps<{
+        level?: number;
+    }>(),
+    {
+        level: 1,
+    },
+);
 
 const heading: ComputedRef<string> = computed((): string => {
     if (props.level < 1) {

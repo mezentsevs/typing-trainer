@@ -61,7 +61,9 @@ const generateLessons = async (): Promise<void> => {
 
         await router.push(`/lesson/${form.value.language}/1`);
     } catch (err) {
-        if (err instanceof Error) { error.value = 'Lessons generation failed'; }
+        if (err instanceof Error) {
+            error.value = 'Lessons generation failed';
+        }
     }
 };
 </script>

@@ -5,8 +5,12 @@ export const formatTime = (seconds: number): string => {
 
     const parts: string[] = [];
 
-    if (hours > 0) { parts.push(`${hours}h`); }
-    if (minutes > 0 || hours > 0) { parts.push(`${minutes}m`); }
+    if (hours > 0) {
+        parts.push(`${hours}h`);
+    }
+    if (minutes > 0 || hours > 0) {
+        parts.push(`${minutes}m`);
+    }
     parts.push(`${remainingSeconds}s`);
 
     return parts.join(' ');

@@ -1,5 +1,6 @@
-import Theme from '@/interfaces/app/Theme';
 import { App, Ref, ref } from 'vue';
+
+import Theme from '@/interfaces/app/Theme';
 
 const isDark: Ref<boolean> = ref(false);
 
@@ -22,7 +23,9 @@ export default {
 
         const init = (): void => {
             const theme: string | null = localStorage.getItem('theme');
-            const darkThemeMediaQueryList: MediaQueryList = window.matchMedia('(prefers-color-scheme: dark)');
+            const darkThemeMediaQueryList: MediaQueryList = window.matchMedia(
+                '(prefers-color-scheme: dark)',
+            );
 
             darkThemeMediaQueryList.addEventListener('change', handleDarkThemeChange);
 
@@ -36,4 +39,4 @@ export default {
             toggleTheme: (): void => applyTheme(!isDark.value),
         } as Theme);
     },
-}
+};

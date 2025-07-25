@@ -73,7 +73,12 @@ const authStore: Store<string, AuthState, AuthGetters, AuthActions> = useAuthSto
 const router: Router = useRouter();
 
 const error: Ref<string> = ref('');
-const form: Ref<AuthRegisterForm> = ref({ name: '', email: '', password: '', passwordConfirmation: '' });
+const form: Ref<AuthRegisterForm> = ref({
+    name: '',
+    email: '',
+    password: '',
+    passwordConfirmation: '',
+});
 
 const register = async (): Promise<void> => {
     try {
@@ -86,7 +91,9 @@ const register = async (): Promise<void> => {
 
         await router.push('/');
     } catch (err) {
-        if (err instanceof Error) { error.value = 'Registration failed'; }
+        if (err instanceof Error) {
+            error.value = 'Registration failed';
+        }
     }
 };
 </script>

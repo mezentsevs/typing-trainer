@@ -1,5 +1,10 @@
-export const scrollToCurrentChar = (textContainer: HTMLElement | null, currentIndex: number): void => {
-    if (!textContainer) { return; }
+export const scrollToCurrentChar = (
+    textContainer: HTMLElement | null,
+    currentIndex: number,
+): void => {
+    if (!textContainer) {
+        return;
+    }
 
     const charElements: NodeListOf<HTMLSpanElement> = textContainer.querySelectorAll('span');
 

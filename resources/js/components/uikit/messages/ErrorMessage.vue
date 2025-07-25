@@ -8,6 +8,6 @@
 import BaseMessage from '@/components/uikit/messages/BaseMessage.vue';
 
 defineProps<{
-    message: string,
+    message: string;
 }>();
 </script>

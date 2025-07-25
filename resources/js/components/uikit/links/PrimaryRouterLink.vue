@@ -8,9 +8,12 @@
 import BaseRouterLink from '@/components/uikit/links/BaseRouterLink.vue';
 import { UIKitRouterLinkTo } from '@/types/UIKitTypes';
 
-withDefaults(defineProps<{
-    to?: UIKitRouterLinkTo,
-}>(), {
-    to: '/',
-});
+withDefaults(
+    defineProps<{
+        to?: UIKitRouterLinkTo;
+    }>(),
+    {
+        to: '/',
+    },
+);
 </script>
