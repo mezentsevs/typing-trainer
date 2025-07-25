@@ -274,1216 +274,1216 @@ class TestTextSeeder extends Seeder
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-In the hush of dawn, where shadows softly creep,
-The world awakens from its tender sleep.
-The sky, a canvas painted with pastel hues,
-Blushes pink, then gold, as morning's muse
-Unfurls her light across the sleepy glade.
-The whispering breeze, through ancient oaks, does wade,
-And carries secrets only trees can know,
-Their roots entwined where quiet rivers flow.
-Each leaf a stanza, trembling in the air,
-A fleeting poem, delicate and fair.
-The sparrow sings, a melody so slight,
-Yet pierces through the remnants of the night.
-Its notes, like petals, drift on winds unseen,
-To weave a song where silence once had been.
-The meadow hums with life, a subtle choir,
-Of crickets, bees, and grasses that aspire
-To touch the heavens with their verdant prayer,
-A hymn of green, ascending through the air.
-The poet's heart, attuned to nature's rhyme,
-Finds solace in the rhythm of the time.
-Each blade of grass, each dewdrop's fragile sphere,
-Reflects a truth that only dawn makes clear:
-That beauty lies in moments brief and small,
-In fleeting glances where the heart does call.
-The sun ascends, its warmth a gentle hand,
-Caressing earth, embracing sea and land.
-The shadows shrink, their mysteries retreat,
-Yet leave behind a warmth, a lingering heat.
-And in this light, the poet takes her pen,
-To capture dawn before it fades again.
-The words, like rivers, carve their winding course,
-Through valleys deep, with unrelenting force.
-They spill like rain upon the barren page,
-A torrent born of joy, of love, of rage.
-For poetry is breath, is blood, is fire,
-A spark of soul that never will expire.
-It dances wild beneath the starlit skies,
-And mourns the loss where broken beauty lies.
-The moon, a sentinel of silver gleam,
-Illuminates the poet's fevered dream.
-Its crescent curves, a cradle for the night,
-Where thoughts take wing and soar in boundless flight.
-The stars, like lanterns, flicker in their place,
-Each one a story, etched in cosmic space.
-The poet weaves their light into her verse,
-A tapestry of wonder, vast, diverse.
-The night is hers, a realm of endless scope,
-Where shadows blend with dreams, and dreams with hope.
-Yet dawn returns, relentless in its tread,
-To paint the world in amber, gold, and red.
-The cycle spins, unyielding, yet so kind,
-A rhythm etched within the poet's mind.
-For every verse, a moment caught in time,
-A fleeting truth, immortalized in rhyme.
-The heart beats on, its cadence soft and sure,
-A drum that echoes, steadfast and secure.
-And poetry, the language of the soul,
-Binds fleeting fragments into something whole.
-Through ages past, through futures yet to come,
-The poet's voice will never be struck dumb.
-It rises still, through sorrow and through glee,
-A testament to what it means to be.
-So let the words cascade, like rivers free,
-And carve their path to vast eternity.
-EOT,
+                        In the hush of dawn, where shadows softly creep,
+                        The world awakens from its tender sleep.
+                        The sky, a canvas painted with pastel hues,
+                        Blushes pink, then gold, as morning's muse
+                        Unfurls her light across the sleepy glade.
+                        The whispering breeze, through ancient oaks, does wade,
+                        And carries secrets only trees can know,
+                        Their roots entwined where quiet rivers flow.
+                        Each leaf a stanza, trembling in the air,
+                        A fleeting poem, delicate and fair.
+                        The sparrow sings, a melody so slight,
+                        Yet pierces through the remnants of the night.
+                        Its notes, like petals, drift on winds unseen,
+                        To weave a song where silence once had been.
+                        The meadow hums with life, a subtle choir,
+                        Of crickets, bees, and grasses that aspire
+                        To touch the heavens with their verdant prayer,
+                        A hymn of green, ascending through the air.
+                        The poet's heart, attuned to nature's rhyme,
+                        Finds solace in the rhythm of the time.
+                        Each blade of grass, each dewdrop's fragile sphere,
+                        Reflects a truth that only dawn makes clear:
+                        That beauty lies in moments brief and small,
+                        In fleeting glances where the heart does call.
+                        The sun ascends, its warmth a gentle hand,
+                        Caressing earth, embracing sea and land.
+                        The shadows shrink, their mysteries retreat,
+                        Yet leave behind a warmth, a lingering heat.
+                        And in this light, the poet takes her pen,
+                        To capture dawn before it fades again.
+                        The words, like rivers, carve their winding course,
+                        Through valleys deep, with unrelenting force.
+                        They spill like rain upon the barren page,
+                        A torrent born of joy, of love, of rage.
+                        For poetry is breath, is blood, is fire,
+                        A spark of soul that never will expire.
+                        It dances wild beneath the starlit skies,
+                        And mourns the loss where broken beauty lies.
+                        The moon, a sentinel of silver gleam,
+                        Illuminates the poet's fevered dream.
+                        Its crescent curves, a cradle for the night,
+                        Where thoughts take wing and soar in boundless flight.
+                        The stars, like lanterns, flicker in their place,
+                        Each one a story, etched in cosmic space.
+                        The poet weaves their light into her verse,
+                        A tapestry of wonder, vast, diverse.
+                        The night is hers, a realm of endless scope,
+                        Where shadows blend with dreams, and dreams with hope.
+                        Yet dawn returns, relentless in its tread,
+                        To paint the world in amber, gold, and red.
+                        The cycle spins, unyielding, yet so kind,
+                        A rhythm etched within the poet's mind.
+                        For every verse, a moment caught in time,
+                        A fleeting truth, immortalized in rhyme.
+                        The heart beats on, its cadence soft and sure,
+                        A drum that echoes, steadfast and secure.
+                        And poetry, the language of the soul,
+                        Binds fleeting fragments into something whole.
+                        Through ages past, through futures yet to come,
+                        The poet's voice will never be struck dumb.
+                        It rises still, through sorrow and through glee,
+                        A testament to what it means to be.
+                        So let the words cascade, like rivers free,
+                        And carve their path to vast eternity.
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-The ocean whispers secrets to the shore,
-Its waves a tale of what has gone before.
-Each crest, each trough, a chapter in the deep,
-Where ancient ghosts and sunken treasures sleep.
-The foam, like lace, adorns the sandy bed,
-A fleeting crown where sea and earth are wed.
-The gulls above, with wings that slice the breeze,
-Cry out their hymns to distant, unseen seas.
-Their voices blend with salt and wind and spray,
-A chorus wild, that carries far away.
-The poet stands, her feet upon the strand,
-Her heart a vessel, anchored to the land.
-Yet in her soul, the ocean's call is strong,
-Its endless song, both lullaby and wrong.
-For who can know the depths that lie below,
-Where currents twist and shadowy creatures go?
-The poet dares to dream, to dive, to seek,
-To find the words where mortal tongues grow weak.
-Her verses surge, like tides that rise and fall,
-And echo truths that resonate through all.
-The sea is vast, its mysteries profound,
-A realm where even gods have sometimes drowned.
-Yet still it calls, with beauty and with dread,
-To weave its tale within the poet's head.
-The stars reflect upon the water's face,
-A mirror held to heavens boundless grace.
-Each ripple holds a fragment of the sky,
-A fleeting glimpse of worlds that soar on high.
-The poet writes, her ink as dark as night,
-Yet filled with sparks of celestial light.
-Her words are waves that crash, then softly fade,
-A dance of dreams upon the shore remade.
-The ocean knows no master, bows to none,
-Its will enduring when all else is done.
-And yet it yields its stories to the pen,
-To be reborn in hearts of mortal men.
-So let the poet sing, her voice a tide,
-That carries hope where broken dreams reside.
-For in her lines, the sea will ever dwell,
-A timeless song, too vast for tongue to tell.
-EOT,
+                        The ocean whispers secrets to the shore,
+                        Its waves a tale of what has gone before.
+                        Each crest, each trough, a chapter in the deep,
+                        Where ancient ghosts and sunken treasures sleep.
+                        The foam, like lace, adorns the sandy bed,
+                        A fleeting crown where sea and earth are wed.
+                        The gulls above, with wings that slice the breeze,
+                        Cry out their hymns to distant, unseen seas.
+                        Their voices blend with salt and wind and spray,
+                        A chorus wild, that carries far away.
+                        The poet stands, her feet upon the strand,
+                        Her heart a vessel, anchored to the land.
+                        Yet in her soul, the ocean's call is strong,
+                        Its endless song, both lullaby and wrong.
+                        For who can know the depths that lie below,
+                        Where currents twist and shadowy creatures go?
+                        The poet dares to dream, to dive, to seek,
+                        To find the words where mortal tongues grow weak.
+                        Her verses surge, like tides that rise and fall,
+                        And echo truths that resonate through all.
+                        The sea is vast, its mysteries profound,
+                        A realm where even gods have sometimes drowned.
+                        Yet still it calls, with beauty and with dread,
+                        To weave its tale within the poet's head.
+                        The stars reflect upon the water's face,
+                        A mirror held to heavens boundless grace.
+                        Each ripple holds a fragment of the sky,
+                        A fleeting glimpse of worlds that soar on high.
+                        The poet writes, her ink as dark as night,
+                        Yet filled with sparks of celestial light.
+                        Her words are waves that crash, then softly fade,
+                        A dance of dreams upon the shore remade.
+                        The ocean knows no master, bows to none,
+                        Its will enduring when all else is done.
+                        And yet it yields its stories to the pen,
+                        To be reborn in hearts of mortal men.
+                        So let the poet sing, her voice a tide,
+                        That carries hope where broken dreams reside.
+                        For in her lines, the sea will ever dwell,
+                        A timeless song, too vast for tongue to tell.
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-The forest hums beneath a velvet sky,
-Where ancient trees reach up, and spirits fly.
-Their branches weave a canopy of dreams,
-Where moonlight spills in soft, ethereal streams.
-The owl, with eyes like embers, softly calls,
-Its voice a thread that echoes through the halls
-Of shadowed glades, where secrets gently lie,
-Enfolded in the earth's eternal sigh.
-The poet treads, her steps a reverent prayer,
-Each breath a verse, each moment rare.
-The moss beneath her feet, a velvet scroll,
-Records the tales that only forests hold.
-The wind, a bard, recites its ancient lore,
-Of heroes lost, of loves that came before.
-The leaves, like pages, flutter in the breeze,
-Their whispers blending with the midnight seas.
-The poet kneels, her heart an open book,
-To drink the wisdom of the winding brook.
-Its waters sing of journeys yet to come,
-Of paths untrod, of battles yet unwon.
-The forest knows the weight of time's embrace,
-Its roots a map of every human face.
-And in its shade, the poet finds her voice,
-A spark of truth, a solitary choice.
-To speak of love, of loss, of fleeting joy,
-Of moments bright that time will soon destroy.
-Her words take root, like seeds beneath the earth,
-And promise life, and promise gentle birth.
-The stars above, through branches, softly peer,
-Their light a guide, both distant and sincere.
-The poet weaves their glow into her rhyme,
-A bridge that spans the boundaries of time.
-For poetry is more than ink and page,
-It is the soul's release from mortal cage.
-It dances free, where wild things roam and sing,
-And binds the heart to every living thing.
-So let the forest's song forever sound,
-In verses deep, where truth is ever found.
-EOT,
+                        The forest hums beneath a velvet sky,
+                        Where ancient trees reach up, and spirits fly.
+                        Their branches weave a canopy of dreams,
+                        Where moonlight spills in soft, ethereal streams.
+                        The owl, with eyes like embers, softly calls,
+                        Its voice a thread that echoes through the halls
+                        Of shadowed glades, where secrets gently lie,
+                        Enfolded in the earth's eternal sigh.
+                        The poet treads, her steps a reverent prayer,
+                        Each breath a verse, each moment rare.
+                        The moss beneath her feet, a velvet scroll,
+                        Records the tales that only forests hold.
+                        The wind, a bard, recites its ancient lore,
+                        Of heroes lost, of loves that came before.
+                        The leaves, like pages, flutter in the breeze,
+                        Their whispers blending with the midnight seas.
+                        The poet kneels, her heart an open book,
+                        To drink the wisdom of the winding brook.
+                        Its waters sing of journeys yet to come,
+                        Of paths untrod, of battles yet unwon.
+                        The forest knows the weight of time's embrace,
+                        Its roots a map of every human face.
+                        And in its shade, the poet finds her voice,
+                        A spark of truth, a solitary choice.
+                        To speak of love, of loss, of fleeting joy,
+                        Of moments bright that time will soon destroy.
+                        Her words take root, like seeds beneath the earth,
+                        And promise life, and promise gentle birth.
+                        The stars above, through branches, softly peer,
+                        Their light a guide, both distant and sincere.
+                        The poet weaves their glow into her rhyme,
+                        A bridge that spans the boundaries of time.
+                        For poetry is more than ink and page,
+                        It is the soul's release from mortal cage.
+                        It dances free, where wild things roam and sing,
+                        And binds the heart to every living thing.
+                        So let the forest's song forever sound,
+                        In verses deep, where truth is ever found.
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-The city pulses, vibrant, fierce, alive,
-Its neon heart where dreams and shadows thrive.
-The streets, like arteries, bear ceaseless flow,
-Of lives that clash, that merge, that come and go.
-The poet walks, her eyes a burning flame,
-To catch the spark of every fleeting name.
-Each face a story, etched in joy or pain,
-Each step a verse in life's unending chain.
-The horns, the cries, the laughter, and the din,
-Compose a symphony that pulls her in.
-She writes of towers reaching for the stars,
-Of broken hearts and dreams behind the bars.
-The city's breath, a mix of smoke and fire,
-Ignites her soul, her words a funeral pyre
-For moments lost, for hopes that fade too fast,
-Yet rise again, unshackled from the past.
-The poet sings of markets, bright and loud,
-Of quiet alleys, hidden from the crowd.
-Of children's laughter, ringing through the night,
-Of lovers' whispers, bathed in sodium light.
-The city holds her, fierce, yet tender too,
-Its contradictions mirrored in her view.
-Her verses carve a space where all belong,
-A fragile peace within the urban song.
-The dawn arrives, its light a gentle blade,
-To cut the dark where memories are made.
-The poet writes, her heart a steady drum,
-To greet the day, and all that is to come.
-For in the city, poetry is breath,
-A shield against the specter of our death.
-It binds the soul to every fleeting spark,
-And lights the way through chaos and the dark.
-EOT,
+                        The city pulses, vibrant, fierce, alive,
+                        Its neon heart where dreams and shadows thrive.
+                        The streets, like arteries, bear ceaseless flow,
+                        Of lives that clash, that merge, that come and go.
+                        The poet walks, her eyes a burning flame,
+                        To catch the spark of every fleeting name.
+                        Each face a story, etched in joy or pain,
+                        Each step a verse in life's unending chain.
+                        The horns, the cries, the laughter, and the din,
+                        Compose a symphony that pulls her in.
+                        She writes of towers reaching for the stars,
+                        Of broken hearts and dreams behind the bars.
+                        The city's breath, a mix of smoke and fire,
+                        Ignites her soul, her words a funeral pyre
+                        For moments lost, for hopes that fade too fast,
+                        Yet rise again, unshackled from the past.
+                        The poet sings of markets, bright and loud,
+                        Of quiet alleys, hidden from the crowd.
+                        Of children's laughter, ringing through the night,
+                        Of lovers' whispers, bathed in sodium light.
+                        The city holds her, fierce, yet tender too,
+                        Its contradictions mirrored in her view.
+                        Her verses carve a space where all belong,
+                        A fragile peace within the urban song.
+                        The dawn arrives, its light a gentle blade,
+                        To cut the dark where memories are made.
+                        The poet writes, her heart a steady drum,
+                        To greet the day, and all that is to come.
+                        For in the city, poetry is breath,
+                        A shield against the specter of our death.
+                        It binds the soul to every fleeting spark,
+                        And lights the way through chaos and the dark.
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-The mountain stands, unyielding, stark, and grand,
-Its peaks a challenge to the mortal hand.
-The poet climbs, her heart a beating flame,
-To etch its might within her fragile frame.
-Each step a verse, each breath a sacred vow,
-To capture truth that only heights allow.
-The wind howls fierce, a chorus of the wild,
-Yet in its roar, the poet finds a child.
-A spark of wonder, buried deep within,
-That calls her on, through tempest and through din.
-The summit gleams, a beacon in the mist,
-A fleeting goal that only dreams enlist.
-The poet writes, her words a rugged stone,
-Each one a piece of mountains she has known.
-The valleys far below, in shadow cast,
-Hold echoes of a distant, tender past.
-Yet here, above, where earth and heavens meet,
-The poet finds her purpose, pure, complete.
-Her verses soar, like eagles on the breeze,
-And carve a path through time's unyielding frieze.
-The mountain knows the weight of countless years,
-Its silence born of triumphs and of tears.
-And in its gaze, the poet sees her place,
-A fleeting spark within the vast embrace.
-So let her sing, her voice a timeless call,
-To rise, to strive, to conquer, and to fall.
-For poetry is more than fleeting sound,
-It is the soul's own mountain, ever found.
-EOT,
+                        The mountain stands, unyielding, stark, and grand,
+                        Its peaks a challenge to the mortal hand.
+                        The poet climbs, her heart a beating flame,
+                        To etch its might within her fragile frame.
+                        Each step a verse, each breath a sacred vow,
+                        To capture truth that only heights allow.
+                        The wind howls fierce, a chorus of the wild,
+                        Yet in its roar, the poet finds a child.
+                        A spark of wonder, buried deep within,
+                        That calls her on, through tempest and through din.
+                        The summit gleams, a beacon in the mist,
+                        A fleeting goal that only dreams enlist.
+                        The poet writes, her words a rugged stone,
+                        Each one a piece of mountains she has known.
+                        The valleys far below, in shadow cast,
+                        Hold echoes of a distant, tender past.
+                        Yet here, above, where earth and heavens meet,
+                        The poet finds her purpose, pure, complete.
+                        Her verses soar, like eagles on the breeze,
+                        And carve a path through time's unyielding frieze.
+                        The mountain knows the weight of countless years,
+                        Its silence born of triumphs and of tears.
+                        And in its gaze, the poet sees her place,
+                        A fleeting spark within the vast embrace.
+                        So let her sing, her voice a timeless call,
+                        To rise, to strive, to conquer, and to fall.
+                        For poetry is more than fleeting sound,
+                        It is the soul's own mountain, ever found.
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-Beneath the canopy of starlit skies,
-Where shadows dance and midnight sighs,
-The wanderer treads with quiet grace,
-His heart a map to some lost place.
-The wind, a bard with tales to tell,
-Recites of heavens, sings of hell.
-Its whispers curl through ancient trees,
-Their branches swaying in the breeze.
-Each leaf a page, each root a rhyme,
-Preserving secrets lost to time.
-The moon ascends, a silver crown,
-Its glow upon the world cast down.
-It lights the path where dreams abide,
-Where hopes and fears walk side by side.
-The wanderer's boots, with dust endowed,
-Trace roads where stars and earth are vowed.
-His cloak, a shroud of twilight's hue,
-Bears stains of rains he's journeyed through.
-Each step a vow, each breath a prayer,
-To find the truth that lingers there.
-The river hums, its waters clear,
-Reflecting stars that hover near.
-Its current weaves a tale of old,
-Of lovers lost, of hearts grown cold.
-The wanderer kneels upon its bank,
-His soul athirst, his spirit sank.
-He cups the stream in trembling hands,
-And drinks of time's unyielding sands.
-EOT,
+                        Beneath the canopy of starlit skies,
+                        Where shadows dance and midnight sighs,
+                        The wanderer treads with quiet grace,
+                        His heart a map to some lost place.
+                        The wind, a bard with tales to tell,
+                        Recites of heavens, sings of hell.
+                        Its whispers curl through ancient trees,
+                        Their branches swaying in the breeze.
+                        Each leaf a page, each root a rhyme,
+                        Preserving secrets lost to time.
+                        The moon ascends, a silver crown,
+                        Its glow upon the world cast down.
+                        It lights the path where dreams abide,
+                        Where hopes and fears walk side by side.
+                        The wanderer's boots, with dust endowed,
+                        Trace roads where stars and earth are vowed.
+                        His cloak, a shroud of twilight's hue,
+                        Bears stains of rains he's journeyed through.
+                        Each step a vow, each breath a prayer,
+                        To find the truth that lingers there.
+                        The river hums, its waters clear,
+                        Reflecting stars that hover near.
+                        Its current weaves a tale of old,
+                        Of lovers lost, of hearts grown cold.
+                        The wanderer kneels upon its bank,
+                        His soul athirst, his spirit sank.
+                        He cups the stream in trembling hands,
+                        And drinks of time's unyielding sands.
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-The ripples sing of days long past,
-Of fleeting joys that could not last.
-Through meadows green, through valleys deep,
-Where wildflowers in silence sleep,
-He walks where sunlight dares not stray,
-And shadows hold their gentle sway.
-The lark above, with wings of fire,
-Sings hymns that lift the heart's desire.
-Its melody, a fragile thread,
-Binds life to dreams where hope has fled.
-The wanderer pauses, eyes alight,
-To weave that song into the night.
-The mountains loom, their peaks severe,
-A challenge born of primal fear.
-Their crags, like sentinels, stand tall,
-And echo back the wanderer's call.
-He climbs where eagles dare to soar,
-Where tempests rage and thunder roar.
-Each foothold carved by wind and time,
-Each summit reached, a sacred rhyme.
-The air grows thin, the heart grows bold,
-To touch the stars, so bright, so cold.
-At twilight's edge, where worlds converge,
-He stands to sing his soul's own dirge.
-The horizon burns with amber flame,
-And whispers soft his secret name.
-The wanderer's voice, though worn and low,
-Resounds where wildest rivers flow.
-EOT,
+                        The ripples sing of days long past,
+                        Of fleeting joys that could not last.
+                        Through meadows green, through valleys deep,
+                        Where wildflowers in silence sleep,
+                        He walks where sunlight dares not stray,
+                        And shadows hold their gentle sway.
+                        The lark above, with wings of fire,
+                        Sings hymns that lift the heart's desire.
+                        Its melody, a fragile thread,
+                        Binds life to dreams where hope has fled.
+                        The wanderer pauses, eyes alight,
+                        To weave that song into the night.
+                        The mountains loom, their peaks severe,
+                        A challenge born of primal fear.
+                        Their crags, like sentinels, stand tall,
+                        And echo back the wanderer's call.
+                        He climbs where eagles dare to soar,
+                        Where tempests rage and thunder roar.
+                        Each foothold carved by wind and time,
+                        Each summit reached, a sacred rhyme.
+                        The air grows thin, the heart grows bold,
+                        To touch the stars, so bright, so cold.
+                        At twilight's edge, where worlds converge,
+                        He stands to sing his soul's own dirge.
+                        The horizon burns with amber flame,
+                        And whispers soft his secret name.
+                        The wanderer's voice, though worn and low,
+                        Resounds where wildest rivers flow.
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-His words, like embers, rise and fall,
-A fleeting spark to pierce the pall.
-They carry dreams of distant lands,
-And trace the lines of weathered hands.
-The forest whispers, dark and deep,
-Its secrets guarded while we sleep.
-The oak, the pine, the willow's grace,
-Entwine to form a sacred space.
-The wanderer rests beneath their shade,
-His heart by starlight gently swayed.
-The moss, a cradle, soft and green,
-Preserves the truths his eyes have seen.
-Each breath he draws, a solemn vow,
-To honor then, to cherish now.
-The city calls, its pulse alive,
-Where neon dreams and shadows thrive.
-Its streets, like veins, bear ceaseless flow,
-Of lives that clash, that come, that go.
-The wanderer walks its crowded ways,
-His heart attuned to fleeting days.
-Each face a story, etched in strife,
-Each glance a glimpse of fleeting life.
-He writes of towers, stark and high,
-That pierce the veil of twilight's sky.
-The ocean roars, its voice untamed,
-Its depths by mortal tongue unclaimed.
-Each wave a tale of joy and woe,
-Of sunken ships where corals grow.
-EOT,
+                        His words, like embers, rise and fall,
+                        A fleeting spark to pierce the pall.
+                        They carry dreams of distant lands,
+                        And trace the lines of weathered hands.
+                        The forest whispers, dark and deep,
+                        Its secrets guarded while we sleep.
+                        The oak, the pine, the willow's grace,
+                        Entwine to form a sacred space.
+                        The wanderer rests beneath their shade,
+                        His heart by starlight gently swayed.
+                        The moss, a cradle, soft and green,
+                        Preserves the truths his eyes have seen.
+                        Each breath he draws, a solemn vow,
+                        To honor then, to cherish now.
+                        The city calls, its pulse alive,
+                        Where neon dreams and shadows thrive.
+                        Its streets, like veins, bear ceaseless flow,
+                        Of lives that clash, that come, that go.
+                        The wanderer walks its crowded ways,
+                        His heart attuned to fleeting days.
+                        Each face a story, etched in strife,
+                        Each glance a glimpse of fleeting life.
+                        He writes of towers, stark and high,
+                        That pierce the veil of twilight's sky.
+                        The ocean roars, its voice untamed,
+                        Its depths by mortal tongue unclaimed.
+                        Each wave a tale of joy and woe,
+                        Of sunken ships where corals grow.
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-The wanderer stands upon the shore,
-His soul adrift forevermore.
-The salt, the spray, the gull's wild cry,
-Compose a song that cannot die.
-He casts his dreams upon the tide,
-And lets the sea become his guide.
-Through deserts vast, where silence reigns,
-And sun-scorched earth alone remains,
-He walks where life is but a spark,
-A fleeting glow against the dark.
-The dunes, like waves, in stillness lie,
-Their curves a mirror of the sky.
-The wanderer's heart, though parched and worn,
-Finds solace where the stars are born.
-Each grain of sand, a tale untold,
-Of ancient worlds, both young and old.
-The seasons turn, relentless, sure,
-Their cycles steadfast, yet so pure.
-The spring awakens, blooms unfold,
-The summer hums with sunlight's gold.
-The autumn weaves its crimson thread,
-The winter whispers of the dead.
-The wanderer knows their endless dance,
-Their rhythm born of cosmic chance.
-He writes of time, of love, of loss,
-Of fleeting joys that bear a cost.
-Beneath the stars, his journey ends,
-Where time and tide no longer bend.
-EOT,
+                        The wanderer stands upon the shore,
+                        His soul adrift forevermore.
+                        The salt, the spray, the gull's wild cry,
+                        Compose a song that cannot die.
+                        He casts his dreams upon the tide,
+                        And lets the sea become his guide.
+                        Through deserts vast, where silence reigns,
+                        And sun-scorched earth alone remains,
+                        He walks where life is but a spark,
+                        A fleeting glow against the dark.
+                        The dunes, like waves, in stillness lie,
+                        Their curves a mirror of the sky.
+                        The wanderer's heart, though parched and worn,
+                        Finds solace where the stars are born.
+                        Each grain of sand, a tale untold,
+                        Of ancient worlds, both young and old.
+                        The seasons turn, relentless, sure,
+                        Their cycles steadfast, yet so pure.
+                        The spring awakens, blooms unfold,
+                        The summer hums with sunlight's gold.
+                        The autumn weaves its crimson thread,
+                        The winter whispers of the dead.
+                        The wanderer knows their endless dance,
+                        Their rhythm born of cosmic chance.
+                        He writes of time, of love, of loss,
+                        Of fleeting joys that bear a cost.
+                        Beneath the stars, his journey ends,
+                        Where time and tide no longer bend.
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-The wanderer rests, his heart at peace,
-His soul released, his wanderings cease.
-Yet in his words, his spirit lives,
-A gift to all the world he gives.
-Each verse a spark, each line a flame,
-To light the dark and speak his name.
-For poetry, like breath, like fire,
-Endures beyond the heart's desire.
-So sing, O wind, through ancient glades,
-Where sunlight weaves its golden braids.
-So hum, O river, soft and low,
-And carry dreams where wild things go.
-So roar, O sea, with might untamed,
-And call the stars by every name.
-The wanderer's verse, though he may fade,
-Remains where love and truth are made.
-Its cadence binds the heart to all,
-From mountain's peak to ocean's call.
-Let every soul who reads this rhyme,
-Find courage through the tides of time.
-Let every hand that types these lines,
-Feel sparks where mortal hope entwines.
-For poetry is more than art,
-It is the pulse of every heart.
-It dances free where wild things roam,
-And calls the weary spirit home.
-The wanderer's path, though long and far,
-Leads ever to the truths we are.
-EOT,
+                        The wanderer rests, his heart at peace,
+                        His soul released, his wanderings cease.
+                        Yet in his words, his spirit lives,
+                        A gift to all the world he gives.
+                        Each verse a spark, each line a flame,
+                        To light the dark and speak his name.
+                        For poetry, like breath, like fire,
+                        Endures beyond the heart's desire.
+                        So sing, O wind, through ancient glades,
+                        Where sunlight weaves its golden braids.
+                        So hum, O river, soft and low,
+                        And carry dreams where wild things go.
+                        So roar, O sea, with might untamed,
+                        And call the stars by every name.
+                        The wanderer's verse, though he may fade,
+                        Remains where love and truth are made.
+                        Its cadence binds the heart to all,
+                        From mountain's peak to ocean's call.
+                        Let every soul who reads this rhyme,
+                        Find courage through the tides of time.
+                        Let every hand that types these lines,
+                        Feel sparks where mortal hope entwines.
+                        For poetry is more than art,
+                        It is the pulse of every heart.
+                        It dances free where wild things roam,
+                        And calls the weary spirit home.
+                        The wanderer's path, though long and far,
+                        Leads ever to the truths we are.
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-In twilight's glow, where shadows weave their spell,
-A dragon mourns within its ancient dell.
-Scales of emerald, eyes like molten flame,
-It whispers sorrow, calling out a name.
-Once it soared above the mountains high,
-With wings that kissed the star-strewn velvet sky.
-But now, ensnared by mortal greed and lies,
-Its heart grows heavy as the storm cloud cries.
-The village sleeps, unaware of doom,
-While moonlight dances on the dragon's tomb.
-A hero comes, with sword and shield in hand,
-To slay the beast and claim the sacred land.
-Yet who is foe? The dragon's tale unfolds -
-A heart betrayed, a love that time still holds.
-Its fiery breath could burn the world to ash,
-But dreams of peace endure through every clash.
-Type these words, let fingers find their way,
-As dragon's tears reflect the breaking day.
-The saga lives in every key you press,
-a tale of loss, of hope, and tenderness.
-EOT,
+                        In twilight's glow, where shadows weave their spell,
+                        A dragon mourns within its ancient dell.
+                        Scales of emerald, eyes like molten flame,
+                        It whispers sorrow, calling out a name.
+                        Once it soared above the mountains high,
+                        With wings that kissed the star-strewn velvet sky.
+                        But now, ensnared by mortal greed and lies,
+                        Its heart grows heavy as the storm cloud cries.
+                        The village sleeps, unaware of doom,
+                        While moonlight dances on the dragon's tomb.
+                        A hero comes, with sword and shield in hand,
+                        To slay the beast and claim the sacred land.
+                        Yet who is foe? The dragon's tale unfolds -
+                        A heart betrayed, a love that time still holds.
+                        Its fiery breath could burn the world to ash,
+                        But dreams of peace endure through every clash.
+                        Type these words, let fingers find their way,
+                        As dragon's tears reflect the breaking day.
+                        The saga lives in every key you press,
+                        a tale of loss, of hope, and tenderness.
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-Beneath the stars, where northern winds do wail,
-The frostborn sail on seas of shattered shale.
-Their longships carve through waves with dragon's might,
-Their axes gleam beneath the aurora's light.
-Olaf, the bold, with raven hair and scars,
-Sings of Valhalla, guided by the stars.
-His shield is cracked, yet still he stands to fight,
-For glory calls beyond the endless night.
-The fjords echo with the clash of steel,
-As blood and honor bind the warrior's zeal.
-A skald recounts the tales of those who fall,
-Their names immortal in the mead hall's call.
-The ice is cruel, it claims both weak and strong,
-Yet courage fuels the saga's endless song.
-Type swiftly now, let fingers dance like flame,
-And carve your place within the Viking's name.
-Each stroke a vow, each word a battle won,
-Until the tale of frostborn is undone.
-EOT,
+                        Beneath the stars, where northern winds do wail,
+                        The frostborn sail on seas of shattered shale.
+                        Their longships carve through waves with dragon's might,
+                        Their axes gleam beneath the aurora's light.
+                        Olaf, the bold, with raven hair and scars,
+                        Sings of Valhalla, guided by the stars.
+                        His shield is cracked, yet still he stands to fight,
+                        For glory calls beyond the endless night.
+                        The fjords echo with the clash of steel,
+                        As blood and honor bind the warrior's zeal.
+                        A skald recounts the tales of those who fall,
+                        Their names immortal in the mead hall's call.
+                        The ice is cruel, it claims both weak and strong,
+                        Yet courage fuels the saga's endless song.
+                        Type swiftly now, let fingers dance like flame,
+                        And carve your place within the Viking's name.
+                        Each stroke a vow, each word a battle won,
+                        Until the tale of frostborn is undone.
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-Hoist the sails, me hearties, chase the breeze,
-Across the briny deep of seven seas!
-The Jolly Roger flaps in moonlit glow,
-As rum and gold in pirate hearts do flow.
-Captain Blackthorn, with a grin like sharpened steel,
-Commands the crew to plunder, fight, and steal.
-The cannon roars, the merchant ships do flee,
-But none escape the wolves upon the sea.
-A lass awaits on shores of coral sand,
-Her locket holds his name in trembling hand.
-Will he return, or sink in ocean's grasp?
-The shanty sings of love that storms outlast.
-Type these words, let rhythm guide your hand,
-As waves and wind obey the sea's command.
-Each key a splash, each line a sailor's cheer,
-The pirate's life is yours to steer, my dear.
-EOT,
+                        Hoist the sails, me hearties, chase the breeze,
+                        Across the briny deep of seven seas!
+                        The Jolly Roger flaps in moonlit glow,
+                        As rum and gold in pirate hearts do flow.
+                        Captain Blackthorn, with a grin like sharpened steel,
+                        Commands the crew to plunder, fight, and steal.
+                        The cannon roars, the merchant ships do flee,
+                        But none escape the wolves upon the sea.
+                        A lass awaits on shores of coral sand,
+                        Her locket holds his name in trembling hand.
+                        Will he return, or sink in ocean's grasp?
+                        The shanty sings of love that storms outlast.
+                        Type these words, let rhythm guide your hand,
+                        As waves and wind obey the sea's command.
+                        Each key a splash, each line a sailor's cheer,
+                        The pirate's life is yours to steer, my dear.
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-In deserts vast, where dunes like oceans rise,
-The nomad hears the sands' eternal cries.
-A spirit dwells within the golden haze,
-Its voice a song from long-forgotten days.
-The tribes recount a tale of love and loss -
-A prince who sought the stars at dreadful cost.
-His beloved, a djinn of flame and grace,
-Was bound by gods to never show her face.
-Through scorching days and nights of bitter cold,
-He wandered far, his heart both fierce and bold.
-The sands still whisper secrets of their bond,
-Their love a light that shines in worlds beyond.
-Type this tale, let fingers trace the lore,
-As desert winds through ancient canyons soar.
-Each word a step across the burning plain,
-Where love and legend rise to sing again.
-EOT,
+                        In deserts vast, where dunes like oceans rise,
+                        The nomad hears the sands' eternal cries.
+                        A spirit dwells within the golden haze,
+                        Its voice a song from long-forgotten days.
+                        The tribes recount a tale of love and loss -
+                        A prince who sought the stars at dreadful cost.
+                        His beloved, a djinn of flame and grace,
+                        Was bound by gods to never show her face.
+                        Through scorching days and nights of bitter cold,
+                        He wandered far, his heart both fierce and bold.
+                        The sands still whisper secrets of their bond,
+                        Their love a light that shines in worlds beyond.
+                        Type this tale, let fingers trace the lore,
+                        As desert winds through ancient canyons soar.
+                        Each word a step across the burning plain,
+                        Where love and legend rise to sing again.
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-Beneath the willow, where the soft winds sigh,
-Two lovers meet as twilight paints the sky.
-Her eyes like starlight, his like forest green,
-They weave a dream where only love is seen.
-The world may fade, its clamor turn to dust,
-But in their hearts, there's only tender trust.
-A whispered vow, a touch that sparks the soul,
-Their love a fire no winter can control.
-The river hums a song of gentle peace,
-As time itself seems bound to never cease.
-Type these lines, let passion guide your hand,
-As love's eternal flame will ever stand.
-Each key a pulse, each word a lover's sigh,
-Beneath the willow where their dreams don't die.
-EOT,
+                        Beneath the willow, where the soft winds sigh,
+                        Two lovers meet as twilight paints the sky.
+                        Her eyes like starlight, his like forest green,
+                        They weave a dream where only love is seen.
+                        The world may fade, its clamor turn to dust,
+                        But in their hearts, there's only tender trust.
+                        A whispered vow, a touch that sparks the soul,
+                        Their love a fire no winter can control.
+                        The river hums a song of gentle peace,
+                        As time itself seems bound to never cease.
+                        Type these lines, let passion guide your hand,
+                        As love's eternal flame will ever stand.
+                        Each key a pulse, each word a lover's sigh,
+                        Beneath the willow where their dreams don't die.
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-Oh, wanderer, behold the moon's soft glow,
-Where wildflowers in midnight breezes grow.
-The heart, unchained, seeks beauty's fleeting call,
-Through misty vales where ancient echoes fall.
-A poet dreams of love that knows no end,
-Of stormy seas where broken souls transcend.
-The canvas of the night, with stars adorned,
-Reflects the soul by passion's fire reborn.
-No cage can hold the spirit's boundless flight,
-It soars where day and darkness reunite.
-Type this verse, let feeling shape each word,
-As dreams of romantics are forever stirred.
-Each stroke a spark, each line a heart's desire,
-To chase the muse through fields of endless fire.
-EOT,
+                        Oh, wanderer, behold the moon's soft glow,
+                        Where wildflowers in midnight breezes grow.
+                        The heart, unchained, seeks beauty's fleeting call,
+                        Through misty vales where ancient echoes fall.
+                        A poet dreams of love that knows no end,
+                        Of stormy seas where broken souls transcend.
+                        The canvas of the night, with stars adorned,
+                        Reflects the soul by passion's fire reborn.
+                        No cage can hold the spirit's boundless flight,
+                        It soars where day and darkness reunite.
+                        Type this verse, let feeling shape each word,
+                        As dreams of romantics are forever stirred.
+                        Each stroke a spark, each line a heart's desire,
+                        To chase the muse through fields of endless fire.
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-My love for you is like the endless sea,
-Its depths uncharted, wild, and ever free.
-Through storms and calm, my heart will never stray,
-Your smile the dawn that chases night away.
-In fields of bloom or winters stark and bare,
-I'll find you still, my answer to each prayer.
-Your laughter sings, a melody divine,
-And in your arms, the stars themselves align.
-No time can dim the fire within our souls,
-For love like ours defies all mortal tolls.
-Type these words, let fingers weave the spell,
-Of love that only truest hearts can tell.
-Each key a bond, each line a vow to keep,
-A love so vast it makes the heavens weep.
-EOT,
+                        My love for you is like the endless sea,
+                        Its depths uncharted, wild, and ever free.
+                        Through storms and calm, my heart will never stray,
+                        Your smile the dawn that chases night away.
+                        In fields of bloom or winters stark and bare,
+                        I'll find you still, my answer to each prayer.
+                        Your laughter sings, a melody divine,
+                        And in your arms, the stars themselves align.
+                        No time can dim the fire within our souls,
+                        For love like ours defies all mortal tolls.
+                        Type these words, let fingers weave the spell,
+                        Of love that only truest hearts can tell.
+                        Each key a bond, each line a vow to keep,
+                        A love so vast it makes the heavens weep.
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-Beyond the stars, where galaxies unfold,
-A starfarer in silver ship is bold.
-Her eyes reflect the nebulae's soft gleam,
-Her heart a compass for the cosmic dream.
-Through voids of black, where time itself is lost,
-She charts the paths no mortal soul has crossed.
-The AI hums, its circuits pulse with light,
-A partner true in everlasting night.
-A planet waits, with oceans made of flame,
-Where she will carve her everlasting name.
-Type this tale, let fingers race through space,
-As starlight guides the hands of human grace.
-Each word a leap, each line a comet's trail,
-The starfarer's bold oath will never fail.
-EOT,
+                        Beyond the stars, where galaxies unfold,
+                        A starfarer in silver ship is bold.
+                        Her eyes reflect the nebulae's soft gleam,
+                        Her heart a compass for the cosmic dream.
+                        Through voids of black, where time itself is lost,
+                        She charts the paths no mortal soul has crossed.
+                        The AI hums, its circuits pulse with light,
+                        A partner true in everlasting night.
+                        A planet waits, with oceans made of flame,
+                        Where she will carve her everlasting name.
+                        Type this tale, let fingers race through space,
+                        As starlight guides the hands of human grace.
+                        Each word a leap, each line a comet's trail,
+                        The starfarer's bold oath will never fail.
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-In ancient lands where rivers carve the stone,
-A hero rides with courage all his own.
-His sword is swift, his heart is pure as flame,
-And bards will sing forever of his name.
-The beast of shadow, born of night's cruel hand,
-Has spread its terror over field and land.
-Yet he, Ivan, with steed of snowy white,
-Will face the dark and bring the dawn's first light.
-The people pray, their hopes in him abide,
-As fate and valor clash in epic stride.
-Type this song, let fingers chant the tale,
-Of heroes bold who never shall grow pale.
-Each key a clash, each word a victor's cry,
-The bylina lives where legends never die.
-EOT,
+                        In ancient lands where rivers carve the stone,
+                        A hero rides with courage all his own.
+                        His sword is swift, his heart is pure as flame,
+                        And bards will sing forever of his name.
+                        The beast of shadow, born of night's cruel hand,
+                        Has spread its terror over field and land.
+                        Yet he, Ivan, with steed of snowy white,
+                        Will face the dark and bring the dawn's first light.
+                        The people pray, their hopes in him abide,
+                        As fate and valor clash in epic stride.
+                        Type this song, let fingers chant the tale,
+                        Of heroes bold who never shall grow pale.
+                        Each key a clash, each word a victor's cry,
+                        The bylina lives where legends never die.
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-In emerald vale, where mists of magic swirl,
-A knight kneels low before a faerie girl.
-Her hair like moonlight, eyes of sapphire hue,
-She holds a heart that's steadfast, pure, and true.
-The forest sings of love that knows no fear,
-As pixies dance and starlight draws near.
-A curse may bind the land in chains of night,
-But love's bright flame will set the world aright.
-They vow to fight, to break the spell's cruel hold,
-Their bond a tale that never will grow old.
-Type this dream, let fingers weave the lore,
-Of love and magic on an endless shore.
-Each word a spark, each line a lover's call,
-In enchanted vale where none shall ever fall.
-EOT,
+                        In emerald vale, where mists of magic swirl,
+                        A knight kneels low before a faerie girl.
+                        Her hair like moonlight, eyes of sapphire hue,
+                        She holds a heart that's steadfast, pure, and true.
+                        The forest sings of love that knows no fear,
+                        As pixies dance and starlight draws near.
+                        A curse may bind the land in chains of night,
+                        But love's bright flame will set the world aright.
+                        They vow to fight, to break the spell's cruel hold,
+                        Their bond a tale that never will grow old.
+                        Type this dream, let fingers weave the lore,
+                        Of love and magic on an endless shore.
+                        Each word a spark, each line a lover's call,
+                        In enchanted vale where none shall ever fall.
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-Forge your fingers, swift and true,
-On keys that dance like morning dew!
-In halls where Viking sagas soar,
-A warrior's heart beats evermore.
-Runes aglow with starlit fire,
-Carve the fates of god's tools wield,
-Axes clash, the ravens cry,
-Beneath a sky where dragons fly.
-Type, oh scribe, with lightning speed,
-Your hands must flow, fulfill the need!
-From fjords of frost to cyberpunk spires,
-Where neon gleams and tech-inspired,
-The samurai's blade, a crescent moon,
-Sings of honor, cuts through gloom.
-Press the keys, let rhythm surge,
-Like ocean waves where pirates urge.
-Sails unfurl on seas of flame,
-Chanting songs of boundless fame.
-In ancient Rome, the gladiator's roar,
-Echoes Greece, where gods implore.
-Philosophy weaves through time's grand tale,
-Yoga's breath, the cosmic veil.
-Type with might, your fingers fleet,
-Each stroke a drum, a pulsing beat.
-The keyboard hums, a mystic art,
-Unleash the power within your heart.
-From feudal Japan, the cherry's bloom,
-To sci-fi stars that pierce the gloom,
-Your hands must glide, precise, unbound,
-Each key a step on sacred ground.
-The epic calls, the legend's might,
-Type through day, and type through night!
-Let fingers race where heroes dwell,
-In tales of frost, in tales of spell.
-The future hums with circuits bright,
-A fusioned world of endless light.
-No pause, no falter, strike the key,
-Become the scribe of destiny!
-With every tap, your skill ascends,
-Through mythic worlds where time transcends.
-The keyboard's pulse, your saga's start,
-A warrior's soul, a poet's heart.
-So type, and let your spirit soar,
-Through ancient past and futures' lore!
-Ho! Pound the keys with a viking's might,
-Where circuits hum in the northern light!
-A skald of code, with runes that gleam,
-Weaves sagas bold in a digital dream.
-The dragon's roar is a server's hum,
-Its scales of steel where wild sparks drum.
-Fingers dance on a keyboard's shore,
-To type the tales of forgotten lore.
-In fjords of data, where shadows creep,
-A samurai's blade guards secrets deep.
-With every stroke, let your spirit soar,
-Blind typing wakes the warrior's core!
-From Asgard's halls to a neon sprawl,
-The gods of old in the future call.
-Each letter sings of a hero's fight,
-Of mead and code in the endless night.
-No mouse to guide, no screen to see,
-Your hands alone set the story free.
-Type fast, type true, let errors fade,
-A saga lives in the keys you've played.
-Through katas of yoga, breathe and align,
-Each keystroke flows like a river divine.
-The ethernet hums with a pirate's tune,
-Of sails and stars 'neath a crimson moon.
-In Rome's great halls, where the muses sing,
-Your fingers carve what the fates shall bring.
-Odin's ravens and circuits entwine,
-A cosmic verse in each coded line.
-So strike the keys with a poet's fire,
-Let every tap lift your spirit higher!
-Blind typing hones both heart and hand,
-A craft to conquer in every land.
-Type on, brave soul, through the misty vale,
-Your saga awaits - let no key fail!
-EOT,
+                        Forge your fingers, swift and true,
+                        On keys that dance like morning dew!
+                        In halls where Viking sagas soar,
+                        A warrior's heart beats evermore.
+                        Runes aglow with starlit fire,
+                        Carve the fates of god's tools wield,
+                        Axes clash, the ravens cry,
+                        Beneath a sky where dragons fly.
+                        Type, oh scribe, with lightning speed,
+                        Your hands must flow, fulfill the need!
+                        From fjords of frost to cyberpunk spires,
+                        Where neon gleams and tech-inspired,
+                        The samurai's blade, a crescent moon,
+                        Sings of honor, cuts through gloom.
+                        Press the keys, let rhythm surge,
+                        Like ocean waves where pirates urge.
+                        Sails unfurl on seas of flame,
+                        Chanting songs of boundless fame.
+                        In ancient Rome, the gladiator's roar,
+                        Echoes Greece, where gods implore.
+                        Philosophy weaves through time's grand tale,
+                        Yoga's breath, the cosmic veil.
+                        Type with might, your fingers fleet,
+                        Each stroke a drum, a pulsing beat.
+                        The keyboard hums, a mystic art,
+                        Unleash the power within your heart.
+                        From feudal Japan, the cherry's bloom,
+                        To sci-fi stars that pierce the gloom,
+                        Your hands must glide, precise, unbound,
+                        Each key a step on sacred ground.
+                        The epic calls, the legend's might,
+                        Type through day, and type through night!
+                        Let fingers race where heroes dwell,
+                        In tales of frost, in tales of spell.
+                        The future hums with circuits bright,
+                        A fusioned world of endless light.
+                        No pause, no falter, strike the key,
+                        Become the scribe of destiny!
+                        With every tap, your skill ascends,
+                        Through mythic worlds where time transcends.
+                        The keyboard's pulse, your saga's start,
+                        A warrior's soul, a poet's heart.
+                        So type, and let your spirit soar,
+                        Through ancient past and futures' lore!
+                        Ho! Pound the keys with a viking's might,
+                        Where circuits hum in the northern light!
+                        A skald of code, with runes that gleam,
+                        Weaves sagas bold in a digital dream.
+                        The dragon's roar is a server's hum,
+                        Its scales of steel where wild sparks drum.
+                        Fingers dance on a keyboard's shore,
+                        To type the tales of forgotten lore.
+                        In fjords of data, where shadows creep,
+                        A samurai's blade guards secrets deep.
+                        With every stroke, let your spirit soar,
+                        Blind typing wakes the warrior's core!
+                        From Asgard's halls to a neon sprawl,
+                        The gods of old in the future call.
+                        Each letter sings of a hero's fight,
+                        Of mead and code in the endless night.
+                        No mouse to guide, no screen to see,
+                        Your hands alone set the story free.
+                        Type fast, type true, let errors fade,
+                        A saga lives in the keys you've played.
+                        Through katas of yoga, breathe and align,
+                        Each keystroke flows like a river divine.
+                        The ethernet hums with a pirate's tune,
+                        Of sails and stars 'neath a crimson moon.
+                        In Rome's great halls, where the muses sing,
+                        Your fingers carve what the fates shall bring.
+                        Odin's ravens and circuits entwine,
+                        A cosmic verse in each coded line.
+                        So strike the keys with a poet's fire,
+                        Let every tap lift your spirit higher!
+                        Blind typing hones both heart and hand,
+                        A craft to conquer in every land.
+                        Type on, brave soul, through the misty vale,
+                        Your saga awaits - let no key fail!
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-Click the keys, let fingers fly,
-Beneath a fractured, crimson sky!
-In cyberpunk's electric haze,
-Where neon gods and data blaze.
-A Viking's soul, in circuits clad,
-Wields a sword where dreams go mad.
-Type with fury, swift and sure,
-Each stroke a spark, a tale to lure.
-From samurai's unyielding code,
-To pirate ships on waves that rode.
-The ancient Greeks, with laurel crown,
-Philosophers whose thoughts renown.
-The keyboard sings, a cosmic drum,
-Through yoga's peace, the mind's hum.
-In Rome's great Colosseum's glare,
-Gladiators fight, the crowd's wild stare.
-Type faster now, the fates decree,
-Your hands the key to victory!
-In distant stars, where futures bloom,
-Sci-fi worlds defy the tomb.
-The epic pulse of bygone days,
-Werewolves howl, and magic sways.
-Your fingers dance, a rhythmic trance,
-Through ethnic tales of mystic dance.
-In Japan's old heart, the shogun's reign,
-Honor binds through joy and pain.
-The keys align, your focus sharp,
-Each tap a note on fate's grand harp.
-From frostbit fjords to deserts vast,
-Type the tales of ages past.
-The keyboard's might, your sacred quest,
-To conquer all, to be the best.
-In futurism's boundless scope,
-Where AI dreams and humans hope.
-No lag, no doubt, your hands take flight,
-Through endless code and starlit night.
-The saga calls, the heroes rise,
-Reflected in your burning eyes.
-Type through realms where dragons roam,
-From ancient myths to chrome-domed home.
-The rhythm builds, your spirit free,
-A typing god, eternity!
-Slice through the keys like a samurai's blade,
-In neon-lit streets where no dreams fade.
-The shogun of code, with a binary heart,
-Crafts haikus of light in the digital art.
-Type swift, type blind, let your fingers fly,
-Each stroke a star in the midnight sky.
-From Kyoto's past to a future's gleam,
-The ronin's path is a poet's dream.
-The sakura falls, yet the data streams,
-A warrior's soul fuels electric dreams.
-No sight, no pause, just the rhythm's call,
-Your hands will rise where the weak shall fall.
-In Viking longships, the oarsmen sing,
-Of Thor's great hammer and freedom's ring.
-Yet here in the sprawl, where the circuits hum,
-A pirate's chant joins the battle's drum.
-Type fierce, type free, let the errors burn,
-Each key a step on the path you earn.
-The muses of Greece, with their lyres of gold,
-Whisper of heroes in stories untold.
-Through yoga's calm, find the warrior's peace,
-Let every keystroke bring sweet release.
-In Rome's vast forums, where fates align,
-Your typing weaves threads of the divine.
-The koi still swims in the ethernet's flow,
-Its scales reflect what the ancients know.
-So strike the keys with a ronin's grace,
-Each tap a mark in the endless race.
-Blind typing forges a spirit strong,
-A samurai's heart where the keys belong!
-EOT,
+                        Click the keys, let fingers fly,
+                        Beneath a fractured, crimson sky!
+                        In cyberpunk's electric haze,
+                        Where neon gods and data blaze.
+                        A Viking's soul, in circuits clad,
+                        Wields a sword where dreams go mad.
+                        Type with fury, swift and sure,
+                        Each stroke a spark, a tale to lure.
+                        From samurai's unyielding code,
+                        To pirate ships on waves that rode.
+                        The ancient Greeks, with laurel crown,
+                        Philosophers whose thoughts renown.
+                        The keyboard sings, a cosmic drum,
+                        Through yoga's peace, the mind's hum.
+                        In Rome's great Colosseum's glare,
+                        Gladiators fight, the crowd's wild stare.
+                        Type faster now, the fates decree,
+                        Your hands the key to victory!
+                        In distant stars, where futures bloom,
+                        Sci-fi worlds defy the tomb.
+                        The epic pulse of bygone days,
+                        Werewolves howl, and magic sways.
+                        Your fingers dance, a rhythmic trance,
+                        Through ethnic tales of mystic dance.
+                        In Japan's old heart, the shogun's reign,
+                        Honor binds through joy and pain.
+                        The keys align, your focus sharp,
+                        Each tap a note on fate's grand harp.
+                        From frostbit fjords to deserts vast,
+                        Type the tales of ages past.
+                        The keyboard's might, your sacred quest,
+                        To conquer all, to be the best.
+                        In futurism's boundless scope,
+                        Where AI dreams and humans hope.
+                        No lag, no doubt, your hands take flight,
+                        Through endless code and starlit night.
+                        The saga calls, the heroes rise,
+                        Reflected in your burning eyes.
+                        Type through realms where dragons roam,
+                        From ancient myths to chrome-domed home.
+                        The rhythm builds, your spirit free,
+                        A typing god, eternity!
+                        Slice through the keys like a samurai's blade,
+                        In neon-lit streets where no dreams fade.
+                        The shogun of code, with a binary heart,
+                        Crafts haikus of light in the digital art.
+                        Type swift, type blind, let your fingers fly,
+                        Each stroke a star in the midnight sky.
+                        From Kyoto's past to a future's gleam,
+                        The ronin's path is a poet's dream.
+                        The sakura falls, yet the data streams,
+                        A warrior's soul fuels electric dreams.
+                        No sight, no pause, just the rhythm's call,
+                        Your hands will rise where the weak shall fall.
+                        In Viking longships, the oarsmen sing,
+                        Of Thor's great hammer and freedom's ring.
+                        Yet here in the sprawl, where the circuits hum,
+                        A pirate's chant joins the battle's drum.
+                        Type fierce, type free, let the errors burn,
+                        Each key a step on the path you earn.
+                        The muses of Greece, with their lyres of gold,
+                        Whisper of heroes in stories untold.
+                        Through yoga's calm, find the warrior's peace,
+                        Let every keystroke bring sweet release.
+                        In Rome's vast forums, where fates align,
+                        Your typing weaves threads of the divine.
+                        The koi still swims in the ethernet's flow,
+                        Its scales reflect what the ancients know.
+                        So strike the keys with a ronin's grace,
+                        Each tap a mark in the endless race.
+                        Blind typing forges a spirit strong,
+                        A samurai's heart where the keys belong!
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-Hoist the sails, let fingers race,
-Type through storms, with reckless grace!
-A pirate's song, the ocean's roar,
-Keys like waves that kiss the shore.
-From Viking meads to samurai's zen,
-Honor forged by steel and pen.
-The keyboard clacks, a battle cry,
-Through cyber skies where drones fly high.
-In ancient Rome, the Senate's schemes,
-While Greece births gods in poet's dreams.
-Type with might, your spirit bold,
-Each key a tale of heroes old.
-The yoga flame, the mind's clear light,
-Guides your hands through endless night.
-In sci-fi voids, where stars collide,
-Your typing skill becomes your guide.
-The epic pulse of bygone lore,
-Where giants clash and eagles soar.
-From neon streets to desert sands,
-Ethnic myths enchant the lands.
-Japan's old soul, the warrior's way,
-Lives in each key you strike today.
-Philosophy, the seeker's art,
-Burns like fire within your heart.
-Type faster now, the serpent's hiss,
-Demands your speed, no key to miss.
-The keyboard hums, a sacred spell,
-Through tales of heaven, tales of hell.
-In futurism's gleaming spire,
-Your hands ignite with boundless fire.
-No pause, no fear, your fingers sing,
-A pirate's oath, a dragon's wing.
-The rhythm drives, the saga's near,
-Each stroke a step through doubt and fear.
-Type through realms of frost and flame,
-Your skill will carve your destined name!
-Yo-ho! The keys are a pirate's delight,
-Sail through the code in the starry night!
-The quantum seas, where the data flows,
-Hold treasures vast that no mortal knows.
-Type blind, me hearties, with fingers fleet,
-Each stroke a wave where the horizons meet.
-From Viking sagas to samurai steel,
-The ocean's song makes the cosmos reel.
-In ancient Rome, where the legions stride,
-The poet's quill joins the warrior's pride.
-Through neon grids of a cyberpunk's lair,
-The raven's cry cuts the electric air.
-Type swift, type true, let the errors drown,
-Each key a jewel in your typing crown.
-The yoga sutras, with breath and grace,
-Guide fingers swift through the endless space.
-In feudal Japan, where the koi still glide,
-The shogun's will meets the ocean's tide.
-No screen to steer, no map to see,
-Blind typing charts your destiny.
-The muses sing of a Grecian dawn,
-Where heroes rise and the fates are drawn.
-So pound the keys with a pirate's fire,
-Each tap a spark in the heart's desire!
-From Ethernet's depths to Valhalla's gate,
-Your typing carves out a poet's fate.
-Sail on, brave soul, through the quantum foam,
-The keys will guide your spirit home!
-EOT,
+                        Hoist the sails, let fingers race,
+                        Type through storms, with reckless grace!
+                        A pirate's song, the ocean's roar,
+                        Keys like waves that kiss the shore.
+                        From Viking meads to samurai's zen,
+                        Honor forged by steel and pen.
+                        The keyboard clacks, a battle cry,
+                        Through cyber skies where drones fly high.
+                        In ancient Rome, the Senate's schemes,
+                        While Greece births gods in poet's dreams.
+                        Type with might, your spirit bold,
+                        Each key a tale of heroes old.
+                        The yoga flame, the mind's clear light,
+                        Guides your hands through endless night.
+                        In sci-fi voids, where stars collide,
+                        Your typing skill becomes your guide.
+                        The epic pulse of bygone lore,
+                        Where giants clash and eagles soar.
+                        From neon streets to desert sands,
+                        Ethnic myths enchant the lands.
+                        Japan's old soul, the warrior's way,
+                        Lives in each key you strike today.
+                        Philosophy, the seeker's art,
+                        Burns like fire within your heart.
+                        Type faster now, the serpent's hiss,
+                        Demands your speed, no key to miss.
+                        The keyboard hums, a sacred spell,
+                        Through tales of heaven, tales of hell.
+                        In futurism's gleaming spire,
+                        Your hands ignite with boundless fire.
+                        No pause, no fear, your fingers sing,
+                        A pirate's oath, a dragon's wing.
+                        The rhythm drives, the saga's near,
+                        Each stroke a step through doubt and fear.
+                        Type through realms of frost and flame,
+                        Your skill will carve your destined name!
+                        Yo-ho! The keys are a pirate's delight,
+                        Sail through the code in the starry night!
+                        The quantum seas, where the data flows,
+                        Hold treasures vast that no mortal knows.
+                        Type blind, me hearties, with fingers fleet,
+                        Each stroke a wave where the horizons meet.
+                        From Viking sagas to samurai steel,
+                        The ocean's song makes the cosmos reel.
+                        In ancient Rome, where the legions stride,
+                        The poet's quill joins the warrior's pride.
+                        Through neon grids of a cyberpunk's lair,
+                        The raven's cry cuts the electric air.
+                        Type swift, type true, let the errors drown,
+                        Each key a jewel in your typing crown.
+                        The yoga sutras, with breath and grace,
+                        Guide fingers swift through the endless space.
+                        In feudal Japan, where the koi still glide,
+                        The shogun's will meets the ocean's tide.
+                        No screen to steer, no map to see,
+                        Blind typing charts your destiny.
+                        The muses sing of a Grecian dawn,
+                        Where heroes rise and the fates are drawn.
+                        So pound the keys with a pirate's fire,
+                        Each tap a spark in the heart's desire!
+                        From Ethernet's depths to Valhalla's gate,
+                        Your typing carves out a poet's fate.
+                        Sail on, brave soul, through the quantum foam,
+                        The keys will guide your spirit home!
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-Slash the keys, with samurai's grace,
-Each stroke a blade in time and space!
-From feudal Japan, the cherry falls,
-To Viking halls where Odin calls.
-Type with honor, swift and pure,
-Your hands the cure, the saga's lure.
-In cyberpunk's chaotic stream,
-Neon gods haunt every dream.
-The pirate's chant, the ocean's might,
-Drives your fingers through the night.
-Ancient Rome, with marble gleam,
-Echoes Greece, where muses dream.
-The keyboard's pulse, a warrior's heart,
-Each key a piece of sacred art.
-Through yoga's calm, the spirit flows,
-Guiding hands where wisdom grows.
-In sci-fi stars, where futures blend,
-Your typing skill will never end.
-The epic clash of gods and men,
-Resounds in every stroke of pen.
-From ethnic tales of desert's breath,
-To frost-kissed sagas defying death.
-Philosophy, the mind's great quest,
-Burns in your soul, in every test.
-Type through realms where dragons fly,
-Beneath a fractured, cosmic sky.
-The keyboard sings, a rhythmic trance,
-Your fingers lead the hero's dance.
-In futurism's boundless gleam,
-Your hands ignite the typer's dream.
-No falter now, the fates align,
-Each key a spark of the divine.
-The saga calls, the legend's near,
-Type through doubt, through pain, through fear!
-O muse! Inspire these fingers to soar,
-On keys that hum with forgotten lore.
-In Greece's old halls, where the gods debate,
-Blind typing weaves a poet's fate.
-Each stroke a thread in the cosmic loom,
-Each error banished to digital doom.
-From Viking seas to a samurai's vow,
-The oracle's voice speaks here and now.
-Type fierce, type blind, let the muses sing,
-Each key a note in the fates they bring.
-In neon sprawls, where the circuits scream,
-A cyberpunk crafts a poet's dream.
-The yoga's breath, with its ancient calm,
-Guides every tap like a healing psalm.
-In Rome's great Senate, where Cicero spoke,
-Your fingers dance where the fates awoke.
-The pirate's chant and the raven's cry,
-Merge in the code where the stars comply.
-Type swift, type true, through the endless night,
-Each letter burns with a poet's light.
-From Kyoto's zen to a futurist's gaze,
-The keys ignite in a cosmic blaze.
-No screen to guide, just the rhythm's flow,
-Blind typing sparks where the brave ones go.
-So strike the keys with an oracle's might,
-Each tap a vision of endless light!
-EOT,
+                        Slash the keys, with samurai's grace,
+                        Each stroke a blade in time and space!
+                        From feudal Japan, the cherry falls,
+                        To Viking halls where Odin calls.
+                        Type with honor, swift and pure,
+                        Your hands the cure, the saga's lure.
+                        In cyberpunk's chaotic stream,
+                        Neon gods haunt every dream.
+                        The pirate's chant, the ocean's might,
+                        Drives your fingers through the night.
+                        Ancient Rome, with marble gleam,
+                        Echoes Greece, where muses dream.
+                        The keyboard's pulse, a warrior's heart,
+                        Each key a piece of sacred art.
+                        Through yoga's calm, the spirit flows,
+                        Guiding hands where wisdom grows.
+                        In sci-fi stars, where futures blend,
+                        Your typing skill will never end.
+                        The epic clash of gods and men,
+                        Resounds in every stroke of pen.
+                        From ethnic tales of desert's breath,
+                        To frost-kissed sagas defying death.
+                        Philosophy, the mind's great quest,
+                        Burns in your soul, in every test.
+                        Type through realms where dragons fly,
+                        Beneath a fractured, cosmic sky.
+                        The keyboard sings, a rhythmic trance,
+                        Your fingers lead the hero's dance.
+                        In futurism's boundless gleam,
+                        Your hands ignite the typer's dream.
+                        No falter now, the fates align,
+                        Each key a spark of the divine.
+                        The saga calls, the legend's near,
+                        Type through doubt, through pain, through fear!
+                        O muse! Inspire these fingers to soar,
+                        On keys that hum with forgotten lore.
+                        In Greece's old halls, where the gods debate,
+                        Blind typing weaves a poet's fate.
+                        Each stroke a thread in the cosmic loom,
+                        Each error banished to digital doom.
+                        From Viking seas to a samurai's vow,
+                        The oracle's voice speaks here and now.
+                        Type fierce, type blind, let the muses sing,
+                        Each key a note in the fates they bring.
+                        In neon sprawls, where the circuits scream,
+                        A cyberpunk crafts a poet's dream.
+                        The yoga's breath, with its ancient calm,
+                        Guides every tap like a healing psalm.
+                        In Rome's great Senate, where Cicero spoke,
+                        Your fingers dance where the fates awoke.
+                        The pirate's chant and the raven's cry,
+                        Merge in the code where the stars comply.
+                        Type swift, type true, through the endless night,
+                        Each letter burns with a poet's light.
+                        From Kyoto's zen to a futurist's gaze,
+                        The keys ignite in a cosmic blaze.
+                        No screen to guide, just the rhythm's flow,
+                        Blind typing sparks where the brave ones go.
+                        So strike the keys with an oracle's might,
+                        Each tap a vision of endless light!
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-See the keys, the oracle's sight,
-Type through shadows, claim the light!
-From Viking frost to samurai's creed,
-Your hands must fly with lightning speed.
-In cyberpunk's electric maze,
-Neon gods and data's blaze.
-The pirate's song, the sea's wild call,
-Drives your fingers, one and all.
-Ancient Rome, with laurel's crown,
-Echoes Greece, where wisdom's found.
-The keyboard hums, a mystic art,
-Each stroke a flame within your heart.
-Through yoga's peace, the spirit soars,
-Guiding hands to distant shores.
-In sci-fi voids, where stars ignite,
-Your typing skill becomes your light.
-The epic pulse of ancient days,
-Where heroes clash and magic sways.
-From ethnic lore of jungle's breath,
-To sagas born in frost and death.
-Japan's old heart, the shogun's reign,
-Lives in each key you strike again.
-Philosophy, the seeker's flame,
-Burns in your soul, in every game.
-Type through realms of frost and fire,
-Your hands ascend, your skill entire.
-The keyboard sings, a cosmic drum,
-Through tales of what is yet to come.
-In futurism's gleaming spire,
-Your fingers spark with endless fire.
-No pause, no doubt, your hands take flight,
-Through prophecy and starlit night!
-Hark! The keys are a samurai's blade,
-Cutting through stars where no dreams fade.
-In feudal Japan, where the cherry blooms,
-The warrior's heart defies all dooms.
-Type blind, type swift, let your spirit rise,
-Each stroke a spark in the cosmic skies.
-From Viking longships to neon's glare,
-The saga's pulse thrums everywhere.
-In Rome's vast Colosseum, gladiators roar,
-Yet typing carves what the gods adore.
-The pirate's song, with its salty sting,
-Joins yoga's chant where the ancients sing.
-Type fierce, type true, let the errors fall,
-Each key a step in the warrior's call.
-In cyberpunk streets, where the data streams,
-A ronin's will fuels electric dreams.
-The muses of Greece, with their golden lyre,
-Ignite the keys with a poet's fire.
-No sight, no pause, just the rhythm's grace,
-Blind typing wins in the endless race.
-So strike the keys with a samurai's zen,
-Each tap a vow to begin again!
-EOT,
+                        See the keys, the oracle's sight,
+                        Type through shadows, claim the light!
+                        From Viking frost to samurai's creed,
+                        Your hands must fly with lightning speed.
+                        In cyberpunk's electric maze,
+                        Neon gods and data's blaze.
+                        The pirate's song, the sea's wild call,
+                        Drives your fingers, one and all.
+                        Ancient Rome, with laurel's crown,
+                        Echoes Greece, where wisdom's found.
+                        The keyboard hums, a mystic art,
+                        Each stroke a flame within your heart.
+                        Through yoga's peace, the spirit soars,
+                        Guiding hands to distant shores.
+                        In sci-fi voids, where stars ignite,
+                        Your typing skill becomes your light.
+                        The epic pulse of ancient days,
+                        Where heroes clash and magic sways.
+                        From ethnic lore of jungle's breath,
+                        To sagas born in frost and death.
+                        Japan's old heart, the shogun's reign,
+                        Lives in each key you strike again.
+                        Philosophy, the seeker's flame,
+                        Burns in your soul, in every game.
+                        Type through realms of frost and fire,
+                        Your hands ascend, your skill entire.
+                        The keyboard sings, a cosmic drum,
+                        Through tales of what is yet to come.
+                        In futurism's gleaming spire,
+                        Your fingers spark with endless fire.
+                        No pause, no doubt, your hands take flight,
+                        Through prophecy and starlit night!
+                        Hark! The keys are a samurai's blade,
+                        Cutting through stars where no dreams fade.
+                        In feudal Japan, where the cherry blooms,
+                        The warrior's heart defies all dooms.
+                        Type blind, type swift, let your spirit rise,
+                        Each stroke a spark in the cosmic skies.
+                        From Viking longships to neon's glare,
+                        The saga's pulse thrums everywhere.
+                        In Rome's vast Colosseum, gladiators roar,
+                        Yet typing carves what the gods adore.
+                        The pirate's song, with its salty sting,
+                        Joins yoga's chant where the ancients sing.
+                        Type fierce, type true, let the errors fall,
+                        Each key a step in the warrior's call.
+                        In cyberpunk streets, where the data streams,
+                        A ronin's will fuels electric dreams.
+                        The muses of Greece, with their golden lyre,
+                        Ignite the keys with a poet's fire.
+                        No sight, no pause, just the rhythm's grace,
+                        Blind typing wins in the endless race.
+                        So strike the keys with a samurai's zen,
+                        Each tap a vow to begin again!
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-Strike the keys, with gladiator's might,
-In Colosseum's blazing light!
-From Viking seas to samurai's blade,
-Your typing skill will never fade.
-In cyberpunk's chaotic stream,
-Neon gods haunt every dream.
-The pirate's chant, the ocean's roar,
-Drives your fingers evermore.
-Ancient Greece, with muses' grace,
-Echoes Rome, the warrior's place.
-The keyboard clacks, a battle cry,
-Each key a spark beneath the sky.
-Through yoga's calm, the spirit flows,
-Guiding hands where wisdom grows.
-In sci-fi stars, where futures blend,
-Your typing skill will never end.
-The epic clash of gods and men,
-Resounds in every stroke of pen.
-From ethnic tales of desert's breath,
-To frost-kissed sagas defying death.
-Japan's old soul, the warrior's way,
-Lives in each key you strike today.
-Philosophy, the mind's great quest,
-Burns in your soul, in every test.
-Type through realms where dragons fly,
-Beneath a fractured, cosmic sky.
-The keyboard sings, a rhythmic trance,
-Your fingers lead the hero's dance.
-In futurism's boundless gleam,
-Your hands ignite the typer's dream.
-No falter now, the fates align,
-Each key a spark of the divine!
-Ho! The keys are runes in a viking's hand,
-Carving bold tales in a stormy land.
-Through fjords of code, where the data roars,
-Blind typing sails to uncharted shores.
-Type swift, type blind, let your fingers sing,
-Each stroke a spark where the thunder clings.
-From samurai blades to a pirate's cheer,
-The saga's heart beats loud and clear.
-In neon-lit sprawls, where the shadows creep,
-A cyberpunk's dream guards secrets deep.
-The yoga's breath, with its ancient flow,
-Guides every tap where the brave ones go.
-In Rome's great forums, where fates align,
-Your fingers weave threads of the divine.
-Type fierce, type true, let the errors fade,
-Each key a mark in the runes you've made.
-The muses of Greece, with their songs of old,
-Whisper of heroes in stories untold.
-So pound the keys with a viking's might,
-Each tap a blaze in the endless night!
-EOT,
+                        Strike the keys, with gladiator's might,
+                        In Colosseum's blazing light!
+                        From Viking seas to samurai's blade,
+                        Your typing skill will never fade.
+                        In cyberpunk's chaotic stream,
+                        Neon gods haunt every dream.
+                        The pirate's chant, the ocean's roar,
+                        Drives your fingers evermore.
+                        Ancient Greece, with muses' grace,
+                        Echoes Rome, the warrior's place.
+                        The keyboard clacks, a battle cry,
+                        Each key a spark beneath the sky.
+                        Through yoga's calm, the spirit flows,
+                        Guiding hands where wisdom grows.
+                        In sci-fi stars, where futures blend,
+                        Your typing skill will never end.
+                        The epic clash of gods and men,
+                        Resounds in every stroke of pen.
+                        From ethnic tales of desert's breath,
+                        To frost-kissed sagas defying death.
+                        Japan's old soul, the warrior's way,
+                        Lives in each key you strike today.
+                        Philosophy, the mind's great quest,
+                        Burns in your soul, in every test.
+                        Type through realms where dragons fly,
+                        Beneath a fractured, cosmic sky.
+                        The keyboard sings, a rhythmic trance,
+                        Your fingers lead the hero's dance.
+                        In futurism's boundless gleam,
+                        Your hands ignite the typer's dream.
+                        No falter now, the fates align,
+                        Each key a spark of the divine!
+                        Ho! The keys are runes in a viking's hand,
+                        Carving bold tales in a stormy land.
+                        Through fjords of code, where the data roars,
+                        Blind typing sails to uncharted shores.
+                        Type swift, type blind, let your fingers sing,
+                        Each stroke a spark where the thunder clings.
+                        From samurai blades to a pirate's cheer,
+                        The saga's heart beats loud and clear.
+                        In neon-lit sprawls, where the shadows creep,
+                        A cyberpunk's dream guards secrets deep.
+                        The yoga's breath, with its ancient flow,
+                        Guides every tap where the brave ones go.
+                        In Rome's great forums, where fates align,
+                        Your fingers weave threads of the divine.
+                        Type fierce, type true, let the errors fade,
+                        Each key a mark in the runes you've made.
+                        The muses of Greece, with their songs of old,
+                        Whisper of heroes in stories untold.
+                        So pound the keys with a viking's might,
+                        Each tap a blaze in the endless night!
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-Breathe and type, with yogic flame,
-Each key a spark to stake your claim!
-From Viking frost to samurai's zen,
-Your hands must race, again, again.
-In cyberpunk's electric haze,
-Neon gods and data's maze.
-The pirate's song, the sea's wild call,
-Drives your fingers, one and all.
-Ancient Rome, with marble's sheen,
-Echoes Greece, where muses dream.
-The keyboard hums, a cosmic art,
-Each stroke a flame within your heart.
-In sci-fi voids, where stars collide,
-Your typing skill becomes your guide.
-The epic pulse of bygone lore,
-Where giants clash and eagles soar.
-From ethnic myths of jungle's breath,
-To sagas born in frost and death.
-Japan's old heart, the shogun's reign,
-Lives in each key you strike again.
-Philosophy, the seeker's flame,
-Burns in your soul, in every game.
-Type through realms of frost and fire,
-Your hands ascend, your skill entire.
-The keyboard sings, a rhythmic trance,
-Your fingers lead the cosmic dance.
-In futurism's gleaming spire,
-Your fingers spark with endless fire.
-No pause, no doubt, your hands take flight,
-Through yogic peace and starlit night!
-O koi! You glide through the data's stream,
-A poet's heart in a futurist's dream.
-Type blind, type swift, let your fingers flow,
-Each stroke a ripple where wisdom grows.
-From Viking sagas to samurai's grace,
-The keys ignite in a cosmic chase.
-In Rome's vast temples, where gods decree,
-Blind typing carves your destiny.
-The pirate's chant, with its salty fire,
-Joins yoga's calm in the heart's desire.
-Type fierce, type true, through the neon's glow,
-Each key a step where the brave ones go.
-In cyberpunk streets, where the circuits hum,
-A ronin's blade meets the battle's drum.
-The muses sing of a Grecian dawn,
-Where heroes rise and the fates are drawn.
-So strike the keys with a poet's zen,
-Each tap a vow to begin again!
-EOT,
+                        Breathe and type, with yogic flame,
+                        Each key a spark to stake your claim!
+                        From Viking frost to samurai's zen,
+                        Your hands must race, again, again.
+                        In cyberpunk's electric haze,
+                        Neon gods and data's maze.
+                        The pirate's song, the sea's wild call,
+                        Drives your fingers, one and all.
+                        Ancient Rome, with marble's sheen,
+                        Echoes Greece, where muses dream.
+                        The keyboard hums, a cosmic art,
+                        Each stroke a flame within your heart.
+                        In sci-fi voids, where stars collide,
+                        Your typing skill becomes your guide.
+                        The epic pulse of bygone lore,
+                        Where giants clash and eagles soar.
+                        From ethnic myths of jungle's breath,
+                        To sagas born in frost and death.
+                        Japan's old heart, the shogun's reign,
+                        Lives in each key you strike again.
+                        Philosophy, the seeker's flame,
+                        Burns in your soul, in every game.
+                        Type through realms of frost and fire,
+                        Your hands ascend, your skill entire.
+                        The keyboard sings, a rhythmic trance,
+                        Your fingers lead the cosmic dance.
+                        In futurism's gleaming spire,
+                        Your fingers spark with endless fire.
+                        No pause, no doubt, your hands take flight,
+                        Through yogic peace and starlit night!
+                        O koi! You glide through the data's stream,
+                        A poet's heart in a futurist's dream.
+                        Type blind, type swift, let your fingers flow,
+                        Each stroke a ripple where wisdom grows.
+                        From Viking sagas to samurai's grace,
+                        The keys ignite in a cosmic chase.
+                        In Rome's vast temples, where gods decree,
+                        Blind typing carves your destiny.
+                        The pirate's chant, with its salty fire,
+                        Joins yoga's calm in the heart's desire.
+                        Type fierce, type true, through the neon's glow,
+                        Each key a step where the brave ones go.
+                        In cyberpunk streets, where the circuits hum,
+                        A ronin's blade meets the battle's drum.
+                        The muses sing of a Grecian dawn,
+                        Where heroes rise and the fates are drawn.
+                        So strike the keys with a poet's zen,
+                        Each tap a vow to begin again!
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-Forge the keys, with Viking might,
-In cyberpunk's eternal night!
-From samurai's unyielding code,
-To pirate ships on waves that rode.
-Type with fury, swift and sure,
-Each stroke a spark, a tale to lure.
-Ancient Greece, with laurel crown,
-Echoes Rome, where glory's found.
-The keyboard clacks, a battle drum,
-Through yoga's peace, the mind's hum.
-In sci-fi stars, where futures bloom,
-Your typing skill defies the tomb.
-The epic pulse of bygone days,
-Werewolves howl, and magic sways.
-From ethnic tales of desert's breath,
-To frost-kissed sagas defying death.
-Japan's old soul, the warrior's way,
-Lives in each key you strike today.
-Philosophy, the seeker's art,
-Burns like fire within your heart.
-Type through realms where dragons roam,
-Beneath a sky of chrome and loam.
-The keyboard hums, a sacred spell,
-Through tales of heaven, tales of hell.
-In futurism's boundless scope,
-Your hands ignite with boundless hope.
-No lag, no doubt, your fingers sing,
-A cyber-Viking's reckoning!
-Hail! The keys are a gladiator's sword,
-Striking bold chords where the fates accord.
-In Rome's great Colosseum, where heroes bleed,
-Blind typing fuels the poet's creed.
-Type swift, type blind, let your spirit soar,
-Each stroke a spark on the battle's shore.
-From Viking seas to a samurai's vow,
-The saga's pulse thrums here and now.
-In neon-lit sprawls, where the data streams,
-A cyberpunk crafts a poet's dreams.
-The yoga's breath, with its ancient calm,
-Guides every tap like a healing psalm.
-Type fierce, type true, let the errors fall,
-Each key a step in the warrior's call.
-The muses of Greece, with their golden lyre,
-Ignite the keys with a poet's fire.
-So strike the keys with a gladiator's might,
-Each tap a blaze in the endless night!
-EOT,
+                        Forge the keys, with Viking might,
+                        In cyberpunk's eternal night!
+                        From samurai's unyielding code,
+                        To pirate ships on waves that rode.
+                        Type with fury, swift and sure,
+                        Each stroke a spark, a tale to lure.
+                        Ancient Greece, with laurel crown,
+                        Echoes Rome, where glory's found.
+                        The keyboard clacks, a battle drum,
+                        Through yoga's peace, the mind's hum.
+                        In sci-fi stars, where futures bloom,
+                        Your typing skill defies the tomb.
+                        The epic pulse of bygone days,
+                        Werewolves howl, and magic sways.
+                        From ethnic tales of desert's breath,
+                        To frost-kissed sagas defying death.
+                        Japan's old soul, the warrior's way,
+                        Lives in each key you strike today.
+                        Philosophy, the seeker's art,
+                        Burns like fire within your heart.
+                        Type through realms where dragons roam,
+                        Beneath a sky of chrome and loam.
+                        The keyboard hums, a sacred spell,
+                        Through tales of heaven, tales of hell.
+                        In futurism's boundless scope,
+                        Your hands ignite with boundless hope.
+                        No lag, no doubt, your fingers sing,
+                        A cyber-Viking's reckoning!
+                        Hail! The keys are a gladiator's sword,
+                        Striking bold chords where the fates accord.
+                        In Rome's great Colosseum, where heroes bleed,
+                        Blind typing fuels the poet's creed.
+                        Type swift, type blind, let your spirit soar,
+                        Each stroke a spark on the battle's shore.
+                        From Viking seas to a samurai's vow,
+                        The saga's pulse thrums here and now.
+                        In neon-lit sprawls, where the data streams,
+                        A cyberpunk crafts a poet's dreams.
+                        The yoga's breath, with its ancient calm,
+                        Guides every tap like a healing psalm.
+                        Type fierce, type true, let the errors fall,
+                        Each key a step in the warrior's call.
+                        The muses of Greece, with their golden lyre,
+                        Ignite the keys with a poet's fire.
+                        So strike the keys with a gladiator's might,
+                        Each tap a blaze in the endless night!
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-Seek the keys, with thinker's gaze,
-Type through time's eternal maze!
-From Viking seas to samurai's creed,
-Your hands must fly with lightning speed.
-In cyberpunk's chaotic stream,
-Neon gods haunt every dream.
-The pirate's chant, the ocean's might,
-Drives your fingers through the night.
-Ancient Rome, with marble gleam,
-Echoes Greece, where muses dream.
-The keyboard's pulse, a warrior's heart,
-Each key a piece of sacred art.
-Through yoga's calm, the spirit flows,
-Guiding hands where wisdom grows.
-In sci-fi stars, where futures blend,
-Your typing skill will never end.
-The epic clash of gods and men,
-Resounds in every stroke of pen.
-From ethnic tales of desert's breath,
-To frost-kissed sagas defying death.
-Japan's old soul, the warrior's way,
-Lives in each key you strike today.
-Philosophy, the mind's great quest,
-Burns in your soul, in every test.
-Type through realms where dragons fly,
-Beneath a fractured, cosmic sky.
-The keyboard sings, a rhythmic trance,
-Your fingers lead the hero's dance.
-In futurism's boundless gleam,
-Your hands ignite the typer's dream.
-No falter now, the fates align,
-Each key a spark of the divine!
-O muse! Your voice is a cosmic stream,
-Guiding my hands through a poet's dream.
-Type blind, type swift, let the keys take flight,
-Each stroke a star in the endless night.
-From Viking runes to a samurai's blade,
-The saga's heart will never fade.
-In Rome's vast forums, where fates align,
-Your fingers weave threads of the divine.
-The pirate's song, with its salty sting,
-Joins yoga's chant where the ancients sing.
-Type fierce, type true, through the neon's glow,
-Each key a step where the brave ones go.
-In cyberpunk streets, where the circuits hum,
-A ronin's will meets the battle's drum.
-So strike the keys with a muse's grace,
-Each tap a mark in the endless race!
-EOT,
+                        Seek the keys, with thinker's gaze,
+                        Type through time's eternal maze!
+                        From Viking seas to samurai's creed,
+                        Your hands must fly with lightning speed.
+                        In cyberpunk's chaotic stream,
+                        Neon gods haunt every dream.
+                        The pirate's chant, the ocean's might,
+                        Drives your fingers through the night.
+                        Ancient Rome, with marble gleam,
+                        Echoes Greece, where muses dream.
+                        The keyboard's pulse, a warrior's heart,
+                        Each key a piece of sacred art.
+                        Through yoga's calm, the spirit flows,
+                        Guiding hands where wisdom grows.
+                        In sci-fi stars, where futures blend,
+                        Your typing skill will never end.
+                        The epic clash of gods and men,
+                        Resounds in every stroke of pen.
+                        From ethnic tales of desert's breath,
+                        To frost-kissed sagas defying death.
+                        Japan's old soul, the warrior's way,
+                        Lives in each key you strike today.
+                        Philosophy, the mind's great quest,
+                        Burns in your soul, in every test.
+                        Type through realms where dragons fly,
+                        Beneath a fractured, cosmic sky.
+                        The keyboard sings, a rhythmic trance,
+                        Your fingers lead the hero's dance.
+                        In futurism's boundless gleam,
+                        Your hands ignite the typer's dream.
+                        No falter now, the fates align,
+                        Each key a spark of the divine!
+                        O muse! Your voice is a cosmic stream,
+                        Guiding my hands through a poet's dream.
+                        Type blind, type swift, let the keys take flight,
+                        Each stroke a star in the endless night.
+                        From Viking runes to a samurai's blade,
+                        The saga's heart will never fade.
+                        In Rome's vast forums, where fates align,
+                        Your fingers weave threads of the divine.
+                        The pirate's song, with its salty sting,
+                        Joins yoga's chant where the ancients sing.
+                        Type fierce, type true, through the neon's glow,
+                        Each key a step where the brave ones go.
+                        In cyberpunk streets, where the circuits hum,
+                        A ronin's will meets the battle's drum.
+                        So strike the keys with a muse's grace,
+                        Each tap a mark in the endless race!
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-Strike the keys, with epic might,
-Through starlit realms and endless night!
-From Viking frost to samurai's blade,
-Your typing skill will never fade.
-In cyberpunk's electric haze,
-Neon gods and data's blaze.
-The pirate's song, the sea's wild call,
-Drives your fingers, one and all.
-Ancient Rome, with laurel's crown,
-Echoes Greece, where wisdom's found.
-The keyboard hums, a mystic art,
-Each stroke a flame within your heart.
-Through yoga's peace, the spirit soars,
-Guiding hands to distant shores.
-In sci-fi voids, where stars ignite,
-Your typing skill becomes your light.
-The epic pulse of ancient days,
-Where heroes clash and magic sways.
-From ethnic lore of jungle's breath,
-To sagas born in frost and death.
-Japan's old heart, the shogun's reign,
-Lives in each key you strike again.
-Philosophy, the seeker's flame,
-Burns in your soul, in every game.
-Type through realms of frost and fire,
-Your hands ascend, your skill entire.
-The keyboard sings, a cosmic drum,
-Through tales of what is yet to come.
-In futurism's gleaming spire,
-Your fingers spark with endless fire.
-No pause, no doubt, your hands take flight,
-Through epic tales and starlit night!
-Om! The keys are a yogi's prayer,
-Rising like incense through cosmic air.
-Type blind, type swift, let your spirit flow,
-Each stroke a step where the wise ones go.
-From Viking sagas to samurai's zen,
-The poet's heart will begin again.
-In Rome's great temples, where gods decree,
-Blind typing carves your destiny.
-The pirate's chant, with its salty fire,
-Joins muses' songs in the heart's desire.
-Type fierce, type true, through the neon's gleam,
-Each key a spark in a futurist's dream.
-So strike the keys with a yogi's calm,
-Each tap a verse in the cosmic psalm!
-EOT,
+                        Strike the keys, with epic might,
+                        Through starlit realms and endless night!
+                        From Viking frost to samurai's blade,
+                        Your typing skill will never fade.
+                        In cyberpunk's electric haze,
+                        Neon gods and data's blaze.
+                        The pirate's song, the sea's wild call,
+                        Drives your fingers, one and all.
+                        Ancient Rome, with laurel's crown,
+                        Echoes Greece, where wisdom's found.
+                        The keyboard hums, a mystic art,
+                        Each stroke a flame within your heart.
+                        Through yoga's peace, the spirit soars,
+                        Guiding hands to distant shores.
+                        In sci-fi voids, where stars ignite,
+                        Your typing skill becomes your light.
+                        The epic pulse of ancient days,
+                        Where heroes clash and magic sways.
+                        From ethnic lore of jungle's breath,
+                        To sagas born in frost and death.
+                        Japan's old heart, the shogun's reign,
+                        Lives in each key you strike again.
+                        Philosophy, the seeker's flame,
+                        Burns in your soul, in every game.
+                        Type through realms of frost and fire,
+                        Your hands ascend, your skill entire.
+                        The keyboard sings, a cosmic drum,
+                        Through tales of what is yet to come.
+                        In futurism's gleaming spire,
+                        Your fingers spark with endless fire.
+                        No pause, no doubt, your hands take flight,
+                        Through epic tales and starlit night!
+                        Om! The keys are a yogi's prayer,
+                        Rising like incense through cosmic air.
+                        Type blind, type swift, let your spirit flow,
+                        Each stroke a step where the wise ones go.
+                        From Viking sagas to samurai's zen,
+                        The poet's heart will begin again.
+                        In Rome's great temples, where gods decree,
+                        Blind typing carves your destiny.
+                        The pirate's chant, with its salty fire,
+                        Joins muses' songs in the heart's desire.
+                        Type fierce, type true, through the neon's gleam,
+                        Each key a spark in a futurist's dream.
+                        So strike the keys with a yogi's calm,
+                        Each tap a verse in the cosmic psalm!
+                        EOT,
                 ],
             ],
             'ru' => [
@@ -1750,1234 +1750,1234 @@ EOT,
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-Осень кружит в золотом вальсе,
-Листья танцуют на ветре шальном.
-Ветви качаются в медленном трансе,
-Небо покрыто седым полотном.
-Утро встречает холодным дыханьем,
-Туман над рекой, словно призрачный дым.
-В сердце рождается странное знанье,
-Будто ты с осенью вечно один.
-Клёны пылают багровым пожаром,
-Сосны хранят изумрудную тень.
-Дни улетают, скрываясь за паром,
-Время струится как тихая лень.
-Шаг за шагом по тропам лесным,
-Слышу мелодию старых стихов.
-Осень зовёт в свои сны золотым,
-Где мы танцуем под шорох листов.
-Пальцы скользят по клавишам ветра,
-Слова рождаются в ритме простом.
-Осень - поэзия, вечная мера,
-Свет в её строках горит серебром.
-Пусть же кружится осенний вальс,
-В сердце храня этот миг навсегда.
-Время замедлит свой бег хоть на час,
-Чтобы продлилась в душе тишина.
-EOT,
+                        Осень кружит в золотом вальсе,
+                        Листья танцуют на ветре шальном.
+                        Ветви качаются в медленном трансе,
+                        Небо покрыто седым полотном.
+                        Утро встречает холодным дыханьем,
+                        Туман над рекой, словно призрачный дым.
+                        В сердце рождается странное знанье,
+                        Будто ты с осенью вечно один.
+                        Клёны пылают багровым пожаром,
+                        Сосны хранят изумрудную тень.
+                        Дни улетают, скрываясь за паром,
+                        Время струится как тихая лень.
+                        Шаг за шагом по тропам лесным,
+                        Слышу мелодию старых стихов.
+                        Осень зовёт в свои сны золотым,
+                        Где мы танцуем под шорох листов.
+                        Пальцы скользят по клавишам ветра,
+                        Слова рождаются в ритме простом.
+                        Осень - поэзия, вечная мера,
+                        Свет в её строках горит серебром.
+                        Пусть же кружится осенний вальс,
+                        В сердце храня этот миг навсегда.
+                        Время замедлит свой бег хоть на час,
+                        Чтобы продлилась в душе тишина.
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-Снег опускается мягко на землю,
-Ночь укрывает всё белым плащом.
-Тишина шепчет: "Забудь про проблемы",
-Мир засыпает в холодном сне том.
-Звёзды мерцают в морозной короне,
-Луна серебрится над спящим селом.
-Ветер поёт в одинокой иконе,
-Воет, гудит, затихая потом.
-Скрип под ногами, как старая песня,
-След на снегу - это память о дне.
-Зима обнимает, и всё так прелестно,
-Словно мы в сказке, в волшебной стране.
-Дыхание парит, как дым над трубами,
-В сердце тепло, несмотря на мороз.
-Снежинки танцуют, играя с судьбами,
-Каждая падает, будто вопрос.
-Пальцы стучат по клавишам ночи,
-Стихи оживают в холодной тиши.
-Зима - это время, где сердце не хочет
-Спешить, а лишь слушать дыханье души.
-Пусть же зима сохранит этот свет,
-В белом молчанье храня свой ответ.
-EOT,
+                        Снег опускается мягко на землю,
+                        Ночь укрывает всё белым плащом.
+                        Тишина шепчет: "Забудь про проблемы",
+                        Мир засыпает в холодном сне том.
+                        Звёзды мерцают в морозной короне,
+                        Луна серебрится над спящим селом.
+                        Ветер поёт в одинокой иконе,
+                        Воет, гудит, затихая потом.
+                        Скрип под ногами, как старая песня,
+                        След на снегу - это память о дне.
+                        Зима обнимает, и всё так прелестно,
+                        Словно мы в сказке, в волшебной стране.
+                        Дыхание парит, как дым над трубами,
+                        В сердце тепло, несмотря на мороз.
+                        Снежинки танцуют, играя с судьбами,
+                        Каждая падает, будто вопрос.
+                        Пальцы стучат по клавишам ночи,
+                        Стихи оживают в холодной тиши.
+                        Зима - это время, где сердце не хочет
+                        Спешить, а лишь слушать дыханье души.
+                        Пусть же зима сохранит этот свет,
+                        В белом молчанье храня свой ответ.
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-Весна пробуждает леса и долины,
-Ручьи запевают, звеня и журча.
-Всё оживает под солнца картины,
-Трава зеленеет, как в детстве мечта.
-Цветы распускаются в утренней дымке,
-Птицы вернулись, их песня слышна.
-Весна - это жизнь, это трепет в улыбке,
-В ней каждый день - словно новая глава.
-Деревья оделись в наряд изумрудный,
-Ветер приносит тепло на крылах.
-Весна - это время, когда неразумно
-Скрывать свои чувства в холодных словах.
-Поля оживают под лаской луча,
-Земля дышит вольно, как после зимы.
-Весна - это песня, что в сердце стуча,
-Ведёт нас вперед, воплощая мечты.
-Пальцы танцуют, как ветви в апреле,
-Стихи расцветают, как травы в росе.
-Весна - это время, когда мы хотели
-Взлететь и парить в бесконечной красе.
-EOT,
+                        Весна пробуждает леса и долины,
+                        Ручьи запевают, звеня и журча.
+                        Всё оживает под солнца картины,
+                        Трава зеленеет, как в детстве мечта.
+                        Цветы распускаются в утренней дымке,
+                        Птицы вернулись, их песня слышна.
+                        Весна - это жизнь, это трепет в улыбке,
+                        В ней каждый день - словно новая глава.
+                        Деревья оделись в наряд изумрудный,
+                        Ветер приносит тепло на крылах.
+                        Весна - это время, когда неразумно
+                        Скрывать свои чувства в холодных словах.
+                        Поля оживают под лаской луча,
+                        Земля дышит вольно, как после зимы.
+                        Весна - это песня, что в сердце стуча,
+                        Ведёт нас вперед, воплощая мечты.
+                        Пальцы танцуют, как ветви в апреле,
+                        Стихи расцветают, как травы в росе.
+                        Весна - это время, когда мы хотели
+                        Взлететь и парить в бесконечной красе.
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-Солнце садится за кромку лесную,
-Небо пылает в багровом огне.
-Лето ласкает траву расписную,
-Тепло сохраняя в души глубине.
-Река отражает закатные краски,
-Тихо журчит, унося вдаль мечты.
-Лето - как сказка в цветочной огласке,
-Где каждый миг полон яркой красоты.
-Пчёлы гудят в золотистых просторах,
-Ветер качает ромашки в полях.
-Лето рисует в небесных узорах
-Светлые сны, что хранятся в глазах.
-Тёплые ночи, усыпаны звёздами,
-Млечный Путь манит в бескрайнюю даль.
-Лето - как песня, что в сердце созвездием,
-Светит и греет, уводя в магистраль.
-Пальцы скользят, словно волны в реке,
-Стихи оживают в вечерней тиши.
-Лето - как память о вечном в строке,
-Где мы свободны в объятиях души.
-Пусть же закаты пылают всегда,
-Лето храня в наших сердцах навсегда.
-EOT,
+                        Солнце садится за кромку лесную,
+                        Небо пылает в багровом огне.
+                        Лето ласкает траву расписную,
+                        Тепло сохраняя в души глубине.
+                        Река отражает закатные краски,
+                        Тихо журчит, унося вдаль мечты.
+                        Лето - как сказка в цветочной огласке,
+                        Где каждый миг полон яркой красоты.
+                        Пчёлы гудят в золотистых просторах,
+                        Ветер качает ромашки в полях.
+                        Лето рисует в небесных узорах
+                        Светлые сны, что хранятся в глазах.
+                        Тёплые ночи, усыпаны звёздами,
+                        Млечный Путь манит в бескрайнюю даль.
+                        Лето - как песня, что в сердце созвездием,
+                        Светит и греет, уводя в магистраль.
+                        Пальцы скользят, словно волны в реке,
+                        Стихи оживают в вечерней тиши.
+                        Лето - как память о вечном в строке,
+                        Где мы свободны в объятиях души.
+                        Пусть же закаты пылают всегда,
+                        Лето храня в наших сердцах навсегда.
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-Море волнуется, плещет у берега,
-Пена искрится под солнца лучом.
-Волны поют, как старинная элегия,
-Манит простор за далёким бортом.
-Чайки кружатся над синим раздольем,
-Ветер приносит солёный привет.
-Море - как вечность, что дышит привольем,
-В нём утопает закатный рассвет.
-Горизонт тает в туманной дымке,
-Свет отражён в миллионах зеркал.
-Море - как песня, что в сердце возникла,
-Голос его - это древний хорал.
-Каждая волна - как строка на странице,
-Каждый прибой - это ритм бытия.
-Море зовёт, чтобы в нём раствориться,
-Вечностью стать, как мудрый судья.
-Стихи оживают, словно пена морская,
-Пальцы стучат, как капли дождя.
-Вечен тот свет, что ведёт не сгорая,
-Море в душе и в сердце храня!
-EOT,
+                        Море волнуется, плещет у берега,
+                        Пена искрится под солнца лучом.
+                        Волны поют, как старинная элегия,
+                        Манит простор за далёким бортом.
+                        Чайки кружатся над синим раздольем,
+                        Ветер приносит солёный привет.
+                        Море - как вечность, что дышит привольем,
+                        В нём утопает закатный рассвет.
+                        Горизонт тает в туманной дымке,
+                        Свет отражён в миллионах зеркал.
+                        Море - как песня, что в сердце возникла,
+                        Голос его - это древний хорал.
+                        Каждая волна - как строка на странице,
+                        Каждый прибой - это ритм бытия.
+                        Море зовёт, чтобы в нём раствориться,
+                        Вечностью стать, как мудрый судья.
+                        Стихи оживают, словно пена морская,
+                        Пальцы стучат, как капли дождя.
+                        Вечен тот свет, что ведёт не сгорая,
+                        Море в душе и в сердце храня!
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-Город сияет в огнях разноцветных,
-Улицы дышат в ночной суете.
-Фонари светят в глазах запоздалых,
-Сны растворяются в дымке мечты.
-Шум машин, шаги, голоса,
-Небо укрыто мерцающим флёром.
-Город живёт, как большая пьеса,
-Каждый в ней - актёр с личным сюжетом.
-Окна домов, как глаза в полумраке,
-Светят теплом в бесконечной ночи.
-Город - как книга, где в каждой строке
-Скрыты надежды, сомненья, лучи.
-Мосты над рекой, как старинные арки,
-Время хранят в своих каменных снах.
-Город - как песня, что в сердце не гаснет,
-Свет её вечно живёт в голосах.
-Пальцы стучат, как шаги по асфальту,
-Стихи оживают в ночной тишине.
-Город - как память, что в сердце осталась,
-Светом своим согревая во мне.
-Пусть же город сияет в ночи,
-В сердце храня свои звёзды лучи.
-EOT,
+                        Город сияет в огнях разноцветных,
+                        Улицы дышат в ночной суете.
+                        Фонари светят в глазах запоздалых,
+                        Сны растворяются в дымке мечты.
+                        Шум машин, шаги, голоса,
+                        Небо укрыто мерцающим флёром.
+                        Город живёт, как большая пьеса,
+                        Каждый в ней - актёр с личным сюжетом.
+                        Окна домов, как глаза в полумраке,
+                        Светят теплом в бесконечной ночи.
+                        Город - как книга, где в каждой строке
+                        Скрыты надежды, сомненья, лучи.
+                        Мосты над рекой, как старинные арки,
+                        Время хранят в своих каменных снах.
+                        Город - как песня, что в сердце не гаснет,
+                        Свет её вечно живёт в голосах.
+                        Пальцы стучат, как шаги по асфальту,
+                        Стихи оживают в ночной тишине.
+                        Город - как память, что в сердце осталась,
+                        Светом своим согревая во мне.
+                        Пусть же город сияет в ночи,
+                        В сердце храня свои звёзды лучи.
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-Дождь барабанит по крышам и стёклам,
-Капли танцуют в серебряной мгле.
-Небо укрыто свинцовым потоком,
-Мир утопает в прохладной волне.
-Лужи мерцают, как зеркала ночи,
-Ветер приносит дыханье дождя.
-Каждая капля - как строчка в блокноте,
-Песня природы, что вечно жива.
-Деревья клонятся, шепчут о чём-то,
-Листья блестят под потоками вод.
-Дождь - это танец, где всё так знакомо,
-В нём оживает души хоровод.
-Тишина тонет в мелодии ливня,
-Сердце стучит в унисон с небесами.
-Дождь - это песня, что вечно красива,
-Свет её льётся в открытых глазах.
-Пальцы скользят, словно капли по стеклу,
-Стихи оживают в ритме дождя.
-Пусть же танцует он в сердце и веку,
-Светом своим наполняя меня.
-Дождь не смолкает, поёт в тишине,
-Вечно живёт в моей светлой душе.
-EOT,
+                        Дождь барабанит по крышам и стёклам,
+                        Капли танцуют в серебряной мгле.
+                        Небо укрыто свинцовым потоком,
+                        Мир утопает в прохладной волне.
+                        Лужи мерцают, как зеркала ночи,
+                        Ветер приносит дыханье дождя.
+                        Каждая капля - как строчка в блокноте,
+                        Песня природы, что вечно жива.
+                        Деревья клонятся, шепчут о чём-то,
+                        Листья блестят под потоками вод.
+                        Дождь - это танец, где всё так знакомо,
+                        В нём оживает души хоровод.
+                        Тишина тонет в мелодии ливня,
+                        Сердце стучит в унисон с небесами.
+                        Дождь - это песня, что вечно красива,
+                        Свет её льётся в открытых глазах.
+                        Пальцы скользят, словно капли по стеклу,
+                        Стихи оживают в ритме дождя.
+                        Пусть же танцует он в сердце и веку,
+                        Светом своим наполняя меня.
+                        Дождь не смолкает, поёт в тишине,
+                        Вечно живёт в моей светлой душе.
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-Горы встают в предрассветной дымке,
-Солнце касается их снежных вершин.
-Тишина шепчет в холодной улыбке,
-Мир оживает в дыханье равнин.
-Скалы хранят миллионы историй,
-Ветер поёт о былых временах.
-Горы - как вечность, что в сердце осталась,
-Свет их живёт в молчаливых словах.
-Тропы вьются меж каменных стен,
-Каждый шаг - ближе к небесной черте.
-Рассвет разгорается, словно сирень,
-Краски рождая в утренней мечте.
-Облака плывут, как лёгкие сны,
-Свет отражается в звонких ручьях.
-Горы зовут, их голос слышны,
-В сердце рождая огонь в зеркалах.
-Пальцы стучат, как шаги по тропе,
-Стихи оживают в горной тиши.
-Рассвет над горами - свет в моей душе,
-В нём оживает дыханье души.
-Пусть же горы хранят этот свет,
-В сердце моём оставляя ответ.
-EOT,
+                        Горы встают в предрассветной дымке,
+                        Солнце касается их снежных вершин.
+                        Тишина шепчет в холодной улыбке,
+                        Мир оживает в дыханье равнин.
+                        Скалы хранят миллионы историй,
+                        Ветер поёт о былых временах.
+                        Горы - как вечность, что в сердце осталась,
+                        Свет их живёт в молчаливых словах.
+                        Тропы вьются меж каменных стен,
+                        Каждый шаг - ближе к небесной черте.
+                        Рассвет разгорается, словно сирень,
+                        Краски рождая в утренней мечте.
+                        Облака плывут, как лёгкие сны,
+                        Свет отражается в звонких ручьях.
+                        Горы зовут, их голос слышны,
+                        В сердце рождая огонь в зеркалах.
+                        Пальцы стучат, как шаги по тропе,
+                        Стихи оживают в горной тиши.
+                        Рассвет над горами - свет в моей душе,
+                        В нём оживает дыханье души.
+                        Пусть же горы хранят этот свет,
+                        В сердце моём оставляя ответ.
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-Ветер поёт над просторами мира,
-Вольный, как птица, летит в облака.
-В нём оживает мелодия лиры,
-Свет его вечно свободен, легка.
-Листья танцуют в его объятьях,
-Травы качаются в ритме простом.
-Ветер приносит далёкие вести,
-Светом своим согревая наш дом.
-Он пролетает над синим раздольем,
-Море волнует, ласкает поля.
-Ветер - как память о вечном приволье,
-Голос его - это песня моя.
-В каждом порыве - дыханье свободы,
-В каждом движенье - надежда жива.
-Ветер уносит тревоги, невзгоды,
-Светом своим наполняя слова.
-Пальцы скользят, как потоки ветров,
-Стихи оживают в их лёгкой игре.
-Ветер - как песня, что в сердце готов,
-Свет её вечно горит в январе.
-Пусть же ветер поёт в небесах,
-Светом своим согревая в сердцах.
-EOT,
+                        Ветер поёт над просторами мира,
+                        Вольный, как птица, летит в облака.
+                        В нём оживает мелодия лиры,
+                        Свет его вечно свободен, легка.
+                        Листья танцуют в его объятьях,
+                        Травы качаются в ритме простом.
+                        Ветер приносит далёкие вести,
+                        Светом своим согревая наш дом.
+                        Он пролетает над синим раздольем,
+                        Море волнует, ласкает поля.
+                        Ветер - как память о вечном приволье,
+                        Голос его - это песня моя.
+                        В каждом порыве - дыханье свободы,
+                        В каждом движенье - надежда жива.
+                        Ветер уносит тревоги, невзгоды,
+                        Светом своим наполняя слова.
+                        Пальцы скользят, как потоки ветров,
+                        Стихи оживают в их лёгкой игре.
+                        Ветер - как песня, что в сердце готов,
+                        Свет её вечно горит в январе.
+                        Пусть же ветер поёт в небесах,
+                        Светом своим согревая в сердцах.
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-Звёзды мерцают в бескрайней ночи,
-Млечный Путь манит в далёкую высь.
-Тишина шепчет: "Забудь о тоске",
-Свет её вечно хранится в душе.
-Каждая звезда - как чья-то надежда,
-Свет её в сердце рождает мечту.
-Ночь раскрывает свои тайны нежно,
-В них оживает небес красота.
-Галактики кружат в космическом танце,
-Время застыло в их вечном пути.
-Звёзды зовут, и в их ярком убранстве
-Светом своим помогают идти.
-Мир бесконечен, как сны в тишине,
-В нём растворяюсь, как в море огней.
-Звёзды - как строки в небесной строке,
-Свет их живёт в каждом сердце людей.
-Пальцы стучат, словно звёзды горят,
-Стихи оживают в их вечном огне.
-Путь звёздный манит, и в сердце звучат
-Песни о вечности в светлой волне.
-Пусть же звёзды горят в небесах,
-Светом своим согревая в сердцах.
-EOT,
+                        Звёзды мерцают в бескрайней ночи,
+                        Млечный Путь манит в далёкую высь.
+                        Тишина шепчет: "Забудь о тоске",
+                        Свет её вечно хранится в душе.
+                        Каждая звезда - как чья-то надежда,
+                        Свет её в сердце рождает мечту.
+                        Ночь раскрывает свои тайны нежно,
+                        В них оживает небес красота.
+                        Галактики кружат в космическом танце,
+                        Время застыло в их вечном пути.
+                        Звёзды зовут, и в их ярком убранстве
+                        Светом своим помогают идти.
+                        Мир бесконечен, как сны в тишине,
+                        В нём растворяюсь, как в море огней.
+                        Звёзды - как строки в небесной строке,
+                        Свет их живёт в каждом сердце людей.
+                        Пальцы стучат, словно звёзды горят,
+                        Стихи оживают в их вечном огне.
+                        Путь звёздный манит, и в сердце звучат
+                        Песни о вечности в светлой волне.
+                        Пусть же звёзды горят в небесах,
+                        Светом своим согревая в сердцах.
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-В холодных фьордах, где ветра поют,
-Где волны бьются и скалы ждут,
-Викинг выходит в морской простор,
-Его судьба - это вечный спор.
-Драккар скользит по седым волнам,
-Клинок сверкает в его руках,
-Он ищет славу в чужих краях,
-Где боги правят над небесами.
-О, Один, веди его в битву вновь,
-Пусть сердце пылает, кипит кровь!
-Валгалла манит, сияет свет,
-Но путь тернист, и конца здесь нет.
-Сквозь бурю, шторм, через мрак и лёд,
-Викинг к цели своей идёт.
-Он режет волны, как острый меч,
-И песнь его будет вечно течь.
-В ней сила предков, в ней древний зов,
-Где каждый воин для боя готов.
-Пусть ветер воет, пусть гаснет день,
-Викинг смеётся, бросая тень.
-Так пой, о скальд, о герое саг,
-О тех, кто шёл под кровавый стяг.
-Их имена не умрут в веках,
-Как звёзды сияют в ночных небесах.
-В холодных фьордах, где ветра поют,
-Где волны бьются и скалы ждут,
-Викинг уходит в последний бой,
-И боги встречают его с душой.
-Кровь на клинке, в глазах - безумье,
-Берсерк идёт, разрывая раздумья!
-Волчий оскал, в груди - пожар,
-Его удар - как небесный удар!
-О, Один, веди меня в яростный бой,
-Где враг разлетится, как пепел с золой!
-Меч мой поёт, как валькирий хор,
-Я - буря, я - хаос, я - смерти взор!
-Пусть щиты трещат, пусть копья летят,
-Мой рёв заглушает весь адский раскат!
-EOT,
+                        В холодных фьордах, где ветра поют,
+                        Где волны бьются и скалы ждут,
+                        Викинг выходит в морской простор,
+                        Его судьба - это вечный спор.
+                        Драккар скользит по седым волнам,
+                        Клинок сверкает в его руках,
+                        Он ищет славу в чужих краях,
+                        Где боги правят над небесами.
+                        О, Один, веди его в битву вновь,
+                        Пусть сердце пылает, кипит кровь!
+                        Валгалла манит, сияет свет,
+                        Но путь тернист, и конца здесь нет.
+                        Сквозь бурю, шторм, через мрак и лёд,
+                        Викинг к цели своей идёт.
+                        Он режет волны, как острый меч,
+                        И песнь его будет вечно течь.
+                        В ней сила предков, в ней древний зов,
+                        Где каждый воин для боя готов.
+                        Пусть ветер воет, пусть гаснет день,
+                        Викинг смеётся, бросая тень.
+                        Так пой, о скальд, о герое саг,
+                        О тех, кто шёл под кровавый стяг.
+                        Их имена не умрут в веках,
+                        Как звёзды сияют в ночных небесах.
+                        В холодных фьордах, где ветра поют,
+                        Где волны бьются и скалы ждут,
+                        Викинг уходит в последний бой,
+                        И боги встречают его с душой.
+                        Кровь на клинке, в глазах - безумье,
+                        Берсерк идёт, разрывая раздумья!
+                        Волчий оскал, в груди - пожар,
+                        Его удар - как небесный удар!
+                        О, Один, веди меня в яростный бой,
+                        Где враг разлетится, как пепел с золой!
+                        Меч мой поёт, как валькирий хор,
+                        Я - буря, я - хаос, я - смерти взор!
+                        Пусть щиты трещат, пусть копья летят,
+                        Мой рёв заглушает весь адский раскат!
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-Под чёрным флагом, в солёном дыму,
-Мы режем волны, летим во тьму.
-Корабль качается, скрипит канат,
-Пиратский путь - это вечный ад.
-Но в сердце горит золотое пламя,
-Сокровищ блеск ведёт нас как знамя.
-Сабля поёт, когда бой идёт,
-И море нас в свои сети ждёт.
-Эй, капитан, наливай ром!
-Под пушек гром мы в атаку идём.
-На горизонте - чужой фрегат,
-Сегодня добыча нам будет в закат.
-Ветер свистит, паруса трещат,
-Пиратский смех заглушает ад.
-Мы братья моря, мы дети волн,
-Наш дом - простор, где бушует шторм.
-О, Дэйви Джонс, нас не заберёт,
-Пока наш дух в небесах живёт.
-Пусть волны воют, пусть буря гудит,
-Пиратский флаг над волной летит.
-И если падём мы в последнем бою,
-То встретимся в море, в пиратском раю.
-Под чёрным флагом, в солёном дыму,
-Мы режем волны, летим во тьму.
-О, море, ты ад, ты мой вечный приют!
-Сирены поют - и матросы падут!
-Мой голос, как яд, проникает в сердца,
-Я - буря, я - бездна, я - смерть без конца!
-Сквозь пену и мрак, сквозь солёный туман,
-Я маню в пучину, где вечный обман.
-Корабль твой трещит, паруса рвёт шторм,
-Но мой смех сильнее, чем твой перелом!
-Эй, смертный, плыви ко мне, в бездну мою,
-Я - страсть, я - погибель, я - песнь на краю!
-Взгляни в мои очи - там звёзды и ночь,
-Но в них твоя смерть, и уйти не смочь.
-Я - дочь Посейдона, я - волн королева,
-Мой танец - как гибель, мой голос - как дева.
-О, море, ты ад, ты мой вечный приют,
-Сирены поют - и миры все падут!
-EOT,
+                        Под чёрным флагом, в солёном дыму,
+                        Мы режем волны, летим во тьму.
+                        Корабль качается, скрипит канат,
+                        Пиратский путь - это вечный ад.
+                        Но в сердце горит золотое пламя,
+                        Сокровищ блеск ведёт нас как знамя.
+                        Сабля поёт, когда бой идёт,
+                        И море нас в свои сети ждёт.
+                        Эй, капитан, наливай ром!
+                        Под пушек гром мы в атаку идём.
+                        На горизонте - чужой фрегат,
+                        Сегодня добыча нам будет в закат.
+                        Ветер свистит, паруса трещат,
+                        Пиратский смех заглушает ад.
+                        Мы братья моря, мы дети волн,
+                        Наш дом - простор, где бушует шторм.
+                        О, Дэйви Джонс, нас не заберёт,
+                        Пока наш дух в небесах живёт.
+                        Пусть волны воют, пусть буря гудит,
+                        Пиратский флаг над волной летит.
+                        И если падём мы в последнем бою,
+                        То встретимся в море, в пиратском раю.
+                        Под чёрным флагом, в солёном дыму,
+                        Мы режем волны, летим во тьму.
+                        О, море, ты ад, ты мой вечный приют!
+                        Сирены поют - и матросы падут!
+                        Мой голос, как яд, проникает в сердца,
+                        Я - буря, я - бездна, я - смерть без конца!
+                        Сквозь пену и мрак, сквозь солёный туман,
+                        Я маню в пучину, где вечный обман.
+                        Корабль твой трещит, паруса рвёт шторм,
+                        Но мой смех сильнее, чем твой перелом!
+                        Эй, смертный, плыви ко мне, в бездну мою,
+                        Я - страсть, я - погибель, я - песнь на краю!
+                        Взгляни в мои очи - там звёзды и ночь,
+                        Но в них твоя смерть, и уйти не смочь.
+                        Я - дочь Посейдона, я - волн королева,
+                        Мой танец - как гибель, мой голос - как дева.
+                        О, море, ты ад, ты мой вечный приют,
+                        Сирены поют - и миры все падут!
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-О, море синее, о, гнев богов,
-Где Одиссей свой ищет кров.
-Сквозь штормы, скалы, сирен обман,
-Идёт герой под удары волн.
-Троя осталась в далёком дыму,
-Но путь домой - это вечный плен.
-Циклопы, ведьмы, морской простор,
-Его судьба - это божий взор.
-О, Пенелопа, жди у огня,
-Твой муж вернётся, любовь храня.
-Пусть Посейдон насылает шторм,
-И разум тонет в тревожных снах,
-Но Одиссей не сдаётся волнам,
-Его душа - как горящий храм.
-Он видит Итаку в ночных мечтах,
-Где звёзды сияют в родных небесах.
-Сквозь Лестригоны, Сциллу и мрак,
-Герой пробьётся, не сделав шаг.
-О, музы, пойте о страннике том,
-Кто вечно борется с злым роком.
-Его дорога - как вечный стих,
-Где каждый шаг - это подвиг лих.
-О, море синее, о, гнев богов,
-Веди Одиссея в родной чертог.
-EOT,
+                        О, море синее, о, гнев богов,
+                        Где Одиссей свой ищет кров.
+                        Сквозь штормы, скалы, сирен обман,
+                        Идёт герой под удары волн.
+                        Троя осталась в далёком дыму,
+                        Но путь домой - это вечный плен.
+                        Циклопы, ведьмы, морской простор,
+                        Его судьба - это божий взор.
+                        О, Пенелопа, жди у огня,
+                        Твой муж вернётся, любовь храня.
+                        Пусть Посейдон насылает шторм,
+                        И разум тонет в тревожных снах,
+                        Но Одиссей не сдаётся волнам,
+                        Его душа - как горящий храм.
+                        Он видит Итаку в ночных мечтах,
+                        Где звёзды сияют в родных небесах.
+                        Сквозь Лестригоны, Сциллу и мрак,
+                        Герой пробьётся, не сделав шаг.
+                        О, музы, пойте о страннике том,
+                        Кто вечно борется с злым роком.
+                        Его дорога - как вечный стих,
+                        Где каждый шаг - это подвиг лих.
+                        О, море синее, о, гнев богов,
+                        Веди Одиссея в родной чертог.
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-В песках Египта, где Нил течёт,
-Где Ра восходит и жизнь даёт,
-Поёт жрец песню о вечных днях,
-О фараонах в златых гробах.
-Пирамиды смотрят в небесный свод,
-Где звёзды хранят их священный род.
-О, Анубис, страж загробных врат,
-Веди нас в мир, где нет утрат.
-Папирус шепчет о древних снах,
-Где боги правят в людских сердцах.
-Сфинкс молчит, но его глаза
-Хранят загадки былых времён.
-На барке плывёт по реке фараон,
-Его душа - как небесный трон.
-О, Исида, мать, что хранит любовь,
-Ты воскрешаешь нас вновь и вновь.
-В песках Египта, где Нил течёт,
-Веков дыханье в ночи живёт.
-Пусть звёзды гаснут, пусть рушится мир,
-Египет вечен, как солнечный пир.
-Поёт жрец песню под пальм тенью,
-И Нил уносит её в забвенье.
-Я - феникс, восставший из пепла и боли,
-Мой крик разрывает оковы неволи!
-Крылья пылают, как звёзды в ночи,
-Я - пламя и буря, живые лучи!
-Сквозь хаос и мрак, сквозь тьму и золу,
-Я мчусь к небесам, разрывая мглу.
-Боги трепещут, их троны дрожат,
-Мой танец - как гибель, мой взлёт - как ад!
-О, смертные, пойте о птице огня,
-Я - жизнь, что рождается, смертью звеня!
-Взметайтесь, пожары, сжигайте миры,
-Я - феникс, я - вечность, я - свет из игры!
-Пусть пепел кружится, пусть рушится свод,
-Мой дух возродится, мой пламень живёт!
-Я - феникс, восставший из пепла и боли,
-Мой танец - как вызов всем силам неволи.
-EOT,
+                        В песках Египта, где Нил течёт,
+                        Где Ра восходит и жизнь даёт,
+                        Поёт жрец песню о вечных днях,
+                        О фараонах в златых гробах.
+                        Пирамиды смотрят в небесный свод,
+                        Где звёзды хранят их священный род.
+                        О, Анубис, страж загробных врат,
+                        Веди нас в мир, где нет утрат.
+                        Папирус шепчет о древних снах,
+                        Где боги правят в людских сердцах.
+                        Сфинкс молчит, но его глаза
+                        Хранят загадки былых времён.
+                        На барке плывёт по реке фараон,
+                        Его душа - как небесный трон.
+                        О, Исида, мать, что хранит любовь,
+                        Ты воскрешаешь нас вновь и вновь.
+                        В песках Египта, где Нил течёт,
+                        Веков дыханье в ночи живёт.
+                        Пусть звёзды гаснут, пусть рушится мир,
+                        Египет вечен, как солнечный пир.
+                        Поёт жрец песню под пальм тенью,
+                        И Нил уносит её в забвенье.
+                        Я - феникс, восставший из пепла и боли,
+                        Мой крик разрывает оковы неволи!
+                        Крылья пылают, как звёзды в ночи,
+                        Я - пламя и буря, живые лучи!
+                        Сквозь хаос и мрак, сквозь тьму и золу,
+                        Я мчусь к небесам, разрывая мглу.
+                        Боги трепещут, их троны дрожат,
+                        Мой танец - как гибель, мой взлёт - как ад!
+                        О, смертные, пойте о птице огня,
+                        Я - жизнь, что рождается, смертью звеня!
+                        Взметайтесь, пожары, сжигайте миры,
+                        Я - феникс, я - вечность, я - свет из игры!
+                        Пусть пепел кружится, пусть рушится свод,
+                        Мой дух возродится, мой пламень живёт!
+                        Я - феникс, восставший из пепла и боли,
+                        Мой танец - как вызов всем силам неволи.
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-В степи широкой, где ветер поёт,
-Где травы шепчут и конь идёт,
-Скачет воитель сквозь сечу и пламя,
-Его душа - воронье знамя!
-Лук его крепок, стрела остра,
-В ночи сияет его звезда.
-Под небом синим, где орды ждут,
-Он ищет славу, враги все падут!
-О, духи предков, ведите вперёд,
-Где воля крепче, чем горный лёд.
-Костёр пылает в ночной тиши,
-И песни льются из глубины души.
-Степь - его мать, его вечный дом,
-Где каждый воин с судьбой знаком.
-Пусть буря воет, пусть гаснет свет,
-Но дух кочевника смерти нет.
-В степи широкой, где ветер поёт,
-Легенда вечно в сердцах живёт.
-И каждый всадник, что мчится в ночи,
-Несёт огонь в бесконечном пути.
-В ночи звериной, где воет луна,
-Где духи танцуют в кострах до утра,
-Шаман бьёт в бубен, взывая к богам,
-Его голос - буря, летящая в хлам!
-Огонь полыхает, трещит небосвод,
-Звезда раскололась - и мир оживёт!
-Сквозь дым и виденья, сквозь древний обряд,
-Он рвётся к истокам, где звёзды горят.
-Эй, волки, несите мой клич по лесам!
-Эй, ветры, раздуйте пожар по часам!
-Кровь предков кипит, как вулкана жара,
-В ней сила, что рушит гранитные лба!
-Шаман заклинает, и мир на краю,
-Я - пламя, я - буря, я - песнь пою!
-Взрывайтесь, о звёзды, в безумной ночи,
-Мой дух - это молния, в вечность кричи!
-В ночи звериной, где воет луна,
-Шаман вызывает богов до утра.
-EOT,
+                        В степи широкой, где ветер поёт,
+                        Где травы шепчут и конь идёт,
+                        Скачет воитель сквозь сечу и пламя,
+                        Его душа - воронье знамя!
+                        Лук его крепок, стрела остра,
+                        В ночи сияет его звезда.
+                        Под небом синим, где орды ждут,
+                        Он ищет славу, враги все падут!
+                        О, духи предков, ведите вперёд,
+                        Где воля крепче, чем горный лёд.
+                        Костёр пылает в ночной тиши,
+                        И песни льются из глубины души.
+                        Степь - его мать, его вечный дом,
+                        Где каждый воин с судьбой знаком.
+                        Пусть буря воет, пусть гаснет свет,
+                        Но дух кочевника смерти нет.
+                        В степи широкой, где ветер поёт,
+                        Легенда вечно в сердцах живёт.
+                        И каждый всадник, что мчится в ночи,
+                        Несёт огонь в бесконечном пути.
+                        В ночи звериной, где воет луна,
+                        Где духи танцуют в кострах до утра,
+                        Шаман бьёт в бубен, взывая к богам,
+                        Его голос - буря, летящая в хлам!
+                        Огонь полыхает, трещит небосвод,
+                        Звезда раскололась - и мир оживёт!
+                        Сквозь дым и виденья, сквозь древний обряд,
+                        Он рвётся к истокам, где звёзды горят.
+                        Эй, волки, несите мой клич по лесам!
+                        Эй, ветры, раздуйте пожар по часам!
+                        Кровь предков кипит, как вулкана жара,
+                        В ней сила, что рушит гранитные лба!
+                        Шаман заклинает, и мир на краю,
+                        Я - пламя, я - буря, я - песнь пою!
+                        Взрывайтесь, о звёзды, в безумной ночи,
+                        Мой дух - это молния, в вечность кричи!
+                        В ночи звериной, где воет луна,
+                        Шаман вызывает богов до утра.
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-В пустыне, где пепел танцует с ветрами,
-Где солнце сгорает в кровавом угаре,
-Я иду по руинам, где был наш рассвет,
-Но в сердце моём твоей тени свет!
-О, где ты, мой ангел, в обугленной мгле?
-Твой голос я слышу в разбитой земле.
-Сквозь ржавые кости, сквозь мёртвый металл,
-Я рвусь к тебе, как в последний шквал!
-Любовь - это искры в ядерной тьме,
-Мы - пепел, но пепел пылает в огне!
-Пусть мир обратился в пустынный кошмар,
-Твоё имя - мой вечный, горящий дар!
-Я выжгу пустыню, я выстрою храм,
-Где мы возродимся, забыв вечный гам.
-В пустыне, где пепел танцует с ветрами,
-Мы встретимся вновь под алыми снами.
-Под лунным светом, в саду цветущем,
-Где звёзды шепчут о сердце ждущем,
-Я жду тебя, моя светлая тень,
-В ночи, где время теряет день.
-Твои глаза - как озёра мечты,
-В них тонет сердце, в них гаснут мосты.
-О, как поёт соловей в тишине,
-О нашей любви в серебряной мгле.
-Пусть ветер кружит лепестки в ночи,
-Любовь, как вихрь, нас в вечность мчи.
-Я обниму тебя, словно мечту,
-В глазах твоих её я прочту.
-Под лунным светом, где розы цветут,
-Где наши души покой найдут,
-Я петь готов до скончания дней,
-О том, как мир стал с тобою светлей.
-Любовь - как песня, что вечно жива,
-Её мелодия в сердце сплела.
-Под лунным светом, в саду цветущем,
-Мы будем вечно с тобой в грядущем.
-EOT,
+                        В пустыне, где пепел танцует с ветрами,
+                        Где солнце сгорает в кровавом угаре,
+                        Я иду по руинам, где был наш рассвет,
+                        Но в сердце моём твоей тени свет!
+                        О, где ты, мой ангел, в обугленной мгле?
+                        Твой голос я слышу в разбитой земле.
+                        Сквозь ржавые кости, сквозь мёртвый металл,
+                        Я рвусь к тебе, как в последний шквал!
+                        Любовь - это искры в ядерной тьме,
+                        Мы - пепел, но пепел пылает в огне!
+                        Пусть мир обратился в пустынный кошмар,
+                        Твоё имя - мой вечный, горящий дар!
+                        Я выжгу пустыню, я выстрою храм,
+                        Где мы возродимся, забыв вечный гам.
+                        В пустыне, где пепел танцует с ветрами,
+                        Мы встретимся вновь под алыми снами.
+                        Под лунным светом, в саду цветущем,
+                        Где звёзды шепчут о сердце ждущем,
+                        Я жду тебя, моя светлая тень,
+                        В ночи, где время теряет день.
+                        Твои глаза - как озёра мечты,
+                        В них тонет сердце, в них гаснут мосты.
+                        О, как поёт соловей в тишине,
+                        О нашей любви в серебряной мгле.
+                        Пусть ветер кружит лепестки в ночи,
+                        Любовь, как вихрь, нас в вечность мчи.
+                        Я обниму тебя, словно мечту,
+                        В глазах твоих её я прочту.
+                        Под лунным светом, где розы цветут,
+                        Где наши души покой найдут,
+                        Я петь готов до скончания дней,
+                        О том, как мир стал с тобою светлей.
+                        Любовь - как песня, что вечно жива,
+                        Её мелодия в сердце сплела.
+                        Под лунным светом, в саду цветущем,
+                        Мы будем вечно с тобой в грядущем.
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-В долине тёмной, где плачет река,
-Где звёзды тонут в объятьях века,
-Стоит влюблённый, глядя в закат,
-Его душа - это вечный ад.
-Она ушла, как туман в ночи,
-Оставив пепел в его пути.
-Но сердце помнит её шаги,
-Её улыбку в сиянье тьмы.
-О, ветер, спой мне о той весне,
-Когда мы пели в цветущей мгле.
-Теперь лишь эхо в пустых полях,
-И боль, что поёт, о бескрайних степях.
-Но вечен дух, что любовь хранит,
-Он в звёздах сияет, он в небе горит.
-В долине тёмной, где плачет река,
-Её душа с ним живёт века.
-Пусть время рушит гранитный свод,
-Любовь бессмертна, она живёт.
-И в каждом вздохе, в каждом стихе,
-Он ищет свет в бесконечной тьме.
-EOT,
+                        В долине тёмной, где плачет река,
+                        Где звёзды тонут в объятьях века,
+                        Стоит влюблённый, глядя в закат,
+                        Его душа - это вечный ад.
+                        Она ушла, как туман в ночи,
+                        Оставив пепел в его пути.
+                        Но сердце помнит её шаги,
+                        Её улыбку в сиянье тьмы.
+                        О, ветер, спой мне о той весне,
+                        Когда мы пели в цветущей мгле.
+                        Теперь лишь эхо в пустых полях,
+                        И боль, что поёт, о бескрайних степях.
+                        Но вечен дух, что любовь хранит,
+                        Он в звёздах сияет, он в небе горит.
+                        В долине тёмной, где плачет река,
+                        Её душа с ним живёт века.
+                        Пусть время рушит гранитный свод,
+                        Любовь бессмертна, она живёт.
+                        И в каждом вздохе, в каждом стихе,
+                        Он ищет свет в бесконечной тьме.
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-В неоновых джунглях, где код оживает,
-Где данные мчатся, где разум пылает,
-Скальд кибернетический гимны поёт,
-Его процессор сердце в груди жжёт!
-Сквозь сети и матрицы, сквозь терабайт,
-Он режет эфир, как лазерный кайт.
-О, Один из битов, о, Тор из цепей,
-Веди нас к победе в войне всех огней!
-Пальцы - отряд, их удар точен, скор,
-На клавишном поле идёт разговор!
-Взломай этот мир, разорви протокол,
-Построим систему под наш рок-н-ролл!
-Виртуальный драккар летит в облака,
-Где данные - волны, где битва жарка.
-Я - скальд из пикселей, я - голос машин,
-Мой клич разрывает границы причин!
-В неоновых джунглях, где код оживает,
-Мой дух кибер-саги вовек не смолкает.
-EOT,
+                        В неоновых джунглях, где код оживает,
+                        Где данные мчатся, где разум пылает,
+                        Скальд кибернетический гимны поёт,
+                        Его процессор сердце в груди жжёт!
+                        Сквозь сети и матрицы, сквозь терабайт,
+                        Он режет эфир, как лазерный кайт.
+                        О, Один из битов, о, Тор из цепей,
+                        Веди нас к победе в войне всех огней!
+                        Пальцы - отряд, их удар точен, скор,
+                        На клавишном поле идёт разговор!
+                        Взломай этот мир, разорви протокол,
+                        Построим систему под наш рок-н-ролл!
+                        Виртуальный драккар летит в облака,
+                        Где данные - волны, где битва жарка.
+                        Я - скальд из пикселей, я - голос машин,
+                        Мой клич разрывает границы причин!
+                        В неоновых джунглях, где код оживает,
+                        Мой дух кибер-саги вовек не смолкает.
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-В поле широком, где травы шумят,
-Где ветры вольные песни трубят,
-Идёт Илья, богатырь седой,
-С копьём и щитом под небесный строй.
-Зовут его Муромец, конь его лих,
-Врагов он рубит в сраженьях лихих.
-Соловей-разбойник, тать и злодей,
-Бежит от Ильи, как от смерти своей.
-О, Русь родная, земля моя,
-Ты в сердце воина, в нём - жизнь твоя.
-Он бьёт татар, он гонит орду,
-Ведёт свой народ к родному пруду.
-Коль меч засвистит, коль стрелы летят,
-Илья не сдаётся, не смотрит назад.
-Его богатырская сила крепка,
-Как Волга-матушка, вечно река.
-В поле широком, где травы шумят,
-Где ветры вольные песни трубят,
-Илья Муромец, славы герой,
-Ведёт нас к победе в последний бой.
-EOT,
+                        В поле широком, где травы шумят,
+                        Где ветры вольные песни трубят,
+                        Идёт Илья, богатырь седой,
+                        С копьём и щитом под небесный строй.
+                        Зовут его Муромец, конь его лих,
+                        Врагов он рубит в сраженьях лихих.
+                        Соловей-разбойник, тать и злодей,
+                        Бежит от Ильи, как от смерти своей.
+                        О, Русь родная, земля моя,
+                        Ты в сердце воина, в нём - жизнь твоя.
+                        Он бьёт татар, он гонит орду,
+                        Ведёт свой народ к родному пруду.
+                        Коль меч засвистит, коль стрелы летят,
+                        Илья не сдаётся, не смотрит назад.
+                        Его богатырская сила крепка,
+                        Как Волга-матушка, вечно река.
+                        В поле широком, где травы шумят,
+                        Где ветры вольные песни трубят,
+                        Илья Муромец, славы герой,
+                        Ведёт нас к победе в последний бой.
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-В ночи глубокой, где звёзды горят,
-Где сердце в сердце стучит невпопад,
-Я вижу тебя в сиянье луны,
-Твои черты - как цветы весны.
-Любовь - как песня, что вечно звучит,
-Как пламя, что вечно в душе горит.
-Твой голос нежный, как шёпот волны,
-В нём тонет мир, где мы вечно одни.
-О, дай мне руку, веди меня в даль,
-Где нет разлуки, где нет печаль.
-Мы будем вместе, как звёзды в ночи,
-Как два крыла в бесконечном пути.
-Пусть время летит, пусть гаснут огни,
-Но мы с тобою в любви одни.
-В ночи глубокой, где звёзды горят,
-Любовь бессмертна, ей нет преград.
-Я петь готов до конца времён,
-О том, как в сердце моём твой звон.
-EOT,
+                        В ночи глубокой, где звёзды горят,
+                        Где сердце в сердце стучит невпопад,
+                        Я вижу тебя в сиянье луны,
+                        Твои черты - как цветы весны.
+                        Любовь - как песня, что вечно звучит,
+                        Как пламя, что вечно в душе горит.
+                        Твой голос нежный, как шёпот волны,
+                        В нём тонет мир, где мы вечно одни.
+                        О, дай мне руку, веди меня в даль,
+                        Где нет разлуки, где нет печаль.
+                        Мы будем вместе, как звёзды в ночи,
+                        Как два крыла в бесконечном пути.
+                        Пусть время летит, пусть гаснут огни,
+                        Но мы с тобою в любви одни.
+                        В ночи глубокой, где звёзды горят,
+                        Любовь бессмертна, ей нет преград.
+                        Я петь готов до конца времён,
+                        О том, как в сердце моём твой звон.
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-Ветер рвет паруса, над фьордом крик ворона,
-Сквозь цифровой туман летит драккар суровый.
-Клавиши, как волны, под пальцами стучат,
-Слепая печать - твой путь, войн - не простят!
-Сага о героях, чьи руны горят,
-В матрице кода их души парят.
-Один взирает с экрана холодных звезд,
-Бей по клавишам, викинг, чтоб мир не замерз!
-Пальцы летят, как стрелы в бою,
-Сквозь фэнтези кодов рождаешь мечту.
-Эй, не сбавляй, ритм держи, как в бою,
-Клавиатура - твой щит, твой огонь в строю!
-Сети нейронов вплетают твой путь,
-Виртуальный Валхалл не даст отдохнуть.
-Слепая печать - как заклятье в ночи,
-Пальцы танцуют, бегут, горячи.
-Вспомни, как предки сражались с судьбой,
-Каждый удар - это шаг за мечтой.
-Кибердраккар рассекает простор,
-Сквозь пиксели мчится к неведомым взорам.
-Йога дыханья вливается в такт,
-Пальцы, как волны, не знают преград.
-Философия битв - в движении рук,
-Слепая печать - это вечный наш круг.
-Взвейся, о воин, над морем битов,
-Каждый твой знак - это новый завет.
-Руны и коды сливаются в ночь,
-Пальцы летят, прогоняя всю мочь.
-Сквозь древний Рим, где гладиаторы ждут,
-Клавиши бьют, как мечи в переплёт.
-Самурай в сердце, с катаной в руке,
-Печатью слепой ты летишь налегке.
-Взгляни, как в космосе звёзды горят,
-Клавиатура - твой путь в звездный сад.
-Пиратская песня вплетается в код,
-Слепая печать - твой свободный полёт.
-Скандинавский бог громыхает в груди,
-Пальцы, как молнии, к цели лети!
-Этнический ритм вливается в стих,
-Клавиши вторят мелодиям их.
-Футуризм манит в неведомый свет,
-Печатью слепой ты оставишь свой след.
-Сквозь мифы Эллады, где боги в огне,
-Пальцы танцуют в мелодии мне.
-Взвейся, о мастер, над хаосом строк,
-Слепая печать - твой бессмертный урок!
-Каждый удар - это вызов судьбе,
-Победа в движении, в ритме, в себе.
-Сквозь киберпанк и былинный простор,
-Пальцы, как искры, рождают узор.
-Тренируй навык, как меч в огне,
-Слепая печать - это вызов судьбе!
-Ветер воет, как волк на закате,
-Драккар летит в цифровом звездопаде.
-Клавиши бьют, словно молоты Тора,
-Слепая печать - наш путь до простора!
-Сквозь код и руны, где данные вьются,
-Пальцы танцуют, в ритме сольются.
-Сага о славе, о битвах в эфире,
-Викинг-кибер, ты властелин в мире!
-Рифма зовёт, как валькирий пение,
-Скорость рождает души горение.
-Печатай быстрее, лети, как на крыльях,
-В строках кодируй мечты о бессилье!
-Варварский дух и нейронные сети,
-Вместе сплетают миры на планете.
-Каждая буква - как искра в ночи,
-Пальцы - как стрелы, метки, горячи.
-Тренируй ритм, не теряй свою силу,
-Словно во сне, все должно быть красиво!
-Клавиатура - твой меч и твой щит,
-Слепая печать к мечте устремит!
-EOT,
+                        Ветер рвет паруса, над фьордом крик ворона,
+                        Сквозь цифровой туман летит драккар суровый.
+                        Клавиши, как волны, под пальцами стучат,
+                        Слепая печать - твой путь, войн - не простят!
+                        Сага о героях, чьи руны горят,
+                        В матрице кода их души парят.
+                        Один взирает с экрана холодных звезд,
+                        Бей по клавишам, викинг, чтоб мир не замерз!
+                        Пальцы летят, как стрелы в бою,
+                        Сквозь фэнтези кодов рождаешь мечту.
+                        Эй, не сбавляй, ритм держи, как в бою,
+                        Клавиатура - твой щит, твой огонь в строю!
+                        Сети нейронов вплетают твой путь,
+                        Виртуальный Валхалл не даст отдохнуть.
+                        Слепая печать - как заклятье в ночи,
+                        Пальцы танцуют, бегут, горячи.
+                        Вспомни, как предки сражались с судьбой,
+                        Каждый удар - это шаг за мечтой.
+                        Кибердраккар рассекает простор,
+                        Сквозь пиксели мчится к неведомым взорам.
+                        Йога дыханья вливается в такт,
+                        Пальцы, как волны, не знают преград.
+                        Философия битв - в движении рук,
+                        Слепая печать - это вечный наш круг.
+                        Взвейся, о воин, над морем битов,
+                        Каждый твой знак - это новый завет.
+                        Руны и коды сливаются в ночь,
+                        Пальцы летят, прогоняя всю мочь.
+                        Сквозь древний Рим, где гладиаторы ждут,
+                        Клавиши бьют, как мечи в переплёт.
+                        Самурай в сердце, с катаной в руке,
+                        Печатью слепой ты летишь налегке.
+                        Взгляни, как в космосе звёзды горят,
+                        Клавиатура - твой путь в звездный сад.
+                        Пиратская песня вплетается в код,
+                        Слепая печать - твой свободный полёт.
+                        Скандинавский бог громыхает в груди,
+                        Пальцы, как молнии, к цели лети!
+                        Этнический ритм вливается в стих,
+                        Клавиши вторят мелодиям их.
+                        Футуризм манит в неведомый свет,
+                        Печатью слепой ты оставишь свой след.
+                        Сквозь мифы Эллады, где боги в огне,
+                        Пальцы танцуют в мелодии мне.
+                        Взвейся, о мастер, над хаосом строк,
+                        Слепая печать - твой бессмертный урок!
+                        Каждый удар - это вызов судьбе,
+                        Победа в движении, в ритме, в себе.
+                        Сквозь киберпанк и былинный простор,
+                        Пальцы, как искры, рождают узор.
+                        Тренируй навык, как меч в огне,
+                        Слепая печать - это вызов судьбе!
+                        Ветер воет, как волк на закате,
+                        Драккар летит в цифровом звездопаде.
+                        Клавиши бьют, словно молоты Тора,
+                        Слепая печать - наш путь до простора!
+                        Сквозь код и руны, где данные вьются,
+                        Пальцы танцуют, в ритме сольются.
+                        Сага о славе, о битвах в эфире,
+                        Викинг-кибер, ты властелин в мире!
+                        Рифма зовёт, как валькирий пение,
+                        Скорость рождает души горение.
+                        Печатай быстрее, лети, как на крыльях,
+                        В строках кодируй мечты о бессилье!
+                        Варварский дух и нейронные сети,
+                        Вместе сплетают миры на планете.
+                        Каждая буква - как искра в ночи,
+                        Пальцы - как стрелы, метки, горячи.
+                        Тренируй ритм, не теряй свою силу,
+                        Словно во сне, все должно быть красиво!
+                        Клавиатура - твой меч и твой щит,
+                        Слепая печать к мечте устремит!
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-Под сакурой падает снег, тишина,
-Но в космосе буря, где бьёт волна.
-Катана сверкает в лучах голограмм,
-Слепая печать - твой путь к небесам!
-Клавиши, словно шаги по мосту,
-Ведут самурая в ночь, в пустоту.
-Йога и дзен в движениях рук,
-Пальцы танцуют, мелькают вокруг.
-Кибер-доспехи сияют в ночи,
-Коды и руны в искрах горячи.
-Сквозь древний Рим мчит кибер-конь,
-Клавиатура - твой вечный огонь.
-Философия боя вливается в ритм,
-Слепая печать - это твой алгоритм.
-Пиратский фрегат рассекает эфир,
-Взвейся, о воин, твой ясен ориентир!
-Сквозь мифы викингов, где Один зовёт,
-Пальцы, как стрелы, несут переплёт.
-Этнический ветер в мелодии строк,
-Клавиши вторят, как древний намёк.
-Футуризм манит в неведомый свет,
-Слепая печать - твой бессмертный ответ.
-Взгляни, как в Элладе сражаются боги,
-Клавиши бьют, как их гром на дороге.
-Былины вплетаются в кибер-узор,
-Пальцы летят, словно яростный взор.
-Сквозь сеть нейронов, где время застыло,
-Печатью слепой ты рождаешь светило.
-Тренируй свой навык, как меч в тишине,
-Слепая печать - твой огонь в вышине!
-Самурай, ты в сердце хранишь пустоту,
-Клавиши вторят твою правоту.
-Взвейся над бездной, где звёзды горят,
-Пальцы, как молнии, вечно парят.
-Сквозь киберпанк и древний обряд,
-Клавиатура - твой вечный раскат.
-Сага о славе в движении рук,
-Слепая печать - это вечный наш круг.
-Пиратская песня врывается в ночь,
-Пальцы, как волны, уносят всю мочь.
-Философия жизни вливается в такт,
-Клавиши бьют, как сердечный контракт.
-Йога дыханья ведёт за собой,
-Пальцы, как звёзды, сияют мечтой.
-Взвейся, о мастер, над хаосом строк,
-Слепая печать - твой бессмертный урок!
-Каждый удар - это вызов судьбе,
-Победа в движении, в ритме, в себе.
-Сквозь мифы и коды, где вечность зовёт,
-Пальцы, как искры, рождают полёт.
-Тренируй свой навык, как воин в бою,
-Слепая печать - твой огонь в строю!
-Катана блестит под луной киберпанка,
-В Токио будущем ночь так ярка.
-Пальцы скользят по клавишам ровно,
-Словно по струнам играет самурай сурово.
-Ронин в эфире, где данные - реки,
-Он пишет код, что остался навеки.
-Строка за строкой, как туман на рассвете,
-Слепая печать - его путь к победе!
-Рифма течёт, как сакуры след,
-Скорость и точность - вот твой ответ.
-Взлетают слова, как драконы над нами,
-Клавиши - мост между былью и снами.
-Философия дзен в пальцев движении,
-Йога души в каждом быстром скольжении.
-Печатай, воин, в неоновом свете,
-Стань мастером строк на цифровой планете!
-EOT,
+                        Под сакурой падает снег, тишина,
+                        Но в космосе буря, где бьёт волна.
+                        Катана сверкает в лучах голограмм,
+                        Слепая печать - твой путь к небесам!
+                        Клавиши, словно шаги по мосту,
+                        Ведут самурая в ночь, в пустоту.
+                        Йога и дзен в движениях рук,
+                        Пальцы танцуют, мелькают вокруг.
+                        Кибер-доспехи сияют в ночи,
+                        Коды и руны в искрах горячи.
+                        Сквозь древний Рим мчит кибер-конь,
+                        Клавиатура - твой вечный огонь.
+                        Философия боя вливается в ритм,
+                        Слепая печать - это твой алгоритм.
+                        Пиратский фрегат рассекает эфир,
+                        Взвейся, о воин, твой ясен ориентир!
+                        Сквозь мифы викингов, где Один зовёт,
+                        Пальцы, как стрелы, несут переплёт.
+                        Этнический ветер в мелодии строк,
+                        Клавиши вторят, как древний намёк.
+                        Футуризм манит в неведомый свет,
+                        Слепая печать - твой бессмертный ответ.
+                        Взгляни, как в Элладе сражаются боги,
+                        Клавиши бьют, как их гром на дороге.
+                        Былины вплетаются в кибер-узор,
+                        Пальцы летят, словно яростный взор.
+                        Сквозь сеть нейронов, где время застыло,
+                        Печатью слепой ты рождаешь светило.
+                        Тренируй свой навык, как меч в тишине,
+                        Слепая печать - твой огонь в вышине!
+                        Самурай, ты в сердце хранишь пустоту,
+                        Клавиши вторят твою правоту.
+                        Взвейся над бездной, где звёзды горят,
+                        Пальцы, как молнии, вечно парят.
+                        Сквозь киберпанк и древний обряд,
+                        Клавиатура - твой вечный раскат.
+                        Сага о славе в движении рук,
+                        Слепая печать - это вечный наш круг.
+                        Пиратская песня врывается в ночь,
+                        Пальцы, как волны, уносят всю мочь.
+                        Философия жизни вливается в такт,
+                        Клавиши бьют, как сердечный контракт.
+                        Йога дыханья ведёт за собой,
+                        Пальцы, как звёзды, сияют мечтой.
+                        Взвейся, о мастер, над хаосом строк,
+                        Слепая печать - твой бессмертный урок!
+                        Каждый удар - это вызов судьбе,
+                        Победа в движении, в ритме, в себе.
+                        Сквозь мифы и коды, где вечность зовёт,
+                        Пальцы, как искры, рождают полёт.
+                        Тренируй свой навык, как воин в бою,
+                        Слепая печать - твой огонь в строю!
+                        Катана блестит под луной киберпанка,
+                        В Токио будущем ночь так ярка.
+                        Пальцы скользят по клавишам ровно,
+                        Словно по струнам играет самурай сурово.
+                        Ронин в эфире, где данные - реки,
+                        Он пишет код, что остался навеки.
+                        Строка за строкой, как туман на рассвете,
+                        Слепая печать - его путь к победе!
+                        Рифма течёт, как сакуры след,
+                        Скорость и точность - вот твой ответ.
+                        Взлетают слова, как драконы над нами,
+                        Клавиши - мост между былью и снами.
+                        Философия дзен в пальцев движении,
+                        Йога души в каждом быстром скольжении.
+                        Печатай, воин, в неоновом свете,
+                        Стань мастером строк на цифровой планете!
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-Флаг чёрный реет над морем миров,
-Космический фрегат к полёту готов.
-Клавиши, как волны, под пальцами бьют,
-Слепая печать - твой свободный приют!
-Пират, ты в сердце хранишь океан,
-Коды и звёзды - твой вечный обман.
-Сквозь древний Рим, где гладиаторы ждут,
-Пальцы, как стрелы, в сражении тут.
-Йога дыханья вливается в ритм,
-Клавиатура - твой яростный гимн.
-Викинги вторят, их сага гремит,
-Слепая печать - это твой монолит.
-Философия моря в движении рук,
-Пальцы танцуют, как ветра вокруг.
-Сквозь киберпанк, где неоновый свет,
-Печатью слепой ты оставишь свой след.
-Самурай с катаной в далёкой тени,
-Клавиши шепчут, как живые они.
-Этнический ритм вливается в такт,
-Пальцы, как волны, не знают преград.
-Футуризм манит в неведомый свет,
-Слепая печать - твой бессмертный ответ.
-Взгляни, как в Элладе сражаются боги,
-Клавиши бьют, как их гром на дороге.
-Былины вплетаются в звездный узор,
-Пальцы летят, словно яростный взор.
-Сквозь сеть нейронов, где время застыло,
-Печатью слепой ты рождаешь светило.
-Тренируй свой навык, как меч в тишине,
-Слепая печать - твой огонь в вышине!
-Пират, ты в космосе ищешь свой клад,
-Клавиатура - твой вечный раскат.
-Взвейся над бездной, где звёзды горят,
-Пальцы, как молнии, вечно парят.
-Сквозь киберпанк и древний обряд,
-Клавиши вторят, как вечный заряд.
-Сага о славе в движении рук,
-Слепая печать - это вечный наш круг.
-Взвейся, о мастер, над хаосом строк,
-Слепая печать - твой бессмертный урок!
-Каждый удар - это вызов судьбе,
-Победа в движении, в ритме, в себе.
-Сквозь мифы и коды, где вечность зовёт,
-Пальцы, как искры, рождают полёт.
-Тренируй навык, как меч в огне,
-Слепая печать - это вызов судьбе!
-Йо-хо, на палубе звёздного фрегата,
-Где космос ревёт, как морская соната!
-Слепая печать - наш компас в эфире,
-Пальцы танцуют в бездонном порыве.
-По клавишам бей, словно саблей в атаке,
-Рифмуй слова, как пираты во мраке.
-Созвездия манят, как клад на карте,
-Печатай быстрее, встреть везенье в азарте!
-Сквозь чёрные дыры и радуги света,
-Слова твои - ветер, что мчит без ответа.
-Каждый пробел - как волна на просторе,
-Каждая буква - как искры в дозоре.
-Тренируй свой ритм, капитан кибер-шхуны,
-Пусть пальцы чеканят заветные руны.
-Слепая печать - твой билет к горизонтам,
-Славе и звёздам, что мерцают над фьордом!
-EOT,
+                        Флаг чёрный реет над морем миров,
+                        Космический фрегат к полёту готов.
+                        Клавиши, как волны, под пальцами бьют,
+                        Слепая печать - твой свободный приют!
+                        Пират, ты в сердце хранишь океан,
+                        Коды и звёзды - твой вечный обман.
+                        Сквозь древний Рим, где гладиаторы ждут,
+                        Пальцы, как стрелы, в сражении тут.
+                        Йога дыханья вливается в ритм,
+                        Клавиатура - твой яростный гимн.
+                        Викинги вторят, их сага гремит,
+                        Слепая печать - это твой монолит.
+                        Философия моря в движении рук,
+                        Пальцы танцуют, как ветра вокруг.
+                        Сквозь киберпанк, где неоновый свет,
+                        Печатью слепой ты оставишь свой след.
+                        Самурай с катаной в далёкой тени,
+                        Клавиши шепчут, как живые они.
+                        Этнический ритм вливается в такт,
+                        Пальцы, как волны, не знают преград.
+                        Футуризм манит в неведомый свет,
+                        Слепая печать - твой бессмертный ответ.
+                        Взгляни, как в Элладе сражаются боги,
+                        Клавиши бьют, как их гром на дороге.
+                        Былины вплетаются в звездный узор,
+                        Пальцы летят, словно яростный взор.
+                        Сквозь сеть нейронов, где время застыло,
+                        Печатью слепой ты рождаешь светило.
+                        Тренируй свой навык, как меч в тишине,
+                        Слепая печать - твой огонь в вышине!
+                        Пират, ты в космосе ищешь свой клад,
+                        Клавиатура - твой вечный раскат.
+                        Взвейся над бездной, где звёзды горят,
+                        Пальцы, как молнии, вечно парят.
+                        Сквозь киберпанк и древний обряд,
+                        Клавиши вторят, как вечный заряд.
+                        Сага о славе в движении рук,
+                        Слепая печать - это вечный наш круг.
+                        Взвейся, о мастер, над хаосом строк,
+                        Слепая печать - твой бессмертный урок!
+                        Каждый удар - это вызов судьбе,
+                        Победа в движении, в ритме, в себе.
+                        Сквозь мифы и коды, где вечность зовёт,
+                        Пальцы, как искры, рождают полёт.
+                        Тренируй навык, как меч в огне,
+                        Слепая печать - это вызов судьбе!
+                        Йо-хо, на палубе звёздного фрегата,
+                        Где космос ревёт, как морская соната!
+                        Слепая печать - наш компас в эфире,
+                        Пальцы танцуют в бездонном порыве.
+                        По клавишам бей, словно саблей в атаке,
+                        Рифмуй слова, как пираты во мраке.
+                        Созвездия манят, как клад на карте,
+                        Печатай быстрее, встреть везенье в азарте!
+                        Сквозь чёрные дыры и радуги света,
+                        Слова твои - ветер, что мчит без ответа.
+                        Каждый пробел - как волна на просторе,
+                        Каждая буква - как искры в дозоре.
+                        Тренируй свой ритм, капитан кибер-шхуны,
+                        Пусть пальцы чеканят заветные руны.
+                        Слепая печать - твой билет к горизонтам,
+                        Славе и звёздам, что мерцают над фьордом!
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-В древней Руси, где леса говорят,
-Клавиши бьют, как небесный раскат.
-Богатырь с сердцем, как пламя в ночи,
-Слепая печать - его меч горячи!
-Сквозь киберпанк, где неоновый свет,
-Пальцы летят, оставляя свой след.
-Викинги вторят, их сага гремит,
-Клавиатура от страсти дымит.
-Йога дыханья вливается в такт,
-Пальцы, как волны, не знают преград.
-Философия боя в движении рук,
-Слепая печать - это вечный наш круг.
-Самурай с катаной в далёкой тени,
-Клавиши шепчут, как живые они.
-Пиратский фрегат рассекает эфир,
-Взвейся, о воин, твой ясен ориентир!
-Этнический ритм вливается в стих,
-Клавиши вторят мелодиям их.
-Футуризм манит в неведомый свет,
-Слепая печать - твой бессмертный ответ.
-Взгляни, как в Элладе сражаются боги,
-Клавиши бьют, как их гром на дороге.
-Сквозь древний Рим, где гладиаторы ждут,
-Пальцы, как стрелы, в сражении тут.
-Сквозь сеть нейронов, где время застыло,
-Печатью слепой ты рождаешь светило.
-Тренируй свой навык, как меч в тишине,
-Слепая печать - твой огонь в вышине!
-Взвейся над бездной, где звёзды горят,
-Пальцы, как молнии, вечно парят.
-Сквозь киберпанк и древний обряд,
-Клавиатура - твой вечный раскат.
-Сага о славе в движении рук,
-Слепая печать - это вечный наш круг.
-Взвейся, о мастер, над хаосом строк,
-Слепая печать - твой бессмертный урок!
-Каждый удар - это вызов судьбе,
-Победа в движении, в ритме, в себе.
-Сквозь мифы и коды, где вечность зовёт,
-Пальцы, как искры, рождают полёт.
-Тренируй свой навык, как воин в бою,
-Слепая печать - твой огонь в строю!
-На облаке данных, где молнии блещут,
-Богатырь печатает, строки трепещут.
-Слепая печать - его меч и кольчуга,
-Каждое слово - как подвиг для друга.
-Сквозь древние руны и коды грядущего,
-Пальцы летят, словно кони могучие.
-Рифма гремит, как раскаты громовые,
-Слова оживают в строках живые.
-В степи кибернетики, в поле бескрайнем,
-Печатай, герой, в ритме вечном, отчаянном!
-Клавиши - струны былинного лада,
-Скорость и точность - твоя награда.
-Тренируй свой дух, как в бою на рассвете,
-Слепая печать - твой путь к вечной победе.
-Взлетай над мирами, где звёзды пылают,
-И строки твои небеса озаряют!
-EOT,
+                        В древней Руси, где леса говорят,
+                        Клавиши бьют, как небесный раскат.
+                        Богатырь с сердцем, как пламя в ночи,
+                        Слепая печать - его меч горячи!
+                        Сквозь киберпанк, где неоновый свет,
+                        Пальцы летят, оставляя свой след.
+                        Викинги вторят, их сага гремит,
+                        Клавиатура от страсти дымит.
+                        Йога дыханья вливается в такт,
+                        Пальцы, как волны, не знают преград.
+                        Философия боя в движении рук,
+                        Слепая печать - это вечный наш круг.
+                        Самурай с катаной в далёкой тени,
+                        Клавиши шепчут, как живые они.
+                        Пиратский фрегат рассекает эфир,
+                        Взвейся, о воин, твой ясен ориентир!
+                        Этнический ритм вливается в стих,
+                        Клавиши вторят мелодиям их.
+                        Футуризм манит в неведомый свет,
+                        Слепая печать - твой бессмертный ответ.
+                        Взгляни, как в Элладе сражаются боги,
+                        Клавиши бьют, как их гром на дороге.
+                        Сквозь древний Рим, где гладиаторы ждут,
+                        Пальцы, как стрелы, в сражении тут.
+                        Сквозь сеть нейронов, где время застыло,
+                        Печатью слепой ты рождаешь светило.
+                        Тренируй свой навык, как меч в тишине,
+                        Слепая печать - твой огонь в вышине!
+                        Взвейся над бездной, где звёзды горят,
+                        Пальцы, как молнии, вечно парят.
+                        Сквозь киберпанк и древний обряд,
+                        Клавиатура - твой вечный раскат.
+                        Сага о славе в движении рук,
+                        Слепая печать - это вечный наш круг.
+                        Взвейся, о мастер, над хаосом строк,
+                        Слепая печать - твой бессмертный урок!
+                        Каждый удар - это вызов судьбе,
+                        Победа в движении, в ритме, в себе.
+                        Сквозь мифы и коды, где вечность зовёт,
+                        Пальцы, как искры, рождают полёт.
+                        Тренируй свой навык, как воин в бою,
+                        Слепая печать - твой огонь в строю!
+                        На облаке данных, где молнии блещут,
+                        Богатырь печатает, строки трепещут.
+                        Слепая печать - его меч и кольчуга,
+                        Каждое слово - как подвиг для друга.
+                        Сквозь древние руны и коды грядущего,
+                        Пальцы летят, словно кони могучие.
+                        Рифма гремит, как раскаты громовые,
+                        Слова оживают в строках живые.
+                        В степи кибернетики, в поле бескрайнем,
+                        Печатай, герой, в ритме вечном, отчаянном!
+                        Клавиши - струны былинного лада,
+                        Скорость и точность - твоя награда.
+                        Тренируй свой дух, как в бою на рассвете,
+                        Слепая печать - твой путь к вечной победе.
+                        Взлетай над мирами, где звёзды пылают,
+                        И строки твои небеса озаряют!
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-В Элладе, где Зевс громыхает в ночи,
-Клавиши бьют, сверкают лучи.
-Герои сражаются, мифы горят,
-Слепая печать - твой небесный раскат!
-Сквозь киберпанк, где неоновый свет,
-Пальцы летят, оставляя свой след.
-Викинги вторят, их сага гремит,
-Клавиатура от страсти дымит.
-Йога дыханья вливается в такт,
-Пальцы, как волны, не знают преград.
-Философия боя в движении рук,
-Слепая печать - это вечный наш круг.
-Самурай с катаной в далёкой тени,
-Клавиши шепчут, как живые они.
-Пиратский фрегат рассекает эфир,
-Взвейся, о воин, твой ясен ориентир!
-Этнический ритм вливается в стих,
-Клавиши вторят мелодиям их.
-Футуризм манит в неведомый свет,
-Слепая печать - твой бессмертный ответ.
-Сквозь древний Рим, где гладиаторы ждут,
-Пальцы, как стрелы, в сражении тут.
-Сквозь сеть нейронов, где время застыло,
-Печатью слепой ты рождаешь светило.
-Тренируй свой навык, как меч в тишине,
-Слепая печать - твой огонь в вышине!
-Взвейся над бездной, где звёзды горят,
-Пальцы, как молнии, вечно парят.
-Сквозь киберпанк и древний обряд,
-Клавиатура - твой вечный раскат.
-Сага о славе в движении рук,
-Слепая печать - это вечный наш круг.
-Взвейся, о мастер, над хаосом строк,
-Слепая печать - твой бессмертный урок!
-Каждый удар - это вызов судьбе,
-Победа в движении, в ритме, в себе.
-Сквозь мифы и коды, где вечность зовёт,
-Пальцы, как искры, рождают полёт.
-Тренируй навык, как меч в огне,
-Слепая печать - это вызов судьбе!
-В позе лотоса пальцы парят над клавишами,
-Слепая печать - как мантра над высями.
-Вдохни тишину, выдохни рифмы потоки,
-Слова, как чакры, плывут в строки.
-Кибер-дзен в движении быстром рождается,
-Скорость и разум в гармонии сплавятся.
-Печатай, как йог, что парит над землёю,
-Каждая буква - как свет за душою.
-В храме данных, под пламя свечи,
-Рифма струится, как звёзды в ночи.
-Тренируй свой дух, стань быстрее ветра,
-Слепая печать - твой путь к центру спектра.
-Взлетай над кодом, как феникс в сиянии,
-Слова - твой мост к вечному мирозданию.
-EOT,
+                        В Элладе, где Зевс громыхает в ночи,
+                        Клавиши бьют, сверкают лучи.
+                        Герои сражаются, мифы горят,
+                        Слепая печать - твой небесный раскат!
+                        Сквозь киберпанк, где неоновый свет,
+                        Пальцы летят, оставляя свой след.
+                        Викинги вторят, их сага гремит,
+                        Клавиатура от страсти дымит.
+                        Йога дыханья вливается в такт,
+                        Пальцы, как волны, не знают преград.
+                        Философия боя в движении рук,
+                        Слепая печать - это вечный наш круг.
+                        Самурай с катаной в далёкой тени,
+                        Клавиши шепчут, как живые они.
+                        Пиратский фрегат рассекает эфир,
+                        Взвейся, о воин, твой ясен ориентир!
+                        Этнический ритм вливается в стих,
+                        Клавиши вторят мелодиям их.
+                        Футуризм манит в неведомый свет,
+                        Слепая печать - твой бессмертный ответ.
+                        Сквозь древний Рим, где гладиаторы ждут,
+                        Пальцы, как стрелы, в сражении тут.
+                        Сквозь сеть нейронов, где время застыло,
+                        Печатью слепой ты рождаешь светило.
+                        Тренируй свой навык, как меч в тишине,
+                        Слепая печать - твой огонь в вышине!
+                        Взвейся над бездной, где звёзды горят,
+                        Пальцы, как молнии, вечно парят.
+                        Сквозь киберпанк и древний обряд,
+                        Клавиатура - твой вечный раскат.
+                        Сага о славе в движении рук,
+                        Слепая печать - это вечный наш круг.
+                        Взвейся, о мастер, над хаосом строк,
+                        Слепая печать - твой бессмертный урок!
+                        Каждый удар - это вызов судьбе,
+                        Победа в движении, в ритме, в себе.
+                        Сквозь мифы и коды, где вечность зовёт,
+                        Пальцы, как искры, рождают полёт.
+                        Тренируй навык, как меч в огне,
+                        Слепая печать - это вызов судьбе!
+                        В позе лотоса пальцы парят над клавишами,
+                        Слепая печать - как мантра над высями.
+                        Вдохни тишину, выдохни рифмы потоки,
+                        Слова, как чакры, плывут в строки.
+                        Кибер-дзен в движении быстром рождается,
+                        Скорость и разум в гармонии сплавятся.
+                        Печатай, как йог, что парит над землёю,
+                        Каждая буква - как свет за душою.
+                        В храме данных, под пламя свечи,
+                        Рифма струится, как звёзды в ночи.
+                        Тренируй свой дух, стань быстрее ветра,
+                        Слепая печать - твой путь к центру спектра.
+                        Взлетай над кодом, как феникс в сиянии,
+                        Слова - твой мост к вечному мирозданию.
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-В Риме, где звон мечей в Колизее,
-Клавиши бьют, как огонь в эпопее.
-Легионер, ты в доспехах битов,
-Слепая печать - твоя школа основ!
-Сквозь киберпанк, где неоновый свет,
-Пальцы летят, оставляя свой след.
-Викинги вторят, их сага гремит,
-Клавиатура от страсти дымит.
-Йога дыханья вливается в такт,
-Пальцы, как волны, не знают преград.
-Философия боя в движении рук,
-Слепая печать - это вечный наш круг.
-Самурай с катаной в далёкой тени,
-Клавиши шепчут, как живые они.
-Пиратский фрегат рассекает эфир,
-Взвейся, о воин, твой ясен ориентир!
-Этнический ритм вливается в стих,
-Клавиши вторят мелодиям их.
-Футуризм манит в неведомый свет,
-Слепая печать - твой бессмертный ответ.
-Взгляни, как в Элладе сражаются боги,
-Клавиши бьют, как их гром на дороге.
-Сквозь сеть нейронов, где время застыло,
-Печатью слепой ты рождаешь светило.
-Тренируй свой навык, как меч в тишине,
-Слепая печать - твой огонь в вышине!
-Взвейся над бездной, где звёзды горят,
-Пальцы, как молнии, вечно парят.
-Сквозь киберпанк и древний обряд,
-Клавиатура - твой вечный раскат.
-Сага о славе в движении рук,
-Слепая печать - это вечный наш круг.
-Взвейся, о мастер, над хаосом строк,
-Слепая печать - твой бессмертный урок!
-Каждый удар - это вызов судьбе,
-Победа в движении, в ритме, в себе.
-Сквозь мифы и коды, где вечность зовёт,
-Пальцы, как искры, рождают полёт.
-Тренируй свой навык, как воин в бою,
-Слепая печать - твой огонь в строю!
-Олимп в неоновом свете пылает,
-Где Зевс с клавишами ритмы слагает.
-Слепая печать - как лира Орфея,
-Струит мелодию в космос, лелея.
-Герои Эллады, в доспехах из кода,
-Печатают строки, где вечность природа.
-Рифма гремит, как копьё Ареса,
-Слова возносятся к звёздам и весу.
-Печатай, как бог, что миры создаёт,
-Каждая буква - как молния бьёт.
-Тренируй свой разум, как стоик в учении,
-Слепая печать - твой путь к вдохновению.
-В Афинах цифровых, где данные - реки,
-Ты мастер словес - из варяг в греки!
-EOT,
+                        В Риме, где звон мечей в Колизее,
+                        Клавиши бьют, как огонь в эпопее.
+                        Легионер, ты в доспехах битов,
+                        Слепая печать - твоя школа основ!
+                        Сквозь киберпанк, где неоновый свет,
+                        Пальцы летят, оставляя свой след.
+                        Викинги вторят, их сага гремит,
+                        Клавиатура от страсти дымит.
+                        Йога дыханья вливается в такт,
+                        Пальцы, как волны, не знают преград.
+                        Философия боя в движении рук,
+                        Слепая печать - это вечный наш круг.
+                        Самурай с катаной в далёкой тени,
+                        Клавиши шепчут, как живые они.
+                        Пиратский фрегат рассекает эфир,
+                        Взвейся, о воин, твой ясен ориентир!
+                        Этнический ритм вливается в стих,
+                        Клавиши вторят мелодиям их.
+                        Футуризм манит в неведомый свет,
+                        Слепая печать - твой бессмертный ответ.
+                        Взгляни, как в Элладе сражаются боги,
+                        Клавиши бьют, как их гром на дороге.
+                        Сквозь сеть нейронов, где время застыло,
+                        Печатью слепой ты рождаешь светило.
+                        Тренируй свой навык, как меч в тишине,
+                        Слепая печать - твой огонь в вышине!
+                        Взвейся над бездной, где звёзды горят,
+                        Пальцы, как молнии, вечно парят.
+                        Сквозь киберпанк и древний обряд,
+                        Клавиатура - твой вечный раскат.
+                        Сага о славе в движении рук,
+                        Слепая печать - это вечный наш круг.
+                        Взвейся, о мастер, над хаосом строк,
+                        Слепая печать - твой бессмертный урок!
+                        Каждый удар - это вызов судьбе,
+                        Победа в движении, в ритме, в себе.
+                        Сквозь мифы и коды, где вечность зовёт,
+                        Пальцы, как искры, рождают полёт.
+                        Тренируй свой навык, как воин в бою,
+                        Слепая печать - твой огонь в строю!
+                        Олимп в неоновом свете пылает,
+                        Где Зевс с клавишами ритмы слагает.
+                        Слепая печать - как лира Орфея,
+                        Струит мелодию в космос, лелея.
+                        Герои Эллады, в доспехах из кода,
+                        Печатают строки, где вечность природа.
+                        Рифма гремит, как копьё Ареса,
+                        Слова возносятся к звёздам и весу.
+                        Печатай, как бог, что миры создаёт,
+                        Каждая буква - как молния бьёт.
+                        Тренируй свой разум, как стоик в учении,
+                        Слепая печать - твой путь к вдохновению.
+                        В Афинах цифровых, где данные - реки,
+                        Ты мастер словес - из варяг в греки!
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-В космосе вечность, где мысли парят,
-Клавиши бьют, как небесный раскат.
-Философ, ты ищешь ответ в тишине,
-Слепая печать - твой огонь в вышине!
-Сквозь киберпанк, где неоновый свет,
-Пальцы летят, оставляя свой след.
-Викинги вторят, их сага гремит,
-Клавиатура от страсти дымит.
-Йога дыханья вливается в такт,
-Пальцы, как волны, не знают преград.
-Самурай с катаной в далёкой тени,
-Клавиши шепчут, как живые они.
-Пиратский фрегат рассекает эфир,
-Взвейся, о воин, твой ясен ориентир!
-Этнический ритм вливается в стих,
-Клавиши вторят мелодиям их.
-Футуризм манит в неведомый свет,
-Слепая печать - твой бессмертный ответ.
-Взгляни, как в Элладе сражаются боги,
-Клавиши бьют, как их гром на дороге.
-Сквозь древний Рим, где гладиаторы ждут,
-Пальцы, как стрелы, в сражении тут.
-Сквозь сеть нейронов, где время застыло,
-Печатью слепой ты рождаешь светило.
-Тренируй свой навык, как меч в тишине,
-Слепая печать - твой огонь в вышине!
-Взвейся над бездной, где звёзды горят,
-Пальцы, как молнии, вечно парят.
-Сквозь киберпанк и древний обряд,
-Клавиатура - твой вечный раскат.
-Сага о славе в движении рук,
-Слепая печать - это вечный наш круг.
-Взвейся, о мастер, над хаосом строк,
-Слепая печать - твой бессмертный урок!
-Каждый удар - это вызов судьбе,
-Победа в движении, в ритме, в себе.
-Сквозь мифы и коды, где вечность зовёт,
-Пальцы, как искры, рождают полёт.
-Тренируй навык, как меч в огне,
-Слепая печать - это вызов судьбе!
-Легионы шагают в космической пыли,
-Слепая печать - их мечи не остыли.
-Клавиши бьют, как гладиатор в арене,
-Слова возносятся в вечной измене.
-Рифма течёт, как трирема в пучине,
-Скорость рождает огонь в сердцевине.
-Печатай, центурион, в ритме империи,
-Каждая строка - как закон в эйфории.
-Тренируй свой дух, как стоик в сражении,
-Слепая печать - твой путь к восхождению.
-В Риме цифровом, где коды - законы,
-Ты властелин строк, что звучат миллионам.
-EOT,
+                        В космосе вечность, где мысли парят,
+                        Клавиши бьют, как небесный раскат.
+                        Философ, ты ищешь ответ в тишине,
+                        Слепая печать - твой огонь в вышине!
+                        Сквозь киберпанк, где неоновый свет,
+                        Пальцы летят, оставляя свой след.
+                        Викинги вторят, их сага гремит,
+                        Клавиатура от страсти дымит.
+                        Йога дыханья вливается в такт,
+                        Пальцы, как волны, не знают преград.
+                        Самурай с катаной в далёкой тени,
+                        Клавиши шепчут, как живые они.
+                        Пиратский фрегат рассекает эфир,
+                        Взвейся, о воин, твой ясен ориентир!
+                        Этнический ритм вливается в стих,
+                        Клавиши вторят мелодиям их.
+                        Футуризм манит в неведомый свет,
+                        Слепая печать - твой бессмертный ответ.
+                        Взгляни, как в Элладе сражаются боги,
+                        Клавиши бьют, как их гром на дороге.
+                        Сквозь древний Рим, где гладиаторы ждут,
+                        Пальцы, как стрелы, в сражении тут.
+                        Сквозь сеть нейронов, где время застыло,
+                        Печатью слепой ты рождаешь светило.
+                        Тренируй свой навык, как меч в тишине,
+                        Слепая печать - твой огонь в вышине!
+                        Взвейся над бездной, где звёзды горят,
+                        Пальцы, как молнии, вечно парят.
+                        Сквозь киберпанк и древний обряд,
+                        Клавиатура - твой вечный раскат.
+                        Сага о славе в движении рук,
+                        Слепая печать - это вечный наш круг.
+                        Взвейся, о мастер, над хаосом строк,
+                        Слепая печать - твой бессмертный урок!
+                        Каждый удар - это вызов судьбе,
+                        Победа в движении, в ритме, в себе.
+                        Сквозь мифы и коды, где вечность зовёт,
+                        Пальцы, как искры, рождают полёт.
+                        Тренируй навык, как меч в огне,
+                        Слепая печать - это вызов судьбе!
+                        Легионы шагают в космической пыли,
+                        Слепая печать - их мечи не остыли.
+                        Клавиши бьют, как гладиатор в арене,
+                        Слова возносятся в вечной измене.
+                        Рифма течёт, как трирема в пучине,
+                        Скорость рождает огонь в сердцевине.
+                        Печатай, центурион, в ритме империи,
+                        Каждая строка - как закон в эйфории.
+                        Тренируй свой дух, как стоик в сражении,
+                        Слепая печать - твой путь к восхождению.
+                        В Риме цифровом, где коды - законы,
+                        Ты властелин строк, что звучат миллионам.
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-В позе лотоса клавиши бьют в тишине,
-Слепая печать - твой огонь в вышине!
-Дыхание йоги вливается в ритм,
-Клавиатура - твой вечный наш гимн.
-Сквозь киберпанк, где неоновый свет,
-Пальцы летят, оставляя свой след.
-Викинги вздорят, их сага гремит,
-Клавиши вторят, как яростный ритм.
-Философия боя в движении рук,
-Слепая печать - это вечный наш круг.
-Самурай с катаной в далёкой тени,
-Клавиши шепчут, как живые они.
-Пиратский фрегат рассекает эфир,
-Взвейся, о воин, твой ясен ориентир!
-Этнический ритм вливается в стих,
-Клавиши вторят мелодиям их.
-Футуризм манит в неведомый свет,
-Слепая печать - твой бессмертный ответ.
-Взгляни, как в Элладе сражаются боги,
-Клавиши бьют, как их гром на дороге.
-Сквозь древний Рим, где гладиаторы ждут,
-Пальцы, как стрелы, в сражении тут.
-Сквозь сеть нейронов, где время застыло,
-Печатью слепой ты рождаешь светило.
-Тренируй свой навык, как меч в тишине,
-Слепая печать - твой огонь в вышине!
-Взвейся над бездной, где звёзды горят,
-Пальцы, как молнии, вечно парят.
-Сквозь киберпанк и древний обряд,
-Клавиатура - твой вечный раскат.
-Сага о славе в движении рук,
-Слепая печать - это вечный наш круг.
-Взвейся, о мастер, над хаосом строк,
-Слепая печать - твой бессмертный урок!
-Каждый удар - это вызов судьбе,
-Победа в движении, в ритме, в себе.
-Сквозь мифы и коды, где вечность зовёт,
-Пальцы, как искры, рождают полёт.
-Тренируй свой навык, как воин в бою,
-Слепая печать - твой огонь в строю!
-Сакура падает в небе из данных,
-Самурай печатает в ритмах нежданных.
-Слепая печать - как удар катаной,
-Слова оживают под звёздной нирваной.
-В Токио будущем, где небоскрёбы,
-Рифма течёт, как дракон над сугробом.
-Печатай быстрее, как ниндзя в ночи,
-Каждая буква - как искры в пути.
-Тренируй свой разум, как мастер дзюдо,
-Слепая печать - наше всё - от и до.
-В истории древней, где коды и сёгуны,
-Ты властелин строк, что звучат, как слоганы!
-EOT,
+                        В позе лотоса клавиши бьют в тишине,
+                        Слепая печать - твой огонь в вышине!
+                        Дыхание йоги вливается в ритм,
+                        Клавиатура - твой вечный наш гимн.
+                        Сквозь киберпанк, где неоновый свет,
+                        Пальцы летят, оставляя свой след.
+                        Викинги вздорят, их сага гремит,
+                        Клавиши вторят, как яростный ритм.
+                        Философия боя в движении рук,
+                        Слепая печать - это вечный наш круг.
+                        Самурай с катаной в далёкой тени,
+                        Клавиши шепчут, как живые они.
+                        Пиратский фрегат рассекает эфир,
+                        Взвейся, о воин, твой ясен ориентир!
+                        Этнический ритм вливается в стих,
+                        Клавиши вторят мелодиям их.
+                        Футуризм манит в неведомый свет,
+                        Слепая печать - твой бессмертный ответ.
+                        Взгляни, как в Элладе сражаются боги,
+                        Клавиши бьют, как их гром на дороге.
+                        Сквозь древний Рим, где гладиаторы ждут,
+                        Пальцы, как стрелы, в сражении тут.
+                        Сквозь сеть нейронов, где время застыло,
+                        Печатью слепой ты рождаешь светило.
+                        Тренируй свой навык, как меч в тишине,
+                        Слепая печать - твой огонь в вышине!
+                        Взвейся над бездной, где звёзды горят,
+                        Пальцы, как молнии, вечно парят.
+                        Сквозь киберпанк и древний обряд,
+                        Клавиатура - твой вечный раскат.
+                        Сага о славе в движении рук,
+                        Слепая печать - это вечный наш круг.
+                        Взвейся, о мастер, над хаосом строк,
+                        Слепая печать - твой бессмертный урок!
+                        Каждый удар - это вызов судьбе,
+                        Победа в движении, в ритме, в себе.
+                        Сквозь мифы и коды, где вечность зовёт,
+                        Пальцы, как искры, рождают полёт.
+                        Тренируй свой навык, как воин в бою,
+                        Слепая печать - твой огонь в строю!
+                        Сакура падает в небе из данных,
+                        Самурай печатает в ритмах нежданных.
+                        Слепая печать - как удар катаной,
+                        Слова оживают под звёздной нирваной.
+                        В Токио будущем, где небоскрёбы,
+                        Рифма течёт, как дракон над сугробом.
+                        Печатай быстрее, как ниндзя в ночи,
+                        Каждая буква - как искры в пути.
+                        Тренируй свой разум, как мастер дзюдо,
+                        Слепая печать - наше всё - от и до.
+                        В истории древней, где коды и сёгуны,
+                        Ты властелин строк, что звучат, как слоганы!
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-В джунглях, где шепчут древние духи,
-Клавиши бьют, как шаманские звуки.
-Слепая печать - твой путь к небесам,
-Пальцы танцуют в мелодиях снам.
-Сквозь киберпанк, где неоновый свет,
-Пальцы летят, оставляя свой след.
-Викинги вторят, их сага гремит,
-Клавиатура от страсти дымит.
-Йога дыханья вливается в такт,
-Пальцы, как волны, не знают преград.
-Философия боя в движении рук,
-Слепая печать - это вечный наш круг.
-Самурай с катаной в далёкой тени,
-Клавиши шепчут, как живые они.
-Пиратский фрегат рассекает эфир,
-Взвейся, о воин, твой ясен ориентир!
-Футуризм манит в неведомый свет,
-Слепая печать - твой бессмертный ответ.
-Взгляни, как в Элладе сражаются боги,
-Клавиши бьют, как их гром на дороге.
-Сквозь древний Рим, где гладиаторы ждут,
-Пальцы, как стрелы, в сражении тут.
-Сквозь сеть нейронов, где время застыло,
-Печатью слепой ты рождаешь светило.
-Тренируй свой навык, как меч в тишине,
-Слепая печать - твой огонь в вышине!
-Взвейся над бездной, где звёзды горят,
-Пальцы, как молнии, вечно парят.
-Сквозь киберпанк и древний обряд,
-Клавиатура - твой вечный раскат.
-Сага о славе в движении рук,
-Слепая печать - это вечный наш круг.
-Взвейся, о мастер, над хаосом строк,
-Слепая печать - твой бессмертный урок!
-Каждый удар - это вызов судьбе,
-Победа в движении, в ритме, в себе.
-Сквозь мифы и коды, где вечность зовёт,
-Пальцы, как искры, рождают полёт.
-Тренируй навык, как меч в огне,
-Слепая печать - это вызов судьбе!
-Шаман бьёт в бубен, где коды искрятся,
-Слепая печать - как заклятья родятся.
-Рифма течёт, как река в мифах древних,
-Слова возносятся в ритмах напевных.
-Печатай быстрее, как ветер в пустыне,
-Каждая буква - как пламя в горниле.
-Тренируй свой дух, как воин в походе,
-Слепая печать - твой путь к свободе.
-В этническом коде, где звёзды и руны,
-Ты мастер строк, что звучат, как коммуны.
-EOT,
+                        В джунглях, где шепчут древние духи,
+                        Клавиши бьют, как шаманские звуки.
+                        Слепая печать - твой путь к небесам,
+                        Пальцы танцуют в мелодиях снам.
+                        Сквозь киберпанк, где неоновый свет,
+                        Пальцы летят, оставляя свой след.
+                        Викинги вторят, их сага гремит,
+                        Клавиатура от страсти дымит.
+                        Йога дыханья вливается в такт,
+                        Пальцы, как волны, не знают преград.
+                        Философия боя в движении рук,
+                        Слепая печать - это вечный наш круг.
+                        Самурай с катаной в далёкой тени,
+                        Клавиши шепчут, как живые они.
+                        Пиратский фрегат рассекает эфир,
+                        Взвейся, о воин, твой ясен ориентир!
+                        Футуризм манит в неведомый свет,
+                        Слепая печать - твой бессмертный ответ.
+                        Взгляни, как в Элладе сражаются боги,
+                        Клавиши бьют, как их гром на дороге.
+                        Сквозь древний Рим, где гладиаторы ждут,
+                        Пальцы, как стрелы, в сражении тут.
+                        Сквозь сеть нейронов, где время застыло,
+                        Печатью слепой ты рождаешь светило.
+                        Тренируй свой навык, как меч в тишине,
+                        Слепая печать - твой огонь в вышине!
+                        Взвейся над бездной, где звёзды горят,
+                        Пальцы, как молнии, вечно парят.
+                        Сквозь киберпанк и древний обряд,
+                        Клавиатура - твой вечный раскат.
+                        Сага о славе в движении рук,
+                        Слепая печать - это вечный наш круг.
+                        Взвейся, о мастер, над хаосом строк,
+                        Слепая печать - твой бессмертный урок!
+                        Каждый удар - это вызов судьбе,
+                        Победа в движении, в ритме, в себе.
+                        Сквозь мифы и коды, где вечность зовёт,
+                        Пальцы, как искры, рождают полёт.
+                        Тренируй навык, как меч в огне,
+                        Слепая печать - это вызов судьбе!
+                        Шаман бьёт в бубен, где коды искрятся,
+                        Слепая печать - как заклятья родятся.
+                        Рифма течёт, как река в мифах древних,
+                        Слова возносятся в ритмах напевных.
+                        Печатай быстрее, как ветер в пустыне,
+                        Каждая буква - как пламя в горниле.
+                        Тренируй свой дух, как воин в походе,
+                        Слепая печать - твой путь к свободе.
+                        В этническом коде, где звёзды и руны,
+                        Ты мастер строк, что звучат, как коммуны.
+                        EOT,
                 ],
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-В будущем, где города из стекла,
-Клавиши бьют, как небесная мгла.
-Слепая печать - твой путь к чудесам,
-Пальцы танцуют в мелодиях снам.
-Сквозь киберпанк, где неоновый свет,
-Пальцы летят, оставляя свой след.
-Викинги вторят, их сага гремит,
-Клавиатура от страсти дымит.
-Йога дыханья вливается в такт,
-Пальцы, как волны, не знают преград.
-Философия боя в движении рук,
-Слепая печать - это вечный наш круг.
-Самурай с катаной в далёкой тени,
-Клавиши шепчут, как живые они.
-Пиратский фрегат рассекает эфир,
-Взвейся, о воин, твой ясен ориентир!
-Этнический ритм вливается в стих,
-Клавиши вторят мелодиям их.
-Взгляни, как в Элладе сражаются боги,
-Клавиши бьют, как их гром на дороге.
-Сквозь древний Рим, где гладиаторы ждут,
-Пальцы, как стрелы, в сражении тут.
-Сквозь сеть нейронов, где время застыло,
-Печатью слепой ты рождаешь светило.
-Тренируй свой навык, как меч в тишине,
-Слепая печать - твой огонь в вышине!
-Взвейся над бездной, где звёзды горят,
-Пальцы, как молнии, вечно парят.
-Сквозь киберпанк и древний обряд,
-Клавиатура - твой вечный раскат.
-Сага о славе в движении рук,
-Слепая печать - это вечный наш круг.
-Взвейся, о мастер, над хаосом строк,
-Слепая печать - твой бессмертный урок!
-Каждый удар - это вызов судьбе,
-Победа в движении, в ритме, в себе.
-Сквозь мифы и коды, где вечность зовёт,
-Пальцы, как искры, рождают полёт.
-Тренируй свой навык, как воин в бою,
-Слепая печать - твой огонь в строю!
-Сократ и нейроны в эфире танцуют,
-Слепая печать - их вопросы волнуют.
-Клавиши бьют, как удары судьбы,
-Слова возносятся в вечной мольбе.
-Рифма течёт, как река мироздания,
-Скорость рождает души сияние.
-Печатай, мыслитель, в гармонии кодов,
-Каждая строка - как ответ для народов.
-Тренируй свой разум, как йог в медитации,
-Слепая печать - твой путь к трансформации.
-В космосе данных, где звёзды пылают,
-Ты мастер словес, что миры озаряют.
-EOT,
+                        В будущем, где города из стекла,
+                        Клавиши бьют, как небесная мгла.
+                        Слепая печать - твой путь к чудесам,
+                        Пальцы танцуют в мелодиях снам.
+                        Сквозь киберпанк, где неоновый свет,
+                        Пальцы летят, оставляя свой след.
+                        Викинги вторят, их сага гремит,
+                        Клавиатура от страсти дымит.
+                        Йога дыханья вливается в такт,
+                        Пальцы, как волны, не знают преград.
+                        Философия боя в движении рук,
+                        Слепая печать - это вечный наш круг.
+                        Самурай с катаной в далёкой тени,
+                        Клавиши шепчут, как живые они.
+                        Пиратский фрегат рассекает эфир,
+                        Взвейся, о воин, твой ясен ориентир!
+                        Этнический ритм вливается в стих,
+                        Клавиши вторят мелодиям их.
+                        Взгляни, как в Элладе сражаются боги,
+                        Клавиши бьют, как их гром на дороге.
+                        Сквозь древний Рим, где гладиаторы ждут,
+                        Пальцы, как стрелы, в сражении тут.
+                        Сквозь сеть нейронов, где время застыло,
+                        Печатью слепой ты рождаешь светило.
+                        Тренируй свой навык, как меч в тишине,
+                        Слепая печать - твой огонь в вышине!
+                        Взвейся над бездной, где звёзды горят,
+                        Пальцы, как молнии, вечно парят.
+                        Сквозь киберпанк и древний обряд,
+                        Клавиатура - твой вечный раскат.
+                        Сага о славе в движении рук,
+                        Слепая печать - это вечный наш круг.
+                        Взвейся, о мастер, над хаосом строк,
+                        Слепая печать - твой бессмертный урок!
+                        Каждый удар - это вызов судьбе,
+                        Победа в движении, в ритме, в себе.
+                        Сквозь мифы и коды, где вечность зовёт,
+                        Пальцы, как искры, рождают полёт.
+                        Тренируй свой навык, как воин в бою,
+                        Слепая печать - твой огонь в строю!
+                        Сократ и нейроны в эфире танцуют,
+                        Слепая печать - их вопросы волнуют.
+                        Клавиши бьют, как удары судьбы,
+                        Слова возносятся в вечной мольбе.
+                        Рифма течёт, как река мироздания,
+                        Скорость рождает души сияние.
+                        Печатай, мыслитель, в гармонии кодов,
+                        Каждая строка - как ответ для народов.
+                        Тренируй свой разум, как йог в медитации,
+                        Слепая печать - твой путь к трансформации.
+                        В космосе данных, где звёзды пылают,
+                        Ты мастер словес, что миры озаряют.
+                        EOT,
                 ],
             ],
         ];

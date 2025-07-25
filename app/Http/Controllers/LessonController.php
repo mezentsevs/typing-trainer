@@ -10,7 +10,9 @@ use Illuminate\Http\Request;
 
 class LessonController extends Controller
 {
-    public function __construct(protected LessonService $lessonService) {}
+    public function __construct(protected LessonService $lessonService)
+    {
+    }
 
     public function show(string $language, int $lessonNumber): JsonResponse
     {

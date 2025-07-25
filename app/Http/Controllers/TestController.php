@@ -9,7 +9,9 @@ use Illuminate\Http\Request;
 
 class TestController extends Controller
 {
-    public function __construct(protected TestService $testService) {}
+    public function __construct(protected TestService $testService)
+    {
+    }
 
     public function getText(Request $request): JsonResponse
     {

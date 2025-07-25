@@ -56,7 +56,7 @@ class LessonService
         '<' => '>',
         '"' => '"',
         "'" => "'",
-        '`' => '`'
+        '`' => '`',
     ];
 
     protected const array PUNCTUATION = [',', '.', ';', ':', '!', '?'];
@@ -206,7 +206,7 @@ class LessonService
 
         $lines = explode("\n", $text);
         $lines = array_map('rtrim', $lines);
-        $text = implode("\n", array_filter($lines, function($line) {
+        $text = implode("\n", array_filter($lines, function ($line) {
             return !empty($line);
         }));
 
@@ -298,7 +298,7 @@ class LessonService
                 default => [],
             };
 
-            return in_array($char, $validSpecials);
+            return in_array($char, $validSpecials, true);
         });
 
         $pairedSymbols = array_merge(array_keys(self::PAIRED), array_values(self::PAIRED));
@@ -309,7 +309,7 @@ class LessonService
         $availablePaired = [];
 
         foreach ($availablePairedOpenings as $opening) {
-            if (in_array(self::PAIRED[$opening], $availableSpecials)) {
+            if (in_array(self::PAIRED[$opening], $availableSpecials, true)) {
                 $availablePaired[] = $opening;
             }
         }
@@ -382,6 +382,6 @@ class LessonService
 
     private function isPunctuation(string $char): bool
     {
-        return in_array($char, self::PUNCTUATION);
+        return in_array($char, self::PUNCTUATION, true);
     }
 }

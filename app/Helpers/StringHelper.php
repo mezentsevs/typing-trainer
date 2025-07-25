@@ -8,7 +8,9 @@ class StringHelper
     {
         $detectedEncoding = mb_detect_encoding($rawString, ['UTF-8', 'Windows-1251', 'ISO-8859-1'], true);
 
-        if (!$detectedEncoding) { return ''; }
+        if (!$detectedEncoding) {
+            return '';
+        }
 
         $result = $detectedEncoding !== $encoding
             ? mb_convert_encoding($rawString, $encoding, $detectedEncoding)
