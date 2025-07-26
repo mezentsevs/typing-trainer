@@ -5,6 +5,7 @@ use PhpCsFixer\Finder;
 
 $finder = Finder::create()
     ->exclude('vendor')
+    ->exclude('node_modules')
     ->exclude('storage')
     ->exclude('bootstrap/cache')
     ->notPath(['public/adminer.php'])
