@@ -61,11 +61,13 @@
         "lint": "php-cs-fixer fix --dry-run --diff --verbose",
         "lint:ci": "php-cs-fixer fix --dry-run --diff --using-cache=no",
         "fix": "php-cs-fixer fix",
-        "fix:diff": "php-cs-fixer fix --diff"
+        "fix:diff": "php-cs-fixer fix --diff",
+        "code:lint": "composer lint",
+        "code:fix": "composer fix"
     },
     "scripts-descriptions": {
-        "lint": "Code style check without changes",
-        "fix": "Automatic code style correction"
+        "code:lint": "Code style check without changes",
+        "code:fix": "Automatic code style correction"
     },
     "extra": {
         "laravel": {
