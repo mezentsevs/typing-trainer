@@ -7,9 +7,11 @@
     "trailingComma": "all",
     "bracketSpacing": true,
     "arrowParens": "avoid",
-    "htmlWhitespaceSensitivity": "css",
-    "bracketSameLine": false,
+    "endOfLine": "auto",
+    "htmlWhitespaceSensitivity": "ignore",
     "vueIndentScriptAndStyle": false,
+    "bracketSameLine": true,
+    "singleAttributePerLine": false,
     "overrides": [
         {
             "files": "*.vue",
