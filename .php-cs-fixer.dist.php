@@ -11,7 +11,7 @@ $finder = Finder::create()
     ->notPath(['public/adminer.php'])
     ->in(__DIR__);
 
-return (new Config())
+return new Config()
     ->setRules([
         '@PSR12' => true,
         '@PHP84Migration' => true,
