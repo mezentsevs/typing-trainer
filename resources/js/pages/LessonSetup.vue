@@ -9,8 +9,7 @@
                 v-focus
                 :options="languages"
                 class="mb-4 w-full"
-                required
-            />
+                required />
             <InputLabel for="lessonCount" value="Number" />
             <Input
                 id="lessonCount"
@@ -19,8 +18,7 @@
                 min="1"
                 max="20"
                 class="mb-4 w-full"
-                required
-            />
+                required />
             <PrimaryButton class="w-full">Generate</PrimaryButton>
         </form>
         <ErrorMessage :message="error" />

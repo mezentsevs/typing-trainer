@@ -1,13 +1,12 @@
 <template>
     <ContentCard>
         <header class="flex flex-row items-center relative">
-            <Heading :level="1" class="text-2xl"
-                >Lesson {{ lessonPartialInfo.number }}/{{ totalLessons }}</Heading
-            >
+            <Heading :level="1" class="text-2xl">
+                Lesson {{ lessonPartialInfo.number }}/{{ totalLessons }}
+            </Heading>
             <SuccessBanner
                 v-if="isLessonCompleted"
-                class="absolute left-1/2 transform -translate-x-1/2"
-            >
+                class="absolute left-1/2 transform -translate-x-1/2">
                 Completed!
             </SuccessBanner>
         </header>
@@ -27,8 +26,7 @@
                         'current-word': isCurrentWord[index],
                         space: char === ' ',
                         'line-break': char === '\n',
-                    }"
-                >
+                    }">
                     {{ char }}
                 </span>
             </TextContainer>
@@ -41,16 +39,14 @@
                 :disabled="isLessonCompleted"
                 rows="4"
                 spellcheck="false"
-                @input="onInput"
-            />
+                @input="onInput" />
             <Keyboard :language :typed :text />
             <div v-if="isLessonCompleted" class="mb-4 flex flex-row justify-center">
                 <PrimaryRouterLinkButton
                     v-if="nextLesson"
                     :to="`/lesson/${language}/${nextLesson}`"
                     class="w-32"
-                    @click="onNext"
-                >
+                    @click="onNext">
                     Next
                 </PrimaryRouterLinkButton>
                 <SuccessRouterLinkButton v-else :to="`/test/${language}`" class="w-32">

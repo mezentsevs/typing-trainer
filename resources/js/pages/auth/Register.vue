@@ -15,8 +15,7 @@
                 v-focus
                 class="mb-4 w-full"
                 required
-                autocomplete="on"
-            />
+                autocomplete="on" />
             <InputLabel for="email" value="Email" />
             <Input
                 id="email"
@@ -24,29 +23,27 @@
                 type="email"
                 class="mb-4 w-full"
                 required
-                autocomplete="on"
-            />
+                autocomplete="on" />
             <InputLabel for="password" value="Password" />
             <Input
                 id="password"
                 v-model="form.password"
                 type="password"
                 class="mb-4 w-full"
-                required
-            />
+                required />
             <InputLabel for="passwordConfirmation" value="Confirm Password" />
             <Input
                 id="passwordConfirmation"
                 v-model="form.passwordConfirmation"
                 type="password"
                 class="mb-4 w-full"
-                required
-            />
+                required />
             <PrimaryButton class="w-full">Register</PrimaryButton>
         </form>
         <ErrorMessage :message="error" />
         <p class="mt-4">
-            Already have an account? <PrimaryRouterLink to="/login">Login</PrimaryRouterLink>
+            Already have an account?
+            <PrimaryRouterLink to="/login">Login</PrimaryRouterLink>
         </p>
     </AuthCard>
 </template>

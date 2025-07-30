@@ -2,8 +2,7 @@
     <button
         v-if="isMinimized"
         class="keyboard-preview-button w-32 mx-auto my-4 p-2 flex justify-center items-center gap-2 border border-opacity-50 border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 active:bg-gray-50 dark:active:bg-gray-900 text-gray-500 dark:text-gray-300 text-sm font-medium select-none cursor-pointer rounded-lg shadow-sm"
-        @click="toggleKeyboard"
-    >
+        @click="toggleKeyboard">
         <KeyboardIcon class="w-6 h-6 shrink-0 fill-gray-500 dark:fill-gray-300" />
         Keyboard
     </button>
@@ -11,13 +10,11 @@
     <section
         v-else
         class="keyboard max-w-[680px] mx-auto flex flex-col gap-2 p-4 select-none cursor-pointer"
-        @click="toggleKeyboard"
-    >
+        @click="toggleKeyboard">
         <div
             v-for="(row, rowIndex) in keyboardLayout"
             :key="rowIndex"
-            class="flex justify-between gap-1"
-        >
+            class="flex justify-between gap-1">
             <template v-if="rowIndex === 0">
                 <button
                     v-for="key in row"
@@ -30,8 +27,7 @@
                         key.width ? `w-${key.width}` : 'w-10',
                         key.value === 'backspace' ? 'text-sm' : '',
                     ]"
-                    :style="getKeyStyle(key)"
-                >
+                    :style="getKeyStyle(key)">
                     <span class="block">{{ key.display }}</span>
                     <span
                         v-if="key.special"
@@ -40,8 +36,7 @@
                             key.specialPosition === SpecialPosition.TopLeft
                                 ? 'top-0 left-1'
                                 : 'top-0 right-1'
-                        "
-                    >
+                        ">
                         {{ key.special }}
                     </span>
                 </button>
@@ -56,8 +51,7 @@
                             : NORMAL_BUTTON_CLASS,
                         row[0].width ? `w-${row[0].width}` : 'w-10',
                     ]"
-                    :style="getKeyStyle(row[0])"
-                >
+                    :style="getKeyStyle(row[0])">
                     <span class="block">{{ row[0].display }}</span>
                 </button>
                 <div class="flex gap-1">
@@ -71,8 +65,7 @@
                                 : NORMAL_BUTTON_CLASS,
                             key.width ? `w-${key.width}` : 'w-10',
                         ]"
-                        :style="getKeyStyle(key)"
-                    >
+                        :style="getKeyStyle(key)">
                         <span class="block">{{ key.display }}</span>
                     </button>
                 </div>
@@ -85,8 +78,7 @@
                             : NORMAL_BUTTON_CLASS,
                         row[4].width ? `w-${row[4].width}` : 'w-10',
                     ]"
-                    :style="getKeyStyle(row[4])"
-                >
+                    :style="getKeyStyle(row[4])">
                     <span class="block">{{ row[4].display }}</span>
                 </button>
             </template>
@@ -101,8 +93,7 @@
                             : NORMAL_BUTTON_CLASS,
                         key.width ? `w-${key.width}` : 'w-10',
                     ]"
-                    :style="getKeyStyle(key)"
-                >
+                    :style="getKeyStyle(key)">
                     <span class="block">{{ key.display }}</span>
                     <span
                         v-if="key.special"
@@ -111,8 +102,7 @@
                             key.specialPosition === SpecialPosition.TopLeft
                                 ? 'top-0 left-1'
                                 : 'top-0 right-1'
-                        "
-                    >
+                        ">
                         {{ key.special }}
                     </span>
                 </button>

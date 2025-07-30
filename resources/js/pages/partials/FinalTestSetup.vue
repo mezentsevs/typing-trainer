@@ -2,17 +2,22 @@
     <SetupCard>
         <Heading :level="1" class="text-2xl mb-6">Setup Final Test</Heading>
         <form @submit.prevent>
-            <InputLabel for="genre">Genre <Remark value="(optional)" /></InputLabel>
+            <InputLabel for="genre">
+                Genre
+                <Remark value="(optional)" />
+            </InputLabel>
             <Select id="genre" v-model="genre" v-focus :options="genres" class="mb-4 w-full" />
-            <InputLabel for="file">Text <Remark value="(optional, max 3 KB)" /></InputLabel>
+            <InputLabel for="file">
+                Text
+                <Remark value="(optional, max 3 KB)" />
+            </InputLabel>
             <Input
                 id="file"
                 type="file"
                 accept=".txt"
                 class="mb-4 w-full"
                 style="border-radius: 0.15rem"
-                @change="uploadFile"
-            />
+                @change="uploadFile" />
             <PrimaryButton class="w-full" @click="$emit('start', genre)">Start</PrimaryButton>
         </form>
         <ErrorMessage :message="error" />

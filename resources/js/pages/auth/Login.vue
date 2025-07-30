@@ -16,21 +16,20 @@
                 type="email"
                 class="mb-4 w-full"
                 required
-                autocomplete="on"
-            />
+                autocomplete="on" />
             <InputLabel for="password" value="Password" />
             <Input
                 id="password"
                 v-model="form.password"
                 type="password"
                 class="mb-4 w-full"
-                required
-            />
+                required />
             <PrimaryButton class="w-full">Login</PrimaryButton>
         </form>
         <ErrorMessage :message="error" />
         <p class="mt-4">
-            Don't have an account? <PrimaryRouterLink to="/register">Register</PrimaryRouterLink>
+            Don't have an account?
+            <PrimaryRouterLink to="/register">Register</PrimaryRouterLink>
         </p>
     </AuthCard>
 </template>

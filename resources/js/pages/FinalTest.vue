@@ -4,8 +4,7 @@
             <Heading :level="1" class="text-2xl">Final Test</Heading>
             <SuccessBanner
                 v-if="isTestCompleted"
-                class="absolute left-1/2 transform -translate-x-1/2"
-            >
+                class="absolute left-1/2 transform -translate-x-1/2">
                 Completed!
             </SuccessBanner>
         </header>
@@ -24,8 +23,7 @@
                         'current-word': isCurrentWord[index],
                         space: char === ' ',
                         'line-break': char === '\n',
-                    }"
-                >
+                    }">
                     {{ char }}
                 </span>
             </TextContainer>
@@ -37,8 +35,7 @@
                 :disabled="isTestCompleted"
                 rows="4"
                 spellcheck="false"
-                @input="onInput"
-            />
+                @input="onInput" />
             <Keyboard :language :typed :text :is-minimized="true" />
             <div v-if="isTestCompleted" class="mb-4 flex flex-row justify-center">
                 <PrimaryRouterLinkButton class="w-32">Finish</PrimaryRouterLinkButton>
