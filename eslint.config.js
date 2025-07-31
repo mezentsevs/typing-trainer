@@ -1,11 +1,11 @@
-import vueParser from 'vue-eslint-parser';
-import eslintPluginVue from 'eslint-plugin-vue';
-import eslintPluginImport from 'eslint-plugin-import';
-import eslintPluginPromise from 'eslint-plugin-promise';
-import globals from 'globals';
-import tsParser from '@typescript-eslint/parser';
 import babelParser from '@babel/eslint-parser';
 import tsPlugin from '@typescript-eslint/eslint-plugin';
+import tsParser from '@typescript-eslint/parser';
+import eslintPluginImport from 'eslint-plugin-import';
+import eslintPluginPromise from 'eslint-plugin-promise';
+import eslintPluginVue from 'eslint-plugin-vue';
+import globals from 'globals';
+import vueParser from 'vue-eslint-parser';
 
 export default [
     {
@@ -110,6 +110,9 @@ export default [
             parser: tsParser,
             parserOptions: {
                 project: './tsconfig.json',
+                babelOptions: {
+                    configFile: false,
+                },
             },
         },
         plugins: {
@@ -154,6 +157,9 @@ export default [
                 ...globals.node,
             },
             parser: babelParser,
+            parserOptions: {
+                requireConfigFile: false,
+            },
         },
         plugins: {
             import: eslintPluginImport,
