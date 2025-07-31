@@ -15,7 +15,6 @@ export default [
             'public/**',
         ],
     },
-
     {
         files: ['**/*.vue'],
         languageOptions: {
@@ -99,7 +98,6 @@ export default [
             }],
         },
     },
-
     {
         files: ['**/*.ts'],
         languageOptions: {
@@ -146,7 +144,6 @@ export default [
             },
         },
     },
-
     {
         files: ['**/*.js'],
         languageOptions: {
