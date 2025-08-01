@@ -2,10 +2,11 @@ import babelParser from '@babel/eslint-parser';
 import tsPlugin from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
 import eslintPluginImport from 'eslint-plugin-import';
+import eslintPluginPrettier from 'eslint-plugin-prettier';
 import eslintPluginPromise from 'eslint-plugin-promise';
 import eslintPluginVue from 'eslint-plugin-vue';
 import globals from 'globals';
-import vueParser from 'vue-eslint-parser';
+import vueEslintParser from 'vue-eslint-parser';
 
 export default [
     {
@@ -21,7 +22,7 @@ export default [
             ecmaVersion: 'latest',
             sourceType: 'module',
             globals: globals.browser,
-            parser: vueParser,
+            parser: vueEslintParser,
             parserOptions: {
                 parser: {
                     js: babelParser,
@@ -35,11 +36,13 @@ export default [
         },
         plugins: {
             vue: eslintPluginVue,
+            prettier: eslintPluginPrettier,
         },
         rules: {
+            'prettier/prettier': 'error',
             'vue/html-self-closing': ['error', {
                 html: {
-                    void: 'never',
+                    void: 'always',
                     normal: 'always',
                     component: 'always',
                 },
@@ -110,17 +113,16 @@ export default [
             parser: tsParser,
             parserOptions: {
                 project: './tsconfig.json',
-                babelOptions: {
-                    configFile: false,
-                },
             },
         },
         plugins: {
             '@typescript-eslint': tsPlugin,
             import: eslintPluginImport,
             promise: eslintPluginPromise,
+            prettier: eslintPluginPrettier,
         },
         rules: {
+            'prettier/prettier': 'error',
             '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
             '@typescript-eslint/no-explicit-any': 'warn',
             'no-console': 'warn',
@@ -133,8 +135,12 @@ export default [
             ],
         },
         settings: {
+            'import/parsers': {
+                '@typescript-eslint/parser': ['.ts'],
+            },
             'import/resolver': {
                 typescript: {
+                    alwaysTryTypes: true,
                     project: './tsconfig.json',
                 },
                 alias: {
@@ -142,7 +148,7 @@ export default [
                         ['@', './resources/js'],
                         ['~', './resources'],
                     ],
-                    extensions: ['.ts', '.vue', '.json'],
+                    extensions: ['.ts', '.js', '.vue', '.json'],
                 },
             },
         },
@@ -164,8 +170,10 @@ export default [
         plugins: {
             import: eslintPluginImport,
             promise: eslintPluginPromise,
+            prettier: eslintPluginPrettier,
         },
         rules: {
+            'prettier/prettier': 'error',
             'no-console': 'warn',
             'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
             'import/order': [
@@ -183,6 +191,9 @@ export default [
                         ['@', './resources/js'],
                         ['~', './resources'],
                     ],
+                    extensions: ['.js', '.vue', '.json'],
+                },
+                node: {
                     extensions: ['.js', '.vue', '.json'],
                 },
             },
