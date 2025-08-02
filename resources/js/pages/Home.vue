@@ -30,14 +30,14 @@
 </template>
 
 <script lang="ts" setup>
+import { APP_NAME, APP_SLOGAN } from '@/consts/AppConsts';
 import AuthActions from '@/interfaces/auth/AuthActions';
 import AuthGetters from '@/interfaces/auth/AuthGetters';
 import AuthState from '@/interfaces/auth/AuthState';
-import { APP_NAME, APP_SLOGAN } from '@/consts/AppConsts';
-import { Router, useRouter } from 'vue-router';
-import { Store } from 'pinia';
-import { ref, onMounted, Ref } from 'vue';
 import { useAuthStore } from '@/stores/Auth';
+import { Store } from 'pinia';
+import { onMounted, onUnmounted, ref, Ref } from 'vue';
+import { Router, useRouter } from 'vue-router';
 
 const authStore: Store<string, AuthState, AuthGetters, AuthActions> = useAuthStore();
 const router: Router = useRouter();
@@ -57,6 +57,9 @@ const START_BUTTON_CLASS: string =
 
 const currentText: Ref<string> = ref('');
 
+let typingAnimationInterval: ReturnType<typeof setInterval> | null = null;
+let typingAnimationTimeout: ReturnType<typeof setTimeout> | null = null;
+
 const logout = async (): Promise<void> => {
     await authStore.logout();
     await router.push('/login');
@@ -65,16 +68,18 @@ const logout = async (): Promise<void> => {
 const runTypingAnimation = (): void => {
     let i: number = 0;
 
-    const interval: NodeJS.Timeout = setInterval((): void => {
+    typingAnimationInterval = setInterval((): void => {
         if (i < APP_NAME.length) {
             currentText.value += APP_NAME[i];
             i++;
         } else {
-            clearInterval(interval);
+            if (typingAnimationInterval) {
+                clearInterval(typingAnimationInterval);
+                typingAnimationInterval = null;
+            }
 
-            setTimeout((): void => {
+            typingAnimationTimeout = setTimeout((): void => {
                 currentText.value = '';
-
                 runTypingAnimation();
             }, 2000);
         }
@@ -83,6 +88,16 @@ const runTypingAnimation = (): void => {
 
 onMounted((): void => {
     runTypingAnimation();
+});
+
+onUnmounted(() => {
+    if (typingAnimationInterval) {
+        clearInterval(typingAnimationInterval);
+    }
+
+    if (typingAnimationTimeout) {
+        clearTimeout(typingAnimationTimeout);
+    }
 });
 </script>
 
