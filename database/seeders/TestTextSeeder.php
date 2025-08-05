@@ -29,7 +29,7 @@ class TestTextSeeder extends Seeder
                 ],
                 [
                     'genre' => 'fiction',
-                    'text' => 'Lila\'s breath caught as she stepped over the threshold. The floorboards creaked beneath her weight, and for a moment, she swore she heard a whisper - a soft, unintelligible murmur that seemed to come from the walls themselves. She shook it off, telling herself it was just the wind. Her flashlight swept the room, revealing a parlor frozen in time: a moth-eaten sofa, a cracked mirror, a grandfather clock with its hands stuck at midnight. On the mantel sat a single photograph, its edges curled with age. She picked it up, wiping away decades of grime. The image showed a family-two parents, a boy, and a girl-smiling stiffly in black-and-white. The Harrows, she assumed. Their eyes seemed to follow her, even as she set the photo down.',
+                    'text' => 'Lila\'s breath caught as she stepped over the threshold. The floorboards creaked beneath her weight, and for a moment, she swore she heard a whisper - a soft, unintelligible murmur that seemed to come from the walls themselves. She shook it off, telling herself it was just the wind. Her flashlight swept the room, revealing a parlor frozen in time: a moth-eaten sofa, a cracked mirror, a grandfather clock with its hands stuck at midnight. On the mantel sat a single photograph, its edges curled with age. She picked it up, wiping away decades of grime. The image showed a family - two parents, a boy, and a girl - smiling stiffly in black-and-white. The Harrows, she assumed. Their eyes seemed to follow her, even as she set the photo down.',
                 ],
                 [
                     'genre' => 'fiction',
