@@ -8,7 +8,7 @@ $finder = Finder::create()
     ->exclude('node_modules')
     ->exclude('storage')
     ->exclude('bootstrap/cache')
-    ->notPath(['public/adminer.php'])
+    ->notPath(['public/adminer.php', '_ide_helper.php'])
     ->in(__DIR__);
 
 return new Config()
