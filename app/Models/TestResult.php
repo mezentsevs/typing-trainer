@@ -29,6 +29,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder<static>|TestResult whereTimeSeconds($value)
  * @method static Builder<static>|TestResult whereUpdatedAt($value)
  * @method static Builder<static>|TestResult whereUserId($value)
+ * @mixin \Eloquent
  */
 class TestResult extends Model
 {

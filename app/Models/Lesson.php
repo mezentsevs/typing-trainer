@@ -14,8 +14,10 @@ use Illuminate\Support\Carbon;
  * @property int $id
  * @property int $user_id
  * @property int $number
+ * @property int $total
  * @property string $language
  * @property string $new_chars
+ * @property string|null $text
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read Collection<int, LessonResult> $results
@@ -29,8 +31,11 @@ use Illuminate\Support\Carbon;
  * @method static Builder<static>|Lesson whereLanguage($value)
  * @method static Builder<static>|Lesson whereNewChars($value)
  * @method static Builder<static>|Lesson whereNumber($value)
+ * @method static Builder<static>|Lesson whereText($value)
+ * @method static Builder<static>|Lesson whereTotal($value)
  * @method static Builder<static>|Lesson whereUpdatedAt($value)
  * @method static Builder<static>|Lesson whereUserId($value)
+ * @mixin \Eloquent
  */
 class Lesson extends Model
 {

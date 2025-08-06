@@ -23,6 +23,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder<static>|TestText whereLanguage($value)
  * @method static Builder<static>|TestText whereText($value)
  * @method static Builder<static>|TestText whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 class TestText extends Model
 {

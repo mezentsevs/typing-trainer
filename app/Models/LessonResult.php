@@ -32,6 +32,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder<static>|LessonResult whereTimeSeconds($value)
  * @method static Builder<static>|LessonResult whereUpdatedAt($value)
  * @method static Builder<static>|LessonResult whereUserId($value)
+ * @mixin \Eloquent
  */
 class LessonResult extends Model
 {
