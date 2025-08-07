@@ -152,9 +152,7 @@ const onInput = async (): Promise<void> => {
 
 const onStart = async (selectedGenre: string): Promise<void> => {
     resetState();
-
     genre.value = selectedGenre;
-
     await fetchText();
 
     if (textContainerRef.value) {
