@@ -2,7 +2,7 @@
     <ContentCard>
         <header class="flex flex-row items-center relative">
             <Heading :level="1" class="text-2xl">
-                Lesson {{ lessonPartialInfo.number }}/{{ totalLessons }}
+                Lesson {{ lesson?.number }}/{{ lesson?.total }}
             </Heading>
             <SuccessBanner
                 v-if="isLessonCompleted"
@@ -12,7 +12,7 @@
         </header>
 
         <aside class="mt-4 flex flex-row items-stretch space-x-4">
-            <NewCharactersPanel :new-chars="lessonPartialInfo.new_chars" class="w-1/2" />
+            <NewCharactersPanel :new-chars="lesson?.new_chars ?? ''" class="w-1/2" />
             <StatisticsPanel :language :time :speed :errors :progress class="w-1/2" />
         </aside>
 
@@ -73,7 +73,6 @@ import TextContainer from '@/components/uikit/containers/TextContainer.vue';
 import TypingContext from '@/interfaces/typing/TypingContext';
 import axios, { AxiosResponse } from 'axios';
 import { Language } from '@/enums/KeyboardEnums';
-import { LessonPartialInfo } from '@/types/LessonTypes';
 import { RouteLocationNormalizedLoaded, useRoute } from 'vue-router';
 import { ref, computed, onMounted, Ref, ComputedRef } from 'vue';
 import { useHandleTypingInput, useCurrentWord, useProgress } from '@/composables/TypingComposables';
@@ -85,11 +84,7 @@ const errors: Ref<number> = ref(0);
 const isLessonCompleted: Ref<boolean> = ref(false);
 const language: Language = route.params.language as Language;
 const lessonNumber: Ref<number> = ref(parseInt(route.params.number as string));
-const lessonPartialInfo: Ref<LessonPartialInfo> = ref({
-    id: 0,
-    number: lessonNumber.value,
-    new_chars: '',
-});
+const lesson: Ref<Lesson | null> = ref(null);
 const speed: Ref<number> = ref(0);
 const startTime: Ref<number> = ref(0);
 const text: Ref<string> = ref('');
@@ -97,7 +92,6 @@ const textArea: Ref<typeof TextArea | null> = ref(null);
 const textContainer: Ref<HTMLElement | null> = ref(null);
 const textContainerRef: Ref<typeof TextContainer | null> = ref(null);
 const time: Ref<number> = ref(0);
-const totalLessons: Ref<number> = ref(0);
 const typed: Ref<string> = ref('');
 
 const { isCurrentWord }: Record<string, ComputedRef<boolean[]>> = useCurrentWord(text, typed);
@@ -106,34 +100,26 @@ const {
 }: Record<string, ComputedRef<number>> = useProgress(text, typed, isLessonCompleted);
 
 const nextLesson: ComputedRef<number> = computed((): number =>
-    totalLessons.value - lessonNumber.value ? lessonNumber.value + 1 : 0,
+    (lesson.value?.total ?? 0) - lessonNumber.value ? lessonNumber.value + 1 : 0,
 );
 
 const resetState = (): void => {
     errors.value = 0;
     isLessonCompleted.value = false;
+    lesson.value = null;
     speed.value = 0;
     startTime.value = 0;
     text.value = '';
     time.value = 0;
     typed.value = '';
-    lessonPartialInfo.value = {
-        id: 0,
-        number: lessonNumber.value,
-        new_chars: '',
-    } as LessonPartialInfo;
 };
 
-// TODO: Try to use only Lesson interface everywhere
 const fetchLesson = async (): Promise<void> => {
-    const response: AxiosResponse<{
-        lesson: Lesson;
-    }> = await axios.get(`/lessons/${language}/${lessonNumber.value}`);
+    const response: AxiosResponse<{ lesson: Lesson }> = await axios.get(
+        `/lessons/${language}/${lessonNumber.value}`,
+    );
 
-    const { id, number, new_chars }: LessonPartialInfo = response.data.lesson;
-    lessonPartialInfo.value = { id, number, new_chars } as LessonPartialInfo;
-
-    totalLessons.value = response.data.lesson.total;
+    lesson.value = response.data.lesson;
     text.value = response.data.lesson.text;
 };
 
@@ -153,7 +139,7 @@ const onInput = async (): Promise<void> => {
         } as TypingContext,
         '/lessons/result',
         {
-            lesson_id: lessonPartialInfo.value.id,
+            lesson_id: lesson.value?.id ?? 0,
             language,
             time_seconds: time.value,
             speed_wpm: speed.value,
@@ -168,9 +154,7 @@ const onNext = async (): Promise<void> => {
     }
 
     lessonNumber.value++;
-
     resetState();
-
     await fetchLesson();
 
     if (textArea.value) {
@@ -180,7 +164,6 @@ const onNext = async (): Promise<void> => {
 
 onMounted(async (): Promise<void> => {
     resetState();
-
     await fetchLesson();
 
     if (textContainerRef.value) {
