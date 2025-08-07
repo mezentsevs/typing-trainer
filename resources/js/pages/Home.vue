@@ -42,20 +42,19 @@ import { Router, useRouter } from 'vue-router';
 const authStore: Store<string, AuthState, AuthGetters, AuthActions> = useAuthStore();
 const router: Router = useRouter();
 
+const currentText: Ref<string> = ref('');
+
 const CIRCLES: Record<string, string>[] = [
     { class: 'top-10 left-10 w-24 h-24 bg-blue-300/70 dark:bg-cyan-500' },
     { class: 'bottom-20 right-20 w-32 h-32 bg-fuchsia-300/70 dark:bg-purple-500 delay-1000' },
     { class: 'top-1/2 left-1/4 w-16 h-16 bg-rose-300/70 dark:bg-red-500 delay-500' },
 ];
-
 const COMMON_BUTTON_CLASS: string =
     'w-48 py-2 px-4 bg-transparent border-2 text-lg font-mono transition-all duration-200 ease-in-out text-center rounded-lg';
 const LOGOUT_BUTTON_CLASS: string =
     'border-rose-500 text-rose-500 hover:bg-rose-500/5 active:bg-rose-500/10 dark:border-red-500 dark:text-red-400 dark:hover:bg-red-500/10 dark:shadow-[0_0_10px_0_rgba(239,68,68,0.5)] dark:hover:shadow-[0_0_15px_0_rgba(239,68,68,0.7)] dark:active:bg-red-500/20';
 const START_BUTTON_CLASS: string =
     'border-blue-500 text-blue-500 hover:bg-blue-500/5 active:bg-blue-500/10 dark:border-cyan-500 dark:text-cyan-400 dark:hover:bg-cyan-500/10 dark:shadow-[0_0_10px_0_rgba(6,182,212,0.5)] dark:hover:shadow-[0_0_15px_0_rgba(6,182,212,0.7)] dark:active:bg-cyan-500/20';
-
-const currentText: Ref<string> = ref('');
 
 let typingAnimationInterval: ReturnType<typeof setInterval> | null = null;
 let typingAnimationTimeout: ReturnType<typeof setTimeout> | null = null;

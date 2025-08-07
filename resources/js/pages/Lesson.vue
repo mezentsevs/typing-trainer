@@ -82,7 +82,6 @@ const { handleTypingInput }: Record<string, Function> = useHandleTypingInput();
 
 const errors: Ref<number> = ref(0);
 const isLessonCompleted: Ref<boolean> = ref(false);
-const language: Language = route.params.language as Language;
 const lesson: Ref<Lesson | null> = ref(null);
 const lessonNumber: Ref<number> = ref(parseInt(route.params.number as string));
 const speed: Ref<number> = ref(0);
@@ -93,6 +92,8 @@ const textContainer: Ref<HTMLElement | null> = ref(null);
 const textContainerRef: Ref<typeof TextContainer | null> = ref(null);
 const time: Ref<number> = ref(0);
 const typed: Ref<string> = ref('');
+
+const language: Language = route.params.language as Language;
 
 const { isCurrentWord }: Record<string, ComputedRef<boolean[]>> = useCurrentWord(text, typed);
 const {

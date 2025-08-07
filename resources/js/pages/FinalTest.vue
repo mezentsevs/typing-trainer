@@ -66,12 +66,10 @@ import { useHandleTypingInput, useCurrentWord, useProgress } from '@/composables
 const route: RouteLocationNormalizedLoaded<string | symbol> = useRoute();
 const { handleTypingInput }: Record<string, Function> = useHandleTypingInput();
 
-const MAX_FILE_SIZE_KB: number = 3;
 const error: Ref<string> = ref('');
 const errors: Ref<number> = ref(0);
 const genre: Ref<string> = ref('');
 const isTestCompleted: Ref<boolean> = ref(false);
-const language: Language = route.params.language as Language;
 const speed: Ref<number> = ref(0);
 const startTime: Ref<number> = ref(0);
 const text: Ref<string> = ref('');
@@ -79,6 +77,9 @@ const textContainer: Ref<HTMLElement | null> = ref(null);
 const textContainerRef: Ref<typeof TextContainer | null> = ref(null);
 const time: Ref<number> = ref(0);
 const typed: Ref<string> = ref('');
+
+const MAX_FILE_SIZE_KB: number = 3;
+const language: Language = route.params.language as Language;
 
 const { isCurrentWord }: Record<string, ComputedRef<boolean[]>> = useCurrentWord(text, typed);
 const { progress }: Record<string, ComputedRef<number>> = useProgress(text, typed, isTestCompleted);
