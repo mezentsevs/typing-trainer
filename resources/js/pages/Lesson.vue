@@ -99,9 +99,13 @@ const {
     progress,
 }: Record<string, ComputedRef<number>> = useProgress(text, typed, isLessonCompleted);
 
-const nextLesson: ComputedRef<number> = computed((): number =>
-    (lesson.value?.total ?? 0) - lessonNumber.value ? lessonNumber.value + 1 : 0,
-);
+const nextLesson: ComputedRef<number> = computed((): number => {
+    if (!lesson.value) {
+        return 0;
+    }
+
+    return lesson.value.number < lesson.value.total ? lesson.value.number + 1 : 0;
+});
 
 const resetState = (): void => {
     errors.value = 0;
