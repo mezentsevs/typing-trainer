@@ -2,7 +2,8 @@
     <ContentCard>
         <header class="flex flex-row items-center relative">
             <Heading :level="1" class="text-2xl">
-                Lesson {{ lesson?.number }}/{{ lesson?.total }}
+                Lesson
+                <template v-if="lesson">{{ lesson.number }}/{{ lesson.total }}</template>
             </Heading>
             <SuccessBanner
                 v-if="isLessonCompleted"
