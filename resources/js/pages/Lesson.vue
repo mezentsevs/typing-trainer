@@ -139,7 +139,7 @@ const onInput = async (): Promise<void> => {
         } as TypingContext,
         '/lessons/result',
         {
-            lesson_id: lesson.value?.id ?? 0,
+            lesson_id: lesson.value?.id,
             language,
             time_seconds: time.value,
             speed_wpm: speed.value,
