@@ -1,5 +1,3 @@
-### Warning! This project written for practice in coding with AI. In progress now.
-
 # Typing trainer
 
 ## About 'Typing trainer'
