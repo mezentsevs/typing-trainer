@@ -84,7 +84,6 @@ const { handleTypingInput }: Record<string, Function> = useHandleTypingInput();
 const errors: Ref<number> = ref(0);
 const isLessonCompleted: Ref<boolean> = ref(false);
 const lesson: Ref<Lesson | null> = ref(null);
-const lessonNumber: Ref<number> = ref(parseInt(route.params.number as string));
 const speed: Ref<number> = ref(0);
 const startTime: Ref<number> = ref(0);
 const text: Ref<string> = ref('');
@@ -95,6 +94,8 @@ const time: Ref<number> = ref(0);
 const typed: Ref<string> = ref('');
 
 const language: Language = route.params.language as Language;
+
+let lessonNumber: number = parseInt(route.params.number as string);
 
 const { isCurrentWord }: Record<string, ComputedRef<boolean[]>> = useCurrentWord(text, typed);
 const {
@@ -122,7 +123,7 @@ const resetState = (): void => {
 
 const fetchLesson = async (): Promise<void> => {
     const response: AxiosResponse<{ lesson: Lesson }> = await axios.get(
-        `/lessons/${language}/${lessonNumber.value}`,
+        `/lessons/${language}/${lessonNumber}`,
     );
 
     lesson.value = response.data.lesson;
@@ -159,7 +160,7 @@ const onNext = async (): Promise<void> => {
         return;
     }
 
-    lessonNumber.value++;
+    lessonNumber++;
     resetState();
     await fetchLesson();
 
