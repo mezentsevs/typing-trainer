@@ -44,8 +44,8 @@
             <Keyboard :language :typed :text />
             <div v-if="isLessonCompleted" class="mb-4 flex flex-row justify-center">
                 <PrimaryRouterLinkButton
-                    v-if="nextLesson"
-                    :to="`/lesson/${language}/${nextLesson}`"
+                    v-if="nextLessonNumber"
+                    :to="`/lesson/${language}/${nextLessonNumber}`"
                     class="w-32"
                     @click="onNext">
                     Next
@@ -93,16 +93,16 @@ const textContainerRef: Ref<typeof TextContainer | null> = ref(null);
 const time: Ref<number> = ref(0);
 const typed: Ref<string> = ref('');
 
-const language: Language = route.params.language as Language;
-
-let lessonNumber: number = parseInt(route.params.number as string);
-
 const { isCurrentWord }: Record<string, ComputedRef<boolean[]>> = useCurrentWord(text, typed);
 const {
     progress,
 }: Record<string, ComputedRef<number>> = useProgress(text, typed, isLessonCompleted);
 
-const nextLesson: ComputedRef<number> = computed((): number => {
+const language: Language = route.params.language as Language;
+
+let lessonNumber: number = parseInt(route.params.number as string);
+
+const nextLessonNumber: ComputedRef<number> = computed((): number => {
     if (!lesson.value) {
         return 0;
     }
