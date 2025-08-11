@@ -18,7 +18,9 @@ Based on tech stack:
 - [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS),
 - [TailwindCss](https://tailwindcss.com),
 - [Docker](https://www.docker.com),
-- [Sail](https://github.com/laravel/sail).
+- [Sail](https://github.com/laravel/sail),
+- [Swagger](https://swagger.io),
+- [Scribe](https://github.com/knuckleswtf/scribe).
 
 ## Getting Started
 
