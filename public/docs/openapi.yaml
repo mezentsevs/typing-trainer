@@ -1,0 +1,319 @@
+openapi: 3.0.3
+info:
+  title: 'Typing Trainer API Documentation'
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost'
+tags:
+  -
+    name: Endpoints
+    description: ''
+paths:
+  /api/register:
+    post:
+      summary: ''
+      operationId: postApiRegister
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: b
+                  nullable: false
+                email:
+                  type: string
+                  description: 'Must be a valid email address. Must not be greater than 255 characters.'
+                  example: zbailey@example.net
+                  nullable: false
+                password:
+                  type: string
+                  description: 'Must be at least 8 characters.'
+                  example: '-0pBNvYgxw'
+                  nullable: false
+              required:
+                - name
+                - email
+                - password
+      security: []
+  /api/login:
+    post:
+      summary: ''
+      operationId: postApiLogin
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: gbailey@example.net
+                  nullable: false
+                password:
+                  type: string
+                  description: ''
+                  example: '|]|{+-'
+                  nullable: false
+              required:
+                - email
+                - password
+      security: []
+  /api/logout:
+    post:
+      summary: ''
+      operationId: postApiLogout
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  '/api/lessons/{language}/{lessonNumber}':
+    get:
+      summary: ''
+      operationId: getApiLessonsLanguageLessonNumber
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: language
+        description: ''
+        example: architecto
+        required: true
+        schema:
+          type: string
+      -
+        in: path
+        name: lessonNumber
+        description: ''
+        example: architecto
+        required: true
+        schema:
+          type: string
+  /api/lessons/generate:
+    post:
+      summary: ''
+      operationId: postApiLessonsGenerate
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                language:
+                  type: string
+                  description: ''
+                  example: architecto
+                  nullable: false
+                lesson_count:
+                  type: integer
+                  description: 'Must be at least 1.'
+                  example: 22
+                  nullable: false
+              required:
+                - language
+                - lesson_count
+      security: []
+  /api/lessons/result:
+    post:
+      summary: ''
+      operationId: postApiLessonsResult
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                lesson_id:
+                  type: string
+                  description: 'The <code>id</code> of an existing record in the lessons table.'
+                  example: architecto
+                  nullable: false
+                language:
+                  type: string
+                  description: ''
+                  example: architecto
+                  nullable: false
+                time_seconds:
+                  type: integer
+                  description: ''
+                  example: 16
+                  nullable: false
+                speed_wpm:
+                  type: integer
+                  description: ''
+                  example: 16
+                  nullable: false
+                errors:
+                  type: integer
+                  description: ''
+                  example: 16
+                  nullable: false
+              required:
+                - lesson_id
+                - language
+                - time_seconds
+                - speed_wpm
+                - errors
+      security: []
+  /api/test/text:
+    get:
+      summary: ''
+      operationId: getApiTestText
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                language:
+                  type: string
+                  description: ''
+                  example: architecto
+                  nullable: false
+                genre:
+                  type: string
+                  description: ''
+                  example: architecto
+                  nullable: true
+              required:
+                - language
+      security: []
+  /api/test/upload:
+    post:
+      summary: ''
+      operationId: postApiTestUpload
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                language:
+                  type: string
+                  description: ''
+                  example: architecto
+                  nullable: false
+                file:
+                  type: string
+                  format: binary
+                  description: 'Must be a file. Must not be greater than 3 kilobytes.'
+                  nullable: false
+              required:
+                - language
+                - file
+      security: []
+  /api/test/result:
+    post:
+      summary: ''
+      operationId: postApiTestResult
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                language:
+                  type: string
+                  description: ''
+                  example: architecto
+                  nullable: false
+                time_seconds:
+                  type: integer
+                  description: ''
+                  example: 16
+                  nullable: false
+                speed_wpm:
+                  type: integer
+                  description: ''
+                  example: 16
+                  nullable: false
+                errors:
+                  type: integer
+                  description: ''
+                  example: 16
+                  nullable: false
+              required:
+                - language
+                - time_seconds
+                - speed_wpm
+                - errors
+      security: []
