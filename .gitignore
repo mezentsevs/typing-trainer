@@ -5,6 +5,9 @@ _ide_helper.php
 .php-cs-fixer.cache
 .phpactor.json
 .phpunit.result.cache
+.scribe/.filehashes
+.scribe/*.cache
+.scribe/endpoints
 /.fleet
 /.idea
 /.nova
