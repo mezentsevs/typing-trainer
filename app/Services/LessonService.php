@@ -12,7 +12,7 @@ class LessonService
 
     protected const string DEFAULT_LANGUAGE = 'en';
 
-    public const array INTRODUCTION_ORDER = [
+    protected const array INTRODUCTION_ORDER = [
         'en' => [
             'a', 's', 'd', 'f', 'j', 'k', 'l', ';',
             'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p',
@@ -37,19 +37,19 @@ class LessonService
         ],
     ];
 
-    public const array LETTERS_LC_RU = ['а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я'];
+    protected const array LETTERS_LC_RU = ['а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я'];
 
-    public const array LETTERS_UC_RU = ['А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ъ', 'Ы', 'Ь', 'Э', 'Ю', 'Я'];
+    protected const array LETTERS_UC_RU = ['А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ъ', 'Ы', 'Ь', 'Э', 'Ю', 'Я'];
 
-    public const array VOWELS_EN = ['a', 'e', 'i', 'o', 'u', 'y', 'A', 'E', 'I', 'O', 'U', 'Y'];
+    protected const array VOWELS_EN = ['a', 'e', 'i', 'o', 'u', 'y', 'A', 'E', 'I', 'O', 'U', 'Y'];
 
-    public const array VOWELS_RU = ['а', 'е', 'ё', 'и', 'о', 'у', 'ы', 'э', 'ю', 'я', 'А', 'Е', 'Ё', 'И', 'О', 'У', 'Ы', 'Э', 'Ю', 'Я'];
+    protected const array VOWELS_RU = ['а', 'е', 'ё', 'и', 'о', 'у', 'ы', 'э', 'ю', 'я', 'А', 'Е', 'Ё', 'И', 'О', 'У', 'Ы', 'Э', 'Ю', 'Я'];
 
-    public const array SPECIALS_EN = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '[', ']', '{', '}', '|', '/', '\\', ':', '"', '\'', '<', '>', '?', '~', '`', ',', '.', ';'];
+    protected const array SPECIALS_EN = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '[', ']', '{', '}', '|', '/', '\\', ':', '"', '\'', '<', '>', '?', '~', '`', ',', '.', ';'];
 
-    public const array SPECIALS_RU = ['!', '"', '№', ';', '%', ':', '?', '*', '(', ')', '-', '_', '=', '+', '/', '\\', ',', '.'];
+    protected const array SPECIALS_RU = ['!', '"', '№', ';', '%', ':', '?', '*', '(', ')', '-', '_', '=', '+', '/', '\\', ',', '.'];
 
-    public const array PAIRED = [
+    protected const array PAIRED = [
         '(' => ')',
         '[' => ']',
         '{' => '}',
@@ -59,19 +59,19 @@ class LessonService
         '`' => '`',
     ];
 
-    public const array PUNCTUATION = [',', '.', ';', ':', '!', '?'];
+    protected const array PUNCTUATION = [',', '.', ';', ':', '!', '?'];
 
-    public const int MIN_LESSON_LENGTH = 100;
+    protected const int MIN_LESSON_LENGTH = 100;
 
-    public const int MAX_LESSON_LENGTH = 300;
+    protected const int MAX_LESSON_LENGTH = 300;
 
-    public const int MIN_WORDS_PER_LINE = 2;
+    protected const int MIN_WORDS_PER_LINE = 2;
 
-    public const int MAX_WORDS_PER_LINE = 8;
+    protected const int MAX_WORDS_PER_LINE = 8;
 
-    public const int MIN_WORD_LENGTH = 3;
+    protected const int MIN_WORD_LENGTH = 3;
 
-    public const int MAX_WORD_LENGTH = 8;
+    protected const int MAX_WORD_LENGTH = 8;
 
     /**
      * @throws RandomException
