@@ -26,6 +26,14 @@ return new Config()
         'no_whitespace_before_comma_in_array' => true,
         'whitespace_after_comma_in_array' => true,
         'no_unneeded_control_parentheses' => true,
+        'trailing_comma_in_multiline' => [
+            'elements' => [
+                'arrays',
+                'arguments',
+                'parameters',
+            ],
+            'after_heredoc' => true,
+        ],
     ])
     ->setFinder($finder)
     ->setRiskyAllowed(true)
