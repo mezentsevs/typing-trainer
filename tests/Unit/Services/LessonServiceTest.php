@@ -124,19 +124,18 @@ class LessonServiceTest extends TestCase
         $maxWordsPerLine = $this->reflection->getConstant('MAX_WORDS_PER_LINE');
 
         foreach ($lines as $line) {
-            $words = explode(' ', $line);
-            $wordsCount = count($words);
+            $wordsPerLine = count(explode(' ', $line));
 
             $this->assertGreaterThanOrEqual(
                 $minWordsPerLine,
-                $wordsCount,
-                "Line '{$line}' has too few words. Expected at least " . $minWordsPerLine . ", got {$wordsCount}.",
+                $wordsPerLine,
+                "Line '{$line}' has too few words. Expected at least " . $minWordsPerLine . ", got {$wordsPerLine}.",
             );
 
             $this->assertLessThanOrEqual(
                 $maxWordsPerLine,
-                $wordsCount,
-                "Line '{$line}' has too many words. Expected at most " . $maxWordsPerLine . ", got {$wordsCount}.",
+                $wordsPerLine,
+                "Line '{$line}' has too many words. Expected at most " . $maxWordsPerLine . ", got {$wordsPerLine}.",
             );
         }
     }
