@@ -113,7 +113,7 @@ class LessonService
                     $i + 1,
                     $lessonCount,
                     $availableCharsString,
-                    $newCharsString
+                    $newCharsString,
                 ),
                 'created_at' => now(),
                 'updated_at' => now(),
