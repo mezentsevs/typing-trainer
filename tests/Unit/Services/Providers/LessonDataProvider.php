@@ -68,12 +68,21 @@ class LessonDataProvider
         $availableCharsEn = '';
         $availableCharsRu = '';
 
+        $lessonCountEn = count(self::NEW_CHARS_SEQUENCE_EN);
+        $lessonCountRu = count(self::NEW_CHARS_SEQUENCE_RU);
+
         foreach (self::NEW_CHARS_SEQUENCE_EN as $number => $newChars) {
             if ($availableCharsEn !== self::CHARS_EN) {
                 $availableCharsEn .= $newChars;
             }
 
-            $data["en_{$number}"] = ['en', $number, $newChars, $availableCharsEn];
+            $data["en_{$number}"] = [[
+                'language' => 'en',
+                'lessonCount' => $lessonCountEn,
+                'lessonNumber' => $number,
+                'expectedNewChars' => $newChars,
+                'expectedAvailableChars' => $availableCharsEn,
+            ]];
         }
 
         foreach (self::NEW_CHARS_SEQUENCE_RU as $number => $newChars) {
@@ -81,7 +90,13 @@ class LessonDataProvider
                 $availableCharsRu .= $newChars;
             }
 
-            $data["ru_{$number}"] = ['ru', $number, $newChars, $availableCharsRu];
+            $data["ru_{$number}"] = [[
+                'language' => 'ru',
+                'lessonCount' => $lessonCountRu,
+                'lessonNumber' => $number,
+                'expectedNewChars' => $newChars,
+                'expectedAvailableChars' => $availableCharsRu,
+            ]];
         }
 
         return $data;
