@@ -94,6 +94,12 @@ class LessonServiceTest extends TestCase
         $this->assertLineStructureValid($lesson->text);
     }
 
+    #[DataProviderExternal(LessonDataProvider::class, 'provideSupportedLanguages')]
+    public function testIntroductionOrderContainsLanguage(string $language): void
+    {
+        $this->assertArrayHasKey($language, $this->reflection->getConstant('INTRODUCTION_ORDER'));
+    }
+
     private function assertTextContainsOnlyAllowedChars(string $text, string $availableChars): void
     {
         $allowedChars = array_merge(mb_str_split($availableChars), [' ', "\n"]);
