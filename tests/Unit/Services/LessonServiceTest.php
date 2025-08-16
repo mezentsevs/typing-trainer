@@ -102,7 +102,7 @@ class LessonServiceTest extends TestCase
 
     public function testGetAllEnglishLetters(): void
     {
-        $allEnglishLettersCount = 52;
+        $expectedAllEnglishLetters = array_merge(range('a', 'z'), range('A', 'Z'));
 
         $getAllEnglishLettersMethod = $this->reflection->getMethod('getAllEnglishLetters');
         $getAllEnglishLettersMethod->setAccessible(true);
@@ -110,10 +110,23 @@ class LessonServiceTest extends TestCase
         $allEnglishLetters = $getAllEnglishLettersMethod->invoke($this->service);
 
         $this->assertIsArray($allEnglishLetters);
-        $this->assertCount($allEnglishLettersCount, $allEnglishLetters);
-
-        $expectedAllEnglishLetters = array_merge(range('a', 'z'), range('A', 'Z'));
         $this->assertEquals($expectedAllEnglishLetters, $allEnglishLetters);
+    }
+
+    public function testGetAllRussianLetters(): void
+    {
+        $expectedAllRussianLetters = array_merge(
+            $this->reflection->getConstant('LETTERS_LC_RU'),
+            $this->reflection->getConstant('LETTERS_UC_RU'),
+        );
+
+        $getAllRussianLettersMethod = $this->reflection->getMethod('getAllRussianLetters');
+        $getAllRussianLettersMethod->setAccessible(true);
+
+        $allRussianLetters = $getAllRussianLettersMethod->invoke($this->service);
+
+        $this->assertIsArray($allRussianLetters);
+        $this->assertEquals($expectedAllRussianLetters, $allRussianLetters);
     }
 
     #[DataProviderExternal(LessonDataProvider::class, 'provideSupportedLanguages')]
