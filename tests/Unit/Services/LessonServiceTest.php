@@ -30,9 +30,9 @@ class LessonServiceTest extends TestCase
         $this->reflection = new ReflectionClass($this->service);
     }
 
-    public function testGenerateLessonsDeletesExistingAndCreatesNew(): void
+    #[DataProviderExternal(LessonDataProvider::class, 'provideSupportedLanguages')]
+    public function testGenerateLessonsDeletesExistingAndCreatesNew(string $language): void
     {
-        $language = 'en';
         $lessonCount = 5;
         $existingLessonCount = 3;
         $existingLessonResultCount = 3;
