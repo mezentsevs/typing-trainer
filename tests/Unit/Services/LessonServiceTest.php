@@ -100,6 +100,22 @@ class LessonServiceTest extends TestCase
         $this->assertArrayHasKey($language, $this->reflection->getConstant('INTRODUCTION_ORDER'));
     }
 
+    public function testGetAllEnglishLetters(): void
+    {
+        $allEnglishLettersCount = 52;
+
+        $getAllEnglishLettersMethod = $this->reflection->getMethod('getAllEnglishLetters');
+        $getAllEnglishLettersMethod->setAccessible(true);
+
+        $allEnglishLetters = $getAllEnglishLettersMethod->invoke($this->service);
+
+        $this->assertIsArray($allEnglishLetters);
+        $this->assertCount($allEnglishLettersCount, $allEnglishLetters);
+
+        $expectedAllEnglishLetters = array_merge(range('a', 'z'), range('A', 'Z'));
+        $this->assertEquals($expectedAllEnglishLetters, $allEnglishLetters);
+    }
+
     #[DataProviderExternal(LessonDataProvider::class, 'provideSupportedLanguages')]
     public function testRetrieveVowelsForLanguage(string $language): void
     {
