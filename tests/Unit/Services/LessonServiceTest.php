@@ -130,7 +130,7 @@ class LessonServiceTest extends TestCase
     }
 
     #[DataProviderExternal(LessonDataProvider::class, 'provideSupportedLanguages')]
-    public function testRetrieveVowelsForLanguage(string $language): void
+    public function testGetVowels(string $language): void
     {
         $getVowelsMethod = $this->reflection->getMethod('getVowels');
         $getVowelsMethod->setAccessible(true);
@@ -151,7 +151,7 @@ class LessonServiceTest extends TestCase
     }
 
     #[DataProviderExternal(LessonDataProvider::class, 'provideSupportedLanguages')]
-    public function testRetrieveConsonantsForLanguage(string $language): void
+    public function testGetConsonants(string $language): void
     {
         $getConsonantsMethod = $this->reflection->getMethod('getConsonants');
         $getConsonantsMethod->setAccessible(true);
