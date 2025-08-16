@@ -116,6 +116,8 @@ class LessonServiceTest extends TestCase
             case 'ru':
                 $this->assertEquals($this->reflection->getConstant('VOWELS_RU'), $vowels);
                 break;
+            default:
+                break;
         }
     }
 
@@ -141,6 +143,8 @@ class LessonServiceTest extends TestCase
                 );
                 $expectedConsonants = array_diff($allRussianLetters, $this->reflection->getConstant('VOWELS_RU'));
                 $this->assertEquals($expectedConsonants, $consonants);
+                break;
+            default:
                 break;
         }
     }
