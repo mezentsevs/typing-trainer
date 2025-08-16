@@ -62,7 +62,7 @@ class LessonDataProvider
         ];
     }
 
-    public static function provideLessonNewCharsSequence(): array
+    public static function provideLessonsSequenceData(): array
     {
         $data = [];
         $availableCharsEn = '';

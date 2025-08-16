@@ -68,7 +68,7 @@ class LessonServiceTest extends TestCase
         $this->assertCount($lessonCount, $newLessons);
     }
 
-    #[DataProviderExternal(LessonDataProvider::class, 'provideLessonNewCharsSequence')]
+    #[DataProviderExternal(LessonDataProvider::class, 'provideLessonsSequenceData')]
     public function testGenerateLessonsWithValidSequenceAndContent(array $data): void
     {
         $this->service->generateLessons($data['language'], $data['lessonCount'], $this->user->id);
