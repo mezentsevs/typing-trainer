@@ -350,7 +350,7 @@ class LessonService
         }
     }
 
-    private function getEnglishLetters(): array
+    private function getAllEnglishLetters(): array
     {
         return array_merge(
             range('a', 'z'),
@@ -358,7 +358,7 @@ class LessonService
         );
     }
 
-    private function getRussianLetters(): array
+    private function getAllRussianLetters(): array
     {
         return array_merge(
             self::LETTERS_LC_RU,
@@ -378,8 +378,8 @@ class LessonService
     private function getConsonants(string $language): array
     {
         return match ($language) {
-            'en' => array_diff($this->getEnglishLetters(), $this->getVowels('en')),
-            'ru' => array_diff($this->getRussianLetters(), $this->getVowels('ru')),
+            'en' => array_diff($this->getAllEnglishLetters(), $this->getVowels('en')),
+            'ru' => array_diff($this->getAllRussianLetters(), $this->getVowels('ru')),
             default => [],
         };
     }
