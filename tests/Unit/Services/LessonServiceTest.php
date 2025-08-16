@@ -101,7 +101,7 @@ class LessonServiceTest extends TestCase
     }
 
     #[DataProviderExternal(LessonDataProvider::class, 'provideSupportedLanguages')]
-    public function testGetVowelsReturnsValidArray(string $language): void
+    public function testRetrieveVowelsForLanguage(string $language): void
     {
         $getVowelsMethod = $this->reflection->getMethod('getVowels');
         $getVowelsMethod->setAccessible(true);
@@ -115,6 +115,32 @@ class LessonServiceTest extends TestCase
                 break;
             case 'ru':
                 $this->assertEquals($this->reflection->getConstant('VOWELS_RU'), $vowels);
+                break;
+        }
+    }
+
+    #[DataProviderExternal(LessonDataProvider::class, 'provideSupportedLanguages')]
+    public function testRetrieveConsonantsForLanguage(string $language): void
+    {
+        $getConsonantsMethod = $this->reflection->getMethod('getConsonants');
+        $getConsonantsMethod->setAccessible(true);
+
+        $consonants = $getConsonantsMethod->invoke($this->service, $language);
+        $this->assertIsArray($consonants);
+
+        switch ($language) {
+            case 'en':
+                $allEnglishLetters = array_merge(range('a', 'z'), range('A', 'Z'));
+                $expectedConsonants = array_diff($allEnglishLetters, $this->reflection->getConstant('VOWELS_EN'));
+                $this->assertEquals($expectedConsonants, $consonants);
+                break;
+            case 'ru':
+                $allRussianLetters = array_merge(
+                    $this->reflection->getConstant('LETTERS_LC_RU'),
+                    $this->reflection->getConstant('LETTERS_UC_RU'),
+                );
+                $expectedConsonants = array_diff($allRussianLetters, $this->reflection->getConstant('VOWELS_RU'));
+                $this->assertEquals($expectedConsonants, $consonants);
                 break;
         }
     }
