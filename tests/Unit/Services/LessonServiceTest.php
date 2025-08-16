@@ -100,6 +100,25 @@ class LessonServiceTest extends TestCase
         $this->assertArrayHasKey($language, $this->reflection->getConstant('INTRODUCTION_ORDER'));
     }
 
+    #[DataProviderExternal(LessonDataProvider::class, 'provideSupportedLanguages')]
+    public function testGetVowelsReturnsValidArray(string $language): void
+    {
+        $getVowelsMethod = $this->reflection->getMethod('getVowels');
+        $getVowelsMethod->setAccessible(true);
+
+        $vowels = $getVowelsMethod->invoke($this->service, $language);
+        $this->assertIsArray($vowels);
+
+        switch ($language) {
+            case 'en':
+                $this->assertEquals($this->reflection->getConstant('VOWELS_EN'), $vowels);
+                break;
+            case 'ru':
+                $this->assertEquals($this->reflection->getConstant('VOWELS_RU'), $vowels);
+                break;
+        }
+    }
+
     private function assertTextContainsOnlyAllowedChars(string $text, string $availableChars): void
     {
         $allowedChars = array_merge(mb_str_split($availableChars), [' ', "\n"]);
