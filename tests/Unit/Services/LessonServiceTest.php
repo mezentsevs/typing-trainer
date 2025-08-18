@@ -178,6 +178,37 @@ class LessonServiceTest extends TestCase
         }
     }
 
+    public function testIsPunctuation(): void
+    {
+        $isPunctuationMethod = $this->reflection->getMethod('isPunctuation');
+        $isPunctuationMethod->setAccessible(true);
+
+        $punctuation = $this->reflection->getConstant('PUNCTUATION');
+
+        $allChars = array_unique(array_merge(
+            ['', ' ', "\n"],
+            range('0', '9'),
+            range('a', 'z'),
+            range('A', 'Z'),
+            $this->reflection->getConstant('LETTERS_LC_RU'),
+            $this->reflection->getConstant('LETTERS_UC_RU'),
+            $this->reflection->getConstant('SPECIALS_EN'),
+            $this->reflection->getConstant('SPECIALS_RU'),
+            array_keys($this->reflection->getConstant('PAIRED')),
+            array_values($this->reflection->getConstant('PAIRED')),
+        ));
+
+        $nonPunctuation = array_diff($allChars, $punctuation);
+
+        foreach ($punctuation as $char) {
+            $this->assertTrue($isPunctuationMethod->invoke($this->service, $char));
+        }
+
+        foreach ($nonPunctuation as $char) {
+            $this->assertFalse($isPunctuationMethod->invoke($this->service, $char));
+        }
+    }
+
     private function assertTextContainsOnlyAllowedChars(string $text, string $availableChars): void
     {
         $allowedChars = array_merge(mb_str_split($availableChars), [' ', "\n"]);
