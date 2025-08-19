@@ -706,7 +706,7 @@ class TestTextSeeder extends Seeder
                         The ice is cruel, it claims both weak and strong,
                         Yet courage fuels the saga's endless song.
                         Type swiftly now, let fingers dance like flame,
-                        And carve your place within the Viking's name.
+                        And carve your place within the viking's name.
                         Each stroke a vow, each word a battle won,
                         Until the tale of frostborn is undone.
                         EOT,
@@ -872,7 +872,7 @@ class TestTextSeeder extends Seeder
                     'text' => <<<EOT
                         Forge your fingers, swift and true,
                         On keys that dance like morning dew!
-                        In halls where Viking sagas soar,
+                        In halls where viking sagas soar,
                         A warrior's heart beats evermore.
                         Runes aglow with starlit fire,
                         Carve the fates of god's tools wield,
@@ -957,7 +957,7 @@ class TestTextSeeder extends Seeder
                         Beneath a fractured, crimson sky!
                         In cyberpunk's electric haze,
                         Where neon gods and data blaze.
-                        A Viking's soul, in circuits clad,
+                        A viking's soul, in circuits clad,
                         Wields a sword where dreams go mad.
                         Type with fury, swift and sure,
                         Each stroke a spark, a tale to lure.
@@ -1007,7 +1007,7 @@ class TestTextSeeder extends Seeder
                         A warrior's soul fuels electric dreams.
                         No sight, no pause, just the rhythm's call,
                         Your hands will rise where the weak shall fall.
-                        In Viking longships, the oarsmen sing,
+                        In viking longships, the oarsmen sing,
                         Of Thor's great hammer and freedom's ring.
                         Yet here in the sprawl, where the circuits hum,
                         A pirate's chant joins the battle's drum.
@@ -1034,7 +1034,7 @@ class TestTextSeeder extends Seeder
                         Type through storms, with reckless grace!
                         A pirate's song, the ocean's roar,
                         Keys like waves that kiss the shore.
-                        From Viking meads to samurai's zen,
+                        From viking meads to samurai's zen,
                         Honor forged by steel and pen.
                         The keyboard clacks, a battle cry,
                         Through cyber skies where drones fly high.
@@ -1072,7 +1072,7 @@ class TestTextSeeder extends Seeder
                         Hold treasures vast that no mortal knows.
                         Type blind, me hearties, with fingers fleet,
                         Each stroke a wave where the horizons meet.
-                        From Viking sagas to samurai steel,
+                        From viking sagas to samurai steel,
                         The ocean's song makes the cosmos reel.
                         In ancient Rome, where the legions stride,
                         The poet's quill joins the warrior's pride.
@@ -1102,7 +1102,7 @@ class TestTextSeeder extends Seeder
                         Slash the keys, with samurai's grace,
                         Each stroke a blade in time and space!
                         From feudal Japan, the cherry falls,
-                        To Viking halls where Odin calls.
+                        To viking halls where Odin calls.
                         Type with honor, swift and pure,
                         Your hands the cure, the saga's lure.
                         In cyberpunk's chaotic stream,
@@ -1139,7 +1139,7 @@ class TestTextSeeder extends Seeder
                         Blind typing weaves a poet's fate.
                         Each stroke a thread in the cosmic loom,
                         Each error banished to digital doom.
-                        From Viking seas to a samurai's vow,
+                        From viking seas to a samurai's vow,
                         The oracle's voice speaks here and now.
                         Type fierce, type blind, let the muses sing,
                         Each key a note in the fates they bring.
@@ -1166,7 +1166,7 @@ class TestTextSeeder extends Seeder
                     'text' => <<<EOT
                         See the keys, the oracle's sight,
                         Type through shadows, claim the light!
-                        From Viking frost to samurai's creed,
+                        From viking frost to samurai's creed,
                         Your hands must fly with lightning speed.
                         In cyberpunk's electric maze,
                         Neon gods and data's blaze.
@@ -1202,7 +1202,7 @@ class TestTextSeeder extends Seeder
                         The warrior's heart defies all dooms.
                         Type blind, type swift, let your spirit rise,
                         Each stroke a spark in the cosmic skies.
-                        From Viking longships to neon's glare,
+                        From viking longships to neon's glare,
                         The saga's pulse thrums everywhere.
                         In Rome's vast Colosseum, gladiators roar,
                         Yet typing carves what the gods adore.
@@ -1225,7 +1225,7 @@ class TestTextSeeder extends Seeder
                     'text' => <<<EOT
                         Strike the keys, with gladiator's might,
                         In Colosseum's blazing light!
-                        From Viking seas to samurai's blade,
+                        From viking seas to samurai's blade,
                         Your typing skill will never fade.
                         In cyberpunk's chaotic stream,
                         Neon gods haunt every dream.
@@ -1282,7 +1282,7 @@ class TestTextSeeder extends Seeder
                     'text' => <<<EOT
                         Breathe and type, with yogic flame,
                         Each key a spark to stake your claim!
-                        From Viking frost to samurai's zen,
+                        From viking frost to samurai's zen,
                         Your hands must race, again, again.
                         In cyberpunk's electric haze,
                         Neon gods and data's maze.
@@ -1314,7 +1314,7 @@ class TestTextSeeder extends Seeder
                         A poet's heart in a futurist's dream.
                         Type blind, type swift, let your fingers flow,
                         Each stroke a ripple where wisdom grows.
-                        From Viking sagas to samurai's grace,
+                        From viking sagas to samurai's grace,
                         The keys ignite in a cosmic chase.
                         In Rome's vast temples, where gods decree,
                         Blind typing carves your destiny.
@@ -1333,7 +1333,7 @@ class TestTextSeeder extends Seeder
                 [
                     'genre' => 'poetry',
                     'text' => <<<EOT
-                        Forge the keys, with Viking might,
+                        Forge the keys, with viking might,
                         In cyberpunk's eternal night!
                         From samurai's unyielding code,
                         To pirate ships on waves that rode.
@@ -1360,14 +1360,14 @@ class TestTextSeeder extends Seeder
                         In futurism's boundless scope,
                         Your hands ignite with boundless hope.
                         No lag, no doubt, your fingers sing,
-                        A cyber-Viking's reckoning!
+                        A cyber-viking's reckoning!
                         Hail! The keys are a gladiator's sword,
                         Striking bold chords where the fates accord.
                         In Rome's great Colosseum, where heroes bleed,
                         Blind typing fuels the poet's creed.
                         Type swift, type blind, let your spirit soar,
                         Each stroke a spark on the battle's shore.
-                        From Viking seas to a samurai's vow,
+                        From viking seas to a samurai's vow,
                         The saga's pulse thrums here and now.
                         In neon-lit sprawls, where the data streams,
                         A cyberpunk crafts a poet's dreams.
@@ -1386,7 +1386,7 @@ class TestTextSeeder extends Seeder
                     'text' => <<<EOT
                         Seek the keys, with thinker's gaze,
                         Type through time's eternal maze!
-                        From Viking seas to samurai's creed,
+                        From viking seas to samurai's creed,
                         Your hands must fly with lightning speed.
                         In cyberpunk's chaotic stream,
                         Neon gods haunt every dream.
@@ -1420,7 +1420,7 @@ class TestTextSeeder extends Seeder
                         Guiding my hands through a poet's dream.
                         Type blind, type swift, let the keys take flight,
                         Each stroke a star in the endless night.
-                        From Viking runes to a samurai's blade,
+                        From viking runes to a samurai's blade,
                         The saga's heart will never fade.
                         In Rome's vast forums, where fates align,
                         Your fingers weave threads of the divine.
@@ -1439,7 +1439,7 @@ class TestTextSeeder extends Seeder
                     'text' => <<<EOT
                         Strike the keys, with epic might,
                         Through starlit realms and endless night!
-                        From Viking frost to samurai's blade,
+                        From viking frost to samurai's blade,
                         Your typing skill will never fade.
                         In cyberpunk's electric haze,
                         Neon gods and data's blaze.
@@ -1473,7 +1473,7 @@ class TestTextSeeder extends Seeder
                         Rising like incense through cosmic air.
                         Type blind, type swift, let your spirit flow,
                         Each stroke a step where the wise ones go.
-                        From Viking sagas to samurai's zen,
+                        From viking sagas to samurai's zen,
                         The poet's heart will begin again.
                         In Rome's great temples, where gods decree,
                         Blind typing carves your destiny.
