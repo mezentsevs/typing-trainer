@@ -62,16 +62,25 @@ class LessonService
     protected const array PUNCTUATION = [',', '.', ';', ':', '!', '?'];
 
     protected const int MIN_LESSON_LENGTH = 100;
-
     protected const int MAX_LESSON_LENGTH = 300;
 
     protected const int MIN_WORDS_PER_LINE = 2;
-
     protected const int MAX_WORDS_PER_LINE = 8;
 
     protected const int MIN_WORD_LENGTH = 3;
-
     protected const int MAX_WORD_LENGTH = 8;
+
+    protected const int RANDOM_MIN_VALUE = 0;
+    protected const int RANDOM_MAX_VALUE = 99;
+    protected const int DIGIT_USAGE_CHANCE = 30;
+    protected const int NEW_CHAR_USAGE_CHANCE = 70;
+
+    protected const int BINARY_CHOICE_MIN = 0;
+    protected const int BINARY_CHOICE_MAX = 1;
+    protected const int BINARY_CHOICE_DEFAULT = 0;
+
+    protected const int WORDS_BEFORE_NEWLINE = 2;
+    protected const int MIN_WORD_LENGTH_TO_COUNT = 3;
 
     /**
      * @throws RandomException
@@ -184,7 +193,7 @@ class LessonService
                     break;
                 }
 
-                if ($lineWordCount + 2 > $currentLineWords) {
+                if ($lineWordCount + self::WORDS_BEFORE_NEWLINE > $currentLineWords) {
                     $text .= "\n";
                     $lineWordCount = 0;
                     $currentLineWords = random_int(self::MIN_WORDS_PER_LINE, self::MAX_WORDS_PER_LINE);
@@ -202,7 +211,7 @@ class LessonService
 
             $text .= $currentWord;
 
-            if (mb_strlen($currentWord) >= 3) {
+            if (mb_strlen($currentWord) >= self::MIN_WORD_LENGTH_TO_COUNT) {
                 $wordsAdded++;
                 $lineWordCount++;
             }
@@ -250,7 +259,7 @@ class LessonService
         $letterPart = '';
 
         if (!empty($availableVowels) && !empty($availableConsonants)) {
-            $startType = rand(0, 1) === 0 ? 'V' : 'C';
+            $startType = rand(self::BINARY_CHOICE_MIN, self::BINARY_CHOICE_MAX) === self::BINARY_CHOICE_DEFAULT ? 'V' : 'C';
             $startSet = $startType === 'V' ? $availableVowels : $availableConsonants;
             $startSetNew = $startType === 'V' ? $newVowels : $newConsonants;
             $otherSet = $startType === 'V' ? $availableConsonants : $availableVowels;
@@ -278,16 +287,16 @@ class LessonService
                 $setNew = $newLetters;
             }
 
-            $useNumber = !empty($availableNumbers) && rand(0, 99) < 30;
+            $useNumber = !empty($availableNumbers) && rand(self::RANDOM_MIN_VALUE, self::RANDOM_MAX_VALUE) < self::DIGIT_USAGE_CHANCE;
 
             if ($useNumber) {
-                if (!empty($newNumbers) && rand(0, 99) < 70) {
+                if (!empty($newNumbers) && rand(self::RANDOM_MIN_VALUE, self::RANDOM_MAX_VALUE) < self::NEW_CHAR_USAGE_CHANCE) {
                     $letterPart .= $newNumbers[array_rand($newNumbers)];
                 } else {
                     $letterPart .= $availableNumbers[array_rand($availableNumbers)];
                 }
             } else {
-                if (!empty($setNew) && rand(0, 99) < 70) {
+                if (!empty($setNew) && rand(self::RANDOM_MIN_VALUE, self::RANDOM_MAX_VALUE) < self::NEW_CHAR_USAGE_CHANCE) {
                     $letterPart .= $setNew[array_rand($setNew)];
                 } else {
                     $letterPart .= $set[array_rand($set)];
@@ -339,7 +348,7 @@ class LessonService
                 return $letterPart . $special;
             }
 
-            $position = rand(0, 1) === 0 ? 'start' : 'end';
+            $position = rand(self::BINARY_CHOICE_MIN, self::BINARY_CHOICE_MAX) === self::BINARY_CHOICE_DEFAULT ? 'start' : 'end';
 
             return $position === 'start' ? $special . $letterPart : $letterPart . $special;
         } else {
