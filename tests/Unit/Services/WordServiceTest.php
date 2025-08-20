@@ -25,20 +25,20 @@ class WordServiceTest extends TestCase
 
     public function testGetAllEnglishLetters(): void
     {
-        $expectedAllEnglishLetters = array_merge(range('a', 'z'), range('A', 'Z'));
+        $expectedAllEnglishLetterChars = array_merge(range('a', 'z'), range('A', 'Z'));
 
         $getAllEnglishLettersMethod = $this->reflection->getMethod('getAllEnglishLetters');
         $getAllEnglishLettersMethod->setAccessible(true);
 
-        $allEnglishLetters = $getAllEnglishLettersMethod->invoke($this->service);
+        $allEnglishLetterChars = $getAllEnglishLettersMethod->invoke($this->service);
 
-        $this->assertIsArray($allEnglishLetters);
-        $this->assertEquals($expectedAllEnglishLetters, $allEnglishLetters);
+        $this->assertIsArray($allEnglishLetterChars);
+        $this->assertEquals($expectedAllEnglishLetterChars, $allEnglishLetterChars);
     }
 
     public function testGetAllRussianLetters(): void
     {
-        $expectedAllRussianLetters = array_merge(
+        $expectedAllRussianLetterChars = array_merge(
             $this->reflection->getConstant('LETTERS_LC_RU'),
             $this->reflection->getConstant('LETTERS_UC_RU'),
         );
@@ -46,10 +46,10 @@ class WordServiceTest extends TestCase
         $getAllRussianLettersMethod = $this->reflection->getMethod('getAllRussianLetters');
         $getAllRussianLettersMethod->setAccessible(true);
 
-        $allRussianLetters = $getAllRussianLettersMethod->invoke($this->service);
+        $allRussianLetterChars = $getAllRussianLettersMethod->invoke($this->service);
 
-        $this->assertIsArray($allRussianLetters);
-        $this->assertEquals($expectedAllRussianLetters, $allRussianLetters);
+        $this->assertIsArray($allRussianLetterChars);
+        $this->assertEquals($expectedAllRussianLetterChars, $allRussianLetterChars);
     }
 
     public function testGetVowels(): void
@@ -57,13 +57,13 @@ class WordServiceTest extends TestCase
         $getVowelsMethod = $this->reflection->getMethod('getVowels');
         $getVowelsMethod->setAccessible(true);
 
-        $vowelsEn = $getVowelsMethod->invoke($this->service, 'en');
-        $this->assertIsArray($vowelsEn);
-        $this->assertEquals($this->reflection->getConstant('VOWELS_EN'), $vowelsEn);
+        $vowelCharsEn = $getVowelsMethod->invoke($this->service, 'en');
+        $this->assertIsArray($vowelCharsEn);
+        $this->assertEquals($this->reflection->getConstant('VOWELS_EN'), $vowelCharsEn);
 
-        $vowelsRu = $getVowelsMethod->invoke($this->service, 'ru');
-        $this->assertIsArray($vowelsRu);
-        $this->assertEquals($this->reflection->getConstant('VOWELS_RU'), $vowelsRu);
+        $vowelCharsRu = $getVowelsMethod->invoke($this->service, 'ru');
+        $this->assertIsArray($vowelCharsRu);
+        $this->assertEquals($this->reflection->getConstant('VOWELS_RU'), $vowelCharsRu);
     }
 
     public function testGetConsonants(): void
@@ -71,22 +71,22 @@ class WordServiceTest extends TestCase
         $getConsonantsMethod = $this->reflection->getMethod('getConsonants');
         $getConsonantsMethod->setAccessible(true);
 
-        $consonantsEn = $getConsonantsMethod->invoke($this->service, 'en');
-        $this->assertIsArray($consonantsEn);
+        $consonantCharsEn = $getConsonantsMethod->invoke($this->service, 'en');
+        $this->assertIsArray($consonantCharsEn);
 
-        $allEnglishLetters = array_merge(range('a', 'z'), range('A', 'Z'));
-        $expectedConsonantsEn = array_diff($allEnglishLetters, $this->reflection->getConstant('VOWELS_EN'));
-        $this->assertEquals($expectedConsonantsEn, $consonantsEn);
+        $allEnglishLetterChars = array_merge(range('a', 'z'), range('A', 'Z'));
+        $expectedConsonantCharsEn = array_diff($allEnglishLetterChars, $this->reflection->getConstant('VOWELS_EN'));
+        $this->assertEquals($expectedConsonantCharsEn, $consonantCharsEn);
 
-        $consonantsRu = $getConsonantsMethod->invoke($this->service, 'ru');
-        $this->assertIsArray($consonantsRu);
+        $consonantCharsRu = $getConsonantsMethod->invoke($this->service, 'ru');
+        $this->assertIsArray($consonantCharsRu);
 
-        $allRussianLetters = array_merge(
+        $allRussianLetterChars = array_merge(
             $this->reflection->getConstant('LETTERS_LC_RU'),
             $this->reflection->getConstant('LETTERS_UC_RU'),
         );
-        $expectedConsonantsRu = array_diff($allRussianLetters, $this->reflection->getConstant('VOWELS_RU'));
-        $this->assertEquals($expectedConsonantsRu, $consonantsRu);
+        $expectedConsonantCharsRu = array_diff($allRussianLetterChars, $this->reflection->getConstant('VOWELS_RU'));
+        $this->assertEquals($expectedConsonantCharsRu, $consonantCharsRu);
     }
 
     public function testIsPunctuation(): void
@@ -94,7 +94,7 @@ class WordServiceTest extends TestCase
         $isPunctuationMethod = $this->reflection->getMethod('isPunctuation');
         $isPunctuationMethod->setAccessible(true);
 
-        $punctuation = $this->reflection->getConstant('PUNCTUATION');
+        $punctuationChars = $this->reflection->getConstant('PUNCTUATION');
 
         $allChars = array_unique(array_merge(
             ['', ' ', "\n"],
@@ -109,13 +109,13 @@ class WordServiceTest extends TestCase
             array_values($this->reflection->getConstant('PAIRED')),
         ));
 
-        $nonPunctuation = array_diff($allChars, $punctuation);
+        $nonPunctuationChars = array_diff($allChars, $punctuationChars);
 
-        foreach ($punctuation as $char) {
+        foreach ($punctuationChars as $char) {
             $this->assertTrue($isPunctuationMethod->invoke($this->service, $char));
         }
 
-        foreach ($nonPunctuation as $char) {
+        foreach ($nonPunctuationChars as $char) {
             $this->assertFalse($isPunctuationMethod->invoke($this->service, $char));
         }
     }
