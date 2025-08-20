@@ -28,111 +28,111 @@ class WordService
     /**
      * @throws RandomException
      */
-    public function generateWord(array $availableCharsArray, array $newCharsArray, string $language): string
+    public function generateWord(array $availableChars, array $newChars, string $language): string
     {
-        $availableLetters = array_filter($availableCharsArray, function ($char) {
+        $availableLetterChars = array_filter($availableChars, function ($char) {
             return preg_match('/[a-zA-ZА-яёЁ0-9]/u', $char);
         });
 
-        $newLetters = array_filter($newCharsArray, function ($char) {
+        $newLetterChars = array_filter($newChars, function ($char) {
             return preg_match('/[a-zA-ZА-яёЁ0-9]/u', $char);
         });
 
-        $allVowels = $this->getVowels($language);
-        $availableVowels = array_intersect($allVowels, $availableLetters);
-        $newVowels = array_intersect($allVowels, $newLetters);
+        $allVowelChars = $this->getVowels($language);
+        $availableVowelChars = array_intersect($allVowelChars, $availableLetterChars);
+        $newVowelChars = array_intersect($allVowelChars, $newLetterChars);
 
-        $allConsonants = $this->getConsonants($language);
-        $availableConsonants = array_intersect($allConsonants, $availableLetters);
-        $newConsonants = array_intersect($allConsonants, $newLetters);
+        $allConsonantChars = $this->getConsonants($language);
+        $availableConsonantChars = array_intersect($allConsonantChars, $availableLetterChars);
+        $newConsonantChars = array_intersect($allConsonantChars, $newLetterChars);
 
-        $availableNumbers = array_filter($availableLetters, function ($char) {
+        $availableNumberChars = array_filter($availableLetterChars, function ($char) {
             return preg_match('/[0-9]/u', $char);
         });
 
-        $newNumbers = array_filter($newLetters, function ($char) {
+        $newNumberChars = array_filter($newLetterChars, function ($char) {
             return preg_match('/[0-9]/u', $char);
         });
 
         $lettersPartLength = random_int(self::MIN_LETTERS_PART_LENGTH, self::MAX_LETTERS_PART_LENGTH);
         $lettersPart = '';
 
-        if (!empty($availableVowels) && !empty($availableConsonants)) {
+        if (!empty($availableVowelChars) && !empty($availableConsonantChars)) {
             $startType = rand(self::BINARY_CHOICE_MIN, self::BINARY_CHOICE_MAX) === self::BINARY_CHOICE_DEFAULT ? 'V' : 'C';
-            $startSet = $startType === 'V' ? $availableVowels : $availableConsonants;
-            $startSetNew = $startType === 'V' ? $newVowels : $newConsonants;
-            $otherSet = $startType === 'V' ? $availableConsonants : $availableVowels;
-            $otherSetNew = $startType === 'V' ? $newConsonants : $newVowels;
-        } elseif (!empty($availableVowels)) {
-            $startSet = $availableVowels;
-            $startSetNew = $newVowels;
-            $otherSet = [];
-            $otherSetNew = [];
-        } elseif (!empty($availableConsonants)) {
-            $startSet = $availableConsonants;
-            $startSetNew = $newConsonants;
-            $otherSet = [];
-            $otherSetNew = [];
+            $startCharSet = $startType === 'V' ? $availableVowelChars : $availableConsonantChars;
+            $startNewCharSet = $startType === 'V' ? $newVowelChars : $newConsonantChars;
+            $otherCharSet = $startType === 'V' ? $availableConsonantChars : $availableVowelChars;
+            $otherNewCharSet = $startType === 'V' ? $newConsonantChars : $newVowelChars;
+        } elseif (!empty($availableVowelChars)) {
+            $startCharSet = $availableVowelChars;
+            $startNewCharSet = $newVowelChars;
+            $otherCharSet = [];
+            $otherNewCharSet = [];
+        } elseif (!empty($availableConsonantChars)) {
+            $startCharSet = $availableConsonantChars;
+            $startNewCharSet = $newConsonantChars;
+            $otherCharSet = [];
+            $otherNewCharSet = [];
         } else {
             return '';
         }
 
         for ($i = 0; $i < $lettersPartLength; $i++) {
-            $set = ($i % 2 === 0) ? $startSet : $otherSet;
-            $setNew = ($i % 2 === 0) ? $startSetNew : $otherSetNew;
+            $currentCharSet = ($i % 2 === 0) ? $startCharSet : $otherCharSet;
+            $currentNewCharSet = ($i % 2 === 0) ? $startNewCharSet : $otherNewCharSet;
 
-            if (empty($set)) {
-                $set = $availableLetters;
-                $setNew = $newLetters;
+            if (empty($currentCharSet)) {
+                $currentCharSet = $availableLetterChars;
+                $currentNewCharSet = $newLetterChars;
             }
 
-            $useNumber = !empty($availableNumbers) && rand(self::RANDOM_MIN_VALUE, self::RANDOM_MAX_VALUE) < self::DIGIT_USAGE_CHANCE;
+            $useNumber = !empty($availableNumberChars) && rand(self::RANDOM_MIN_VALUE, self::RANDOM_MAX_VALUE) < self::DIGIT_USAGE_CHANCE;
 
             if ($useNumber) {
-                if (!empty($newNumbers) && rand(self::RANDOM_MIN_VALUE, self::RANDOM_MAX_VALUE) < self::NEW_CHAR_USAGE_CHANCE) {
-                    $lettersPart .= $newNumbers[array_rand($newNumbers)];
+                if (!empty($newNumberChars) && rand(self::RANDOM_MIN_VALUE, self::RANDOM_MAX_VALUE) < self::NEW_CHAR_USAGE_CHANCE) {
+                    $lettersPart .= $newNumberChars[array_rand($newNumberChars)];
                 } else {
-                    $lettersPart .= $availableNumbers[array_rand($availableNumbers)];
+                    $lettersPart .= $availableNumberChars[array_rand($availableNumberChars)];
                 }
             } else {
-                if (!empty($setNew) && rand(self::RANDOM_MIN_VALUE, self::RANDOM_MAX_VALUE) < self::NEW_CHAR_USAGE_CHANCE) {
-                    $lettersPart .= $setNew[array_rand($setNew)];
+                if (!empty($currentNewCharSet) && rand(self::RANDOM_MIN_VALUE, self::RANDOM_MAX_VALUE) < self::NEW_CHAR_USAGE_CHANCE) {
+                    $lettersPart .= $currentNewCharSet[array_rand($currentNewCharSet)];
                 } else {
-                    $lettersPart .= $set[array_rand($set)];
+                    $lettersPart .= $currentCharSet[array_rand($currentCharSet)];
                 }
             }
         }
 
-        $availableSpecials = array_filter($availableCharsArray, function ($char) use ($language) {
-            $validSpecials = match ($language) {
+        $availableSpecialChars = array_filter($availableChars, function ($char) use ($language) {
+            $validSpecialChars = match ($language) {
                 'en' => self::SPECIALS_EN,
                 'ru' => self::SPECIALS_RU,
                 default => [],
             };
 
-            return in_array($char, $validSpecials, true);
+            return in_array($char, $validSpecialChars, true);
         });
 
-        $pairedSymbols = array_merge(array_keys(self::PAIRED), array_values(self::PAIRED));
-        $singleSpecials = array_diff($availableSpecials, $pairedSymbols);
+        $pairedSymbolChars = array_merge(array_keys(self::PAIRED), array_values(self::PAIRED));
+        $singleSpecialChars = array_diff($availableSpecialChars, $pairedSymbolChars);
 
-        $possiblePairedOpenings = array_keys(self::PAIRED);
-        $availablePairedOpenings = array_intersect($possiblePairedOpenings, $availableSpecials);
-        $availablePaired = [];
+        $possiblePairedOpeningChars = array_keys(self::PAIRED);
+        $availablePairedOpeningChars = array_intersect($possiblePairedOpeningChars, $availableSpecialChars);
+        $availablePairedChars = [];
 
-        foreach ($availablePairedOpenings as $opening) {
-            if (in_array(self::PAIRED[$opening], $availableSpecials, true)) {
-                $availablePaired[] = $opening;
+        foreach ($availablePairedOpeningChars as $openingChar) {
+            if (in_array(self::PAIRED[$openingChar], $availableSpecialChars, true)) {
+                $availablePairedChars[] = $openingChar;
             }
         }
 
         $totalOptions = ['none'];
 
-        if (!empty($singleSpecials)) {
+        if (!empty($singleSpecialChars)) {
             $totalOptions[] = 'single';
         }
 
-        if (!empty($availablePaired)) {
+        if (!empty($availablePairedChars)) {
             $totalOptions[] = 'paired';
         }
 
@@ -141,20 +141,20 @@ class WordService
         if ($type === 'none') {
             return $lettersPart;
         } elseif ($type === 'single') {
-            $special = $singleSpecials[array_rand($singleSpecials)];
+            $specialChar = $singleSpecialChars[array_rand($singleSpecialChars)];
 
-            if ($this->isPunctuation($special)) {
-                return $lettersPart . $special;
+            if ($this->isPunctuation($specialChar)) {
+                return $lettersPart . $specialChar;
             }
 
             $position = rand(self::BINARY_CHOICE_MIN, self::BINARY_CHOICE_MAX) === self::BINARY_CHOICE_DEFAULT ? 'start' : 'end';
 
-            return $position === 'start' ? $special . $lettersPart : $lettersPart . $special;
+            return $position === 'start' ? $specialChar . $lettersPart : $lettersPart . $specialChar;
         } else {
-            $opening = $availablePaired[array_rand($availablePaired)];
-            $closing = self::PAIRED[$opening];
+            $openingChar = $availablePairedChars[array_rand($availablePairedChars)];
+            $closingChar = self::PAIRED[$openingChar];
 
-            return $opening . $lettersPart . $closing;
+            return $openingChar . $lettersPart . $closingChar;
         }
     }
 
