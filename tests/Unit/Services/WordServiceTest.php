@@ -123,13 +123,7 @@ class WordServiceTest extends TestCase
     #[DataProviderExternal(WordDataProvider::class, 'provideWordGenerationData')]
     public function testGeneratedWordHasValidLength(array $data): void
     {
-        $generateWordMethod = $this->reflection->getMethod('generateWord');
-        $generateWordMethod->setAccessible(true);
-
-        $word = $generateWordMethod->invokeArgs(
-            $this->service,
-            [$data['availableChars'], $data['newChars'], $data['language']],
-        );
+        $word = $this->service->generateWord($data['availableChars'], $data['newChars'], $data['language']);
         $wordLength = mb_strlen($word);
 
         $this->assertIsString($word);
@@ -144,5 +138,22 @@ class WordServiceTest extends TestCase
             $wordLength,
             "Word '{$word}' in language {$data['language']} is too long.",
         );
+    }
+
+    #[DataProviderExternal(WordDataProvider::class, 'provideWordGenerationData')]
+    public function testGeneratedWordContainsOnlyAvailableChars(array $data): void
+    {
+        $word = $this->service->generateWord($data['availableChars'], $data['newChars'], $data['language']);
+
+        $this->assertIsString($word);
+        $this->assertNotEmpty($word);
+
+        foreach (mb_str_split($word) as $char) {
+            $this->assertContains(
+                $char,
+                $data['availableChars'],
+                "Generated word contains invalid character '{$char}'. Available characters: " . implode(', ', $data['availableChars']) . '.',
+            );
+        }
     }
 }
