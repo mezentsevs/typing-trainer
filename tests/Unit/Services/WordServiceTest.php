@@ -3,14 +3,18 @@
 namespace Tests\Unit\Services;
 
 use App\Services\WordService;
+use PHPUnit\Framework\Attributes\DataProviderExternal;
 use ReflectionClass;
 use Tests\TestCase;
+use Tests\Unit\Services\Providers\WordDataProvider;
 
 class WordServiceTest extends TestCase
 {
     protected WordService $service;
 
     protected ReflectionClass $reflection;
+
+    protected const MAX_EXTRA_SPECIAL_CHARS_COUNT = 2;
 
     protected function setUp(): void
     {
@@ -114,5 +118,31 @@ class WordServiceTest extends TestCase
         foreach ($nonPunctuation as $char) {
             $this->assertFalse($isPunctuationMethod->invoke($this->service, $char));
         }
+    }
+
+    #[DataProviderExternal(WordDataProvider::class, 'provideWordGenerationData')]
+    public function testGeneratedWordHasValidLength(array $data): void
+    {
+        $generateWordMethod = $this->reflection->getMethod('generateWord');
+        $generateWordMethod->setAccessible(true);
+
+        $word = $generateWordMethod->invokeArgs(
+            $this->service,
+            [$data['availableChars'], $data['newChars'], $data['language']],
+        );
+        $wordLength = mb_strlen($word);
+
+        $this->assertIsString($word);
+        $this->assertNotEmpty($word);
+        $this->assertGreaterThanOrEqual(
+            $this->reflection->getConstant('MIN_LETTERS_PART_LENGTH'),
+            $wordLength,
+            "Word '{$word}' in language {$data['language']} is too short",
+        );
+        $this->assertLessThanOrEqual(
+            $this->reflection->getConstant('MAX_LETTERS_PART_LENGTH') + self::MAX_EXTRA_SPECIAL_CHARS_COUNT,
+            $wordLength,
+            "Word '{$word}' in language {$data['language']} is too long",
+        );
     }
 }
