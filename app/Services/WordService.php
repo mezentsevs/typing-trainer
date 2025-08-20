@@ -15,8 +15,8 @@ class WordService
     protected const array PAIRED = ['(' => ')', '[' => ']', '{' => '}', '<' => '>', '"' => '"', "'" => "'", '`' => '`'];
     protected const array PUNCTUATION = [',', '.', ';', ':', '!', '?'];
 
-    protected const int MIN_WORD_LENGTH = 3;
-    protected const int MAX_WORD_LENGTH = 8;
+    protected const int MIN_LETTERS_PART_LENGTH = 3;
+    protected const int MAX_LETTERS_PART_LENGTH = 8;
     protected const int RANDOM_MIN_VALUE = 0;
     protected const int RANDOM_MAX_VALUE = 99;
     protected const int DIGIT_USAGE_CHANCE = 30;
@@ -54,8 +54,8 @@ class WordService
             return preg_match('/[0-9]/u', $char);
         });
 
-        $wordLength = random_int(self::MIN_WORD_LENGTH, self::MAX_WORD_LENGTH);
-        $letterPart = '';
+        $lettersPartLength = random_int(self::MIN_LETTERS_PART_LENGTH, self::MAX_LETTERS_PART_LENGTH);
+        $lettersPart = '';
 
         if (!empty($availableVowels) && !empty($availableConsonants)) {
             $startType = rand(self::BINARY_CHOICE_MIN, self::BINARY_CHOICE_MAX) === self::BINARY_CHOICE_DEFAULT ? 'V' : 'C';
@@ -77,7 +77,7 @@ class WordService
             return '';
         }
 
-        for ($i = 0; $i < $wordLength; $i++) {
+        for ($i = 0; $i < $lettersPartLength; $i++) {
             $set = ($i % 2 === 0) ? $startSet : $otherSet;
             $setNew = ($i % 2 === 0) ? $startSetNew : $otherSetNew;
 
@@ -90,15 +90,15 @@ class WordService
 
             if ($useNumber) {
                 if (!empty($newNumbers) && rand(self::RANDOM_MIN_VALUE, self::RANDOM_MAX_VALUE) < self::NEW_CHAR_USAGE_CHANCE) {
-                    $letterPart .= $newNumbers[array_rand($newNumbers)];
+                    $lettersPart .= $newNumbers[array_rand($newNumbers)];
                 } else {
-                    $letterPart .= $availableNumbers[array_rand($availableNumbers)];
+                    $lettersPart .= $availableNumbers[array_rand($availableNumbers)];
                 }
             } else {
                 if (!empty($setNew) && rand(self::RANDOM_MIN_VALUE, self::RANDOM_MAX_VALUE) < self::NEW_CHAR_USAGE_CHANCE) {
-                    $letterPart .= $setNew[array_rand($setNew)];
+                    $lettersPart .= $setNew[array_rand($setNew)];
                 } else {
-                    $letterPart .= $set[array_rand($set)];
+                    $lettersPart .= $set[array_rand($set)];
                 }
             }
         }
@@ -139,22 +139,22 @@ class WordService
         $type = $totalOptions[array_rand($totalOptions)];
 
         if ($type === 'none') {
-            return $letterPart;
+            return $lettersPart;
         } elseif ($type === 'single') {
             $special = $singleSpecials[array_rand($singleSpecials)];
 
             if ($this->isPunctuation($special)) {
-                return $letterPart . $special;
+                return $lettersPart . $special;
             }
 
             $position = rand(self::BINARY_CHOICE_MIN, self::BINARY_CHOICE_MAX) === self::BINARY_CHOICE_DEFAULT ? 'start' : 'end';
 
-            return $position === 'start' ? $special . $letterPart : $letterPart . $special;
+            return $position === 'start' ? $special . $lettersPart : $lettersPart . $special;
         } else {
             $opening = $availablePaired[array_rand($availablePaired)];
             $closing = self::PAIRED[$opening];
 
-            return $opening . $letterPart . $closing;
+            return $opening . $lettersPart . $closing;
         }
     }
 
