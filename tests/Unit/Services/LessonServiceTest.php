@@ -6,6 +6,7 @@ use App\Models\Lesson;
 use App\Models\LessonResult;
 use App\Models\User;
 use App\Services\LessonService;
+use App\Services\WordService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use PHPUnit\Framework\Attributes\DataProviderExternal;
 use ReflectionClass;
@@ -26,7 +27,7 @@ class LessonServiceTest extends TestCase
     {
         parent::setUp();
         $this->user = User::factory()->create();
-        $this->service = new LessonService();
+        $this->service = new LessonService(new WordService());
         $this->reflection = new ReflectionClass($this->service);
     }
 
@@ -97,116 +98,11 @@ class LessonServiceTest extends TestCase
     #[DataProviderExternal(LessonDataProvider::class, 'provideSupportedLanguages')]
     public function testIntroductionOrderContainsLanguage(string $language): void
     {
-        $this->assertArrayHasKey($language, $this->reflection->getConstant('INTRODUCTION_ORDER'));
-    }
+        $introductionOrderConstant = $this->reflection->getConstant('INTRODUCTION_ORDER');
 
-    public function testGetAllEnglishLetters(): void
-    {
-        $expectedAllEnglishLetters = array_merge(range('a', 'z'), range('A', 'Z'));
-
-        $getAllEnglishLettersMethod = $this->reflection->getMethod('getAllEnglishLetters');
-        $getAllEnglishLettersMethod->setAccessible(true);
-
-        $allEnglishLetters = $getAllEnglishLettersMethod->invoke($this->service);
-
-        $this->assertIsArray($allEnglishLetters);
-        $this->assertEquals($expectedAllEnglishLetters, $allEnglishLetters);
-    }
-
-    public function testGetAllRussianLetters(): void
-    {
-        $expectedAllRussianLetters = array_merge(
-            $this->reflection->getConstant('LETTERS_LC_RU'),
-            $this->reflection->getConstant('LETTERS_UC_RU'),
-        );
-
-        $getAllRussianLettersMethod = $this->reflection->getMethod('getAllRussianLetters');
-        $getAllRussianLettersMethod->setAccessible(true);
-
-        $allRussianLetters = $getAllRussianLettersMethod->invoke($this->service);
-
-        $this->assertIsArray($allRussianLetters);
-        $this->assertEquals($expectedAllRussianLetters, $allRussianLetters);
-    }
-
-    #[DataProviderExternal(LessonDataProvider::class, 'provideSupportedLanguages')]
-    public function testGetVowels(string $language): void
-    {
-        $getVowelsMethod = $this->reflection->getMethod('getVowels');
-        $getVowelsMethod->setAccessible(true);
-
-        $vowels = $getVowelsMethod->invoke($this->service, $language);
-        $this->assertIsArray($vowels);
-
-        switch ($language) {
-            case 'en':
-                $this->assertEquals($this->reflection->getConstant('VOWELS_EN'), $vowels);
-                break;
-            case 'ru':
-                $this->assertEquals($this->reflection->getConstant('VOWELS_RU'), $vowels);
-                break;
-            default:
-                break;
-        }
-    }
-
-    #[DataProviderExternal(LessonDataProvider::class, 'provideSupportedLanguages')]
-    public function testGetConsonants(string $language): void
-    {
-        $getConsonantsMethod = $this->reflection->getMethod('getConsonants');
-        $getConsonantsMethod->setAccessible(true);
-
-        $consonants = $getConsonantsMethod->invoke($this->service, $language);
-        $this->assertIsArray($consonants);
-
-        switch ($language) {
-            case 'en':
-                $allEnglishLetters = array_merge(range('a', 'z'), range('A', 'Z'));
-                $expectedConsonants = array_diff($allEnglishLetters, $this->reflection->getConstant('VOWELS_EN'));
-                $this->assertEquals($expectedConsonants, $consonants);
-                break;
-            case 'ru':
-                $allRussianLetters = array_merge(
-                    $this->reflection->getConstant('LETTERS_LC_RU'),
-                    $this->reflection->getConstant('LETTERS_UC_RU'),
-                );
-                $expectedConsonants = array_diff($allRussianLetters, $this->reflection->getConstant('VOWELS_RU'));
-                $this->assertEquals($expectedConsonants, $consonants);
-                break;
-            default:
-                break;
-        }
-    }
-
-    public function testIsPunctuation(): void
-    {
-        $isPunctuationMethod = $this->reflection->getMethod('isPunctuation');
-        $isPunctuationMethod->setAccessible(true);
-
-        $punctuation = $this->reflection->getConstant('PUNCTUATION');
-
-        $allChars = array_unique(array_merge(
-            ['', ' ', "\n"],
-            range('0', '9'),
-            range('a', 'z'),
-            range('A', 'Z'),
-            $this->reflection->getConstant('LETTERS_LC_RU'),
-            $this->reflection->getConstant('LETTERS_UC_RU'),
-            $this->reflection->getConstant('SPECIALS_EN'),
-            $this->reflection->getConstant('SPECIALS_RU'),
-            array_keys($this->reflection->getConstant('PAIRED')),
-            array_values($this->reflection->getConstant('PAIRED')),
-        ));
-
-        $nonPunctuation = array_diff($allChars, $punctuation);
-
-        foreach ($punctuation as $char) {
-            $this->assertTrue($isPunctuationMethod->invoke($this->service, $char));
-        }
-
-        foreach ($nonPunctuation as $char) {
-            $this->assertFalse($isPunctuationMethod->invoke($this->service, $char));
-        }
+        $this->assertIsArray($introductionOrderConstant);
+        $this->assertArrayHasKey($language, $introductionOrderConstant);
+        $this->assertNotEmpty($introductionOrderConstant[$language]);
     }
 
     private function assertTextContainsOnlyAllowedChars(string $text, string $availableChars): void
