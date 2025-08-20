@@ -100,12 +100,12 @@ class LessonService
     /**
      * @throws RandomException
      */
-    public function generateLessonText(string $language, int $lessonNumber, int $totalLessons, string $availableChars, string $newChars, ?int $length = null): string
+    public function generateLessonText(string $language, int $lessonNumber, int $totalLessons, string $availableCharsString, string $newCharsString, ?int $length = null): string
     {
-        $availableCharsArray = mb_str_split($availableChars, 1, self::ENCODING);
-        $newCharsArray = mb_str_split($newChars, 1, self::ENCODING);
+        $availableChars = mb_str_split($availableCharsString, 1, self::ENCODING);
+        $newChars = mb_str_split($newCharsString, 1, self::ENCODING);
 
-        if (empty($availableCharsArray)) {
+        if (empty($availableChars)) {
             return '';
         }
 
@@ -142,7 +142,7 @@ class LessonService
             }
 
             if ($isFirstOfPair) {
-                $baseWord = $this->wordService->generateWord($availableCharsArray, $newCharsArray, $language);
+                $baseWord = $this->wordService->generateWord($availableChars, $newChars, $language);
                 $currentWord = $baseWord;
                 $isFirstOfPair = false;
 
