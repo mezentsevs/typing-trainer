@@ -28,7 +28,7 @@ class WordService
     /**
      * @throws RandomException
      */
-    public function generateEnhancedWord(array $availableCharsArray, array $newCharsArray, string $language): string
+    public function generateWord(array $availableCharsArray, array $newCharsArray, string $language): string
     {
         $availableLetters = array_filter($availableCharsArray, function ($char) {
             return preg_match('/[a-zA-ZА-яёЁ0-9]/u', $char);

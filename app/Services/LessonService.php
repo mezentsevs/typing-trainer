@@ -142,7 +142,7 @@ class LessonService
             }
 
             if ($isFirstOfPair) {
-                $baseWord = $this->wordService->generateEnhancedWord($availableCharsArray, $newCharsArray, $language);
+                $baseWord = $this->wordService->generateWord($availableCharsArray, $newCharsArray, $language);
                 $currentWord = $baseWord;
                 $isFirstOfPair = false;
 
