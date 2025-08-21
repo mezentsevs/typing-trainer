@@ -180,4 +180,37 @@ class WordServiceTest extends TestCase
             );
         }
     }
+
+    #[DataProviderExternal(WordDataProvider::class, 'providePairedCharsData')]
+    public function testGeneratedWordContainsPairedChars(array $data): void
+    {
+        $wordsWithPairedChars = [];
+
+        for ($i = 0; $i < 100; $i++) {
+            $word = $this->service->generateWord($data['availableChars'], $data['newChars'], $data['language']);
+
+            if (mb_strpos($word, $data['openingChar']) !== false) {
+                $wordsWithPairedChars[] = $word;
+            }
+        }
+
+        $this->assertGreaterThan(
+            0,
+            count($wordsWithPairedChars),
+            "No words generated with opening char '{$data['openingChar']}' for language {$data['language']}.",
+        );
+
+        foreach ($wordsWithPairedChars as $word) {
+            $this->assertStringStartsWith(
+                $data['openingChar'],
+                $word,
+                "Word '{$word}' does not start with opening char '{$data['openingChar']}' for language {$data['language']}.",
+            );
+            $this->assertStringEndsWith(
+                $data['closingChar'],
+                $word,
+                "Word '{$word}' does not end with closing char '{$data['closingChar']}' for language {$data['language']}.",
+            );
+        }
+    }
 }
