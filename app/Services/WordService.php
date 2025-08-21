@@ -24,6 +24,8 @@ class WordService
     protected const int BINARY_CHOICE_MIN = 0;
     protected const int BINARY_CHOICE_MAX = 1;
     protected const int BINARY_CHOICE_DEFAULT = 0;
+    protected const string CHAR_TYPE_VOWEL = 'V';
+    protected const string CHAR_TYPE_CONSONANT = 'C';
 
     /**
      * @throws RandomException
@@ -119,11 +121,11 @@ class WordService
 
         switch (true) {
             case $hasVowelChars && $hasConsonantChars:
-                $startType = rand(self::BINARY_CHOICE_MIN, self::BINARY_CHOICE_MAX) === self::BINARY_CHOICE_DEFAULT ? 'V' : 'C';
-                $startCharSet = $startType === 'V' ? $charSets['availableVowelChars'] : $charSets['availableConsonantChars'];
-                $startNewCharSet = $startType === 'V' ? $charSets['newVowelChars'] : $charSets['newConsonantChars'];
-                $otherCharSet = $startType === 'V' ? $charSets['availableConsonantChars'] : $charSets['availableVowelChars'];
-                $otherNewCharSet = $startType === 'V' ? $charSets['newConsonantChars'] : $charSets['newVowelChars'];
+                $startType = rand(self::BINARY_CHOICE_MIN, self::BINARY_CHOICE_MAX) === self::BINARY_CHOICE_DEFAULT ? self::CHAR_TYPE_VOWEL : self::CHAR_TYPE_CONSONANT;
+                $startCharSet = $startType === self::CHAR_TYPE_VOWEL ? $charSets['availableVowelChars'] : $charSets['availableConsonantChars'];
+                $startNewCharSet = $startType === self::CHAR_TYPE_VOWEL ? $charSets['newVowelChars'] : $charSets['newConsonantChars'];
+                $otherCharSet = $startType === self::CHAR_TYPE_VOWEL ? $charSets['availableConsonantChars'] : $charSets['availableVowelChars'];
+                $otherNewCharSet = $startType === self::CHAR_TYPE_VOWEL ? $charSets['newConsonantChars'] : $charSets['newVowelChars'];
                 break;
 
             case $hasVowelChars:
