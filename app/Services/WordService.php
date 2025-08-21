@@ -30,6 +30,20 @@ class WordService
      */
     public function generateWord(array $availableChars, array $newChars, string $language): string
     {
+        $charSets = $this->initializeCharSets($availableChars, $newChars, $language);
+
+        if (empty($charSets['availableVowelChars']) && empty($charSets['availableConsonantChars'])) {
+            return '';
+        }
+
+        $lettersPartLength = random_int(self::MIN_LETTERS_PART_LENGTH, self::MAX_LETTERS_PART_LENGTH);
+        $lettersPart = $this->buildLettersPart($charSets, $lettersPartLength);
+
+        return $this->addSpecialChars($lettersPart, $availableChars, $language);
+    }
+
+    private function initializeCharSets(array $availableChars, array $newChars, string $language): array
+    {
         $availableLetterChars = array_filter($availableChars, function ($char) {
             return preg_match('/[a-zA-ZА-яёЁ0-9]/u', $char);
         });
@@ -54,77 +68,131 @@ class WordService
             return preg_match('/[0-9]/u', $char);
         });
 
-        $lettersPartLength = random_int(self::MIN_LETTERS_PART_LENGTH, self::MAX_LETTERS_PART_LENGTH);
+        return [
+            'availableVowelChars' => $availableVowelChars,
+            'newVowelChars' => $newVowelChars,
+            'availableConsonantChars' => $availableConsonantChars,
+            'newConsonantChars' => $newConsonantChars,
+            'availableNumberChars' => $availableNumberChars,
+            'newNumberChars' => $newNumberChars,
+            'availableLetterChars' => $availableLetterChars,
+            'newLetterChars' => $newLetterChars,
+        ];
+    }
+
+    private function buildLettersPart(array $charSets, int $lettersPartLength): string
+    {
+        $letterAlternationSets = $this->getLetterAlternationSets($charSets);
         $lettersPart = '';
 
-        if (!empty($availableVowelChars) && !empty($availableConsonantChars)) {
+        for ($i = 0; $i < $lettersPartLength; $i++) {
+            $currentCharSet = ($i % 2 === 0) ? $letterAlternationSets['startCharSet'] : $letterAlternationSets['otherCharSet'];
+            $currentNewCharSet = ($i % 2 === 0) ? $letterAlternationSets['startNewCharSet'] : $letterAlternationSets['otherNewCharSet'];
+
+            if (empty($currentCharSet)) {
+                $currentCharSet = $charSets['availableLetterChars'];
+                $currentNewCharSet = $charSets['newLetterChars'];
+            }
+
+            $useNumber = !empty($charSets['availableNumberChars']) &&
+                        rand(self::RANDOM_MIN_VALUE, self::RANDOM_MAX_VALUE) < self::DIGIT_USAGE_CHANCE;
+
+            if ($useNumber) {
+                $lettersPart .= $this->selectNumberChar($charSets['availableNumberChars'], $charSets['newNumberChars']);
+            } else {
+                $lettersPart .= $this->selectLetterChar($currentCharSet, $currentNewCharSet);
+            }
+        }
+
+        return $lettersPart;
+    }
+
+    private function getLetterAlternationSets(array $charSets): array
+    {
+        $startCharSet = [];
+        $startNewCharSet = [];
+        $otherCharSet = [];
+        $otherNewCharSet = [];
+
+        if (!empty($charSets['availableVowelChars']) && !empty($charSets['availableConsonantChars'])) {
             $startType = rand(self::BINARY_CHOICE_MIN, self::BINARY_CHOICE_MAX) === self::BINARY_CHOICE_DEFAULT ? 'V' : 'C';
-            $startCharSet = $startType === 'V' ? $availableVowelChars : $availableConsonantChars;
-            $startNewCharSet = $startType === 'V' ? $newVowelChars : $newConsonantChars;
-            $otherCharSet = $startType === 'V' ? $availableConsonantChars : $availableVowelChars;
-            $otherNewCharSet = $startType === 'V' ? $newConsonantChars : $newVowelChars;
-        } elseif (!empty($availableVowelChars)) {
-            $startCharSet = $availableVowelChars;
-            $startNewCharSet = $newVowelChars;
-            $otherCharSet = [];
-            $otherNewCharSet = [];
-        } elseif (!empty($availableConsonantChars)) {
-            $startCharSet = $availableConsonantChars;
-            $startNewCharSet = $newConsonantChars;
-            $otherCharSet = [];
-            $otherNewCharSet = [];
-        } else {
+            $startCharSet = $startType === 'V' ? $charSets['availableVowelChars'] : $charSets['availableConsonantChars'];
+            $startNewCharSet = $startType === 'V' ? $charSets['newVowelChars'] : $charSets['newConsonantChars'];
+            $otherCharSet = $startType === 'V' ? $charSets['availableConsonantChars'] : $charSets['availableVowelChars'];
+            $otherNewCharSet = $startType === 'V' ? $charSets['newConsonantChars'] : $charSets['newVowelChars'];
+        } elseif (!empty($charSets['availableVowelChars'])) {
+            $startCharSet = $charSets['availableVowelChars'];
+            $startNewCharSet = $charSets['newVowelChars'];
+        } elseif (!empty($charSets['availableConsonantChars'])) {
+            $startCharSet = $charSets['availableConsonantChars'];
+            $startNewCharSet = $charSets['newConsonantChars'];
+        }
+
+        return [
+            'startCharSet' => $startCharSet,
+            'startNewCharSet' => $startNewCharSet,
+            'otherCharSet' => $otherCharSet,
+            'otherNewCharSet' => $otherNewCharSet,
+        ];
+    }
+
+    private function selectNumberChar(array $availableNumberChars, array $newNumberChars): string
+    {
+        if (!empty($newNumberChars) &&
+            rand(self::RANDOM_MIN_VALUE, self::RANDOM_MAX_VALUE) < self::NEW_CHAR_USAGE_CHANCE) {
+            return $newNumberChars[array_rand($newNumberChars)];
+        }
+
+        return $availableNumberChars[array_rand($availableNumberChars)];
+    }
+
+    private function selectLetterChar(array $currentCharSet, array $currentNewCharSet): string
+    {
+        if (!empty($currentNewCharSet) &&
+            rand(self::RANDOM_MIN_VALUE, self::RANDOM_MAX_VALUE) < self::NEW_CHAR_USAGE_CHANCE) {
+            return $currentNewCharSet[array_rand($currentNewCharSet)];
+        }
+
+        return $currentCharSet[array_rand($currentCharSet)];
+    }
+
+    private function addSpecialChars(string $lettersPart, array $availableChars, string $language): string
+    {
+        if (empty($lettersPart)) {
             return '';
         }
 
-        for ($i = 0; $i < $lettersPartLength; $i++) {
-            $currentCharSet = ($i % 2 === 0) ? $startCharSet : $otherCharSet;
-            $currentNewCharSet = ($i % 2 === 0) ? $startNewCharSet : $otherNewCharSet;
+        $availableSpecialChars = $this->filterSpecialChars($availableChars, $language);
+        $specialCharType = $this->determineSpecialCharType($availableSpecialChars);
 
-            if (empty($currentCharSet)) {
-                $currentCharSet = $availableLetterChars;
-                $currentNewCharSet = $newLetterChars;
-            }
-
-            $useNumber = !empty($availableNumberChars) && rand(self::RANDOM_MIN_VALUE, self::RANDOM_MAX_VALUE) < self::DIGIT_USAGE_CHANCE;
-
-            if ($useNumber) {
-                if (!empty($newNumberChars) && rand(self::RANDOM_MIN_VALUE, self::RANDOM_MAX_VALUE) < self::NEW_CHAR_USAGE_CHANCE) {
-                    $lettersPart .= $newNumberChars[array_rand($newNumberChars)];
-                } else {
-                    $lettersPart .= $availableNumberChars[array_rand($availableNumberChars)];
-                }
-            } else {
-                if (!empty($currentNewCharSet) && rand(self::RANDOM_MIN_VALUE, self::RANDOM_MAX_VALUE) < self::NEW_CHAR_USAGE_CHANCE) {
-                    $lettersPart .= $currentNewCharSet[array_rand($currentNewCharSet)];
-                } else {
-                    $lettersPart .= $currentCharSet[array_rand($currentCharSet)];
-                }
-            }
+        if ($specialCharType === 'none') {
+            return $lettersPart;
         }
 
-        $availableSpecialChars = array_filter($availableChars, function ($char) use ($language) {
-            $validSpecialChars = match ($language) {
-                'en' => self::SPECIALS_EN,
-                'ru' => self::SPECIALS_RU,
-                default => [],
-            };
+        if ($specialCharType === 'single') {
+            return $this->addSingleSpecialChar($lettersPart, $availableSpecialChars);
+        }
 
-            return in_array($char, $validSpecialChars, true);
+        return $this->addPairedSpecialChars($lettersPart, $availableSpecialChars);
+    }
+
+    private function filterSpecialChars(array $availableChars, string $language): array
+    {
+        $allowedSpecialChars = match ($language) {
+            'en' => self::SPECIALS_EN,
+            'ru' => self::SPECIALS_RU,
+            default => [],
+        };
+
+        return array_filter($availableChars, function ($char) use ($allowedSpecialChars) {
+            return in_array($char, $allowedSpecialChars, true);
         });
+    }
 
-        $pairedSymbolChars = array_merge(array_keys(self::PAIRED), array_values(self::PAIRED));
-        $singleSpecialChars = array_diff($availableSpecialChars, $pairedSymbolChars);
-
-        $possiblePairedOpeningChars = array_keys(self::PAIRED);
-        $availablePairedOpeningChars = array_intersect($possiblePairedOpeningChars, $availableSpecialChars);
-        $availablePairedChars = [];
-
-        foreach ($availablePairedOpeningChars as $openingChar) {
-            if (in_array(self::PAIRED[$openingChar], $availableSpecialChars, true)) {
-                $availablePairedChars[] = $openingChar;
-            }
-        }
+    private function determineSpecialCharType(array $availableSpecialChars): string
+    {
+        $singleSpecialChars = $this->getSingleSpecialChars($availableSpecialChars);
+        $availableOpeningPairedChars = $this->getAvailableOpeningPairedChars($availableSpecialChars);
 
         $totalOptions = ['none'];
 
@@ -132,30 +200,49 @@ class WordService
             $totalOptions[] = 'single';
         }
 
-        if (!empty($availablePairedChars)) {
+        if (!empty($availableOpeningPairedChars)) {
             $totalOptions[] = 'paired';
         }
 
-        $type = $totalOptions[array_rand($totalOptions)];
+        return $totalOptions[array_rand($totalOptions)];
+    }
 
-        if ($type === 'none') {
-            return $lettersPart;
-        } elseif ($type === 'single') {
-            $specialChar = $singleSpecialChars[array_rand($singleSpecialChars)];
+    private function getSingleSpecialChars(array $availableSpecialChars): array
+    {
+        $pairedSymbolChars = array_merge(array_keys(self::PAIRED), array_values(self::PAIRED));
+        return array_diff($availableSpecialChars, $pairedSymbolChars);
+    }
 
-            if ($this->isPunctuation($specialChar)) {
-                return $lettersPart . $specialChar;
-            }
+    private function getAvailableOpeningPairedChars(array $availableSpecialChars): array
+    {
+        $availableOpeningPairedChars = array_intersect(array_keys(self::PAIRED), $availableSpecialChars);
 
-            $position = rand(self::BINARY_CHOICE_MIN, self::BINARY_CHOICE_MAX) === self::BINARY_CHOICE_DEFAULT ? 'start' : 'end';
+        return array_filter($availableOpeningPairedChars, function ($openingChar) use ($availableSpecialChars) {
+            return in_array(self::PAIRED[$openingChar], $availableSpecialChars, true);
+        });
+    }
 
-            return $position === 'start' ? $specialChar . $lettersPart : $lettersPart . $specialChar;
-        } else {
-            $openingChar = $availablePairedChars[array_rand($availablePairedChars)];
-            $closingChar = self::PAIRED[$openingChar];
+    private function addSingleSpecialChar(string $lettersPart, array $availableSpecialChars): string
+    {
+        $singleSpecialChars = $this->getSingleSpecialChars($availableSpecialChars);
+        $specialChar = $singleSpecialChars[array_rand($singleSpecialChars)];
 
-            return $openingChar . $lettersPart . $closingChar;
+        if ($this->isPunctuation($specialChar)) {
+            return $lettersPart . $specialChar;
         }
+
+        $position = rand(self::BINARY_CHOICE_MIN, self::BINARY_CHOICE_MAX) === self::BINARY_CHOICE_DEFAULT ? 'start' : 'end';
+
+        return $position === 'start' ? $specialChar . $lettersPart : $lettersPart . $specialChar;
+    }
+
+    private function addPairedSpecialChars(string $lettersPart, array $availableSpecialChars): string
+    {
+        $availableOpeningPairedChars = $this->getAvailableOpeningPairedChars($availableSpecialChars);
+        $openingChar = $availableOpeningPairedChars[array_rand($availableOpeningPairedChars)];
+        $closingChar = self::PAIRED[$openingChar];
+
+        return $openingChar . $lettersPart . $closingChar;
     }
 
     private function getAllEnglishLetters(): array
