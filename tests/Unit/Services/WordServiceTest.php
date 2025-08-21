@@ -15,6 +15,7 @@ class WordServiceTest extends TestCase
     protected ReflectionClass $reflection;
 
     protected const MAX_EXTRA_SPECIAL_CHARS_COUNT = 2;
+    protected const SINGLE_CHAR_LENGTH = 1;
 
     protected function setUp(): void
     {
@@ -153,6 +154,29 @@ class WordServiceTest extends TestCase
                 $char,
                 $data['availableChars'],
                 "Generated word contains invalid character '{$char}'. Available characters: " . implode(', ', $data['availableChars']) . '.',
+            );
+        }
+    }
+
+    public function testPairedConstantStructure(): void
+    {
+        $pairedChars = $this->reflection->getConstant('PAIRED');
+
+        $this->assertIsArray($pairedChars);
+        $this->assertNotEmpty($pairedChars);
+
+        foreach ($pairedChars as $openingChar => $closingChar) {
+            $this->assertIsString($openingChar);
+            $this->assertIsString($closingChar);
+            $this->assertEquals(
+                self::SINGLE_CHAR_LENGTH,
+                mb_strlen($openingChar),
+                'Opening character must be exactly one character long.',
+            );
+            $this->assertEquals(
+                self::SINGLE_CHAR_LENGTH,
+                mb_strlen($closingChar),
+                'Closing character must be exactly one character long.',
             );
         }
     }
