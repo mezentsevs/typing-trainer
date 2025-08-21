@@ -114,18 +114,30 @@ class WordService
         $otherCharSet = [];
         $otherNewCharSet = [];
 
-        if (!empty($charSets['availableVowelChars']) && !empty($charSets['availableConsonantChars'])) {
-            $startType = rand(self::BINARY_CHOICE_MIN, self::BINARY_CHOICE_MAX) === self::BINARY_CHOICE_DEFAULT ? 'V' : 'C';
-            $startCharSet = $startType === 'V' ? $charSets['availableVowelChars'] : $charSets['availableConsonantChars'];
-            $startNewCharSet = $startType === 'V' ? $charSets['newVowelChars'] : $charSets['newConsonantChars'];
-            $otherCharSet = $startType === 'V' ? $charSets['availableConsonantChars'] : $charSets['availableVowelChars'];
-            $otherNewCharSet = $startType === 'V' ? $charSets['newConsonantChars'] : $charSets['newVowelChars'];
-        } elseif (!empty($charSets['availableVowelChars'])) {
-            $startCharSet = $charSets['availableVowelChars'];
-            $startNewCharSet = $charSets['newVowelChars'];
-        } elseif (!empty($charSets['availableConsonantChars'])) {
-            $startCharSet = $charSets['availableConsonantChars'];
-            $startNewCharSet = $charSets['newConsonantChars'];
+        $hasVowelChars = !empty($charSets['availableVowelChars']);
+        $hasConsonantChars = !empty($charSets['availableConsonantChars']);
+
+        switch (true) {
+            case $hasVowelChars && $hasConsonantChars:
+                $startType = rand(self::BINARY_CHOICE_MIN, self::BINARY_CHOICE_MAX) === self::BINARY_CHOICE_DEFAULT ? 'V' : 'C';
+                $startCharSet = $startType === 'V' ? $charSets['availableVowelChars'] : $charSets['availableConsonantChars'];
+                $startNewCharSet = $startType === 'V' ? $charSets['newVowelChars'] : $charSets['newConsonantChars'];
+                $otherCharSet = $startType === 'V' ? $charSets['availableConsonantChars'] : $charSets['availableVowelChars'];
+                $otherNewCharSet = $startType === 'V' ? $charSets['newConsonantChars'] : $charSets['newVowelChars'];
+                break;
+
+            case $hasVowelChars:
+                $startCharSet = $charSets['availableVowelChars'];
+                $startNewCharSet = $charSets['newVowelChars'];
+                break;
+
+            case $hasConsonantChars:
+                $startCharSet = $charSets['availableConsonantChars'];
+                $startNewCharSet = $charSets['newConsonantChars'];
+                break;
+
+            default:
+                break;
         }
 
         return [
