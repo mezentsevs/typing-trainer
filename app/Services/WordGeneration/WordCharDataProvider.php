@@ -24,6 +24,7 @@ class WordCharDataProvider
     public const int BINARY_CHOICE_DEFAULT = 0;
     public const string CHAR_TYPE_VOWEL = 'V';
     public const string CHAR_TYPE_CONSONANT = 'C';
+    public const int SINGLE_CHAR_LENGTH = 1;
 
     public function getAllEnglishLetters(): array
     {
@@ -51,5 +52,10 @@ class WordCharDataProvider
             'ru' => array_diff($this->getAllRussianLetters(), $this->getVowels('ru')),
             default => [],
         };
+    }
+
+    public function isPunctuation(string $char): bool
+    {
+        return in_array($char, self::PUNCTUATION, true);
     }
 }

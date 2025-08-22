@@ -86,7 +86,7 @@ class WordSpecialCharsAppender
         $singleSpecialChars = $this->getSingleSpecialChars($availableSpecialChars);
         $specialChar = $singleSpecialChars[array_rand($singleSpecialChars)];
 
-        if ($this->isPunctuation($specialChar)) {
+        if ($this->wordCharDataProvider->isPunctuation($specialChar)) {
             return $lettersPart . $specialChar;
         }
 
@@ -105,10 +105,5 @@ class WordSpecialCharsAppender
         $closingChar = WordCharDataProvider::PAIRED[$openingChar];
 
         return $openingChar . $lettersPart . $closingChar;
-    }
-
-    protected function isPunctuation(string $char): bool
-    {
-        return in_array($char, WordCharDataProvider::PUNCTUATION, true);
     }
 }
