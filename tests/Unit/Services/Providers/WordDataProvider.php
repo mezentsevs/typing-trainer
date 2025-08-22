@@ -2,8 +2,7 @@
 
 namespace Tests\Unit\Services\Providers;
 
-use App\Services\WordService;
-use ReflectionClass;
+use App\Services\WordGeneration\WordCharDataProvider;
 
 class WordDataProvider
 {
@@ -25,15 +24,11 @@ class WordDataProvider
 
     public static function providePairedCharsData(): array
     {
-        $wordServiceReflection = new ReflectionClass(WordService::class);
-        $pairedChars = $wordServiceReflection->getConstant('PAIRED');
-        $specialCharsEn = $wordServiceReflection->getConstant('SPECIALS_EN');
-        $specialCharsRu = $wordServiceReflection->getConstant('SPECIALS_RU');
-
         $data = [];
 
-        foreach ($pairedChars as $openingChar => $closingChar) {
-            if (in_array($openingChar, $specialCharsEn, true) && in_array($closingChar, $specialCharsEn, true)) {
+        foreach (WordCharDataProvider::PAIRED as $openingChar => $closingChar) {
+            if (in_array($openingChar, WordCharDataProvider::SPECIALS_EN, true)
+                && in_array($closingChar, WordCharDataProvider::SPECIALS_EN, true)) {
                 $data["en {$openingChar}{$closingChar}"] = [[
                     'availableChars' => ['a', $openingChar, $closingChar],
                     'newChars' => ['a', $openingChar, $closingChar],
@@ -43,7 +38,8 @@ class WordDataProvider
                 ]];
             }
 
-            if (in_array($openingChar, $specialCharsRu, true) && in_array($closingChar, $specialCharsRu, true)) {
+            if (in_array($openingChar, WordCharDataProvider::SPECIALS_RU, true)
+                && in_array($closingChar, WordCharDataProvider::SPECIALS_RU, true)) {
                 $data["ru {$openingChar}{$closingChar}"] = [[
                     'availableChars' => ['а', $openingChar, $closingChar],
                     'newChars' => ['а', $openingChar, $closingChar],
