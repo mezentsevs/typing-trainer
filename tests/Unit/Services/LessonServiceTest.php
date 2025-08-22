@@ -8,7 +8,6 @@ use App\Models\User;
 use App\Services\LessonGeneration\LessonSequenceGenerator;
 use App\Services\LessonGeneration\LessonTextGenerator;
 use App\Services\LessonService;
-use App\Services\WordService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use PHPUnit\Framework\Attributes\DataProviderExternal;
 use ReflectionClass;
@@ -27,7 +26,7 @@ class LessonServiceTest extends TestCase
     {
         parent::setUp();
         $this->user = User::factory()->create();
-        $this->service = new LessonService(new WordService());
+        $this->service = app(LessonService::class);
     }
 
     #[DataProviderExternal(LessonDataProvider::class, 'provideSupportedLanguages')]
