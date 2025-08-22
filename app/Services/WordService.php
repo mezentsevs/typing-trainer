@@ -44,7 +44,7 @@ class WordService
         return $this->addSpecialChars($lettersPart, $availableChars, $language);
     }
 
-    private function initializeCharSets(array $availableChars, array $newChars, string $language): array
+    protected function initializeCharSets(array $availableChars, array $newChars, string $language): array
     {
         $availableLetterChars = array_filter($availableChars, function ($char) {
             return preg_match('/[a-zA-ZА-яёЁ0-9]/u', $char);
@@ -82,7 +82,7 @@ class WordService
         ];
     }
 
-    private function buildLettersPart(array $charSets, int $lettersPartLength): string
+    protected function buildLettersPart(array $charSets, int $lettersPartLength): string
     {
         $letterAlternationSets = $this->getLetterAlternationSets($charSets);
         $lettersPart = '';
@@ -109,7 +109,7 @@ class WordService
         return $lettersPart;
     }
 
-    private function getLetterAlternationSets(array $charSets): array
+    protected function getLetterAlternationSets(array $charSets): array
     {
         $startCharSet = [];
         $startNewCharSet = [];
@@ -150,7 +150,7 @@ class WordService
         ];
     }
 
-    private function selectNumberChar(array $availableNumberChars, array $newNumberChars): string
+    protected function selectNumberChar(array $availableNumberChars, array $newNumberChars): string
     {
         if (!empty($newNumberChars) &&
             rand(self::RANDOM_MIN_VALUE, self::RANDOM_MAX_VALUE) < self::NEW_CHAR_USAGE_CHANCE) {
@@ -160,7 +160,7 @@ class WordService
         return $availableNumberChars[array_rand($availableNumberChars)];
     }
 
-    private function selectLetterChar(array $currentCharSet, array $currentNewCharSet): string
+    protected function selectLetterChar(array $currentCharSet, array $currentNewCharSet): string
     {
         if (!empty($currentNewCharSet) &&
             rand(self::RANDOM_MIN_VALUE, self::RANDOM_MAX_VALUE) < self::NEW_CHAR_USAGE_CHANCE) {
@@ -170,7 +170,7 @@ class WordService
         return $currentCharSet[array_rand($currentCharSet)];
     }
 
-    private function addSpecialChars(string $lettersPart, array $availableChars, string $language): string
+    protected function addSpecialChars(string $lettersPart, array $availableChars, string $language): string
     {
         if (empty($lettersPart)) {
             return '';
@@ -190,7 +190,7 @@ class WordService
         return $this->addPairedSpecialChars($lettersPart, $availableSpecialChars);
     }
 
-    private function filterSpecialChars(array $availableChars, string $language): array
+    protected function filterSpecialChars(array $availableChars, string $language): array
     {
         $allowedSpecialChars = match ($language) {
             'en' => self::SPECIALS_EN,
@@ -203,7 +203,7 @@ class WordService
         });
     }
 
-    private function determineSpecialCharType(array $availableSpecialChars): string
+    protected function determineSpecialCharType(array $availableSpecialChars): string
     {
         $singleSpecialChars = $this->getSingleSpecialChars($availableSpecialChars);
         $availableOpeningPairedChars = $this->getAvailableOpeningPairedChars($availableSpecialChars);
@@ -221,13 +221,13 @@ class WordService
         return $totalOptions[array_rand($totalOptions)];
     }
 
-    private function getSingleSpecialChars(array $availableSpecialChars): array
+    protected function getSingleSpecialChars(array $availableSpecialChars): array
     {
         $pairedSymbolChars = array_merge(array_keys(self::PAIRED), array_values(self::PAIRED));
         return array_diff($availableSpecialChars, $pairedSymbolChars);
     }
 
-    private function getAvailableOpeningPairedChars(array $availableSpecialChars): array
+    protected function getAvailableOpeningPairedChars(array $availableSpecialChars): array
     {
         $availableOpeningPairedChars = array_intersect(array_keys(self::PAIRED), $availableSpecialChars);
 
@@ -236,7 +236,7 @@ class WordService
         });
     }
 
-    private function addSingleSpecialChar(string $lettersPart, array $availableSpecialChars): string
+    protected function addSingleSpecialChar(string $lettersPart, array $availableSpecialChars): string
     {
         $singleSpecialChars = $this->getSingleSpecialChars($availableSpecialChars);
         $specialChar = $singleSpecialChars[array_rand($singleSpecialChars)];
@@ -250,7 +250,7 @@ class WordService
         return $position === 'start' ? $specialChar . $lettersPart : $lettersPart . $specialChar;
     }
 
-    private function addPairedSpecialChars(string $lettersPart, array $availableSpecialChars): string
+    protected function addPairedSpecialChars(string $lettersPart, array $availableSpecialChars): string
     {
         $availableOpeningPairedChars = $this->getAvailableOpeningPairedChars($availableSpecialChars);
         $openingChar = $availableOpeningPairedChars[array_rand($availableOpeningPairedChars)];
@@ -259,17 +259,17 @@ class WordService
         return $openingChar . $lettersPart . $closingChar;
     }
 
-    private function getAllEnglishLetters(): array
+    protected function getAllEnglishLetters(): array
     {
         return array_merge(range('a', 'z'), range('A', 'Z'));
     }
 
-    private function getAllRussianLetters(): array
+    protected function getAllRussianLetters(): array
     {
         return array_merge(self::LETTERS_LC_RU, self::LETTERS_UC_RU);
     }
 
-    private function getVowels(string $language): array
+    protected function getVowels(string $language): array
     {
         return match ($language) {
             'en' => self::VOWELS_EN,
@@ -278,7 +278,7 @@ class WordService
         };
     }
 
-    private function getConsonants(string $language): array
+    protected function getConsonants(string $language): array
     {
         return match ($language) {
             'en' => array_diff($this->getAllEnglishLetters(), $this->getVowels('en')),
@@ -287,7 +287,7 @@ class WordService
         };
     }
 
-    private function isPunctuation(string $char): bool
+    protected function isPunctuation(string $char): bool
     {
         return in_array($char, self::PUNCTUATION, true);
     }
