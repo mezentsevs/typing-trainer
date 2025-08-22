@@ -27,8 +27,8 @@ class WordDataProvider
         $data = [];
 
         foreach (WordCharDataProvider::PAIRED as $openingChar => $closingChar) {
-            if (in_array($openingChar, WordCharDataProvider::SPECIALS_EN, true)
-                && in_array($closingChar, WordCharDataProvider::SPECIALS_EN, true)) {
+            if (in_array($openingChar, WordCharDataProvider::SPECIALS_EN, true) &&
+                in_array($closingChar, WordCharDataProvider::SPECIALS_EN, true)) {
                 $data["en {$openingChar}{$closingChar}"] = [[
                     'availableChars' => ['a', $openingChar, $closingChar],
                     'newChars' => ['a', $openingChar, $closingChar],
@@ -38,8 +38,8 @@ class WordDataProvider
                 ]];
             }
 
-            if (in_array($openingChar, WordCharDataProvider::SPECIALS_RU, true)
-                && in_array($closingChar, WordCharDataProvider::SPECIALS_RU, true)) {
+            if (in_array($openingChar, WordCharDataProvider::SPECIALS_RU, true) &&
+                in_array($closingChar, WordCharDataProvider::SPECIALS_RU, true)) {
                 $data["ru {$openingChar}{$closingChar}"] = [[
                     'availableChars' => ['а', $openingChar, $closingChar],
                     'newChars' => ['а', $openingChar, $closingChar],
