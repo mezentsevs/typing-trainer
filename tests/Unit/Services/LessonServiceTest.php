@@ -5,6 +5,8 @@ namespace Tests\Unit\Services;
 use App\Models\Lesson;
 use App\Models\LessonResult;
 use App\Models\User;
+use App\Services\LessonGeneration\LessonSequenceGenerator;
+use App\Services\LessonGeneration\LessonTextGenerator;
 use App\Services\LessonService;
 use App\Services\WordService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -19,8 +21,6 @@ class LessonServiceTest extends TestCase
 
     protected LessonService $service;
 
-    protected ReflectionClass $reflection;
-
     protected User $user;
 
     protected function setUp(): void
@@ -28,7 +28,6 @@ class LessonServiceTest extends TestCase
         parent::setUp();
         $this->user = User::factory()->create();
         $this->service = new LessonService(new WordService());
-        $this->reflection = new ReflectionClass($this->service);
     }
 
     #[DataProviderExternal(LessonDataProvider::class, 'provideSupportedLanguages')]
@@ -98,7 +97,8 @@ class LessonServiceTest extends TestCase
     #[DataProviderExternal(LessonDataProvider::class, 'provideSupportedLanguages')]
     public function testIntroductionOrderContainsLanguage(string $language): void
     {
-        $introductionOrderConstant = $this->reflection->getConstant('INTRODUCTION_ORDER');
+        $lessonSequenceGeneratorReflection = new ReflectionClass(LessonSequenceGenerator::class);
+        $introductionOrderConstant = $lessonSequenceGeneratorReflection->getConstant('INTRODUCTION_ORDER');
 
         $this->assertIsArray($introductionOrderConstant);
         $this->assertArrayHasKey($language, $introductionOrderConstant);
@@ -118,7 +118,8 @@ class LessonServiceTest extends TestCase
     private function assertTextLengthWithinBounds(string $text): void
     {
         $textLength = mb_strlen($text);
-        $maxTextLength = $this->reflection->getConstant('MAX_LESSON_LENGTH');
+        $lessonSequenceGeneratorReflection = new ReflectionClass(LessonSequenceGenerator::class);
+        $maxTextLength = $lessonSequenceGeneratorReflection->getConstant('MAX_LESSON_LENGTH');
 
         $this->assertGreaterThan(0, $textLength, 'Text length must be greater than 0.');
         $this->assertLessThanOrEqual(
@@ -131,8 +132,9 @@ class LessonServiceTest extends TestCase
     private function assertLineStructureValid(string $text): void
     {
         $lines = array_filter(explode("\n", $text));
-        $minWordsPerLine = $this->reflection->getConstant('MIN_WORDS_PER_LINE');
-        $maxWordsPerLine = $this->reflection->getConstant('MAX_WORDS_PER_LINE');
+        $lessonTextGeneratorReflection = new ReflectionClass(LessonTextGenerator::class);
+        $minWordsPerLine = $lessonTextGeneratorReflection->getConstant('MIN_WORDS_PER_LINE');
+        $maxWordsPerLine = $lessonTextGeneratorReflection->getConstant('MAX_WORDS_PER_LINE');
 
         foreach ($lines as $line) {
             $wordsPerLine = count(explode(' ', $line));
