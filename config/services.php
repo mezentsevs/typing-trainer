@@ -14,8 +14,12 @@ return [
     |
     */
 
-    'grok' => [
-        'key' => env('GROK_API_KEY'),
+    'ai_text_generation_api' => [
+        'key' => env('AI_TEXT_GENERATION_API_KEY'),
+        'url' => env('AI_TEXT_GENERATION_API_URL'),
+        'prompt_template' => env('AI_TEXT_GENERATION_API_PROMPT_TEMPLATE', 'Generate a 500-word text in :language for typing practice in the :genre genre.'),
+        'request_prompt_key' => env('AI_TEXT_GENERATION_API_REQUEST_PROMPT_KEY', 'prompt'),
+        'response_text_key' => env('AI_TEXT_GENERATION_API_RESPONSE_TEXT_KEY', 'text'),
     ],
 
     'postmark' => [

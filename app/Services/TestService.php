@@ -2,50 +2,16 @@
 
 namespace App\Services;
 
-use App\Helpers\StringHelper;
-use App\Models\TestText;
-use Exception;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Storage;
+use App\Services\TestGeneration\TestGenerationOrchestrator;
 
 class TestService
 {
+    public function __construct(protected TestGenerationOrchestrator $testGenerationOrchestrator)
+    {
+    }
+
     public function getText(string $language, int $userId, ?string $genre = null): string
     {
-        $filePath = "uploads/test_{$userId}_{$language}.txt";
-
-        if (Storage::disk('public')->exists($filePath)) {
-            if (Storage::disk('public')->lastModified($filePath) < now()->subMinute()->timestamp) {
-                Storage::disk('public')->delete($filePath);
-            } else {
-                return StringHelper::sanitize(Storage::disk('public')->get($filePath));
-            }
-        }
-
-        if (config('services.grok.key') && $genre) {
-            try {
-                $response = Http::withHeaders([
-                    'Authorization' => 'Bearer ' . config('services.grok.key'),
-                ])->post('https://api.x.ai/v1/generate', [
-                    'prompt' => "Generate a 500-word text in $language for typing practice in the $genre genre.",
-                ]);
-
-                if ($response->successful()) {
-                    return StringHelper::sanitize($response->json()['text']);
-                }
-            } catch (Exception $e) {
-                logger()->error($e->getMessage());
-            }
-        }
-
-        $query = TestText::where('language', $language);
-
-        if ($genre) {
-            $query->where('genre', $genre);
-        }
-
-        $text = $query->inRandomOrder()->first();
-
-        return $text ? $text->text : 'No text available for the selected language and genre.';
+        return $this->testGenerationOrchestrator->getText($language, $userId, $genre);
     }
 }
