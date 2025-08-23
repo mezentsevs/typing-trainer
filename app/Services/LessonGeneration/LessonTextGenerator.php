@@ -53,7 +53,7 @@ class LessonTextGenerator
             }
 
             if ($isFirstOfPair) {
-                $baseWord = $this->wordService->generateWord($availableChars, $newChars, $blueprint->language);
+                $baseWord = $this->wordService->generateWord($blueprint->language, $availableChars, $newChars);
                 $currentWord = $baseWord;
                 $isFirstOfPair = false;
 

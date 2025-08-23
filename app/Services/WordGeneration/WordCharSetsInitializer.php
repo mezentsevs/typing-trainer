@@ -8,7 +8,7 @@ class WordCharSetsInitializer
     {
     }
 
-    public function initialize(array $availableChars, array $newChars, string $language): array
+    public function initialize(string $language, array $availableChars, array $newChars): array
     {
         $availableLetterChars = array_filter($availableChars, function ($char) {
             return preg_match('/[a-zA-ZА-яёЁ0-9]/u', $char);

@@ -14,8 +14,8 @@ class WordService
     /**
      * @throws RandomException
      */
-    public function generateWord(array $availableChars, array $newChars, string $language): string
+    public function generateWord(string $language, array $availableChars, array $newChars): string
     {
-        return $this->wordGenerationOrchestrator->generate($availableChars, $newChars, $language);
+        return $this->wordGenerationOrchestrator->generate($language, $availableChars, $newChars);
     }
 }

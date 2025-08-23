@@ -16,9 +16,9 @@ class WordGenerationOrchestrator
     /**
      * @throws RandomException
      */
-    public function generate(array $availableChars, array $newChars, string $language): string
+    public function generate(string $language, array $availableChars, array $newChars): string
     {
-        $charSets = $this->wordCharSetsInitializer->initialize($availableChars, $newChars, $language);
+        $charSets = $this->wordCharSetsInitializer->initialize($language, $availableChars, $newChars);
 
         if (empty($charSets['availableVowelChars']) && empty($charSets['availableConsonantChars'])) {
             return '';

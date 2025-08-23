@@ -23,7 +23,7 @@ class WordServiceTest extends TestCase
     #[DataProviderExternal(WordDataProvider::class, 'provideWordGenerationData')]
     public function testGeneratedWordHasValidLength(array $data): void
     {
-        $word = $this->service->generateWord($data['availableChars'], $data['newChars'], $data['language']);
+        $word = $this->service->generateWord($data['language'], $data['availableChars'], $data['newChars']);
         $wordLength = mb_strlen($word);
 
         $this->assertIsString($word);
@@ -43,7 +43,7 @@ class WordServiceTest extends TestCase
     #[DataProviderExternal(WordDataProvider::class, 'provideWordGenerationData')]
     public function testGeneratedWordContainsOnlyAvailableChars(array $data): void
     {
-        $word = $this->service->generateWord($data['availableChars'], $data['newChars'], $data['language']);
+        $word = $this->service->generateWord($data['language'], $data['availableChars'], $data['newChars']);
 
         $this->assertIsString($word);
         $this->assertNotEmpty($word);
@@ -63,7 +63,7 @@ class WordServiceTest extends TestCase
         $wordsWithPairedChars = [];
 
         for ($i = 0; $i < 100; $i++) {
-            $word = $this->service->generateWord($data['availableChars'], $data['newChars'], $data['language']);
+            $word = $this->service->generateWord($data['language'], $data['availableChars'], $data['newChars']);
 
             if (mb_strpos($word, $data['openingChar']) !== false) {
                 $wordsWithPairedChars[] = $word;
