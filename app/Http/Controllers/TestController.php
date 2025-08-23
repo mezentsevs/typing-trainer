@@ -20,7 +20,7 @@ class TestController extends Controller
             'genre' => 'nullable|string',
         ]);
 
-        return response()->json(['text' => $this->testService->getText(auth()->id(), $request->language, $request->genre)]);
+        return response()->json(['text' => $this->testService->getText($request->language, auth()->id(), $request->genre)]);
     }
 
     public function uploadText(Request $request): JsonResponse
