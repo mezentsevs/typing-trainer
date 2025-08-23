@@ -3,11 +3,12 @@
 namespace App\Services\TestGeneration\Strategies;
 
 use App\Helpers\StringHelper;
+use App\Services\TestGeneration\Strategies\Contracts\TestTextSupplyingStrategy;
 use Exception;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
-class TestTextAiGeneratingStrategy
+class TestTextGeneratingWithAiStrategy implements TestTextSupplyingStrategy
 {
     public function getText(string $language, int $userId, ?string $genre): ?string
     {
@@ -32,7 +33,6 @@ class TestTextAiGeneratingStrategy
 
             if ($response->successful()) {
                 $responseData = $response->json();
-
                 return isset($responseData[$responseTextKey]) ? StringHelper::sanitize($responseData[$responseTextKey]) : null;
             }
         } catch (Exception $e) {

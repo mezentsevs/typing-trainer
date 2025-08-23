@@ -3,9 +3,10 @@
 namespace App\Services\TestGeneration\Strategies;
 
 use App\Models\TestText;
+use App\Services\TestGeneration\Strategies\Contracts\TestTextSupplyingStrategy;
 use Illuminate\Database\Eloquent\Builder;
 
-class TestTextDatabaseRetrievingStrategy
+class TestTextRetrievingFromDatabaseStrategy implements TestTextSupplyingStrategy
 {
     public function getText(string $language, int $userId, ?string $genre): ?string
     {

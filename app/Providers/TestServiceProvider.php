@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
-use App\Services\TestGeneration\Strategies\TestTextAiGeneratingStrategy;
-use App\Services\TestGeneration\Strategies\TestTextDatabaseRetrievingStrategy;
-use App\Services\TestGeneration\Strategies\TestTextFileReadingStrategy;
+use App\Services\TestGeneration\Strategies\TestTextGeneratingWithAiStrategy;
+use App\Services\TestGeneration\Strategies\TestTextReadingFromFileStrategy;
+use App\Services\TestGeneration\Strategies\TestTextRetrievingFromDatabaseStrategy;
 use App\Services\TestGeneration\TestGenerationOrchestrator;
 use App\Services\TestService;
 use Illuminate\Support\ServiceProvider;
@@ -17,24 +17,20 @@ class TestServiceProvider extends ServiceProvider
             return new TestService($app->make(TestGenerationOrchestrator::class));
         });
 
+        $this->app->tag([
+            TestTextReadingFromFileStrategy::class,
+            TestTextGeneratingWithAiStrategy::class,
+            TestTextRetrievingFromDatabaseStrategy::class,
+        ], 'testTextSupplyingStrategies');
+
         $this->app->bind(TestGenerationOrchestrator::class, function ($app) {
             return new TestGenerationOrchestrator(
-                $app->make(TestTextFileReadingStrategy::class),
-                $app->make(TestTextAiGeneratingStrategy::class),
-                $app->make(TestTextDatabaseRetrievingStrategy::class),
+                iterator_to_array($app->tagged('testTextSupplyingStrategies'), false),
             );
         });
 
-        $this->app->bind(TestTextFileReadingStrategy::class, function () {
-            return new TestTextFileReadingStrategy();
-        });
-
-        $this->app->bind(TestTextAiGeneratingStrategy::class, function () {
-            return new TestTextAiGeneratingStrategy();
-        });
-
-        $this->app->bind(TestTextDatabaseRetrievingStrategy::class, function () {
-            return new TestTextDatabaseRetrievingStrategy();
-        });
+        $this->app->bind(TestTextReadingFromFileStrategy::class);
+        $this->app->bind(TestTextGeneratingWithAiStrategy::class);
+        $this->app->bind(TestTextRetrievingFromDatabaseStrategy::class);
     }
 }

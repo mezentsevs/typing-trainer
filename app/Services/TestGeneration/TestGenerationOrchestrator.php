@@ -2,28 +2,20 @@
 
 namespace App\Services\TestGeneration;
 
-use App\Services\TestGeneration\Strategies\TestTextAiGeneratingStrategy;
-use App\Services\TestGeneration\Strategies\TestTextDatabaseRetrievingStrategy;
-use App\Services\TestGeneration\Strategies\TestTextFileReadingStrategy;
+use App\Services\TestGeneration\Strategies\Contracts\TestTextSupplyingStrategy;
 
 class TestGenerationOrchestrator
 {
-    public function __construct(
-        protected TestTextFileReadingStrategy $testTextFileReadingStrategy,
-        protected TestTextAiGeneratingStrategy $testTextAiGeneratingStrategy,
-        protected TestTextDatabaseRetrievingStrategy $testTextDatabaseRetrievingStrategy,
-    ) {
+    /**
+     * @param TestTextSupplyingStrategy[] $testTextSupplyingStrategies
+     */
+    public function __construct(protected array $testTextSupplyingStrategies)
+    {
     }
 
     public function getText(string $language, int $userId, ?string $genre): string
     {
-        $strategies = [
-            $this->testTextFileReadingStrategy,
-            $this->testTextAiGeneratingStrategy,
-            $this->testTextDatabaseRetrievingStrategy,
-        ];
-
-        foreach ($strategies as $strategy) {
+        foreach ($this->testTextSupplyingStrategies as $strategy) {
             $text = $strategy->getText($language, $userId, $genre);
             if ($text !== null) {
                 return $text;
