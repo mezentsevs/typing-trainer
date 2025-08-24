@@ -42,12 +42,7 @@ class WordServiceProvider extends ServiceProvider
             return new WordSpecialCharsAppender($app->make(WordCharDataProvider::class));
         });
 
-        $this->app->bind(WordCharProbabilitySelector::class, function () {
-            return new WordCharProbabilitySelector();
-        });
-
-        $this->app->bind(WordCharDataProvider::class, function () {
-            return new WordCharDataProvider();
-        });
+        $this->app->bind(WordCharProbabilitySelector::class);
+        $this->app->bind(WordCharDataProvider::class);
     }
 }
