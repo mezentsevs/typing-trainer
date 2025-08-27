@@ -104,7 +104,11 @@ class WordCharDataProviderTest extends TestCase
         $forbidden = array_merge($allEnglishLetters, $digits);
 
         foreach (WordCharDataProvider::SPECIALS_EN as $char) {
-            $this->assertEquals(WordCharDataProvider::SINGLE_CHAR_LENGTH, mb_strlen($char));
+            $this->assertEquals(
+                WordCharDataProvider::SINGLE_CHAR_LENGTH,
+                mb_strlen($char),
+                'Special character must be exactly one character long.',
+            );
             $this->assertNotContains($char, $forbidden);
         }
     }
@@ -116,7 +120,11 @@ class WordCharDataProviderTest extends TestCase
         $forbidden = array_merge($allRussianLetters, $digits);
 
         foreach (WordCharDataProvider::SPECIALS_RU as $char) {
-            $this->assertEquals(WordCharDataProvider::SINGLE_CHAR_LENGTH, mb_strlen($char));
+            $this->assertEquals(
+                WordCharDataProvider::SINGLE_CHAR_LENGTH,
+                mb_strlen($char),
+                'Special character must be exactly one character long.',
+            );
             $this->assertNotContains($char, $forbidden);
         }
     }
