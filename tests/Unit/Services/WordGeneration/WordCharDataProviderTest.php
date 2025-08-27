@@ -121,7 +121,7 @@ class WordCharDataProviderTest extends TestCase
         }
     }
 
-    public function testPairedConstantStructure(): void
+    public function testPairedHasValidStructure(): void
     {
         $pairedChars = WordCharDataProvider::PAIRED;
 
