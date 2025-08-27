@@ -109,6 +109,18 @@ class WordCharDataProviderTest extends TestCase
         }
     }
 
+    public function testSpecialsRuContainsOnlyOneCharStringsAndNoAlphanumeric(): void
+    {
+        $allRussianLetters = $this->provider->getAllRussianLetters();
+        $digits = range('0', '9');
+        $forbidden = array_merge($allRussianLetters, $digits);
+
+        foreach (WordCharDataProvider::SPECIALS_RU as $char) {
+            $this->assertEquals(WordCharDataProvider::SINGLE_CHAR_LENGTH, mb_strlen($char));
+            $this->assertNotContains($char, $forbidden);
+        }
+    }
+
     public function testPairedConstantStructure(): void
     {
         $pairedChars = WordCharDataProvider::PAIRED;
