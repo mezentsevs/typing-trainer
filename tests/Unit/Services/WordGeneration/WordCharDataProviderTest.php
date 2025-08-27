@@ -102,8 +102,8 @@ class WordCharDataProviderTest extends TestCase
     public function testSpecialsEnContainsOnlyOneCharStringsAndNoAlphanumeric(): void
     {
         $allEnglishLetters = $this->provider->getAllEnglishLetters();
-        $digits = range('0', '9');
-        $forbidden = array_merge($allEnglishLetters, $digits);
+        $digitChars = range('0', '9');
+        $forbiddenChars = array_merge($allEnglishLetters, $digitChars);
 
         foreach (WordCharDataProvider::SPECIALS_EN as $char) {
             $this->assertEquals(
@@ -111,15 +111,15 @@ class WordCharDataProviderTest extends TestCase
                 mb_strlen($char),
                 'Special character must be exactly one character long.',
             );
-            $this->assertNotContains($char, $forbidden);
+            $this->assertNotContains($char, $forbiddenChars);
         }
     }
 
     public function testSpecialsRuContainsOnlyOneCharStringsAndNoAlphanumeric(): void
     {
         $allRussianLetters = $this->provider->getAllRussianLetters();
-        $digits = range('0', '9');
-        $forbidden = array_merge($allRussianLetters, $digits);
+        $digitChars = range('0', '9');
+        $forbiddenChars = array_merge($allRussianLetters, $digitChars);
 
         foreach (WordCharDataProvider::SPECIALS_RU as $char) {
             $this->assertEquals(
@@ -127,7 +127,7 @@ class WordCharDataProviderTest extends TestCase
                 mb_strlen($char),
                 'Special character must be exactly one character long.',
             );
-            $this->assertNotContains($char, $forbidden);
+            $this->assertNotContains($char, $forbiddenChars);
         }
     }
 
