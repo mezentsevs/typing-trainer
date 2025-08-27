@@ -97,6 +97,18 @@ class WordCharDataProviderTest extends TestCase
         }
     }
 
+    public function testSpecialsEnContainsOnlyOneCharStringsAndNoAlphanumeric(): void
+    {
+        $allEnglishLetters = $this->provider->getAllEnglishLetters();
+        $digits = range('0', '9');
+        $forbidden = array_merge($allEnglishLetters, $digits);
+
+        foreach (WordCharDataProvider::SPECIALS_EN as $char) {
+            $this->assertEquals(WordCharDataProvider::SINGLE_CHAR_LENGTH, mb_strlen($char));
+            $this->assertNotContains($char, $forbidden);
+        }
+    }
+
     public function testPairedConstantStructure(): void
     {
         $pairedChars = WordCharDataProvider::PAIRED;
