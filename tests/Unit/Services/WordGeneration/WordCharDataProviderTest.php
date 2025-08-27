@@ -9,6 +9,8 @@ class WordCharDataProviderTest extends TestCase
 {
     protected WordCharDataProvider $provider;
 
+    protected const int SINGLE_CHAR_LENGTH = 1;
+
     protected function setUp(): void
     {
         parent::setUp();
@@ -105,7 +107,7 @@ class WordCharDataProviderTest extends TestCase
 
         foreach (WordCharDataProvider::SPECIALS_EN as $char) {
             $this->assertEquals(
-                WordCharDataProvider::SINGLE_CHAR_LENGTH,
+                self::SINGLE_CHAR_LENGTH,
                 mb_strlen($char),
                 'Special character must be exactly one character long.',
             );
@@ -121,7 +123,7 @@ class WordCharDataProviderTest extends TestCase
 
         foreach (WordCharDataProvider::SPECIALS_RU as $char) {
             $this->assertEquals(
-                WordCharDataProvider::SINGLE_CHAR_LENGTH,
+                self::SINGLE_CHAR_LENGTH,
                 mb_strlen($char),
                 'Special character must be exactly one character long.',
             );
@@ -140,12 +142,12 @@ class WordCharDataProviderTest extends TestCase
             $this->assertIsString($openingChar);
             $this->assertIsString($closingChar);
             $this->assertEquals(
-                WordCharDataProvider::SINGLE_CHAR_LENGTH,
+                self::SINGLE_CHAR_LENGTH,
                 mb_strlen($openingChar),
                 'Opening character must be exactly one character long.',
             );
             $this->assertEquals(
-                WordCharDataProvider::SINGLE_CHAR_LENGTH,
+                self::SINGLE_CHAR_LENGTH,
                 mb_strlen($closingChar),
                 'Closing character must be exactly one character long.',
             );

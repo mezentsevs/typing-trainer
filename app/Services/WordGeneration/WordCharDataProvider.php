@@ -24,7 +24,6 @@ class WordCharDataProvider
     public const int BINARY_CHOICE_DEFAULT = 0;
     public const string CHAR_TYPE_VOWEL = 'V';
     public const string CHAR_TYPE_CONSONANT = 'C';
-    public const int SINGLE_CHAR_LENGTH = 1;
 
     public function getAllEnglishLetters(): array
     {
