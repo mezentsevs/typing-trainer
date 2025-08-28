@@ -51,6 +51,12 @@ class WordCharDataProviderTest extends TestCase
         $this->assertEquals(WordCharDataProvider::VOWELS_RU, $vowelCharsRu);
     }
 
+    public function testGetVowelsWithUnknownLanguage(): void
+    {
+        $vowelChars = $this->provider->getVowels('unknown');
+        $this->assertSame([], $vowelChars, 'Return value must be empty array for unknown language.');
+    }
+
     public function testGetConsonants(): void
     {
         $consonantCharsEn = $this->provider->getConsonants('en');
