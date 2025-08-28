@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\Services\Providers;
 
+use App\Enums\Language;
 use App\Services\WordGeneration\WordCharDataProvider;
 
 class WordDataProvider
@@ -9,15 +10,15 @@ class WordDataProvider
     public static function provideWordGenerationData(): array
     {
         return [
-            'en' => [[
+            Language::EN->value => [[
                 'availableChars' => ['a', 'b', 'c', 'd', 'e', '1', '2', '!', '@'],
                 'newChars' => ['a', 'b', 'c'],
-                'language' => 'en',
+                'language' => Language::EN->value,
             ]],
-            'ru' => [[
+            Language::RU->value => [[
                 'availableChars' => ['а', 'б', 'в', 'г', 'д', '1', '2', '!', '@'],
                 'newChars' => ['а', 'б', 'в'],
-                'language' => 'ru',
+                'language' => Language::RU->value,
             ]],
         ];
     }
@@ -32,7 +33,7 @@ class WordDataProvider
                 $data["en {$openingChar}{$closingChar}"] = [[
                     'availableChars' => ['a', $openingChar, $closingChar],
                     'newChars' => ['a', $openingChar, $closingChar],
-                    'language' => 'en',
+                    'language' => Language::EN->value,
                     'openingChar' => $openingChar,
                     'closingChar' => $closingChar,
                 ]];
@@ -43,7 +44,7 @@ class WordDataProvider
                 $data["ru {$openingChar}{$closingChar}"] = [[
                     'availableChars' => ['а', $openingChar, $closingChar],
                     'newChars' => ['а', $openingChar, $closingChar],
-                    'language' => 'ru',
+                    'language' => Language::RU->value,
                     'openingChar' => $openingChar,
                     'closingChar' => $closingChar,
                 ]];

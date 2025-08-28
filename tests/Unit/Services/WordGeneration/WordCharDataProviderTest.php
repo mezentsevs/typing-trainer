@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\Services\WordGeneration;
 
+use App\Enums\Language;
 use App\Services\WordGeneration\WordCharDataProvider;
 use Tests\TestCase;
 
@@ -42,31 +43,31 @@ class WordCharDataProviderTest extends TestCase
 
     public function testGetVowels(): void
     {
-        $vowelCharsEn = $this->provider->getVowels('en');
+        $vowelCharsEn = $this->provider->getVowels(Language::EN->value);
         $this->assertIsArray($vowelCharsEn);
         $this->assertEquals(WordCharDataProvider::VOWELS_EN, $vowelCharsEn);
 
-        $vowelCharsRu = $this->provider->getVowels('ru');
+        $vowelCharsRu = $this->provider->getVowels(Language::RU->value);
         $this->assertIsArray($vowelCharsRu);
         $this->assertEquals(WordCharDataProvider::VOWELS_RU, $vowelCharsRu);
     }
 
     public function testGetVowelsWithUnknownLanguage(): void
     {
-        $vowelChars = $this->provider->getVowels('unknown');
+        $vowelChars = $this->provider->getVowels(Language::UNKNOWN->value);
         $this->assertSame([], $vowelChars, 'Return value must be empty array for unknown language.');
     }
 
     public function testGetConsonants(): void
     {
-        $consonantCharsEn = $this->provider->getConsonants('en');
+        $consonantCharsEn = $this->provider->getConsonants(Language::EN->value);
         $this->assertIsArray($consonantCharsEn);
 
         $allEnglishLetterChars = array_merge(range('a', 'z'), range('A', 'Z'));
         $expectedConsonantCharsEn = array_diff($allEnglishLetterChars, WordCharDataProvider::VOWELS_EN);
         $this->assertEquals($expectedConsonantCharsEn, $consonantCharsEn);
 
-        $consonantCharsRu = $this->provider->getConsonants('ru');
+        $consonantCharsRu = $this->provider->getConsonants(Language::RU->value);
         $this->assertIsArray($consonantCharsRu);
 
         $allRussianLetterChars = array_merge(
@@ -79,7 +80,7 @@ class WordCharDataProviderTest extends TestCase
 
     public function testGetConsonantsWithUnknownLanguage(): void
     {
-        $consonantChars = $this->provider->getConsonants('unknown');
+        $consonantChars = $this->provider->getConsonants(Language::UNKNOWN->value);
         $this->assertSame([], $consonantChars, 'Return value must be empty array for unknown language.');
     }
 

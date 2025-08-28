@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\Language;
 use App\Models\Lesson;
 use App\Models\LessonResult;
 use App\Models\User;
@@ -22,7 +23,7 @@ class LessonResultFactory extends Factory
         return [
             'user_id' => User::factory(),
             'lesson_id' => Lesson::factory(),
-            'language' => $this->faker->randomElement(['en', 'ru']),
+            'language' => $this->faker->randomElement([Language::EN->value, Language::RU->value]),
             'time_seconds' => $this->faker->numberBetween(1, 600),
             'speed_wpm' => $this->faker->numberBetween(1, 100),
             'errors' => $this->faker->numberBetween(0, 10),

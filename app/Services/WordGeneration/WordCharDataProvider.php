@@ -2,6 +2,8 @@
 
 namespace App\Services\WordGeneration;
 
+use App\Enums\Language;
+
 class WordCharDataProvider
 {
     public const array LETTERS_LC_RU = ['а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я'];
@@ -38,8 +40,8 @@ class WordCharDataProvider
     public function getVowels(string $language): array
     {
         return match ($language) {
-            'en' => self::VOWELS_EN,
-            'ru' => self::VOWELS_RU,
+            Language::EN->value => self::VOWELS_EN,
+            Language::RU->value => self::VOWELS_RU,
             default => [],
         };
     }
@@ -47,8 +49,8 @@ class WordCharDataProvider
     public function getConsonants(string $language): array
     {
         return match ($language) {
-            'en' => array_diff($this->getAllEnglishLetters(), $this->getVowels('en')),
-            'ru' => array_diff($this->getAllRussianLetters(), $this->getVowels('ru')),
+            Language::EN->value => array_diff($this->getAllEnglishLetters(), $this->getVowels(Language::EN->value)),
+            Language::RU->value => array_diff($this->getAllRussianLetters(), $this->getVowels(Language::RU->value)),
             default => [],
         };
     }

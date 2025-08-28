@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Enums\Language;
 use App\Models\Lesson;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -19,13 +20,13 @@ class LessonTest extends TestCase
 
         $response = $this->withHeaders(['Authorization' => "Bearer $token"])
             ->postJson('/api/lessons/generate', [
-                'language' => 'en',
+                'language' => Language::EN->value,
                 'lesson_count' => 5,
             ]);
 
         $response->assertStatus(200);
 
-        $this->assertCount(5, Lesson::where('language', 'en')->get());
+        $this->assertCount(5, Lesson::where('language', Language::EN->value)->get());
     }
 
     public function test_user_can_get_lesson_text(): void
@@ -34,7 +35,7 @@ class LessonTest extends TestCase
 
         $token = $user->createToken('test')->plainTextToken;
 
-        Lesson::create(['number' => 1, 'language' => 'en', 'new_chars' => 'abc']);
+        Lesson::create(['number' => 1, 'language' => Language::EN->value, 'new_chars' => 'abc']);
 
         $response = $this->withHeaders(['Authorization' => "Bearer $token"])
             ->getJson('/api/lessons/en/1/text');

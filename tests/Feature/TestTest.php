@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Enums\Language;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -31,7 +32,7 @@ class TestTest extends TestCase
 
         $response = $this->withHeaders(['Authorization' => "Bearer $token"])
             ->postJson('/api/test/result', [
-                'language' => 'en',
+                'language' => Language::EN->value,
                 'speed_wpm' => 50,
                 'errors' => 2,
             ]);

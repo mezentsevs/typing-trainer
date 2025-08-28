@@ -2,6 +2,8 @@
 
 namespace App\Services\WordGeneration;
 
+use App\Enums\Language;
+
 class WordSpecialCharsAppender
 {
     public function __construct(protected WordCharDataProvider $wordCharDataProvider)
@@ -31,8 +33,8 @@ class WordSpecialCharsAppender
     protected function filterSpecialChars(array $availableChars, string $language): array
     {
         $allowedSpecialChars = match ($language) {
-            'en' => WordCharDataProvider::SPECIALS_EN,
-            'ru' => WordCharDataProvider::SPECIALS_RU,
+            Language::EN->value => WordCharDataProvider::SPECIALS_EN,
+            Language::RU->value => WordCharDataProvider::SPECIALS_RU,
             default => [],
         };
 

@@ -2,6 +2,8 @@
 
 namespace Tests\Unit\Services\Providers;
 
+use App\Enums\Language;
+
 class LessonDataProvider
 {
     protected const CHARS_EN = 'asdfjkl;qwertyuiophgzxcvbnm,./ASDFJKL;QWERTYUIOPHGZXCVBNM,./1234567890-=!@#$%^&*()_+[]{}|\:"\'<>?~`';
@@ -57,8 +59,8 @@ class LessonDataProvider
     public static function provideSupportedLanguages(): array
     {
         return [
-            'en' => ['en'],
-            'ru' => ['ru'],
+            Language::EN->value => [Language::EN->value],
+            Language::RU->value => [Language::RU->value],
         ];
     }
 
@@ -77,7 +79,7 @@ class LessonDataProvider
             }
 
             $data["en_{$number}"] = [[
-                'language' => 'en',
+                'language' => Language::EN->value,
                 'lessonCount' => $lessonCountEn,
                 'lessonNumber' => $number,
                 'expectedNewChars' => $newChars,
@@ -91,7 +93,7 @@ class LessonDataProvider
             }
 
             $data["ru_{$number}"] = [[
-                'language' => 'ru',
+                'language' => Language::RU->value,
                 'lessonCount' => $lessonCountRu,
                 'lessonNumber' => $number,
                 'expectedNewChars' => $newChars,
