@@ -59,8 +59,8 @@ class LessonDataProvider
     public static function provideSupportedLanguages(): array
     {
         return [
-            Language::EN->value => [Language::EN->value],
-            Language::RU->value => [Language::RU->value],
+            Language::En->value => [Language::En->value],
+            Language::Ru->value => [Language::Ru->value],
         ];
     }
 
@@ -79,7 +79,7 @@ class LessonDataProvider
             }
 
             $data["en_{$number}"] = [[
-                'language' => Language::EN->value,
+                'language' => Language::En->value,
                 'lessonCount' => $lessonCountEn,
                 'lessonNumber' => $number,
                 'expectedNewChars' => $newChars,
@@ -93,7 +93,7 @@ class LessonDataProvider
             }
 
             $data["ru_{$number}"] = [[
-                'language' => Language::RU->value,
+                'language' => Language::Ru->value,
                 'lessonCount' => $lessonCountRu,
                 'lessonNumber' => $number,
                 'expectedNewChars' => $newChars,

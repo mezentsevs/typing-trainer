@@ -10,15 +10,15 @@ class WordDataProvider
     public static function provideWordGenerationData(): array
     {
         return [
-            Language::EN->value => [[
+            Language::En->value => [[
                 'availableChars' => ['a', 'b', 'c', 'd', 'e', '1', '2', '!', '@'],
                 'newChars' => ['a', 'b', 'c'],
-                'language' => Language::EN->value,
+                'language' => Language::En->value,
             ]],
-            Language::RU->value => [[
+            Language::Ru->value => [[
                 'availableChars' => ['а', 'б', 'в', 'г', 'д', '1', '2', '!', '@'],
                 'newChars' => ['а', 'б', 'в'],
-                'language' => Language::RU->value,
+                'language' => Language::Ru->value,
             ]],
         ];
     }
@@ -33,7 +33,7 @@ class WordDataProvider
                 $data["en {$openingChar}{$closingChar}"] = [[
                     'availableChars' => ['a', $openingChar, $closingChar],
                     'newChars' => ['a', $openingChar, $closingChar],
-                    'language' => Language::EN->value,
+                    'language' => Language::En->value,
                     'openingChar' => $openingChar,
                     'closingChar' => $closingChar,
                 ]];
@@ -44,7 +44,7 @@ class WordDataProvider
                 $data["ru {$openingChar}{$closingChar}"] = [[
                     'availableChars' => ['а', $openingChar, $closingChar],
                     'newChars' => ['а', $openingChar, $closingChar],
-                    'language' => Language::RU->value,
+                    'language' => Language::Ru->value,
                     'openingChar' => $openingChar,
                     'closingChar' => $closingChar,
                 ]];

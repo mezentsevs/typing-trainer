@@ -40,8 +40,8 @@ class WordCharDataProvider
     public function getVowels(string $language): array
     {
         return match ($language) {
-            Language::EN->value => self::VOWELS_EN,
-            Language::RU->value => self::VOWELS_RU,
+            Language::En->value => self::VOWELS_EN,
+            Language::Ru->value => self::VOWELS_RU,
             default => [],
         };
     }
@@ -49,8 +49,8 @@ class WordCharDataProvider
     public function getConsonants(string $language): array
     {
         return match ($language) {
-            Language::EN->value => array_diff($this->getAllEnglishLetters(), $this->getVowels(Language::EN->value)),
-            Language::RU->value => array_diff($this->getAllRussianLetters(), $this->getVowels(Language::RU->value)),
+            Language::En->value => array_diff($this->getAllEnglishLetters(), $this->getVowels(Language::En->value)),
+            Language::Ru->value => array_diff($this->getAllRussianLetters(), $this->getVowels(Language::Ru->value)),
             default => [],
         };
     }

@@ -32,7 +32,7 @@ class TestTest extends TestCase
 
         $response = $this->withHeaders(['Authorization' => "Bearer $token"])
             ->postJson('/api/test/result', [
-                'language' => Language::EN->value,
+                'language' => Language::En->value,
                 'speed_wpm' => 50,
                 'errors' => 2,
             ]);

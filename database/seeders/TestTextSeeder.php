@@ -11,7 +11,7 @@ class TestTextSeeder extends Seeder
     public function run(): void
     {
         $texts = [
-            Language::EN->value => [
+            Language::En->value => [
                 [
                     'genre' => 'fiction',
                     'text' => 'In the year 2247, humanity had colonized the stars, but the frontier planet of Xerion was unlike any other. Its crimson skies shimmered with electromagnetic storms, and the native flora pulsed with bioluminescent energy. Captain Elena Voss led her crew through the dense jungle, their suits humming with protective shields. The mission was simple: retrieve the lost artifact said to control time itself. But as they ventured deeper, the jungle seemed to whisper, bending their perception of reality. Shadows moved unnaturally, and the air grew heavy with an unspoken warning. Would they find the artifact, or become lost in Xerion\'s endless maze?',
@@ -1487,7 +1487,7 @@ class TestTextSeeder extends Seeder
                         EOT,
                 ],
             ],
-            Language::RU->value => [
+            Language::Ru->value => [
                 [
                     'genre' => 'fiction',
                     'text' => 'Вечер опускался на деревню, словно старое одеяло, сотканное из сумерек и тишины. Лес, окружавший дома, шептал что-то на своём древнем языке, но никто из жителей не смел вслушиваться. Говорили, что в чаще обитает тень - не человек, не зверь, а нечто иное, чему нет имени. Анна, девушка с волосами цвета ржи, не верила в эти байки. Она сидела на крыльце, глядя на звёзды, и думала о том, как выбраться из этой глуши. Ей было девятнадцать, и мир за пределами деревни казался манящим, как сказка. Анна работала в местной пекарне, где каждый день месила тесто и слушала сплетни старух. Они судачили о пропавшем охотнике, о странных следах у реки, о том, что лес стал гуще, будто растёт сам по себе. Анна лишь улыбалась, пропуская их слова мимо ушей. Но той ночью, когда луна висела низко, словно лампа в заброшенном доме, она заметила движение у опушки. Тень - неясная, но живая - скользнула между деревьями. Сердце Анны забилось быстрее. Она встала, накинула шаль и, не думая, шагнула к лесу. Деревня спала, и только сова где-то вдали нарушала тишину. Тропинка, знакомая с детства, вела к реке, но в темноте она казалась чужой. Листья шуршали под ногами, а воздух пах сыростью и чем-то еще - терпким, как старое вино. Анна остановилась, вглядываясь в мрак. Тень появилась снова, на этот раз ближе. Она не двигалась, но Анна чувствовала её взгляд, тяжёлый, как камень.',

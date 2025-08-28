@@ -8,7 +8,7 @@ use App\Services\LessonGeneration\ValueObjects\LessonBlueprint;
 class LessonSequenceGenerator
 {
     protected const array INTRODUCTION_ORDER = [
-        Language::EN->value => [
+        Language::En->value => [
             'a', 's', 'd', 'f', 'j', 'k', 'l', ';',
             'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p',
             'h', 'g', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/',
@@ -18,7 +18,7 @@ class LessonSequenceGenerator
             '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=',
             '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', '[', ']', '{', '}', '|', '\\', ':', '"', '\'', '<', '>', '?', '~', '`',
         ],
-        Language::RU->value => [
+        Language::Ru->value => [
             'ф', 'ы', 'в', 'а', 'о', 'л', 'д', 'ж',
             'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ',
             'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', 'п', 'р', 'э',
@@ -32,7 +32,7 @@ class LessonSequenceGenerator
         ],
     ];
 
-    protected const string INTRODUCTION_ORDER_DEFAULT_LANGUAGE = Language::EN->value;
+    protected const string INTRODUCTION_ORDER_DEFAULT_LANGUAGE = Language::En->value;
 
     protected const int MIN_LESSON_LENGTH = 100;
     protected const int MAX_LESSON_LENGTH = 300;

@@ -33,8 +33,8 @@ class WordSpecialCharsAppender
     protected function filterSpecialChars(array $availableChars, string $language): array
     {
         $allowedSpecialChars = match ($language) {
-            Language::EN->value => WordCharDataProvider::SPECIALS_EN,
-            Language::RU->value => WordCharDataProvider::SPECIALS_RU,
+            Language::En->value => WordCharDataProvider::SPECIALS_EN,
+            Language::Ru->value => WordCharDataProvider::SPECIALS_RU,
             default => [],
         };
 
