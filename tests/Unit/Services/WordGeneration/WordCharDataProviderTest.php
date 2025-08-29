@@ -20,27 +20,26 @@ class WordCharDataProviderTest extends TestCase
         $this->provider = app(WordCharDataProvider::class);
     }
 
-    public function testGetAllEnglishLetters(): void
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testGetAllLetters(string $language): void
     {
-        $expectedAllEnglishLetterChars = array_merge(range('a', 'z'), range('A', 'Z'));
+        $expectedAllLetterChars = match ($language) {
+            Language::En->value => array_merge(range('a', 'z'), range('A', 'Z')),
+            Language::Ru->value => array_merge(
+                WordCharDataProvider::LETTERS_LC_RU,
+                WordCharDataProvider::LETTERS_UC_RU,
+            ),
+            default => $this->fail("Unsupported language provided: {$language}."),
+        };
 
-        $allEnglishLetterChars = $this->provider->getAllEnglishLetters();
+        $allLetterChars = $this->provider->getAllLetters($language);
 
-        $this->assertIsArray($allEnglishLetterChars);
-        $this->assertEquals($expectedAllEnglishLetterChars, $allEnglishLetterChars);
-    }
-
-    public function testGetAllRussianLetters(): void
-    {
-        $expectedAllRussianLetterChars = array_merge(
-            WordCharDataProvider::LETTERS_LC_RU,
-            WordCharDataProvider::LETTERS_UC_RU,
+        $this->assertIsArray($allLetterChars);
+        $this->assertEquals(
+            $expectedAllLetterChars,
+            $allLetterChars,
+            "Returned all letters don't match expected set for {$language} language.",
         );
-
-        $allRussianLetterChars = $this->provider->getAllRussianLetters();
-
-        $this->assertIsArray($allRussianLetterChars);
-        $this->assertEquals($expectedAllRussianLetterChars, $allRussianLetterChars);
     }
 
     public function testGetVowels(): void
