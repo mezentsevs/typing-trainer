@@ -90,19 +90,7 @@ class WordCharDataProviderTest extends TestCase
     {
         $vowelChars = $this->provider->getVowels($language);
         $consonantChars = $this->provider->getConsonants($language);
-
-        $getAllLettersMethodNameMap = [
-            Language::En->value => 'getAllEnglishLetters',
-            Language::Ru->value => 'getAllRussianLetters',
-        ];
-
-        $getAllLettersMethodName = $getAllLettersMethodNameMap[$language];
-
-        if (!$getAllLettersMethodName || !method_exists($this->provider, $getAllLettersMethodName)) {
-            $this->fail("Method for getting all letters not found for {$language} language.");
-        }
-
-        $allLetters = $this->provider->{$getAllLettersMethodName}();
+        $allLetters = $this->provider->getAllLetters($language);
 
         $this->assertEmpty(
             array_intersect($vowelChars, $consonantChars),
