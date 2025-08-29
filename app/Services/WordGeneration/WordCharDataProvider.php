@@ -27,14 +27,13 @@ class WordCharDataProvider
     public const string CHAR_TYPE_VOWEL = 'V';
     public const string CHAR_TYPE_CONSONANT = 'C';
 
-    public function getAllEnglishLetters(): array
+    public function getAllLetters(string $language): array
     {
-        return array_merge(range('a', 'z'), range('A', 'Z'));
-    }
-
-    public function getAllRussianLetters(): array
-    {
-        return array_merge(self::LETTERS_LC_RU, self::LETTERS_UC_RU);
+        return match ($language) {
+            Language::En->value => array_merge(range('a', 'z'), range('A', 'Z')),
+            Language::Ru->value => array_merge(self::LETTERS_LC_RU, self::LETTERS_UC_RU),
+            default => [],
+        };
     }
 
     public function getVowels(string $language): array
@@ -49,8 +48,8 @@ class WordCharDataProvider
     public function getConsonants(string $language): array
     {
         return match ($language) {
-            Language::En->value => array_diff($this->getAllEnglishLetters(), $this->getVowels(Language::En->value)),
-            Language::Ru->value => array_diff($this->getAllRussianLetters(), $this->getVowels(Language::Ru->value)),
+            Language::En->value => array_diff($this->getAllLetters(Language::En->value), $this->getVowels(Language::En->value)),
+            Language::Ru->value => array_diff($this->getAllLetters(Language::Ru->value), $this->getVowels(Language::Ru->value)),
             default => [],
         };
     }
