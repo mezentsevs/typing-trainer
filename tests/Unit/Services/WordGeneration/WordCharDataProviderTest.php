@@ -132,35 +132,30 @@ class WordCharDataProviderTest extends TestCase
         }
     }
 
-    public function testSpecialsEnContainsOnlyOneCharStringsAndNoAlphanumeric(): void
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testSpecialsContainsOnlyOneCharStringsAndNoAlphanumeric(string $language): void
     {
-        $allEnglishLetters = $this->provider->getAllEnglishLetters();
-        $digitChars = range('0', '9');
-        $forbiddenChars = array_merge($allEnglishLetters, $digitChars);
+        $specialChars = match ($language) {
+            Language::En->value => WordCharDataProvider::SPECIALS_EN,
+            Language::Ru->value => WordCharDataProvider::SPECIALS_RU,
+            default => $this->fail("Unsupported language provided: {$language}."),
+        };
 
-        foreach (WordCharDataProvider::SPECIALS_EN as $char) {
+        $allLetters = $this->provider->getAllLetters($language);
+        $digitChars = range('0', '9');
+        $forbiddenChars = array_merge($allLetters, $digitChars);
+
+        foreach ($specialChars as $char) {
             $this->assertEquals(
                 self::SINGLE_CHAR_LENGTH,
                 mb_strlen($char),
-                'Special character must be exactly one character long.',
+                "Special character {$char} must be exactly one character long for {$language} language.",
             );
-            $this->assertNotContains($char, $forbiddenChars);
-        }
-    }
-
-    public function testSpecialsRuContainsOnlyOneCharStringsAndNoAlphanumeric(): void
-    {
-        $allRussianLetters = $this->provider->getAllRussianLetters();
-        $digitChars = range('0', '9');
-        $forbiddenChars = array_merge($allRussianLetters, $digitChars);
-
-        foreach (WordCharDataProvider::SPECIALS_RU as $char) {
-            $this->assertEquals(
-                self::SINGLE_CHAR_LENGTH,
-                mb_strlen($char),
-                'Special character must be exactly one character long.',
+            $this->assertNotContains(
+                $char,
+                $forbiddenChars,
+                "Special character {$char} should not be alphanumeric for {$language} language.",
             );
-            $this->assertNotContains($char, $forbiddenChars);
         }
     }
 
