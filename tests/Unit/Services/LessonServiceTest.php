@@ -12,6 +12,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use PHPUnit\Framework\Attributes\DataProviderExternal;
 use ReflectionClass;
 use Tests\TestCase;
+use Tests\Unit\Services\Providers\CommonDataProvider;
 use Tests\Unit\Services\Providers\LessonDataProvider;
 
 class LessonServiceTest extends TestCase
@@ -29,7 +30,7 @@ class LessonServiceTest extends TestCase
         $this->service = app(LessonService::class);
     }
 
-    #[DataProviderExternal(LessonDataProvider::class, 'provideSupportedLanguages')]
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testGenerateLessonsDeletesExistingAndCreatesNew(string $language): void
     {
         $lessonCount = 5;
@@ -93,7 +94,7 @@ class LessonServiceTest extends TestCase
         $this->assertLineStructureValid($lesson->text);
     }
 
-    #[DataProviderExternal(LessonDataProvider::class, 'provideSupportedLanguages')]
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testIntroductionOrderContainsLanguage(string $language): void
     {
         $lessonSequenceGeneratorReflection = new ReflectionClass(LessonSequenceGenerator::class);

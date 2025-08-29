@@ -56,14 +56,6 @@ class LessonDataProvider
         20 => self::CHARS_RU,
     ];
 
-    public static function provideSupportedLanguages(): array
-    {
-        return [
-            Language::En->value => [Language::En->value],
-            Language::Ru->value => [Language::Ru->value],
-        ];
-    }
-
     public static function provideLessonsSequenceData(): array
     {
         $data = [];
