@@ -172,12 +172,12 @@ class WordCharDataProviderTest extends TestCase
             $this->assertEquals(
                 self::SINGLE_CHAR_LENGTH,
                 mb_strlen($openingChar),
-                'Opening character must be exactly one character long.',
+                "Opening character {$openingChar} must be exactly one character long.",
             );
             $this->assertEquals(
                 self::SINGLE_CHAR_LENGTH,
                 mb_strlen($closingChar),
-                'Closing character must be exactly one character long.',
+                "Closing character {$closingChar} must be exactly one character long.",
             );
         }
     }
