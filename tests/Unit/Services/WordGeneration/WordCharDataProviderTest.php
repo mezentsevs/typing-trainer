@@ -4,7 +4,9 @@ namespace Tests\Unit\Services\WordGeneration;
 
 use App\Enums\Language;
 use App\Services\WordGeneration\WordCharDataProvider;
+use PHPUnit\Framework\Attributes\DataProviderExternal;
 use Tests\TestCase;
+use Tests\Unit\Services\Providers\CommonDataProvider;
 
 class WordCharDataProviderTest extends TestCase
 {
@@ -82,6 +84,37 @@ class WordCharDataProviderTest extends TestCase
     {
         $consonantChars = $this->provider->getConsonants(Language::Unknown->value);
         $this->assertSame([], $consonantChars, 'Return value must be empty array for unknown language.');
+    }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testVowelsAndConsonantsDoNotIntersectAndFormAlphabet(string $language): void
+    {
+        $vowelChars = $this->provider->getVowels($language);
+        $consonantChars = $this->provider->getConsonants($language);
+
+        $getAllLettersMethodNameMap = [
+            Language::En->value => 'getAllEnglishLetters',
+            Language::Ru->value => 'getAllRussianLetters',
+        ];
+
+        $getAllLettersMethodName = $getAllLettersMethodNameMap[$language];
+
+        if (!$getAllLettersMethodName || !method_exists($this->provider, $getAllLettersMethodName)) {
+            $this->fail("Method for getting all letters not found for {$language} language.");
+        }
+
+        $allLetters = $this->provider->{$getAllLettersMethodName}();
+
+        $this->assertEmpty(
+            array_intersect($vowelChars, $consonantChars),
+            "Vowels and consonants should not have common characters for {$language} language.",
+        );
+
+        $this->assertEqualsCanonicalizing(
+            $allLetters,
+            array_merge($vowelChars, $consonantChars),
+            "Merged vowels and consonants should form the complete alphabet without duplicates for {$language} language.",
+        );
     }
 
     public function testIsPunctuation(): void
