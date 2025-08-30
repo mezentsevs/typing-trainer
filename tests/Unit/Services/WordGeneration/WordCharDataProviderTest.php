@@ -42,6 +42,12 @@ class WordCharDataProviderTest extends TestCase
         );
     }
 
+    public function testGetAllLettersWithUnknownLanguage(): void
+    {
+        $allLetterChars = $this->provider->getAllLetters(Language::Unknown->value);
+        $this->assertSame([], $allLetterChars, 'Return value must be empty array for unknown language.');
+    }
+
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testGetVowels(string $language): void
     {
