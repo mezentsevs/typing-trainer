@@ -42,15 +42,23 @@ class WordCharDataProviderTest extends TestCase
         );
     }
 
-    public function testGetVowels(): void
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testGetVowels(string $language): void
     {
-        $vowelCharsEn = $this->provider->getVowels(Language::En->value);
-        $this->assertIsArray($vowelCharsEn);
-        $this->assertEquals(WordCharDataProvider::VOWELS_EN, $vowelCharsEn);
+        $expectedVowelChars = match ($language) {
+            Language::En->value => WordCharDataProvider::VOWELS_EN,
+            Language::Ru->value => WordCharDataProvider::VOWELS_RU,
+            default => $this->fail("Unsupported language provided: {$language}."),
+        };
 
-        $vowelCharsRu = $this->provider->getVowels(Language::Ru->value);
-        $this->assertIsArray($vowelCharsRu);
-        $this->assertEquals(WordCharDataProvider::VOWELS_RU, $vowelCharsRu);
+        $vowelChars = $this->provider->getVowels($language);
+
+        $this->assertIsArray($vowelChars);
+        $this->assertEquals(
+            $expectedVowelChars,
+            $vowelChars,
+            "Returned vowels don't match expected set for {$language} language.",
+        );
     }
 
     public function testGetVowelsWithUnknownLanguage(): void
