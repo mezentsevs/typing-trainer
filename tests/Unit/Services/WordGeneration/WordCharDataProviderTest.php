@@ -73,24 +73,33 @@ class WordCharDataProviderTest extends TestCase
         $this->assertSame([], $vowelChars, 'Return value must be empty array for unknown language.');
     }
 
-    public function testGetConsonants(): void
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testGetConsonants(string $language): void
     {
-        $consonantCharsEn = $this->provider->getConsonants(Language::En->value);
-        $this->assertIsArray($consonantCharsEn);
+        $allLetterChars = match ($language) {
+            Language::En->value => array_merge(range('a', 'z'), range('A', 'Z')),
+            Language::Ru->value => array_merge(
+                WordCharDataProvider::LETTERS_LC_RU,
+                WordCharDataProvider::LETTERS_UC_RU,
+            ),
+            default => $this->fail("Unsupported language provided: {$language}."),
+        };
 
-        $allEnglishLetterChars = array_merge(range('a', 'z'), range('A', 'Z'));
-        $expectedConsonantCharsEn = array_diff($allEnglishLetterChars, WordCharDataProvider::VOWELS_EN);
-        $this->assertEquals($expectedConsonantCharsEn, $consonantCharsEn);
+        $vowelChars = match ($language) {
+            Language::En->value => WordCharDataProvider::VOWELS_EN,
+            Language::Ru->value => WordCharDataProvider::VOWELS_RU,
+            default => $this->fail("Unsupported language provided: {$language}."),
+        };
 
-        $consonantCharsRu = $this->provider->getConsonants(Language::Ru->value);
-        $this->assertIsArray($consonantCharsRu);
+        $expectedConsonantChars = array_diff($allLetterChars, $vowelChars);
+        $consonantChars = $this->provider->getConsonants($language);
 
-        $allRussianLetterChars = array_merge(
-            WordCharDataProvider::LETTERS_LC_RU,
-            WordCharDataProvider::LETTERS_UC_RU,
+        $this->assertIsArray($consonantChars);
+        $this->assertEquals(
+            $expectedConsonantChars,
+            $consonantChars,
+            "Returned consonants don't match expected set for {$language} language.",
         );
-        $expectedConsonantCharsRu = array_diff($allRussianLetterChars, WordCharDataProvider::VOWELS_RU);
-        $this->assertEquals($expectedConsonantCharsRu, $consonantCharsRu);
     }
 
     public function testGetConsonantsWithUnknownLanguage(): void
