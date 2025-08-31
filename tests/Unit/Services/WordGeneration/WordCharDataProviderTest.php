@@ -23,15 +23,7 @@ class WordCharDataProviderTest extends TestCase
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testGetAllLetters(string $language): void
     {
-        $expectedAllLetterChars = match ($language) {
-            Language::En->value => array_merge(range('a', 'z'), range('A', 'Z')),
-            Language::Ru->value => array_merge(
-                WordCharDataProvider::LETTERS_LC_RU,
-                WordCharDataProvider::LETTERS_UC_RU,
-            ),
-            default => $this->fail("Unsupported language provided: {$language}."),
-        };
-
+        $expectedAllLetterChars = $this->getAllLetters($language);
         $allLetterChars = $this->provider->getAllLetters($language);
 
         $this->assertIsArray($allLetterChars);
@@ -51,12 +43,7 @@ class WordCharDataProviderTest extends TestCase
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testGetVowels(string $language): void
     {
-        $expectedVowelChars = match ($language) {
-            Language::En->value => WordCharDataProvider::VOWELS_EN,
-            Language::Ru->value => WordCharDataProvider::VOWELS_RU,
-            default => $this->fail("Unsupported language provided: {$language}."),
-        };
-
+        $expectedVowelChars = $this->getVowels($language);
         $vowelChars = $this->provider->getVowels($language);
 
         $this->assertIsArray($vowelChars);
@@ -76,20 +63,8 @@ class WordCharDataProviderTest extends TestCase
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testGetConsonants(string $language): void
     {
-        $allLetterChars = match ($language) {
-            Language::En->value => array_merge(range('a', 'z'), range('A', 'Z')),
-            Language::Ru->value => array_merge(
-                WordCharDataProvider::LETTERS_LC_RU,
-                WordCharDataProvider::LETTERS_UC_RU,
-            ),
-            default => $this->fail("Unsupported language provided: {$language}."),
-        };
-
-        $vowelChars = match ($language) {
-            Language::En->value => WordCharDataProvider::VOWELS_EN,
-            Language::Ru->value => WordCharDataProvider::VOWELS_RU,
-            default => $this->fail("Unsupported language provided: {$language}."),
-        };
+        $allLetterChars = $this->getAllLetters($language);
+        $vowelChars = $this->getVowels($language);
 
         $expectedConsonantChars = array_diff($allLetterChars, $vowelChars);
         $consonantChars = $this->provider->getConsonants($language);
@@ -203,5 +178,26 @@ class WordCharDataProviderTest extends TestCase
                 "Closing character {$closingChar} must be exactly one character long.",
             );
         }
+    }
+
+    private function getAllLetters(string $language): array
+    {
+        return match ($language) {
+            Language::En->value => array_merge(range('a', 'z'), range('A', 'Z')),
+            Language::Ru->value => array_merge(
+                WordCharDataProvider::LETTERS_LC_RU,
+                WordCharDataProvider::LETTERS_UC_RU,
+            ),
+            default => $this->fail("Unsupported language provided: {$language}."),
+        };
+    }
+
+    private function getVowels(string $language): array
+    {
+        return match ($language) {
+            Language::En->value => WordCharDataProvider::VOWELS_EN,
+            Language::Ru->value => WordCharDataProvider::VOWELS_RU,
+            default => $this->fail("Unsupported language provided: {$language}."),
+        };
     }
 }
