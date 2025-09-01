@@ -102,43 +102,41 @@ class WordCharDataProviderTest extends TestCase
         );
     }
 
-    public function testIsPunctuation(): void
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testIsPunctuation(string $language): void
     {
         $punctuationChars = WordCharDataProvider::PUNCTUATION;
 
+        foreach ($punctuationChars as $char) {
+            $this->assertTrue(
+                $this->provider->isPunctuation($char),
+                "Character '{$char}' should be recognized as punctuation.",
+            );
+        }
+
         $allChars = array_unique(array_merge(
-            ['', ' ', "\n"],
-            range('0', '9'),
-            range('a', 'z'),
-            range('A', 'Z'),
-            WordCharDataProvider::LETTERS_LC_RU,
-            WordCharDataProvider::LETTERS_UC_RU,
-            WordCharDataProvider::SPECIALS_EN,
-            WordCharDataProvider::SPECIALS_RU,
+            $this->provider->getAllLetters($language),
+            $this->getSpecials($language),
             array_keys(WordCharDataProvider::PAIRED),
             array_values(WordCharDataProvider::PAIRED),
+            range('0', '9'),
+            ['', ' ', "\n", "\t"],
         ));
 
         $nonPunctuationChars = array_diff($allChars, $punctuationChars);
 
-        foreach ($punctuationChars as $char) {
-            $this->assertTrue($this->provider->isPunctuation($char));
-        }
-
         foreach ($nonPunctuationChars as $char) {
-            $this->assertFalse($this->provider->isPunctuation($char));
+            $this->assertFalse(
+                $this->provider->isPunctuation($char),
+                "Character '{$char}' should not be recognized as punctuation for {$language} language.",
+            );
         }
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testSpecialsContainsOnlyOneCharStringsAndNoAlphanumeric(string $language): void
     {
-        $specialChars = match ($language) {
-            Language::En->value => WordCharDataProvider::SPECIALS_EN,
-            Language::Ru->value => WordCharDataProvider::SPECIALS_RU,
-            default => $this->fail("Unsupported language provided: {$language}."),
-        };
-
+        $specialChars = $this->getSpecials($language);
         $allLetters = $this->provider->getAllLetters($language);
         $digitChars = range('0', '9');
         $forbiddenChars = array_merge($allLetters, $digitChars);
@@ -147,12 +145,12 @@ class WordCharDataProviderTest extends TestCase
             $this->assertEquals(
                 self::SINGLE_CHAR_LENGTH,
                 mb_strlen($char),
-                "Special character {$char} must be exactly one character long for {$language} language.",
+                "Special character '{$char}' must be exactly one character long for {$language} language.",
             );
             $this->assertNotContains(
                 $char,
                 $forbiddenChars,
-                "Special character {$char} should not be alphanumeric for {$language} language.",
+                "Special character '{$char}' should not be alphanumeric for {$language} language.",
             );
         }
     }
@@ -170,12 +168,12 @@ class WordCharDataProviderTest extends TestCase
             $this->assertEquals(
                 self::SINGLE_CHAR_LENGTH,
                 mb_strlen($openingChar),
-                "Opening character {$openingChar} must be exactly one character long.",
+                "Opening character '{$openingChar}' must be exactly one character long.",
             );
             $this->assertEquals(
                 self::SINGLE_CHAR_LENGTH,
                 mb_strlen($closingChar),
-                "Closing character {$closingChar} must be exactly one character long.",
+                "Closing character '{$closingChar}' must be exactly one character long.",
             );
         }
     }
@@ -197,6 +195,15 @@ class WordCharDataProviderTest extends TestCase
         return match ($language) {
             Language::En->value => WordCharDataProvider::VOWELS_EN,
             Language::Ru->value => WordCharDataProvider::VOWELS_RU,
+            default => $this->fail("Unsupported language provided: {$language}."),
+        };
+    }
+
+    private function getSpecials(string $language): array
+    {
+        return match ($language) {
+            Language::En->value => WordCharDataProvider::SPECIALS_EN,
+            Language::Ru->value => WordCharDataProvider::SPECIALS_RU,
             default => $this->fail("Unsupported language provided: {$language}."),
         };
     }
