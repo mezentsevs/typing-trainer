@@ -686,7 +686,7 @@ class TestTextSeeder extends Seeder
                         Type these words, let fingers find their way,
                         As dragon's tears reflect the breaking day.
                         The saga lives in every key you press,
-                        a tale of loss, of hope, and tenderness.
+                        A tale of loss, of hope, and tenderness.
                         EOT,
                 ],
                 [
