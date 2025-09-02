@@ -110,7 +110,7 @@ class WordCharDataProviderTest extends TestCase
         foreach ($punctuationChars as $char) {
             $this->assertTrue(
                 $this->provider->isPunctuation($char),
-                "Character '{$char}' should be recognized as punctuation.",
+                "Character '{$char}' should be recognized as punctuation for {$language} language.",
             );
         }
 
