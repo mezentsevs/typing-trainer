@@ -102,6 +102,23 @@ class WordCharDataProviderTest extends TestCase
         );
     }
 
+    public function testPunctuationHasValidStructure(): void
+    {
+        $punctuationChars = WordCharDataProvider::PUNCTUATION;
+
+        $this->assertIsArray($punctuationChars);
+        $this->assertNotEmpty($punctuationChars);
+
+        foreach ($punctuationChars as $char) {
+            $this->assertIsString($char);
+            $this->assertEquals(
+                self::SINGLE_CHAR_LENGTH,
+                mb_strlen($char),
+                "Punctuation character '{$char}' must be exactly one character long.",
+            );
+        }
+    }
+
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testIsPunctuation(string $language): void
     {
