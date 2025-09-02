@@ -203,7 +203,7 @@ class WordCharDataProviderTest extends TestCase
                 WordCharDataProvider::LETTERS_LC_RU,
                 WordCharDataProvider::LETTERS_UC_RU,
             ),
-            default => $this->fail("Unsupported language provided: {$language}."),
+            default => $this->failUnsupportedLanguage($language),
         };
     }
 
@@ -212,7 +212,7 @@ class WordCharDataProviderTest extends TestCase
         return match ($language) {
             Language::En->value => WordCharDataProvider::VOWELS_EN,
             Language::Ru->value => WordCharDataProvider::VOWELS_RU,
-            default => $this->fail("Unsupported language provided: {$language}."),
+            default => $this->failUnsupportedLanguage($language),
         };
     }
 
@@ -221,7 +221,12 @@ class WordCharDataProviderTest extends TestCase
         return match ($language) {
             Language::En->value => WordCharDataProvider::SPECIALS_EN,
             Language::Ru->value => WordCharDataProvider::SPECIALS_RU,
-            default => $this->fail("Unsupported language provided: {$language}."),
+            default => $this->failUnsupportedLanguage($language),
         };
+    }
+
+    private function failUnsupportedLanguage(string $language): never
+    {
+        $this->fail("Unsupported language provided: {$language}.");
     }
 }
