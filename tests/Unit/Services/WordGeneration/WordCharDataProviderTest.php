@@ -12,7 +12,20 @@ class WordCharDataProviderTest extends TestCase
 {
     protected WordCharDataProvider $provider;
 
-    protected const int SINGLE_CHAR_LENGTH = 1;
+    private const int EXPECTED_SINGLE_CHAR_LENGTH = 1;
+
+    private const int EXPECTED_MIN_LETTERS_PART_LENGTH = 3;
+    private const int EXPECTED_MAX_LETTERS_PART_LENGTH = 8;
+    private const int EXPECTED_RANDOM_MIN_VALUE = 0;
+    private const int EXPECTED_RANDOM_MAX_VALUE = 99;
+    private const int EXPECTED_DIGIT_USAGE_CHANCE = 30;
+    private const int EXPECTED_NEW_CHAR_USAGE_CHANCE = 70;
+    private const int EXPECTED_BINARY_CHOICE_MIN = 0;
+    private const int EXPECTED_BINARY_CHOICE_MAX = 1;
+    private const int EXPECTED_BINARY_CHOICE_DEFAULT = 0;
+
+    private const string EXPECTED_CHAR_TYPE_VOWEL = 'V';
+    private const string EXPECTED_CHAR_TYPE_CONSONANT = 'C';
 
     protected function setUp(): void
     {
@@ -112,7 +125,7 @@ class WordCharDataProviderTest extends TestCase
         foreach ($punctuationChars as $char) {
             $this->assertIsString($char);
             $this->assertEquals(
-                self::SINGLE_CHAR_LENGTH,
+                self::EXPECTED_SINGLE_CHAR_LENGTH,
                 mb_strlen($char),
                 "Punctuation character '{$char}' must be exactly one character long.",
             );
@@ -160,7 +173,7 @@ class WordCharDataProviderTest extends TestCase
 
         foreach ($specialChars as $char) {
             $this->assertEquals(
-                self::SINGLE_CHAR_LENGTH,
+                self::EXPECTED_SINGLE_CHAR_LENGTH,
                 mb_strlen($char),
                 "Special character '{$char}' must be exactly one character long for {$language} language.",
             );
@@ -183,14 +196,40 @@ class WordCharDataProviderTest extends TestCase
             $this->assertIsString($openingChar);
             $this->assertIsString($closingChar);
             $this->assertEquals(
-                self::SINGLE_CHAR_LENGTH,
+                self::EXPECTED_SINGLE_CHAR_LENGTH,
                 mb_strlen($openingChar),
                 "Opening character '{$openingChar}' must be exactly one character long.",
             );
             $this->assertEquals(
-                self::SINGLE_CHAR_LENGTH,
+                self::EXPECTED_SINGLE_CHAR_LENGTH,
                 mb_strlen($closingChar),
                 "Closing character '{$closingChar}' must be exactly one character long.",
+            );
+        }
+    }
+
+    public function testScalarConstantsHaveExpectedValues(): void
+    {
+        $expectedConstants = [
+            'MIN_LETTERS_PART_LENGTH' => self::EXPECTED_MIN_LETTERS_PART_LENGTH,
+            'MAX_LETTERS_PART_LENGTH' => self::EXPECTED_MAX_LETTERS_PART_LENGTH,
+            'RANDOM_MIN_VALUE' => self::EXPECTED_RANDOM_MIN_VALUE,
+            'RANDOM_MAX_VALUE' => self::EXPECTED_RANDOM_MAX_VALUE,
+            'DIGIT_USAGE_CHANCE' => self::EXPECTED_DIGIT_USAGE_CHANCE,
+            'NEW_CHAR_USAGE_CHANCE' => self::EXPECTED_NEW_CHAR_USAGE_CHANCE,
+            'BINARY_CHOICE_MIN' => self::EXPECTED_BINARY_CHOICE_MIN,
+            'BINARY_CHOICE_MAX' => self::EXPECTED_BINARY_CHOICE_MAX,
+            'BINARY_CHOICE_DEFAULT' => self::EXPECTED_BINARY_CHOICE_DEFAULT,
+
+            'CHAR_TYPE_VOWEL' => self::EXPECTED_CHAR_TYPE_VOWEL,
+            'CHAR_TYPE_CONSONANT' => self::EXPECTED_CHAR_TYPE_CONSONANT,
+        ];
+
+        foreach ($expectedConstants as $constantName => $expectedConstantValue) {
+            $this->assertSame(
+                $expectedConstantValue,
+                constant(WordCharDataProvider::class . "::{$constantName}"),
+                "Constant {$constantName} has unexpected value.",
             );
         }
     }
