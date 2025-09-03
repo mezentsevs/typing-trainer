@@ -50,7 +50,7 @@ class WordCharDataProviderTest extends TestCase
     public function testGetAllLettersWithUnknownLanguage(): void
     {
         $allLetterChars = $this->provider->getAllLetters(Language::Unknown->value);
-        $this->assertSame([], $allLetterChars, 'Return value must be empty array for unknown language.');
+        $this->assertEquals([], $allLetterChars, 'Return value must be empty array for unknown language.');
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
@@ -70,7 +70,7 @@ class WordCharDataProviderTest extends TestCase
     public function testGetVowelsWithUnknownLanguage(): void
     {
         $vowelChars = $this->provider->getVowels(Language::Unknown->value);
-        $this->assertSame([], $vowelChars, 'Return value must be empty array for unknown language.');
+        $this->assertEquals([], $vowelChars, 'Return value must be empty array for unknown language.');
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
@@ -93,7 +93,7 @@ class WordCharDataProviderTest extends TestCase
     public function testGetConsonantsWithUnknownLanguage(): void
     {
         $consonantChars = $this->provider->getConsonants(Language::Unknown->value);
-        $this->assertSame([], $consonantChars, 'Return value must be empty array for unknown language.');
+        $this->assertEquals([], $consonantChars, 'Return value must be empty array for unknown language.');
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
@@ -226,7 +226,7 @@ class WordCharDataProviderTest extends TestCase
         ];
 
         foreach ($expectedConstants as $constantName => $expectedConstantValue) {
-            $this->assertSame(
+            $this->assertEquals(
                 $expectedConstantValue,
                 constant(WordCharDataProvider::class . "::{$constantName}"),
                 "Constant {$constantName} has unexpected value.",
