@@ -34,6 +34,38 @@ class WordCharDataProviderTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testLanguageConstantsHaveValidStructure(string $language): void
+    {
+        $constants = match ($language) {
+            Language::En->value => [
+                'VOWELS_EN' => WordCharDataProvider::VOWELS_EN,
+                'SPECIALS_EN' => WordCharDataProvider::SPECIALS_EN,
+            ],
+            Language::Ru->value => [
+                'LETTERS_LC_RU' => WordCharDataProvider::LETTERS_LC_RU,
+                'LETTERS_UC_RU' => WordCharDataProvider::LETTERS_UC_RU,
+                'VOWELS_RU' => WordCharDataProvider::VOWELS_RU,
+                'SPECIALS_RU' => WordCharDataProvider::SPECIALS_RU,
+            ],
+            default => $this->failUnsupportedLanguage($language),
+        };
+
+        foreach ($constants as $constantName => $constantValue) {
+            $this->assertIsArray($constantValue);
+            $this->assertNotEmpty($constantValue);
+
+            foreach ($constantValue as $char) {
+                $this->assertIsString($char);
+                $this->assertEquals(
+                    self::EXPECTED_SINGLE_CHAR_LENGTH,
+                    mb_strlen($char),
+                    "Character '{$char}' in constant {$constantName} must be exactly one character long for {$language} language.",
+                );
+            }
+        }
+    }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testGetAllLetters(string $language): void
     {
         $expectedAllLetterChars = $this->getAllLetters($language);
