@@ -66,6 +66,89 @@ class WordCharDataProviderTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testSpecialsConstantsContainsNoAlphanumeric(string $language): void
+    {
+        $specialChars = $this->getSpecials($language);
+        $allLetters = $this->provider->getAllLetters($language);
+        $digitChars = range('0', '9');
+        $forbiddenChars = array_merge($allLetters, $digitChars);
+
+        foreach ($specialChars as $char) {
+            $this->assertNotContains(
+                $char,
+                $forbiddenChars,
+                "Special character '{$char}' should not be alphanumeric for {$language} language.",
+            );
+        }
+    }
+
+    public function testPairedConstantHasValidStructure(): void
+    {
+        $pairedChars = WordCharDataProvider::PAIRED;
+
+        $this->assertIsArray($pairedChars);
+        $this->assertNotEmpty($pairedChars);
+
+        foreach ($pairedChars as $openingChar => $closingChar) {
+            $this->assertIsString($openingChar);
+            $this->assertIsString($closingChar);
+            $this->assertEquals(
+                self::EXPECTED_SINGLE_CHAR_LENGTH,
+                mb_strlen($openingChar),
+                "Opening character '{$openingChar}' must be exactly one character long.",
+            );
+            $this->assertEquals(
+                self::EXPECTED_SINGLE_CHAR_LENGTH,
+                mb_strlen($closingChar),
+                "Closing character '{$closingChar}' must be exactly one character long.",
+            );
+        }
+    }
+
+    public function testPunctuationConstantHasValidStructure(): void
+    {
+        $punctuationChars = WordCharDataProvider::PUNCTUATION;
+
+        $this->assertIsArray($punctuationChars);
+        $this->assertNotEmpty($punctuationChars);
+
+        foreach ($punctuationChars as $char) {
+            $this->assertIsString($char);
+            $this->assertEquals(
+                self::EXPECTED_SINGLE_CHAR_LENGTH,
+                mb_strlen($char),
+                "Punctuation character '{$char}' must be exactly one character long.",
+            );
+        }
+    }
+
+    public function testScalarConstantsHaveExpectedValues(): void
+    {
+        $expectedConstants = [
+            'MIN_LETTERS_PART_LENGTH' => self::EXPECTED_MIN_LETTERS_PART_LENGTH,
+            'MAX_LETTERS_PART_LENGTH' => self::EXPECTED_MAX_LETTERS_PART_LENGTH,
+            'RANDOM_MIN_VALUE' => self::EXPECTED_RANDOM_MIN_VALUE,
+            'RANDOM_MAX_VALUE' => self::EXPECTED_RANDOM_MAX_VALUE,
+            'DIGIT_USAGE_CHANCE' => self::EXPECTED_DIGIT_USAGE_CHANCE,
+            'NEW_CHAR_USAGE_CHANCE' => self::EXPECTED_NEW_CHAR_USAGE_CHANCE,
+            'BINARY_CHOICE_MIN' => self::EXPECTED_BINARY_CHOICE_MIN,
+            'BINARY_CHOICE_MAX' => self::EXPECTED_BINARY_CHOICE_MAX,
+            'BINARY_CHOICE_DEFAULT' => self::EXPECTED_BINARY_CHOICE_DEFAULT,
+
+            'CHAR_TYPE_VOWEL' => self::EXPECTED_CHAR_TYPE_VOWEL,
+            'CHAR_TYPE_CONSONANT' => self::EXPECTED_CHAR_TYPE_CONSONANT,
+        ];
+
+        foreach ($expectedConstants as $constantName => $expectedConstantValue) {
+            $this->assertEquals(
+                $expectedConstantValue,
+                constant(WordCharDataProvider::class . "::{$constantName}"),
+                "Constant {$constantName} has unexpected value.",
+            );
+        }
+    }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testGetAllLetters(string $language): void
     {
         $expectedAllLetterChars = $this->getAllLetters($language);
@@ -147,23 +230,6 @@ class WordCharDataProviderTest extends TestCase
         );
     }
 
-    public function testPunctuationHasValidStructure(): void
-    {
-        $punctuationChars = WordCharDataProvider::PUNCTUATION;
-
-        $this->assertIsArray($punctuationChars);
-        $this->assertNotEmpty($punctuationChars);
-
-        foreach ($punctuationChars as $char) {
-            $this->assertIsString($char);
-            $this->assertEquals(
-                self::EXPECTED_SINGLE_CHAR_LENGTH,
-                mb_strlen($char),
-                "Punctuation character '{$char}' must be exactly one character long.",
-            );
-        }
-    }
-
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testIsPunctuation(string $language): void
     {
@@ -191,77 +257,6 @@ class WordCharDataProviderTest extends TestCase
             $this->assertFalse(
                 $this->provider->isPunctuation($char),
                 "Character '{$char}' should not be recognized as punctuation for {$language} language.",
-            );
-        }
-    }
-
-    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testSpecialsContainsOnlyOneCharStringsAndNoAlphanumeric(string $language): void
-    {
-        $specialChars = $this->getSpecials($language);
-        $allLetters = $this->provider->getAllLetters($language);
-        $digitChars = range('0', '9');
-        $forbiddenChars = array_merge($allLetters, $digitChars);
-
-        foreach ($specialChars as $char) {
-            $this->assertEquals(
-                self::EXPECTED_SINGLE_CHAR_LENGTH,
-                mb_strlen($char),
-                "Special character '{$char}' must be exactly one character long for {$language} language.",
-            );
-            $this->assertNotContains(
-                $char,
-                $forbiddenChars,
-                "Special character '{$char}' should not be alphanumeric for {$language} language.",
-            );
-        }
-    }
-
-    public function testPairedHasValidStructure(): void
-    {
-        $pairedChars = WordCharDataProvider::PAIRED;
-
-        $this->assertIsArray($pairedChars);
-        $this->assertNotEmpty($pairedChars);
-
-        foreach ($pairedChars as $openingChar => $closingChar) {
-            $this->assertIsString($openingChar);
-            $this->assertIsString($closingChar);
-            $this->assertEquals(
-                self::EXPECTED_SINGLE_CHAR_LENGTH,
-                mb_strlen($openingChar),
-                "Opening character '{$openingChar}' must be exactly one character long.",
-            );
-            $this->assertEquals(
-                self::EXPECTED_SINGLE_CHAR_LENGTH,
-                mb_strlen($closingChar),
-                "Closing character '{$closingChar}' must be exactly one character long.",
-            );
-        }
-    }
-
-    public function testScalarConstantsHaveExpectedValues(): void
-    {
-        $expectedConstants = [
-            'MIN_LETTERS_PART_LENGTH' => self::EXPECTED_MIN_LETTERS_PART_LENGTH,
-            'MAX_LETTERS_PART_LENGTH' => self::EXPECTED_MAX_LETTERS_PART_LENGTH,
-            'RANDOM_MIN_VALUE' => self::EXPECTED_RANDOM_MIN_VALUE,
-            'RANDOM_MAX_VALUE' => self::EXPECTED_RANDOM_MAX_VALUE,
-            'DIGIT_USAGE_CHANCE' => self::EXPECTED_DIGIT_USAGE_CHANCE,
-            'NEW_CHAR_USAGE_CHANCE' => self::EXPECTED_NEW_CHAR_USAGE_CHANCE,
-            'BINARY_CHOICE_MIN' => self::EXPECTED_BINARY_CHOICE_MIN,
-            'BINARY_CHOICE_MAX' => self::EXPECTED_BINARY_CHOICE_MAX,
-            'BINARY_CHOICE_DEFAULT' => self::EXPECTED_BINARY_CHOICE_DEFAULT,
-
-            'CHAR_TYPE_VOWEL' => self::EXPECTED_CHAR_TYPE_VOWEL,
-            'CHAR_TYPE_CONSONANT' => self::EXPECTED_CHAR_TYPE_CONSONANT,
-        ];
-
-        foreach ($expectedConstants as $constantName => $expectedConstantValue) {
-            $this->assertEquals(
-                $expectedConstantValue,
-                constant(WordCharDataProvider::class . "::{$constantName}"),
-                "Constant {$constantName} has unexpected value.",
             );
         }
     }
