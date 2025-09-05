@@ -125,6 +125,18 @@ class WordCharDataProviderTest extends TestCase
         }
     }
 
+    public function testPunctuationConstantHasUniqueElements(): void
+    {
+        $punctuationChars = WordCharDataProvider::PUNCTUATION;
+        $uniquePunctuationChars = array_unique($punctuationChars);
+
+        $this->assertEquals(
+            count($uniquePunctuationChars),
+            count($punctuationChars),
+            "Constant PUNCTUATION contains duplicate elements.",
+        );
+    }
+
     public function testScalarConstantsHaveExpectedValues(): void
     {
         $expectedConstants = [
