@@ -108,6 +108,19 @@ class WordCharDataProviderTest extends TestCase
         }
     }
 
+    public function testPairedConstantHasUniqueValues(): void
+    {
+        $pairedChars = WordCharDataProvider::PAIRED;
+        $pairedCharsValues = array_values($pairedChars);
+        $uniquePairedCharsValues = array_unique($pairedCharsValues);
+
+        $this->assertEquals(
+            count($uniquePairedCharsValues),
+            count($pairedCharsValues),
+            'Constant PAIRED contains duplicate values.',
+        );
+    }
+
     public function testPunctuationConstantHasValidStructure(): void
     {
         $punctuationChars = WordCharDataProvider::PUNCTUATION;
