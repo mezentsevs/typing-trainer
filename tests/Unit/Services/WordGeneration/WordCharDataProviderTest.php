@@ -133,7 +133,7 @@ class WordCharDataProviderTest extends TestCase
         $this->assertEquals(
             count($uniquePunctuationChars),
             count($punctuationChars),
-            "Constant PUNCTUATION contains duplicate elements.",
+            'Constant PUNCTUATION contains duplicate elements.',
         );
     }
 
