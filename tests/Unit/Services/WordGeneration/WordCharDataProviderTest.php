@@ -59,9 +59,9 @@ class WordCharDataProviderTest extends TestCase
         $constants = $this->getLanguageConstants($language);
 
         foreach ($constants as $constantName => $constantValue) {
-            $uniqueElements = array_unique($constantValue);
+            $uniqueConstantValueElements = array_unique($constantValue);
             $this->assertEquals(
-                count($uniqueElements),
+                count($uniqueConstantValueElements),
                 count($constantValue),
                 "Constant {$constantName} contains duplicate elements for {$language} language.",
             );
