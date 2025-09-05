@@ -32,7 +32,7 @@ class TestController extends Controller
 
         return response()->json([
             'message' => 'File uploaded',
-            'path' => $request->file('file')->storeAs('uploads', "test_" . auth()->id() . "_{$request->language}.txt", 'public'),
+            'path' => $request->file('file')->storeAs('uploads', 'test_' . auth()->id() . "_{$request->language}.txt", 'public'),
         ]);
     }
 
