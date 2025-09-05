@@ -54,6 +54,21 @@ class WordCharDataProviderTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testLanguageConstantsHaveUniqueElements(string $language): void
+    {
+        $constants = $this->getLanguageConstants($language);
+
+        foreach ($constants as $constantName => $constantValue) {
+            $uniqueElements = array_unique($constantValue);
+            $this->assertEquals(
+                count($uniqueElements),
+                count($constantValue),
+                "Constant {$constantName} contains duplicate elements for {$language} language.",
+            );
+        }
+    }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testSpecialsConstantsContainsNoAlphanumeric(string $language): void
     {
         $specialChars = $this->getSpecials($language);
