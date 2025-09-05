@@ -34,6 +34,9 @@ return new Config()
             ],
             'after_heredoc' => true,
         ],
+        'single_quote' => [
+            'strings_containing_single_quote_chars' => false,
+        ],
     ])
     ->setFinder($finder)
     ->setRiskyAllowed(true)
