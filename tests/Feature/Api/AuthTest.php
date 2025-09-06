@@ -23,6 +23,8 @@ class AuthTest extends TestCase
     private const string TEST_INVALID_PASSWORD = 'wrong_password';
     private const string TEST_INVALID_SHORT_PASSWORD = 'short';
 
+    private const int TEST_LESSON_NUMBER = 1;
+
     private const string EXPECTED_INVALID_CREDENTIALS_MESSAGE = 'Invalid credentials';
 
     public function testUserRegistration(): void
@@ -129,7 +131,7 @@ class AuthTest extends TestCase
 
     public function testUnauthenticatedAccess(): void
     {
-        $response = $this->getJson('/api/lessons/' . Language::En->value . '/1');
+        $response = $this->getJson('/api/lessons/' . Language::En->value . '/' . self::TEST_LESSON_NUMBER);
         $response->assertStatus(401);
     }
 }
