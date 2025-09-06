@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Api;
 
+use App\Enums\Language;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\Feature\Traits\WithUser;
 use Tests\TestCase;
@@ -113,7 +114,7 @@ class AuthTest extends TestCase
 
     public function testUnauthenticatedAccess(): void
     {
-        $response = $this->getJson('/api/lessons/en/1');
+        $response = $this->getJson('/api/lessons/' . Language::En->value . '/1');
         $response->assertStatus(401);
     }
 }

@@ -48,7 +48,7 @@ class TestsTest extends TestCase
     public function testTextRetrieval(): void
     {
         $response = $this->withToken($this->token)
-            ->getJson('/api/test/text?language=en');
+            ->getJson('/api/test/text?language=' . Language::En->value);
 
         $response->assertStatus(200)
             ->assertJsonStructure(['text']);

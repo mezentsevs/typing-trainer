@@ -159,7 +159,7 @@ class LessonsTest extends TestCase
     public function testLessonNotFound(): void
     {
         $response = $this->withToken($this->token)
-            ->getJson('/api/lessons/en/' . self::TEST_NON_EXISTENT_LESSON_NUMBER);
+            ->getJson('/api/lessons/' . Language::En->value . '/' . self::TEST_NON_EXISTENT_LESSON_NUMBER);
 
         $response->assertStatus(404);
     }
