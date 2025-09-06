@@ -4,6 +4,7 @@ namespace Tests\Feature\Api;
 
 use App\Enums\Language;
 use App\Models\Lesson;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\Feature\Traits\WithLesson;
 use Tests\Feature\Traits\WithUser;
@@ -12,6 +13,10 @@ use Tests\TestCase;
 class LessonsTest extends TestCase
 {
     use RefreshDatabase, WithUser, WithLesson;
+
+    private User $user;
+
+    private string $token;
 
     private const int TEST_ERRORS = 2;
     private const int TEST_INVALID_ERRORS = -1;
@@ -30,12 +35,16 @@ class LessonsTest extends TestCase
 
     private const string EXPECTED_LESSONS_GENERATED_MESSAGE = 'Lessons generated';
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->user = $this->createUser();
+        $this->token = $this->createTokenForUser($this->user, self::TEST_TOKEN_NAME);
+    }
+
     public function testLessonGeneration(): void
     {
-        $user = $this->createUser();
-        $token = $this->createTokenForUser($user, self::TEST_TOKEN_NAME);
-
-        $response = $this->withToken($token)
+        $response = $this->withToken($this->token)
             ->postJson('/api/lessons/generate', [
                 'language' => Language::En->value,
                 'lesson_count' => self::TEST_LESSON_COUNT,
@@ -44,18 +53,19 @@ class LessonsTest extends TestCase
         $response->assertStatus(200)
             ->assertJson(['message' => self::EXPECTED_LESSONS_GENERATED_MESSAGE]);
 
-        $this->assertCount(self::TEST_LESSON_COUNT, Lesson::where('user_id', $user->id)
-            ->where('language', Language::En->value)
-            ->get());
+        $this->assertCount(
+            self::TEST_LESSON_COUNT,
+            Lesson::where('user_id', $this->user->id)
+                ->where('language', Language::En->value)
+                ->get(),
+        );
     }
 
     public function testLessonShow(): void
     {
-        $user = $this->createUser();
-        $lesson = $this->createLesson($user);
-        $token = $this->createTokenForUser($user, self::TEST_TOKEN_NAME);
+        $lesson = $this->createLesson($this->user);
 
-        $response = $this->withToken($token)
+        $response = $this->withToken($this->token)
             ->getJson("/api/lessons/{$lesson->language}/{$lesson->number}");
 
         $response->assertStatus(200)
@@ -64,11 +74,9 @@ class LessonsTest extends TestCase
 
     public function testSaveLessonResult(): void
     {
-        $user = $this->createUser();
-        $lesson = $this->createLesson($user);
-        $token = $this->createTokenForUser($user, self::TEST_TOKEN_NAME);
+        $lesson = $this->createLesson($this->user);
 
-        $response = $this->withToken($token)
+        $response = $this->withToken($this->token)
             ->postJson('/api/lessons/result', [
                 'lesson_id' => $lesson->id,
                 'language' => Language::En->value,
@@ -83,11 +91,9 @@ class LessonsTest extends TestCase
 
     public function testSaveLessonResultWithZeroValues(): void
     {
-        $user = $this->createUser();
-        $lesson = $this->createLesson($user);
-        $token = $this->createTokenForUser($user, self::TEST_TOKEN_NAME);
+        $lesson = $this->createLesson($this->user);
 
-        $response = $this->withToken($token)
+        $response = $this->withToken($this->token)
             ->postJson('/api/lessons/result', [
                 'lesson_id' => $lesson->id,
                 'language' => Language::En->value,
@@ -102,10 +108,7 @@ class LessonsTest extends TestCase
 
     public function testLessonGenerationValidation(): void
     {
-        $user = $this->createUser();
-        $token = $this->createTokenForUser($user, self::TEST_TOKEN_NAME);
-
-        $response = $this->withToken($token)
+        $response = $this->withToken($this->token)
             ->postJson('/api/lessons/generate', [
                 'language' => self::TEST_EMPTY_LANGUAGE,
                 'lesson_count' => self::TEST_INVALID_LESSON_COUNT,
@@ -117,11 +120,9 @@ class LessonsTest extends TestCase
 
     public function testSaveLessonResultValidation(): void
     {
-        $user = $this->createUser();
-        $lesson = $this->createLesson($user);
-        $token = $this->createTokenForUser($user, self::TEST_TOKEN_NAME);
+        $lesson = $this->createLesson($this->user);
 
-        $response = $this->withToken($token)
+        $response = $this->withToken($this->token)
             ->postJson('/api/lessons/result', [
                 'lesson_id' => $lesson->id,
                 'language' => Language::En->value,
@@ -136,10 +137,7 @@ class LessonsTest extends TestCase
 
     public function testLessonNotFound(): void
     {
-        $user = $this->createUser();
-        $token = $this->createTokenForUser($user, self::TEST_TOKEN_NAME);
-
-        $response = $this->withToken($token)
+        $response = $this->withToken($this->token)
             ->getJson('/api/lessons/en/' . self::TEST_NON_EXISTENT_LESSON_NUMBER);
 
         $response->assertStatus(404);

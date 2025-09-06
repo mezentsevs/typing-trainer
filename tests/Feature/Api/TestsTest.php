@@ -3,6 +3,7 @@
 namespace Tests\Feature\Api;
 
 use App\Enums\Language;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
@@ -12,6 +13,10 @@ use Tests\TestCase;
 class TestsTest extends TestCase
 {
     use RefreshDatabase, WithUser;
+
+    private User $user;
+
+    private string $token;
 
     private const int TEST_ERRORS = 2;
     private const int TEST_EXCEEDED_FILE_SIZE = 4;
@@ -31,12 +36,16 @@ class TestsTest extends TestCase
 
     private const string EXPECTED_FILE_UPLOADED_MESSAGE = 'File uploaded';
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->user = $this->createUser();
+        $this->token = $this->createTokenForUser($this->user, self::TEST_TOKEN_NAME);
+    }
+
     public function testTextRetrieval(): void
     {
-        $user = $this->createUser();
-        $token = $this->createTokenForUser($user, self::TEST_TOKEN_NAME);
-
-        $response = $this->withToken($token)
+        $response = $this->withToken($this->token)
             ->getJson('/api/test/text?language=en');
 
         $response->assertStatus(200)
@@ -46,11 +55,9 @@ class TestsTest extends TestCase
     public function testTextUpload(): void
     {
         Storage::fake('public');
-        $user = $this->createUser();
-        $token = $this->createTokenForUser($user, self::TEST_TOKEN_NAME);
         $file = UploadedFile::fake()->createWithContent('test.txt', self::TEST_FILE_CONTENT);
 
-        $response = $this->withToken($token)
+        $response = $this->withToken($this->token)
             ->postJson('/api/test/upload', [
                 'language' => Language::En->value,
                 'file' => $file,
@@ -63,10 +70,7 @@ class TestsTest extends TestCase
 
     public function testSaveTestResult(): void
     {
-        $user = $this->createUser();
-        $token = $this->createTokenForUser($user, self::TEST_TOKEN_NAME);
-
-        $response = $this->withToken($token)
+        $response = $this->withToken($this->token)
             ->postJson('/api/test/result', [
                 'language' => Language::En->value,
                 'time_seconds' => self::TEST_TIME_SECONDS,
@@ -80,10 +84,7 @@ class TestsTest extends TestCase
 
     public function testSaveTestResultWithZeroValues(): void
     {
-        $user = $this->createUser();
-        $token = $this->createTokenForUser($user, self::TEST_TOKEN_NAME);
-
-        $response = $this->withToken($token)
+        $response = $this->withToken($this->token)
             ->postJson('/api/test/result', [
                 'language' => Language::En->value,
                 'time_seconds' => self::TEST_ZERO_TIME_SECONDS,
@@ -98,11 +99,13 @@ class TestsTest extends TestCase
     public function testTextUploadValidation(): void
     {
         Storage::fake('public');
-        $user = $this->createUser();
-        $token = $this->createTokenForUser($user, self::TEST_TOKEN_NAME);
-        $invalidFile = UploadedFile::fake()->create('test.jpg', self::TEST_EXCEEDED_FILE_SIZE, self::TEST_INVALID_FILE_TYPE);
+        $invalidFile = UploadedFile::fake()->create(
+            'test.jpg',
+            self::TEST_EXCEEDED_FILE_SIZE,
+            self::TEST_INVALID_FILE_TYPE,
+        );
 
-        $response = $this->withToken($token)
+        $response = $this->withToken($this->token)
             ->postJson('/api/test/upload', [
                 'language' => self::TEST_EMPTY_LANGUAGE,
                 'file' => $invalidFile,
@@ -114,10 +117,7 @@ class TestsTest extends TestCase
 
     public function testSaveResultValidationForLanguage(): void
     {
-        $user = $this->createUser();
-        $token = $this->createTokenForUser($user, self::TEST_TOKEN_NAME);
-
-        $response = $this->withToken($token)
+        $response = $this->withToken($this->token)
             ->postJson('/api/test/result', [
                 'language' => self::TEST_EMPTY_LANGUAGE,
                 'time_seconds' => self::TEST_TIME_SECONDS,
@@ -131,10 +131,7 @@ class TestsTest extends TestCase
 
     public function testSaveResultValidationForOtherFields(): void
     {
-        $user = $this->createUser();
-        $token = $this->createTokenForUser($user, self::TEST_TOKEN_NAME);
-
-        $response = $this->withToken($token)
+        $response = $this->withToken($this->token)
             ->postJson('/api/test/result', [
                 'language' => Language::En->value,
                 'time_seconds' => self::TEST_INVALID_TIME_SECONDS,
