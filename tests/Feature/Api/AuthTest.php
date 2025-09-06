@@ -11,15 +11,17 @@ class AuthTest extends TestCase
 {
     use RefreshDatabase, WithUser;
 
+    private const string TEST_TOKEN_NAME = 'test_token';
+
     private const string TEST_EMAIL = 'test@example.com';
-    private const string TEST_EMPTY_NAME = '';
-    private const string TEST_INVALID_EMAIL_FORMAT = 'invalid_email';
     private const string TEST_NAME = 'Test User';
     private const string TEST_PASSWORD = 'password';
-    private const string TEST_PASSWORD_MISMATCH = 'mismatch';
-    private const string TEST_SHORT_PASSWORD = 'short';
-    private const string TEST_TOKEN_NAME = 'test_token';
-    private const string TEST_WRONG_PASSWORD = 'wrong_password';
+
+    private const string TEST_INVALID_EMAIL = 'invalid_email';
+    private const string TEST_INVALID_EMPTY_NAME = '';
+    private const string TEST_INVALID_EMPTY_PASSWORD = '';
+    private const string TEST_INVALID_PASSWORD = 'wrong_password';
+    private const string TEST_INVALID_SHORT_PASSWORD = 'short';
 
     private const string EXPECTED_INVALID_CREDENTIALS_MESSAGE = 'Invalid credentials';
 
@@ -73,10 +75,10 @@ class AuthTest extends TestCase
     public function testUserRegistrationValidation(): void
     {
         $response = $this->postJson('/api/register', [
-            'name' => self::TEST_EMPTY_NAME,
-            'email' => self::TEST_INVALID_EMAIL_FORMAT,
-            'password' => self::TEST_SHORT_PASSWORD,
-            'password_confirmation' => self::TEST_PASSWORD_MISMATCH,
+            'name' => self::TEST_INVALID_EMPTY_NAME,
+            'email' => self::TEST_INVALID_EMAIL,
+            'password' => self::TEST_INVALID_SHORT_PASSWORD,
+            'password_confirmation' => self::TEST_INVALID_PASSWORD,
         ]);
 
         $response->assertStatus(422)
@@ -87,25 +89,38 @@ class AuthTest extends TestCase
             ]);
     }
 
-    public function testUserLoginValidation(): void
+    public function testUserLoginEmailValidation(): void
     {
         $response = $this->postJson('/api/login', [
-            'email' => self::TEST_INVALID_EMAIL_FORMAT,
-            'password' => self::TEST_EMPTY_NAME,
+            'email' => self::TEST_INVALID_EMAIL,
+            'password' => self::TEST_PASSWORD,
         ]);
 
         $response->assertStatus(422)
-            ->assertJsonValidationErrors([
-                'email',
-                'password',
-            ]);
+            ->assertJsonValidationErrors(['email']);
+    }
+
+    public function testUserLoginPasswordValidation(): void
+    {
+        $this->createUser([
+            'email' => self::TEST_EMAIL,
+            'password' => bcrypt(self::TEST_PASSWORD),
+        ]);
+
+        $response = $this->postJson('/api/login', [
+            'email' => self::TEST_EMAIL,
+            'password' => self::TEST_INVALID_EMPTY_PASSWORD,
+        ]);
+
+        $response->assertStatus(422)
+            ->assertJsonValidationErrors(['password']);
     }
 
     public function testInvalidLoginCredentials(): void
     {
         $response = $this->postJson('/api/login', [
             'email' => self::TEST_EMAIL,
-            'password' => self::TEST_WRONG_PASSWORD,
+            'password' => self::TEST_INVALID_PASSWORD,
         ]);
 
         $response->assertStatus(401)
