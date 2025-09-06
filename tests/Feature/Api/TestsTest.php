@@ -18,23 +18,27 @@ class TestsTest extends TestCase
 
     private string $token;
 
+    private const string TEST_TOKEN_NAME = 'test_token';
+
     private const int TEST_ERRORS = 2;
-    private const int TEST_INVALID_ERRORS = -1;
-    private const int TEST_INVALID_FILE_SIZE = 4;
-    private const int TEST_INVALID_SPEED_WPM = -1;
-    private const int TEST_INVALID_TIME_SECONDS = -1;
-    private const int TEST_MAX_FILE_SIZE = 3;
     private const int TEST_SPEED_WPM = 50;
     private const int TEST_TIME_SECONDS = 60;
     private const int TEST_ZERO_ERRORS = 0;
     private const int TEST_ZERO_SPEED_WPM = 0;
     private const int TEST_ZERO_TIME_SECONDS = 0;
-    private const string TEST_EMPTY_LANGUAGE = '';
+
+    private const int TEST_INVALID_ERRORS = -1;
+    private const int TEST_INVALID_SPEED_WPM = -1;
+    private const int TEST_INVALID_TIME_SECONDS = -1;
+    private const string TEST_INVALID_EMPTY_LANGUAGE = '';
+
+    private const int TEST_MAX_FILE_SIZE_KB = 3;
     private const string TEST_FILE_CONTENT = 'Test file content';
     private const string TEST_FILE_NAME = 'test.txt';
+
+    private const int TEST_INVALID_FILE_SIZE_KB = 4;
     private const string TEST_INVALID_FILE_MIME_TYPE = 'image/jpeg';
     private const string TEST_INVALID_FILE_NAME = 'test.jpeg';
-    private const string TEST_TOKEN_NAME = 'test_token';
 
     private const string EXPECTED_FILE_UPLOADED_MESSAGE = 'File uploaded';
 
@@ -118,13 +122,13 @@ class TestsTest extends TestCase
         Storage::fake('public');
         $invalidFile = UploadedFile::fake()->create(
             self::TEST_INVALID_FILE_NAME,
-            self::TEST_INVALID_FILE_SIZE,
+            self::TEST_INVALID_FILE_SIZE_KB,
             self::TEST_INVALID_FILE_MIME_TYPE,
         );
 
         $response = $this->withToken($this->token)
             ->postJson('/api/test/upload', [
-                'language' => self::TEST_EMPTY_LANGUAGE,
+                'language' => self::TEST_INVALID_EMPTY_LANGUAGE,
                 'file' => $invalidFile,
             ]);
 
@@ -139,7 +143,7 @@ class TestsTest extends TestCase
     {
         $response = $this->withToken($this->token)
             ->postJson('/api/test/result', [
-                'language' => self::TEST_EMPTY_LANGUAGE,
+                'language' => self::TEST_INVALID_EMPTY_LANGUAGE,
                 'time_seconds' => self::TEST_TIME_SECONDS,
                 'speed_wpm' => self::TEST_SPEED_WPM,
                 'errors' => self::TEST_ERRORS,

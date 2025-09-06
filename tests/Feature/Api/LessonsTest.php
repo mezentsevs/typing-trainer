@@ -18,20 +18,22 @@ class LessonsTest extends TestCase
 
     private string $token;
 
+    private const string TEST_TOKEN_NAME = 'test_token';
+
     private const int TEST_ERRORS = 2;
-    private const int TEST_INVALID_ERRORS = -1;
-    private const int TEST_INVALID_LESSON_COUNT = 0;
-    private const int TEST_INVALID_SPEED_WPM = -1;
-    private const int TEST_INVALID_TIME_SECONDS = -1;
     private const int TEST_LESSON_COUNT = 5;
-    private const int TEST_NON_EXISTENT_LESSON_NUMBER = 999;
     private const int TEST_SPEED_WPM = 50;
     private const int TEST_TIME_SECONDS = 60;
     private const int TEST_ZERO_ERRORS = 0;
     private const int TEST_ZERO_SPEED_WPM = 0;
     private const int TEST_ZERO_TIME_SECONDS = 0;
-    private const string TEST_EMPTY_LANGUAGE = '';
-    private const string TEST_TOKEN_NAME = 'test_token';
+
+    private const int TEST_INVALID_ERRORS = -1;
+    private const int TEST_INVALID_LESSON_COUNT = 0;
+    private const int TEST_INVALID_LESSON_NUMBER = 999;
+    private const int TEST_INVALID_SPEED_WPM = -1;
+    private const int TEST_INVALID_TIME_SECONDS = -1;
+    private const string TEST_INVALID_EMPTY_LANGUAGE = '';
 
     private const string EXPECTED_LESSONS_GENERATED_MESSAGE = 'Lessons generated';
 
@@ -124,7 +126,7 @@ class LessonsTest extends TestCase
     {
         $response = $this->withToken($this->token)
             ->postJson('/api/lessons/generate', [
-                'language' => self::TEST_EMPTY_LANGUAGE,
+                'language' => self::TEST_INVALID_EMPTY_LANGUAGE,
                 'lesson_count' => self::TEST_INVALID_LESSON_COUNT,
             ]);
 
@@ -159,7 +161,7 @@ class LessonsTest extends TestCase
     public function testLessonNotFound(): void
     {
         $response = $this->withToken($this->token)
-            ->getJson('/api/lessons/' . Language::En->value . '/' . self::TEST_NON_EXISTENT_LESSON_NUMBER);
+            ->getJson('/api/lessons/' . Language::En->value . '/' . self::TEST_INVALID_LESSON_NUMBER);
 
         $response->assertStatus(404);
     }
