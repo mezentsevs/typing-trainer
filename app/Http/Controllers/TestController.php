@@ -40,9 +40,9 @@ class TestController extends Controller
     {
         $request->validate([
             'language' => 'required|string',
-            'time_seconds' => 'required|integer',
-            'speed_wpm' => 'required|integer',
-            'errors' => 'required|integer',
+            'time_seconds' => 'required|integer|min:0',
+            'speed_wpm' => 'required|integer|min:0',
+            'errors' => 'required|integer|min:0',
         ]);
 
         return response()->json(TestResult::create([

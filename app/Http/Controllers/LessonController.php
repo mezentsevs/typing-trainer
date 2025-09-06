@@ -41,9 +41,9 @@ class LessonController extends Controller
         $request->validate([
             'lesson_id' => 'required|exists:lessons,id',
             'language' => 'required|string',
-            'time_seconds' => 'required|integer',
-            'speed_wpm' => 'required|integer',
-            'errors' => 'required|integer',
+            'time_seconds' => 'required|integer|min:0',
+            'speed_wpm' => 'required|integer|min:0',
+            'errors' => 'required|integer|min:0',
         ]);
 
         return response()->json(LessonResult::create([
