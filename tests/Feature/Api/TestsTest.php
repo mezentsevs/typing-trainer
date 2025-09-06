@@ -19,8 +19,8 @@ class TestsTest extends TestCase
     private string $token;
 
     private const int TEST_ERRORS = 2;
-    private const int TEST_EXCEEDED_FILE_SIZE = 4;
     private const int TEST_INVALID_ERRORS = -1;
+    private const int TEST_INVALID_FILE_SIZE = 4;
     private const int TEST_INVALID_SPEED_WPM = -1;
     private const int TEST_INVALID_TIME_SECONDS = -1;
     private const int TEST_MAX_FILE_SIZE = 3;
@@ -31,7 +31,9 @@ class TestsTest extends TestCase
     private const int TEST_ZERO_TIME_SECONDS = 0;
     private const string TEST_EMPTY_LANGUAGE = '';
     private const string TEST_FILE_CONTENT = 'Test file content';
-    private const string TEST_INVALID_FILE_TYPE = 'image/jpeg';
+    private const string TEST_FILE_NAME = 'test.txt';
+    private const string TEST_INVALID_FILE_MIME_TYPE = 'image/jpeg';
+    private const string TEST_INVALID_FILE_NAME = 'test.jpeg';
     private const string TEST_TOKEN_NAME = 'test_token';
 
     private const string EXPECTED_FILE_UPLOADED_MESSAGE = 'File uploaded';
@@ -55,7 +57,10 @@ class TestsTest extends TestCase
     public function testTextUpload(): void
     {
         Storage::fake('public');
-        $file = UploadedFile::fake()->createWithContent('test.txt', self::TEST_FILE_CONTENT);
+        $file = UploadedFile::fake()->createWithContent(
+            self::TEST_FILE_NAME,
+            self::TEST_FILE_CONTENT,
+        );
 
         $response = $this->withToken($this->token)
             ->postJson('/api/test/upload', [
@@ -79,7 +84,13 @@ class TestsTest extends TestCase
             ]);
 
         $response->assertStatus(200)
-            ->assertJsonStructure(['id', 'user_id', 'language', 'speed_wpm', 'errors']);
+            ->assertJsonStructure([
+                'id',
+                'user_id',
+                'language',
+                'speed_wpm',
+                'errors',
+            ]);
     }
 
     public function testSaveTestResultWithZeroValues(): void
@@ -93,16 +104,22 @@ class TestsTest extends TestCase
             ]);
 
         $response->assertStatus(200)
-            ->assertJsonStructure(['id', 'user_id', 'language', 'speed_wpm', 'errors']);
+            ->assertJsonStructure([
+                'id',
+                'user_id',
+                'language',
+                'speed_wpm',
+                'errors',
+            ]);
     }
 
     public function testTextUploadValidation(): void
     {
         Storage::fake('public');
         $invalidFile = UploadedFile::fake()->create(
-            'test.jpg',
-            self::TEST_EXCEEDED_FILE_SIZE,
-            self::TEST_INVALID_FILE_TYPE,
+            self::TEST_INVALID_FILE_NAME,
+            self::TEST_INVALID_FILE_SIZE,
+            self::TEST_INVALID_FILE_MIME_TYPE,
         );
 
         $response = $this->withToken($this->token)
@@ -112,7 +129,10 @@ class TestsTest extends TestCase
             ]);
 
         $response->assertStatus(422)
-            ->assertJsonValidationErrors(['language', 'file']);
+            ->assertJsonValidationErrors([
+                'language',
+                'file',
+            ]);
     }
 
     public function testSaveResultValidationForLanguage(): void
@@ -140,6 +160,10 @@ class TestsTest extends TestCase
             ]);
 
         $response->assertStatus(422)
-            ->assertJsonValidationErrors(['time_seconds', 'speed_wpm', 'errors']);
+            ->assertJsonValidationErrors([
+                'time_seconds',
+                'speed_wpm',
+                'errors',
+            ]);
     }
 }
