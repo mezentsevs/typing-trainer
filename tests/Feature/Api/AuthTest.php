@@ -2,13 +2,13 @@
 
 namespace Tests\Feature\Api;
 
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\Feature\Traits\WithUser;
 use Tests\TestCase;
 
 class AuthTest extends TestCase
 {
-    use RefreshDatabase;
+    use RefreshDatabase, WithUser;
 
     private const string TEST_EMAIL = 'test@example.com';
     private const string TEST_EMPTY_NAME = '';
@@ -17,7 +17,7 @@ class AuthTest extends TestCase
     private const string TEST_PASSWORD = 'password';
     private const string TEST_PASSWORD_MISMATCH = 'mismatch';
     private const string TEST_SHORT_PASSWORD = 'short';
-    private const string TEST_TOKEN_NAME = 'auth_token';
+    private const string TEST_TOKEN_NAME = 'test_token';
     private const string TEST_WRONG_PASSWORD = 'wrong_password';
 
     private const string EXPECTED_INVALID_CREDENTIALS_MESSAGE = 'Invalid credentials';
@@ -37,7 +37,7 @@ class AuthTest extends TestCase
 
     public function testUserLogin(): void
     {
-        User::factory()->create([
+        $this->createUser([
             'email' => self::TEST_EMAIL,
             'password' => bcrypt(self::TEST_PASSWORD),
         ]);
@@ -53,10 +53,10 @@ class AuthTest extends TestCase
 
     public function testUserLogout(): void
     {
-        $user = User::factory()->create();
-        $token = $user->createToken(self::TEST_TOKEN_NAME)->plainTextToken;
+        $user = $this->createUser();
+        $token = $this->createTokenForUser($user, self::TEST_TOKEN_NAME);
 
-        $response = $this->withHeaders(['Authorization' => "Bearer $token"])
+        $response = $this->withToken($token)
             ->postJson('/api/logout');
 
         $response->assertStatus(200)
