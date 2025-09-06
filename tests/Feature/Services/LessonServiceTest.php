@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Services;
+namespace Tests\Feature\Services;
 
 use App\Models\Lesson;
 use App\Models\LessonResult;
@@ -11,9 +11,9 @@ use App\Services\LessonService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use PHPUnit\Framework\Attributes\DataProviderExternal;
 use ReflectionClass;
+use Tests\Providers\CommonDataProvider;
+use Tests\Providers\LessonDataProvider;
 use Tests\TestCase;
-use Tests\Unit\Services\Providers\CommonDataProvider;
-use Tests\Unit\Services\Providers\LessonDataProvider;
 
 class LessonServiceTest extends TestCase
 {

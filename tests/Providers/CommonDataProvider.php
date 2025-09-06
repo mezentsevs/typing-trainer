@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Services\Providers;
+namespace Tests\Providers;
 
 use App\Enums\Language;
 

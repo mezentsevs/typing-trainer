@@ -1,12 +1,12 @@
 <?php
 
-namespace Tests\Unit\Services;
+namespace Tests\Feature\Services;
 
 use App\Services\WordGeneration\WordCharDataProvider;
 use App\Services\WordService;
 use PHPUnit\Framework\Attributes\DataProviderExternal;
+use Tests\Providers\WordDataProvider;
 use Tests\TestCase;
-use Tests\Unit\Services\Providers\WordDataProvider;
 
 class WordServiceTest extends TestCase
 {
