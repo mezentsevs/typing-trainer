@@ -37,6 +37,7 @@ return new Config()
         'single_quote' => [
             'strings_containing_single_quote_chars' => false,
         ],
+        'single_trait_insert_per_statement' => false,
     ])
     ->setFinder($finder)
     ->setRiskyAllowed(true)
