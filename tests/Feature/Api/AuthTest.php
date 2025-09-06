@@ -32,7 +32,10 @@ class AuthTest extends TestCase
         ]);
 
         $response->assertStatus(201)
-            ->assertJsonStructure(['token', 'user']);
+            ->assertJsonStructure([
+                'token',
+                'user',
+            ]);
     }
 
     public function testUserLogin(): void
@@ -48,7 +51,10 @@ class AuthTest extends TestCase
         ]);
 
         $response->assertStatus(200)
-            ->assertJsonStructure(['token', 'user']);
+            ->assertJsonStructure([
+                'token',
+                'user',
+            ]);
     }
 
     public function testUserLogout(): void
@@ -73,7 +79,11 @@ class AuthTest extends TestCase
         ]);
 
         $response->assertStatus(422)
-            ->assertJsonValidationErrors(['name', 'email', 'password']);
+            ->assertJsonValidationErrors([
+                'name',
+                'email',
+                'password',
+            ]);
     }
 
     public function testUserLoginValidation(): void
@@ -84,7 +94,10 @@ class AuthTest extends TestCase
         ]);
 
         $response->assertStatus(422)
-            ->assertJsonValidationErrors(['email', 'password']);
+            ->assertJsonValidationErrors([
+                'email',
+                'password',
+            ]);
     }
 
     public function testInvalidLoginCredentials(): void

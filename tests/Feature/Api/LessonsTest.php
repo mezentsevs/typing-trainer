@@ -86,7 +86,14 @@ class LessonsTest extends TestCase
             ]);
 
         $response->assertStatus(200)
-            ->assertJsonStructure(['id', 'user_id', 'lesson_id', 'language', 'speed_wpm', 'errors']);
+            ->assertJsonStructure([
+                'id',
+                'user_id',
+                'lesson_id',
+                'language',
+                'speed_wpm',
+                'errors',
+            ]);
     }
 
     public function testSaveLessonResultWithZeroValues(): void
@@ -103,7 +110,14 @@ class LessonsTest extends TestCase
             ]);
 
         $response->assertStatus(200)
-            ->assertJsonStructure(['id', 'user_id', 'lesson_id', 'language', 'speed_wpm', 'errors']);
+            ->assertJsonStructure([
+                'id',
+                'user_id',
+                'lesson_id',
+                'language',
+                'speed_wpm',
+                'errors',
+            ]);
     }
 
     public function testLessonGenerationValidation(): void
@@ -115,7 +129,10 @@ class LessonsTest extends TestCase
             ]);
 
         $response->assertStatus(422)
-            ->assertJsonValidationErrors(['language', 'lesson_count']);
+            ->assertJsonValidationErrors([
+                'language',
+                'lesson_count',
+            ]);
     }
 
     public function testSaveLessonResultValidation(): void
@@ -132,7 +149,11 @@ class LessonsTest extends TestCase
             ]);
 
         $response->assertStatus(422)
-            ->assertJsonValidationErrors(['time_seconds', 'speed_wpm', 'errors']);
+            ->assertJsonValidationErrors([
+                'time_seconds',
+                'speed_wpm',
+                'errors',
+            ]);
     }
 
     public function testLessonNotFound(): void
