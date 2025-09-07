@@ -6,11 +6,11 @@ use App\Enums\Language;
 
 class LessonDataProvider
 {
-    protected const CHARS_EN = 'asdfjkl;qwertyuiophgzxcvbnm,./ASDFJKL;QWERTYUIOPHGZXCVBNM,./1234567890-=!@#$%^&*()_+[]{}|\:"\'<>?~`';
+    protected const string CHARS_EN = 'asdfjkl;qwertyuiophgzxcvbnm,./ASDFJKL;QWERTYUIOPHGZXCVBNM,./1234567890-=!@#$%^&*()_+[]{}|\:"\'<>?~`';
 
-    protected const CHARS_RU = 'фываолджйцукенгшщзхъячсмитьбюпрэёФЫВАОЛДЖЙЦУКЕНГШЩЗХЪЯЧСМИТЬБЮПРЭЁ1234567890-=!"№;%:?*()_+/\,.';
+    protected const string CHARS_RU = 'фываолджйцукенгшщзхъячсмитьбюпрэёФЫВАОЛДЖЙЦУКЕНГШЩЗХЪЯЧСМИТЬБЮПРЭЁ1234567890-=!"№;%:?*()_+/\,.';
 
-    protected const NEW_CHARS_SEQUENCE_EN = [
+    protected const array NEW_CHARS_SEQUENCE_EN = [
         1 => 'asdfj',
         2 => 'kl;qwe',
         3 => 'rtyuio',
@@ -33,7 +33,7 @@ class LessonDataProvider
         20 => self::CHARS_EN,
     ];
 
-    protected const NEW_CHARS_SEQUENCE_RU = [
+    protected const array NEW_CHARS_SEQUENCE_RU = [
         1 => 'фывао',
         2 => 'лджйц',
         3 => 'укенгш',

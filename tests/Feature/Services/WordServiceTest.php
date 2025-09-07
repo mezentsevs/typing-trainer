@@ -12,7 +12,7 @@ class WordServiceTest extends TestCase
 {
     protected WordService $service;
 
-    protected const MAX_EXTRA_SPECIAL_CHARS_COUNT = 2;
+    protected const int MAX_EXTRA_SPECIAL_CHARS_COUNT = 2;
 
     protected function setUp(): void
     {
