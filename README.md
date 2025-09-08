@@ -69,7 +69,6 @@ docker exec -it typing-trainer-laravel.test-1 bash
 
 - Install php dependencies (optional, if missing some required php extension in base system):
 ``` bash
-git config --global --add safe.directory /var/www/html
 composer install
 ```
 
