@@ -2,12 +2,13 @@
 
 namespace Tests\Feature\Api;
 
-use App\Enums\Language;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use PHPUnit\Framework\Attributes\DataProviderExternal;
 use Tests\Feature\Traits\WithUser;
+use Tests\Providers\CommonDataProvider;
 use Tests\TestCase;
 
 class TestsTest extends TestCase
@@ -49,16 +50,18 @@ class TestsTest extends TestCase
         $this->token = $this->createTokenForUser($this->user, self::TEST_TOKEN_NAME);
     }
 
-    public function testTextRetrieval(): void
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testTextRetrieval(string $language): void
     {
         $response = $this->withToken($this->token)
-            ->getJson('/api/test/text?language=' . Language::En->value);
+            ->getJson('/api/test/text?language=' . $language);
 
         $response->assertStatus(200)
             ->assertJsonStructure(['text']);
     }
 
-    public function testTextUpload(): void
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testTextUpload(string $language): void
     {
         Storage::fake('public');
         $file = UploadedFile::fake()->createWithContent(
@@ -68,7 +71,7 @@ class TestsTest extends TestCase
 
         $response = $this->withToken($this->token)
             ->postJson('/api/test/upload', [
-                'language' => Language::En->value,
+                'language' => $language,
                 'file' => $file,
             ]);
 
@@ -77,11 +80,12 @@ class TestsTest extends TestCase
             ->assertJsonStructure(['path']);
     }
 
-    public function testSaveTestResult(): void
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testSaveTestResult(string $language): void
     {
         $response = $this->withToken($this->token)
             ->postJson('/api/test/result', [
-                'language' => Language::En->value,
+                'language' => $language,
                 'time_seconds' => self::TEST_TIME_SECONDS,
                 'speed_wpm' => self::TEST_SPEED_WPM,
                 'errors' => self::TEST_ERRORS,
@@ -97,11 +101,12 @@ class TestsTest extends TestCase
             ]);
     }
 
-    public function testSaveTestResultWithZeroValues(): void
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testSaveTestResultWithZeroValues(string $language): void
     {
         $response = $this->withToken($this->token)
             ->postJson('/api/test/result', [
-                'language' => Language::En->value,
+                'language' => $language,
                 'time_seconds' => self::TEST_ZERO_TIME_SECONDS,
                 'speed_wpm' => self::TEST_ZERO_SPEED_WPM,
                 'errors' => self::TEST_ZERO_ERRORS,
@@ -153,11 +158,12 @@ class TestsTest extends TestCase
             ->assertJsonValidationErrors(['language']);
     }
 
-    public function testSaveResultValidationForOtherFields(): void
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testSaveResultValidationForOtherFields(string $language): void
     {
         $response = $this->withToken($this->token)
             ->postJson('/api/test/result', [
-                'language' => Language::En->value,
+                'language' => $language,
                 'time_seconds' => self::TEST_INVALID_TIME_SECONDS,
                 'speed_wpm' => self::TEST_INVALID_SPEED_WPM,
                 'errors' => self::TEST_INVALID_ERRORS,
