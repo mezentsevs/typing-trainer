@@ -2,9 +2,10 @@
 
 namespace Tests\Feature\Api;
 
-use App\Enums\Language;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use PHPUnit\Framework\Attributes\DataProviderExternal;
 use Tests\Feature\Traits\WithUser;
+use Tests\Providers\CommonDataProvider;
 use Tests\TestCase;
 
 class AuthTest extends TestCase
@@ -129,9 +130,10 @@ class AuthTest extends TestCase
             ->assertJson(['message' => self::EXPECTED_INVALID_CREDENTIALS_MESSAGE]);
     }
 
-    public function testUnauthenticatedAccess(): void
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testUnauthenticatedAccess(string $language): void
     {
-        $response = $this->getJson('/api/lessons/' . Language::En->value . '/' . self::TEST_LESSON_NUMBER);
+        $response = $this->getJson('/api/lessons/' . $language . '/' . self::TEST_LESSON_NUMBER);
         $response->assertStatus(401);
     }
 }
