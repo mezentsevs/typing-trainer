@@ -2,12 +2,13 @@
 
 namespace Tests\Feature\Api;
 
-use App\Enums\Language;
 use App\Models\Lesson;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use PHPUnit\Framework\Attributes\DataProviderExternal;
 use Tests\Feature\Traits\WithLesson;
 use Tests\Feature\Traits\WithUser;
+use Tests\Providers\CommonDataProvider;
 use Tests\TestCase;
 
 class LessonsTest extends TestCase
@@ -44,11 +45,12 @@ class LessonsTest extends TestCase
         $this->token = $this->createTokenForUser($this->user, self::TEST_TOKEN_NAME);
     }
 
-    public function testLessonGeneration(): void
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testLessonGeneration(string $language): void
     {
         $response = $this->withToken($this->token)
             ->postJson('/api/lessons/generate', [
-                'language' => Language::En->value,
+                'language' => $language,
                 'lesson_count' => self::TEST_LESSON_COUNT,
             ]);
 
@@ -58,14 +60,15 @@ class LessonsTest extends TestCase
         $this->assertCount(
             self::TEST_LESSON_COUNT,
             Lesson::where('user_id', $this->user->id)
-                ->where('language', Language::En->value)
+                ->where('language', $language)
                 ->get(),
         );
     }
 
-    public function testLessonShow(): void
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testLessonShow(string $language): void
     {
-        $lesson = $this->createLesson($this->user);
+        $lesson = $this->createLesson($this->user, ['language' => $language]);
 
         $response = $this->withToken($this->token)
             ->getJson("/api/lessons/{$lesson->language}/{$lesson->number}");
@@ -74,14 +77,15 @@ class LessonsTest extends TestCase
             ->assertJsonStructure(['lesson']);
     }
 
-    public function testSaveLessonResult(): void
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testSaveLessonResult(string $language): void
     {
-        $lesson = $this->createLesson($this->user);
+        $lesson = $this->createLesson($this->user, ['language' => $language]);
 
         $response = $this->withToken($this->token)
             ->postJson('/api/lessons/result', [
                 'lesson_id' => $lesson->id,
-                'language' => Language::En->value,
+                'language' => $language,
                 'time_seconds' => self::TEST_TIME_SECONDS,
                 'speed_wpm' => self::TEST_SPEED_WPM,
                 'errors' => self::TEST_ERRORS,
@@ -98,14 +102,15 @@ class LessonsTest extends TestCase
             ]);
     }
 
-    public function testSaveLessonResultWithZeroValues(): void
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testSaveLessonResultWithZeroValues(string $language): void
     {
-        $lesson = $this->createLesson($this->user);
+        $lesson = $this->createLesson($this->user, ['language' => $language]);
 
         $response = $this->withToken($this->token)
             ->postJson('/api/lessons/result', [
                 'lesson_id' => $lesson->id,
-                'language' => Language::En->value,
+                'language' => $language,
                 'time_seconds' => self::TEST_ZERO_TIME_SECONDS,
                 'speed_wpm' => self::TEST_ZERO_SPEED_WPM,
                 'errors' => self::TEST_ZERO_ERRORS,
@@ -137,14 +142,15 @@ class LessonsTest extends TestCase
             ]);
     }
 
-    public function testSaveLessonResultValidation(): void
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testSaveLessonResultValidation(string $language): void
     {
-        $lesson = $this->createLesson($this->user);
+        $lesson = $this->createLesson($this->user, ['language' => $language]);
 
         $response = $this->withToken($this->token)
             ->postJson('/api/lessons/result', [
                 'lesson_id' => $lesson->id,
-                'language' => Language::En->value,
+                'language' => $language,
                 'time_seconds' => self::TEST_INVALID_TIME_SECONDS,
                 'speed_wpm' => self::TEST_INVALID_SPEED_WPM,
                 'errors' => self::TEST_INVALID_ERRORS,
@@ -158,10 +164,11 @@ class LessonsTest extends TestCase
             ]);
     }
 
-    public function testLessonNotFound(): void
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testLessonNotFound(string $language): void
     {
         $response = $this->withToken($this->token)
-            ->getJson('/api/lessons/' . Language::En->value . '/' . self::TEST_INVALID_LESSON_NUMBER);
+            ->getJson('/api/lessons/' . $language . '/' . self::TEST_INVALID_LESSON_NUMBER);
 
         $response->assertStatus(404);
     }
