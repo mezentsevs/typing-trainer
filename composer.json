@@ -66,12 +66,16 @@
         "fix:diff": "php-cs-fixer fix --diff",
         "code:lint": "composer lint",
         "code:fix": "composer fix",
-        "openapi:generate": "php artisan scribe:generate"
+        "openapi:generate": "php artisan scribe:generate",
+        "test:debug": "XDEBUG_SESSION=1 php artisan test",
+        "test:debug-filter": "XDEBUG_SESSION=1 php artisan test --filter"
     },
     "scripts-descriptions": {
         "code:lint": "Code style check without changes",
         "code:fix": "Automatic code style correction",
-        "openapi:generate": "Generate openapi documentation"
+        "openapi:generate": "Generate openapi documentation",
+        "test:debug": "Run tests in debug mode",
+        "test:debug-filter": "Run tests in debug mode with filter"
     },
     "extra": {
         "laravel": {
