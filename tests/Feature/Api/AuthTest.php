@@ -106,6 +106,25 @@ class AuthTest extends TestCase
             ]);
     }
 
+    public function testUserRegistrationValidationEmailMustBeValid(): void
+    {
+        $response = $this->postJson('/api/register', [
+            'name' => self::TEST_NAME,
+            'email' => self::TEST_INVALID_EMAIL,
+            'password' => self::TEST_PASSWORD,
+            'password_confirmation' => self::TEST_PASSWORD,
+        ]);
+
+        $response
+            ->assertStatus(422)
+            ->assertJson([
+                'message' => 'The email field must be a valid email address.',
+                'errors' => [
+                    'email' => ['The email field must be a valid email address.'],
+                ],
+            ]);
+    }
+
     public function testUserLoginEmailValidation(): void
     {
         $response = $this->postJson('/api/login', [
