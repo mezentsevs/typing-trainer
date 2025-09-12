@@ -4,13 +4,14 @@ namespace Tests\Feature\Api;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use PHPUnit\Framework\Attributes\DataProviderExternal;
+use Tests\Feature\Traits\WithResponseAssertions;
 use Tests\Feature\Traits\WithUser;
 use Tests\Providers\CommonDataProvider;
 use Tests\TestCase;
 
 class AuthTest extends TestCase
 {
-    use RefreshDatabase, WithUser;
+    use RefreshDatabase, WithUser, WithResponseAssertions;
 
     private const int TEST_LESSON_NUMBER = 1;
     private const string TEST_TOKEN_NAME = 'test_token';
@@ -96,14 +97,8 @@ class AuthTest extends TestCase
             'password_confirmation' => self::TEST_PASSWORD,
         ]);
 
-        $response
-            ->assertStatus(422)
-            ->assertJson([
-                'message' => 'The name field is required.',
-                'errors' => [
-                    'name' => ['The name field is required.'],
-                ],
-            ]);
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'name', 'The name field is required.');
     }
 
     public function testUserRegistrationValidationEmailMustBeValid(): void
@@ -115,14 +110,8 @@ class AuthTest extends TestCase
             'password_confirmation' => self::TEST_PASSWORD,
         ]);
 
-        $response
-            ->assertStatus(422)
-            ->assertJson([
-                'message' => 'The email field must be a valid email address.',
-                'errors' => [
-                    'email' => ['The email field must be a valid email address.'],
-                ],
-            ]);
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'email', 'The email field must be a valid email address.');
     }
 
     public function testUserRegistrationValidationPasswordMinimumLength(): void
@@ -134,14 +123,8 @@ class AuthTest extends TestCase
             'password_confirmation' => self::TEST_INVALID_SHORT_PASSWORD,
         ]);
 
-        $response
-            ->assertStatus(422)
-            ->assertJson([
-                'message' => 'The password field must be at least 8 characters.',
-                'errors' => [
-                    'password' => ['The password field must be at least 8 characters.'],
-                ],
-            ]);
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'password', 'The password field must be at least 8 characters.');
     }
 
     public function testUserRegistrationValidationPasswordConfirmationMustMatch(): void
@@ -153,14 +136,8 @@ class AuthTest extends TestCase
             'password_confirmation' => self::TEST_INVALID_PASSWORD,
         ]);
 
-        $response
-            ->assertStatus(422)
-            ->assertJson([
-                'message' => 'The password field confirmation does not match.',
-                'errors' => [
-                    'password' => ['The password field confirmation does not match.'],
-                ],
-            ]);
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'password', 'The password field confirmation does not match.');
     }
 
     public function testUserLoginEmailValidation(): void
