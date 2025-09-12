@@ -87,6 +87,25 @@ class AuthTest extends TestCase
             ->assertJson(['message' => 'Logged out']);
     }
 
+    public function testUserRegistrationValidationNameRequired(): void
+    {
+        $response = $this->postJson('/api/register', [
+            'name' => self::TEST_INVALID_EMPTY_NAME,
+            'email' => self::TEST_EMAIL,
+            'password' => self::TEST_PASSWORD,
+            'password_confirmation' => self::TEST_PASSWORD,
+        ]);
+
+        $response
+            ->assertStatus(422)
+            ->assertJson([
+                'message' => 'The name field is required.',
+                'errors' => [
+                    'name' => ['The name field is required.'],
+                ],
+            ]);
+    }
+
     public function testUserLoginEmailValidation(): void
     {
         $response = $this->postJson('/api/login', [
