@@ -144,6 +144,25 @@ class AuthTest extends TestCase
             ]);
     }
 
+    public function testUserRegistrationValidationPasswordConfirmationMustMatch(): void
+    {
+        $response = $this->postJson('/api/register', [
+            'name' => self::TEST_NAME,
+            'email' => self::TEST_EMAIL,
+            'password' => self::TEST_PASSWORD,
+            'password_confirmation' => self::TEST_INVALID_PASSWORD,
+        ]);
+
+        $response
+            ->assertStatus(422)
+            ->assertJson([
+                'message' => 'The password field confirmation does not match.',
+                'errors' => [
+                    'password' => ['The password field confirmation does not match.'],
+                ],
+            ]);
+    }
+
     public function testUserLoginEmailValidation(): void
     {
         $response = $this->postJson('/api/login', [
