@@ -12,8 +12,8 @@ class AuthTest extends TestCase
 {
     use RefreshDatabase, WithUser;
 
+    private const int TEST_LESSON_NUMBER = 1;
     private const string TEST_TOKEN_NAME = 'test_token';
-
     private const string TEST_EMAIL = 'test@example.com';
     private const string TEST_NAME = 'Test User';
     private const string TEST_PASSWORD = 'password';
@@ -24,10 +24,6 @@ class AuthTest extends TestCase
     private const string TEST_INVALID_PASSWORD = 'wrong_password';
     private const string TEST_INVALID_SHORT_PASSWORD = 'short';
 
-    private const int TEST_LESSON_NUMBER = 1;
-
-    private const string EXPECTED_INVALID_CREDENTIALS_MESSAGE = 'Invalid credentials';
-
     public function testUserRegistration(): void
     {
         $response = $this->postJson('/api/register', [
@@ -37,10 +33,17 @@ class AuthTest extends TestCase
             'password_confirmation' => self::TEST_PASSWORD,
         ]);
 
-        $response->assertStatus(201)
+        $response
+            ->assertStatus(201)
             ->assertJsonStructure([
                 'token',
-                'user',
+                'user' => [
+                    'id',
+                    'name',
+                    'email',
+                    'created_at',
+                    'updated_at',
+                ],
             ]);
     }
 
@@ -56,10 +59,18 @@ class AuthTest extends TestCase
             'password' => self::TEST_PASSWORD,
         ]);
 
-        $response->assertStatus(200)
+        $response
+            ->assertStatus(200)
             ->assertJsonStructure([
                 'token',
-                'user',
+                'user' => [
+                    'id',
+                    'name',
+                    'email',
+                    'email_verified_at',
+                    'created_at',
+                    'updated_at',
+                ],
             ]);
     }
 
@@ -71,7 +82,8 @@ class AuthTest extends TestCase
         $response = $this->withToken($token)
             ->postJson('/api/logout');
 
-        $response->assertStatus(200)
+        $response
+            ->assertStatus(200)
             ->assertJson(['message' => 'Logged out']);
     }
 
@@ -84,11 +96,23 @@ class AuthTest extends TestCase
             'password_confirmation' => self::TEST_INVALID_PASSWORD,
         ]);
 
-        $response->assertStatus(422)
+        $response
+            ->assertStatus(422)
+            ->assertJson(['message' => 'The name field is required. (and 3 more errors)'])
             ->assertJsonValidationErrors([
                 'name',
                 'email',
                 'password',
+            ])
+            ->assertJson([
+                'errors' => [
+                    'name' => ['The name field is required.'],
+                    'email' => ['The email field must be a valid email address.'],
+                    'password' => [
+                        'The password field must be at least 8 characters.',
+                        'The password field confirmation does not match.',
+                    ],
+                ],
             ]);
     }
 
@@ -99,8 +123,15 @@ class AuthTest extends TestCase
             'password' => self::TEST_PASSWORD,
         ]);
 
-        $response->assertStatus(422)
-            ->assertJsonValidationErrors(['email']);
+        $response
+            ->assertStatus(422)
+            ->assertJson(['message' => 'The email field must be a valid email address.'])
+            ->assertJsonValidationErrors(['email'])
+            ->assertJson([
+                'errors' => [
+                    'email' => ['The email field must be a valid email address.'],
+                ],
+            ]);
     }
 
     public function testUserLoginPasswordValidation(): void
@@ -115,8 +146,15 @@ class AuthTest extends TestCase
             'password' => self::TEST_INVALID_EMPTY_PASSWORD,
         ]);
 
-        $response->assertStatus(422)
-            ->assertJsonValidationErrors(['password']);
+        $response
+            ->assertStatus(422)
+            ->assertJson(['message' => 'The password field is required.'])
+            ->assertJsonValidationErrors(['password'])
+            ->assertJson([
+                'errors' => [
+                    'password' => ['The password field is required.'],
+                ],
+            ]);
     }
 
     public function testInvalidLoginCredentials(): void
@@ -126,14 +164,18 @@ class AuthTest extends TestCase
             'password' => self::TEST_INVALID_PASSWORD,
         ]);
 
-        $response->assertStatus(401)
-            ->assertJson(['message' => self::EXPECTED_INVALID_CREDENTIALS_MESSAGE]);
+        $response
+            ->assertStatus(401)
+            ->assertJson(['message' => 'Invalid credentials']);
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testUnauthenticatedAccess(string $language): void
     {
         $response = $this->getJson('/api/lessons/' . $language . '/' . self::TEST_LESSON_NUMBER);
-        $response->assertStatus(401);
+
+        $response
+            ->assertStatus(401)
+            ->assertJson(['message' => 'Unauthenticated.']);
     }
 }
