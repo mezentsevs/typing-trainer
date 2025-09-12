@@ -125,6 +125,25 @@ class AuthTest extends TestCase
             ]);
     }
 
+    public function testUserRegistrationValidationPasswordMinimumLength(): void
+    {
+        $response = $this->postJson('/api/register', [
+            'name' => self::TEST_NAME,
+            'email' => self::TEST_EMAIL,
+            'password' => self::TEST_INVALID_SHORT_PASSWORD,
+            'password_confirmation' => self::TEST_INVALID_SHORT_PASSWORD,
+        ]);
+
+        $response
+            ->assertStatus(422)
+            ->assertJson([
+                'message' => 'The password field must be at least 8 characters.',
+                'errors' => [
+                    'password' => ['The password field must be at least 8 characters.'],
+                ],
+            ]);
+    }
+
     public function testUserLoginEmailValidation(): void
     {
         $response = $this->postJson('/api/login', [
