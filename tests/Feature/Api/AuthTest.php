@@ -167,16 +167,15 @@ class AuthTest extends TestCase
             ->assertStatusWithErrorAndMessage(422, 'password', 'The password field is required.');
     }
 
-    public function testInvalidLoginCredentials(): void
+    public function testUserLoginWithInvalidCredentials(): void
     {
         $response = $this->postJson('/api/login', [
             'email' => self::TEST_EMAIL,
             'password' => self::TEST_INVALID_PASSWORD,
         ]);
 
-        $response
-            ->assertStatus(401)
-            ->assertJson(['message' => 'Invalid credentials']);
+        $this->withResponse($response)
+            ->assertStatusWithMessage(401, 'Invalid credentials');
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
