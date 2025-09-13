@@ -25,7 +25,7 @@ class AuthTest extends TestCase
     private const string TEST_INVALID_PASSWORD = 'wrong_password';
     private const string TEST_INVALID_SHORT_PASSWORD = 'short';
 
-    public function testUserRegistration(): void
+    public function testUserRegistrationSuccess(): void
     {
         $response = $this->postJson('/api/register', [
             'name' => self::TEST_NAME,
@@ -46,45 +46,6 @@ class AuthTest extends TestCase
                     'updated_at',
                 ],
             ]);
-    }
-
-    public function testUserLogin(): void
-    {
-        $this->createUser([
-            'email' => self::TEST_EMAIL,
-            'password' => bcrypt(self::TEST_PASSWORD),
-        ]);
-
-        $response = $this->postJson('/api/login', [
-            'email' => self::TEST_EMAIL,
-            'password' => self::TEST_PASSWORD,
-        ]);
-
-        $response
-            ->assertStatus(200)
-            ->assertJsonStructure([
-                'token',
-                'user' => [
-                    'id',
-                    'name',
-                    'email',
-                    'email_verified_at',
-                    'created_at',
-                    'updated_at',
-                ],
-            ]);
-    }
-
-    public function testUserLogout(): void
-    {
-        $user = $this->createUser();
-        $token = $this->createTokenForUser($user, self::TEST_TOKEN_NAME);
-
-        $response = $this->withToken($token)
-            ->postJson('/api/logout');
-
-        $this->withResponse($response)
-            ->assertStatusWithMessage(200, 'Logged out');
     }
 
     public function testUserRegistrationValidationNameRequired(): void
@@ -139,6 +100,33 @@ class AuthTest extends TestCase
             ->assertStatusWithErrorAndMessage(422, 'password', 'The password field confirmation does not match.');
     }
 
+    public function testUserLoginSuccess(): void
+    {
+        $this->createUser([
+            'email' => self::TEST_EMAIL,
+            'password' => bcrypt(self::TEST_PASSWORD),
+        ]);
+
+        $response = $this->postJson('/api/login', [
+            'email' => self::TEST_EMAIL,
+            'password' => self::TEST_PASSWORD,
+        ]);
+
+        $response
+            ->assertStatus(200)
+            ->assertJsonStructure([
+                'token',
+                'user' => [
+                    'id',
+                    'name',
+                    'email',
+                    'email_verified_at',
+                    'created_at',
+                    'updated_at',
+                ],
+            ]);
+    }
+
     public function testUserLoginValidationEmailMustBeValid(): void
     {
         $response = $this->postJson('/api/login', [
@@ -175,6 +163,18 @@ class AuthTest extends TestCase
 
         $this->withResponse($response)
             ->assertStatusWithMessage(401, 'Invalid credentials');
+    }
+
+    public function testUserLogoutSuccess(): void
+    {
+        $user = $this->createUser();
+        $token = $this->createTokenForUser($user, self::TEST_TOKEN_NAME);
+
+        $response = $this->withToken($token)
+            ->postJson('/api/logout');
+
+        $this->withResponse($response)
+            ->assertStatusWithMessage(200, 'Logged out');
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
