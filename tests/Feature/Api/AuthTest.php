@@ -140,22 +140,15 @@ class AuthTest extends TestCase
             ->assertStatusWithErrorAndMessage(422, 'password', 'The password field confirmation does not match.');
     }
 
-    public function testUserLoginEmailValidation(): void
+    public function testUserLoginValidationEmailMustBeValid(): void
     {
         $response = $this->postJson('/api/login', [
             'email' => self::TEST_INVALID_EMAIL,
             'password' => self::TEST_PASSWORD,
         ]);
 
-        $response
-            ->assertStatus(422)
-            ->assertJson(['message' => 'The email field must be a valid email address.'])
-            ->assertJsonValidationErrors(['email'])
-            ->assertJson([
-                'errors' => [
-                    'email' => ['The email field must be a valid email address.'],
-                ],
-            ]);
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'email', 'The email field must be a valid email address.');
     }
 
     public function testUserLoginPasswordValidation(): void
