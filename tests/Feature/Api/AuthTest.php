@@ -83,9 +83,8 @@ class AuthTest extends TestCase
         $response = $this->withToken($token)
             ->postJson('/api/logout');
 
-        $response
-            ->assertStatus(200)
-            ->assertJson(['message' => 'Logged out']);
+        $this->withResponse($response)
+            ->assertStatusWithMessage(200, 'Logged out');
     }
 
     public function testUserRegistrationValidationNameRequired(): void
