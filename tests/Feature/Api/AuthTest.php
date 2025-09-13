@@ -151,7 +151,7 @@ class AuthTest extends TestCase
             ->assertStatusWithErrorAndMessage(422, 'email', 'The email field must be a valid email address.');
     }
 
-    public function testUserLoginPasswordValidation(): void
+    public function testUserLoginValidationPasswordRequired(): void
     {
         $this->createUser([
             'email' => self::TEST_EMAIL,
@@ -163,15 +163,8 @@ class AuthTest extends TestCase
             'password' => self::TEST_INVALID_EMPTY_PASSWORD,
         ]);
 
-        $response
-            ->assertStatus(422)
-            ->assertJson(['message' => 'The password field is required.'])
-            ->assertJsonValidationErrors(['password'])
-            ->assertJson([
-                'errors' => [
-                    'password' => ['The password field is required.'],
-                ],
-            ]);
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'password', 'The password field is required.');
     }
 
     public function testInvalidLoginCredentials(): void
