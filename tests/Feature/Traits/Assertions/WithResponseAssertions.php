@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Traits;
+namespace Tests\Feature\Traits\Assertions;
 
 use Illuminate\Testing\TestResponse;
 

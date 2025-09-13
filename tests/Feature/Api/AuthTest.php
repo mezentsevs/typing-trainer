@@ -4,7 +4,7 @@ namespace Tests\Feature\Api;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use PHPUnit\Framework\Attributes\DataProviderExternal;
-use Tests\Feature\Traits\WithResponseAssertions;
+use Tests\Feature\Traits\Assertions\WithResponseAssertions;
 use Tests\Feature\Traits\WithUser;
 use Tests\Providers\CommonDataProvider;
 use Tests\TestCase;
