@@ -180,10 +180,9 @@ class AuthTest extends TestCase
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testUnauthenticatedAccess(string $language): void
     {
-        $response = $this->getJson('/api/lessons/' . $language . '/' . self::TEST_LESSON_NUMBER);
+        $response = $this->getJson("/api/lessons/{$language}/" . self::TEST_LESSON_NUMBER);
 
-        $response
-            ->assertStatus(401)
-            ->assertJson(['message' => 'Unauthenticated.']);
+        $this->withResponse($response)
+            ->assertStatusWithMessage(401, 'Unauthenticated.');
     }
 }
