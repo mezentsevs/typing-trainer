@@ -13,6 +13,11 @@ class AuthTest extends TestCase
 {
     use RefreshDatabase, WithUser, WithResponseAssertions;
 
+    private const string API_REGISTER_URI = '/api/register';
+    private const string API_LOGIN_URI = '/api/login';
+    private const string API_LOGOUT_URI = '/api/logout';
+    private const string API_LESSONS_URI_TEMPLATE = '/api/lessons/%s/%d';
+
     private const int TEST_LESSON_NUMBER = 1;
     private const string TEST_TOKEN_NAME = 'test_token';
     private const string TEST_EMAIL = 'test@example.com';
@@ -27,7 +32,7 @@ class AuthTest extends TestCase
 
     public function testUserRegistrationSuccess(): void
     {
-        $response = $this->postJson('/api/register', [
+        $response = $this->postJson(self::API_REGISTER_URI, [
             'name' => self::TEST_NAME,
             'email' => self::TEST_EMAIL,
             'password' => self::TEST_PASSWORD,
@@ -50,7 +55,7 @@ class AuthTest extends TestCase
 
     public function testUserRegistrationValidationNameRequired(): void
     {
-        $response = $this->postJson('/api/register', [
+        $response = $this->postJson(self::API_REGISTER_URI, [
             'name' => self::TEST_INVALID_EMPTY_NAME,
             'email' => self::TEST_EMAIL,
             'password' => self::TEST_PASSWORD,
@@ -63,7 +68,7 @@ class AuthTest extends TestCase
 
     public function testUserRegistrationValidationEmailMustBeValid(): void
     {
-        $response = $this->postJson('/api/register', [
+        $response = $this->postJson(self::API_REGISTER_URI, [
             'name' => self::TEST_NAME,
             'email' => self::TEST_INVALID_EMAIL,
             'password' => self::TEST_PASSWORD,
@@ -76,7 +81,7 @@ class AuthTest extends TestCase
 
     public function testUserRegistrationValidationPasswordMinimumLength(): void
     {
-        $response = $this->postJson('/api/register', [
+        $response = $this->postJson(self::API_REGISTER_URI, [
             'name' => self::TEST_NAME,
             'email' => self::TEST_EMAIL,
             'password' => self::TEST_INVALID_SHORT_PASSWORD,
@@ -89,7 +94,7 @@ class AuthTest extends TestCase
 
     public function testUserRegistrationValidationPasswordConfirmationMustMatch(): void
     {
-        $response = $this->postJson('/api/register', [
+        $response = $this->postJson(self::API_REGISTER_URI, [
             'name' => self::TEST_NAME,
             'email' => self::TEST_EMAIL,
             'password' => self::TEST_PASSWORD,
@@ -107,7 +112,7 @@ class AuthTest extends TestCase
             'password' => bcrypt(self::TEST_PASSWORD),
         ]);
 
-        $response = $this->postJson('/api/login', [
+        $response = $this->postJson(self::API_LOGIN_URI, [
             'email' => self::TEST_EMAIL,
             'password' => self::TEST_PASSWORD,
         ]);
@@ -129,7 +134,7 @@ class AuthTest extends TestCase
 
     public function testUserLoginValidationEmailMustBeValid(): void
     {
-        $response = $this->postJson('/api/login', [
+        $response = $this->postJson(self::API_LOGIN_URI, [
             'email' => self::TEST_INVALID_EMAIL,
             'password' => self::TEST_PASSWORD,
         ]);
@@ -145,7 +150,7 @@ class AuthTest extends TestCase
             'password' => bcrypt(self::TEST_PASSWORD),
         ]);
 
-        $response = $this->postJson('/api/login', [
+        $response = $this->postJson(self::API_LOGIN_URI, [
             'email' => self::TEST_EMAIL,
             'password' => self::TEST_INVALID_EMPTY_PASSWORD,
         ]);
@@ -156,7 +161,7 @@ class AuthTest extends TestCase
 
     public function testUserLoginWithInvalidCredentials(): void
     {
-        $response = $this->postJson('/api/login', [
+        $response = $this->postJson(self::API_LOGIN_URI, [
             'email' => self::TEST_EMAIL,
             'password' => self::TEST_INVALID_PASSWORD,
         ]);
@@ -171,7 +176,7 @@ class AuthTest extends TestCase
         $token = $this->createTokenForUser($user, self::TEST_TOKEN_NAME);
 
         $response = $this->withToken($token)
-            ->postJson('/api/logout');
+            ->postJson(self::API_LOGOUT_URI);
 
         $this->withResponse($response)
             ->assertStatusWithMessage(200, 'Logged out');
@@ -180,7 +185,9 @@ class AuthTest extends TestCase
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testUnauthenticatedAccess(string $language): void
     {
-        $response = $this->getJson("/api/lessons/{$language}/" . self::TEST_LESSON_NUMBER);
+        $url = sprintf(self::API_LESSONS_URI_TEMPLATE, $language, self::TEST_LESSON_NUMBER);
+
+        $response = $this->getJson($url);
 
         $this->withResponse($response)
             ->assertStatusWithMessage(401, 'Unauthenticated.');
