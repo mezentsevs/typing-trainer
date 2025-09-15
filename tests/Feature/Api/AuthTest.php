@@ -116,9 +116,8 @@ class AuthTest extends TestCase
             'password' => self::TEST_PASSWORD,
         ]);
 
-        $response
-            ->assertStatus(200)
-            ->assertJsonStructure([
+        $this->withResponse($response)
+            ->assertStatusWithJsonStructure(200, [
                 'token',
                 'user' => [
                     'id',
