@@ -39,4 +39,13 @@ trait WithResponseAssertions
 
         return $this;
     }
+
+    protected function assertStatusWithJsonStructure(int $status, array $structure): static
+    {
+        $this->response
+            ->assertStatus($status)
+            ->assertJsonStructure($structure);
+
+        return $this;
+    }
 }
