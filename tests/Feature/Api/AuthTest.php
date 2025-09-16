@@ -54,6 +54,18 @@ class AuthTest extends TestCase
             ]);
     }
 
+    public function testUserRegistrationValidationNameRequired(): void
+    {
+        $response = $this->postJson(self::API_REGISTER_URI, [
+            'email' => self::TEST_EMAIL,
+            'password' => self::TEST_PASSWORD,
+            'password_confirmation' => self::TEST_PASSWORD,
+        ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'name', 'The name field is required.');
+    }
+
     public function testUserRegistrationValidationNameNotEmpty(): void
     {
         $response = $this->postJson(self::API_REGISTER_URI, [
