@@ -211,6 +211,16 @@ class AuthTest extends TestCase
             ]);
     }
 
+    public function testUserLoginValidationEmailRequired(): void
+    {
+        $response = $this->postJson(self::API_LOGIN_URI, [
+            'password' => self::TEST_PASSWORD,
+        ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'email', 'The email field is required.');
+    }
+
     public function testUserLoginValidationEmailMustBeValid(): void
     {
         $response = $this->postJson(self::API_LOGIN_URI, [
