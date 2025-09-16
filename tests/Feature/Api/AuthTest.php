@@ -110,6 +110,19 @@ class AuthTest extends TestCase
             ->assertStatusWithErrorAndMessage(422, 'password', 'The password field is required.');
     }
 
+    public function testUserRegistrationValidationPasswordNotEmpty(): void
+    {
+        $response = $this->postJson(self::API_REGISTER_URI, [
+            'name' => self::TEST_NAME,
+            'email' => self::TEST_EMAIL,
+            'password' => self::TEST_INVALID_EMPTY_PASSWORD,
+            'password_confirmation' => self::TEST_INVALID_EMPTY_PASSWORD,
+        ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'password', 'The password field is required.');
+    }
+
     public function testUserRegistrationValidationPasswordMinimumLength(): void
     {
         $response = $this->postJson(self::API_REGISTER_URI, [
