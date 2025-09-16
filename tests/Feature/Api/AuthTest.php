@@ -111,6 +111,18 @@ class AuthTest extends TestCase
             ->assertStatusWithErrorAndMessage(422, 'password', 'The password field must be at least 8 characters.');
     }
 
+    public function testUserRegistrationValidationPasswordConfirmationRequired(): void
+    {
+        $response = $this->postJson(self::API_REGISTER_URI, [
+            'name' => self::TEST_NAME,
+            'email' => self::TEST_EMAIL,
+            'password' => self::TEST_PASSWORD,
+        ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'password', 'The password field confirmation does not match.');
+    }
+
     public function testUserRegistrationValidationPasswordConfirmationMustMatch(): void
     {
         $response = $this->postJson(self::API_REGISTER_URI, [
