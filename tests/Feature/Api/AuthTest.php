@@ -79,6 +79,18 @@ class AuthTest extends TestCase
             ->assertStatusWithErrorAndMessage(422, 'name', 'The name field is required.');
     }
 
+    public function testUserRegistrationValidationEmailRequired(): void
+    {
+        $response = $this->postJson(self::API_REGISTER_URI, [
+            'name' => self::TEST_NAME,
+            'password' => self::TEST_PASSWORD,
+            'password_confirmation' => self::TEST_PASSWORD,
+        ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'email', 'The email field is required.');
+    }
+
     public function testUserRegistrationValidationEmailMustBeValid(): void
     {
         $response = $this->postJson(self::API_REGISTER_URI, [
