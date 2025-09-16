@@ -128,7 +128,6 @@ class AuthTest extends TestCase
     {
         $this->createUser([
             'email' => self::TEST_EMAIL,
-            'password' => bcrypt(self::TEST_PASSWORD),
         ]);
 
         $response = $this->postJson(self::API_LOGIN_URI, [
