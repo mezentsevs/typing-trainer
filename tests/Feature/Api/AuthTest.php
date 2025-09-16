@@ -22,7 +22,9 @@ class AuthTest extends TestCase
     private const string TEST_TOKEN_NAME = 'test_token';
     private const string TEST_EMAIL = 'test@example.com';
     private const string TEST_NAME = 'Test User';
+    private const string TEST_ANOTHER_NAME = 'Another User';
     private const string TEST_PASSWORD = 'password';
+    private const string TEST_ANOTHER_PASSWORD = 'another_password';
 
     private const string TEST_INVALID_EMAIL = 'invalid_email';
     private const string TEST_INVALID_EMPTY_NAME = '';
@@ -76,6 +78,24 @@ class AuthTest extends TestCase
 
         $this->withResponse($response)
             ->assertStatusWithErrorAndMessage(422, 'email', 'The email field must be a valid email address.');
+    }
+
+    public function testUserRegistrationValidationEmailMustBeUnique(): void
+    {
+        $this->createUser([
+            'name' => self::TEST_NAME,
+            'email' => self::TEST_EMAIL,
+        ]);
+
+        $response = $this->postJson(self::API_REGISTER_URI, [
+            'name' => self::TEST_ANOTHER_NAME,
+            'email' => self::TEST_EMAIL,
+            'password' => self::TEST_ANOTHER_PASSWORD,
+            'password_confirmation' => self::TEST_ANOTHER_PASSWORD,
+        ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'email', 'The email has already been taken.');
     }
 
     public function testUserRegistrationValidationPasswordMinimumLength(): void
