@@ -214,9 +214,7 @@ class AuthTest extends TestCase
 
     public function testUserLoginSuccess(): void
     {
-        $this->createUser([
-            'email' => self::TEST_EMAIL,
-        ]);
+        $this->createUser(['email' => self::TEST_EMAIL]);
 
         $response = $this->postJson(self::API_LOGIN_URI, [
             'email' => self::TEST_EMAIL,
@@ -271,9 +269,7 @@ class AuthTest extends TestCase
 
     public function testUserLoginValidationPasswordRequired(): void
     {
-        $this->createUser([
-            'email' => self::TEST_EMAIL,
-        ]);
+        $this->createUser(['email' => self::TEST_EMAIL]);
 
         $response = $this->postJson(self::API_LOGIN_URI, [
             'email' => self::TEST_EMAIL,
@@ -285,9 +281,7 @@ class AuthTest extends TestCase
 
     public function testUserLoginValidationPasswordNotEmpty(): void
     {
-        $this->createUser([
-            'email' => self::TEST_EMAIL,
-        ]);
+        $this->createUser(['email' => self::TEST_EMAIL]);
 
         $response = $this->postJson(self::API_LOGIN_URI, [
             'email' => self::TEST_EMAIL,
