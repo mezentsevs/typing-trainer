@@ -27,6 +27,7 @@ class AuthTest extends TestCase
     private const string TEST_ANOTHER_PASSWORD = 'another_password';
 
     private const string TEST_INVALID_EMAIL = 'invalid_email';
+    private const string TEST_INVALID_EMPTY_EMAIL = '';
     private const string TEST_INVALID_EMPTY_NAME = '';
     private const string TEST_INVALID_EMPTY_PASSWORD = '';
     private const string TEST_INVALID_PASSWORD = 'wrong_password';
@@ -83,6 +84,19 @@ class AuthTest extends TestCase
     {
         $response = $this->postJson(self::API_REGISTER_URI, [
             'name' => self::TEST_NAME,
+            'password' => self::TEST_PASSWORD,
+            'password_confirmation' => self::TEST_PASSWORD,
+        ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'email', 'The email field is required.');
+    }
+
+    public function testUserRegistrationValidationEmailNotEmpty(): void
+    {
+        $response = $this->postJson(self::API_REGISTER_URI, [
+            'name' => self::TEST_NAME,
+            'email' => self::TEST_INVALID_EMPTY_EMAIL,
             'password' => self::TEST_PASSWORD,
             'password_confirmation' => self::TEST_PASSWORD,
         ]);
