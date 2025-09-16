@@ -54,7 +54,7 @@ class AuthTest extends TestCase
             ]);
     }
 
-    public function testUserRegistrationValidationNameRequired(): void
+    public function testUserRegistrationValidationNameNotEmpty(): void
     {
         $response = $this->postJson(self::API_REGISTER_URI, [
             'name' => self::TEST_INVALID_EMPTY_NAME,
@@ -210,7 +210,7 @@ class AuthTest extends TestCase
             ->assertStatusWithErrorAndMessage(422, 'email', 'The email field must be a valid email address.');
     }
 
-    public function testUserLoginValidationPasswordRequired(): void
+    public function testUserLoginValidationPasswordNotEmpty(): void
     {
         $this->createUser([
             'email' => self::TEST_EMAIL,
