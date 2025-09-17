@@ -326,9 +326,9 @@ class AuthTest extends TestCase
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testLessonAccessWithoutAuthentication(string $language): void
     {
-        $url = sprintf(self::API_LESSONS_URI_TEMPLATE, $language, self::TEST_LESSON_NUMBER);
+        $uri = sprintf(self::API_LESSONS_URI_TEMPLATE, $language, self::TEST_LESSON_NUMBER);
 
-        $response = $this->getJson($url);
+        $response = $this->getJson($uri);
 
         $this->withResponse($response)
             ->assertStatusWithMessage(401, 'Unauthenticated.');
