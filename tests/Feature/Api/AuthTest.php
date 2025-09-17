@@ -324,7 +324,7 @@ class AuthTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testAccessLessonWithoutAuthentication(string $language): void
+    public function testLessonAccessWithoutAuthentication(string $language): void
     {
         $url = sprintf(self::API_LESSONS_URI_TEMPLATE, $language, self::TEST_LESSON_NUMBER);
 
