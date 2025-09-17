@@ -20,6 +20,7 @@ class AuthTest extends TestCase
 
     private const int TEST_LESSON_NUMBER = 1;
     private const string TEST_TOKEN_NAME = 'test_token';
+    private const string TEST_ANOTHER_TOKEN_NAME = 'another_token';
     private const string TEST_EMAIL = 'test@example.com';
     private const string TEST_NAME = 'Test User';
     private const string TEST_ANOTHER_NAME = 'Another User';
@@ -321,6 +322,25 @@ class AuthTest extends TestCase
 
         $this->withResponse($response)
             ->assertStatusWithMessage(401, 'Unauthenticated.');
+    }
+
+    public function testUserLogoutInvalidatesAllTokens(): void
+    {
+        $user = $this->createUser();
+        $token = $this->createTokenForUser($user, self::TEST_TOKEN_NAME);
+        $this->createTokenForUser($user, self::TEST_ANOTHER_TOKEN_NAME);
+        $expectedTokensCount = 2;
+
+        $this->assertEquals(
+            $expectedTokensCount,
+            $user->tokens()->count(),
+            "User should have {$expectedTokensCount} tokens before logout.",
+        );
+
+        $this->withToken($token)
+            ->postJson(self::API_LOGOUT_URI);
+
+        $this->assertEquals(0, $user->tokens()->count(), 'User should have no tokens after logout.');
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
