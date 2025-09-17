@@ -315,6 +315,14 @@ class AuthTest extends TestCase
             ->assertStatusWithMessage(200, 'Logged out');
     }
 
+    public function testUserLogoutWithoutAuthentication(): void
+    {
+        $response = $this->postJson(self::API_LOGOUT_URI);
+
+        $this->withResponse($response)
+            ->assertStatusWithMessage(401, 'Unauthenticated.');
+    }
+
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testUnauthenticatedAccess(string $language): void
     {
