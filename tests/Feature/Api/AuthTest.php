@@ -26,10 +26,10 @@ class AuthTest extends TestCase
     private const string INVALID_EMAIL = 'invalid_email';
     private const string INVALID_EMPTY_EMAIL = '';
 
-    private const int MAX_NAME_LENGTH = 255;
-    private const string NAME = 'Test User';
-    private const string ANOTHER_NAME = 'Another User';
-    private const string INVALID_EMPTY_NAME = '';
+    private const int MAX_USER_NAME_LENGTH = 255;
+    private const string USER_NAME = 'Test User';
+    private const string ANOTHER_USER_NAME = 'Another User';
+    private const string INVALID_EMPTY_USER_NAME = '';
 
     private const string PASSWORD = 'password';
     private const string ANOTHER_PASSWORD = 'another_password';
@@ -42,7 +42,7 @@ class AuthTest extends TestCase
     public function testUserRegistrationSuccess(): void
     {
         $response = $this->postJson(self::REGISTER_URI, [
-            'name' => self::NAME,
+            'name' => self::USER_NAME,
             'email' => self::EMAIL,
             'password' => self::PASSWORD,
             'password_confirmation' => self::PASSWORD,
@@ -76,7 +76,7 @@ class AuthTest extends TestCase
     public function testUserRegistrationValidationNameNotEmpty(): void
     {
         $response = $this->postJson(self::REGISTER_URI, [
-            'name' => self::INVALID_EMPTY_NAME,
+            'name' => self::INVALID_EMPTY_USER_NAME,
             'email' => self::EMAIL,
             'password' => self::PASSWORD,
             'password_confirmation' => self::PASSWORD,
@@ -88,10 +88,10 @@ class AuthTest extends TestCase
 
     public function testUserRegistrationValidationNameMaximumLength(): void
     {
-        $longName = str_repeat('a', self::MAX_NAME_LENGTH + 1);
+        $longUserName = str_repeat('a', self::MAX_USER_NAME_LENGTH + 1);
 
         $response = $this->postJson(self::REGISTER_URI, [
-            'name' => $longName,
+            'name' => $longUserName,
             'email' => self::EMAIL,
             'password' => self::PASSWORD,
             'password_confirmation' => self::PASSWORD,
@@ -131,7 +131,7 @@ class AuthTest extends TestCase
     public function testUserRegistrationValidationEmailRequired(): void
     {
         $response = $this->postJson(self::REGISTER_URI, [
-            'name' => self::NAME,
+            'name' => self::USER_NAME,
             'password' => self::PASSWORD,
             'password_confirmation' => self::PASSWORD,
         ]);
@@ -143,7 +143,7 @@ class AuthTest extends TestCase
     public function testUserRegistrationValidationEmailNotEmpty(): void
     {
         $response = $this->postJson(self::REGISTER_URI, [
-            'name' => self::NAME,
+            'name' => self::USER_NAME,
             'email' => self::INVALID_EMPTY_EMAIL,
             'password' => self::PASSWORD,
             'password_confirmation' => self::PASSWORD,
@@ -156,7 +156,7 @@ class AuthTest extends TestCase
     public function testUserRegistrationValidationEmailMustBeValid(): void
     {
         $response = $this->postJson(self::REGISTER_URI, [
-            'name' => self::NAME,
+            'name' => self::USER_NAME,
             'email' => self::INVALID_EMAIL,
             'password' => self::PASSWORD,
             'password_confirmation' => self::PASSWORD,
@@ -169,12 +169,12 @@ class AuthTest extends TestCase
     public function testUserRegistrationValidationEmailMustBeUnique(): void
     {
         $this->createUser([
-            'name' => self::NAME,
+            'name' => self::USER_NAME,
             'email' => self::EMAIL,
         ]);
 
         $response = $this->postJson(self::REGISTER_URI, [
-            'name' => self::ANOTHER_NAME,
+            'name' => self::ANOTHER_USER_NAME,
             'email' => self::EMAIL,
             'password' => self::ANOTHER_PASSWORD,
             'password_confirmation' => self::ANOTHER_PASSWORD,
@@ -187,7 +187,7 @@ class AuthTest extends TestCase
     public function testUserRegistrationValidationPasswordRequired(): void
     {
         $response = $this->postJson(self::REGISTER_URI, [
-            'name' => self::NAME,
+            'name' => self::USER_NAME,
             'email' => self::EMAIL,
             'password_confirmation' => self::PASSWORD,
         ]);
@@ -199,7 +199,7 @@ class AuthTest extends TestCase
     public function testUserRegistrationValidationPasswordNotEmpty(): void
     {
         $response = $this->postJson(self::REGISTER_URI, [
-            'name' => self::NAME,
+            'name' => self::USER_NAME,
             'email' => self::EMAIL,
             'password' => self::INVALID_EMPTY_PASSWORD,
             'password_confirmation' => self::INVALID_EMPTY_PASSWORD,
@@ -212,7 +212,7 @@ class AuthTest extends TestCase
     public function testUserRegistrationValidationPasswordMinimumLength(): void
     {
         $response = $this->postJson(self::REGISTER_URI, [
-            'name' => self::NAME,
+            'name' => self::USER_NAME,
             'email' => self::EMAIL,
             'password' => self::INVALID_SHORT_PASSWORD,
             'password_confirmation' => self::INVALID_SHORT_PASSWORD,
@@ -225,7 +225,7 @@ class AuthTest extends TestCase
     public function testUserRegistrationValidationPasswordConfirmationRequired(): void
     {
         $response = $this->postJson(self::REGISTER_URI, [
-            'name' => self::NAME,
+            'name' => self::USER_NAME,
             'email' => self::EMAIL,
             'password' => self::PASSWORD,
         ]);
@@ -237,7 +237,7 @@ class AuthTest extends TestCase
     public function testUserRegistrationValidationPasswordConfirmationNotEmpty(): void
     {
         $response = $this->postJson(self::REGISTER_URI, [
-            'name' => self::NAME,
+            'name' => self::USER_NAME,
             'email' => self::EMAIL,
             'password' => self::PASSWORD,
             'password_confirmation' => self::INVALID_EMPTY_PASSWORD,
@@ -250,7 +250,7 @@ class AuthTest extends TestCase
     public function testUserRegistrationValidationPasswordConfirmationMustMatch(): void
     {
         $response = $this->postJson(self::REGISTER_URI, [
-            'name' => self::NAME,
+            'name' => self::USER_NAME,
             'email' => self::EMAIL,
             'password' => self::PASSWORD,
             'password_confirmation' => self::WRONG_PASSWORD,
