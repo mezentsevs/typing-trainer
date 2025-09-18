@@ -114,6 +114,20 @@ class AuthTest extends TestCase
         $response->assertStatus(201);
     }
 
+    #[DataProviderExternal(AuthDataProvider::class, 'provideInvalidFormatNames')]
+    public function testUserRegistrationValidationNameFormatIsInvalid(string $name): void
+    {
+        $response = $this->postJson(self::REGISTER_URI, [
+            'name' => $name,
+            'email' => self::EMAIL,
+            'password' => self::PASSWORD,
+            'password_confirmation' => self::PASSWORD,
+        ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'name', 'The name field format is invalid.');
+    }
+
     public function testUserRegistrationValidationEmailRequired(): void
     {
         $response = $this->postJson(self::REGISTER_URI, [
