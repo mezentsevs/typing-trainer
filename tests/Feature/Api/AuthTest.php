@@ -6,6 +6,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use PHPUnit\Framework\Attributes\DataProviderExternal;
 use Tests\Feature\Traits\Assertions\WithResponseAssertions;
 use Tests\Feature\Traits\WithUser;
+use Tests\Providers\AuthDataProvider;
 use Tests\Providers\CommonDataProvider;
 use Tests\TestCase;
 
@@ -98,6 +99,19 @@ class AuthTest extends TestCase
 
         $this->withResponse($response)
             ->assertStatusWithErrorAndMessage(422, 'name', 'The name field must not be greater than 255 characters.');
+    }
+
+    #[DataProviderExternal(AuthDataProvider::class, 'provideValidFormatNames')]
+    public function testUserRegistrationValidationNameFormatIsValid(string $name): void
+    {
+        $response = $this->postJson(self::REGISTER_URI, [
+            'name' => $name,
+            'email' => self::EMAIL,
+            'password' => self::PASSWORD,
+            'password_confirmation' => self::PASSWORD,
+        ]);
+
+        $response->assertStatus(201);
     }
 
     public function testUserRegistrationValidationEmailRequired(): void
