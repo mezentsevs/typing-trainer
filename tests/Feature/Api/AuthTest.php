@@ -34,6 +34,8 @@ class AuthTest extends TestCase
     private const string TEST_INVALID_PASSWORD = 'wrong_password';
     private const string TEST_INVALID_SHORT_PASSWORD = 'short';
 
+    private const int MAX_NAME_LENGTH = 255;
+
     public function testUserRegistrationSuccess(): void
     {
         $response = $this->postJson(self::API_REGISTER_URI, [
@@ -79,6 +81,21 @@ class AuthTest extends TestCase
 
         $this->withResponse($response)
             ->assertStatusWithErrorAndMessage(422, 'name', 'The name field is required.');
+    }
+
+    public function testUserRegistrationValidationNameMaximumLength(): void
+    {
+        $longName = str_repeat('a', self::MAX_NAME_LENGTH + 1);
+
+        $response = $this->postJson(self::API_REGISTER_URI, [
+            'name' => $longName,
+            'email' => self::TEST_EMAIL,
+            'password' => self::TEST_PASSWORD,
+            'password_confirmation' => self::TEST_PASSWORD,
+        ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'name', 'The name field must not be greater than 255 characters.');
     }
 
     public function testUserRegistrationValidationEmailRequired(): void
