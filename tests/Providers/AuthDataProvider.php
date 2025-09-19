@@ -53,11 +53,11 @@ class AuthDataProvider
             'with tilde' => ['John~Doe'],
             'with underscore' => ['John_Doe'],
 
-            'with cyrillic letters' => ['Иван Иванов'],
-            'with german umlaut' => ['Jürgen Müller'],
-            'with french accents' => ['René François'],
-            'with japanese characters' => ['山田太郎'],
             'with arabic script' => ['محمد أحمد'],
+            'with cyrillic letters' => ['Иван Иванов'],
+            'with french accents' => ['René François'],
+            'with german umlaut' => ['Jürgen Müller'],
+            'with japanese characters' => ['山田太郎'],
         ];
     }
 
@@ -80,11 +80,11 @@ class AuthDataProvider
             'with space' => ['Pass word'],
             'with tab' => ["Pass\tword"],
 
-            'with cyrillic letters' => ['БезопасныйПароль'],
-            'with german umlaut' => ['Passwörd'],
-            'with french accents' => ['Môt-de-pässé'],
-            'with japanese characters' => ['マイパスワードは安全です'],
             'with arabic script' => ['كلمةالمرور'],
+            'with cyrillic letters' => ['БезопасныйПароль'],
+            'with french accents' => ['Môt-de-pässé'],
+            'with german umlaut' => ['Passwörd'],
+            'with japanese characters' => ['マイパスワードは安全です'],
         ];
     }
 }
