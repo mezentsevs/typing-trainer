@@ -53,11 +53,18 @@ class AuthDataProvider
             'with tilde' => ['John~Doe'],
             'with underscore' => ['John_Doe'],
 
-            'with arabic script' => ['محمد أحمد'],
-            'with cyrillic letters' => ['Иван Иванов'],
-            'with french accents' => ['René François'],
-            'with german umlaut' => ['Jürgen Müller'],
+            'with arabic characters' => ['محمد أحمد'],
+            'with cyrillic characters' => ['Иван Иванов'],
+            'with french characters' => ['René François'],
+            'with german characters' => ['Jürgen Müller'],
             'with japanese characters' => ['山田太郎'],
+
+            'with carriage return' => ["John\rDoe"],
+            'with form feed' => ["John\fDoe"],
+            'with new line' => ["John\nDoe"],
+            'with null character' => ["John\0Doe"],
+            'with tab' => ["John\tDoe"],
+            'with vertical tab' => ["John\vDoe"],
         ];
     }
 
@@ -74,17 +81,19 @@ class AuthDataProvider
     public static function provideInvalidFormatPasswords(): array
     {
         return [
+            'with arabic characters' => ['كلمةالمرور'],
+            'with cyrillic characters' => ['БезопасныйПароль'],
+            'with french characters' => ['SécuriséMotDePasse'],
+            'with german characters' => ['Passwörd'],
+            'with japanese characters' => ['マイパスワードは安全です'],
+
             'with carriage return' => ["Pass\rword"],
+            'with form feed' => ["Pass\fword"],
             'with new line' => ["Pass\nword"],
             'with null character' => ["Pass\0word"],
             'with space' => ['Pass word'],
             'with tab' => ["Pass\tword"],
-
-            'with arabic script' => ['كلمةالمرور'],
-            'with cyrillic letters' => ['БезопасныйПароль'],
-            'with french accents' => ['Môt-de-pässé'],
-            'with german umlaut' => ['Passwörd'],
-            'with japanese characters' => ['マイパスワードは安全です'],
+            'with vertical tab' => ["Pass\vword"],
         ];
     }
 }
