@@ -49,6 +49,11 @@ class AuthDataProvider
             'with slash' => ['John/Doe'],
             'with tilde' => ['John~Doe'],
             'with underscore' => ['John_Doe'],
+            'with cyrillic letters' => ['Иван Иванов'],
+            'with german umlaut' => ['Jürgen Müller'],
+            'with french accents' => ['René François'],
+            'with japanese characters' => ['山田太郎'],
+            'with arabic script' => ['محمد أحمد'],
         ];
     }
 }
