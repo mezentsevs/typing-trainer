@@ -4,7 +4,7 @@ namespace Tests\Providers;
 
 class AuthDataProvider
 {
-    public static function provideValidFormatNames(): array
+    public static function provideValidFormatUserNames(): array
     {
         return [
             'with letters only' => ['John'],
@@ -15,7 +15,7 @@ class AuthDataProvider
         ];
     }
 
-    public static function provideInvalidFormatNames(): array
+    public static function provideInvalidFormatUserNames(): array
     {
         return [
             'with ampersand' => ['John&Doe'],

@@ -101,11 +101,11 @@ class AuthTest extends TestCase
             ->assertStatusWithErrorAndMessage(422, 'name', 'The name field must not be greater than 255 characters.');
     }
 
-    #[DataProviderExternal(AuthDataProvider::class, 'provideValidFormatNames')]
-    public function testUserRegistrationValidationNameFormatIsValid(string $name): void
+    #[DataProviderExternal(AuthDataProvider::class, 'provideValidFormatUserNames')]
+    public function testUserRegistrationValidationNameFormatIsValid(string $userName): void
     {
         $response = $this->postJson(self::REGISTER_URI, [
-            'name' => $name,
+            'name' => $userName,
             'email' => self::EMAIL,
             'password' => self::PASSWORD,
             'password_confirmation' => self::PASSWORD,
@@ -114,11 +114,11 @@ class AuthTest extends TestCase
         $response->assertStatus(201);
     }
 
-    #[DataProviderExternal(AuthDataProvider::class, 'provideInvalidFormatNames')]
-    public function testUserRegistrationValidationNameFormatIsInvalid(string $name): void
+    #[DataProviderExternal(AuthDataProvider::class, 'provideInvalidFormatUserNames')]
+    public function testUserRegistrationValidationNameFormatIsInvalid(string $userName): void
     {
         $response = $this->postJson(self::REGISTER_URI, [
-            'name' => $name,
+            'name' => $userName,
             'email' => self::EMAIL,
             'password' => self::PASSWORD,
             'password_confirmation' => self::PASSWORD,
