@@ -11,8 +11,8 @@ class AuthDataProvider
     {
         return [
             'with letters only' => ['John'],
-            'with spaces' => ['John Doe'],
-            'with hyphens' => ['John-Doe'],
+            'with space' => ['John Doe'],
+            'with hyphen' => ['John-Doe'],
             'with numbers' => ['John' . self::NUMBERS],
             'with all valid characters' => ['John-V Doe ' . self::NUMBERS],
         ];
@@ -22,7 +22,7 @@ class AuthDataProvider
     {
         return [
             'with ampersand' => ['John&Doe'],
-            'with apostrophe' => ["John'O'Doe"],
+            'with apostrophe' => ["John'Doe"],
             'with asterisk' => ['John*Doe'],
             'with at sign' => ['John@Doe'],
             'with backslash' => ['John\Doe'],
@@ -47,7 +47,7 @@ class AuthDataProvider
             'with pipe' => ['John|Doe'],
             'with plus' => ['John+Doe'],
             'with question mark' => ['John?Doe'],
-            'with quotes' => ['John"Doe'],
+            'with quote' => ['John"Doe'],
             'with semicolon' => ['John;Doe'],
             'with slash' => ['John/Doe'],
             'with tilde' => ['John~Doe'],
