@@ -222,6 +222,19 @@ class AuthTest extends TestCase
             ->assertStatusWithErrorAndMessage(422, 'password', 'The password field must be at least 8 characters.');
     }
 
+    #[DataProviderExternal(AuthDataProvider::class, 'provideValidFormatPasswords')]
+    public function testUserRegistrationValidationPasswordFormatIsValid(string $password): void
+    {
+        $response = $this->postJson(self::REGISTER_URI, [
+            'name' => self::USER_NAME,
+            'email' => self::EMAIL,
+            'password' => $password,
+            'password_confirmation' => $password,
+        ]);
+
+        $response->assertStatus(201);
+    }
+
     public function testUserRegistrationValidationPasswordConfirmationRequired(): void
     {
         $response = $this->postJson(self::REGISTER_URI, [
