@@ -235,6 +235,20 @@ class AuthTest extends TestCase
         $response->assertStatus(201);
     }
 
+    #[DataProviderExternal(AuthDataProvider::class, 'provideInvalidFormatPasswords')]
+    public function testUserRegistrationValidationPasswordFormatIsInvalid(string $password): void
+    {
+        $response = $this->postJson(self::REGISTER_URI, [
+            'name' => self::USER_NAME,
+            'email' => self::EMAIL,
+            'password' => $password,
+            'password_confirmation' => $password,
+        ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'password', 'The password field format is invalid.');
+    }
+
     public function testUserRegistrationValidationPasswordConfirmationRequired(): void
     {
         $response = $this->postJson(self::REGISTER_URI, [
