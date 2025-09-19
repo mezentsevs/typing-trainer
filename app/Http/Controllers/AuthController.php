@@ -13,7 +13,7 @@ class AuthController extends Controller
     public function register(Request $request): JsonResponse
     {
         $request->validate([
-            'name' => 'required|string|regex:/^[a-zA-Z\s\-0-9]+$/u|max:255',
+            'name' => 'required|string|regex:/^[a-zA-Z\s\-0-9]+$/|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
         ]);
