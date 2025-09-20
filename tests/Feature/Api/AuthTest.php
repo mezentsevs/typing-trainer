@@ -3,6 +3,7 @@
 namespace Tests\Feature\Api;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Hash;
 use PHPUnit\Framework\Attributes\DataProviderExternal;
 use Tests\Feature\Traits\Assertions\WithResponseAssertions;
 use Tests\Feature\Traits\WithUser;
@@ -470,6 +471,36 @@ class AuthTest extends TestCase
 
         $this->withResponse($response)
             ->assertStatusWithErrorAndMessage(422, 'password', 'The password field is required.');
+    }
+
+    public function testUserLoginValidationPasswordMaximumLength(): void
+    {
+        $validPassword = str_repeat('a', self::MAX_PASSWORD_LENGTH);
+        $invalidPassword = str_repeat('a', self::MAX_PASSWORD_LENGTH + 1);
+
+        $this->createUser([
+            'email' => self::EMAIL,
+            'password' => Hash::make($validPassword),
+        ]);
+
+        $response = $this->postJson(self::LOGIN_URI, [
+            'email' => self::EMAIL,
+            'password' => $validPassword,
+        ]);
+
+        $response->assertStatus(200);
+
+        $response = $this->postJson(self::LOGIN_URI, [
+            'email' => self::ANOTHER_EMAIL,
+            'password' => $invalidPassword,
+        ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(
+                422,
+                'password',
+                'The password field must not be greater than 255 characters.',
+            );
     }
 
     public function testUserLoginWithInvalidCredentials(): void
