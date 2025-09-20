@@ -34,11 +34,11 @@ class AuthTest extends TestCase
     private const string ANOTHER_USER_NAME = 'Another User';
     private const string INVALID_EMPTY_USER_NAME = '';
 
+    private const int MIN_PASSWORD_LENGTH = 8;
     private const int MAX_PASSWORD_LENGTH = 255;
     private const string PASSWORD = 'password';
     private const string ANOTHER_PASSWORD = 'another_password';
     private const string WRONG_PASSWORD = 'wrong_password';
-    private const string INVALID_SHORT_PASSWORD = 'short';
     private const string INVALID_EMPTY_PASSWORD = '';
 
     private const int LESSON_NUMBER = 1;
@@ -251,11 +251,23 @@ class AuthTest extends TestCase
 
     public function testUserRegistrationValidationPasswordMinimumLength(): void
     {
+        $validPassword = str_repeat('a', self::MIN_PASSWORD_LENGTH);
+        $invalidPassword = str_repeat('a', self::MIN_PASSWORD_LENGTH - 1);
+
         $response = $this->postJson(self::REGISTER_URI, [
             'name' => self::USER_NAME,
             'email' => self::EMAIL,
-            'password' => self::INVALID_SHORT_PASSWORD,
-            'password_confirmation' => self::INVALID_SHORT_PASSWORD,
+            'password' => $validPassword,
+            'password_confirmation' => $validPassword,
+        ]);
+
+        $response->assertStatus(201);
+
+        $response = $this->postJson(self::REGISTER_URI, [
+            'name' => self::ANOTHER_USER_NAME,
+            'email' => self::ANOTHER_EMAIL,
+            'password' => $invalidPassword,
+            'password_confirmation' => $invalidPassword,
         ]);
 
         $this->withResponse($response)
