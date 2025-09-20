@@ -24,6 +24,7 @@ class AuthTest extends TestCase
 
     private const int MAX_EMAIL_LENGTH = 255;
     private const string EMAIL = 'test@example.com';
+    private const string ANOTHER_EMAIL = 'another@example.com';
     private const string EMAIL_DOMAIN = '@example.com';
     private const string INVALID_EMAIL = 'invalid_email';
     private const string INVALID_EMPTY_EMAIL = '';
@@ -90,13 +91,23 @@ class AuthTest extends TestCase
 
     public function testUserRegistrationValidationNameMaximumLength(): void
     {
-        $longUserName = str_repeat('a', self::MAX_USER_NAME_LENGTH + 1);
+        $validLongUserName = str_repeat('a', self::MAX_USER_NAME_LENGTH);
+        $invalidLongUserName = str_repeat('a', self::MAX_USER_NAME_LENGTH + 1);
 
         $response = $this->postJson(self::REGISTER_URI, [
-            'name' => $longUserName,
+            'name' => $validLongUserName,
             'email' => self::EMAIL,
             'password' => self::PASSWORD,
             'password_confirmation' => self::PASSWORD,
+        ]);
+
+        $response->assertStatus(201);
+
+        $response = $this->postJson(self::REGISTER_URI, [
+            'name' => $invalidLongUserName,
+            'email' => self::ANOTHER_EMAIL,
+            'password' => self::ANOTHER_PASSWORD,
+            'password_confirmation' => self::ANOTHER_PASSWORD,
         ]);
 
         $this->withResponse($response)
