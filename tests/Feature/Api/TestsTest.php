@@ -7,9 +7,9 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use PHPUnit\Framework\Attributes\DataProviderExternal;
-use Tests\Feature\Traits\WithUser;
 use Tests\Providers\CommonDataProvider;
 use Tests\TestCase;
+use Tests\Traits\WithUser;
 
 class TestsTest extends TestCase
 {

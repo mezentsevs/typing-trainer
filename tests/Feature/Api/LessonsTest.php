@@ -6,10 +6,10 @@ use App\Models\Lesson;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use PHPUnit\Framework\Attributes\DataProviderExternal;
-use Tests\Feature\Traits\WithLesson;
-use Tests\Feature\Traits\WithUser;
 use Tests\Providers\CommonDataProvider;
 use Tests\TestCase;
+use Tests\Traits\WithLesson;
+use Tests\Traits\WithUser;
 
 class LessonsTest extends TestCase
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Traits;
+namespace Tests\Traits;
 
 use App\Models\Lesson;
 use App\Models\User;

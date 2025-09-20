@@ -1,46 +1,20 @@
 <?php
 
-namespace Tests\Feature\Api;
+namespace Tests\Feature\Api\Auth;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Hash;
 use PHPUnit\Framework\Attributes\DataProviderExternal;
-use Tests\Feature\Traits\Assertions\WithResponseAssertions;
-use Tests\Feature\Traits\WithUser;
 use Tests\Providers\AuthDataProvider;
-use Tests\Providers\CommonDataProvider;
 use Tests\TestCase;
+use Tests\Traits\Assertions\WithResponseAssertions;
+use Tests\Traits\Fakes\WithAuthFakes;
+use Tests\Traits\WithUser;
 
-class AuthTest extends TestCase
+class RegistrationTest extends TestCase
 {
-    use RefreshDatabase, WithUser, WithResponseAssertions;
+    use RefreshDatabase, WithUser, WithResponseAssertions, WithAuthFakes;
 
     private const string REGISTER_URI = '/api/register';
-    private const string LOGIN_URI = '/api/login';
-    private const string LOGOUT_URI = '/api/logout';
-    private const string LESSONS_URI_TEMPLATE = '/api/lessons/%s/%d';
-
-    private const string TOKEN_NAME = 'testToken';
-    private const string ANOTHER_TOKEN_NAME = 'anotherToken';
-
-    private const int MAX_EMAIL_LENGTH = 255;
-    private const string EMAIL = 'test@example.com';
-    private const string EMAIL_DOMAIN = '@example.com';
-    private const string INVALID_EMAIL = 'invalidEmail';
-    private const string INVALID_EMPTY_EMAIL = '';
-
-    private const int MAX_USER_NAME_LENGTH = 255;
-    private const string USER_NAME = 'Test User';
-    private const string ANOTHER_USER_NAME = 'Another User';
-    private const string INVALID_EMPTY_USER_NAME = '';
-
-    private const int MIN_PASSWORD_LENGTH = 8;
-    private const int MAX_PASSWORD_LENGTH = 255;
-    private const string PASSWORD = 'password';
-    private const string ANOTHER_PASSWORD = 'anotherPassword';
-    private const string INVALID_EMPTY_PASSWORD = '';
-
-    private const int LESSON_NUMBER_FOR_ACCESS = 1;
 
     public function testRegistrationSuccess(): void
     {
@@ -101,11 +75,6 @@ class AuthTest extends TestCase
         $response->assertStatus(201);
     }
 
-    private function fakeValidLongUserName(): string
-    {
-        return str_repeat('a', self::MAX_USER_NAME_LENGTH);
-    }
-
     public function testRegistrationWithInvalidLongUserName(): void
     {
         $response = $this->postJson(self::REGISTER_URI, [
@@ -117,11 +86,6 @@ class AuthTest extends TestCase
 
         $this->withResponse($response)
             ->assertStatusWithErrorAndMessage(422, 'name', 'The name field must not be greater than 255 characters.');
-    }
-
-    private function fakeInvalidLongUserName(): string
-    {
-        return str_repeat('a', self::MAX_USER_NAME_LENGTH + 1);
     }
 
     #[DataProviderExternal(AuthDataProvider::class, 'provideValidUserNames')]
@@ -188,16 +152,6 @@ class AuthTest extends TestCase
         $response->assertStatus(201);
     }
 
-    private function fakeValidLongEmail(): string
-    {
-        return str_repeat('a', $this->calcMaxEmailLocalPartLength()) . self::EMAIL_DOMAIN;
-    }
-
-    private function calcMaxEmailLocalPartLength(): int
-    {
-        return self::MAX_EMAIL_LENGTH - strlen(self::EMAIL_DOMAIN);
-    }
-
     public function testRegistrationWithInvalidLongEmail(): void
     {
         $response = $this->postJson(self::REGISTER_URI, [
@@ -209,11 +163,6 @@ class AuthTest extends TestCase
 
         $this->withResponse($response)
             ->assertStatusWithErrorAndMessage(422, 'email', 'The email field must not be greater than 255 characters.');
-    }
-
-    private function fakeInvalidLongEmail(): string
-    {
-        return str_repeat('a', $this->calcMaxEmailLocalPartLength() + 1) . self::EMAIL_DOMAIN;
     }
 
     public function testRegistrationWithInvalidEmail(): void
@@ -286,11 +235,6 @@ class AuthTest extends TestCase
         $response->assertStatus(201);
     }
 
-    private function fakeValidShortPassword(): string
-    {
-        return str_repeat('a', self::MIN_PASSWORD_LENGTH);
-    }
-
     public function testRegistrationWithInvalidShortPassword(): void
     {
         $password = $this->fakeInvalidShortPassword();
@@ -306,11 +250,6 @@ class AuthTest extends TestCase
             ->assertStatusWithErrorAndMessage(422, 'password', 'The password field must be at least 8 characters.');
     }
 
-    private function fakeInvalidShortPassword(): string
-    {
-        return str_repeat('a', self::MIN_PASSWORD_LENGTH - 1);
-    }
-
     public function testRegistrationWithValidLongPassword(): void
     {
         $password = $this->fakeValidLongPassword();
@@ -323,11 +262,6 @@ class AuthTest extends TestCase
         ]);
 
         $response->assertStatus(201);
-    }
-
-    private function fakeValidLongPassword(): string
-    {
-        return str_repeat('a', self::MAX_PASSWORD_LENGTH);
     }
 
     public function testRegistrationWithInvalidLongPassword(): void
@@ -347,11 +281,6 @@ class AuthTest extends TestCase
                 'password',
                 'The password field must not be greater than 255 characters.',
             );
-    }
-
-    private function fakeInvalidLongPassword(): string
-    {
-        return str_repeat('a', self::MAX_PASSWORD_LENGTH + 1);
     }
 
     #[DataProviderExternal(AuthDataProvider::class, 'provideValidPasswords')]
@@ -417,206 +346,5 @@ class AuthTest extends TestCase
 
         $this->withResponse($response)
             ->assertStatusWithErrorAndMessage(422, 'password', 'The password field confirmation does not match.');
-    }
-
-    public function testLoginSuccess(): void
-    {
-        $this->createUser(['email' => self::EMAIL]);
-
-        $response = $this->postJson(self::LOGIN_URI, [
-            'email' => self::EMAIL,
-            'password' => self::PASSWORD,
-        ]);
-
-        $this->withResponse($response)
-            ->assertStatusWithJsonStructure(200, [
-                'token',
-                'user' => [
-                    'id',
-                    'name',
-                    'email',
-                    'email_verified_at',
-                    'created_at',
-                    'updated_at',
-                ],
-            ]);
-    }
-
-    public function testLoginWithoutEmail(): void
-    {
-        $response = $this->postJson(self::LOGIN_URI, [
-            'password' => self::PASSWORD,
-        ]);
-
-        $this->withResponse($response)
-            ->assertStatusWithErrorAndMessage(422, 'email', 'The email field is required.');
-    }
-
-    public function testLoginWithEmptyEmail(): void
-    {
-        $response = $this->postJson(self::LOGIN_URI, [
-            'email' => self::INVALID_EMPTY_EMAIL,
-            'password' => self::PASSWORD,
-        ]);
-
-        $this->withResponse($response)
-            ->assertStatusWithErrorAndMessage(422, 'email', 'The email field is required.');
-    }
-
-    public function testLoginWithValidLongEmail(): void
-    {
-        $email = $this->fakeValidLongEmail();
-
-        $this->createUser([
-            'email' => $email,
-            'password' => self::PASSWORD,
-        ]);
-
-        $response = $this->postJson(self::LOGIN_URI, [
-            'email' => $email,
-            'password' => self::PASSWORD,
-        ]);
-
-        $response->assertStatus(200);
-    }
-
-    public function testLoginWithInvalidLongEmail(): void
-    {
-        $response = $this->postJson(self::LOGIN_URI, [
-            'email' => $this->fakeInvalidLongEmail(),
-            'password' => self::PASSWORD,
-        ]);
-
-        $this->withResponse($response)
-            ->assertStatusWithErrorAndMessage(422, 'email', 'The email field must not be greater than 255 characters.');
-    }
-
-    public function testLoginWithInvalidEmail(): void
-    {
-        $response = $this->postJson(self::LOGIN_URI, [
-            'email' => self::INVALID_EMAIL,
-            'password' => self::PASSWORD,
-        ]);
-
-        $this->withResponse($response)
-            ->assertStatusWithErrorAndMessage(422, 'email', 'The email field must be a valid email address.');
-    }
-
-    public function testLoginWithoutPassword(): void
-    {
-        $this->createUser(['email' => self::EMAIL]);
-
-        $response = $this->postJson(self::LOGIN_URI, [
-            'email' => self::EMAIL,
-        ]);
-
-        $this->withResponse($response)
-            ->assertStatusWithErrorAndMessage(422, 'password', 'The password field is required.');
-    }
-
-    public function testLoginWithEmptyPassword(): void
-    {
-        $this->createUser(['email' => self::EMAIL]);
-
-        $response = $this->postJson(self::LOGIN_URI, [
-            'email' => self::EMAIL,
-            'password' => self::INVALID_EMPTY_PASSWORD,
-        ]);
-
-        $this->withResponse($response)
-            ->assertStatusWithErrorAndMessage(422, 'password', 'The password field is required.');
-    }
-
-    public function testLoginWithValidLongPassword(): void
-    {
-        $password = $this->fakeValidLongPassword();
-
-        $this->createUser([
-            'email' => self::EMAIL,
-            'password' => Hash::make($password),
-        ]);
-
-        $response = $this->postJson(self::LOGIN_URI, [
-            'email' => self::EMAIL,
-            'password' => $password,
-        ]);
-
-        $response->assertStatus(200);
-    }
-
-    public function testLoginWithInvalidLongPassword(): void
-    {
-        $response = $this->postJson(self::LOGIN_URI, [
-            'email' => self::EMAIL,
-            'password' => $this->fakeInvalidLongPassword(),
-        ]);
-
-        $this->withResponse($response)
-            ->assertStatusWithErrorAndMessage(
-                422,
-                'password',
-                'The password field must not be greater than 255 characters.',
-            );
-    }
-
-    public function testLoginWithInvalidCredentials(): void
-    {
-        $response = $this->postJson(self::LOGIN_URI, [
-            'email' => self::EMAIL,
-            'password' => self::PASSWORD,
-        ]);
-
-        $this->withResponse($response)
-            ->assertStatusWithMessage(401, 'Invalid credentials');
-    }
-
-    public function testLogoutSuccess(): void
-    {
-        $user = $this->createUser();
-        $token = $this->createTokenForUser($user, self::TOKEN_NAME);
-
-        $response = $this->withToken($token)
-            ->postJson(self::LOGOUT_URI);
-
-        $this->withResponse($response)
-            ->assertStatusWithMessage(200, 'Logged out');
-    }
-
-    public function testLogoutWithoutAuthentication(): void
-    {
-        $response = $this->postJson(self::LOGOUT_URI);
-
-        $this->withResponse($response)
-            ->assertStatusWithMessage(401, 'Unauthenticated.');
-    }
-
-    public function testLogoutMustInvalidateAllTokens(): void
-    {
-        $user = $this->createUser();
-        $token = $this->createTokenForUser($user, self::TOKEN_NAME);
-        $this->createTokenForUser($user, self::ANOTHER_TOKEN_NAME);
-        $expectedTokensCount = 2;
-
-        $this->assertEquals(
-            $expectedTokensCount,
-            $user->tokens()->count(),
-            "User should have {$expectedTokensCount} tokens before logout.",
-        );
-
-        $this->withToken($token)
-            ->postJson(self::LOGOUT_URI);
-
-        $this->assertEquals(0, $user->tokens()->count(), 'User should have no tokens after logout.');
-    }
-
-    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testAccessLessonWithoutAuthentication(string $language): void
-    {
-        $lessonUri = sprintf(self::LESSONS_URI_TEMPLATE, $language, self::LESSON_NUMBER_FOR_ACCESS);
-
-        $response = $this->getJson($lessonUri);
-
-        $this->withResponse($response)
-            ->assertStatusWithMessage(401, 'Unauthenticated.');
     }
 }
