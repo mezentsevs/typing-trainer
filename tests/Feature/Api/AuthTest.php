@@ -25,7 +25,6 @@ class AuthTest extends TestCase
 
     private const int MAX_EMAIL_LENGTH = 255;
     private const string EMAIL = 'test@example.com';
-    private const string ANOTHER_EMAIL = 'another@example.com';
     private const string EMAIL_DOMAIN = '@example.com';
     private const string INVALID_EMAIL = 'invalid_email';
     private const string INVALID_EMPTY_EMAIL = '';
@@ -91,10 +90,9 @@ class AuthTest extends TestCase
             ->assertStatusWithErrorAndMessage(422, 'name', 'The name field is required.');
     }
 
-    public function testUserRegistrationNameMaximumLength(): void
+    public function testUserRegistrationNameMaximumLengthValid(): void
     {
         $validLongUserName = str_repeat('a', self::MAX_USER_NAME_LENGTH);
-        $invalidLongUserName = str_repeat('a', self::MAX_USER_NAME_LENGTH + 1);
 
         $response = $this->postJson(self::REGISTER_URI, [
             'name' => $validLongUserName,
@@ -104,12 +102,17 @@ class AuthTest extends TestCase
         ]);
 
         $response->assertStatus(201);
+    }
+
+    public function testUserRegistrationNameMaximumLengthInvalid(): void
+    {
+        $invalidLongUserName = str_repeat('a', self::MAX_USER_NAME_LENGTH + 1);
 
         $response = $this->postJson(self::REGISTER_URI, [
             'name' => $invalidLongUserName,
-            'email' => self::ANOTHER_EMAIL,
-            'password' => self::ANOTHER_PASSWORD,
-            'password_confirmation' => self::ANOTHER_PASSWORD,
+            'email' => self::EMAIL,
+            'password' => self::PASSWORD,
+            'password_confirmation' => self::PASSWORD,
         ]);
 
         $this->withResponse($response)
@@ -168,11 +171,10 @@ class AuthTest extends TestCase
             ->assertStatusWithErrorAndMessage(422, 'email', 'The email field is required.');
     }
 
-    public function testUserRegistrationEmailMaximumLength(): void
+    public function testUserRegistrationEmailMaximumLengthValid(): void
     {
         $maxEmailLocalPartLength = self::MAX_EMAIL_LENGTH - strlen(self::EMAIL_DOMAIN);
         $validLongEmail = str_repeat('a', $maxEmailLocalPartLength) . self::EMAIL_DOMAIN;
-        $invalidLongEmail = str_repeat('a', $maxEmailLocalPartLength + 1) . self::EMAIL_DOMAIN;
 
         $response = $this->postJson(self::REGISTER_URI, [
             'name' => self::USER_NAME,
@@ -182,12 +184,18 @@ class AuthTest extends TestCase
         ]);
 
         $response->assertStatus(201);
+    }
+
+    public function testUserRegistrationEmailMaximumLengthInvalid(): void
+    {
+        $maxEmailLocalPartLength = self::MAX_EMAIL_LENGTH - strlen(self::EMAIL_DOMAIN);
+        $invalidLongEmail = str_repeat('a', $maxEmailLocalPartLength + 1) . self::EMAIL_DOMAIN;
 
         $response = $this->postJson(self::REGISTER_URI, [
-            'name' => self::ANOTHER_USER_NAME,
+            'name' => self::USER_NAME,
             'email' => $invalidLongEmail,
-            'password' => self::ANOTHER_PASSWORD,
-            'password_confirmation' => self::ANOTHER_PASSWORD,
+            'password' => self::PASSWORD,
+            'password_confirmation' => self::PASSWORD,
         ]);
 
         $this->withResponse($response)
@@ -250,10 +258,9 @@ class AuthTest extends TestCase
             ->assertStatusWithErrorAndMessage(422, 'password', 'The password field is required.');
     }
 
-    public function testUserRegistrationPasswordMinimumLength(): void
+    public function testUserRegistrationPasswordMinimumLengthValid(): void
     {
         $validPassword = str_repeat('a', self::MIN_PASSWORD_LENGTH);
-        $invalidPassword = str_repeat('a', self::MIN_PASSWORD_LENGTH - 1);
 
         $response = $this->postJson(self::REGISTER_URI, [
             'name' => self::USER_NAME,
@@ -263,10 +270,15 @@ class AuthTest extends TestCase
         ]);
 
         $response->assertStatus(201);
+    }
+
+    public function testUserRegistrationPasswordMinimumLengthInvalid(): void
+    {
+        $invalidPassword = str_repeat('a', self::MIN_PASSWORD_LENGTH - 1);
 
         $response = $this->postJson(self::REGISTER_URI, [
-            'name' => self::ANOTHER_USER_NAME,
-            'email' => self::ANOTHER_EMAIL,
+            'name' => self::USER_NAME,
+            'email' => self::EMAIL,
             'password' => $invalidPassword,
             'password_confirmation' => $invalidPassword,
         ]);
@@ -275,10 +287,9 @@ class AuthTest extends TestCase
             ->assertStatusWithErrorAndMessage(422, 'password', 'The password field must be at least 8 characters.');
     }
 
-    public function testUserRegistrationPasswordMaximumLength(): void
+    public function testUserRegistrationPasswordMaximumLengthValid(): void
     {
         $validPassword = str_repeat('a', self::MAX_PASSWORD_LENGTH);
-        $invalidPassword = str_repeat('a', self::MAX_PASSWORD_LENGTH + 1);
 
         $response = $this->postJson(self::REGISTER_URI, [
             'name' => self::USER_NAME,
@@ -288,10 +299,15 @@ class AuthTest extends TestCase
         ]);
 
         $response->assertStatus(201);
+    }
+
+    public function testUserRegistrationPasswordMaximumLengthInvalid(): void
+    {
+        $invalidPassword = str_repeat('a', self::MAX_PASSWORD_LENGTH + 1);
 
         $response = $this->postJson(self::REGISTER_URI, [
-            'name' => self::ANOTHER_USER_NAME,
-            'email' => self::ANOTHER_EMAIL,
+            'name' => self::USER_NAME,
+            'email' => self::EMAIL,
             'password' => $invalidPassword,
             'password_confirmation' => $invalidPassword,
         ]);
@@ -413,13 +429,15 @@ class AuthTest extends TestCase
             ->assertStatusWithErrorAndMessage(422, 'email', 'The email field is required.');
     }
 
-    public function testUserLoginEmailMaximumLength(): void
+    public function testUserLoginEmailMaximumLengthValid(): void
     {
         $maxEmailLocalPartLength = self::MAX_EMAIL_LENGTH - strlen(self::EMAIL_DOMAIN);
         $validLongEmail = str_repeat('a', $maxEmailLocalPartLength) . self::EMAIL_DOMAIN;
-        $invalidLongEmail = str_repeat('a', $maxEmailLocalPartLength + 1) . self::EMAIL_DOMAIN;
 
-        $this->createUser(['email' => $validLongEmail]);
+        $this->createUser([
+            'email' => $validLongEmail,
+            'password' => self::PASSWORD,
+        ]);
 
         $response = $this->postJson(self::LOGIN_URI, [
             'email' => $validLongEmail,
@@ -427,6 +445,12 @@ class AuthTest extends TestCase
         ]);
 
         $response->assertStatus(200);
+    }
+
+    public function testUserLoginEmailMaximumLengthInvalid(): void
+    {
+        $maxEmailLocalPartLength = self::MAX_EMAIL_LENGTH - strlen(self::EMAIL_DOMAIN);
+        $invalidLongEmail = str_repeat('a', $maxEmailLocalPartLength + 1) . self::EMAIL_DOMAIN;
 
         $response = $this->postJson(self::LOGIN_URI, [
             'email' => $invalidLongEmail,
@@ -473,10 +497,9 @@ class AuthTest extends TestCase
             ->assertStatusWithErrorAndMessage(422, 'password', 'The password field is required.');
     }
 
-    public function testUserLoginPasswordMaximumLength(): void
+    public function testUserLoginPasswordMaximumLengthValid(): void
     {
         $validPassword = str_repeat('a', self::MAX_PASSWORD_LENGTH);
-        $invalidPassword = str_repeat('a', self::MAX_PASSWORD_LENGTH + 1);
 
         $this->createUser([
             'email' => self::EMAIL,
@@ -489,9 +512,14 @@ class AuthTest extends TestCase
         ]);
 
         $response->assertStatus(200);
+    }
+
+    public function testUserLoginPasswordMaximumLengthInvalid(): void
+    {
+        $invalidPassword = str_repeat('a', self::MAX_PASSWORD_LENGTH + 1);
 
         $response = $this->postJson(self::LOGIN_URI, [
-            'email' => self::ANOTHER_EMAIL,
+            'email' => self::EMAIL,
             'password' => $invalidPassword,
         ]);
 
