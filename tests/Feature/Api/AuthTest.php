@@ -22,7 +22,9 @@ class AuthTest extends TestCase
     private const string TOKEN_NAME = 'test_token';
     private const string ANOTHER_TOKEN_NAME = 'another_token';
 
+    private const int MAX_EMAIL_LENGTH = 255;
     private const string EMAIL = 'test@example.com';
+    private const string EMAIL_DOMAIN = '@example.com';
     private const string INVALID_EMAIL = 'invalid_email';
     private const string INVALID_EMPTY_EMAIL = '';
 
@@ -151,6 +153,32 @@ class AuthTest extends TestCase
 
         $this->withResponse($response)
             ->assertStatusWithErrorAndMessage(422, 'email', 'The email field is required.');
+    }
+
+    public function testUserRegistrationValidationEmailMaximumLength(): void
+    {
+        $maxEmailLocalPartLength = self::MAX_EMAIL_LENGTH - strlen(self::EMAIL_DOMAIN);
+        $validMaxEmailLocalPart = str_repeat('a', $maxEmailLocalPartLength);
+        $invalidMaxEmailLocalPart = str_repeat('a', $maxEmailLocalPartLength + 1);
+
+        $response = $this->postJson(self::REGISTER_URI, [
+            'name' => self::USER_NAME,
+            'email' => $validMaxEmailLocalPart . self::EMAIL_DOMAIN,
+            'password' => self::PASSWORD,
+            'password_confirmation' => self::PASSWORD,
+        ]);
+
+        $response->assertStatus(201);
+
+        $response = $this->postJson(self::REGISTER_URI, [
+            'name' => self::ANOTHER_USER_NAME,
+            'email' => $invalidMaxEmailLocalPart . self::EMAIL_DOMAIN,
+            'password' => self::ANOTHER_PASSWORD,
+            'password_confirmation' => self::ANOTHER_PASSWORD,
+        ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'email', 'The email field must not be greater than 255 characters.');
     }
 
     public function testUserRegistrationValidationEmailMustBeValid(): void
