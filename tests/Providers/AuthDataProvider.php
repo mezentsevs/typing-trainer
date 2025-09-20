@@ -7,93 +7,93 @@ class AuthDataProvider
     protected const string NUMBERS = '0123456789';
     protected const string SPECIAL_CHARS = '!@#$%^&*()_+-=[]{}|;:\"\',.<>/?~`';
 
-    public static function provideValidFormatUserNames(): array
+    public static function provideValidUserNames(): array
     {
         return [
-            'with letters only' => ['John'],
-            'with space' => ['John Doe'],
-            'with hyphen' => ['John-Doe'],
-            'with numbers' => ['John' . self::NUMBERS],
-            'with all valid characters' => ['John-V Doe ' . self::NUMBERS],
+            'letters only' => ['John'],
+            'space' => ['John Doe'],
+            'hyphen' => ['John-Doe'],
+            'numbers' => ['John' . self::NUMBERS],
+            'all valid' => ['John-V Doe ' . self::NUMBERS],
         ];
     }
 
-    public static function provideInvalidFormatUserNames(): array
+    public static function provideInvalidUserNames(): array
     {
         return [
-            'with ampersand' => ['John&Doe'],
-            'with apostrophe' => ["John'Doe"],
-            'with asterisk' => ['John*Doe'],
-            'with at sign' => ['John@Doe'],
-            'with backslash' => ['John\Doe'],
-            'with backtick' => ['John`Doe'],
-            'with caret' => ['John^Doe'],
-            'with closing bracket' => ['John]Doe'],
-            'with closing curly brace' => ['John}Doe'],
-            'with closing parenthesis' => ['John)Doe'],
-            'with colon' => ['John:Doe'],
-            'with comma' => ['John,Doe'],
-            'with dollar sign' => ['John$Doe'],
-            'with dot' => ['John.Doe'],
-            'with equals' => ['John=Doe'],
-            'with exclamation mark' => ['John!Doe'],
-            'with greater than' => ['John>Doe'],
-            'with hash' => ['John#Doe'],
-            'with less than' => ['John<Doe'],
-            'with opening bracket' => ['John[Doe'],
-            'with opening curly brace' => ['John{Doe'],
-            'with opening parenthesis' => ['John(Doe'],
-            'with percent' => ['John%Doe'],
-            'with pipe' => ['John|Doe'],
-            'with plus' => ['John+Doe'],
-            'with question mark' => ['John?Doe'],
-            'with quote' => ['John"Doe'],
-            'with semicolon' => ['John;Doe'],
-            'with slash' => ['John/Doe'],
-            'with tilde' => ['John~Doe'],
-            'with underscore' => ['John_Doe'],
+            'ampersand' => ['John&Doe'],
+            'apostrophe' => ["John'Doe"],
+            'asterisk' => ['John*Doe'],
+            'at sign' => ['John@Doe'],
+            'backslash' => ['John\Doe'],
+            'backtick' => ['John`Doe'],
+            'caret' => ['John^Doe'],
+            'closing bracket' => ['John]Doe'],
+            'closing curly brace' => ['John}Doe'],
+            'closing parenthesis' => ['John)Doe'],
+            'colon' => ['John:Doe'],
+            'comma' => ['John,Doe'],
+            'dollar sign' => ['John$Doe'],
+            'dot' => ['John.Doe'],
+            'equals' => ['John=Doe'],
+            'exclamation mark' => ['John!Doe'],
+            'greater than' => ['John>Doe'],
+            'hash' => ['John#Doe'],
+            'less than' => ['John<Doe'],
+            'opening bracket' => ['John[Doe'],
+            'opening curly brace' => ['John{Doe'],
+            'opening parenthesis' => ['John(Doe'],
+            'percent' => ['John%Doe'],
+            'pipe' => ['John|Doe'],
+            'plus' => ['John+Doe'],
+            'question mark' => ['John?Doe'],
+            'quote' => ['John"Doe'],
+            'semicolon' => ['John;Doe'],
+            'slash' => ['John/Doe'],
+            'tilde' => ['John~Doe'],
+            'underscore' => ['John_Doe'],
 
-            'with arabic characters' => ['محمد أحمد'],
-            'with cyrillic characters' => ['Иван Иванов'],
-            'with french characters' => ['René François'],
-            'with german characters' => ['Jürgen Müller'],
-            'with japanese characters' => ['山田太郎'],
+            'arabic' => ['محمد أحمد'],
+            'cyrillic' => ['Иван Иванов'],
+            'french' => ['René François'],
+            'german' => ['Jürgen Müller'],
+            'japanese' => ['山田太郎'],
 
-            'with carriage return' => ["John\rDoe"],
-            'with form feed' => ["John\fDoe"],
-            'with new line' => ["John\nDoe"],
-            'with null character' => ["John\0Doe"],
-            'with tab' => ["John\tDoe"],
-            'with vertical tab' => ["John\vDoe"],
+            'carriage return' => ["John\rDoe"],
+            'form feed' => ["John\fDoe"],
+            'new line' => ["John\nDoe"],
+            'null character' => ["John\0Doe"],
+            'tab' => ["John\tDoe"],
+            'vertical tab' => ["John\vDoe"],
         ];
     }
 
-    public static function provideValidFormatPasswords(): array
+    public static function provideValidPasswords(): array
     {
         return [
-            'with letters only' => ['Password'],
-            'with numbers' => ['Password' . self::NUMBERS],
-            'with special characters' => ['Password' . self::SPECIAL_CHARS],
-            'with all valid characters' => ['Password' . self::NUMBERS . self::SPECIAL_CHARS],
+            'letters only' => ['Password'],
+            'numbers' => ['Password' . self::NUMBERS],
+            'special' => ['Password' . self::SPECIAL_CHARS],
+            'all valid' => ['Password' . self::NUMBERS . self::SPECIAL_CHARS],
         ];
     }
 
-    public static function provideInvalidFormatPasswords(): array
+    public static function provideInvalidPasswords(): array
     {
         return [
-            'with arabic characters' => ['كلمةالمرور'],
-            'with cyrillic characters' => ['БезопасныйПароль'],
-            'with french characters' => ['SécuriséMotDePasse'],
-            'with german characters' => ['Passwörd'],
-            'with japanese characters' => ['マイパスワードは安全です'],
+            'arabic' => ['كلمةالمرور'],
+            'cyrillic' => ['БезопасныйПароль'],
+            'french' => ['SécuriséMotDePasse'],
+            'german' => ['Passwörd'],
+            'japanese' => ['マイパスワードは安全です'],
 
-            'with carriage return' => ["Pass\rword"],
-            'with form feed' => ["Pass\fword"],
-            'with new line' => ["Pass\nword"],
-            'with null character' => ["Pass\0word"],
-            'with space' => ['Pass word'],
-            'with tab' => ["Pass\tword"],
-            'with vertical tab' => ["Pass\vword"],
+            'carriage return' => ["Pass\rword"],
+            'form feed' => ["Pass\fword"],
+            'new line' => ["Pass\nword"],
+            'null character' => ["Pass\0word"],
+            'space' => ['Pass word'],
+            'tab' => ["Pass\tword"],
+            'vertical tab' => ["Pass\vword"],
         ];
     }
 }
