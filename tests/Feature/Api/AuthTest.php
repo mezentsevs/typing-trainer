@@ -158,12 +158,12 @@ class AuthTest extends TestCase
     public function testUserRegistrationValidationEmailMaximumLength(): void
     {
         $maxEmailLocalPartLength = self::MAX_EMAIL_LENGTH - strlen(self::EMAIL_DOMAIN);
-        $validMaxEmailLocalPart = str_repeat('a', $maxEmailLocalPartLength);
-        $invalidMaxEmailLocalPart = str_repeat('a', $maxEmailLocalPartLength + 1);
+        $validLongEmail = str_repeat('a', $maxEmailLocalPartLength) . self::EMAIL_DOMAIN;
+        $invalidLongEmail = str_repeat('a', $maxEmailLocalPartLength + 1) . self::EMAIL_DOMAIN;
 
         $response = $this->postJson(self::REGISTER_URI, [
             'name' => self::USER_NAME,
-            'email' => $validMaxEmailLocalPart . self::EMAIL_DOMAIN,
+            'email' => $validLongEmail,
             'password' => self::PASSWORD,
             'password_confirmation' => self::PASSWORD,
         ]);
@@ -172,7 +172,7 @@ class AuthTest extends TestCase
 
         $response = $this->postJson(self::REGISTER_URI, [
             'name' => self::ANOTHER_USER_NAME,
-            'email' => $invalidMaxEmailLocalPart . self::EMAIL_DOMAIN,
+            'email' => $invalidLongEmail,
             'password' => self::ANOTHER_PASSWORD,
             'password_confirmation' => self::ANOTHER_PASSWORD,
         ]);
