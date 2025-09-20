@@ -412,6 +412,30 @@ class AuthTest extends TestCase
             ->assertStatusWithErrorAndMessage(422, 'email', 'The email field is required.');
     }
 
+    public function testUserLoginValidationEmailMaximumLength(): void
+    {
+        $maxEmailLocalPartLength = self::MAX_EMAIL_LENGTH - strlen(self::EMAIL_DOMAIN);
+        $validLongEmail = str_repeat('a', $maxEmailLocalPartLength) . self::EMAIL_DOMAIN;
+        $invalidLongEmail = str_repeat('a', $maxEmailLocalPartLength + 1) . self::EMAIL_DOMAIN;
+
+        $this->createUser(['email' => $validLongEmail]);
+
+        $response = $this->postJson(self::LOGIN_URI, [
+            'email' => $validLongEmail,
+            'password' => self::PASSWORD,
+        ]);
+
+        $response->assertStatus(200);
+
+        $response = $this->postJson(self::LOGIN_URI, [
+            'email' => $invalidLongEmail,
+            'password' => self::PASSWORD,
+        ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'email', 'The email field must not be greater than 255 characters.');
+    }
+
     public function testUserLoginValidationEmailMustBeValid(): void
     {
         $response = $this->postJson(self::LOGIN_URI, [
