@@ -34,6 +34,7 @@ class AuthTest extends TestCase
     private const string ANOTHER_USER_NAME = 'Another User';
     private const string INVALID_EMPTY_USER_NAME = '';
 
+    private const int MAX_PASSWORD_LENGTH = 255;
     private const string PASSWORD = 'password';
     private const string ANOTHER_PASSWORD = 'another_password';
     private const string WRONG_PASSWORD = 'wrong_password';
@@ -259,6 +260,35 @@ class AuthTest extends TestCase
 
         $this->withResponse($response)
             ->assertStatusWithErrorAndMessage(422, 'password', 'The password field must be at least 8 characters.');
+    }
+
+    public function testUserRegistrationValidationPasswordMaximumLength(): void
+    {
+        $validPassword = str_repeat('a', self::MAX_PASSWORD_LENGTH);
+        $invalidPassword = str_repeat('a', self::MAX_PASSWORD_LENGTH + 1);
+
+        $response = $this->postJson(self::REGISTER_URI, [
+            'name' => self::USER_NAME,
+            'email' => self::EMAIL,
+            'password' => $validPassword,
+            'password_confirmation' => $validPassword,
+        ]);
+
+        $response->assertStatus(201);
+
+        $response = $this->postJson(self::REGISTER_URI, [
+            'name' => self::ANOTHER_USER_NAME,
+            'email' => self::ANOTHER_EMAIL,
+            'password' => $invalidPassword,
+            'password_confirmation' => $invalidPassword,
+        ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(
+                422,
+                'password',
+                'The password field must not be greater than 255 characters.',
+            );
     }
 
     #[DataProviderExternal(AuthDataProvider::class, 'provideValidFormatPasswords')]
