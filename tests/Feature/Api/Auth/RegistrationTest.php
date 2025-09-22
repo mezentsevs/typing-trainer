@@ -2,7 +2,9 @@
 
 namespace Tests\Feature\Api\Auth;
 
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Hash;
 use PHPUnit\Framework\Attributes\DataProviderExternal;
 use Tests\Providers\AuthDataProvider;
 use Tests\TestCase;
@@ -308,6 +310,25 @@ class RegistrationTest extends TestCase
 
         $this->withResponse($response)
             ->assertStatusWithErrorAndMessage(422, 'password', 'The password field format is invalid.');
+    }
+
+    public function testRegistrationStoresHashedPassword(): void
+    {
+        $this->postJson(self::REGISTER_URI, [
+            'name' => self::USER_NAME,
+            'email' => self::EMAIL,
+            'password' => self::PASSWORD,
+            'password_confirmation' => self::PASSWORD,
+        ]);
+
+        $user = User::where('email', self::EMAIL)->first();
+
+        $this->assertNotNull($user);
+        $this->assertNotEquals(self::PASSWORD, $user->password, 'Password should not be stored in plain text.');
+        $this->assertTrue(
+            Hash::check(self::PASSWORD, $user->password),
+            'Password hash should match the provided password.',
+        );
     }
 
     public function testRegistrationWithoutPasswordConfirmation(): void
