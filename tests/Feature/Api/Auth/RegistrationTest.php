@@ -327,7 +327,7 @@ class RegistrationTest extends TestCase
         $this->assertNotEquals(self::PASSWORD, $user->password, 'Password should not be stored in plain text.');
         $this->assertTrue(
             Hash::check(self::PASSWORD, $user->password),
-            'Password hash should match the provided password.',
+            'Password hash should match the provided password hash.',
         );
     }
 
