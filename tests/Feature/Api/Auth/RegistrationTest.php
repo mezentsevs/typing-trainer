@@ -16,8 +16,6 @@ class RegistrationTest extends TestCase
 {
     use RefreshDatabase, WithUser, WithResponseAssertions, WithAuthFakes;
 
-    private const string REGISTER_URI = '/api/register';
-
     public function testRegistrationSuccess(): void
     {
         $response = $this->postJson(self::REGISTER_URI, [
@@ -38,6 +36,27 @@ class RegistrationTest extends TestCase
                     'updated_at',
                 ],
             ]);
+    }
+
+    public function testRegistrationTokenWorksForProtectedEndpoint(): void
+    {
+        $response = $this->postJson(self::REGISTER_URI, [
+            'name' => self::USER_NAME,
+            'email' => self::EMAIL,
+            'password' => self::PASSWORD,
+            'password_confirmation' => self::PASSWORD,
+        ]);
+
+        $response->assertStatus(201);
+
+        $token = $response->json('token');
+        $this->assertNotNull($token, 'Token should be present in response.');
+
+        $response = $this->withToken($token)
+            ->postJson(self::LOGOUT_URI);
+
+        $this->withResponse($response)
+            ->assertStatusWithMessage(200, 'Logged out');
     }
 
     public function testRegistrationWithoutUserName(): void

@@ -14,8 +14,6 @@ class LogoutTest extends TestCase
 {
     use RefreshDatabase, WithUser, WithResponseAssertions, WithAuthConstants;
 
-    private const string LOGOUT_URI = '/api/logout';
-
     private const string LESSONS_URI_TEMPLATE = '/api/lessons/%s/%d';
     private const int LESSON_NUMBER_FOR_ACCESS = 1;
 

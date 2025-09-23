@@ -4,6 +4,10 @@ namespace Tests\Traits\Constants;
 
 trait WithAuthConstants
 {
+    protected const string REGISTER_URI = '/api/register';
+    protected const string LOGIN_URI = '/api/login';
+    protected const string LOGOUT_URI = '/api/logout';
+
     protected const string TOKEN_NAME = 'testToken';
     protected const string ANOTHER_TOKEN_NAME = 'anotherToken';
 

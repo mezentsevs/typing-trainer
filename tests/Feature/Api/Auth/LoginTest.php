@@ -13,8 +13,6 @@ class LoginTest extends TestCase
 {
     use RefreshDatabase, WithUser, WithResponseAssertions, WithAuthFakes;
 
-    private const string LOGIN_URI = '/api/login';
-
     public function testLoginSuccess(): void
     {
         $this->createUser(['email' => self::EMAIL]);
