@@ -333,6 +333,20 @@ class RegistrationTest extends TestCase
         );
     }
 
+    public function testRegistrationSuccessResponseDoesNotContainPassword(): void
+    {
+        $response = $this->postJson(self::REGISTER_URI, [
+            'name' => self::USER_NAME,
+            'email' => self::EMAIL,
+            'password' => self::PASSWORD,
+            'password_confirmation' => self::PASSWORD,
+        ]);
+
+        $response->assertStatus(201);
+        $response->assertJsonMissing(['password']);
+        $response->assertJsonMissingPath('user.password');
+    }
+
     public function testRegistrationWithoutPasswordConfirmation(): void
     {
         $response = $this->postJson(self::REGISTER_URI, [
