@@ -217,6 +217,24 @@ class RegistrationTest extends TestCase
             ->assertStatusWithErrorAndMessage(422, 'email', 'The email has already been taken.');
     }
 
+    public function testRegistrationWithEmailCaseInsensitivity(): void
+    {
+        $this->createUser([
+            'name' => self::USER_NAME,
+            'email' => self::EMAIL,
+        ]);
+
+        $response = $this->postJson(self::REGISTER_URI, [
+            'name' => self::ANOTHER_USER_NAME,
+            'email' => strtoupper(self::EMAIL),
+            'password' => self::ANOTHER_PASSWORD,
+            'password_confirmation' => self::ANOTHER_PASSWORD,
+        ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'email', 'The email has already been taken.');
+    }
+
     public function testRegistrationWithoutPassword(): void
     {
         $response = $this->postJson(self::REGISTER_URI, [
