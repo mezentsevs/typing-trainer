@@ -314,12 +314,14 @@ class RegistrationTest extends TestCase
 
     public function testRegistrationStoresHashedPassword(): void
     {
-        $this->postJson(self::REGISTER_URI, [
+        $response = $this->postJson(self::REGISTER_URI, [
             'name' => self::USER_NAME,
             'email' => self::EMAIL,
             'password' => self::PASSWORD,
             'password_confirmation' => self::PASSWORD,
         ]);
+
+        $response->assertStatus(201);
 
         $user = User::where('email', self::EMAIL)->first();
 
