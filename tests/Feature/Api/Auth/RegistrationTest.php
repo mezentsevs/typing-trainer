@@ -221,7 +221,7 @@ class RegistrationTest extends TestCase
     {
         $this->createUser([
             'name' => self::USER_NAME,
-            'email' => self::EMAIL,
+            'email' => strtolower(self::EMAIL),
         ]);
 
         $response = $this->postJson(self::REGISTER_URI, [
