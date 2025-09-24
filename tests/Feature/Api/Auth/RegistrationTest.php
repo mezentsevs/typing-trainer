@@ -394,7 +394,7 @@ class RegistrationTest extends TestCase
 
         $user = User::where('email', self::EMAIL)->first();
 
-        $this->assertNotNull($user);
+        $this->assertNotNull($user, 'User should be created.');
         $this->assertNotEquals(self::PASSWORD, $user->password, 'Password should not be stored in plain text.');
         $this->assertTrue(
             Hash::check(self::PASSWORD, $user->password),
