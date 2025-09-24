@@ -136,6 +136,22 @@ class RegistrationTest extends TestCase
             ->assertStatusWithErrorAndMessage(422, 'name', 'The name field format is invalid.');
     }
 
+    public function testRegistrationTrimsSpacesFromUserName(): void
+    {
+        $response = $this->postJson(self::REGISTER_URI, [
+            'name' => '   ' . self::USER_NAME . '   ',
+            'email' => self::EMAIL,
+            'password' => self::PASSWORD,
+            'password_confirmation' => self::PASSWORD,
+        ]);
+
+        $response->assertStatus(201);
+
+        $user = User::where('email', self::EMAIL)->first();
+        $this->assertNotNull($user, 'User should be created.');
+        $this->assertEquals(self::USER_NAME, $user->name, 'User name should be trimmed.');
+    }
+
     public function testRegistrationWithoutEmail(): void
     {
         $response = $this->postJson(self::REGISTER_URI, [
