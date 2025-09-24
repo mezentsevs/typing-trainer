@@ -251,6 +251,22 @@ class RegistrationTest extends TestCase
             ->assertStatusWithErrorAndMessage(422, 'email', 'The email has already been taken.');
     }
 
+    public function testRegistrationTrimsSpacesFromEmail(): void
+    {
+        $response = $this->postJson(self::REGISTER_URI, [
+            'name' => self::USER_NAME,
+            'email' => '   ' . self::EMAIL . '   ',
+            'password' => self::PASSWORD,
+            'password_confirmation' => self::PASSWORD,
+        ]);
+
+        $response->assertStatus(201);
+
+        $user = User::where('email', self::EMAIL)->first();
+        $this->assertNotNull($user, 'User should be created.');
+        $this->assertEquals(self::EMAIL, $user->email, 'Email should be trimmed.');
+    }
+
     public function testRegistrationWithoutPassword(): void
     {
         $response = $this->postJson(self::REGISTER_URI, [
