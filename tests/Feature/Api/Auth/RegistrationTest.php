@@ -280,6 +280,19 @@ class RegistrationTest extends TestCase
         $this->assertEquals(self::EMAIL, $user->email, 'Email should be trimmed.');
     }
 
+    public function testRegistrationWithSqlInjectionAttemptInEmail(): void
+    {
+        $response = $this->postJson(self::REGISTER_URI, [
+            'name' => self::USER_NAME,
+            'email' => self::EMAIL_WITH_SQL_INJECTION,
+            'password' => self::PASSWORD,
+            'password_confirmation' => self::PASSWORD,
+        ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'email', 'The email field must be a valid email address.');
+    }
+
     public function testRegistrationWithoutPassword(): void
     {
         $response = $this->postJson(self::REGISTER_URI, [
