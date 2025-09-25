@@ -442,6 +442,19 @@ class RegistrationTest extends TestCase
         $response->assertJsonMissingPath('user.password');
     }
 
+    public function testRegistrationWithSqlInjectionAttemptInPassword(): void
+    {
+        $response = $this->postJson(self::REGISTER_URI, [
+            'name' => self::USER_NAME,
+            'email' => self::EMAIL,
+            'password' => self::PASSWORD_WITH_SQL_INJECTION,
+            'password_confirmation' => self::PASSWORD_WITH_SQL_INJECTION,
+        ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'password', 'The password field format is invalid.');
+    }
+
     public function testRegistrationWithoutPasswordConfirmation(): void
     {
         $response = $this->postJson(self::REGISTER_URI, [

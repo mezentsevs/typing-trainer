@@ -27,6 +27,7 @@ trait WithAuthConstants
     protected const int MIN_PASSWORD_LENGTH = 8;
     protected const int MAX_PASSWORD_LENGTH = 255;
     protected const string PASSWORD = 'password';
+    protected const string PASSWORD_WITH_SQL_INJECTION = "'; DROP TABLE users;--";
     protected const string ANOTHER_PASSWORD = 'anotherPassword';
     protected const string INVALID_EMPTY_PASSWORD = '';
 }
