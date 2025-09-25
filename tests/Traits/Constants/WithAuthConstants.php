@@ -19,6 +19,7 @@ trait WithAuthConstants
 
     protected const int MAX_USER_NAME_LENGTH = 255;
     protected const string USER_NAME = 'Test User';
+    protected const string USER_NAME_WITH_SQL_INJECTION = "Test'; DROP TABLE users;--";
     protected const string ANOTHER_USER_NAME = 'Another User';
     protected const string INVALID_EMPTY_USER_NAME = '';
 

@@ -152,6 +152,19 @@ class RegistrationTest extends TestCase
         $this->assertEquals(self::USER_NAME, $user->name, 'User name should be trimmed.');
     }
 
+    public function testRegistrationWithSqlInjectionAttemptInUserName(): void
+    {
+        $response = $this->postJson(self::REGISTER_URI, [
+            'name' => self::USER_NAME_WITH_SQL_INJECTION,
+            'email' => self::EMAIL,
+            'password' => self::PASSWORD,
+            'password_confirmation' => self::PASSWORD,
+        ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'name', 'The name field format is invalid.');
+    }
+
     public function testRegistrationWithoutEmail(): void
     {
         $response = $this->postJson(self::REGISTER_URI, [
