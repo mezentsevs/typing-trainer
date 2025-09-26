@@ -258,10 +258,7 @@ class RegistrationTest extends TestCase
 
     public function testRegistrationWithEmailCaseInsensitivity(): void
     {
-        $this->createUser([
-            'name' => self::USER_NAME,
-            'email' => strtolower(self::EMAIL),
-        ]);
+        $this->createUser(['email' => strtolower(self::EMAIL)]);
 
         $response = $this->postJson(self::REGISTER_URI, [
             'name' => self::ANOTHER_USER_NAME,
