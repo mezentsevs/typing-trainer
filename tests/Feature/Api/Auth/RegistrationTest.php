@@ -38,6 +38,19 @@ class RegistrationTest extends TestCase
             ]);
     }
 
+    public function testRegistrationReturnsCorrectHttpHeaders(): void
+    {
+        $response = $this->postJson(self::REGISTER_URI, [
+            'name' => self::USER_NAME,
+            'email' => self::EMAIL,
+            'password' => self::PASSWORD,
+            'password_confirmation' => self::PASSWORD,
+        ]);
+
+        $response->assertStatus(201);
+        $response->assertHeader(self::CONTENT_TYPE_HEADER, self::JSON_MIME_TYPE);
+    }
+
     public function testRegistrationTokenWorksForProtectedEndpoint(): void
     {
         $response = $this->postJson(self::REGISTER_URI, [

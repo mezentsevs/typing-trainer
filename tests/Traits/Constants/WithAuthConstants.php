@@ -30,4 +30,7 @@ trait WithAuthConstants
     protected const string PASSWORD_WITH_SQL_INJECTION = "'; DROP TABLE users;--";
     protected const string ANOTHER_PASSWORD = 'anotherPassword';
     protected const string INVALID_EMPTY_PASSWORD = '';
+
+    protected const string CONTENT_TYPE_HEADER = 'Content-Type';
+    protected const string JSON_MIME_TYPE = 'application/json';
 }
