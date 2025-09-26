@@ -243,10 +243,7 @@ class RegistrationTest extends TestCase
 
     public function testRegistrationWithNotUniqueEmail(): void
     {
-        $this->createUser([
-            'name' => self::USER_NAME,
-            'email' => self::EMAIL,
-        ]);
+        $this->createUser(['email' => self::EMAIL]);
 
         $response = $this->postJson(self::REGISTER_URI, [
             'name' => self::ANOTHER_USER_NAME,
