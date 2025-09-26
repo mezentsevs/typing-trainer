@@ -96,6 +96,24 @@ class LoginTest extends TestCase
             ->assertStatusWithErrorAndMessage(422, 'email', 'The email field must be a valid email address.');
     }
 
+    public function testLoginWithEmailCaseInsensitivity(): void
+    {
+        $email = strtolower(self::EMAIL);
+        $this->createUser(['email' => $email]);
+
+        $response = $this->postJson(self::LOGIN_URI, [
+            'email' => strtoupper(self::EMAIL),
+            'password' => self::PASSWORD,
+        ]);
+
+        $response->assertStatus(200);
+        $this->assertEquals(
+            $email,
+            $response->json('user.email'),
+            'Response should return email in lowercase as stored in database.',
+        );
+    }
+
     public function testLoginWithoutPassword(): void
     {
         $this->createUser(['email' => self::EMAIL]);
