@@ -60,11 +60,7 @@ class LoginTest extends TestCase
     public function testLoginWithValidLongEmail(): void
     {
         $email = $this->fakeValidLongEmail();
-
-        $this->createUser([
-            'email' => $email,
-            'password' => Hash::make(self::PASSWORD),
-        ]);
+        $this->createUser(['email' => $email]);
 
         $response = $this->postJson(self::LOGIN_URI, [
             'email' => $email,
