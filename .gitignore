@@ -8,6 +8,7 @@ _ide_helper.php
 .scribe/.filehashes
 .scribe/*.cache
 .scribe/endpoints
+/.continue
 /.fleet
 /.idea
 /.nova
