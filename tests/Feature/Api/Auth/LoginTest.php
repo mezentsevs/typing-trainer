@@ -92,6 +92,19 @@ class LoginTest extends TestCase
             ->assertStatusWithErrorAndMessage(422, 'email', 'The email field must be a valid email address.');
     }
 
+    public function testLoginTrimsSpacesFromEmail(): void
+    {
+        $this->createUser(['email' => self::EMAIL]);
+
+        $response = $this->postJson(self::LOGIN_URI, [
+            'email' => '   ' . self::EMAIL . '   ',
+            'password' => self::PASSWORD,
+        ]);
+
+        $response->assertStatus(200);
+        $this->assertEquals(self::EMAIL, $response->json('user.email'), 'Email should be trimmed.');
+    }
+
     public function testLoginWithEmailCaseInsensitivity(): void
     {
         $email = strtolower(self::EMAIL);
