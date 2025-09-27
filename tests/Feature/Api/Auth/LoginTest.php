@@ -36,6 +36,27 @@ class LoginTest extends TestCase
             ]);
     }
 
+    public function testLoginTokenWorksForProtectedEndpoint(): void
+    {
+        $this->createUser(['email' => self::EMAIL]);
+
+        $response = $this->postJson(self::LOGIN_URI, [
+            'email' => self::EMAIL,
+            'password' => self::PASSWORD,
+        ]);
+
+        $response->assertStatus(200);
+
+        $token = $response->json('token');
+        $this->assertNotNull($token, 'Token should be present in response.');
+
+        $response = $this->withToken($token)
+            ->postJson(self::LOGOUT_URI);
+
+        $this->withResponse($response)
+            ->assertStatusWithMessage(200, 'Logged out');
+    }
+
     public function testLoginWithoutEmail(): void
     {
         $response = $this->postJson(self::LOGIN_URI, [
