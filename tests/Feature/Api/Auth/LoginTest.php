@@ -123,6 +123,25 @@ class LoginTest extends TestCase
         );
     }
 
+    public function testLoginWithUnverifiedEmail(): void
+    {
+        $this->createUser([
+            'email' => self::EMAIL,
+            'email_verified_at' => null,
+        ]);
+
+        $response = $this->postJson(self::LOGIN_URI, [
+            'email' => self::EMAIL,
+            'password' => self::PASSWORD,
+        ]);
+
+        $response->assertStatus(200);
+        $this->assertNull(
+            $response->json('user.email_verified_at'),
+            'User with unverified email should be able to login.',
+        );
+    }
+
     public function testLoginWithoutPassword(): void
     {
         $this->createUser(['email' => self::EMAIL]);
