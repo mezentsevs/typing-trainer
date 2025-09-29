@@ -56,21 +56,29 @@ class LogoutTest extends TestCase
         $this->assertEquals(0, $user->tokens()->count(), 'User should have no tokens after logout.');
     }
 
+    public function testLogoutWithInvalidToken(): void
+    {
+        $response = $this->withToken(self::INVALID_TOKEN)
+            ->postJson(self::LOGOUT_URI);
+
+        $this->withResponse($response)
+            ->assertStatusWithMessage(401, 'Unauthenticated.');
+    }
+
+    public function testLogoutWithoutTokenHeader(): void
+    {
+        $response = $this->postJson(self::LOGOUT_URI);
+
+        $this->withResponse($response)
+            ->assertStatusWithMessage(401, 'Unauthenticated.');
+    }
+
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testAccessLessonWithoutAuthentication(string $language): void
     {
         $lessonUri = sprintf(self::LESSONS_URI_TEMPLATE, $language, self::LESSON_NUMBER_FOR_ACCESS);
 
         $response = $this->getJson($lessonUri);
-
-        $this->withResponse($response)
-            ->assertStatusWithMessage(401, 'Unauthenticated.');
-    }
-
-    public function testLogoutWithInvalidToken(): void
-    {
-        $response = $this->withToken(self::INVALID_TOKEN)
-            ->postJson(self::LOGOUT_URI);
 
         $this->withResponse($response)
             ->assertStatusWithMessage(401, 'Unauthenticated.');
