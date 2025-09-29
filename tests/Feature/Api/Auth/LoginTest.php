@@ -220,6 +220,20 @@ class LoginTest extends TestCase
             );
     }
 
+    public function testLoginSuccessResponseDoesNotContainPassword(): void
+    {
+        $this->createUser(['email' => self::EMAIL]);
+
+        $response = $this->postJson(self::LOGIN_URI, [
+            'email' => self::EMAIL,
+            'password' => self::PASSWORD,
+        ]);
+
+        $response->assertStatus(200);
+        $response->assertJsonMissing(['password']);
+        $response->assertJsonMissingPath('user.password');
+    }
+
     public function testLoginWithInvalidCredentials(): void
     {
         $response = $this->postJson(self::LOGIN_URI, [
