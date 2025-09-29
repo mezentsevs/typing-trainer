@@ -10,6 +10,7 @@ trait WithAuthConstants
 
     protected const string TOKEN_NAME = 'testToken';
     protected const string ANOTHER_TOKEN_NAME = 'anotherToken';
+    protected const string INVALID_TOKEN = 'invalidToken';
 
     protected const int MAX_EMAIL_LENGTH = 255;
     protected const string EMAIL = 'test@example.com';
