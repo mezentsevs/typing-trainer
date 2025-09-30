@@ -36,6 +36,19 @@ class LoginTest extends TestCase
             ]);
     }
 
+    public function testLoginReturnsCorrectHttpHeaders(): void
+    {
+        $this->createUser(['email' => self::EMAIL]);
+
+        $response = $this->postJson(self::LOGIN_URI, [
+            'email' => self::EMAIL,
+            'password' => self::PASSWORD,
+        ]);
+
+        $response->assertStatus(200);
+        $response->assertHeader(self::CONTENT_TYPE_HEADER, self::JSON_MIME_TYPE);
+    }
+
     public function testLoginTokenWorksForProtectedEndpoint(): void
     {
         $this->createUser(['email' => self::EMAIL]);
