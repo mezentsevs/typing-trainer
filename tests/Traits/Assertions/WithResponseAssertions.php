@@ -26,6 +26,15 @@ trait WithResponseAssertions
         return $this;
     }
 
+    protected function assertStatusWithHeaderNameAndValue(int $status, string $headerName, string $value): static
+    {
+        $this->response
+            ->assertStatus($status)
+            ->assertHeader($headerName, $value);
+
+        return $this;
+    }
+
     protected function assertStatusWithErrorAndMessage(int $status, string $error, string $message): static
     {
         $this->assertStatusWithMessage($status, $message);

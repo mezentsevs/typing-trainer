@@ -47,8 +47,8 @@ class RegistrationTest extends TestCase
             'password_confirmation' => self::PASSWORD,
         ]);
 
-        $response->assertStatus(201);
-        $response->assertHeader(self::CONTENT_TYPE_HEADER, self::JSON_MIME_TYPE);
+        $this->withResponse($response)
+            ->assertStatusWithHeaderNameAndValue(201, self::CONTENT_TYPE_HEADER_NAME, self::JSON_MIME_TYPE);
     }
 
     public function testRegistrationTokenWorksForProtectedEndpoint(): void

@@ -32,6 +32,6 @@ trait WithAuthConstants
     protected const string ANOTHER_PASSWORD = 'anotherPassword';
     protected const string INVALID_EMPTY_PASSWORD = '';
 
-    protected const string CONTENT_TYPE_HEADER = 'Content-Type';
+    protected const string CONTENT_TYPE_HEADER_NAME = 'Content-Type';
     protected const string JSON_MIME_TYPE = 'application/json';
 }

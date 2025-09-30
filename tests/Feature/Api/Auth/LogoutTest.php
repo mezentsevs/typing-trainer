@@ -37,8 +37,8 @@ class LogoutTest extends TestCase
         $response = $this->withToken($token)
             ->postJson(self::LOGOUT_URI);
 
-        $response->assertStatus(200);
-        $response->assertHeader(self::CONTENT_TYPE_HEADER, self::JSON_MIME_TYPE);
+        $this->withResponse($response)
+            ->assertStatusWithHeaderNameAndValue(200, self::CONTENT_TYPE_HEADER_NAME, self::JSON_MIME_TYPE);
     }
 
     public function testLogoutWithoutAuthentication(): void
