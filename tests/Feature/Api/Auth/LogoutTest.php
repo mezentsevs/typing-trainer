@@ -73,6 +73,20 @@ class LogoutTest extends TestCase
             ->assertStatusWithMessage(401, 'Unauthenticated.');
     }
 
+    public function testLogoutWithDeletedUser(): void
+    {
+        $user = $this->createUser();
+        $token = $this->createTokenForUser($user, self::TOKEN_NAME);
+
+        $user->delete();
+
+        $response = $this->withToken($token)
+            ->postJson(self::LOGOUT_URI);
+
+        $this->withResponse($response)
+            ->assertStatusWithMessage(401, 'Unauthenticated.');
+    }
+
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testAccessLessonWithoutAuthentication(string $language): void
     {
