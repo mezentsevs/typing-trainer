@@ -29,6 +29,18 @@ class LogoutTest extends TestCase
             ->assertStatusWithMessage(200, 'Logged out');
     }
 
+    public function testLogoutReturnsCorrectHttpHeaders(): void
+    {
+        $user = $this->createUser();
+        $token = $this->createTokenForUser($user, self::TOKEN_NAME);
+
+        $response = $this->withToken($token)
+            ->postJson(self::LOGOUT_URI);
+
+        $response->assertStatus(200);
+        $response->assertHeader(self::CONTENT_TYPE_HEADER, self::JSON_MIME_TYPE);
+    }
+
     public function testLogoutWithoutAuthentication(): void
     {
         $response = $this->postJson(self::LOGOUT_URI);
