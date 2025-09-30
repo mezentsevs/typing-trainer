@@ -244,4 +244,18 @@ class LoginTest extends TestCase
         $this->withResponse($response)
             ->assertStatusWithMessage(401, 'Invalid credentials');
     }
+
+    public function testLoginWithDeletedUser(): void
+    {
+        $user = $this->createUser(['email' => self::EMAIL]);
+        $user->delete();
+
+        $response = $this->postJson(self::LOGIN_URI, [
+            'email' => self::EMAIL,
+            'password' => self::PASSWORD,
+        ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithMessage(401, 'Invalid credentials');
+    }
 }
