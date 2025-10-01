@@ -2,7 +2,8 @@
 
 namespace App\Providers;
 
-use App\Services\TestGeneration\Strategies\TestTextGeneratingWithAiStrategy;
+use App\Services\TestGeneration\Strategies\TestTextGeneratingCloudAiStrategy;
+use App\Services\TestGeneration\Strategies\TestTextGeneratingLocalAiStrategy;
 use App\Services\TestGeneration\Strategies\TestTextReadingFromFileStrategy;
 use App\Services\TestGeneration\Strategies\TestTextRetrievingFromDatabaseStrategy;
 use App\Services\TestGeneration\TestGenerationOrchestrator;
@@ -18,8 +19,9 @@ class TestServiceProvider extends ServiceProvider
         });
 
         $this->app->tag([
+            TestTextGeneratingLocalAiStrategy::class,
+            TestTextGeneratingCloudAiStrategy::class,
             TestTextReadingFromFileStrategy::class,
-            TestTextGeneratingWithAiStrategy::class,
             TestTextRetrievingFromDatabaseStrategy::class,
         ], 'testTextSupplyingStrategies');
 
@@ -29,8 +31,9 @@ class TestServiceProvider extends ServiceProvider
             );
         });
 
+        $this->app->bind(TestTextGeneratingLocalAiStrategy::class);
+        $this->app->bind(TestTextGeneratingCloudAiStrategy::class);
         $this->app->bind(TestTextReadingFromFileStrategy::class);
-        $this->app->bind(TestTextGeneratingWithAiStrategy::class);
         $this->app->bind(TestTextRetrievingFromDatabaseStrategy::class);
     }
 }
