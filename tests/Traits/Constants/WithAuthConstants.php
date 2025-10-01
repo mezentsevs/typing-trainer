@@ -15,6 +15,7 @@ trait WithAuthConstants
     protected const int MAX_EMAIL_LENGTH = 255;
     protected const string EMAIL = 'test@example.com';
     protected const string EMAIL_WITH_SQL_INJECTION = "test'; DROP TABLE users;--@example.com";
+    protected const string ANOTHER_EMAIL = 'another@example.com';
     protected const string EMAIL_DOMAIN = '@example.com';
     protected const string INVALID_EMAIL = 'invalidEmail';
     protected const string INVALID_EMPTY_EMAIL = '';

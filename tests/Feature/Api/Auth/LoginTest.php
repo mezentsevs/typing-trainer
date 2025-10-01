@@ -271,4 +271,18 @@ class LoginTest extends TestCase
         $this->withResponse($response)
             ->assertStatusWithMessage(401, 'Invalid credentials');
     }
+
+    public function testLoginWithOldEmailAfterChange(): void
+    {
+        $user = $this->createUser(['email' => self::EMAIL]);
+        $user->update(['email' => self::ANOTHER_EMAIL]);
+
+        $response = $this->postJson(self::LOGIN_URI, [
+            'email' => self::EMAIL,
+            'password' => self::PASSWORD,
+        ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithMessage(401, 'Invalid credentials');
+    }
 }
