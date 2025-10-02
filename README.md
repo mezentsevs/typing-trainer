@@ -87,6 +87,10 @@ npm install
 npm run build
 ```
 
+- Configure your AI model in .env (tested on LM Studio + qwen/qwen3-1.7b)
+
+- Configure your custom AI text generation prompt template or delete it from .env for using default
+
 - In browser go to http://localhost/
 
 - Register new user on http://localhost/register (enter your name, email, password)
