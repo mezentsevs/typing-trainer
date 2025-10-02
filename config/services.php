@@ -33,7 +33,7 @@ return [
             'enabled' => env('AI_TEXT_GENERATION_LOCAL_ENABLED', true),
             'key' => env('AI_TEXT_GENERATION_LOCAL_KEY'),
             'url' => env('AI_TEXT_GENERATION_LOCAL_URL', 'http://localhost:1234/v1/chat/completions'),
-            'model' => env('AI_TEXT_GENERATION_LOCAL_MODEL', 'qwen3-1.7b'),
+            'model' => env('AI_TEXT_GENERATION_LOCAL_MODEL', 'qwen/qwen3-1.7b'),
             'timeout' => env('AI_TEXT_GENERATION_LOCAL_TIMEOUT', 120),
             'max_tokens' => env('AI_TEXT_GENERATION_LOCAL_MAX_TOKENS', 1000),
             'temperature' => env('AI_TEXT_GENERATION_LOCAL_TEMPERATURE', 0.7),
