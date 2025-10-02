@@ -17,7 +17,36 @@ return [
     'ai_text_generation' => [
         'prompt_template' => env(
             'AI_TEXT_GENERATION_PROMPT_TEMPLATE',
-            'Generate a 500-word text in :language for typing practice in the :genre genre.',
+            <<<EOT
+                Generate a 500-word text in :language for typing practice in the :genre genre.
+
+                CRITICAL REQUIREMENTS - MUST BE FOLLOWED:
+                - USE ONLY these 7 symbols: . , : ; ? ! -
+                - For dashes: use ONLY basic hyphen with spaces around it - like this
+                - ABSOLUTELY NO long dashes (—) or special dashes of any kind
+                - ABSOLUTELY NO apostrophes in ANY form - write 'autumns' NOT 'autumn's', 'souls' NOT 'soul's'
+                - ABSOLUTELY NO quotation marks in ANY form
+                - Text must contain ONLY letters, numbers, spaces, and the 7 allowed punctuation marks
+
+                REQUIREMENTS:
+                - WRITE in literary, professional style with natural flow
+                - CREATE a COMPLETE, self-contained piece with proper conclusion
+                - ENSURE text flows continuously from start to finish
+                - OUTPUT as SINGLE continuous paragraph
+                - ABSOLUTELY NO headings or titles
+                - ABSOLUTELY NO paragraph breaks or line separation
+                - ABSOLUTELY NO leading/trailing spaces
+                - ABSOLUTELY NO empty lines
+
+                EXAMPLES:
+                - CORRECT: 'The answer may lie in redefining what it means to engage - fostering depth over quantity.'
+                - CORRECT: 'We need to reconsider our approach - focusing on quality rather than speed.'
+                - WRONG: 'engage—fostering' (long dash)
+                - WRONG: 'engage- fostering' (no space before)
+                - WRONG: 'engage -fostering' (no space after)
+
+                Output clean, ready-to-use text for typing practice.
+                EOT,
         ),
         'cloud' => [
             'enabled' => env('AI_TEXT_GENERATION_CLOUD_ENABLED', true),
