@@ -94,6 +94,23 @@ class LogoutTest extends TestCase
             ->assertStatusWithMessage(401, 'Unauthenticated.');
     }
 
+    public function testLogoutWithExpiredToken(): void
+    {
+        $user = $this->createUser();
+
+        $token = $user->createToken(
+            self::TOKEN_NAME,
+            [self::DEFAULT_TOKEN_ABILITY],
+            now()->subDay(),
+        )->plainTextToken;
+
+        $response = $this->withToken($token)
+            ->postJson(self::LOGOUT_URI);
+
+        $this->withResponse($response)
+            ->assertStatusWithMessage(401, 'Unauthenticated.');
+    }
+
     public function testLogoutWithDeletedUser(): void
     {
         $user = $this->createUser();
