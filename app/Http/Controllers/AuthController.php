@@ -60,6 +60,7 @@ class AuthController extends Controller
         $user = Auth::user();
 
         $user->tokens()->delete();
+        Auth::forgetGuards();
 
         return response()->json(['message' => 'Logged out']);
     }
