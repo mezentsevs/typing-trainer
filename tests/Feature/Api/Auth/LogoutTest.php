@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Api\Auth;
 
+use App\Services\LessonService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use PHPUnit\Framework\Attributes\DataProviderExternal;
 use Tests\Providers\CommonDataProvider;
@@ -14,8 +15,17 @@ class LogoutTest extends TestCase
 {
     use RefreshDatabase, WithUser, WithResponseAssertions, WithAuthConstants;
 
+    protected LessonService $lessonService;
+
     private const string LESSONS_URI_TEMPLATE = '/api/lessons/%s/%d';
+    private const int LESSON_COUNT_FOR_ACCESS = 1;
     private const int LESSON_NUMBER_FOR_ACCESS = 1;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->lessonService = app(LessonService::class);
+    }
 
     public function testLogoutSuccess(): void
     {
@@ -131,6 +141,26 @@ class LogoutTest extends TestCase
         $lessonUri = sprintf(self::LESSONS_URI_TEMPLATE, $language, self::LESSON_NUMBER_FOR_ACCESS);
 
         $response = $this->getJson($lessonUri);
+
+        $this->withResponse($response)
+            ->assertStatusWithMessage(401, 'Unauthenticated.');
+    }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testAccessLessonAfterLogout(string $language): void
+    {
+        $user = $this->createUser();
+        $token = $this->createTokenForUser($user, self::TOKEN_NAME);
+        $this->lessonService->generateLessons($language, self::LESSON_COUNT_FOR_ACCESS, $user->id);
+        $lessonUri = sprintf(self::LESSONS_URI_TEMPLATE, $language, self::LESSON_NUMBER_FOR_ACCESS);
+
+        $response = $this->withToken($token)
+            ->postJson(self::LOGOUT_URI);
+
+        $response->assertStatus(200);
+
+        $response = $this->withToken($token)
+            ->getJson($lessonUri);
 
         $this->withResponse($response)
             ->assertStatusWithMessage(401, 'Unauthenticated.');
