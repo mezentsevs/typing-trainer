@@ -10,6 +10,7 @@ class StringHelper
         $result = self::removeTags($result);
         $result = self::replaceCurlyApostrophe($result);
         $result = self::escapeSpecialChars($result, $encoding);
+        $result = self::removeHtmlEntities($result);
         $result = self::trimString($result);
         $result = self::normalizeNewLines($result);
 
@@ -42,6 +43,11 @@ class StringHelper
     private static function escapeSpecialChars(string $string, string $encoding): string
     {
         return htmlspecialchars($string, ENT_QUOTES | ENT_HTML5, $encoding);
+    }
+
+    private static function removeHtmlEntities(string $string): string
+    {
+        return preg_replace('/&[a-z]+;/i', '', $string);
     }
 
     private static function trimString(string $string): string
