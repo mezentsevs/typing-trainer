@@ -16,7 +16,7 @@ class TestTextReadingFromFileStrategy implements TestTextSupplyingStrategy
             if (Storage::disk('public')->lastModified($filePath) < now()->subMinute()->timestamp) {
                 Storage::disk('public')->delete($filePath);
             } else {
-                return StringHelper::sanitize(Storage::disk('public')->get($filePath));
+                return StringHelper::normalize(Storage::disk('public')->get($filePath));
             }
         }
 

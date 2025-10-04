@@ -113,7 +113,7 @@ abstract class TestTextGeneratingAbstractAiStrategy implements TestTextSupplying
 
         $text = Arr::get($response->json(), 'choices.0.message.content');
 
-        return $text ? StringHelper::sanitize($text) : null;
+        return $text ? StringHelper::normalize($text) : null;
     }
 
     private function handleException(Exception $e): void

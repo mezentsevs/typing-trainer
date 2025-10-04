@@ -4,7 +4,7 @@ namespace App\Helpers;
 
 class StringHelper
 {
-    public static function sanitize(string $rawString, string $encoding = 'UTF-8'): string
+    public static function normalize(string $rawString, string $encoding = 'UTF-8'): string
     {
         $result = self::normalizeEncoding($rawString, $encoding);
         $result = self::removeTags($result);
