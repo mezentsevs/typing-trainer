@@ -8,20 +8,20 @@ class StringHelper
 {
     public static function normalize(string $rawString, string $encoding = 'UTF-8'): string
     {
-        $result = self::normalizeEncoding($rawString, $encoding);
-        $result = self::removeTags($result);
-        $result = self::removeDoubleSpaces($result);
-        $result = self::removeDoubleNewLines($result);
-        $result = self::replaceCurlyApostrophe($result);
-        $result = self::replaceQuotes($result);
-        $result = self::replaceDashes($result);
-        $result = self::escapeSpecialChars($result, $encoding);
-        $result = self::removeHtmlEntities($result);
-        $result = self::trimString($result);
-        $result = self::normalizeNewLines($result);
-        $result = self::capitalizeEachLine($result);
+        $s = self::normalizeEncoding($rawString, $encoding);
+        $s = self::removeTags($s);
+        $s = self::removeDoubleSpaces($s);
+        $s = self::removeDoubleNewLines($s);
+        $s = self::replaceCurlyApostrophe($s);
+        $s = self::replaceQuotes($s);
+        $s = self::replaceDashes($s);
+        $s = self::escapeSpecialChars($s, $encoding);
+        $s = self::removeHtmlEntities($s);
+        $s = self::trimString($s);
+        $s = self::normalizeNewLines($s);
+        $s = self::capitalizeEachLine($s);
 
-        return $result;
+        return $s;
     }
 
     private static function normalizeEncoding(string $rawString, string $encoding): string
