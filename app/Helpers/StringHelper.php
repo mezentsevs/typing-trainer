@@ -6,16 +6,45 @@ class StringHelper
 {
     public static function sanitize(string $rawString, string $encoding = 'UTF-8'): string
     {
+        $result = self::normalizeEncoding($rawString, $encoding);
+        $result = self::removeTags($result);
+        $result = self::escapeSpecialChars($result, $encoding);
+        $result = self::trimString($result);
+        $result = self::normalizeNewLines($result);
+
+        return $result;
+    }
+
+    private static function normalizeEncoding(string $rawString, string $encoding): string
+    {
         $detectedEncoding = mb_detect_encoding($rawString, ['UTF-8', 'Windows-1251', 'ISO-8859-1'], true);
 
         if (!$detectedEncoding) {
             return '';
         }
 
-        $result = $detectedEncoding !== $encoding
+        return $detectedEncoding !== $encoding
             ? mb_convert_encoding($rawString, $encoding, $detectedEncoding)
             : $rawString;
+    }
 
-        return str_replace("\r\n", "\n", trim(htmlspecialchars(strip_tags($result), ENT_QUOTES | ENT_HTML5, $encoding)));
+    private static function removeTags(string $string): string
+    {
+        return strip_tags($string);
+    }
+
+    private static function escapeSpecialChars(string $string, string $encoding): string
+    {
+        return htmlspecialchars($string, ENT_QUOTES | ENT_HTML5, $encoding);
+    }
+
+    private static function trimString(string $string): string
+    {
+        return trim($string);
+    }
+
+    private static function normalizeNewLines(string $string): string
+    {
+        return str_replace("\r\n", "\n", $string);
     }
 }
