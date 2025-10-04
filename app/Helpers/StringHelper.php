@@ -8,6 +8,7 @@ class StringHelper
     {
         $result = self::normalizeEncoding($rawString, $encoding);
         $result = self::removeTags($result);
+        $result = self::replaceCurlyApostrophe($result);
         $result = self::escapeSpecialChars($result, $encoding);
         $result = self::trimString($result);
         $result = self::normalizeNewLines($result);
@@ -31,6 +32,11 @@ class StringHelper
     private static function removeTags(string $string): string
     {
         return strip_tags($string);
+    }
+
+    private static function replaceCurlyApostrophe(string $string): string
+    {
+        return str_replace('’', "'", $string);
     }
 
     private static function escapeSpecialChars(string $string, string $encoding): string
