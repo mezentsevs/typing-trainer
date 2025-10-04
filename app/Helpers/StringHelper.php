@@ -2,6 +2,8 @@
 
 namespace App\Helpers;
 
+use Illuminate\Support\Str;
+
 class StringHelper
 {
     public static function normalize(string $rawString, string $encoding = 'UTF-8'): string
@@ -17,6 +19,7 @@ class StringHelper
         $result = self::removeHtmlEntities($result);
         $result = self::trimString($result);
         $result = self::normalizeNewLines($result);
+        $result = self::capitalizeEachLine($result);
 
         return $result;
     }
@@ -82,5 +85,15 @@ class StringHelper
     private static function normalizeNewLines(string $string): string
     {
         return str_replace("\r\n", "\n", $string);
+    }
+
+    private static function capitalizeEachLine(string $string): string
+    {
+        $lines = explode("\n", $string);
+        $capitalizedLines = array_map(function (string $line) {
+            return Str::ucfirst($line);
+        }, $lines);
+
+        return implode("\n", $capitalizedLines);
     }
 }
