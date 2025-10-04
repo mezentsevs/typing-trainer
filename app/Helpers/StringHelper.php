@@ -9,7 +9,7 @@ class StringHelper
         $result = self::normalizeEncoding($rawString, $encoding);
         $result = self::removeTags($result);
         $result = self::replaceCurlyApostrophe($result);
-        $result = self::replaceLongDash($result);
+        $result = self::replaceDashes($result);
         $result = self::escapeSpecialChars($result, $encoding);
         $result = self::removeHtmlEntities($result);
         $result = self::trimString($result);
@@ -41,9 +41,9 @@ class StringHelper
         return str_replace('’', "'", $string);
     }
 
-    private static function replaceLongDash(string $string): string
+    private static function replaceDashes(string $string): string
     {
-        return str_replace('—', '-', $string);
+        return str_replace(['—', '–'], '-', $string);
     }
 
     private static function escapeSpecialChars(string $string, string $encoding): string
