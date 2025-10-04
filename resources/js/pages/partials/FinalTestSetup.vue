@@ -18,35 +18,43 @@
                 class="mb-4 w-full"
                 style="border-radius: 0.15rem"
                 @change="uploadFile" />
-            <PrimaryButton class="w-full" @click="$emit('start', genre)">Start</PrimaryButton>
+            <PrimarySpinnerButton class="w-full" :loading="loading" @click="onStart">
+                Start
+            </PrimarySpinnerButton>
         </form>
         <ErrorMessage :message="error" />
     </SetupCard>
 </template>
 
 <script lang="ts" setup>
+import { Genre } from '@/enums/FinalTestEnums';
+import { Ref, ref } from 'vue';
 import ErrorMessage from '@/components/uikit/messages/ErrorMessage.vue';
 import Heading from '@/components/uikit/headings/Heading.vue';
 import Input from '@/components/uikit/inputs/Input.vue';
 import InputLabel from '@/components/uikit/inputs/partials/InputLabel.vue';
-import PrimaryButton from '@/components/uikit/buttons/PrimaryButton.vue';
+import PrimarySpinnerButton from '@/components/uikit/buttons/PrimarySpinnerButton.vue';
 import Remark from '@/components/uikit/remarks/Remark.vue';
 import Select from '@/components/uikit/inputs/Select.vue';
 import SetupCard from '@/pages/partials/cards/SetupCard.vue';
 import UIKitSelectOption from '@/interfaces/uikit/UIKitSelectOption';
-import { Genre } from '@/enums/FinalTestEnums';
-import { Ref, ref } from 'vue';
 
 defineProps<{
     error: string;
     uploadFile: (event: Event) => Promise<void>;
 }>();
 
-defineEmits<{
+const emit = defineEmits<{
     (e: 'start', genre: string): void;
 }>();
 
 const genre: Ref<string> = ref('');
+const loading: Ref<boolean> = ref(false);
+
+const onStart = (): void => {
+    loading.value = true;
+    emit('start', genre.value);
+};
 
 const genres: UIKitSelectOption[] = [
     { label: 'None', value: Genre.None },
