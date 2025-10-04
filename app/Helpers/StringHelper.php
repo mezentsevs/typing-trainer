@@ -10,13 +10,13 @@ class StringHelper
     {
         $s = self::normalizeEncoding($rawString, $encoding);
         $s = self::removeTags($s);
+        $s = self::escapeSpecialChars($s, $encoding);
+        $s = self::removeHtmlEntities($s);
         $s = self::removeDoubleSpaces($s);
         $s = self::removeDoubleNewLines($s);
         $s = self::replaceCurlyApostrophe($s);
         $s = self::replaceQuotes($s);
         $s = self::replaceDashes($s);
-        $s = self::escapeSpecialChars($s, $encoding);
-        $s = self::removeHtmlEntities($s);
         $s = self::trimString($s);
         $s = self::normalizeNewLines($s);
         $s = self::capitalizeEachLine($s);
@@ -42,6 +42,16 @@ class StringHelper
         return strip_tags($string);
     }
 
+    private static function escapeSpecialChars(string $string, string $encoding): string
+    {
+        return htmlspecialchars($string, ENT_QUOTES | ENT_HTML5, $encoding);
+    }
+
+    private static function removeHtmlEntities(string $string): string
+    {
+        return preg_replace('/&[a-z]+;/i', '', $string);
+    }
+
     private static function removeDoubleSpaces(string $string): string
     {
         return str_replace('  ', '', $string);
@@ -65,16 +75,6 @@ class StringHelper
     private static function replaceDashes(string $string): string
     {
         return str_replace(['—', '–'], '-', $string);
-    }
-
-    private static function escapeSpecialChars(string $string, string $encoding): string
-    {
-        return htmlspecialchars($string, ENT_QUOTES | ENT_HTML5, $encoding);
-    }
-
-    private static function removeHtmlEntities(string $string): string
-    {
-        return preg_replace('/&[a-z]+;/i', '', $string);
     }
 
     private static function trimString(string $string): string
