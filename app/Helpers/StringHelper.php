@@ -11,7 +11,7 @@ class StringHelper
         $result = self::removeDoubleSpaces($result);
         $result = self::removeDoubleNewLines($result);
         $result = self::replaceCurlyApostrophe($result);
-        $result = self::replaceCurlyQuotes($result);
+        $result = self::replaceQuotes($result);
         $result = self::replaceDashes($result);
         $result = self::escapeSpecialChars($result, $encoding);
         $result = self::removeHtmlEntities($result);
@@ -54,9 +54,9 @@ class StringHelper
         return str_replace('’', "'", $string);
     }
 
-    private static function replaceCurlyQuotes(string $string): string
+    private static function replaceQuotes(string $string): string
     {
-        return str_replace(['“', '”'], '"', $string);
+        return str_replace(['“', '”', '«', '»'], '"', $string);
     }
 
     private static function replaceDashes(string $string): string
