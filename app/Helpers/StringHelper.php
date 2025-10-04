@@ -9,6 +9,7 @@ class StringHelper
         $result = self::normalizeEncoding($rawString, $encoding);
         $result = self::removeTags($result);
         $result = self::replaceCurlyApostrophe($result);
+        $result = self::replaceCurlyQuotes($result);
         $result = self::replaceDashes($result);
         $result = self::escapeSpecialChars($result, $encoding);
         $result = self::removeHtmlEntities($result);
@@ -39,6 +40,11 @@ class StringHelper
     private static function replaceCurlyApostrophe(string $string): string
     {
         return str_replace('’', "'", $string);
+    }
+
+    private static function replaceCurlyQuotes(string $string): string
+    {
+        return str_replace(['“', '”'], '"', $string);
     }
 
     private static function replaceDashes(string $string): string
