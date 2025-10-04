@@ -9,6 +9,7 @@ class StringHelper
         $result = self::normalizeEncoding($rawString, $encoding);
         $result = self::removeTags($result);
         $result = self::removeDoubleSpaces($result);
+        $result = self::removeDoubleNewLines($result);
         $result = self::replaceCurlyApostrophe($result);
         $result = self::replaceCurlyQuotes($result);
         $result = self::replaceDashes($result);
@@ -41,6 +42,11 @@ class StringHelper
     private static function removeDoubleSpaces(string $string): string
     {
         return str_replace('  ', '', $string);
+    }
+
+    private static function removeDoubleNewLines(string $string): string
+    {
+        return str_replace("\n\n", "\n", $string);
     }
 
     private static function replaceCurlyApostrophe(string $string): string
