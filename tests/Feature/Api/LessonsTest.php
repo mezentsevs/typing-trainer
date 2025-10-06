@@ -19,22 +19,22 @@ class LessonsTest extends TestCase
 
     private string $token;
 
-    private const string TEST_TOKEN_NAME = 'test_token';
+    private const string TOKEN_NAME = 'testToken';
 
-    private const int TEST_ERRORS = 2;
-    private const int TEST_LESSON_COUNT = 5;
-    private const int TEST_SPEED_WPM = 50;
-    private const int TEST_TIME_SECONDS = 60;
-    private const int TEST_ZERO_ERRORS = 0;
-    private const int TEST_ZERO_SPEED_WPM = 0;
-    private const int TEST_ZERO_TIME_SECONDS = 0;
+    private const int ERRORS_COUNT = 2;
+    private const int LESSON_COUNT = 5;
+    private const int SPEED_WPM = 50;
+    private const int TIME_SECONDS = 60;
+    private const int ZERO_ERRORS_COUNT = 0;
+    private const int ZERO_SPEED_WPM = 0;
+    private const int ZERO_TIME_SECONDS = 0;
 
-    private const int TEST_INVALID_ERRORS = -1;
-    private const int TEST_INVALID_LESSON_COUNT = 0;
-    private const int TEST_INVALID_LESSON_NUMBER = 999;
-    private const int TEST_INVALID_SPEED_WPM = -1;
-    private const int TEST_INVALID_TIME_SECONDS = -1;
-    private const string TEST_INVALID_EMPTY_LANGUAGE = '';
+    private const int INVALID_ERRORS_COUNT = -1;
+    private const int INVALID_LESSON_COUNT = 0;
+    private const int INVALID_LESSON_NUMBER = 999;
+    private const int INVALID_SPEED_WPM = -1;
+    private const int INVALID_TIME_SECONDS = -1;
+    private const string INVALID_EMPTY_LANGUAGE = '';
 
     private const string EXPECTED_LESSONS_GENERATED_MESSAGE = 'Lessons generated';
 
@@ -42,7 +42,7 @@ class LessonsTest extends TestCase
     {
         parent::setUp();
         $this->user = $this->createUser();
-        $this->token = $this->createTokenForUser($this->user, self::TEST_TOKEN_NAME);
+        $this->token = $this->createTokenForUser($this->user, self::TOKEN_NAME);
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
@@ -51,14 +51,14 @@ class LessonsTest extends TestCase
         $response = $this->withToken($this->token)
             ->postJson('/api/lessons/generate', [
                 'language' => $language,
-                'lesson_count' => self::TEST_LESSON_COUNT,
+                'lesson_count' => self::LESSON_COUNT,
             ]);
 
         $response->assertStatus(200)
             ->assertJson(['message' => self::EXPECTED_LESSONS_GENERATED_MESSAGE]);
 
         $this->assertCount(
-            self::TEST_LESSON_COUNT,
+            self::LESSON_COUNT,
             Lesson::where('user_id', $this->user->id)
                 ->where('language', $language)
                 ->get(),
@@ -86,9 +86,9 @@ class LessonsTest extends TestCase
             ->postJson('/api/lessons/result', [
                 'lesson_id' => $lesson->id,
                 'language' => $language,
-                'time_seconds' => self::TEST_TIME_SECONDS,
-                'speed_wpm' => self::TEST_SPEED_WPM,
-                'errors' => self::TEST_ERRORS,
+                'time_seconds' => self::TIME_SECONDS,
+                'speed_wpm' => self::SPEED_WPM,
+                'errors' => self::ERRORS_COUNT,
             ]);
 
         $response->assertStatus(200)
@@ -111,9 +111,9 @@ class LessonsTest extends TestCase
             ->postJson('/api/lessons/result', [
                 'lesson_id' => $lesson->id,
                 'language' => $language,
-                'time_seconds' => self::TEST_ZERO_TIME_SECONDS,
-                'speed_wpm' => self::TEST_ZERO_SPEED_WPM,
-                'errors' => self::TEST_ZERO_ERRORS,
+                'time_seconds' => self::ZERO_TIME_SECONDS,
+                'speed_wpm' => self::ZERO_SPEED_WPM,
+                'errors' => self::ZERO_ERRORS_COUNT,
             ]);
 
         $response->assertStatus(200)
@@ -131,8 +131,8 @@ class LessonsTest extends TestCase
     {
         $response = $this->withToken($this->token)
             ->postJson('/api/lessons/generate', [
-                'language' => self::TEST_INVALID_EMPTY_LANGUAGE,
-                'lesson_count' => self::TEST_INVALID_LESSON_COUNT,
+                'language' => self::INVALID_EMPTY_LANGUAGE,
+                'lesson_count' => self::INVALID_LESSON_COUNT,
             ]);
 
         $response->assertStatus(422)
@@ -151,9 +151,9 @@ class LessonsTest extends TestCase
             ->postJson('/api/lessons/result', [
                 'lesson_id' => $lesson->id,
                 'language' => $language,
-                'time_seconds' => self::TEST_INVALID_TIME_SECONDS,
-                'speed_wpm' => self::TEST_INVALID_SPEED_WPM,
-                'errors' => self::TEST_INVALID_ERRORS,
+                'time_seconds' => self::INVALID_TIME_SECONDS,
+                'speed_wpm' => self::INVALID_SPEED_WPM,
+                'errors' => self::INVALID_ERRORS_COUNT,
             ]);
 
         $response->assertStatus(422)
@@ -168,7 +168,7 @@ class LessonsTest extends TestCase
     public function testLessonNotFound(string $language): void
     {
         $response = $this->withToken($this->token)
-            ->getJson('/api/lessons/' . $language . '/' . self::TEST_INVALID_LESSON_NUMBER);
+            ->getJson('/api/lessons/' . $language . '/' . self::INVALID_LESSON_NUMBER);
 
         $response->assertStatus(404);
     }
