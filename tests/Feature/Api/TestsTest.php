@@ -19,27 +19,25 @@ class TestsTest extends TestCase
 
     private string $token;
 
-    private const string TEST_TOKEN_NAME = 'test_token';
+    private const string TOKEN_NAME = 'testToken';
 
-    private const int TEST_ERRORS = 2;
-    private const int TEST_SPEED_WPM = 50;
-    private const int TEST_TIME_SECONDS = 60;
-    private const int TEST_ZERO_ERRORS = 0;
-    private const int TEST_ZERO_SPEED_WPM = 0;
-    private const int TEST_ZERO_TIME_SECONDS = 0;
+    private const int ERRORS_COUNT = 2;
+    private const int MAX_FILE_SIZE_KB = 3;
+    private const int SPEED_WPM = 50;
+    private const int TIME_SECONDS = 60;
+    private const int ZERO_ERRORS_COUNT = 0;
+    private const int ZERO_SPEED_WPM = 0;
+    private const int ZERO_TIME_SECONDS = 0;
+    private const string FILE_CONTENT = 'Test file content';
+    private const string FILE_NAME = 'test.txt';
 
-    private const int TEST_INVALID_ERRORS = -1;
-    private const int TEST_INVALID_SPEED_WPM = -1;
-    private const int TEST_INVALID_TIME_SECONDS = -1;
-    private const string TEST_INVALID_EMPTY_LANGUAGE = '';
-
-    private const int TEST_MAX_FILE_SIZE_KB = 3;
-    private const string TEST_FILE_CONTENT = 'Test file content';
-    private const string TEST_FILE_NAME = 'test.txt';
-
-    private const int TEST_INVALID_FILE_SIZE_KB = 4;
-    private const string TEST_INVALID_FILE_MIME_TYPE = 'image/jpeg';
-    private const string TEST_INVALID_FILE_NAME = 'test.jpeg';
+    private const int INVALID_ERRORS_COUNT = -1;
+    private const int INVALID_FILE_SIZE_KB = 4;
+    private const int INVALID_SPEED_WPM = -1;
+    private const int INVALID_TIME_SECONDS = -1;
+    private const string INVALID_EMPTY_LANGUAGE = '';
+    private const string INVALID_FILE_MIME_TYPE = 'image/jpeg';
+    private const string INVALID_FILE_NAME = 'test.jpeg';
 
     private const string EXPECTED_FILE_UPLOADED_MESSAGE = 'File uploaded';
 
@@ -47,7 +45,7 @@ class TestsTest extends TestCase
     {
         parent::setUp();
         $this->user = $this->createUser();
-        $this->token = $this->createTokenForUser($this->user, self::TEST_TOKEN_NAME);
+        $this->token = $this->createTokenForUser($this->user, self::TOKEN_NAME);
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
@@ -65,8 +63,8 @@ class TestsTest extends TestCase
     {
         Storage::fake('public');
         $file = UploadedFile::fake()->createWithContent(
-            self::TEST_FILE_NAME,
-            self::TEST_FILE_CONTENT,
+            self::FILE_NAME,
+            self::FILE_CONTENT,
         );
 
         $response = $this->withToken($this->token)
@@ -86,9 +84,9 @@ class TestsTest extends TestCase
         $response = $this->withToken($this->token)
             ->postJson('/api/test/result', [
                 'language' => $language,
-                'time_seconds' => self::TEST_TIME_SECONDS,
-                'speed_wpm' => self::TEST_SPEED_WPM,
-                'errors' => self::TEST_ERRORS,
+                'time_seconds' => self::TIME_SECONDS,
+                'speed_wpm' => self::SPEED_WPM,
+                'errors' => self::ERRORS_COUNT,
             ]);
 
         $response->assertStatus(200)
@@ -107,9 +105,9 @@ class TestsTest extends TestCase
         $response = $this->withToken($this->token)
             ->postJson('/api/test/result', [
                 'language' => $language,
-                'time_seconds' => self::TEST_ZERO_TIME_SECONDS,
-                'speed_wpm' => self::TEST_ZERO_SPEED_WPM,
-                'errors' => self::TEST_ZERO_ERRORS,
+                'time_seconds' => self::ZERO_TIME_SECONDS,
+                'speed_wpm' => self::ZERO_SPEED_WPM,
+                'errors' => self::ZERO_ERRORS_COUNT,
             ]);
 
         $response->assertStatus(200)
@@ -126,14 +124,14 @@ class TestsTest extends TestCase
     {
         Storage::fake('public');
         $invalidFile = UploadedFile::fake()->create(
-            self::TEST_INVALID_FILE_NAME,
-            self::TEST_INVALID_FILE_SIZE_KB,
-            self::TEST_INVALID_FILE_MIME_TYPE,
+            self::INVALID_FILE_NAME,
+            self::INVALID_FILE_SIZE_KB,
+            self::INVALID_FILE_MIME_TYPE,
         );
 
         $response = $this->withToken($this->token)
             ->postJson('/api/test/upload', [
-                'language' => self::TEST_INVALID_EMPTY_LANGUAGE,
+                'language' => self::INVALID_EMPTY_LANGUAGE,
                 'file' => $invalidFile,
             ]);
 
@@ -148,10 +146,10 @@ class TestsTest extends TestCase
     {
         $response = $this->withToken($this->token)
             ->postJson('/api/test/result', [
-                'language' => self::TEST_INVALID_EMPTY_LANGUAGE,
-                'time_seconds' => self::TEST_TIME_SECONDS,
-                'speed_wpm' => self::TEST_SPEED_WPM,
-                'errors' => self::TEST_ERRORS,
+                'language' => self::INVALID_EMPTY_LANGUAGE,
+                'time_seconds' => self::TIME_SECONDS,
+                'speed_wpm' => self::SPEED_WPM,
+                'errors' => self::ERRORS_COUNT,
             ]);
 
         $response->assertStatus(422)
@@ -164,9 +162,9 @@ class TestsTest extends TestCase
         $response = $this->withToken($this->token)
             ->postJson('/api/test/result', [
                 'language' => $language,
-                'time_seconds' => self::TEST_INVALID_TIME_SECONDS,
-                'speed_wpm' => self::TEST_INVALID_SPEED_WPM,
-                'errors' => self::TEST_INVALID_ERRORS,
+                'time_seconds' => self::INVALID_TIME_SECONDS,
+                'speed_wpm' => self::INVALID_SPEED_WPM,
+                'errors' => self::INVALID_ERRORS_COUNT,
             ]);
 
         $response->assertStatus(422)
