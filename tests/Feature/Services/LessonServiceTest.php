@@ -20,7 +20,6 @@ class LessonServiceTest extends TestCase
     use RefreshDatabase;
 
     protected LessonService $service;
-
     protected User $user;
 
     protected function setUp(): void
