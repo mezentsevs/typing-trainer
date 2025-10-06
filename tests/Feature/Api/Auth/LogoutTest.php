@@ -17,9 +17,9 @@ class LogoutTest extends TestCase
 
     protected LessonService $lessonService;
 
-    private const string LESSONS_URI_TEMPLATE = '/api/lessons/%s/%d';
     private const int LESSON_COUNT_FOR_ACCESS = 1;
     private const int LESSON_NUMBER_FOR_ACCESS = 1;
+    private const string LESSONS_URI_TEMPLATE = '/api/lessons/%s/%d';
 
     protected function setUp(): void
     {
