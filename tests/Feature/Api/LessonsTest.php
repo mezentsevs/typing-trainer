@@ -117,8 +117,8 @@ class LessonsTest extends TestCase
                 'errors' => self::ZERO_ERRORS_COUNT,
             ]);
 
-        $response->assertStatus(200)
-            ->assertJsonStructure([
+        $this->withResponse($response)
+            ->assertStatusWithJsonStructure(200, [
                 'id',
                 'user_id',
                 'lesson_id',
