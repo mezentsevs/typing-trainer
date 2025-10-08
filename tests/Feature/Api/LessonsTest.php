@@ -75,7 +75,7 @@ class LessonsTest extends TestCase
             ->getJson("/api/lessons/{$lesson->language}/{$lesson->number}");
 
         $this->withResponse($response)
-        ->assertStatusWithJsonStructure(200, ['lesson']);
+            ->assertStatusWithJsonStructure(200, ['lesson']);
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
@@ -92,8 +92,8 @@ class LessonsTest extends TestCase
                 'errors' => self::ERRORS_COUNT,
             ]);
 
-        $response->assertStatus(200)
-            ->assertJsonStructure([
+        $this->withResponse($response)
+            ->assertStatusWithJsonStructure(200, [
                 'id',
                 'user_id',
                 'lesson_id',
