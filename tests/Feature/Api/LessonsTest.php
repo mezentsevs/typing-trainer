@@ -8,12 +8,13 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use PHPUnit\Framework\Attributes\DataProviderExternal;
 use Tests\Providers\CommonDataProvider;
 use Tests\TestCase;
+use Tests\Traits\Assertions\WithResponseAssertions;
 use Tests\Traits\WithLesson;
 use Tests\Traits\WithUser;
 
 class LessonsTest extends TestCase
 {
-    use RefreshDatabase, WithUser, WithLesson;
+    use RefreshDatabase, WithUser, WithLesson, WithResponseAssertions;
 
     private User $user;
 
@@ -73,8 +74,8 @@ class LessonsTest extends TestCase
         $response = $this->withToken($this->token)
             ->getJson("/api/lessons/{$lesson->language}/{$lesson->number}");
 
-        $response->assertStatus(200)
-            ->assertJsonStructure(['lesson']);
+        $this->withResponse($response)
+        ->assertStatusWithJsonStructure(200, ['lesson']);
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
