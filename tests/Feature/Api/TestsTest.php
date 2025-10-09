@@ -93,8 +93,8 @@ class TestsTest extends TestCase
                 'errors' => self::ERRORS_COUNT,
             ]);
 
-        $response->assertStatus(200)
-            ->assertJsonStructure([
+        $this->withResponse($response)
+            ->assertStatusWithJsonStructure(200, [
                 'id',
                 'user_id',
                 'language',
