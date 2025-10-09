@@ -9,11 +9,12 @@ use Illuminate\Support\Facades\Storage;
 use PHPUnit\Framework\Attributes\DataProviderExternal;
 use Tests\Providers\CommonDataProvider;
 use Tests\TestCase;
+use Tests\Traits\Assertions\WithResponseAssertions;
 use Tests\Traits\WithUser;
 
 class TestsTest extends TestCase
 {
-    use RefreshDatabase, WithUser;
+    use RefreshDatabase, WithUser, WithResponseAssertions;
 
     private User $user;
 
@@ -54,8 +55,8 @@ class TestsTest extends TestCase
         $response = $this->withToken($this->token)
             ->getJson('/api/test/text?language=' . $language);
 
-        $response->assertStatus(200)
-            ->assertJsonStructure(['text']);
+        $this->withResponse($response)
+            ->assertStatusWithJsonStructure(200, ['text']);
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
