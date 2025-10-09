@@ -74,9 +74,12 @@ class TestsTest extends TestCase
                 'file' => $file,
             ]);
 
-        $response->assertStatus(200)
-            ->assertJson(['message' => self::EXPECTED_FILE_UPLOADED_MESSAGE])
-            ->assertJsonStructure(['path']);
+        $this->withResponse($response)
+            ->assertStatusWithJsonStructureAndJson(
+                200,
+                ['path'],
+                ['message' => self::EXPECTED_FILE_UPLOADED_MESSAGE],
+            );
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
