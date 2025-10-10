@@ -444,9 +444,8 @@ class RegistrationTest extends TestCase
             'password_confirmation' => self::PASSWORD,
         ]);
 
-        $response->assertStatus(201);
-        $response->assertJsonMissing(['password']);
-        $response->assertJsonMissingPath('user.password');
+        $this->withResponse($response)
+            ->assertStatusWithoutJsonPathAndJson(201, 'user.password', ['password']);
     }
 
     public function testRegistrationWithSqlInjectionAttemptInPassword(): void
