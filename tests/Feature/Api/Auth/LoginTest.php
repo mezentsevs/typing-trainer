@@ -242,9 +242,8 @@ class LoginTest extends TestCase
             'password' => self::PASSWORD,
         ]);
 
-        $response->assertStatus(200);
-        $response->assertJsonMissing(['password']);
-        $response->assertJsonMissingPath('user.password');
+        $this->withResponse($response)
+            ->assertStatusWithoutJsonPathAndJson(200, 'user.password', ['password']);
     }
 
     public function testLoginWithInvalidCredentials(): void

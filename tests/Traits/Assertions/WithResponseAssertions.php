@@ -67,4 +67,14 @@ trait WithResponseAssertions
 
         return $this;
     }
+
+    protected function assertStatusWithoutJsonPathAndJson(int $status, string $path, array $json): static
+    {
+        $this->response
+            ->assertStatus($status)
+            ->assertJsonMissingPath($path)
+            ->assertJsonMissing($json);
+
+        return $this;
+    }
 }
