@@ -136,8 +136,8 @@ class LessonsTest extends TestCase
                 'lesson_count' => self::INVALID_LESSON_COUNT,
             ]);
 
-        $response->assertStatus(422)
-            ->assertJsonValidationErrors([
+        $this->withResponse($response)
+            ->assertStatusWithJsonValidationErrors(422, [
                 'language',
                 'lesson_count',
             ]);

@@ -35,6 +35,15 @@ trait WithResponseAssertions
         return $this;
     }
 
+    protected function assertStatusWithJsonValidationErrors(int $status, string|array $errors): static
+    {
+        $this->response
+            ->assertStatus($status)
+            ->assertJsonValidationErrors($errors);
+
+        return $this;
+    }
+
     protected function assertStatusWithErrorAndMessage(int $status, string $error, string $message): static
     {
         $this->assertStatusWithMessage($status, $message);
