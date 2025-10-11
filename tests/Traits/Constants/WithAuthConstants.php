@@ -4,14 +4,11 @@ namespace Tests\Traits\Constants;
 
 trait WithAuthConstants
 {
+    use WithTokenConstants;
+
     protected const string REGISTER_URI = '/api/register';
     protected const string LOGIN_URI = '/api/login';
     protected const string LOGOUT_URI = '/api/logout';
-
-    protected const string TOKEN_NAME = 'testToken';
-    protected const string ANOTHER_TOKEN_NAME = 'anotherToken';
-    protected const string INVALID_TOKEN = 'invalidToken';
-    protected const string DEFAULT_TOKEN_ABILITY = '*';
 
     protected const int MAX_EMAIL_LENGTH = 255;
     protected const string EMAIL = 'test@example.com';

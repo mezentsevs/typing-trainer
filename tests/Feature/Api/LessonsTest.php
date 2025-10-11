@@ -10,18 +10,17 @@ use Tests\Providers\CommonDataProvider;
 use Tests\TestCase;
 use Tests\Traits\Assertions\WithResponseAssertions;
 use Tests\Traits\Constants\WithStatisticsConstants;
+use Tests\Traits\Constants\WithTokenConstants;
 use Tests\Traits\WithLesson;
 use Tests\Traits\WithUser;
 
 class LessonsTest extends TestCase
 {
-    use RefreshDatabase, WithUser, WithLesson, WithResponseAssertions, WithStatisticsConstants;
+    use RefreshDatabase, WithUser, WithLesson, WithResponseAssertions, WithTokenConstants, WithStatisticsConstants;
 
     private User $user;
 
     private string $token;
-
-    private const string TOKEN_NAME = 'testToken';
 
     private const int LESSON_COUNT = 5;
 

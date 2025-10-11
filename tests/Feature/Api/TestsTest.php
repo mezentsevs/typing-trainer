@@ -11,17 +11,16 @@ use Tests\Providers\CommonDataProvider;
 use Tests\TestCase;
 use Tests\Traits\Assertions\WithResponseAssertions;
 use Tests\Traits\Constants\WithStatisticsConstants;
+use Tests\Traits\Constants\WithTokenConstants;
 use Tests\Traits\WithUser;
 
 class TestsTest extends TestCase
 {
-    use RefreshDatabase, WithUser, WithResponseAssertions, WithStatisticsConstants;
+    use RefreshDatabase, WithUser, WithResponseAssertions, WithTokenConstants, WithStatisticsConstants;
 
     private User $user;
 
     private string $token;
-
-    private const string TOKEN_NAME = 'testToken';
 
     private const int MAX_FILE_SIZE_KB = 3;
     private const string FILE_CONTENT = 'Test file content';
