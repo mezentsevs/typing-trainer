@@ -157,8 +157,8 @@ class LessonsTest extends TestCase
                 'errors' => self::INVALID_ERRORS_COUNT,
             ]);
 
-        $response->assertStatus(422)
-            ->assertJsonValidationErrors([
+        $this->withResponse($response)
+            ->assertStatusWithJsonValidationErrors(422, [
                 'time_seconds',
                 'speed_wpm',
                 'errors',
