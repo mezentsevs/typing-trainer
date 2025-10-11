@@ -10,27 +10,18 @@ use PHPUnit\Framework\Attributes\DataProviderExternal;
 use Tests\Providers\CommonDataProvider;
 use Tests\TestCase;
 use Tests\Traits\Assertions\WithResponseAssertions;
+use Tests\Traits\Constants\WithFileConstants;
 use Tests\Traits\Constants\WithStatisticsConstants;
 use Tests\Traits\Constants\WithTokenConstants;
 use Tests\Traits\WithUser;
 
 class TestsTest extends TestCase
 {
-    use RefreshDatabase, WithUser, WithResponseAssertions, WithTokenConstants, WithStatisticsConstants;
+    use RefreshDatabase, WithUser, WithResponseAssertions, WithTokenConstants, WithStatisticsConstants, WithFileConstants;
 
     private User $user;
 
     private string $token;
-
-    private const int MAX_FILE_SIZE_KB = 3;
-    private const string FILE_CONTENT = 'Test file content';
-    private const string FILE_NAME = 'test.txt';
-
-    private const int INVALID_FILE_SIZE_KB = 4;
-    private const string INVALID_FILE_MIME_TYPE = 'image/jpeg';
-    private const string INVALID_FILE_NAME = 'test.jpeg';
-
-    private const string EXPECTED_FILE_UPLOADED_MESSAGE = 'File uploaded';
 
     protected function setUp(): void
     {
