@@ -9,12 +9,13 @@ use PHPUnit\Framework\Attributes\DataProviderExternal;
 use Tests\Providers\CommonDataProvider;
 use Tests\TestCase;
 use Tests\Traits\Assertions\WithResponseAssertions;
+use Tests\Traits\Constants\WithStatisticsConstants;
 use Tests\Traits\WithLesson;
 use Tests\Traits\WithUser;
 
 class LessonsTest extends TestCase
 {
-    use RefreshDatabase, WithUser, WithLesson, WithResponseAssertions;
+    use RefreshDatabase, WithUser, WithLesson, WithResponseAssertions, WithStatisticsConstants;
 
     private User $user;
 
@@ -22,20 +23,10 @@ class LessonsTest extends TestCase
 
     private const string TOKEN_NAME = 'testToken';
 
-    private const int ERRORS_COUNT = 2;
     private const int LESSON_COUNT = 5;
-    private const int SPEED_WPM = 50;
-    private const int TIME_SECONDS = 60;
-    private const int ZERO_ERRORS_COUNT = 0;
-    private const int ZERO_SPEED_WPM = 0;
-    private const int ZERO_TIME_SECONDS = 0;
 
-    private const int INVALID_ERRORS_COUNT = -1;
     private const int INVALID_LESSON_COUNT = 0;
     private const int INVALID_LESSON_NUMBER = 999;
-    private const int INVALID_SPEED_WPM = -1;
-    private const int INVALID_TIME_SECONDS = -1;
-    private const string INVALID_EMPTY_LANGUAGE = '';
 
     private const string EXPECTED_LESSONS_GENERATED_MESSAGE = 'Lessons generated';
 
