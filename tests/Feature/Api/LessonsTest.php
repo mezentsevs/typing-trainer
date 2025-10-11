@@ -55,8 +55,8 @@ class LessonsTest extends TestCase
                 'lesson_count' => self::LESSON_COUNT,
             ]);
 
-        $response->assertStatus(200)
-            ->assertJson(['message' => self::EXPECTED_LESSONS_GENERATED_MESSAGE]);
+        $this->withResponse($response)
+            ->assertStatusWithMessage(200, self::EXPECTED_LESSONS_GENERATED_MESSAGE);
 
         $this->assertCount(
             self::LESSON_COUNT,
