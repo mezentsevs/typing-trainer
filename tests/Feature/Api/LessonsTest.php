@@ -16,7 +16,12 @@ use Tests\Traits\WithUser;
 
 class LessonsTest extends TestCase
 {
-    use RefreshDatabase, WithUser, WithLesson, WithResponseAssertions, WithTokenConstants, WithStatisticsConstants;
+    use RefreshDatabase,
+        WithUser,
+        WithLesson,
+        WithResponseAssertions,
+        WithTokenConstants,
+        WithStatisticsConstants;
 
     private User $user;
 

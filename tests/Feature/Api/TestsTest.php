@@ -17,7 +17,12 @@ use Tests\Traits\WithUser;
 
 class TestsTest extends TestCase
 {
-    use RefreshDatabase, WithUser, WithResponseAssertions, WithTokenConstants, WithStatisticsConstants, WithFileConstants;
+    use RefreshDatabase,
+        WithUser,
+        WithResponseAssertions,
+        WithTokenConstants,
+        WithStatisticsConstants,
+        WithFileConstants;
 
     private User $user;
 
