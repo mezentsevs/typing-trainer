@@ -125,8 +125,8 @@ class TestsTest extends TestCase
                 'file' => $invalidFile,
             ]);
 
-        $response->assertStatus(422)
-            ->assertJsonValidationErrors([
+        $this->withResponse($response)
+            ->assertStatusWithJsonValidationErrors(422, [
                 'language',
                 'file',
             ]);
