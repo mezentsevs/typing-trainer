@@ -142,8 +142,8 @@ class TestsTest extends TestCase
                 'errors' => self::ERRORS_COUNT,
             ]);
 
-        $response->assertStatus(422)
-            ->assertJsonValidationErrors(['language']);
+        $this->withResponse($response)
+            ->assertStatusWithJsonValidationErrors(422, ['language']);
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
