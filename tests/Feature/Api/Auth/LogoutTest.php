@@ -72,9 +72,10 @@ class LogoutTest extends TestCase
             "User should have {$expectedTokensCount} tokens before logout.",
         );
 
-        $this->withToken($token)
+        $response = $this->withToken($token)
             ->postJson(self::LOGOUT_URI);
 
+        $response->assertStatus(200);
         $this->assertEquals(0, $user->tokens()->count(), 'User should have no tokens after logout.');
     }
 
