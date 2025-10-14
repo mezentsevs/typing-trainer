@@ -75,8 +75,9 @@ class LogoutTest extends TestCase
         $response = $this->withToken($token)
             ->postJson(self::LOGOUT_URI);
 
-        $response->assertStatus(200);
-        $this->assertEquals(0, $user->tokens()->count(), 'User should have no tokens after logout.');
+        $this->withResponse($response)
+            ->assertStatusWithMessage(200, 'Logged out')
+            ->assertEquals(0, $user->tokens()->count(), 'User should have no tokens after logout.');
     }
 
     public function testLogoutWithInvalidToken(): void
