@@ -180,7 +180,12 @@ class LoginTest extends TestCase
             'password' => self::PASSWORD,
         ]);
 
-        $response->assertStatus(200);
+        $this->withResponse($response)
+            ->assertStatusWithJsonStructure(200, [
+                'token',
+                'user' => self::LOGIN_RESPONSE_USER_JSON_STRUCTURE,
+            ]);
+
         $this->assertNull(
             $response->json('user.email_verified_at'),
             'User with unverified email should be able to login.',
