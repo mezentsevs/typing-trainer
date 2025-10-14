@@ -140,9 +140,8 @@ class LoginTest extends TestCase
             ->assertStatusWithJsonStructure(200, [
                 'token',
                 'user' => self::LOGIN_RESPONSE_USER_JSON_STRUCTURE,
-            ]);
-
-        $this->assertEquals(self::EMAIL, $response->json('user.email'), 'Email should be trimmed.');
+            ])
+            ->assertEquals(self::EMAIL, $response->json('user.email'), 'Email should be trimmed.');
     }
 
     public function testLoginWithEmailCaseInsensitivity(): void
@@ -159,13 +158,12 @@ class LoginTest extends TestCase
             ->assertStatusWithJsonStructure(200, [
                 'token',
                 'user' => self::LOGIN_RESPONSE_USER_JSON_STRUCTURE,
-            ]);
-
-        $this->assertEquals(
-            $email,
-            $response->json('user.email'),
-            'Response should return email in lowercase as stored in database.',
-        );
+            ])
+            ->assertEquals(
+                $email,
+                $response->json('user.email'),
+                'Response should return email in lowercase as stored in database.',
+            );
     }
 
     public function testLoginWithUnverifiedEmail(): void
@@ -184,12 +182,11 @@ class LoginTest extends TestCase
             ->assertStatusWithJsonStructure(200, [
                 'token',
                 'user' => self::LOGIN_RESPONSE_USER_JSON_STRUCTURE,
-            ]);
-
-        $this->assertNull(
-            $response->json('user.email_verified_at'),
-            'User with unverified email should be able to login.',
-        );
+            ])
+            ->assertNull(
+                $response->json('user.email_verified_at'),
+                'User with unverified email should be able to login.',
+            );
     }
 
     public function testLoginWithoutPassword(): void
