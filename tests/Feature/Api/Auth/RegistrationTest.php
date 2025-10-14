@@ -28,13 +28,7 @@ class RegistrationTest extends TestCase
         $this->withResponse($response)
             ->assertStatusWithJsonStructure(201, [
                 'token',
-                'user' => [
-                    'id',
-                    'name',
-                    'email',
-                    'created_at',
-                    'updated_at',
-                ],
+                'user' => self::REGISTER_RESPONSE_USER_JSON_STRUCTURE,
             ]);
     }
 
