@@ -25,7 +25,7 @@ class LoginTest extends TestCase
         $this->withResponse($response)
             ->assertStatusWithJsonStructure(200, [
                 'token',
-                'user' => self::RESPONSE_USER_JSON_STRUCTURE,
+                'user' => self::LOGIN_RESPONSE_USER_JSON_STRUCTURE,
             ]);
     }
 

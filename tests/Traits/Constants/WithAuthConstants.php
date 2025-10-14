@@ -24,7 +24,7 @@ trait WithAuthConstants
     protected const string ANOTHER_USER_NAME = 'Another User';
     protected const string INVALID_EMPTY_USER_NAME = '';
 
-    protected const array RESPONSE_USER_JSON_STRUCTURE = [
+    protected const array LOGIN_RESPONSE_USER_JSON_STRUCTURE = [
         'id',
         'name',
         'email',
