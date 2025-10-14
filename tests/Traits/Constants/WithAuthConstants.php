@@ -24,6 +24,15 @@ trait WithAuthConstants
     protected const string ANOTHER_USER_NAME = 'Another User';
     protected const string INVALID_EMPTY_USER_NAME = '';
 
+    protected const array RESPONSE_USER_JSON_STRUCTURE = [
+        'id',
+        'name',
+        'email',
+        'email_verified_at',
+        'created_at',
+        'updated_at',
+    ];
+
     protected const int MIN_PASSWORD_LENGTH = 8;
     protected const int MAX_PASSWORD_LENGTH = 255;
     protected const string PASSWORD = 'password';
