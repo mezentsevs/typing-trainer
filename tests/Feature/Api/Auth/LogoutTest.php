@@ -159,7 +159,8 @@ class LogoutTest extends TestCase
         $response = $this->withToken($token)
             ->postJson(self::LOGOUT_URI);
 
-        $response->assertStatus(200);
+        $this->withResponse($response)
+            ->assertStatusWithMessage(200, 'Logged out');
 
         $response = $this->withToken($token)
             ->getJson($lessonUri);
