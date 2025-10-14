@@ -109,7 +109,6 @@ class LogoutTest extends TestCase
     public function testLogoutWithExpiredToken(): void
     {
         $user = $this->createUser();
-
         $token = $user->createToken(
             self::TOKEN_NAME,
             [self::DEFAULT_TOKEN_ABILITY],
@@ -127,7 +126,6 @@ class LogoutTest extends TestCase
     {
         $user = $this->createUser();
         $token = $this->createTokenForUser($user, self::TOKEN_NAME);
-
         $user->delete();
 
         $response = $this->withToken($token)
