@@ -217,7 +217,6 @@ class LoginTest extends TestCase
     public function testLoginWithValidLongPassword(): void
     {
         $password = $this->fakeValidLongPassword();
-
         $this->createUser([
             'email' => self::EMAIL,
             'password' => Hash::make($password),
