@@ -231,7 +231,11 @@ class LoginTest extends TestCase
             'password' => $password,
         ]);
 
-        $response->assertStatus(200);
+        $this->withResponse($response)
+            ->assertStatusWithJsonStructure(200, [
+                'token',
+                'user' => self::LOGIN_RESPONSE_USER_JSON_STRUCTURE,
+            ]);
     }
 
     public function testLoginWithInvalidLongPassword(): void
