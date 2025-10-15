@@ -423,7 +423,11 @@ class RegistrationTest extends TestCase
             'password_confirmation' => $password,
         ]);
 
-        $response->assertStatus(201);
+        $this->withResponse($response)
+            ->assertStatusWithJsonStructure(201, [
+                'token',
+                'user' => self::REGISTER_RESPONSE_USER_JSON_STRUCTURE,
+            ]);
     }
 
     #[DataProviderExternal(AuthDataProvider::class, 'provideInvalidPasswords')]
