@@ -8,13 +8,13 @@ use Illuminate\Support\Facades\Hash;
 use PHPUnit\Framework\Attributes\DataProviderExternal;
 use Tests\Providers\AuthDataProvider;
 use Tests\TestCase;
-use Tests\Traits\Assertions\WithResponseAssertions;
+use Tests\Traits\Assertions\WithAuthAssertions;
 use Tests\Traits\Fakes\WithAuthFakes;
 use Tests\Traits\WithUser;
 
 class RegistrationTest extends TestCase
 {
-    use RefreshDatabase, WithUser, WithResponseAssertions, WithAuthFakes;
+    use RefreshDatabase, WithUser, WithAuthAssertions, WithAuthFakes;
 
     public function testRegistrationSuccess(): void
     {
@@ -26,10 +26,7 @@ class RegistrationTest extends TestCase
         ]);
 
         $this->withResponse($response)
-            ->assertStatusWithJsonStructure(201, [
-                'token',
-                'user' => self::REGISTER_RESPONSE_USER_JSON_STRUCTURE,
-            ]);
+            ->assertRegistrationSuccessful();
     }
 
     public function testRegistrationReturnsCorrectHttpHeaders(): void
@@ -55,10 +52,7 @@ class RegistrationTest extends TestCase
         ]);
 
         $this->withResponse($response)
-            ->assertStatusWithJsonStructure(201, [
-                'token',
-                'user' => self::REGISTER_RESPONSE_USER_JSON_STRUCTURE,
-            ]);
+            ->assertRegistrationSuccessful();
 
         $token = $response->json('token');
         $this->assertNotNull($token, 'Token should be present in response.');
@@ -105,10 +99,7 @@ class RegistrationTest extends TestCase
         ]);
 
         $this->withResponse($response)
-            ->assertStatusWithJsonStructure(201, [
-                'token',
-                'user' => self::REGISTER_RESPONSE_USER_JSON_STRUCTURE,
-            ]);
+            ->assertRegistrationSuccessful();
     }
 
     public function testRegistrationWithInvalidLongUserName(): void
@@ -135,10 +126,7 @@ class RegistrationTest extends TestCase
         ]);
 
         $this->withResponse($response)
-            ->assertStatusWithJsonStructure(201, [
-                'token',
-                'user' => self::REGISTER_RESPONSE_USER_JSON_STRUCTURE,
-            ]);
+            ->assertRegistrationSuccessful();
     }
 
     #[DataProviderExternal(AuthDataProvider::class, 'provideInvalidUserNames')]
@@ -165,10 +153,7 @@ class RegistrationTest extends TestCase
         ]);
 
         $this->withResponse($response)
-            ->assertStatusWithJsonStructure(201, [
-                'token',
-                'user' => self::REGISTER_RESPONSE_USER_JSON_STRUCTURE,
-            ]);
+            ->assertRegistrationSuccessful();
 
         $user = User::where('email', self::EMAIL)->first();
         $this->assertNotNull($user, 'User should be created.');
@@ -223,10 +208,7 @@ class RegistrationTest extends TestCase
         ]);
 
         $this->withResponse($response)
-            ->assertStatusWithJsonStructure(201, [
-                'token',
-                'user' => self::REGISTER_RESPONSE_USER_JSON_STRUCTURE,
-            ]);
+            ->assertRegistrationSuccessful();
     }
 
     public function testRegistrationWithInvalidLongEmail(): void
@@ -295,10 +277,7 @@ class RegistrationTest extends TestCase
         ]);
 
         $this->withResponse($response)
-            ->assertStatusWithJsonStructure(201, [
-                'token',
-                'user' => self::REGISTER_RESPONSE_USER_JSON_STRUCTURE,
-            ]);
+            ->assertRegistrationSuccessful();
 
         $user = User::where('email', self::EMAIL)->first();
         $this->assertNotNull($user, 'User should be created.');
@@ -355,10 +334,7 @@ class RegistrationTest extends TestCase
         ]);
 
         $this->withResponse($response)
-            ->assertStatusWithJsonStructure(201, [
-                'token',
-                'user' => self::REGISTER_RESPONSE_USER_JSON_STRUCTURE,
-            ]);
+            ->assertRegistrationSuccessful();
     }
 
     public function testRegistrationWithInvalidShortPassword(): void
@@ -388,10 +364,7 @@ class RegistrationTest extends TestCase
         ]);
 
         $this->withResponse($response)
-            ->assertStatusWithJsonStructure(201, [
-                'token',
-                'user' => self::REGISTER_RESPONSE_USER_JSON_STRUCTURE,
-            ]);
+            ->assertRegistrationSuccessful();
     }
 
     public function testRegistrationWithInvalidLongPassword(): void
@@ -424,10 +397,7 @@ class RegistrationTest extends TestCase
         ]);
 
         $this->withResponse($response)
-            ->assertStatusWithJsonStructure(201, [
-                'token',
-                'user' => self::REGISTER_RESPONSE_USER_JSON_STRUCTURE,
-            ]);
+            ->assertRegistrationSuccessful();
     }
 
     #[DataProviderExternal(AuthDataProvider::class, 'provideInvalidPasswords')]
@@ -454,10 +424,7 @@ class RegistrationTest extends TestCase
         ]);
 
         $this->withResponse($response)
-            ->assertStatusWithJsonStructure(201, [
-                'token',
-                'user' => self::REGISTER_RESPONSE_USER_JSON_STRUCTURE,
-            ]);
+            ->assertRegistrationSuccessful();
 
         $user = User::where('email', self::EMAIL)->first();
 
