@@ -61,7 +61,7 @@ class RegistrationTest extends TestCase
             ->postJson(self::LOGOUT_URI);
 
         $this->withResponse($response)
-            ->assertStatusWithMessage(200, 'Logged out');
+            ->assertLogoutSuccessful();
     }
 
     public function testRegistrationWithoutUserName(): void

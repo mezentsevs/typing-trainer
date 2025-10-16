@@ -7,13 +7,13 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use PHPUnit\Framework\Attributes\DataProviderExternal;
 use Tests\Providers\CommonDataProvider;
 use Tests\TestCase;
-use Tests\Traits\Assertions\WithResponseAssertions;
+use Tests\Traits\Assertions\WithAuthAssertions;
 use Tests\Traits\Constants\WithAuthConstants;
 use Tests\Traits\WithUser;
 
 class LogoutTest extends TestCase
 {
-    use RefreshDatabase, WithUser, WithResponseAssertions, WithAuthConstants;
+    use RefreshDatabase, WithUser, WithAuthAssertions, WithAuthConstants;
 
     protected LessonService $lessonService;
 
@@ -36,7 +36,7 @@ class LogoutTest extends TestCase
             ->postJson(self::LOGOUT_URI);
 
         $this->withResponse($response)
-            ->assertStatusWithMessage(200, 'Logged out');
+            ->assertLogoutSuccessful();
     }
 
     public function testLogoutReturnsCorrectHttpHeaders(): void
@@ -76,7 +76,7 @@ class LogoutTest extends TestCase
             ->postJson(self::LOGOUT_URI);
 
         $this->withResponse($response)
-            ->assertStatusWithMessage(200, 'Logged out')
+            ->assertLogoutSuccessful()
             ->assertEquals(0, $user->tokens()->count(), 'User should have no tokens after logout.');
     }
 
@@ -158,7 +158,7 @@ class LogoutTest extends TestCase
             ->postJson(self::LOGOUT_URI);
 
         $this->withResponse($response)
-            ->assertStatusWithMessage(200, 'Logged out');
+            ->assertLogoutSuccessful();
 
         $response = $this->withToken($token)
             ->getJson($lessonUri);

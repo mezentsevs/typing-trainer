@@ -27,4 +27,11 @@ trait WithAuthAssertions
 
         return $this;
     }
+
+    protected function assertLogoutSuccessful(): static
+    {
+        $this->assertStatusWithMessage(200, 'Logged out');
+
+        return $this;
+    }
 }
