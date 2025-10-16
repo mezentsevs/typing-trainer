@@ -17,4 +17,14 @@ trait WithAuthAssertions
 
         return $this;
     }
+
+    protected function assertLoginSuccessful(): static
+    {
+        $this->assertStatusWithJsonStructure(200, [
+            'token',
+            'user' => self::LOGIN_RESPONSE_USER_JSON_STRUCTURE,
+        ]);
+
+        return $this;
+    }
 }
