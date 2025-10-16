@@ -23,7 +23,7 @@ class LoginTest extends TestCase
         ]);
 
         $this->withResponse($response)
-            ->assertLoginSuccessful();
+            ->assertLoginSuccess();
     }
 
     public function testLoginReturnsCorrectHttpHeaders(): void
@@ -49,7 +49,7 @@ class LoginTest extends TestCase
         ]);
 
         $this->withResponse($response)
-            ->assertLoginSuccessful();
+            ->assertLoginSuccess();
 
         $token = $response->json('token');
         $this->assertNotNull($token, 'Token should be present in response.');
@@ -58,7 +58,7 @@ class LoginTest extends TestCase
             ->postJson(self::LOGOUT_URI);
 
         $this->withResponse($response)
-            ->assertLogoutSuccessful();
+            ->assertLogoutSuccess();
     }
 
     public function testLoginWithoutEmail(): void
@@ -93,7 +93,7 @@ class LoginTest extends TestCase
         ]);
 
         $this->withResponse($response)
-            ->assertLoginSuccessful();
+            ->assertLoginSuccess();
     }
 
     public function testLoginWithInvalidLongEmail(): void
@@ -128,7 +128,7 @@ class LoginTest extends TestCase
         ]);
 
         $this->withResponse($response)
-            ->assertLoginSuccessful()
+            ->assertLoginSuccess()
             ->assertEquals(self::EMAIL, $response->json('user.email'), 'Email should be trimmed.');
     }
 
@@ -143,7 +143,7 @@ class LoginTest extends TestCase
         ]);
 
         $this->withResponse($response)
-            ->assertLoginSuccessful()
+            ->assertLoginSuccess()
             ->assertEquals(
                 $email,
                 $response->json('user.email'),
@@ -164,7 +164,7 @@ class LoginTest extends TestCase
         ]);
 
         $this->withResponse($response)
-            ->assertLoginSuccessful()
+            ->assertLoginSuccess()
             ->assertNull(
                 $response->json('user.email_verified_at'),
                 'User with unverified email should be able to login.',
@@ -210,7 +210,7 @@ class LoginTest extends TestCase
         ]);
 
         $this->withResponse($response)
-            ->assertLoginSuccessful();
+            ->assertLoginSuccess();
     }
 
     public function testLoginWithInvalidLongPassword(): void

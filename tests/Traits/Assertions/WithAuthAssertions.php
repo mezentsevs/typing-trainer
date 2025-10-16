@@ -8,7 +8,7 @@ trait WithAuthAssertions
 {
     use WithResponseAssertions, WithAuthConstants;
 
-    protected function assertRegistrationSuccessful(): static
+    protected function assertRegistrationSuccess(): static
     {
         $this->assertStatusWithJsonStructure(201, [
             'token',
@@ -18,7 +18,7 @@ trait WithAuthAssertions
         return $this;
     }
 
-    protected function assertLoginSuccessful(): static
+    protected function assertLoginSuccess(): static
     {
         $this->assertStatusWithJsonStructure(200, [
             'token',
@@ -28,7 +28,7 @@ trait WithAuthAssertions
         return $this;
     }
 
-    protected function assertLogoutSuccessful(): static
+    protected function assertLogoutSuccess(): static
     {
         $this->assertStatusWithMessage(200, 'Logged out');
 

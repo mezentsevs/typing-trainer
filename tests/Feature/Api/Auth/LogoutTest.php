@@ -36,7 +36,7 @@ class LogoutTest extends TestCase
             ->postJson(self::LOGOUT_URI);
 
         $this->withResponse($response)
-            ->assertLogoutSuccessful();
+            ->assertLogoutSuccess();
     }
 
     public function testLogoutReturnsCorrectHttpHeaders(): void
@@ -76,7 +76,7 @@ class LogoutTest extends TestCase
             ->postJson(self::LOGOUT_URI);
 
         $this->withResponse($response)
-            ->assertLogoutSuccessful()
+            ->assertLogoutSuccess()
             ->assertEquals(0, $user->tokens()->count(), 'User should have no tokens after logout.');
     }
 
@@ -158,7 +158,7 @@ class LogoutTest extends TestCase
             ->postJson(self::LOGOUT_URI);
 
         $this->withResponse($response)
-            ->assertLogoutSuccessful();
+            ->assertLogoutSuccess();
 
         $response = $this->withToken($token)
             ->getJson($lessonUri);

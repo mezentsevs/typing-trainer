@@ -26,7 +26,7 @@ class RegistrationTest extends TestCase
         ]);
 
         $this->withResponse($response)
-            ->assertRegistrationSuccessful();
+            ->assertRegistrationSuccess();
     }
 
     public function testRegistrationReturnsCorrectHttpHeaders(): void
@@ -52,7 +52,7 @@ class RegistrationTest extends TestCase
         ]);
 
         $this->withResponse($response)
-            ->assertRegistrationSuccessful();
+            ->assertRegistrationSuccess();
 
         $token = $response->json('token');
         $this->assertNotNull($token, 'Token should be present in response.');
@@ -61,7 +61,7 @@ class RegistrationTest extends TestCase
             ->postJson(self::LOGOUT_URI);
 
         $this->withResponse($response)
-            ->assertLogoutSuccessful();
+            ->assertLogoutSuccess();
     }
 
     public function testRegistrationWithoutUserName(): void
@@ -99,7 +99,7 @@ class RegistrationTest extends TestCase
         ]);
 
         $this->withResponse($response)
-            ->assertRegistrationSuccessful();
+            ->assertRegistrationSuccess();
     }
 
     public function testRegistrationWithInvalidLongUserName(): void
@@ -126,7 +126,7 @@ class RegistrationTest extends TestCase
         ]);
 
         $this->withResponse($response)
-            ->assertRegistrationSuccessful();
+            ->assertRegistrationSuccess();
     }
 
     #[DataProviderExternal(AuthDataProvider::class, 'provideInvalidUserNames')]
@@ -153,7 +153,7 @@ class RegistrationTest extends TestCase
         ]);
 
         $this->withResponse($response)
-            ->assertRegistrationSuccessful();
+            ->assertRegistrationSuccess();
 
         $user = User::where('email', self::EMAIL)->first();
         $this->assertNotNull($user, 'User should be created.');
@@ -208,7 +208,7 @@ class RegistrationTest extends TestCase
         ]);
 
         $this->withResponse($response)
-            ->assertRegistrationSuccessful();
+            ->assertRegistrationSuccess();
     }
 
     public function testRegistrationWithInvalidLongEmail(): void
@@ -277,7 +277,7 @@ class RegistrationTest extends TestCase
         ]);
 
         $this->withResponse($response)
-            ->assertRegistrationSuccessful();
+            ->assertRegistrationSuccess();
 
         $user = User::where('email', self::EMAIL)->first();
         $this->assertNotNull($user, 'User should be created.');
@@ -334,7 +334,7 @@ class RegistrationTest extends TestCase
         ]);
 
         $this->withResponse($response)
-            ->assertRegistrationSuccessful();
+            ->assertRegistrationSuccess();
     }
 
     public function testRegistrationWithInvalidShortPassword(): void
@@ -364,7 +364,7 @@ class RegistrationTest extends TestCase
         ]);
 
         $this->withResponse($response)
-            ->assertRegistrationSuccessful();
+            ->assertRegistrationSuccess();
     }
 
     public function testRegistrationWithInvalidLongPassword(): void
@@ -397,7 +397,7 @@ class RegistrationTest extends TestCase
         ]);
 
         $this->withResponse($response)
-            ->assertRegistrationSuccessful();
+            ->assertRegistrationSuccess();
     }
 
     #[DataProviderExternal(AuthDataProvider::class, 'provideInvalidPasswords')]
@@ -424,7 +424,7 @@ class RegistrationTest extends TestCase
         ]);
 
         $this->withResponse($response)
-            ->assertRegistrationSuccessful();
+            ->assertRegistrationSuccess();
 
         $user = User::where('email', self::EMAIL)->first();
 
