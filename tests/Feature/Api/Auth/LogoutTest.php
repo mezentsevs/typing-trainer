@@ -8,12 +8,11 @@ use PHPUnit\Framework\Attributes\DataProviderExternal;
 use Tests\Providers\CommonDataProvider;
 use Tests\TestCase;
 use Tests\Traits\Assertions\WithAuthAssertions;
-use Tests\Traits\Constants\WithAuthConstants;
 use Tests\Traits\WithUser;
 
 class LogoutTest extends TestCase
 {
-    use RefreshDatabase, WithUser, WithAuthConstants, WithAuthAssertions;
+    use RefreshDatabase, WithUser, WithAuthAssertions;
 
     protected LessonService $lessonService;
 
