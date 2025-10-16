@@ -19,9 +19,9 @@ class LessonsTest extends TestCase
     use RefreshDatabase,
         WithUser,
         WithLesson,
-        WithResponseAssertions,
         WithTokenConstants,
-        WithStatisticsConstants;
+        WithStatisticsConstants,
+        WithResponseAssertions;
 
     private User $user;
 

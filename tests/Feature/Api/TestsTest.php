@@ -19,10 +19,10 @@ class TestsTest extends TestCase
 {
     use RefreshDatabase,
         WithUser,
-        WithResponseAssertions,
         WithTokenConstants,
         WithStatisticsConstants,
-        WithFileConstants;
+        WithFileConstants,
+        WithResponseAssertions;
 
     private User $user;
 

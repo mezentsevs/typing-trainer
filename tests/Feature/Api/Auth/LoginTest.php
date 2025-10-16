@@ -11,7 +11,7 @@ use Tests\Traits\WithUser;
 
 class LoginTest extends TestCase
 {
-    use RefreshDatabase, WithUser, WithAuthAssertions, WithAuthFakes;
+    use RefreshDatabase, WithUser, WithAuthFakes, WithAuthAssertions;
 
     public function testLoginSuccess(): void
     {

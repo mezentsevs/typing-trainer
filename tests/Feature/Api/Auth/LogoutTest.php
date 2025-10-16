@@ -13,7 +13,7 @@ use Tests\Traits\WithUser;
 
 class LogoutTest extends TestCase
 {
-    use RefreshDatabase, WithUser, WithAuthAssertions, WithAuthConstants;
+    use RefreshDatabase, WithUser, WithAuthConstants, WithAuthAssertions;
 
     protected LessonService $lessonService;
 

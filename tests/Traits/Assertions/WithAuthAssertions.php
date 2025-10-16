@@ -6,7 +6,7 @@ use Tests\Traits\Constants\WithAuthConstants;
 
 trait WithAuthAssertions
 {
-    use WithResponseAssertions, WithAuthConstants;
+    use WithAuthConstants, WithResponseAssertions;
 
     protected function assertRegistrationSuccess(): static
     {

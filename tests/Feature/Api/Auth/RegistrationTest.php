@@ -14,7 +14,7 @@ use Tests\Traits\WithUser;
 
 class RegistrationTest extends TestCase
 {
-    use RefreshDatabase, WithUser, WithAuthAssertions, WithAuthFakes;
+    use RefreshDatabase, WithUser, WithAuthFakes, WithAuthAssertions;
 
     public function testRegistrationSuccess(): void
     {
