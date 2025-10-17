@@ -24,9 +24,8 @@ class TestsTest extends TestCase
         WithFileConstants,
         WithResponseAssertions;
 
-    private User $user;
-
     private string $token;
+    private User $user;
 
     protected function setUp(): void
     {

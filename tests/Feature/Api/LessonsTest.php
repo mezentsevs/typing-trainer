@@ -23,15 +23,12 @@ class LessonsTest extends TestCase
         WithStatisticsConstants,
         WithResponseAssertions;
 
-    private User $user;
-
     private string $token;
-
-    private const int LESSON_COUNT = 5;
+    private User $user;
 
     private const int INVALID_LESSON_COUNT = 0;
     private const int INVALID_LESSON_NUMBER = 999;
-
+    private const int LESSON_COUNT = 5;
     private const string EXPECTED_LESSONS_GENERATED_MESSAGE = 'Lessons generated';
 
     protected function setUp(): void

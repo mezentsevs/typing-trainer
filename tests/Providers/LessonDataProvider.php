@@ -7,7 +7,6 @@ use App\Enums\Language;
 class LessonDataProvider
 {
     protected const string CHARS_EN = 'asdfjkl;qwertyuiophgzxcvbnm,./ASDFJKL;QWERTYUIOPHGZXCVBNM,./1234567890-=!@#$%^&*()_+[]{}|\:"\'<>?~`';
-
     protected const string CHARS_RU = 'фываолджйцукенгшщзхъячсмитьбюпрэёФЫВАОЛДЖЙЦУКЕНГШЩЗХЪЯЧСМИТЬБЮПРЭЁ1234567890-=!"№;%:?*()_+/\,.';
 
     protected const array NEW_CHARS_SEQUENCE_EN = [
