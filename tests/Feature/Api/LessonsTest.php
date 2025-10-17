@@ -38,7 +38,7 @@ class LessonsTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testLessonGenerationSuccess(string $language): void
+    public function testLessonsGenerateSuccess(string $language): void
     {
         $response = $this->withToken($this->token)
             ->postJson('/api/lessons/generate', [
@@ -57,7 +57,7 @@ class LessonsTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testLessonShowSuccess(string $language): void
+    public function testLessonsShowSuccess(string $language): void
     {
         $lesson = $this->createLesson($this->user, ['language' => $language]);
 
@@ -81,7 +81,7 @@ class LessonsTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testSaveLessonResult(string $language): void
+    public function testSaveLessonsResult(string $language): void
     {
         $lesson = $this->createLesson($this->user, ['language' => $language]);
 
@@ -106,7 +106,7 @@ class LessonsTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testSaveLessonResultWithZeroValues(string $language): void
+    public function testSaveLessonsResultWithZeroValues(string $language): void
     {
         $lesson = $this->createLesson($this->user, ['language' => $language]);
 
@@ -130,7 +130,7 @@ class LessonsTest extends TestCase
             ]);
     }
 
-    public function testLessonGenerationValidation(): void
+    public function testLessonsGenerateValidation(): void
     {
         $response = $this->withToken($this->token)
             ->postJson('/api/lessons/generate', [
@@ -146,7 +146,7 @@ class LessonsTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testSaveLessonResultValidation(string $language): void
+    public function testSaveLessonsResultValidation(string $language): void
     {
         $lesson = $this->createLesson($this->user, ['language' => $language]);
 
@@ -168,7 +168,7 @@ class LessonsTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testLessonNotFound(string $language): void
+    public function testLessonsNotFound(string $language): void
     {
         $response = $this->withToken($this->token)
             ->getJson('/api/lessons/' . $language . '/' . self::INVALID_LESSON_NUMBER);
