@@ -57,7 +57,7 @@ class LessonsTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testLessonShow(string $language): void
+    public function testLessonShowSuccess(string $language): void
     {
         $lesson = $this->createLesson($this->user, ['language' => $language]);
 
@@ -65,7 +65,19 @@ class LessonsTest extends TestCase
             ->getJson("/api/lessons/{$lesson->language}/{$lesson->number}");
 
         $this->withResponse($response)
-            ->assertStatusWithJsonStructure(200, ['lesson']);
+            ->assertStatusWithJsonStructure(200, [
+                'lesson' => [
+                    'id',
+                    'user_id',
+                    'number',
+                    'total',
+                    'language',
+                    'new_chars',
+                    'text',
+                    'created_at',
+                    'updated_at',
+                ],
+            ]);
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
