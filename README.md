@@ -87,7 +87,7 @@ npm install
 npm run build
 ```
 
-- Configure your AI model in .env (tested on LM Studio + qwen/qwen3-1.7b)
+- Configure your AI model in .env (tested with LM Studio + qwen/qwen3-1.7b)
 
 - Configure your custom AI text generation prompt template or delete it from .env for using default
 
