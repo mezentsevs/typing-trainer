@@ -29,7 +29,6 @@ class LessonsTest extends TestCase
     private const int INVALID_LESSON_COUNT = 0;
     private const int INVALID_LESSON_NUMBER = 999;
     private const int LESSON_COUNT = 5;
-    private const string EXPECTED_LESSONS_GENERATED_MESSAGE = 'Lessons generated';
 
     protected function setUp(): void
     {
@@ -39,7 +38,7 @@ class LessonsTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testLessonGeneration(string $language): void
+    public function testLessonGenerationSuccess(string $language): void
     {
         $response = $this->withToken($this->token)
             ->postJson('/api/lessons/generate', [
@@ -48,14 +47,13 @@ class LessonsTest extends TestCase
             ]);
 
         $this->withResponse($response)
-            ->assertStatusWithMessage(200, self::EXPECTED_LESSONS_GENERATED_MESSAGE);
-
-        $this->assertCount(
-            self::LESSON_COUNT,
-            Lesson::where('user_id', $this->user->id)
-                ->where('language', $language)
-                ->get(),
-        );
+            ->assertStatusWithMessage(200, 'Lessons generated')
+            ->assertCount(
+                self::LESSON_COUNT,
+                Lesson::where('user_id', $this->user->id)
+                    ->where('language', $language)
+                    ->get(),
+            );
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
