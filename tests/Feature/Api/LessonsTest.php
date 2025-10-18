@@ -105,14 +105,7 @@ class LessonsTest extends TestCase
             ]);
 
         $this->withResponse($response)
-            ->assertStatusWithJsonStructure(200, [
-                'id',
-                'user_id',
-                'lesson_id',
-                'language',
-                'speed_wpm',
-                'errors',
-            ]);
+            ->assertStatusWithJsonStructure(200, self::LESSONS_RESULT_RESPONSE_JSON_STRUCTURE);
     }
 
     public function testLessonsGenerateValidation(): void
