@@ -68,17 +68,7 @@ class LessonsTest extends TestCase
 
         $this->withResponse($response)
             ->assertStatusWithJsonStructure(200, [
-                'lesson' => [
-                    'id',
-                    'user_id',
-                    'number',
-                    'total',
-                    'language',
-                    'new_chars',
-                    'text',
-                    'created_at',
-                    'updated_at',
-                ],
+                'lesson' => self::LESSONS_SHOW_RESPONSE_LESSON_JSON_STRUCTURE,
             ]);
     }
 
