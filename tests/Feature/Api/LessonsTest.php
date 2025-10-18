@@ -9,6 +9,7 @@ use PHPUnit\Framework\Attributes\DataProviderExternal;
 use Tests\Providers\CommonDataProvider;
 use Tests\TestCase;
 use Tests\Traits\Assertions\WithResponseAssertions;
+use Tests\Traits\Constants\WithLessonConstants;
 use Tests\Traits\Constants\WithStatisticsConstants;
 use Tests\Traits\Constants\WithTokenConstants;
 use Tests\Traits\WithLesson;
@@ -20,6 +21,7 @@ class LessonsTest extends TestCase
         WithUser,
         WithLesson,
         WithTokenConstants,
+        WithLessonConstants,
         WithStatisticsConstants,
         WithResponseAssertions;
 
@@ -95,17 +97,7 @@ class LessonsTest extends TestCase
             ]);
 
         $this->withResponse($response)
-            ->assertStatusWithJsonStructure(200, [
-                'id',
-                'user_id',
-                'lesson_id',
-                'language',
-                'time_seconds',
-                'speed_wpm',
-                'errors',
-                'created_at',
-                'updated_at',
-            ]);
+            ->assertStatusWithJsonStructure(200, self::LESSONS_RESULT_RESPONSE_JSON_STRUCTURE);
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
