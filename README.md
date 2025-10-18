@@ -4,6 +4,8 @@
 
 This is a typing trainer, written in and for educational and demonstrational purposes.
 
+A full-stack SPA typing trainer for mastering touch-typing. It generates random lessons based on language and count. The final test sources text through multiple strategies: genre-based AI generation using cloud or local models, a seeded database, or user-uploaded files. Features include a virtual keyboard, real-time error highlighting, progress tracking, and detailed statistics.
+
 Based on tech stack:
 - [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML),
 - [PHP](https://www.php.net),
