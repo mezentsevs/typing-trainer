@@ -91,7 +91,7 @@ class LessonsTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testLessonsResultSaveWithZeroValues(string $language): void
+    public function testLessonsResultSaveWithZeroTimeSeconds(string $language): void
     {
         $lesson = $this->createLesson($this->user, ['language' => $language]);
 
@@ -100,8 +100,8 @@ class LessonsTest extends TestCase
                 'lesson_id' => $lesson->id,
                 'language' => $language,
                 'time_seconds' => self::ZERO_TIME_SECONDS,
-                'speed_wpm' => self::ZERO_SPEED_WPM,
-                'errors' => self::ZERO_ERRORS_COUNT,
+                'speed_wpm' => self::SPEED_WPM,
+                'errors' => self::ERRORS_COUNT,
             ]);
 
         $this->withResponse($response)
