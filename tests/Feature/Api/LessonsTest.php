@@ -126,6 +126,24 @@ class LessonsTest extends TestCase
             ->assertStatusWithJsonStructure(200, self::LESSONS_RESULT_RESPONSE_JSON_STRUCTURE);
     }
 
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testLessonsResultSaveWithZeroErrors(string $language): void
+    {
+        $lesson = $this->createLesson($this->user, ['language' => $language]);
+
+        $response = $this->withToken($this->token)
+            ->postJson('/api/lessons/result', [
+                'lesson_id' => $lesson->id,
+                'language' => $language,
+                'time_seconds' => self::TIME_SECONDS,
+                'speed_wpm' => self::SPEED_WPM,
+                'errors' => self::ZERO_ERRORS_COUNT,
+            ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithJsonStructure(200, self::LESSONS_RESULT_RESPONSE_JSON_STRUCTURE);
+    }
+
     public function testLessonsGenerateValidation(): void
     {
         $response = $this->withToken($this->token)
