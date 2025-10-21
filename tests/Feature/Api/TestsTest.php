@@ -11,6 +11,7 @@ use Tests\Providers\CommonDataProvider;
 use Tests\TestCase;
 use Tests\Traits\Assertions\WithResponseAssertions;
 use Tests\Traits\Constants\WithFileConstants;
+use Tests\Traits\Constants\WithLanguageConstants;
 use Tests\Traits\Constants\WithStatisticsConstants;
 use Tests\Traits\Constants\WithTokenConstants;
 use Tests\Traits\WithUser;
@@ -20,6 +21,7 @@ class TestsTest extends TestCase
     use RefreshDatabase,
         WithUser,
         WithTokenConstants,
+        WithLanguageConstants,
         WithStatisticsConstants,
         WithFileConstants,
         WithResponseAssertions;

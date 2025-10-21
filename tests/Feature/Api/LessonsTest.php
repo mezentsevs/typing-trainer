@@ -9,6 +9,7 @@ use PHPUnit\Framework\Attributes\DataProviderExternal;
 use Tests\Providers\CommonDataProvider;
 use Tests\TestCase;
 use Tests\Traits\Assertions\WithResponseAssertions;
+use Tests\Traits\Constants\WithLanguageConstants;
 use Tests\Traits\Constants\WithLessonConstants;
 use Tests\Traits\Constants\WithStatisticsConstants;
 use Tests\Traits\Constants\WithTokenConstants;
@@ -21,6 +22,7 @@ class LessonsTest extends TestCase
         WithUser,
         WithLesson,
         WithTokenConstants,
+        WithLanguageConstants,
         WithLessonConstants,
         WithStatisticsConstants,
         WithResponseAssertions;

@@ -15,5 +15,4 @@ trait WithStatisticsConstants
     protected const int INVALID_ERRORS_COUNT = -1;
     protected const int INVALID_SPEED_WPM = -1;
     protected const int INVALID_TIME_SECONDS = -1;
-    protected const string INVALID_EMPTY_LANGUAGE = '';
 }
