@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Api;
 
+use App\Enums\Language;
 use App\Models\Lesson;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -156,6 +157,18 @@ class LessonsTest extends TestCase
 
         $this->withResponse($response)
             ->assertStatusWithErrorAndMessage(422, 'language', 'The language field is required.');
+    }
+
+    public function testLessonsGenerateWithUnknownLanguage(): void
+    {
+        $response = $this->withToken($this->token)
+            ->postJson('/api/lessons/generate', [
+                'language' => Language::Unknown,
+                'lesson_count' => self::LESSON_COUNT,
+            ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'language', 'The selected language is not supported.');
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
