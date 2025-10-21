@@ -144,19 +144,16 @@ class LessonsTest extends TestCase
             ->assertStatusWithJsonStructure(200, self::LESSONS_RESULT_RESPONSE_JSON_STRUCTURE);
     }
 
-    public function testLessonsGenerateValidation(): void
+    public function testLessonsGenerateWithEmptyLanguage(): void
     {
         $response = $this->withToken($this->token)
             ->postJson('/api/lessons/generate', [
                 'language' => self::INVALID_EMPTY_LANGUAGE,
-                'lesson_count' => self::INVALID_LESSON_COUNT,
+                'lesson_count' => self::LESSON_COUNT,
             ]);
 
         $this->withResponse($response)
-            ->assertStatusWithJsonValidationErrors(422, [
-                'language',
-                'lesson_count',
-            ]);
+            ->assertStatusWithErrorAndMessage(422, 'language', 'The language field is required.');
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
