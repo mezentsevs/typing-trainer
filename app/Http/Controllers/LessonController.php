@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Lesson;
 use App\Models\LessonResult;
+use App\Rules\LanguageSupported;
 use App\Services\LessonService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -27,7 +28,7 @@ class LessonController extends Controller
     public function generate(Request $request): JsonResponse
     {
         $request->validate([
-            'language' => 'required|string',
+            'language' => ['required', 'string', new LanguageSupported()],
             'lesson_count' => 'required|integer|min:1',
         ]);
 
@@ -40,7 +41,7 @@ class LessonController extends Controller
     {
         $request->validate([
             'lesson_id' => 'required|exists:lessons,id',
-            'language' => 'required|string',
+            'language' => ['required', 'string', new LanguageSupported()],
             'time_seconds' => 'required|integer|min:0',
             'speed_wpm' => 'required|integer|min:0',
             'errors' => 'required|integer|min:0',

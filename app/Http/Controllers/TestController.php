@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\TestResult;
+use App\Rules\LanguageSupported;
 use App\Services\TestService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -16,7 +17,7 @@ class TestController extends Controller
     public function getText(Request $request): JsonResponse
     {
         $request->validate([
-            'language' => 'required|string',
+            'language' => ['required', 'string', new LanguageSupported()],
             'genre' => 'nullable|string',
         ]);
 
@@ -26,7 +27,7 @@ class TestController extends Controller
     public function uploadText(Request $request): JsonResponse
     {
         $request->validate([
-            'language' => 'required|string',
+            'language' => ['required', 'string', new LanguageSupported()],
             'file' => 'required|file|mimes:txt|max:3',
         ]);
 
@@ -39,7 +40,7 @@ class TestController extends Controller
     public function saveResult(Request $request): JsonResponse
     {
         $request->validate([
-            'language' => 'required|string',
+            'language' => ['required', 'string', new LanguageSupported()],
             'time_seconds' => 'required|integer|min:0',
             'speed_wpm' => 'required|integer|min:0',
             'errors' => 'required|integer|min:0',
