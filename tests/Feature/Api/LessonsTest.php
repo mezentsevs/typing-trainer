@@ -203,6 +203,24 @@ class LessonsTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testLessonsResultSaveWithInvalidTimeSeconds(string $language): void
+    {
+        $lesson = $this->createLesson($this->user, ['language' => $language]);
+
+        $response = $this->withToken($this->token)
+            ->postJson('/api/lessons/result', [
+                'lesson_id' => $lesson->id,
+                'language' => $language,
+                'time_seconds' => self::INVALID_TIME_SECONDS,
+                'speed_wpm' => self::SPEED_WPM,
+                'errors' => self::ERRORS_COUNT,
+            ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'time_seconds', 'The time seconds field must be at least 0.');
+    }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testLessonsNotFound(string $language): void
     {
         $response = $this->withToken($this->token)
