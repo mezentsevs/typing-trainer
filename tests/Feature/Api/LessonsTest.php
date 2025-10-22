@@ -163,7 +163,7 @@ class LessonsTest extends TestCase
     {
         $response = $this->withToken($this->token)
             ->postJson('/api/lessons/generate', [
-                'language' => Language::Unknown,
+                'language' => Language::Unknown->value,
                 'lesson_count' => self::LESSON_COUNT,
             ]);
 
