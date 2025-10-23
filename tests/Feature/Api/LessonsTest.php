@@ -255,8 +255,10 @@ class LessonsTest extends TestCase
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testLessonsNotFound(string $language): void
     {
+        $lessonUri = sprintf(self::LESSONS_URI_TEMPLATE, $language, self::LESSON_NUMBER_FOR_ACCESS);
+
         $response = $this->withToken($this->token)
-            ->getJson('/api/lessons/' . $language . '/' . self::LESSON_NUMBER_FOR_ACCESS);
+            ->getJson($lessonUri);
 
         $response->assertStatus(404);
     }
