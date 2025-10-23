@@ -44,13 +44,13 @@ class LessonsTest extends TestCase
         $response = $this->withToken($this->token)
             ->postJson('/api/lessons/generate', [
                 'language' => $language,
-                'lesson_count' => self::LESSON_COUNT,
+                'lesson_count' => self::MULTIPLE_LESSON_COUNT,
             ]);
 
         $this->withResponse($response)
             ->assertStatusWithMessage(200, 'Lessons generated')
             ->assertCount(
-                self::LESSON_COUNT,
+                self::MULTIPLE_LESSON_COUNT,
                 Lesson::where('user_id', $this->user->id)
                     ->where('language', $language)
                     ->get(),
@@ -148,7 +148,7 @@ class LessonsTest extends TestCase
         $response = $this->withToken($this->token)
             ->postJson('/api/lessons/generate', [
                 'language' => self::INVALID_EMPTY_LANGUAGE,
-                'lesson_count' => self::LESSON_COUNT,
+                'lesson_count' => self::MULTIPLE_LESSON_COUNT,
             ]);
 
         $this->withResponse($response)
@@ -160,7 +160,7 @@ class LessonsTest extends TestCase
         $response = $this->withToken($this->token)
             ->postJson('/api/lessons/generate', [
                 'language' => Language::Unknown->value,
-                'lesson_count' => self::LESSON_COUNT,
+                'lesson_count' => self::MULTIPLE_LESSON_COUNT,
             ]);
 
         $this->withResponse($response)
@@ -256,7 +256,7 @@ class LessonsTest extends TestCase
     public function testLessonsNotFound(string $language): void
     {
         $response = $this->withToken($this->token)
-            ->getJson('/api/lessons/' . $language . '/' . self::INVALID_LESSON_NUMBER);
+            ->getJson('/api/lessons/' . $language . '/' . self::LESSON_NUMBER_FOR_ACCESS);
 
         $response->assertStatus(404);
     }

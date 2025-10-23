@@ -150,7 +150,7 @@ class LogoutTest extends TestCase
     {
         $user = $this->createUser();
         $token = $this->createTokenForUser($user, self::TOKEN_NAME);
-        $this->lessonService->generateLessons($language, self::LESSON_COUNT_FOR_ACCESS, $user->id);
+        $this->lessonService->generateLessons($language, self::SINGLE_LESSON_COUNT, $user->id);
         $lessonUri = sprintf(self::LESSONS_URI_TEMPLATE, $language, self::LESSON_NUMBER_FOR_ACCESS);
 
         $response = $this->withToken($token)
