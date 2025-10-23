@@ -31,10 +31,6 @@ class LessonsTest extends TestCase
     private string $token;
     private User $user;
 
-    private const int INVALID_LESSON_COUNT = 0;
-    private const int INVALID_LESSON_NUMBER = 999;
-    private const int LESSON_COUNT = 5;
-
     protected function setUp(): void
     {
         parent::setUp();

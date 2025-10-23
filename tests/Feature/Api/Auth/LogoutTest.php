@@ -8,17 +8,17 @@ use PHPUnit\Framework\Attributes\DataProviderExternal;
 use Tests\Providers\CommonDataProvider;
 use Tests\TestCase;
 use Tests\Traits\Assertions\WithAuthAssertions;
+use Tests\Traits\Constants\WithLessonConstants;
 use Tests\Traits\WithUser;
 
 class LogoutTest extends TestCase
 {
-    use RefreshDatabase, WithUser, WithAuthAssertions;
+    use RefreshDatabase,
+        WithUser,
+        WithLessonConstants,
+        WithAuthAssertions;
 
     protected LessonService $lessonService;
-
-    private const int LESSON_COUNT_FOR_ACCESS = 1;
-    private const int LESSON_NUMBER_FOR_ACCESS = 1;
-    private const string LESSONS_URI_TEMPLATE = '/api/lessons/%s/%d';
 
     protected function setUp(): void
     {
