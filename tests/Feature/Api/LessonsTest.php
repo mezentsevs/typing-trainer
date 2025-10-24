@@ -61,9 +61,10 @@ class LessonsTest extends TestCase
     public function testLessonsShowSuccess(string $language): void
     {
         $lesson = $this->createLesson($this->user, ['language' => $language]);
+        $lessonUri = sprintf(self::LESSONS_SHOW_URI_TEMPLATE, $lesson->language, $lesson->number);
 
         $response = $this->withToken($this->token)
-            ->getJson("/api/lessons/{$lesson->language}/{$lesson->number}");
+            ->getJson($lessonUri);
 
         $this->withResponse($response)
             ->assertStatusWithJsonStructure(200, [
