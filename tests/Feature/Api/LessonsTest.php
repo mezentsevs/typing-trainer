@@ -78,7 +78,7 @@ class LessonsTest extends TestCase
         $lesson = $this->createLesson($this->user, ['language' => $language]);
 
         $response = $this->withToken($this->token)
-            ->postJson('/api/lessons/result', [
+            ->postJson(self::LESSONS_RESULT_URI, [
                 'lesson_id' => $lesson->id,
                 'language' => $language,
                 'time_seconds' => self::TIME_SECONDS,
@@ -96,7 +96,7 @@ class LessonsTest extends TestCase
         $lesson = $this->createLesson($this->user, ['language' => $language]);
 
         $response = $this->withToken($this->token)
-            ->postJson('/api/lessons/result', [
+            ->postJson(self::LESSONS_RESULT_URI, [
                 'lesson_id' => $lesson->id,
                 'language' => $language,
                 'time_seconds' => self::ZERO_TIME_SECONDS,
@@ -114,7 +114,7 @@ class LessonsTest extends TestCase
         $lesson = $this->createLesson($this->user, ['language' => $language]);
 
         $response = $this->withToken($this->token)
-            ->postJson('/api/lessons/result', [
+            ->postJson(self::LESSONS_RESULT_URI, [
                 'lesson_id' => $lesson->id,
                 'language' => $language,
                 'time_seconds' => self::TIME_SECONDS,
@@ -132,7 +132,7 @@ class LessonsTest extends TestCase
         $lesson = $this->createLesson($this->user, ['language' => $language]);
 
         $response = $this->withToken($this->token)
-            ->postJson('/api/lessons/result', [
+            ->postJson(self::LESSONS_RESULT_URI, [
                 'lesson_id' => $lesson->id,
                 'language' => $language,
                 'time_seconds' => self::TIME_SECONDS,
@@ -187,7 +187,7 @@ class LessonsTest extends TestCase
         $lesson = $this->createLesson($this->user, ['language' => $language]);
 
         $response = $this->withToken($this->token)
-            ->postJson('/api/lessons/result', [
+            ->postJson(self::LESSONS_RESULT_URI, [
                 'lesson_id' => $lesson->id,
                 'language' => Language::Unknown->value,
                 'time_seconds' => self::TIME_SECONDS,
@@ -205,7 +205,7 @@ class LessonsTest extends TestCase
         $lesson = $this->createLesson($this->user, ['language' => $language]);
 
         $response = $this->withToken($this->token)
-            ->postJson('/api/lessons/result', [
+            ->postJson(self::LESSONS_RESULT_URI, [
                 'lesson_id' => $lesson->id,
                 'language' => $language,
                 'time_seconds' => self::INVALID_TIME_SECONDS,
@@ -223,7 +223,7 @@ class LessonsTest extends TestCase
         $lesson = $this->createLesson($this->user, ['language' => $language]);
 
         $response = $this->withToken($this->token)
-            ->postJson('/api/lessons/result', [
+            ->postJson(self::LESSONS_RESULT_URI, [
                 'lesson_id' => $lesson->id,
                 'language' => $language,
                 'time_seconds' => self::TIME_SECONDS,
@@ -241,7 +241,7 @@ class LessonsTest extends TestCase
         $lesson = $this->createLesson($this->user, ['language' => $language]);
 
         $response = $this->withToken($this->token)
-            ->postJson('/api/lessons/result', [
+            ->postJson(self::LESSONS_RESULT_URI, [
                 'lesson_id' => $lesson->id,
                 'language' => $language,
                 'time_seconds' => self::TIME_SECONDS,

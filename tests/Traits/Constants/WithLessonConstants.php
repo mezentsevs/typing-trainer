@@ -6,6 +6,7 @@ trait WithLessonConstants
 {
     protected const string LESSONS_GENERATE_URI = '/api/lessons/generate';
     protected const string LESSONS_SHOW_URI_TEMPLATE = '/api/lessons/%s/%d';
+    protected const string LESSONS_RESULT_URI = '/api/lessons/result';
 
     protected const array LESSONS_SHOW_RESPONSE_LESSON_JSON_STRUCTURE = [
         'id',
