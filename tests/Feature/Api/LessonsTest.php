@@ -57,6 +57,43 @@ class LessonsTest extends TestCase
             );
     }
 
+    public function testLessonsGenerateWithEmptyLanguage(): void
+    {
+        $response = $this->withToken($this->token)
+            ->postJson(self::LESSONS_GENERATE_URI, [
+                'language' => self::INVALID_EMPTY_LANGUAGE,
+                'lesson_count' => self::MULTIPLE_LESSON_COUNT,
+            ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'language', 'The language field is required.');
+    }
+
+    public function testLessonsGenerateWithUnknownLanguage(): void
+    {
+        $response = $this->withToken($this->token)
+            ->postJson(self::LESSONS_GENERATE_URI, [
+                'language' => Language::Unknown->value,
+                'lesson_count' => self::MULTIPLE_LESSON_COUNT,
+            ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'language', 'The selected language is not supported.');
+    }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testLessonsGenerateWithInvalidLessonCount(string $language): void
+    {
+        $response = $this->withToken($this->token)
+            ->postJson(self::LESSONS_GENERATE_URI, [
+                'language' => $language,
+                'lesson_count' => self::INVALID_LESSON_COUNT,
+            ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'lesson_count', 'The lesson count field must be at least 1.');
+    }
+
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testLessonsShowSuccess(string $language): void
     {
@@ -70,6 +107,17 @@ class LessonsTest extends TestCase
             ->assertStatusWithJsonStructure(200, [
                 'lesson' => self::LESSONS_SHOW_RESPONSE_LESSON_JSON_STRUCTURE,
             ]);
+    }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testLessonsShowNotFound(string $language): void
+    {
+        $lessonUri = sprintf(self::LESSONS_SHOW_URI_TEMPLATE, $language, self::LESSON_NUMBER_FOR_ACCESS);
+
+        $response = $this->withToken($this->token)
+            ->getJson($lessonUri);
+
+        $response->assertStatus(404);
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
@@ -144,43 +192,6 @@ class LessonsTest extends TestCase
             ->assertStatusWithJsonStructure(200, self::LESSONS_RESULT_RESPONSE_JSON_STRUCTURE);
     }
 
-    public function testLessonsGenerateWithEmptyLanguage(): void
-    {
-        $response = $this->withToken($this->token)
-            ->postJson(self::LESSONS_GENERATE_URI, [
-                'language' => self::INVALID_EMPTY_LANGUAGE,
-                'lesson_count' => self::MULTIPLE_LESSON_COUNT,
-            ]);
-
-        $this->withResponse($response)
-            ->assertStatusWithErrorAndMessage(422, 'language', 'The language field is required.');
-    }
-
-    public function testLessonsGenerateWithUnknownLanguage(): void
-    {
-        $response = $this->withToken($this->token)
-            ->postJson(self::LESSONS_GENERATE_URI, [
-                'language' => Language::Unknown->value,
-                'lesson_count' => self::MULTIPLE_LESSON_COUNT,
-            ]);
-
-        $this->withResponse($response)
-            ->assertStatusWithErrorAndMessage(422, 'language', 'The selected language is not supported.');
-    }
-
-    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testLessonsGenerateWithInvalidLessonCount(string $language): void
-    {
-        $response = $this->withToken($this->token)
-            ->postJson(self::LESSONS_GENERATE_URI, [
-                'language' => $language,
-                'lesson_count' => self::INVALID_LESSON_COUNT,
-            ]);
-
-        $this->withResponse($response)
-            ->assertStatusWithErrorAndMessage(422, 'lesson_count', 'The lesson count field must be at least 1.');
-    }
-
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testLessonsResultSaveWithUnknownLanguage(string $language): void
     {
@@ -251,16 +262,5 @@ class LessonsTest extends TestCase
 
         $this->withResponse($response)
             ->assertStatusWithErrorAndMessage(422, 'errors', 'The errors field must be at least 0.');
-    }
-
-    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testLessonsNotFound(string $language): void
-    {
-        $lessonUri = sprintf(self::LESSONS_SHOW_URI_TEMPLATE, $language, self::LESSON_NUMBER_FOR_ACCESS);
-
-        $response = $this->withToken($this->token)
-            ->getJson($lessonUri);
-
-        $response->assertStatus(404);
     }
 }
