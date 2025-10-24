@@ -4,13 +4,9 @@ namespace Tests\Traits\Constants;
 
 trait WithLessonConstants
 {
-    protected const int LESSON_NUMBER_FOR_ACCESS = 1;
-    protected const int MULTIPLE_LESSON_COUNT = 5;
-    protected const int SINGLE_LESSON_COUNT = 1;
-
-    protected const int INVALID_LESSON_COUNT = 0;
-
+    protected const string LESSONS_GENERATE_URI = '/api/lessons/generate';
     protected const string LESSONS_SHOW_URI_TEMPLATE = '/api/lessons/%s/%d';
+
     protected const array LESSONS_SHOW_RESPONSE_LESSON_JSON_STRUCTURE = [
         'id',
         'user_id',
@@ -34,4 +30,9 @@ trait WithLessonConstants
         'created_at',
         'updated_at',
     ];
+
+    protected const int LESSON_NUMBER_FOR_ACCESS = 1;
+    protected const int MULTIPLE_LESSON_COUNT = 5;
+    protected const int SINGLE_LESSON_COUNT = 1;
+    protected const int INVALID_LESSON_COUNT = 0;
 }

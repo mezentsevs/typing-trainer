@@ -42,7 +42,7 @@ class LessonsTest extends TestCase
     public function testLessonsGenerateSuccess(string $language): void
     {
         $response = $this->withToken($this->token)
-            ->postJson('/api/lessons/generate', [
+            ->postJson(self::LESSONS_GENERATE_URI, [
                 'language' => $language,
                 'lesson_count' => self::MULTIPLE_LESSON_COUNT,
             ]);
@@ -147,7 +147,7 @@ class LessonsTest extends TestCase
     public function testLessonsGenerateWithEmptyLanguage(): void
     {
         $response = $this->withToken($this->token)
-            ->postJson('/api/lessons/generate', [
+            ->postJson(self::LESSONS_GENERATE_URI, [
                 'language' => self::INVALID_EMPTY_LANGUAGE,
                 'lesson_count' => self::MULTIPLE_LESSON_COUNT,
             ]);
@@ -159,7 +159,7 @@ class LessonsTest extends TestCase
     public function testLessonsGenerateWithUnknownLanguage(): void
     {
         $response = $this->withToken($this->token)
-            ->postJson('/api/lessons/generate', [
+            ->postJson(self::LESSONS_GENERATE_URI, [
                 'language' => Language::Unknown->value,
                 'lesson_count' => self::MULTIPLE_LESSON_COUNT,
             ]);
@@ -172,7 +172,7 @@ class LessonsTest extends TestCase
     public function testLessonsGenerateWithInvalidLessonCount(string $language): void
     {
         $response = $this->withToken($this->token)
-            ->postJson('/api/lessons/generate', [
+            ->postJson(self::LESSONS_GENERATE_URI, [
                 'language' => $language,
                 'lesson_count' => self::INVALID_LESSON_COUNT,
             ]);
