@@ -1,5 +1,8 @@
 # Typing trainer
 
+## Note on Future Development
+Please be aware that this project might transition to a commercial subscription-based service for advanced features in the future. While currently open-source, contributions are not actively encouraged at this stage. Plans may change based on further development. Thank you for your understanding.
+
 ## About 'Typing trainer'
 
 This is a typing trainer, written in and for educational and demonstrational purposes.
