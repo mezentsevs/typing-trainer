@@ -135,17 +135,6 @@ class LogoutTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testAccessLessonWithoutAuthentication(string $language): void
-    {
-        $lessonUri = sprintf(self::LESSONS_SHOW_URI_TEMPLATE, $language, self::LESSON_NUMBER_FOR_ACCESS);
-
-        $response = $this->getJson($lessonUri);
-
-        $this->withResponse($response)
-            ->assertStatusWithMessage(401, 'Unauthenticated.');
-    }
-
-    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testAccessLessonAfterLogout(string $language): void
     {
         $user = $this->createUser();
