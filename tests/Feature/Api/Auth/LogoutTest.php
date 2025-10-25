@@ -135,7 +135,7 @@ class LogoutTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testAccessLessonAfterLogout(string $language): void
+    public function testLessonsShowAfterLogout(string $language): void
     {
         $user = $this->createUser();
         $token = $this->createTokenForUser($user, self::TOKEN_NAME);
