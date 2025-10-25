@@ -133,6 +133,19 @@ class LessonsTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testLessonsShowWithInvalidToken(string $language): void
+    {
+        $lesson = $this->createLesson($this->user, ['language' => $language]);
+        $lessonUri = sprintf(self::LESSONS_SHOW_URI_TEMPLATE, $lesson->language, $lesson->number);
+
+        $response = $this->withToken(self::INVALID_TOKEN)
+            ->getJson($lessonUri);
+
+        $this->withResponse($response)
+            ->assertStatusWithMessage(401, 'Unauthenticated.');
+    }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testLessonsShowNotFound(string $language): void
     {
         $lessonUri = sprintf(self::LESSONS_SHOW_URI_TEMPLATE, $language, self::LESSON_NUMBER_FOR_ACCESS);
