@@ -69,6 +69,17 @@ class LessonsTest extends TestCase
             ->assertStatusWithMessage(401, 'Unauthenticated.');
     }
 
+    public function testLessonsGenerateWithMissingLanguage(): void
+    {
+        $response = $this->withToken($this->token)
+            ->postJson(self::LESSONS_GENERATE_URI, [
+                'lesson_count' => self::MULTIPLE_LESSON_COUNT,
+            ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'language', 'The language field is required.');
+    }
+
     public function testLessonsGenerateWithEmptyLanguage(): void
     {
         $response = $this->withToken($this->token)
