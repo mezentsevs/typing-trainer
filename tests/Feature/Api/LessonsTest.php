@@ -57,6 +57,18 @@ class LessonsTest extends TestCase
             );
     }
 
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testLessonsGenerateWithoutAuthentication(string $language): void
+    {
+        $response = $this->postJson(self::LESSONS_GENERATE_URI, [
+            'language' => $language,
+            'lesson_count' => self::MULTIPLE_LESSON_COUNT,
+        ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithMessage(401, 'Unauthenticated.');
+    }
+
     public function testLessonsGenerateWithEmptyLanguage(): void
     {
         $response = $this->withToken($this->token)
