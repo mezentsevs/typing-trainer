@@ -42,4 +42,3 @@ return new Config()
     ->setFinder($finder)
     ->setRiskyAllowed(true)
     ->setUsingCache(true);
-
