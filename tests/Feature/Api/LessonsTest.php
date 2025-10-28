@@ -339,40 +339,6 @@ class LessonsTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testLessonsResultSaveWithMissingSpeedWpm(string $language): void
-    {
-        $lesson = $this->createLesson($this->user, ['language' => $language]);
-
-        $response = $this->withToken($this->token)
-            ->postJson(self::LESSONS_RESULT_URI, [
-                'lesson_id' => $lesson->id,
-                'language' => $lesson->language,
-                'time_seconds' => self::TIME_SECONDS,
-                'errors' => self::ERRORS_COUNT,
-            ]);
-
-        $this->withResponse($response)
-            ->assertStatusWithErrorAndMessage(422, 'speed_wpm', 'The speed wpm field is required.');
-    }
-
-    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testLessonsResultSaveWithMissingErrors(string $language): void
-    {
-        $lesson = $this->createLesson($this->user, ['language' => $language]);
-
-        $response = $this->withToken($this->token)
-            ->postJson(self::LESSONS_RESULT_URI, [
-                'lesson_id' => $lesson->id,
-                'language' => $lesson->language,
-                'time_seconds' => self::TIME_SECONDS,
-                'speed_wpm' => self::SPEED_WPM,
-            ]);
-
-        $this->withResponse($response)
-            ->assertStatusWithErrorAndMessage(422, 'errors', 'The errors field is required.');
-    }
-
-    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testLessonsResultSaveWithZeroTimeSeconds(string $language): void
     {
         $lesson = $this->createLesson($this->user, ['language' => $language]);
@@ -384,42 +350,6 @@ class LessonsTest extends TestCase
                 'time_seconds' => self::ZERO_TIME_SECONDS,
                 'speed_wpm' => self::SPEED_WPM,
                 'errors' => self::ERRORS_COUNT,
-            ]);
-
-        $this->withResponse($response)
-            ->assertStatusWithJsonStructure(200, self::LESSONS_RESULT_RESPONSE_JSON_STRUCTURE);
-    }
-
-    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testLessonsResultSaveWithZeroSpeedWpm(string $language): void
-    {
-        $lesson = $this->createLesson($this->user, ['language' => $language]);
-
-        $response = $this->withToken($this->token)
-            ->postJson(self::LESSONS_RESULT_URI, [
-                'lesson_id' => $lesson->id,
-                'language' => $lesson->language,
-                'time_seconds' => self::TIME_SECONDS,
-                'speed_wpm' => self::ZERO_SPEED_WPM,
-                'errors' => self::ERRORS_COUNT,
-            ]);
-
-        $this->withResponse($response)
-            ->assertStatusWithJsonStructure(200, self::LESSONS_RESULT_RESPONSE_JSON_STRUCTURE);
-    }
-
-    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testLessonsResultSaveWithZeroErrors(string $language): void
-    {
-        $lesson = $this->createLesson($this->user, ['language' => $language]);
-
-        $response = $this->withToken($this->token)
-            ->postJson(self::LESSONS_RESULT_URI, [
-                'lesson_id' => $lesson->id,
-                'language' => $lesson->language,
-                'time_seconds' => self::TIME_SECONDS,
-                'speed_wpm' => self::SPEED_WPM,
-                'errors' => self::ZERO_ERRORS_COUNT,
             ]);
 
         $this->withResponse($response)
@@ -445,6 +375,41 @@ class LessonsTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testLessonsResultSaveWithMissingSpeedWpm(string $language): void
+    {
+        $lesson = $this->createLesson($this->user, ['language' => $language]);
+
+        $response = $this->withToken($this->token)
+            ->postJson(self::LESSONS_RESULT_URI, [
+                'lesson_id' => $lesson->id,
+                'language' => $lesson->language,
+                'time_seconds' => self::TIME_SECONDS,
+                'errors' => self::ERRORS_COUNT,
+            ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'speed_wpm', 'The speed wpm field is required.');
+    }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testLessonsResultSaveWithZeroSpeedWpm(string $language): void
+    {
+        $lesson = $this->createLesson($this->user, ['language' => $language]);
+
+        $response = $this->withToken($this->token)
+            ->postJson(self::LESSONS_RESULT_URI, [
+                'lesson_id' => $lesson->id,
+                'language' => $lesson->language,
+                'time_seconds' => self::TIME_SECONDS,
+                'speed_wpm' => self::ZERO_SPEED_WPM,
+                'errors' => self::ERRORS_COUNT,
+            ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithJsonStructure(200, self::LESSONS_RESULT_RESPONSE_JSON_STRUCTURE);
+    }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testLessonsResultSaveWithInvalidSpeedWpm(string $language): void
     {
         $lesson = $this->createLesson($this->user, ['language' => $language]);
@@ -460,6 +425,41 @@ class LessonsTest extends TestCase
 
         $this->withResponse($response)
             ->assertStatusWithErrorAndMessage(422, 'speed_wpm', 'The speed wpm field must be at least 0.');
+    }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testLessonsResultSaveWithMissingErrors(string $language): void
+    {
+        $lesson = $this->createLesson($this->user, ['language' => $language]);
+
+        $response = $this->withToken($this->token)
+            ->postJson(self::LESSONS_RESULT_URI, [
+                'lesson_id' => $lesson->id,
+                'language' => $lesson->language,
+                'time_seconds' => self::TIME_SECONDS,
+                'speed_wpm' => self::SPEED_WPM,
+            ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'errors', 'The errors field is required.');
+    }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testLessonsResultSaveWithZeroErrors(string $language): void
+    {
+        $lesson = $this->createLesson($this->user, ['language' => $language]);
+
+        $response = $this->withToken($this->token)
+            ->postJson(self::LESSONS_RESULT_URI, [
+                'lesson_id' => $lesson->id,
+                'language' => $lesson->language,
+                'time_seconds' => self::TIME_SECONDS,
+                'speed_wpm' => self::SPEED_WPM,
+                'errors' => self::ZERO_ERRORS_COUNT,
+            ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithJsonStructure(200, self::LESSONS_RESULT_RESPONSE_JSON_STRUCTURE);
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
