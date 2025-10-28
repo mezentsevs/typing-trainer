@@ -35,6 +35,7 @@ trait WithLessonConstants
     protected const int LESSON_NUMBER_FOR_ACCESS = 1;
     protected const int MULTIPLE_LESSON_COUNT = 5;
     protected const int SINGLE_LESSON_COUNT = 1;
+    protected const int NONEXISTENT_LESSON_ID = 999;
     protected const int INVALID_LESSON_COUNT = 0;
     protected const string INVALID_LESSON_COUNT_AS_STRING = 'invalidLessonCount';
 }
