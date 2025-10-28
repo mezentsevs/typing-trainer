@@ -224,7 +224,7 @@ class LessonsTest extends TestCase
         $response = $this->withToken($this->token)
             ->postJson(self::LESSONS_RESULT_URI, [
                 'lesson_id' => $lesson->id,
-                'language' => $language,
+                'language' => $lesson->language,
                 'time_seconds' => self::TIME_SECONDS,
                 'speed_wpm' => self::SPEED_WPM,
                 'errors' => self::ERRORS_COUNT,
@@ -259,7 +259,7 @@ class LessonsTest extends TestCase
         $response = $this->withToken($this->token)
             ->postJson(self::LESSONS_RESULT_URI, [
                 'lesson_id' => $lesson->id,
-                'language' => $language,
+                'language' => $lesson->language,
                 'time_seconds' => self::ZERO_TIME_SECONDS,
                 'speed_wpm' => self::SPEED_WPM,
                 'errors' => self::ERRORS_COUNT,
@@ -277,7 +277,7 @@ class LessonsTest extends TestCase
         $response = $this->withToken($this->token)
             ->postJson(self::LESSONS_RESULT_URI, [
                 'lesson_id' => $lesson->id,
-                'language' => $language,
+                'language' => $lesson->language,
                 'time_seconds' => self::TIME_SECONDS,
                 'speed_wpm' => self::ZERO_SPEED_WPM,
                 'errors' => self::ERRORS_COUNT,
@@ -295,7 +295,7 @@ class LessonsTest extends TestCase
         $response = $this->withToken($this->token)
             ->postJson(self::LESSONS_RESULT_URI, [
                 'lesson_id' => $lesson->id,
-                'language' => $language,
+                'language' => $lesson->language,
                 'time_seconds' => self::TIME_SECONDS,
                 'speed_wpm' => self::SPEED_WPM,
                 'errors' => self::ZERO_ERRORS_COUNT,
@@ -331,7 +331,7 @@ class LessonsTest extends TestCase
         $response = $this->withToken($this->token)
             ->postJson(self::LESSONS_RESULT_URI, [
                 'lesson_id' => $lesson->id,
-                'language' => $language,
+                'language' => $lesson->language,
                 'time_seconds' => self::INVALID_TIME_SECONDS,
                 'speed_wpm' => self::SPEED_WPM,
                 'errors' => self::ERRORS_COUNT,
@@ -349,7 +349,7 @@ class LessonsTest extends TestCase
         $response = $this->withToken($this->token)
             ->postJson(self::LESSONS_RESULT_URI, [
                 'lesson_id' => $lesson->id,
-                'language' => $language,
+                'language' => $lesson->language,
                 'time_seconds' => self::TIME_SECONDS,
                 'speed_wpm' => self::INVALID_SPEED_WPM,
                 'errors' => self::ERRORS_COUNT,
@@ -367,7 +367,7 @@ class LessonsTest extends TestCase
         $response = $this->withToken($this->token)
             ->postJson(self::LESSONS_RESULT_URI, [
                 'lesson_id' => $lesson->id,
-                'language' => $language,
+                'language' => $lesson->language,
                 'time_seconds' => self::TIME_SECONDS,
                 'speed_wpm' => self::SPEED_WPM,
                 'errors' => self::INVALID_ERRORS_COUNT,
