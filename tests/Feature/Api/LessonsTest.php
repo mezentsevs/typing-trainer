@@ -122,7 +122,7 @@ class LessonsTest extends TestCase
         $response = $this->withToken($this->token)
             ->postJson(self::LESSONS_GENERATE_URI, [
                 'language' => $language,
-                'lesson_count' => self::INVALID_LESSON_COUNT_AS_STRING,
+                'lesson_count' => self::INVALID_STRING_LESSON_COUNT,
             ]);
 
         $this->withResponse($response)
@@ -135,7 +135,7 @@ class LessonsTest extends TestCase
         $response = $this->withToken($this->token)
             ->postJson(self::LESSONS_GENERATE_URI, [
                 'language' => $language,
-                'lesson_count' => self::INVALID_LESSON_COUNT,
+                'lesson_count' => self::INVALID_INT_LESSON_COUNT,
             ]);
 
         $this->withResponse($response)
@@ -172,7 +172,7 @@ class LessonsTest extends TestCase
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testLessonsShowNonexistentWithoutAuthentication(string $language): void
     {
-        $lessonUri = sprintf(self::LESSONS_SHOW_URI_TEMPLATE, $language, self::LESSON_NUMBER_FOR_ACCESS);
+        $lessonUri = sprintf(self::LESSONS_SHOW_URI_TEMPLATE, $language, self::LESSON_ID_FOR_ACCESS);
 
         $response = $this->getJson($lessonUri);
 
@@ -196,7 +196,7 @@ class LessonsTest extends TestCase
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testLessonsShowNonexistentWithInvalidToken(string $language): void
     {
-        $lessonUri = sprintf(self::LESSONS_SHOW_URI_TEMPLATE, $language, self::LESSON_NUMBER_FOR_ACCESS);
+        $lessonUri = sprintf(self::LESSONS_SHOW_URI_TEMPLATE, $language, self::LESSON_ID_FOR_ACCESS);
 
         $response = $this->withToken(self::INVALID_TOKEN)
             ->getJson($lessonUri);
@@ -208,7 +208,7 @@ class LessonsTest extends TestCase
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testLessonsShowNotFound(string $language): void
     {
-        $lessonUri = sprintf(self::LESSONS_SHOW_URI_TEMPLATE, $language, self::LESSON_NUMBER_FOR_ACCESS);
+        $lessonUri = sprintf(self::LESSONS_SHOW_URI_TEMPLATE, $language, self::LESSON_ID_FOR_ACCESS);
 
         $response = $this->withToken($this->token)
             ->getJson($lessonUri);
@@ -275,7 +275,7 @@ class LessonsTest extends TestCase
 
         $response = $this->withToken($this->token)
             ->postJson(self::LESSONS_RESULT_URI, [
-                'lesson_id' => self::NONEXISTENT_LESSON_ID,
+                'lesson_id' => self::INVALID_NONEXISTENT_LESSON_ID,
                 'language' => $lesson->language,
                 'time_seconds' => self::TIME_SECONDS,
                 'speed_wpm' => self::SPEED_WPM,
