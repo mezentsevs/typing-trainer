@@ -6,3 +6,4 @@ export default defineConfig({
         specPattern: 'tests/cypress/e2e/**/*.cy.{js,jsx,ts,tsx}',
     },
 });
+
