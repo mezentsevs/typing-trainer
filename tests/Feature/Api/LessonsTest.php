@@ -235,6 +235,23 @@ class LessonsTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testLessonsResultSaveWithoutAuthentication(string $language): void
+    {
+        $lesson = $this->createLesson($this->user, ['language' => $language]);
+
+        $response = $this->postJson(self::LESSONS_RESULT_URI, [
+            'lesson_id' => $lesson->id,
+            'language' => $lesson->language,
+            'time_seconds' => self::TIME_SECONDS,
+            'speed_wpm' => self::SPEED_WPM,
+            'errors' => self::ERRORS_COUNT,
+        ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithMessage(401, 'Unauthenticated.');
+    }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testLessonsResultSaveWithZeroTimeSeconds(string $language): void
     {
         $lesson = $this->createLesson($this->user, ['language' => $language]);
