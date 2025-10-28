@@ -6,4 +6,3 @@ return [
     App\Providers\TestServiceProvider::class,
     App\Providers\WordServiceProvider::class,
 ];
-
