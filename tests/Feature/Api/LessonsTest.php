@@ -206,7 +206,7 @@ class LessonsTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testLessonsShowNotFound(string $language): void
+    public function testLessonsShowNonexistentLessonReturnsNotFound(string $language): void
     {
         $lessonUri = sprintf(self::LESSONS_SHOW_URI_TEMPLATE, $language, self::LESSON_ID_FOR_ACCESS);
 
