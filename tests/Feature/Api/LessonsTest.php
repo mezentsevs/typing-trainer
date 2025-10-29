@@ -213,7 +213,8 @@ class LessonsTest extends TestCase
         $response = $this->withToken($this->token)
             ->getJson($lessonUri);
 
-        $response->assertStatus(404);
+        $this->withResponse($response)
+            ->assertStatusWithMessage(404, 'No query results for model [App\\Models\\Lesson].');
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
