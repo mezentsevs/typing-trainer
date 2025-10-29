@@ -217,6 +217,20 @@ class LessonsTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testLessonsShowForAnotherUserLessonReturnsNotFound(string $language): void
+    {
+        $anotherUser = $this->createUser();
+        $lesson = $this->createLesson($anotherUser, ['language' => $language]);
+        $lessonUri = sprintf(self::LESSONS_SHOW_URI_TEMPLATE, $lesson->language, $lesson->number);
+
+        $response = $this->withToken($this->token)
+            ->getJson($lessonUri);
+
+        $this->withResponse($response)
+            ->assertStatusWithMessage(404, 'No query results for model [App\\Models\\Lesson].');
+    }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testLessonsResultSaveSuccess(string $language): void
     {
         $lesson = $this->createLesson($this->user, ['language' => $language]);
