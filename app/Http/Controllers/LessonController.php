@@ -6,11 +6,14 @@ use App\Models\Lesson;
 use App\Models\LessonResult;
 use App\Rules\LanguageSupported;
 use App\Services\LessonService;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class LessonController extends Controller
 {
+    use AuthorizesRequests;
+
     public function __construct(protected LessonService $lessonService)
     {
     }
@@ -46,6 +49,8 @@ class LessonController extends Controller
             'speed_wpm' => 'required|integer|min:0',
             'errors' => 'required|integer|min:0',
         ]);
+
+        $this->authorize('saveResult', Lesson::findOrFail($request->lesson_id));
 
         return response()->json(LessonResult::create([
             'user_id' => auth()->id(),
