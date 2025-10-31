@@ -153,9 +153,9 @@ class TestsTest extends TestCase
         $response = $this->withToken($this->token)
             ->postJson('/api/test/result', [
                 'language' => $language,
-                'time_seconds' => self::INVALID_TIME_SECONDS,
-                'speed_wpm' => self::INVALID_SPEED_WPM,
-                'errors' => self::INVALID_ERRORS_COUNT,
+                'time_seconds' => self::INVALID_INT_TIME_SECONDS,
+                'speed_wpm' => self::INVALID_INT_SPEED_WPM,
+                'errors' => self::INVALID_INT_ERRORS_COUNT,
             ]);
 
         $this->withResponse($response)

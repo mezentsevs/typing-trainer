@@ -380,7 +380,7 @@ class LessonsTest extends TestCase
             ->postJson(self::LESSONS_RESULT_URI, [
                 'lesson_id' => $lesson->id,
                 'language' => $lesson->language,
-                'time_seconds' => self::INVALID_TIME_SECONDS,
+                'time_seconds' => self::INVALID_INT_TIME_SECONDS,
                 'speed_wpm' => self::SPEED_WPM,
                 'errors' => self::ERRORS_COUNT,
             ]);
@@ -434,7 +434,7 @@ class LessonsTest extends TestCase
                 'lesson_id' => $lesson->id,
                 'language' => $lesson->language,
                 'time_seconds' => self::TIME_SECONDS,
-                'speed_wpm' => self::INVALID_SPEED_WPM,
+                'speed_wpm' => self::INVALID_INT_SPEED_WPM,
                 'errors' => self::ERRORS_COUNT,
             ]);
 
@@ -488,7 +488,7 @@ class LessonsTest extends TestCase
                 'language' => $lesson->language,
                 'time_seconds' => self::TIME_SECONDS,
                 'speed_wpm' => self::SPEED_WPM,
-                'errors' => self::INVALID_ERRORS_COUNT,
+                'errors' => self::INVALID_INT_ERRORS_COUNT,
             ]);
 
         $this->withResponse($response)
