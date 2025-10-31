@@ -15,4 +15,5 @@ trait WithStatisticsConstants
     protected const int TIME_SECONDS = 60;
     protected const int ZERO_TIME_SECONDS = 0;
     protected const int INVALID_INT_TIME_SECONDS = -1;
+    protected const string INVALID_STRING_TIME_SECONDS = 'invalidStringTimeSeconds';
 }
