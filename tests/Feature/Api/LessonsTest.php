@@ -117,7 +117,7 @@ class LessonsTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testLessonsGenerateWithNonIntegerInvalidLessonCount(string $language): void
+    public function testLessonsGenerateWithNonIntegerLessonCount(string $language): void
     {
         $response = $this->withToken($this->token)
             ->postJson(self::LESSONS_GENERATE_URI, [
