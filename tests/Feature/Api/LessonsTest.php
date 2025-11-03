@@ -168,20 +168,24 @@ class LessonsTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testLessonsGenerateWithInvalidLessonCount(string $language): void
+    public function testLessonsGenerateWithBelowMinLessonCount(string $language): void
     {
         $response = $this->withToken($this->token)
             ->postJson(self::LESSONS_GENERATE_URI, [
                 'language' => $language,
-                'lesson_count' => self::INVALID_INT_LESSON_COUNT,
+                'lesson_count' => self::MIN_LESSON_COUNT - 1,
             ]);
 
         $this->withResponse($response)
-            ->assertStatusWithErrorAndMessage(422, 'lesson_count', 'The lesson count field must be at least 1.');
+            ->assertStatusWithErrorAndMessage(
+                422,
+                'lesson_count',
+                'The lesson count field must be at least 1.',
+            );
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testLessonsGenerateWithExceedMaxLessonCount(string $language): void
+    public function testLessonsGenerateWithAboveMaxLessonCount(string $language): void
     {
         $response = $this->withToken($this->token)
             ->postJson(self::LESSONS_GENERATE_URI, [
