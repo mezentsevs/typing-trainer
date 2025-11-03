@@ -181,6 +181,23 @@ class LessonsTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testLessonsGenerateWithExceedMaxLessonCount(string $language): void
+    {
+        $response = $this->withToken($this->token)
+            ->postJson(self::LESSONS_GENERATE_URI, [
+                'language' => $language,
+                'lesson_count' => self::MAX_LESSON_COUNT + 1,
+            ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(
+                422,
+                'lesson_count',
+                'The lesson count field must not be greater than 20.',
+            );
+    }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testLessonsShowSuccess(string $language): void
     {
         $lesson = $this->createLesson($this->user, ['language' => $language]);
