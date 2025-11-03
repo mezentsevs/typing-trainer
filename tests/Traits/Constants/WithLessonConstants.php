@@ -37,6 +37,7 @@ trait WithLessonConstants
 
     protected const int SINGLE_LESSON_COUNT = 1;
     protected const int MULTIPLE_LESSON_COUNT = 5;
+    protected const int MAX_LESSON_COUNT = 20;
     protected const int INVALID_INT_LESSON_COUNT = 0;
     protected const string INVALID_STRING_LESSON_COUNT = 'invalidStringLessonCount';
 }
