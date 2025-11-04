@@ -8,7 +8,7 @@ class HomePageTest extends TestCase
 {
     private const string HOME_URI = '/';
 
-    public function testApplicationReturnsSuccessfulResponse(): void
+    public function testHomeSuccess(): void
     {
         $response = $this->get(self::HOME_URI);
 
