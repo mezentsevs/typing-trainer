@@ -609,7 +609,7 @@ class LessonsTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testLessonsResultSaveForAnotherUserLessonReturnsUnauthorized(string $language): void
+    public function testLessonsResultSaveForAnotherUser(string $language): void
     {
         $anotherUser = $this->createUser();
         $lesson = $this->createLesson($anotherUser, ['language' => $language]);
