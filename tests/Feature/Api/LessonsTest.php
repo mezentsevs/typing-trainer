@@ -277,7 +277,7 @@ class LessonsTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testLessonsShowForAnotherUserLessonReturnsNotFound(string $language): void
+    public function testLessonsShowForAnotherUser(string $language): void
     {
         $anotherUser = $this->createUser();
         $lesson = $this->createLesson($anotherUser, ['language' => $language]);
