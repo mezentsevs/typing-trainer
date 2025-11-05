@@ -20,6 +20,14 @@ class LessonController extends Controller
 
     public function show(string $language, int $lessonNumber): JsonResponse
     {
+        validator([
+            'language' => $language,
+            'lesson_number' => $lessonNumber,
+        ], [
+            'language' => [new LanguageSupported()],
+            'lesson_number' => 'integer|min:1|max:20',
+        ])->validate();
+
         return response()->json([
             'lesson' => Lesson::where('user_id', auth()->id())
                 ->where('language', $language)
