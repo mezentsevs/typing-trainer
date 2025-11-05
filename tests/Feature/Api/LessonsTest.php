@@ -302,6 +302,18 @@ class LessonsTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testLessonsShowWithBelowMinLessonNumber(string $language): void
+    {
+        $lessonUri = sprintf(self::LESSONS_SHOW_URI_TEMPLATE, $language, self::MIN_LESSON_COUNT - 1);
+
+        $response = $this->withToken($this->token)
+            ->getJson($lessonUri);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'lesson_number', 'The lesson number field must be at least 1.');
+    }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testLessonsResultSaveSuccess(string $language): void
     {
         $lesson = $this->createLesson($this->user, ['language' => $language]);
