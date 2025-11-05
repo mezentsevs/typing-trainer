@@ -290,6 +290,17 @@ class LessonsTest extends TestCase
             ->assertStatusWithMessage(404, 'No query results for model [App\\Models\\Lesson].');
     }
 
+    public function testLessonsShowWithUnknownLanguage(): void
+    {
+        $lessonUri = sprintf(self::LESSONS_SHOW_URI_TEMPLATE, Language::Unknown->value, self::LESSON_NUMBER_FOR_ACCESS);
+
+        $response = $this->withToken($this->token)
+            ->getJson($lessonUri);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'language', 'The selected language is not supported.');
+    }
+
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testLessonsResultSaveSuccess(string $language): void
     {
