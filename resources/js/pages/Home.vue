@@ -2,10 +2,10 @@
     <div
         class="min-h-screen grow bg-gradient-to-br from-blue-100 via-white to-purple-50 dark:from-gray-900 dark:via-blue-950 dark:to-purple-950 text-center flex flex-col items-center justify-center">
         <h1
-            class="pb-2 text-5xl md:text-7xl font-mono text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-purple-950 dark:from-cyan-400 dark:to-purple-500">
+            class="pb-2 flex items-center text-5xl md:text-7xl font-mono text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-purple-950 dark:from-cyan-400 dark:to-purple-500">
             <span>{{ currentText }}</span>
             <span
-                class="typing-cursor inline-block h-[1em] border-solid border-r-[0.05em] border-r-[currentColor] text-blue-700 dark:text-cyan-400" />
+                class="typing-cursor inline-block h-[1em] border-solid border-r-[0.05em] border-r-[currentColor] text-blue-700 dark:text-cyan-400 align-middle" />
         </h1>
         <p
             class="mt-8 text-lg md:text-xl text-gray-700 dark:text-gray-300 font-sans animate-pulse-slow">
