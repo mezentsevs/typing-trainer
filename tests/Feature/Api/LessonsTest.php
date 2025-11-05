@@ -231,7 +231,7 @@ class LessonsTest extends TestCase
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testLessonsShowNonexistentWithoutAuthentication(string $language): void
     {
-        $lessonUri = sprintf(self::LESSONS_SHOW_URI_TEMPLATE, $language, self::LESSON_ID_FOR_ACCESS);
+        $lessonUri = sprintf(self::LESSONS_SHOW_URI_TEMPLATE, $language, self::LESSON_NUMBER_FOR_ACCESS);
 
         $response = $this->getJson($lessonUri);
 
@@ -255,7 +255,7 @@ class LessonsTest extends TestCase
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testLessonsShowNonexistentWithInvalidToken(string $language): void
     {
-        $lessonUri = sprintf(self::LESSONS_SHOW_URI_TEMPLATE, $language, self::LESSON_ID_FOR_ACCESS);
+        $lessonUri = sprintf(self::LESSONS_SHOW_URI_TEMPLATE, $language, self::LESSON_NUMBER_FOR_ACCESS);
 
         $response = $this->withToken(self::INVALID_TOKEN)
             ->getJson($lessonUri);
@@ -267,7 +267,7 @@ class LessonsTest extends TestCase
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testLessonsShowNonexistent(string $language): void
     {
-        $lessonUri = sprintf(self::LESSONS_SHOW_URI_TEMPLATE, $language, self::LESSON_ID_FOR_ACCESS);
+        $lessonUri = sprintf(self::LESSONS_SHOW_URI_TEMPLATE, $language, self::LESSON_NUMBER_FOR_ACCESS);
 
         $response = $this->withToken($this->token)
             ->getJson($lessonUri);

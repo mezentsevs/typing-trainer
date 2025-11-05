@@ -32,7 +32,7 @@ trait WithLessonConstants
         'updated_at',
     ];
 
-    protected const int LESSON_ID_FOR_ACCESS = 1;
+    protected const int LESSON_NUMBER_FOR_ACCESS = 1;
     protected const int INVALID_NONEXISTENT_LESSON_ID = 999;
 
     protected const int MIN_LESSON_COUNT = 1;
