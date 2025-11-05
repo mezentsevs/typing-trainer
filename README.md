@@ -115,8 +115,8 @@ That's it! Thank you!
 <img width="1920" height="1200" alt="2025-07-31_23-19-42" src="https://github.com/user-attachments/assets/32846788-81f2-4ec4-8b22-7d2ab4b356fc" />
 <img width="1916" height="1200" alt="2025-07-31_18-46-38" src="https://github.com/user-attachments/assets/e9e09be3-a9bd-4820-aae5-f974341ef1b5" />
 <img width="1920" height="1200" alt="2025-07-31_18-47-18" src="https://github.com/user-attachments/assets/65e49d0b-225a-41c0-900f-1d7d017a0f41" />
-<img width="1916" height="1200" alt="2025-07-31_18-48-36" src="https://github.com/user-attachments/assets/df468edc-b97a-4c7f-ada6-23ea690c462e" />
-<img width="1920" height="1200" alt="2025-07-31_18-49-15" src="https://github.com/user-attachments/assets/c366f0d7-9f8f-4618-9dfb-4d5e527ef079" />
+<img width="1920" height="1200" alt="2025-11-05_17-45-59" src="https://github.com/user-attachments/assets/f1fa992d-a7c8-4bfe-89b5-39910921dfb2" />
+<img width="1920" height="1200" alt="2025-11-05_18-13-54" src="https://github.com/user-attachments/assets/2dfd411b-529a-4b0e-ba85-f2c911a6c3d4" />
 <img width="1916" height="1200" alt="2025-07-31_18-50-33" src="https://github.com/user-attachments/assets/fba55df3-ade7-422f-bc4b-b18447e8aec6" />
 <img width="1920" height="1200" alt="2025-07-31_18-51-37" src="https://github.com/user-attachments/assets/aeaf9dcf-7ae2-431f-999b-99695a24cb1f" />
 <img width="1920" height="1200" alt="2025-07-31_23-47-00" src="https://github.com/user-attachments/assets/a5005c84-01b0-4d30-970c-9f07c7775265" />
