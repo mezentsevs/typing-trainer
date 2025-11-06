@@ -113,11 +113,11 @@ That's it! Thank you!
 
 <img width="1920" height="1200" alt="2025-07-31_23-19-20" src="https://github.com/user-attachments/assets/19435f93-a587-4b3d-b31b-fff4f4451dc0" />
 <img width="1920" height="1200" alt="2025-07-31_23-19-42" src="https://github.com/user-attachments/assets/32846788-81f2-4ec4-8b22-7d2ab4b356fc" />
-<img width="1916" height="1200" alt="2025-07-31_18-46-38" src="https://github.com/user-attachments/assets/e9e09be3-a9bd-4820-aae5-f974341ef1b5" />
+<img width="1920" height="1200" alt="2025-07-31_18-46-38" src="https://github.com/user-attachments/assets/e9e09be3-a9bd-4820-aae5-f974341ef1b5" />
 <img width="1920" height="1200" alt="2025-07-31_18-47-18" src="https://github.com/user-attachments/assets/65e49d0b-225a-41c0-900f-1d7d017a0f41" />
 <img width="1920" height="1200" alt="2025-11-05_17-45-59" src="https://github.com/user-attachments/assets/f1fa992d-a7c8-4bfe-89b5-39910921dfb2" />
 <img width="1920" height="1200" alt="2025-11-05_18-13-54" src="https://github.com/user-attachments/assets/2dfd411b-529a-4b0e-ba85-f2c911a6c3d4" />
-<img width="1916" height="1200" alt="2025-07-31_18-50-33" src="https://github.com/user-attachments/assets/fba55df3-ade7-422f-bc4b-b18447e8aec6" />
+<img width="1920" height="1200" alt="2025-07-31_18-50-33" src="https://github.com/user-attachments/assets/fba55df3-ade7-422f-bc4b-b18447e8aec6" />
 <img width="1920" height="1200" alt="2025-07-31_18-51-37" src="https://github.com/user-attachments/assets/aeaf9dcf-7ae2-431f-999b-99695a24cb1f" />
 <img width="1920" height="1200" alt="2025-07-31_23-47-00" src="https://github.com/user-attachments/assets/a5005c84-01b0-4d30-970c-9f07c7775265" />
 <img width="1920" height="1200" alt="2025-07-31_23-47-16" src="https://github.com/user-attachments/assets/ca65be62-0358-45f8-907b-54ceabeaac39" />
@@ -131,7 +131,7 @@ That's it! Thank you!
 <img width="1920" height="1200" alt="2025-07-31_19-09-53" src="https://github.com/user-attachments/assets/128d16fb-a473-41d1-ab7c-aeb0fced5206" />
 <img width="1920" height="1200" alt="2025-07-31_23-55-56" src="https://github.com/user-attachments/assets/6820f531-8ab9-451e-b3ad-4800bf8aa1fc" />
 <img width="1920" height="1200" alt="2025-07-31_23-56-21" src="https://github.com/user-attachments/assets/7f91c035-e18a-4aeb-ae55-7d06dcf2f0d0" />
-<img width="1916" height="1200" alt="2025-07-31_19-26-42" src="https://github.com/user-attachments/assets/1576cf32-9352-4725-9f75-11de55088c8f" />
+<img width="1920" height="1200" alt="2025-07-31_19-26-42" src="https://github.com/user-attachments/assets/1576cf32-9352-4725-9f75-11de55088c8f" />
 <img width="1920" height="1200" alt="2025-07-31_19-27-36" src="https://github.com/user-attachments/assets/2ffca5bd-2ff5-459d-890d-87f4331c60d8" />
 
 ## License
