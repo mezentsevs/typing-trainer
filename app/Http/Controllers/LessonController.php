@@ -39,7 +39,7 @@ class LessonController extends Controller
     public function generate(Request $request): JsonResponse
     {
         $request->validate([
-            'language' => ['required', 'string', new LanguageSupported()],
+            'language' => ['required', 'bail', 'string', new LanguageSupported()],
             'lesson_count' => 'required|bail|integer|min:1|max:20',
         ]);
 
