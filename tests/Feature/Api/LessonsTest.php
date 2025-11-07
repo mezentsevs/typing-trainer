@@ -142,6 +142,18 @@ class LessonsTest extends TestCase
             ->assertStatusWithErrorAndMessage(422, 'language', 'The selected language is not supported.');
     }
 
+    public function testLessonsGenerateWithNonStringLanguage(): void
+    {
+        $response = $this->withToken($this->token)
+            ->postJson(self::LESSONS_GENERATE_URI, [
+                'language' => self::INVALID_INT_LANGUAGE,
+                'lesson_count' => self::MULTIPLE_LESSON_COUNT,
+            ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'language', 'The language field must be a string.');
+    }
+
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testLessonsGenerateWithMissingLessonCount(string $language): void
     {
