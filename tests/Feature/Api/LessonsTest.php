@@ -179,6 +179,19 @@ class LessonsTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testLessonsGenerateWithNullLessonCount(string $language): void
+    {
+        $response = $this->withToken($this->token)
+            ->postJson(self::LESSONS_GENERATE_URI, [
+                'language' => $language,
+                'lesson_count' => null,
+            ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'lesson_count', 'The lesson count field is required.');
+    }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testLessonsGenerateWithInvalidStringLessonCount(string $language): void
     {
         $response = $this->withToken($this->token)
