@@ -118,6 +118,18 @@ class LessonsTest extends TestCase
             ->assertStatusWithErrorAndMessage(422, 'language', 'The language field is required.');
     }
 
+    public function testLessonsGenerateWithNullLanguage(): void
+    {
+        $response = $this->withToken($this->token)
+            ->postJson(self::LESSONS_GENERATE_URI, [
+                'language' => null,
+                'lesson_count' => self::MULTIPLE_LESSON_COUNT,
+            ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'language', 'The language field is required.');
+    }
+
     public function testLessonsGenerateWithEmptyLanguage(): void
     {
         $response = $this->withToken($this->token)
