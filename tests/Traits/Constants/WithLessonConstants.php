@@ -36,8 +36,9 @@ trait WithLessonConstants
     protected const int MAX_LESSON_COUNT = 20;
     protected const int SINGLE_LESSON_COUNT = 1;
     protected const int MULTIPLE_LESSON_COUNT = 5;
-    protected const float INVALID_FLOAT_LESSON_COUNT = 5.5;
+    protected const bool INVALID_BOOL_LESSON_COUNT = true;
     protected const string INVALID_STRING_LESSON_COUNT = 'invalidStringLessonCount';
+    protected const float INVALID_FLOAT_LESSON_COUNT = 5.5;
 
     protected const int LESSON_NUMBER_FOR_ACCESS = 1;
     protected const int INVALID_NONEXISTENT_LESSON_ID = 999;
