@@ -154,7 +154,7 @@ class LessonsTest extends TestCase
             ->assertStatusWithErrorAndMessage(422, 'language', 'The selected language is not supported.');
     }
 
-    public function testLessonsGenerateWithNonStringLanguage(): void
+    public function testLessonsGenerateWithInvalidIntLanguage(): void
     {
         $response = $this->withToken($this->token)
             ->postJson(self::LESSONS_GENERATE_URI, [
@@ -489,7 +489,7 @@ class LessonsTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testLessonsResultSaveWithNonIntegerTimeSeconds(string $language): void
+    public function testLessonsResultSaveWithInvalidStringTimeSeconds(string $language): void
     {
         $lesson = $this->createLesson($this->user, ['language' => $language]);
 
@@ -560,7 +560,7 @@ class LessonsTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testLessonsResultSaveWithNonIntegerSpeedWpm(string $language): void
+    public function testLessonsResultSaveWithInvalidStringSpeedWpm(string $language): void
     {
         $lesson = $this->createLesson($this->user, ['language' => $language]);
 
@@ -631,7 +631,7 @@ class LessonsTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testLessonsResultSaveWithNonIntegerErrors(string $language): void
+    public function testLessonsResultSaveWithInvalidStringErrors(string $language): void
     {
         $lesson = $this->createLesson($this->user, ['language' => $language]);
 
