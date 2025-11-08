@@ -40,7 +40,7 @@ class LessonController extends Controller
     {
         $request->validate([
             'language' => ['required', 'bail', 'string', new LanguageSupported()],
-            'lesson_count' => 'required|bail|integer|min:1|max:20',
+            'lesson_count' => 'required|bail|integer:strict|min:1|max:20',
         ]);
 
         $this->lessonService->generateLessons($request->language, $request->lesson_count, auth()->id());
