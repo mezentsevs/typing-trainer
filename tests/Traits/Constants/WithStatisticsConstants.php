@@ -13,6 +13,7 @@ trait WithStatisticsConstants
     protected const int SPEED_WPM = 50;
     protected const int ZERO_SPEED_WPM = 0;
     protected const int INVALID_INT_SPEED_WPM = -1;
+    protected const bool INVALID_BOOL_SPEED_WPM = true;
     protected const string INVALID_STRING_SPEED_WPM = 'invalidStringSpeedWpm';
 
     protected const int ERRORS_COUNT = 2;
