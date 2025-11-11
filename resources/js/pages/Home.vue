@@ -58,6 +58,8 @@ const START_BUTTON_CLASS: string =
 
 let typingAnimationInterval: ReturnType<typeof setInterval> | null = null;
 let typingAnimationTimeout: ReturnType<typeof setTimeout> | null = null;
+let i: number = 0;
+let isCurrentTextDeleting: boolean = false;
 
 const logout = async (): Promise<void> => {
     await authStore.logout();
@@ -65,22 +67,24 @@ const logout = async (): Promise<void> => {
 };
 
 const runTypingAnimation = (): void => {
-    let i: number = 0;
-
     typingAnimationInterval = setInterval((): void => {
-        if (i < APP_NAME.length) {
-            currentText.value += APP_NAME[i];
-            i++;
-        } else {
-            if (typingAnimationInterval) {
-                clearInterval(typingAnimationInterval);
-                typingAnimationInterval = null;
+        if (!isCurrentTextDeleting) {
+            if (i < APP_NAME.length) {
+                currentText.value += APP_NAME[i];
+                i++;
+            } else {
+                typingAnimationTimeout = setTimeout((): void => {
+                    isCurrentTextDeleting = true;
+                    typingAnimationTimeout = null;
+                }, 2000);
             }
-
-            typingAnimationTimeout = setTimeout((): void => {
-                currentText.value = '';
-                runTypingAnimation();
-            }, 2000);
+        } else {
+            if (currentText.value.length > 0) {
+                currentText.value = currentText.value.slice(0, -1);
+            } else {
+                isCurrentTextDeleting = false;
+                i = 0;
+            }
         }
     }, 100);
 };
@@ -89,7 +93,7 @@ onMounted((): void => {
     runTypingAnimation();
 });
 
-onUnmounted(() => {
+onUnmounted((): void => {
     if (typingAnimationInterval) {
         clearInterval(typingAnimationInterval);
     }
