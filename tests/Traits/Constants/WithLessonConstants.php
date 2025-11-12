@@ -41,6 +41,7 @@ trait WithLessonConstants
     protected const float INVALID_FLOAT_LESSON_COUNT = 5.5;
 
     protected const int INVALID_NONEXISTENT_LESSON_ID = 999;
+    protected const string INVALID_STRING_LESSON_ID = 'invalidStringLessonId';
     protected const float INVALID_FLOAT_LESSON_ID = 1.5;
 
     protected const int LESSON_NUMBER_FOR_ACCESS = 1;
