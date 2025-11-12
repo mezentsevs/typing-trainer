@@ -51,7 +51,7 @@ class LessonController extends Controller
     public function saveResult(Request $request): JsonResponse
     {
         $request->validate([
-            'lesson_id' => 'required|exists:lessons,id',
+            'lesson_id' => 'required|integer:strict|exists:lessons,id',
             'language' => ['required', 'bail', 'string', new LanguageSupported()],
             'time_seconds' => 'required|integer:strict|min:0',
             'speed_wpm' => 'required|integer:strict|min:0',
