@@ -3,7 +3,7 @@
         class="min-h-screen grow bg-gradient-to-br from-blue-100 via-white to-purple-50 dark:from-gray-900 dark:via-blue-950 dark:to-purple-950 text-center flex flex-col items-center justify-center">
         <h1
             class="pb-2 flex items-center text-5xl md:text-7xl font-mono text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-purple-950 dark:from-cyan-400 dark:to-purple-500">
-            <span>{{ currentText }}</span>
+            <span>{{ currentTypingText }}</span>
             <span
                 class="typing-cursor inline-block h-[1em] border-solid border-r-[0.05em] border-r-[currentColor] text-blue-700 dark:text-cyan-400 align-middle" />
         </h1>
@@ -42,7 +42,7 @@ import { Router, useRouter } from 'vue-router';
 const authStore: Store<string, AuthState, AuthGetters, AuthActions> = useAuthStore();
 const router: Router = useRouter();
 
-const currentText: Ref<string> = ref('');
+const currentTypingText: Ref<string> = ref('');
 
 const CIRCLES: Record<string, string>[] = [
     { class: 'top-10 left-10 w-24 h-24 bg-blue-300/70 dark:bg-cyan-500' },
@@ -58,8 +58,8 @@ const START_BUTTON_CLASS: string =
 
 let typingAnimationInterval: ReturnType<typeof setInterval> | null = null;
 let typingAnimationTimeout: ReturnType<typeof setTimeout> | null = null;
-let i: number = 0;
-let isCurrentTextDeleting: boolean = false;
+let currentTypingIndex: number = 0;
+let isCurrentTypingTextDeleting: boolean = false;
 
 const logout = async (): Promise<void> => {
     await authStore.logout();
@@ -68,22 +68,22 @@ const logout = async (): Promise<void> => {
 
 const runTypingAnimation = (): void => {
     typingAnimationInterval = setInterval((): void => {
-        if (!isCurrentTextDeleting) {
-            if (i < APP_NAME.length) {
-                currentText.value += APP_NAME[i];
-                i++;
+        if (!isCurrentTypingTextDeleting) {
+            if (currentTypingIndex < APP_NAME.length) {
+                currentTypingText.value += APP_NAME[currentTypingIndex];
+                currentTypingIndex++;
             } else {
                 typingAnimationTimeout = setTimeout((): void => {
-                    isCurrentTextDeleting = true;
+                    isCurrentTypingTextDeleting = true;
                     typingAnimationTimeout = null;
                 }, 2000);
             }
         } else {
-            if (currentText.value.length > 0) {
-                currentText.value = currentText.value.slice(0, -1);
+            if (currentTypingText.value.length > 0) {
+                currentTypingText.value = currentTypingText.value.slice(0, -1);
             } else {
-                isCurrentTextDeleting = false;
-                i = 0;
+                isCurrentTypingTextDeleting = false;
+                currentTypingIndex = 0;
             }
         }
     }, 100);
