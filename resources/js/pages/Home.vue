@@ -1,11 +1,11 @@
 <template>
     <div
         class="min-h-screen grow bg-gradient-to-br from-blue-100 via-white to-purple-50 dark:from-gray-900 dark:via-blue-950 dark:to-purple-950 text-center flex flex-col items-center justify-center">
-        <h1
-            class="pb-2 flex items-center text-5xl md:text-7xl font-mono text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-purple-950 dark:from-cyan-400 dark:to-purple-500">
-            <span>{{ currentTypingText }}</span>
-            <span
-                class="typing-cursor inline-block h-[1em] border-solid border-r-[0.05em] border-r-[currentColor] text-blue-700 dark:text-cyan-400 align-middle" />
+        <h1 class="pb-2 flex items-center text-5xl md:text-7xl font-mono">
+            <TypingAnimation
+                :text="APP_NAME"
+                text-class="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-purple-950 dark:from-cyan-400 dark:to-purple-500"
+                cursor-class="border-r-[currentColor] text-blue-700 dark:text-cyan-400" />
         </h1>
         <p
             class="mt-8 text-lg md:text-xl text-gray-700 dark:text-gray-300 font-sans animate-pulse-slow">
@@ -31,18 +31,16 @@
 
 <script lang="ts" setup>
 import { APP_NAME, APP_SLOGAN } from '@/consts/AppConsts';
+import { Router, useRouter } from 'vue-router';
+import { Store } from 'pinia';
+import { useAuthStore } from '@/stores/Auth';
 import AuthActions from '@/interfaces/auth/AuthActions';
 import AuthGetters from '@/interfaces/auth/AuthGetters';
 import AuthState from '@/interfaces/auth/AuthState';
-import { useAuthStore } from '@/stores/Auth';
-import { Store } from 'pinia';
-import { onMounted, onUnmounted, ref, Ref } from 'vue';
-import { Router, useRouter } from 'vue-router';
+import TypingAnimation from '@/components/uikit/animations/TypingAnimation.vue';
 
 const authStore: Store<string, AuthState, AuthGetters, AuthActions> = useAuthStore();
 const router: Router = useRouter();
-
-const currentTypingText: Ref<string> = ref('');
 
 const CIRCLES: Record<string, string>[] = [
     { class: 'top-10 left-10 w-24 h-24 bg-blue-300/70 dark:bg-cyan-500' },
@@ -56,69 +54,13 @@ const LOGOUT_BUTTON_CLASS: string =
 const START_BUTTON_CLASS: string =
     'border-blue-500 text-blue-500 hover:bg-blue-500/5 active:bg-blue-500/10 dark:border-cyan-500 dark:text-cyan-400 dark:hover:bg-cyan-500/10 dark:shadow-[0_0_10px_0_rgba(6,182,212,0.5)] dark:hover:shadow-[0_0_15px_0_rgba(6,182,212,0.7)] dark:active:bg-cyan-500/20';
 
-let typingAnimationInterval: ReturnType<typeof setInterval> | null = null;
-let typingAnimationTimeout: ReturnType<typeof setTimeout> | null = null;
-let currentTypingIndex: number = 0;
-let isCurrentTypingTextDeleting: boolean = false;
-
 const logout = async (): Promise<void> => {
     await authStore.logout();
     await router.push('/login');
 };
-
-const runTypingAnimation = (): void => {
-    typingAnimationInterval = setInterval((): void => {
-        if (!isCurrentTypingTextDeleting) {
-            if (currentTypingIndex < APP_NAME.length) {
-                currentTypingText.value += APP_NAME[currentTypingIndex];
-                currentTypingIndex++;
-            } else {
-                typingAnimationTimeout = setTimeout((): void => {
-                    isCurrentTypingTextDeleting = true;
-                    typingAnimationTimeout = null;
-                }, 2000);
-            }
-        } else {
-            if (currentTypingText.value.length > 0) {
-                currentTypingText.value = currentTypingText.value.slice(0, -1);
-            } else {
-                isCurrentTypingTextDeleting = false;
-                currentTypingIndex = 0;
-            }
-        }
-    }, 100);
-};
-
-onMounted((): void => {
-    runTypingAnimation();
-});
-
-onUnmounted((): void => {
-    if (typingAnimationInterval) {
-        clearInterval(typingAnimationInterval);
-    }
-
-    if (typingAnimationTimeout) {
-        clearTimeout(typingAnimationTimeout);
-    }
-});
 </script>
 
 <style scoped>
-.typing-cursor {
-    animation: blink-typing-cursor 0.75s step-end infinite;
-}
-
-@keyframes blink-typing-cursor {
-    from,
-    to {
-        border-color: transparent;
-    }
-    50% {
-        border-color: currentColor;
-    }
-}
-
 .animate-pulse-slow {
     animation: pulse 6s ease-in-out infinite;
 }
