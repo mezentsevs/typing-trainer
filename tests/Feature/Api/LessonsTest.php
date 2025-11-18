@@ -5,6 +5,7 @@ namespace Tests\Feature\Api;
 use App\Enums\Language;
 use App\Models\Lesson;
 use App\Models\User;
+use App\Traits\Constants\WithDatabaseConstants;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use PHPUnit\Framework\Attributes\DataProviderExternal;
 use Tests\Providers\CommonDataProvider;
@@ -22,6 +23,7 @@ class LessonsTest extends TestCase
     use RefreshDatabase,
         WithUser,
         WithLesson,
+        WithDatabaseConstants,
         WithTokenConstants,
         WithLanguageConstants,
         WithLessonConstants,
@@ -704,6 +706,24 @@ class LessonsTest extends TestCase
                 'lesson_id' => $lesson->id,
                 'language' => $lesson->language,
                 'time_seconds' => self::ZERO_TIME_SECONDS,
+                'speed_wpm' => self::SPEED_WPM,
+                'errors' => self::ERRORS_COUNT,
+            ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithJsonStructure(200, self::LESSONS_RESULT_RESPONSE_JSON_STRUCTURE);
+    }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testLessonsResultSaveWithMaxUnsignedIntTimeSeconds(string $language): void
+    {
+        $lesson = $this->createLesson($this->user, ['language' => $language]);
+
+        $response = $this->withToken($this->token)
+            ->postJson(self::LESSONS_RESULT_URI, [
+                'lesson_id' => $lesson->id,
+                'language' => $lesson->language,
+                'time_seconds' => self::MAX_UNSIGNED_INT,
                 'speed_wpm' => self::SPEED_WPM,
                 'errors' => self::ERRORS_COUNT,
             ]);
