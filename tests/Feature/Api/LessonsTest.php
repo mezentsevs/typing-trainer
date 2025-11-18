@@ -1001,6 +1001,24 @@ class LessonsTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testLessonsResultSaveWithMaxUnsignedIntErrors(string $language): void
+    {
+        $lesson = $this->createLesson($this->user, ['language' => $language]);
+
+        $response = $this->withToken($this->token)
+            ->postJson(self::LESSONS_RESULT_URI, [
+                'lesson_id' => $lesson->id,
+                'language' => $lesson->language,
+                'time_seconds' => self::TIME_SECONDS,
+                'speed_wpm' => self::SPEED_WPM,
+                'errors' => self::MAX_UNSIGNED_INT,
+            ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithJsonStructure(200, self::LESSONS_RESULT_RESPONSE_JSON_STRUCTURE);
+    }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testLessonsResultSaveWithInvalidErrors(string $language): void
     {
         $lesson = $this->createLesson($this->user, ['language' => $language]);
