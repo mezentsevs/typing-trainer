@@ -79,6 +79,25 @@ class LessonsTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testLessonsGenerateWithMinLessonCountSuccess(string $language): void
+    {
+        $response = $this->withToken($this->token)
+            ->postJson(self::LESSONS_GENERATE_URI, [
+                'language' => $language,
+                'lesson_count' => self::MIN_LESSON_COUNT,
+            ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithMessage(200, 'Lessons generated')
+            ->assertCount(
+                self::MIN_LESSON_COUNT,
+                Lesson::where('user_id', $this->user->id)
+                    ->where('language', $language)
+                    ->get(),
+            );
+    }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testLessonsGenerateWithMaxLessonCountSuccess(string $language): void
     {
         $response = $this->withToken($this->token)
