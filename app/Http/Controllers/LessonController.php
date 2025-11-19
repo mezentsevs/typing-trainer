@@ -55,7 +55,7 @@ class LessonController extends Controller
             'lesson_id' => 'required|integer:strict|exists:lessons,id',
             'language' => ['required', 'bail', 'string', new LanguageSupported()],
             'time_seconds' => ['required', 'bail', 'integer:strict', 'min:0', new MaxUnsignedInteger()],
-            'speed_wpm' => 'required|integer:strict|min:0',
+            'speed_wpm' => ['required', 'bail', 'integer:strict', 'min:0', new MaxUnsignedInteger()],
             'errors' => 'required|integer:strict|min:0',
         ]);
 
