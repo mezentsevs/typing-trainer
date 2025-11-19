@@ -56,7 +56,7 @@ class LessonController extends Controller
             'language' => ['required', 'bail', 'string', new LanguageSupported()],
             'time_seconds' => ['required', 'bail', 'integer:strict', 'min:0', new MaxUnsignedInteger()],
             'speed_wpm' => ['required', 'bail', 'integer:strict', 'min:0', new MaxUnsignedInteger()],
-            'errors' => 'required|integer:strict|min:0',
+            'errors' => ['required', 'bail', 'integer:strict', 'min:0', new MaxUnsignedInteger()],
         ]);
 
         $this->authorize('saveResult', Lesson::findOrFail($request->lesson_id));
