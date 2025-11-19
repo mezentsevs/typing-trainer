@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Lesson;
 use App\Models\LessonResult;
 use App\Rules\LanguageSupported;
+use App\Rules\MaxUnsignedInteger;
 use App\Services\LessonService;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\JsonResponse;
@@ -53,7 +54,7 @@ class LessonController extends Controller
         $request->validate([
             'lesson_id' => 'required|integer:strict|exists:lessons,id',
             'language' => ['required', 'bail', 'string', new LanguageSupported()],
-            'time_seconds' => 'required|integer:strict|min:0',
+            'time_seconds' => ['required', 'bail', 'integer:strict', 'min:0', new MaxUnsignedInteger()],
             'speed_wpm' => 'required|integer:strict|min:0',
             'errors' => 'required|integer:strict|min:0',
         ]);
