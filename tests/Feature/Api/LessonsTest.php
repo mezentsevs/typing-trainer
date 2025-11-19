@@ -898,6 +898,28 @@ class LessonsTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testLessonsResultSaveWithAboveMaxUnsignedIntegerSpeedWpm(string $language): void
+    {
+        $lesson = $this->createLesson($this->user, ['language' => $language]);
+
+        $response = $this->withToken($this->token)
+            ->postJson(self::LESSONS_RESULT_URI, [
+                'lesson_id' => $lesson->id,
+                'language' => $lesson->language,
+                'time_seconds' => self::TIME_SECONDS,
+                'speed_wpm' => self::MAX_UNSIGNED_INTEGER + 1,
+                'errors' => self::ERRORS_COUNT,
+            ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(
+                422,
+                'speed_wpm',
+                'The speed wpm field must not be greater than ' . self::MAX_UNSIGNED_INTEGER . '.',
+            );
+    }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testLessonsResultSaveWithInvalidSpeedWpm(string $language): void
     {
         $lesson = $this->createLesson($this->user, ['language' => $language]);
