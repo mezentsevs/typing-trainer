@@ -417,6 +417,26 @@ class LessonsTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testLessonsShowWithMaxLessonNumber(string $language): void
+    {
+        $lesson = $this->createLesson($this->user, [
+            'language' => $language,
+            'number' => self::MAX_LESSON_COUNT,
+            'total' => self::MAX_LESSON_COUNT,
+        ]);
+
+        $lessonUri = sprintf(self::LESSONS_SHOW_URI_TEMPLATE, $lesson->language, $lesson->number);
+
+        $response = $this->withToken($this->token)
+            ->getJson($lessonUri);
+
+        $this->withResponse($response)
+            ->assertStatusWithJsonStructure(200, [
+                'lesson' => self::LESSONS_SHOW_RESPONSE_LESSON_JSON_STRUCTURE,
+            ]);
+    }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testLessonsShowWithAboveMaxLessonNumber(string $language): void
     {
         $lessonUri = sprintf(self::LESSONS_SHOW_URI_TEMPLATE, $language, self::MAX_LESSON_COUNT + 1);
