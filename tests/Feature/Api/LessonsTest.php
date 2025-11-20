@@ -6,6 +6,7 @@ use App\Enums\Language;
 use App\Models\Lesson;
 use App\Models\User;
 use App\Traits\Constants\WithDatabaseConstants;
+use App\Traits\Constants\WithLessonConstants as WithAppLessonConstants;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use PHPUnit\Framework\Attributes\DataProviderExternal;
 use Tests\Providers\CommonDataProvider;
@@ -26,6 +27,7 @@ class LessonsTest extends TestCase
         WithDatabaseConstants,
         WithTokenConstants,
         WithLanguageConstants,
+        WithAppLessonConstants,
         WithLessonConstants,
         WithStatisticsConstants,
         WithResponseAssertions;
