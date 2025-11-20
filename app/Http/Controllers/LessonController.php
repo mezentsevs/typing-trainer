@@ -7,13 +7,14 @@ use App\Models\LessonResult;
 use App\Rules\LanguageSupported;
 use App\Rules\MaxUnsignedInteger;
 use App\Services\LessonService;
+use App\Traits\Constants\WithLessonConstants;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class LessonController extends Controller
 {
-    use AuthorizesRequests;
+    use AuthorizesRequests, WithLessonConstants;
 
     public function __construct(protected LessonService $lessonService)
     {
@@ -26,7 +27,7 @@ class LessonController extends Controller
             'lesson_number' => $lessonNumber,
         ], [
             'language' => [new LanguageSupported()],
-            'lesson_number' => 'integer|min:1|max:20',
+            'lesson_number' => sprintf('integer|min:%d|max:%d', self::MIN_LESSON_COUNT, self::MAX_LESSON_COUNT),
         ])->validate();
 
         return response()->json([
@@ -41,7 +42,11 @@ class LessonController extends Controller
     {
         $request->validate([
             'language' => ['required', 'bail', 'string', new LanguageSupported()],
-            'lesson_count' => 'required|bail|integer:strict|min:1|max:20',
+            'lesson_count' => sprintf(
+                'required|bail|integer:strict|min:%d|max:%d',
+                self::MIN_LESSON_COUNT,
+                self::MAX_LESSON_COUNT,
+            ),
         ]);
 
         $this->lessonService->generateLessons($request->language, $request->lesson_count, auth()->id());
