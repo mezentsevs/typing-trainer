@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Enums\Language;
 use App\Models\Lesson;
 use App\Models\User;
+use App\Traits\Constants\WithLessonConstants;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -12,6 +13,8 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class LessonFactory extends Factory
 {
+    use WithLessonConstants;
+
     protected $model = Lesson::class;
 
     /**
@@ -21,8 +24,8 @@ class LessonFactory extends Factory
     {
         return [
             'user_id' => User::factory(),
-            'number' => $number = $this->faker->numberBetween(1, 20),
-            'total' => $this->faker->numberBetween($number, 20),
+            'number' => $number = $this->faker->numberBetween(self::MIN_LESSON_COUNT, self::MAX_LESSON_COUNT),
+            'total' => $this->faker->numberBetween($number, self::MAX_LESSON_COUNT),
             'language' => $this->faker->randomElement([Language::En->value, Language::Ru->value]),
             'new_chars' => $this->faker->regexify('[a-z]{5}'),
             'text' => $this->faker->sentence(10, true),
