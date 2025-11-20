@@ -32,8 +32,6 @@ trait WithLessonConstants
         'updated_at',
     ];
 
-    protected const int MIN_LESSON_COUNT = 1;
-    protected const int MAX_LESSON_COUNT = 20;
     protected const int SINGLE_LESSON_COUNT = 1;
     protected const int MULTIPLE_LESSON_COUNT = 5;
     protected const bool INVALID_BOOL_LESSON_COUNT = true;
