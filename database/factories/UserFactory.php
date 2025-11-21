@@ -13,6 +13,7 @@ use Illuminate\Support\Str;
 class UserFactory extends Factory
 {
     protected const int REMEMBER_TOKEN_LENGTH = 10;
+    protected const string PASSWORD_ORIGIN = 'password';
 
     protected static ?string $password;
 
@@ -25,7 +26,7 @@ class UserFactory extends Factory
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
+            'password' => static::$password ??= Hash::make(self::PASSWORD_ORIGIN),
             'remember_token' => Str::random(self::REMEMBER_TOKEN_LENGTH),
         ];
     }
