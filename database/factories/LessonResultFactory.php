@@ -6,6 +6,7 @@ use App\Enums\Language;
 use App\Models\Lesson;
 use App\Models\LessonResult;
 use App\Models\User;
+use App\Traits\Constants\WithDatabaseConstants;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -13,6 +14,8 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class LessonResultFactory extends Factory
 {
+    use WithDatabaseConstants;
+
     protected $model = LessonResult::class;
 
     /**
@@ -24,9 +27,9 @@ class LessonResultFactory extends Factory
             'user_id' => User::factory(),
             'lesson_id' => Lesson::factory(),
             'language' => $this->faker->randomElement([Language::En->value, Language::Ru->value]),
-            'time_seconds' => $this->faker->numberBetween(0, 600),
-            'speed_wpm' => $this->faker->numberBetween(0, 100),
-            'errors' => $this->faker->numberBetween(0, 10),
+            'time_seconds' => $this->faker->numberBetween(0, self::MAX_UNSIGNED_INTEGER),
+            'speed_wpm' => $this->faker->numberBetween(0, self::MAX_UNSIGNED_INTEGER),
+            'errors' => $this->faker->numberBetween(0, self::MAX_UNSIGNED_INTEGER),
             'created_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
             'updated_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
         ];
