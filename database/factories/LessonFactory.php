@@ -28,7 +28,7 @@ class LessonFactory extends Factory
             'total' => $this->faker->numberBetween($number, self::MAX_LESSON_COUNT),
             'language' => $this->faker->randomElement([Language::En->value, Language::Ru->value]),
             // TODO: Implement custom new_chars fake method - Faker doesn't work correctly with Cyrillic
-            'new_chars' => $this->faker->regexify('[a-z]{5}'),
+            'new_chars' => $this->faker->regexify('[a-zA-Z0-9]{5}'),
             'text' => $this->faker->sentence(10, true),
             'created_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
             'updated_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
