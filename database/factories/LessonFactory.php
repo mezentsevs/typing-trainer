@@ -15,6 +15,8 @@ class LessonFactory extends Factory
 {
     use WithLessonConstants;
 
+    protected const int TEXT_WORDS_COUNT = 10;
+
     protected $model = Lesson::class;
 
     /**
@@ -29,7 +31,7 @@ class LessonFactory extends Factory
             'language' => $this->faker->randomElement([Language::En->value, Language::Ru->value]),
             // TODO: Implement custom new_chars fake method - Faker doesn't work correctly with Cyrillic
             'new_chars' => $this->faker->regexify('[a-zA-Z0-9]{5}'),
-            'text' => $this->faker->sentence(10, true),
+            'text' => $this->faker->sentence(self::TEXT_WORDS_COUNT, true),
             'created_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
             'updated_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
         ];
