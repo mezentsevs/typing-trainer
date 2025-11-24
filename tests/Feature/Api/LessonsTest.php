@@ -759,7 +759,7 @@ class LessonsTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testLessonsResultSaveWithZeroTimeSeconds(string $language): void
+    public function testLessonsResultSaveWithMinTimeSeconds(string $language): void
     {
         $lesson = $this->createLesson($this->user, ['language' => $language]);
 
@@ -767,7 +767,7 @@ class LessonsTest extends TestCase
             ->postJson(self::LESSONS_RESULT_URI, [
                 'lesson_id' => $lesson->id,
                 'language' => $lesson->language,
-                'time_seconds' => self::ZERO_TIME_SECONDS,
+                'time_seconds' => self::MIN_TIME_SECONDS,
                 'speed_wpm' => self::SPEED_WPM,
                 'errors' => self::ERRORS_COUNT,
             ]);
@@ -924,7 +924,7 @@ class LessonsTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testLessonsResultSaveWithZeroSpeedWpm(string $language): void
+    public function testLessonsResultSaveWithMinSpeedWpm(string $language): void
     {
         $lesson = $this->createLesson($this->user, ['language' => $language]);
 
@@ -933,7 +933,7 @@ class LessonsTest extends TestCase
                 'lesson_id' => $lesson->id,
                 'language' => $lesson->language,
                 'time_seconds' => self::TIME_SECONDS,
-                'speed_wpm' => self::ZERO_SPEED_WPM,
+                'speed_wpm' => self::MIN_SPEED_WPM,
                 'errors' => self::ERRORS_COUNT,
             ]);
 
@@ -1089,7 +1089,7 @@ class LessonsTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testLessonsResultSaveWithZeroErrors(string $language): void
+    public function testLessonsResultSaveWithMinErrors(string $language): void
     {
         $lesson = $this->createLesson($this->user, ['language' => $language]);
 
@@ -1099,7 +1099,7 @@ class LessonsTest extends TestCase
                 'language' => $lesson->language,
                 'time_seconds' => self::TIME_SECONDS,
                 'speed_wpm' => self::SPEED_WPM,
-                'errors' => self::ZERO_ERRORS_COUNT,
+                'errors' => self::MIN_ERRORS_COUNT,
             ]);
 
         $this->withResponse($response)

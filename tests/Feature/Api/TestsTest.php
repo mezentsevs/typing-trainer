@@ -93,14 +93,14 @@ class TestsTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testSaveTestResultWithZeroValues(string $language): void
+    public function testSaveTestResultWithMinValues(string $language): void
     {
         $response = $this->withToken($this->token)
             ->postJson('/api/test/result', [
                 'language' => $language,
-                'time_seconds' => self::ZERO_TIME_SECONDS,
-                'speed_wpm' => self::ZERO_SPEED_WPM,
-                'errors' => self::ZERO_ERRORS_COUNT,
+                'time_seconds' => self::MIN_TIME_SECONDS,
+                'speed_wpm' => self::MIN_SPEED_WPM,
+                'errors' => self::MIN_ERRORS_COUNT,
             ]);
 
         $this->withResponse($response)
