@@ -8,13 +8,14 @@ use App\Rules\LanguageSupported;
 use App\Rules\MaxUnsignedInteger;
 use App\Services\LessonService;
 use App\Traits\Constants\WithLessonConstants;
+use App\Traits\Constants\WithStatisticsConstants;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class LessonController extends Controller
 {
-    use AuthorizesRequests, WithLessonConstants;
+    use AuthorizesRequests, WithLessonConstants, WithStatisticsConstants;
 
     public function __construct(protected LessonService $lessonService)
     {
@@ -59,9 +60,9 @@ class LessonController extends Controller
         $request->validate([
             'lesson_id' => 'required|integer:strict|exists:lessons,id',
             'language' => ['required', 'bail', 'string', new LanguageSupported()],
-            'time_seconds' => ['required', 'bail', 'integer:strict', 'min:0', new MaxUnsignedInteger()],
-            'speed_wpm' => ['required', 'bail', 'integer:strict', 'min:0', new MaxUnsignedInteger()],
-            'errors' => ['required', 'bail', 'integer:strict', 'min:0', new MaxUnsignedInteger()],
+            'time_seconds' => ['required', 'bail', 'integer:strict', 'min:' . self::MIN_TIME_SECONDS, new MaxUnsignedInteger()],
+            'speed_wpm' => ['required', 'bail', 'integer:strict', 'min:' . self::MIN_SPEED_WPM, new MaxUnsignedInteger()],
+            'errors' => ['required', 'bail', 'integer:strict', 'min:' . self::MIN_ERRORS_COUNT, new MaxUnsignedInteger()],
         ]);
 
         $this->authorize('saveResult', Lesson::findOrFail($request->lesson_id));
