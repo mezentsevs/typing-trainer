@@ -3,6 +3,7 @@
 namespace Tests\Feature\Api;
 
 use App\Models\User;
+use App\Traits\Constants\WithStatisticsConstants as WithAppStatisticsConstants;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
@@ -22,6 +23,7 @@ class TestsTest extends TestCase
         WithUser,
         WithTokenConstants,
         WithLanguageConstants,
+        WithAppStatisticsConstants,
         WithStatisticsConstants,
         WithFileConstants,
         WithResponseAssertions;

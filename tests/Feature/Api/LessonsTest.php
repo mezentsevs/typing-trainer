@@ -7,6 +7,7 @@ use App\Models\Lesson;
 use App\Models\User;
 use App\Traits\Constants\WithDatabaseConstants;
 use App\Traits\Constants\WithLessonConstants as WithAppLessonConstants;
+use App\Traits\Constants\WithStatisticsConstants as WithAppStatisticsConstants;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use PHPUnit\Framework\Attributes\DataProviderExternal;
 use Tests\Providers\CommonDataProvider;
@@ -29,6 +30,7 @@ class LessonsTest extends TestCase
         WithLanguageConstants,
         WithAppLessonConstants,
         WithLessonConstants,
+        WithAppStatisticsConstants,
         WithStatisticsConstants,
         WithResponseAssertions;
 
