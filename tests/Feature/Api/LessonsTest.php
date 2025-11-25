@@ -243,6 +243,19 @@ class LessonsTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testLessonsGenerateWithInvalidNumericStringLessonCount(string $language): void
+    {
+        $response = $this->withToken($this->token)
+            ->postJson(self::LESSONS_GENERATE_URI, [
+                'language' => $language,
+                'lesson_count' => self::INVALID_NUMERIC_STRING_LESSON_COUNT,
+            ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'lesson_count', 'The lesson count field must be an integer.');
+    }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testLessonsGenerateWithInvalidFloatLessonCount(string $language): void
     {
         $response = $this->withToken($this->token)
