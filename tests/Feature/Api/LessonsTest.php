@@ -490,6 +490,24 @@ class LessonsTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testLessonsShowWithPostMethod(string $language): void
+    {
+        $lesson = $this->createLesson($this->user, ['language' => $language]);
+        $lessonUri = sprintf(self::LESSONS_SHOW_URI_TEMPLATE, $lesson->language, $lesson->number);
+
+        $response = $this->withToken($this->token)
+            ->postJson($lessonUri);
+
+        $route = $this->normalizeUriForMessage($lessonUri);
+
+        $this->withResponse($response)
+            ->assertStatusWithMessage(
+                405,
+                "The POST method is not supported for route {$route}. Supported methods: GET, HEAD.",
+            );
+    }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testLessonsResultSaveSuccess(string $language): void
     {
         $lesson = $this->createLesson($this->user, ['language' => $language]);
