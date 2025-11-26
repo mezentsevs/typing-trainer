@@ -1305,4 +1305,27 @@ class LessonsTest extends TestCase
         $this->withResponse($response)
             ->assertStatusWithMessage(403, 'This action is unauthorized.');
     }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testLessonsResultSaveWithGetMethod(string $language): void
+    {
+        $lesson = $this->createLesson($this->user, ['language' => $language]);
+
+        $response = $this->withToken($this->token)
+            ->getJson(self::LESSONS_RESULT_URI, [
+                'lesson_id' => $lesson->id,
+                'language' => $lesson->language,
+                'time_seconds' => self::TIME_SECONDS,
+                'speed_wpm' => self::SPEED_WPM,
+                'errors' => self::ERRORS_COUNT,
+            ]);
+
+        $route = $this->normalizeUriForMessage(self::LESSONS_RESULT_URI);
+
+        $this->withResponse($response)
+            ->assertStatusWithMessage(
+                405,
+                "The GET method is not supported for route {$route}. Supported methods: POST.",
+            );
+    }
 }
