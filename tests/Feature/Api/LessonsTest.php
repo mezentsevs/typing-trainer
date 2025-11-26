@@ -18,6 +18,7 @@ use Tests\Traits\Constants\WithLessonConstants;
 use Tests\Traits\Constants\WithStatisticsConstants;
 use Tests\Traits\Constants\WithTokenConstants;
 use Tests\Traits\WithLesson;
+use Tests\Traits\WithUri;
 use Tests\Traits\WithUser;
 
 class LessonsTest extends TestCase
@@ -32,7 +33,8 @@ class LessonsTest extends TestCase
         WithLessonConstants,
         WithAppStatisticsConstants,
         WithStatisticsConstants,
-        WithResponseAssertions;
+        WithResponseAssertions,
+        WithUri;
 
     private string $token;
     private User $user;
@@ -299,6 +301,24 @@ class LessonsTest extends TestCase
                 422,
                 'lesson_count',
                 'The lesson count field must not be greater than 20.',
+            );
+    }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testLessonsGenerateWithGetMethod(string $language): void
+    {
+        $response = $this->withToken($this->token)
+            ->getJson(self::LESSONS_GENERATE_URI, [
+                'language' => $language,
+                'lesson_count' => self::MULTIPLE_LESSON_COUNT,
+            ]);
+
+        $route = $this->normalizeUriForMessage(self::LESSONS_GENERATE_URI);
+
+        $this->withResponse($response)
+            ->assertStatusWithMessage(
+                405,
+                "The GET method is not supported for route {$route}. Supported methods: POST.",
             );
     }
 
