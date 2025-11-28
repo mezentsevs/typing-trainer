@@ -137,3 +137,6 @@ That's it! Thank you!
 ## License
 
 The 'Typing trainer' is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Third-Party Licenses
+This project uses third-party software components. Their respective licenses can be found in the LICENSE-3rd-party.md file.
