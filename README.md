@@ -24,8 +24,6 @@ Based on tech stack:
 - [TailwindCss](https://tailwindcss.com),
 - [Docker](https://www.docker.com),
 - [Sail](https://github.com/laravel/sail),
-- [Swagger](https://swagger.io),
-- [Postman](https://www.postman.com),
 - [Scribe](https://github.com/knuckleswtf/scribe).
 
 ## Getting Started
