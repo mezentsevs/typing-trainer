@@ -26,6 +26,35 @@ Based on tech stack:
 - [Sail](https://github.com/laravel/sail),
 - [Scribe](https://github.com/knuckleswtf/scribe).
 
+## Key Features
+
+### Adaptive Lesson Generation with Progressive Difficulty
+Dynamically creates typing lessons tailored to each supported language, intelligently sequencing characters, alternating vowels and consonants, and using special characters in context. The system automatically adjusts lesson length and complexity based on user progress, ensuring an optimal learning curve from beginner to advanced levels.
+
+### Intelligent Keyboard Visualization with Multi-Layout Support
+Displays an on-screen keyboard with smart highlighting for the next key press, including necessary modifier keys. Supports multiple language layouts and visually distinguishes hand zones to build proper muscle memory and technique.
+
+### Real-Time Interactive Typing Feedback & Performance Analytics
+Provides live character-level validation with visual distinction between correct, incorrect, and upcoming text. Tracks real-time statistics including typing speed (WPM), error count, elapsed time, and completion percentage, with a dynamic progress bar.
+
+### AI-Powered Content & Extensible Text Generation Strategies
+Generates practice content using multiple strategies: AI models (local/cloud), database samples, or user-uploaded text. Built on a modular strategy pattern for seamless switching between sources based on availability and user preference.
+
+### Comprehensive Multi-Language Support
+Native support for multiple languages with dedicated character sets, frequency tables, and intelligent text normalization. The system's architecture ensures authentic typing experiences through proper encoding conversion and language-specific formatting rules.
+
+### Structured Progress Tracking & Lesson Progression
+Tracks detailed statistics for lessons and tests (WPM, errors, time). The built-in lesson system gradually introduces new characters while reinforcing learned keys, with a final test option for genre-based or custom text practice.
+
+### Intuitive User Interface with Interactive Elements
+Clean, responsive design with light/dark theme support, character-level error highlighting, word focus indication, smooth auto-scrolling, and a collapsible keyboard.
+
+### Extensible & Maintainable Architecture
+Features a clean separation of concerns using service providers, orchestrators, and strategy patterns. Modular design allows easy integration of new text sources, languages, or features while maintaining system stability.
+
+### Secure User Authentication & Data Management
+Full user authentication with registration/login and token-based API authorization. User progress is securely saved and managed via protected routes.
+
 ## Getting Started
 
 - Clone the repository:
