@@ -434,6 +434,21 @@ class LessonsTest extends TestCase
             ->assertStatusWithErrorAndMessage(422, 'language', 'The selected language is not supported.');
     }
 
+    public function testLessonsShowWithInvalidSqlInjectionLanguage(): void
+    {
+        $lessonUri = sprintf(
+            self::LESSONS_SHOW_URI_TEMPLATE,
+            self::INVALID_SQL_INJECTION_LANGUAGE,
+            self::LESSON_NUMBER_FOR_ACCESS,
+        );
+
+        $response = $this->withToken($this->token)
+            ->getJson($lessonUri);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'language', 'The selected language is not supported.');
+    }
+
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testLessonsShowWithMinLessonNumber(string $language): void
     {
