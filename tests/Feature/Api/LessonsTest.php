@@ -748,6 +748,24 @@ class LessonsTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testLessonsResultSaveWithInvalidSqlInjectionLanguage(string $language): void
+    {
+        $lesson = $this->createLesson($this->user, ['language' => $language]);
+
+        $response = $this->withToken($this->token)
+            ->postJson(self::LESSONS_RESULT_URI, [
+                'lesson_id' => $lesson->id,
+                'language' => self::INVALID_SQL_INJECTION_LANGUAGE,
+                'time_seconds' => self::TIME_SECONDS,
+                'speed_wpm' => self::SPEED_WPM,
+                'errors' => self::ERRORS_COUNT,
+            ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'language', 'The selected language is not supported.');
+    }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testLessonsResultSaveWithInvalidIntLanguage(string $language): void
     {
         $lesson = $this->createLesson($this->user, ['language' => $language]);
