@@ -158,6 +158,17 @@ class LessonsTest extends TestCase
             ->assertStatusWithErrorAndMessage(422, 'language', 'The language field is required.');
     }
 
+    public function testLessonsGenerateValidationErrorHasJsonContentType(): void
+    {
+        $response = $this->withToken($this->token)
+            ->postJson(self::LESSONS_GENERATE_URI, [
+                'lesson_count' => self::MULTIPLE_LESSON_COUNT,
+            ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithHeaderNameAndValue(422, 'Content-Type', 'application/json');
+    }
+
     public function testLessonsGenerateWithNullLanguage(): void
     {
         $response = $this->withToken($this->token)
