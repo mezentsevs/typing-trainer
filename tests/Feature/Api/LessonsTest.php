@@ -458,6 +458,17 @@ class LessonsTest extends TestCase
             ->assertStatusWithErrorAndMessage(422, 'language', 'The selected language is not supported.');
     }
 
+    public function testLessonsShowValidationErrorHasJsonContentType(): void
+    {
+        $lessonUri = sprintf(self::LESSONS_SHOW_URI_TEMPLATE, Language::Unknown->value, self::LESSON_NUMBER_FOR_ACCESS);
+
+        $response = $this->withToken($this->token)
+            ->getJson($lessonUri);
+
+        $this->withResponse($response)
+            ->assertStatusWithHeaderNameAndValue(422, 'Content-Type', 'application/json');
+    }
+
     public function testLessonsShowWithInvalidSqlInjectionLanguage(): void
     {
         $lessonUri = sprintf(
