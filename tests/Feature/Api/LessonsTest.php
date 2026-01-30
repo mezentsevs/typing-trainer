@@ -470,6 +470,18 @@ class LessonsTest extends TestCase
             ->assertStatusWithMessage(404, 'No query results for model [App\\Models\\Lesson].');
     }
 
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testLessonsShowNotFoundHasJsonContentType(string $language): void
+    {
+        $lessonUri = sprintf(self::LESSONS_SHOW_URI_TEMPLATE, $language, self::LESSON_NUMBER_FOR_ACCESS);
+
+        $response = $this->withToken($this->token)
+            ->getJson($lessonUri);
+
+        $this->withResponse($response)
+            ->assertStatusWithHeaderNameAndValue(404, 'Content-Type', 'application/json');
+    }
+
     public function testLessonsShowWithUnknownLanguage(): void
     {
         $lessonUri = sprintf(self::LESSONS_SHOW_URI_TEMPLATE, Language::Unknown->value, self::LESSON_NUMBER_FOR_ACCESS);
