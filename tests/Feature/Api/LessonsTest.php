@@ -631,6 +631,19 @@ class LessonsTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testLessonsShowMethodNotSupportedHasJsonContentType(string $language): void
+    {
+        $lesson = $this->createLesson($this->user, ['language' => $language]);
+        $lessonUri = sprintf(self::LESSONS_SHOW_URI_TEMPLATE, $lesson->language, $lesson->number);
+
+        $response = $this->withToken($this->token)
+            ->postJson($lessonUri);
+
+        $this->withResponse($response)
+            ->assertStatusWithHeaderNameAndValue(405, 'Content-Type', 'application/json');
+    }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testLessonsResultSaveSuccess(string $language): void
     {
         $lesson = $this->createLesson($this->user, ['language' => $language]);
