@@ -172,6 +172,18 @@ class LessonsTest extends TestCase
             ->assertStatusWithHeaderNameAndValue(401, 'Content-Type', 'application/json');
     }
 
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testLessonsGenerateWithoutAuthenticationHasJsonStructure(string $language): void
+    {
+        $response = $this->postJson(self::LESSONS_GENERATE_URI, [
+            'language' => $language,
+            'lesson_count' => self::MULTIPLE_LESSON_COUNT,
+        ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithJsonStructure(401, ['message']);
+    }
+
     public function testLessonsGenerateWithMissingLanguage(): void
     {
         $response = $this->withToken($this->token)
