@@ -531,6 +531,18 @@ class LessonsTest extends TestCase
             ->assertStatusWithHeaderNameAndValue(404, 'Content-Type', 'application/json');
     }
 
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testLessonsShowNotFoundHasJsonStructure(string $language): void
+    {
+        $lessonUri = sprintf(self::LESSONS_SHOW_URI_TEMPLATE, $language, self::LESSON_NUMBER_FOR_ACCESS);
+
+        $response = $this->withToken($this->token)
+            ->getJson($lessonUri);
+
+        $this->withResponse($response)
+            ->assertStatusWithJsonStructure(404, ['message']);
+    }
+
     public function testLessonsShowWithUnknownLanguage(): void
     {
         $lessonUri = sprintf(self::LESSONS_SHOW_URI_TEMPLATE, Language::Unknown->value, self::LESSON_NUMBER_FOR_ACCESS);
