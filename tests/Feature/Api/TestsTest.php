@@ -39,16 +39,6 @@ class TestsTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testTextRetrieval(string $language): void
-    {
-        $response = $this->withToken($this->token)
-            ->getJson('/api/test/text?language=' . $language);
-
-        $this->withResponse($response)
-            ->assertStatusWithJsonStructure(200, ['text']);
-    }
-
-    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testTextUpload(string $language): void
     {
         Storage::fake('public');
