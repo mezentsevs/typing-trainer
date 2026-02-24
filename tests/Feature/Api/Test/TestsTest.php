@@ -30,4 +30,15 @@ class TestsTest extends TestTestCase
         $this->withResponse($response)
             ->assertStatusWithJsonStructure(200, self::TEST_TEXT_RESPONSE_JSON_STRUCTURE);
     }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testTestTextRetrieveWithoutAuthentication(string $language): void
+    {
+        $testTextUri = sprintf(self::TEST_TEXT_URI_TEMPLATE, $language);
+
+        $response = $this->getJson($testTextUri);
+
+        $this->withResponse($response)
+            ->assertStatusWithMessage(401, 'Unauthenticated.');
+    }
 }
