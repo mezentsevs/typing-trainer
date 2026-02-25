@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Api\Test;
 
+use App\Enums\Language;
 use PHPUnit\Framework\Attributes\DataProviderExternal;
 use Tests\Providers\CommonDataProvider;
 
@@ -40,5 +41,16 @@ class TestsTest extends TestTestCase
 
         $this->withResponse($response)
             ->assertStatusWithMessage(401, 'Unauthenticated.');
+    }
+
+    public function testTestTextRetrieveWithUnknownLanguage(): void
+    {
+        $testTextUri = sprintf(self::TEST_TEXT_URI_TEMPLATE, Language::Unknown->value);
+
+        $response = $this->withToken($this->token)
+            ->getJson($testTextUri);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'language', 'The selected language is not supported.');
     }
 }
