@@ -53,4 +53,15 @@ class TestsTest extends TestTestCase
         $this->withResponse($response)
             ->assertStatusWithErrorAndMessage(422, 'language', 'The selected language is not supported.');
     }
+
+    public function testTestTextRetrieveValidationErrorHasJsonContentType(): void
+    {
+        $testTextUri = sprintf(self::TEST_TEXT_URI_TEMPLATE, Language::Unknown->value);
+
+        $response = $this->withToken($this->token)
+            ->getJson($testTextUri);
+
+        $this->withResponse($response)
+            ->assertStatusWithHeaderNameAndValue(422, 'Content-Type', 'application/json');
+    }
 }
