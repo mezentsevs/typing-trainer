@@ -5,6 +5,7 @@ namespace Tests\Traits\Constants;
 trait WithTestConstants
 {
     protected const string TEST_TEXT_URI_TEMPLATE = '/api/test/text?language=%s';
+    protected const string TEST_TEXT_URI_WITH_MISSING_LANGUAGE = '/api/test/text';
     protected const string TEST_UPLOAD_URI = '/api/test/upload';
     protected const string TEST_RESULT_URI = '/api/test/result';
 

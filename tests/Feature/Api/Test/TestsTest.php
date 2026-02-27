@@ -64,4 +64,13 @@ class TestsTest extends TestTestCase
         $this->withResponse($response)
             ->assertStatusWithHeaderNameAndValue(422, 'Content-Type', 'application/json');
     }
+
+    public function testTestTextRetrieveWithMissingLanguage(): void
+    {
+        $response = $this->withToken($this->token)
+            ->getJson(self::TEST_TEXT_URI_WITH_MISSING_LANGUAGE);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'language', 'The language field is required.');
+    }
 }
