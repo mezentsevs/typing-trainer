@@ -17,7 +17,7 @@ class TestController extends Controller
     public function getText(Request $request): JsonResponse
     {
         $request->validate([
-            'language' => ['required', 'string', new LanguageSupported()],
+            'language' => ['required', new LanguageSupported()],
             'genre' => 'nullable|string',
         ]);
 
