@@ -73,4 +73,15 @@ class TestsTest extends TestTestCase
         $this->withResponse($response)
             ->assertStatusWithErrorAndMessage(422, 'language', 'The language field is required.');
     }
+
+    public function testTestTextRetrieveWithEmptyLanguage(): void
+    {
+        $testTextUri = sprintf(self::TEST_TEXT_URI_TEMPLATE, self::INVALID_EMPTY_LANGUAGE);
+
+        $response = $this->withToken($this->token)
+            ->getJson($testTextUri);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'language', 'The language field is required.');
+    }
 }
