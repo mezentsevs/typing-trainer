@@ -84,4 +84,21 @@ class TestsTest extends TestTestCase
         $this->withResponse($response)
             ->assertStatusWithErrorAndMessage(422, 'language', 'The language field is required.');
     }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testTestTextRetrieveWithPostMethod(string $language): void
+    {
+        $testTextUri = sprintf(self::TEST_TEXT_URI_TEMPLATE, $language);
+
+        $response = $this->withToken($this->token)
+            ->postJson($testTextUri);
+
+        $route = $this->normalizeUriForMessage(self::TEST_TEXT_URI_WITH_MISSING_LANGUAGE);
+
+        $this->withResponse($response)
+            ->assertStatusWithMessage(
+                405,
+                "The POST method is not supported for route {$route}. Supported methods: GET, HEAD.",
+            );
+    }
 }
