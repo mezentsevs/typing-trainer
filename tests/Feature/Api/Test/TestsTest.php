@@ -113,4 +113,16 @@ class TestsTest extends TestTestCase
         $this->withResponse($response)
             ->assertStatusWithHeaderNameAndValue(405, 'Content-Type', 'application/json');
     }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testTestTextRetrieveMethodNotSupportedHasJsonStructure(string $language): void
+    {
+        $testTextUri = sprintf(self::TEST_TEXT_URI_TEMPLATE, $language);
+
+        $response = $this->withToken($this->token)
+            ->postJson($testTextUri);
+
+        $this->withResponse($response)
+            ->assertStatusWithJsonStructure(405, ['message']);
+    }
 }
