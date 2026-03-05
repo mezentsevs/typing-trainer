@@ -2,9 +2,9 @@
 
 namespace App\Rules;
 
+use App\Enums\Language;
 use Closure;
 use Illuminate\Contracts\Validation\ValidationRule;
-use App\Enums\Language;
 
 class LanguageSupported implements ValidationRule
 {
