@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\TestResult;
+use App\Rules\GenreSupported;
 use App\Rules\LanguageSupported;
 use App\Services\TestService;
 use Illuminate\Http\JsonResponse;
@@ -18,10 +19,12 @@ class TestController extends Controller
     {
         $request->validate([
             'language' => ['required', new LanguageSupported()],
-            'genre' => 'nullable|string',
+            'genre' => ['nullable', new GenreSupported()],
         ]);
 
-        return response()->json(['text' => $this->testService->getText($request->language, auth()->id(), $request->genre)]);
+        return response()->json([
+            'text' => $this->testService->getText($request->language, auth()->id(), $request->genre),
+        ]);
     }
 
     public function uploadText(Request $request): JsonResponse
