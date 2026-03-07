@@ -10,14 +10,7 @@ class GenreSupported implements ValidationRule
 {
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        $supportedGenres = array_values(
-            array_filter(
-                array_map(fn ($case) => $case->value, Genre::cases()),
-                fn ($v) => $v !== Genre::Unknown->value,
-            ),
-        );
-
-        if (!in_array($value, $supportedGenres, true)) {
+        if (!in_array($value, Genre::supportedValues(), true)) {
             $fail('The selected genre is not supported.');
         }
     }
