@@ -8,8 +8,12 @@ class CommonDataProvider
 {
     public static function provideSupportedLanguages(): array
     {
-        $languages = Language::supportedValues();
+        $result = [];
 
-        return array_combine($languages, array_map(fn ($language) => [$language], $languages));
+        foreach (Language::supportedValues() as $language) {
+            $result[$language] = [$language];
+        }
+
+        return $result;
     }
 }

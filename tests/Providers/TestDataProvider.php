@@ -8,8 +8,12 @@ class TestDataProvider
 {
     public static function provideSupportedGenres(): array
     {
-        $genres = Genre::supportedValues();
+        $result = [];
 
-        return array_combine($genres, array_map(fn ($genre) => [$genre], $genres));
+        foreach (Genre::supportedValues() as $genre) {
+            $result[$genre] = [$genre];
+        }
+
+        return $result;
     }
 }
