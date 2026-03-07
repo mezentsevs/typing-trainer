@@ -6,15 +6,15 @@ trait HasSupportedValues
 {
     public static function supportedValues(): array
     {
-        $cases = static::cases();
-        $excluded = static::excludedValues();
+        $result = [];
 
-        return array_values(
-            array_filter(
-                array_map(fn ($case) => $case->value, $cases),
-                fn ($value) => !in_array($value, $excluded, true),
-            ),
-        );
+        foreach (static::cases() as $case) {
+            if (!in_array($case->value, static::excludedValues(), true)) {
+                $result[] = $case->value;
+            }
+        }
+
+        return $result;
     }
 
     protected static function excludedValues(): array
