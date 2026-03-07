@@ -7,7 +7,7 @@ trait HasSupportedValues
     public static function supportedValues(): array
     {
         $cases = static::cases();
-        $excluded = static::excludedCaseValues();
+        $excluded = static::excludedValues();
 
         return array_values(
             array_filter(
@@ -17,7 +17,7 @@ trait HasSupportedValues
         );
     }
 
-    protected static function excludedCaseValues(): array
+    protected static function excludedValues(): array
     {
         return [];
     }
