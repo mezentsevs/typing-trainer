@@ -4,14 +4,14 @@ namespace Tests\Feature\Api\Test;
 
 use App\Enums\Language;
 use PHPUnit\Framework\Attributes\DataProviderExternal;
-use Tests\Providers\CommonDataProvider;
+use Tests\Providers\TestDataProvider;
 
 class TestsTest extends TestTestCase
 {
-    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testTestTextRetrieveSuccessHasJsonContentType(string $language): void
+    #[DataProviderExternal(TestDataProvider::class, 'provideTestTextRequestData')]
+    public function testTestTextRetrieveSuccessHasJsonContentType(array $data): void
     {
-        $testTextUri = sprintf(self::TEST_TEXT_URI_TEMPLATE, $language);
+        $testTextUri = sprintf(self::TEST_TEXT_URI_TEMPLATE, $data['language'], $data['genre']);
 
         $response = $this->withToken($this->token)
             ->getJson($testTextUri);
@@ -20,10 +20,10 @@ class TestsTest extends TestTestCase
             ->assertStatusWithHeaderNameAndValue(200, 'Content-Type', 'application/json');
     }
 
-    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testTestTextRetrieveSuccessHasJsonStructure(string $language): void
+    #[DataProviderExternal(TestDataProvider::class, 'provideTestTextRequestData')]
+    public function testTestTextRetrieveSuccessHasJsonStructure(array $data): void
     {
-        $testTextUri = sprintf(self::TEST_TEXT_URI_TEMPLATE, $language);
+        $testTextUri = sprintf(self::TEST_TEXT_URI_TEMPLATE, $data['language'], $data['genre']);
 
         $response = $this->withToken($this->token)
             ->getJson($testTextUri);
@@ -32,10 +32,10 @@ class TestsTest extends TestTestCase
             ->assertStatusWithJsonStructure(200, self::TEST_TEXT_RESPONSE_JSON_STRUCTURE);
     }
 
-    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testTestTextRetrieveWithoutAuthentication(string $language): void
+    #[DataProviderExternal(TestDataProvider::class, 'provideTestTextRequestData')]
+    public function testTestTextRetrieveWithoutAuthentication(array $data): void
     {
-        $testTextUri = sprintf(self::TEST_TEXT_URI_TEMPLATE, $language);
+        $testTextUri = sprintf(self::TEST_TEXT_URI_TEMPLATE, $data['language'], $data['genre']);
 
         $response = $this->getJson($testTextUri);
 
@@ -43,9 +43,10 @@ class TestsTest extends TestTestCase
             ->assertStatusWithMessage(401, 'Unauthenticated.');
     }
 
-    public function testTestTextRetrieveWithUnknownLanguage(): void
+    #[DataProviderExternal(TestDataProvider::class, 'provideSupportedGenres')]
+    public function testTestTextRetrieveWithUnknownLanguage(string $genre): void
     {
-        $testTextUri = sprintf(self::TEST_TEXT_URI_TEMPLATE, Language::Unknown->value);
+        $testTextUri = sprintf(self::TEST_TEXT_URI_TEMPLATE, Language::Unknown->value, $genre);
 
         $response = $this->withToken($this->token)
             ->getJson($testTextUri);
@@ -54,9 +55,10 @@ class TestsTest extends TestTestCase
             ->assertStatusWithErrorAndMessage(422, 'language', 'The selected language is not supported.');
     }
 
-    public function testTestTextRetrieveValidationErrorHasJsonContentType(): void
+    #[DataProviderExternal(TestDataProvider::class, 'provideSupportedGenres')]
+    public function testTestTextRetrieveValidationErrorHasJsonContentType(string $genre): void
     {
-        $testTextUri = sprintf(self::TEST_TEXT_URI_TEMPLATE, Language::Unknown->value);
+        $testTextUri = sprintf(self::TEST_TEXT_URI_TEMPLATE, Language::Unknown->value, $genre);
 
         $response = $this->withToken($this->token)
             ->getJson($testTextUri);
@@ -68,15 +70,16 @@ class TestsTest extends TestTestCase
     public function testTestTextRetrieveWithMissingLanguage(): void
     {
         $response = $this->withToken($this->token)
-            ->getJson(self::TEST_TEXT_URI_WITH_MISSING_LANGUAGE);
+            ->getJson(self::TEST_TEXT_URI_BASE);
 
         $this->withResponse($response)
             ->assertStatusWithErrorAndMessage(422, 'language', 'The language field is required.');
     }
 
-    public function testTestTextRetrieveWithEmptyLanguage(): void
+    #[DataProviderExternal(TestDataProvider::class, 'provideSupportedGenres')]
+    public function testTestTextRetrieveWithEmptyLanguage(string $genre): void
     {
-        $testTextUri = sprintf(self::TEST_TEXT_URI_TEMPLATE, self::INVALID_EMPTY_LANGUAGE);
+        $testTextUri = sprintf(self::TEST_TEXT_URI_TEMPLATE, self::INVALID_EMPTY_LANGUAGE, $genre);
 
         $response = $this->withToken($this->token)
             ->getJson($testTextUri);
@@ -85,15 +88,15 @@ class TestsTest extends TestTestCase
             ->assertStatusWithErrorAndMessage(422, 'language', 'The language field is required.');
     }
 
-    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testTestTextRetrieveWithPostMethod(string $language): void
+    #[DataProviderExternal(TestDataProvider::class, 'provideTestTextRequestData')]
+    public function testTestTextRetrieveWithPostMethod(array $data): void
     {
-        $testTextUri = sprintf(self::TEST_TEXT_URI_TEMPLATE, $language);
+        $testTextUri = sprintf(self::TEST_TEXT_URI_TEMPLATE, $data['language'], $data['genre']);
 
         $response = $this->withToken($this->token)
             ->postJson($testTextUri);
 
-        $route = $this->normalizeUriForMessage(self::TEST_TEXT_URI_WITH_MISSING_LANGUAGE);
+        $route = $this->normalizeUriForMessage(self::TEST_TEXT_URI_BASE);
 
         $this->withResponse($response)
             ->assertStatusWithMessage(
@@ -102,10 +105,10 @@ class TestsTest extends TestTestCase
             );
     }
 
-    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testTestTextRetrieveMethodNotSupportedHasJsonContentType(string $language): void
+    #[DataProviderExternal(TestDataProvider::class, 'provideTestTextRequestData')]
+    public function testTestTextRetrieveMethodNotSupportedHasJsonContentType(array $data): void
     {
-        $testTextUri = sprintf(self::TEST_TEXT_URI_TEMPLATE, $language);
+        $testTextUri = sprintf(self::TEST_TEXT_URI_TEMPLATE, $data['language'], $data['genre']);
 
         $response = $this->withToken($this->token)
             ->postJson($testTextUri);
@@ -114,10 +117,10 @@ class TestsTest extends TestTestCase
             ->assertStatusWithHeaderNameAndValue(405, 'Content-Type', 'application/json');
     }
 
-    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testTestTextRetrieveMethodNotSupportedHasJsonStructure(string $language): void
+    #[DataProviderExternal(TestDataProvider::class, 'provideTestTextRequestData')]
+    public function testTestTextRetrieveMethodNotSupportedHasJsonStructure(array $data): void
     {
-        $testTextUri = sprintf(self::TEST_TEXT_URI_TEMPLATE, $language);
+        $testTextUri = sprintf(self::TEST_TEXT_URI_TEMPLATE, $data['language'], $data['genre']);
 
         $response = $this->withToken($this->token)
             ->postJson($testTextUri);
