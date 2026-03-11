@@ -13,7 +13,8 @@ class TestDataProvider
         $result = [];
 
         foreach ($genres as $genre) {
-            $result[$genre] = [$genre];
+            $key = self::getGenreKey($genre);
+            $result[$key] = [$genre];
         }
 
         return $result;
@@ -27,8 +28,7 @@ class TestDataProvider
 
         foreach ($languages as $language) {
             foreach ($genres as $genre) {
-                $keySuffix = $genre === '' ? 'none' : $genre;
-                $key = "{$language}_{$keySuffix}";
+                $key = "{$language}_" . self::getGenreKey($genre);
                 $result[$key] = [[
                     'language' => $language,
                     'genre' => $genre,
@@ -37,5 +37,10 @@ class TestDataProvider
         }
 
         return $result;
+    }
+
+    private static function getGenreKey(string $genre): string
+    {
+        return $genre === Genre::None->value ? strtolower(Genre::None->name) : $genre;
     }
 }
