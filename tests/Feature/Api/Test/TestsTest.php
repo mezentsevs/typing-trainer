@@ -68,10 +68,13 @@ class TestsTest extends TestTestCase
             ->assertStatusWithHeaderNameAndValue(422, 'Content-Type', 'application/json');
     }
 
-    public function testTestTextRetrieveWithMissingLanguage(): void
+    #[DataProviderExternal(TestDataProvider::class, 'provideSupportedGenres')]
+    public function testTestTextRetrieveWithMissingLanguage(string $genre): void
     {
+        $testTextUri = sprintf(self::TEST_TEXT_URI_TEMPLATE_WITH_GENRE_ONLY, $genre);
+
         $response = $this->withToken($this->token)
-            ->getJson(self::TEST_TEXT_URI_BASE);
+            ->getJson($testTextUri);
 
         $this->withResponse($response)
             ->assertStatusWithErrorAndMessage(422, 'language', 'The language field is required.');
