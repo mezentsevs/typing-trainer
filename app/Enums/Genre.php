@@ -18,4 +18,11 @@ enum Genre: string
     {
         return [self::Unknown->value];
     }
+
+    public static function getDataKeyForValue(string $value): string
+    {
+        $case = self::tryFrom($value);
+
+        return $case === self::None ? strtolower(self::None->name) : $case->value;
+    }
 }
