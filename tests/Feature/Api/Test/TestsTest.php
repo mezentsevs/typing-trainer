@@ -4,6 +4,7 @@ namespace Tests\Feature\Api\Test;
 
 use App\Enums\Language;
 use PHPUnit\Framework\Attributes\DataProviderExternal;
+use Tests\Providers\CommonDataProvider;
 use Tests\Providers\TestDataProvider;
 
 class TestsTest extends TestTestCase
@@ -74,6 +75,18 @@ class TestsTest extends TestTestCase
 
         $this->withResponse($response)
             ->assertStatusWithErrorAndMessage(422, 'language', 'The language field is required.');
+    }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testTestTextRetrieveWithMissingGenre(string $language): void
+    {
+        $testTextUri = sprintf(self::TEST_TEXT_URI_TEMPLATE_WITH_LANGUAGE_ONLY, $language);
+
+        $response = $this->withToken($this->token)
+            ->getJson($testTextUri);
+
+        $this->withResponse($response)
+            ->assertStatusWithJsonStructure(200, self::TEST_TEXT_RESPONSE_JSON_STRUCTURE);
     }
 
     #[DataProviderExternal(TestDataProvider::class, 'provideSupportedGenres')]
