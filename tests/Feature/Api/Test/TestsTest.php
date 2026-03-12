@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Api\Test;
 
+use App\Enums\Genre;
 use App\Enums\Language;
 use PHPUnit\Framework\Attributes\DataProviderExternal;
 use Tests\Providers\CommonDataProvider;
@@ -102,6 +103,18 @@ class TestsTest extends TestTestCase
 
         $this->withResponse($response)
             ->assertStatusWithErrorAndMessage(422, 'language', 'The language field is required.');
+    }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testTestTextRetrieveWithUnknownGenre(string $language): void
+    {
+        $testTextUri = sprintf(self::TEST_TEXT_URI_TEMPLATE, $language, Genre::Unknown->value);
+
+        $response = $this->withToken($this->token)
+            ->getJson($testTextUri);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'genre', 'The selected genre is not supported.');
     }
 
     #[DataProviderExternal(TestDataProvider::class, 'provideTestTextRequestData')]
