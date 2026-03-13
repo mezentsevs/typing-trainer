@@ -45,6 +45,18 @@ class TestsTest extends TestTestCase
             ->assertStatusWithMessage(401, 'Unauthenticated.');
     }
 
+    #[DataProviderExternal(TestDataProvider::class, 'provideTestTextRequestData')]
+    public function testTestTextRetrieveWithInvalidToken(array $data): void
+    {
+        $testTextUri = sprintf(self::TEST_TEXT_URI_TEMPLATE, $data['language'], $data['genre']);
+
+        $response = $this->withToken(self::INVALID_TOKEN)
+            ->getJson($testTextUri);
+
+        $this->withResponse($response)
+            ->assertStatusWithMessage(401, 'Unauthenticated.');
+    }
+
     #[DataProviderExternal(TestDataProvider::class, 'provideSupportedGenres')]
     public function testTestTextRetrieveWithUnknownLanguage(string $genre): void
     {
