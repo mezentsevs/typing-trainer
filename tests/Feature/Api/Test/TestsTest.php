@@ -70,6 +70,18 @@ class TestsTest extends TestTestCase
     }
 
     #[DataProviderExternal(TestDataProvider::class, 'provideSupportedGenres')]
+    public function testTestTextRetrieveWithInvalidSqlInjectionLanguage(string $genre): void
+    {
+        $testTextUri = sprintf(self::TEST_TEXT_URI_TEMPLATE, self::INVALID_SQL_INJECTION_LANGUAGE, $genre);
+
+        $response = $this->withToken($this->token)
+            ->getJson($testTextUri);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'language', 'The selected language is not supported.');
+    }
+
+    #[DataProviderExternal(TestDataProvider::class, 'provideSupportedGenres')]
     public function testTestTextRetrieveValidationErrorHasJsonContentType(string $genre): void
     {
         $testTextUri = sprintf(self::TEST_TEXT_URI_TEMPLATE, Language::Unknown->value, $genre);
