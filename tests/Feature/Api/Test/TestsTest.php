@@ -141,6 +141,18 @@ class TestsTest extends TestTestCase
             ->assertStatusWithErrorAndMessage(422, 'genre', 'The selected genre is not supported.');
     }
 
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testTestTextRetrieveWithInvalidSqlInjectionGenre(string $language): void
+    {
+        $testTextUri = sprintf(self::TEST_TEXT_URI_TEMPLATE, $language, self::INVALID_SQL_INJECTION_GENRE);
+
+        $response = $this->withToken($this->token)
+            ->getJson($testTextUri);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'genre', 'The selected genre is not supported.');
+    }
+
     #[DataProviderExternal(TestDataProvider::class, 'provideTestTextRequestData')]
     public function testTestTextRetrieveWithPostMethod(array $data): void
     {
