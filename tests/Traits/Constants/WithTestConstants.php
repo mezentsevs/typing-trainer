@@ -12,4 +12,9 @@ trait WithTestConstants
     protected const string TEST_RESULT_URI = '/api/test/result';
 
     protected const array TEST_TEXT_RESPONSE_JSON_STRUCTURE = ['text'];
+
+    protected const array TEST_UPLOAD_RESPONSE_JSON_STRUCTURE = [
+        'message',
+        'path',
+    ];
 }
