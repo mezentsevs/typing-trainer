@@ -8,7 +8,7 @@ use PHPUnit\Framework\Attributes\DataProviderExternal;
 use Tests\Providers\CommonDataProvider;
 use Tests\Providers\TestDataProvider;
 
-class TestsTest extends TestTestCase
+class TestTextRetrieveTest extends TestTestCase
 {
     #[DataProviderExternal(TestDataProvider::class, 'provideTestTextRequestData')]
     public function testTestTextRetrieveSuccessHasJsonContentType(array $data): void
