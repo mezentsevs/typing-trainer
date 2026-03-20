@@ -10,6 +10,25 @@ use Tests\Providers\CommonDataProvider;
 class TestTextUploadTest extends TestTestCase
 {
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testTestTextUploadSuccessHasJsonContentType(string $language): void
+    {
+        Storage::fake('public');
+        $file = UploadedFile::fake()->createWithContent(
+            self::FILE_NAME,
+            self::FILE_CONTENT,
+        );
+
+        $response = $this->withToken($this->token)
+            ->postJson(self::TEST_UPLOAD_URI, [
+                'language' => $language,
+                'file' => $file,
+            ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithHeaderNameAndValue(200, 'Content-Type', 'application/json');
+    }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testTestTextUploadSuccessHasJsonStructure(string $language): void
     {
         Storage::fake('public');
