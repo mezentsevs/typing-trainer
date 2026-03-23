@@ -64,4 +64,23 @@ class TestTextUploadTest extends TestTestCase
         $this->withResponse($response)
             ->assertStatusWithMessage(401, 'Unauthenticated.');
     }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testTestTextUploadWithInvalidToken(string $language): void
+    {
+        Storage::fake('public');
+        $file = UploadedFile::fake()->createWithContent(
+            self::FILE_NAME,
+            self::FILE_CONTENT,
+        );
+
+        $response = $this->withToken(self::INVALID_TOKEN)
+            ->postJson(self::TEST_UPLOAD_URI, [
+                'language' => $language,
+                'file' => $file,
+            ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithMessage(401, 'Unauthenticated.');
+    }
 }
