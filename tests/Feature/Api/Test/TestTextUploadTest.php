@@ -83,4 +83,21 @@ class TestTextUploadTest extends TestTestCase
         $this->withResponse($response)
             ->assertStatusWithMessage(401, 'Unauthenticated.');
     }
+
+    public function testTestTextUploadWithMissingLanguage(): void
+    {
+        Storage::fake('public');
+        $file = UploadedFile::fake()->createWithContent(
+            self::FILE_NAME,
+            self::FILE_CONTENT,
+        );
+
+        $response = $this->withToken($this->token)
+            ->postJson(self::TEST_UPLOAD_URI, [
+                'file' => $file,
+            ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'language', 'The language field is required.');
+    }
 }
