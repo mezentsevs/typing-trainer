@@ -13,9 +13,9 @@ class AuthController extends Controller
     public function register(Request $request): JsonResponse
     {
         $request->validate([
-            'name' => 'required|string|max:255|regex:/^[a-zA-Z \-0-9]+$/',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8|max:255|confirmed|regex:/^[!-~]+$/',
+            'name' => 'bail|required|string|max:255|regex:/^[a-zA-Z \-0-9]+$/',
+            'email' => 'bail|required|string|email|max:255|unique:users',
+            'password' => 'bail|required|string|min:8|max:255|confirmed|regex:/^[!-~]+$/',
         ]);
 
         $user = User::create([
@@ -33,8 +33,8 @@ class AuthController extends Controller
     public function login(Request $request): JsonResponse
     {
         $request->validate([
-            'email' => 'required|string|email|max:255',
-            'password' => 'required|string|max:255',
+            'email' => 'bail|required|string|email|max:255',
+            'password' => 'bail|required|string|max:255',
         ]);
 
         if (!Auth::attempt($request->only('email', 'password'))) {
