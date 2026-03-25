@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Api\Test;
 
+use App\Enums\Language;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use PHPUnit\Framework\Attributes\DataProviderExternal;
@@ -99,5 +100,23 @@ class TestTextUploadTest extends TestTestCase
 
         $this->withResponse($response)
             ->assertStatusWithErrorAndMessage(422, 'language', 'The language field is required.');
+    }
+
+    public function testTestTextUploadWithUnknownLanguage(): void
+    {
+        Storage::fake('public');
+        $file = UploadedFile::fake()->createWithContent(
+            self::FILE_NAME,
+            self::FILE_CONTENT,
+        );
+
+        $response = $this->withToken($this->token)
+            ->postJson(self::TEST_UPLOAD_URI, [
+                'language' => Language::Unknown->value,
+                'file' => $file,
+            ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'language', 'The selected language is not supported.');
     }
 }
