@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\TestResult;
 use App\Rules\GenreSupported;
 use App\Rules\LanguageSupported;
+use App\Rules\MaxUnsignedInteger;
 use App\Services\TestService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -18,8 +19,8 @@ class TestController extends Controller
     public function getText(Request $request): JsonResponse
     {
         $request->validate([
-            'language' => ['required', new LanguageSupported()],
-            'genre' => ['nullable', new GenreSupported()],
+            'language' => ['bail', 'required', new LanguageSupported()],
+            'genre' => ['bail', 'nullable', new GenreSupported()],
         ]);
 
         return response()->json([
@@ -30,8 +31,8 @@ class TestController extends Controller
     public function uploadText(Request $request): JsonResponse
     {
         $request->validate([
-            'language' => ['required', 'string', new LanguageSupported()],
-            'file' => 'required|file|mimes:txt|max:3',
+            'language' => ['bail', 'required', 'string', new LanguageSupported()],
+            'file' => 'bail|required|file|mimes:txt|max:3',
         ]);
 
         return response()->json([
@@ -43,10 +44,10 @@ class TestController extends Controller
     public function saveResult(Request $request): JsonResponse
     {
         $request->validate([
-            'language' => ['required', 'string', new LanguageSupported()],
-            'time_seconds' => 'required|integer|min:0',
-            'speed_wpm' => 'required|integer|min:0',
-            'errors' => 'required|integer|min:0',
+            'language' => ['bail', 'required', 'string', new LanguageSupported()],
+            'time_seconds' => ['bail', 'required', 'integer:strict', 'min:0', new MaxUnsignedInteger()],
+            'speed_wpm' => ['bail', 'required', 'integer:strict', 'min:0', new MaxUnsignedInteger()],
+            'errors' => ['bail', 'required', 'integer:strict', 'min:0', new MaxUnsignedInteger()],
         ]);
 
         return response()->json(TestResult::create([

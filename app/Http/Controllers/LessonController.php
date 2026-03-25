@@ -42,9 +42,9 @@ class LessonController extends Controller
     public function generate(Request $request): JsonResponse
     {
         $request->validate([
-            'language' => ['required', 'bail', 'string', new LanguageSupported()],
+            'language' => ['bail', 'required', 'string', new LanguageSupported()],
             'lesson_count' => sprintf(
-                'required|bail|integer:strict|min:%d|max:%d',
+                'bail|required|integer:strict|min:%d|max:%d',
                 self::MIN_LESSON_COUNT,
                 self::MAX_LESSON_COUNT,
             ),
@@ -58,11 +58,11 @@ class LessonController extends Controller
     public function saveResult(Request $request): JsonResponse
     {
         $request->validate([
-            'lesson_id' => 'required|integer:strict|exists:lessons,id',
-            'language' => ['required', 'bail', 'string', new LanguageSupported()],
-            'time_seconds' => ['required', 'bail', 'integer:strict', 'min:' . self::MIN_TIME_SECONDS, new MaxUnsignedInteger()],
-            'speed_wpm' => ['required', 'bail', 'integer:strict', 'min:' . self::MIN_SPEED_WPM, new MaxUnsignedInteger()],
-            'errors' => ['required', 'bail', 'integer:strict', 'min:' . self::MIN_ERRORS_COUNT, new MaxUnsignedInteger()],
+            'lesson_id' => 'bail|required|integer:strict|exists:lessons,id',
+            'language' => ['bail', 'required', 'string', new LanguageSupported()],
+            'time_seconds' => ['bail', 'required', 'integer:strict', 'min:' . self::MIN_TIME_SECONDS, new MaxUnsignedInteger()],
+            'speed_wpm' => ['bail', 'required', 'integer:strict', 'min:' . self::MIN_SPEED_WPM, new MaxUnsignedInteger()],
+            'errors' => ['bail', 'required', 'integer:strict', 'min:' . self::MIN_ERRORS_COUNT, new MaxUnsignedInteger()],
         ]);
 
         $this->authorize('saveResult', Lesson::findOrFail($request->lesson_id));
