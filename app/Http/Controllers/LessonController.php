@@ -28,7 +28,7 @@ class LessonController extends Controller
             'lesson_number' => $lessonNumber,
         ], [
             'language' => [new LanguageSupported()],
-            'lesson_number' => sprintf('integer|min:%d|max:%d', self::MIN_LESSON_COUNT, self::MAX_LESSON_COUNT),
+            'lesson_number' => sprintf('bail|integer|min:%d|max:%d', self::MIN_LESSON_COUNT, self::MAX_LESSON_COUNT),
         ])->validate();
 
         return response()->json([
