@@ -96,4 +96,16 @@ class TestTextUploadTest extends TestTestCase
         $this->withResponse($response)
             ->assertStatusWithErrorAndMessage(422, 'language', 'The selected language is not supported.');
     }
+
+    public function testTestTextUploadWithInvalidIntLanguage(): void
+    {
+        $response = $this->withToken($this->token)
+            ->postJson(self::TEST_UPLOAD_URI, [
+                'language' => self::INVALID_INT_LANGUAGE,
+                'file' => $this->fakeUploadedFile(),
+            ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'language', 'The language field must be a string.');
+    }
 }
