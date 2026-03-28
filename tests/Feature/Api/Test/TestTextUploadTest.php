@@ -108,4 +108,16 @@ class TestTextUploadTest extends TestTestCase
         $this->withResponse($response)
             ->assertStatusWithErrorAndMessage(422, 'language', 'The language field must be a string.');
     }
+
+    public function testTestTextUploadWithInvalidSqlInjectionLanguage(): void
+    {
+        $response = $this->withToken($this->token)
+            ->postJson(self::TEST_UPLOAD_URI, [
+                'language' => self::INVALID_SQL_INJECTION_LANGUAGE,
+                'file' => $this->fakeUploadedFile(),
+            ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'language', 'The selected language is not supported.');
+    }
 }
