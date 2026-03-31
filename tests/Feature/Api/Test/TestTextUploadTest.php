@@ -17,7 +17,7 @@ class TestTextUploadTest extends TestTestCase
         $response = $this->withToken($this->token)
             ->postJson(self::TEST_UPLOAD_URI, [
                 'language' => $language,
-                'file' => $this->fakeUploadedFile(),
+                'file' => $this->fakeValidUploadedFile(),
             ]);
 
         $this->withResponse($response)
@@ -30,7 +30,7 @@ class TestTextUploadTest extends TestTestCase
         $response = $this->withToken($this->token)
             ->postJson(self::TEST_UPLOAD_URI, [
                 'language' => $language,
-                'file' => $this->fakeUploadedFile(),
+                'file' => $this->fakeValidUploadedFile(),
             ]);
 
         $this->withResponse($response)
@@ -42,7 +42,7 @@ class TestTextUploadTest extends TestTestCase
     {
         $response = $this->postJson(self::TEST_UPLOAD_URI, [
             'language' => $language,
-            'file' => $this->fakeUploadedFile(),
+            'file' => $this->fakeValidUploadedFile(),
         ]);
 
         $this->withResponse($response)
@@ -55,7 +55,7 @@ class TestTextUploadTest extends TestTestCase
         $response = $this->withToken(self::INVALID_TOKEN)
             ->postJson(self::TEST_UPLOAD_URI, [
                 'language' => $language,
-                'file' => $this->fakeUploadedFile(),
+                'file' => $this->fakeValidUploadedFile(),
             ]);
 
         $this->withResponse($response)
@@ -66,7 +66,7 @@ class TestTextUploadTest extends TestTestCase
     {
         $response = $this->withToken($this->token)
             ->postJson(self::TEST_UPLOAD_URI, [
-                'file' => $this->fakeUploadedFile(),
+                'file' => $this->fakeValidUploadedFile(),
             ]);
 
         $this->withResponse($response)
@@ -78,7 +78,7 @@ class TestTextUploadTest extends TestTestCase
         $response = $this->withToken($this->token)
             ->postJson(self::TEST_UPLOAD_URI, [
                 'language' => self::INVALID_EMPTY_LANGUAGE,
-                'file' => $this->fakeUploadedFile(),
+                'file' => $this->fakeValidUploadedFile(),
             ]);
 
         $this->withResponse($response)
@@ -90,7 +90,7 @@ class TestTextUploadTest extends TestTestCase
         $response = $this->withToken($this->token)
             ->postJson(self::TEST_UPLOAD_URI, [
                 'language' => Language::Unknown->value,
-                'file' => $this->fakeUploadedFile(),
+                'file' => $this->fakeValidUploadedFile(),
             ]);
 
         $this->withResponse($response)
@@ -102,7 +102,7 @@ class TestTextUploadTest extends TestTestCase
         $response = $this->withToken($this->token)
             ->postJson(self::TEST_UPLOAD_URI, [
                 'language' => self::INVALID_INT_LANGUAGE,
-                'file' => $this->fakeUploadedFile(),
+                'file' => $this->fakeValidUploadedFile(),
             ]);
 
         $this->withResponse($response)
@@ -114,7 +114,7 @@ class TestTextUploadTest extends TestTestCase
         $response = $this->withToken($this->token)
             ->postJson(self::TEST_UPLOAD_URI, [
                 'language' => self::INVALID_SQL_INJECTION_LANGUAGE,
-                'file' => $this->fakeUploadedFile(),
+                'file' => $this->fakeValidUploadedFile(),
             ]);
 
         $this->withResponse($response)
@@ -131,5 +131,18 @@ class TestTextUploadTest extends TestTestCase
 
         $this->withResponse($response)
             ->assertStatusWithErrorAndMessage(422, 'file', 'The file field is required.');
+    }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testTestTextUploadWithNotSupportedMimeType(string $language): void
+    {
+        $response = $this->withToken($this->token)
+            ->postJson(self::TEST_UPLOAD_URI, [
+                'language' => $language,
+                'file' => $this->fakeInvalidUploadedFileWithNotSupportedMimeType(),
+            ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'file', 'The file field must be a file of type: txt.');
     }
 }

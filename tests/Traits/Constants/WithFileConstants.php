@@ -5,6 +5,7 @@ namespace Tests\Traits\Constants;
 trait WithFileConstants
 {
     protected const int MAX_FILE_SIZE_KB = 3;
+    protected const int FILE_SIZE_KB = 1;
     protected const string FILE_CONTENT = 'Test file content';
     protected const string FILE_NAME = 'test.txt';
 

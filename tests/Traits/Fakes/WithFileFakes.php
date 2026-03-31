@@ -10,13 +10,24 @@ trait WithFileFakes
 {
     use WithFileConstants;
 
-    protected function fakeUploadedFile(): UploadedFile
+    protected function fakeValidUploadedFile(): UploadedFile
     {
         Storage::fake('public');
 
         return UploadedFile::fake()->createWithContent(
             self::FILE_NAME,
             self::FILE_CONTENT,
+        );
+    }
+
+    protected function fakeInvalidUploadedFileWithNotSupportedMimeType(): UploadedFile
+    {
+        Storage::fake('public');
+
+        return UploadedFile::fake()->create(
+            self::INVALID_FILE_NAME,
+            self::FILE_SIZE_KB,
+            self::INVALID_FILE_MIME_TYPE,
         );
     }
 }
