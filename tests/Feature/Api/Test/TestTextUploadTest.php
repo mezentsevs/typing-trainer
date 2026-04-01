@@ -134,15 +134,28 @@ class TestTextUploadTest extends TestTestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testTestTextUploadWithNotSupportedMimeType(string $language): void
+    public function testTestTextUploadWithNotSupportedFileMimeType(string $language): void
     {
         $response = $this->withToken($this->token)
             ->postJson(self::TEST_UPLOAD_URI, [
                 'language' => $language,
-                'file' => $this->fakeInvalidUploadedFileWithNotSupportedMimeType(),
+                'file' => $this->fakeInvalidUploadedFileWithNotSupportedFileMimeType(),
             ]);
 
         $this->withResponse($response)
             ->assertStatusWithErrorAndMessage(422, 'file', 'The file field must be a file of type: txt.');
+    }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testTestTextUploadWithExceededFileSize(string $language): void
+    {
+        $response = $this->withToken($this->token)
+            ->postJson(self::TEST_UPLOAD_URI, [
+                'language' => $language,
+                'file' => $this->fakeInvalidUploadedFileWithExceededFileSize(),
+            ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'file', 'The file field must not be greater than 3 kilobytes.');
     }
 }

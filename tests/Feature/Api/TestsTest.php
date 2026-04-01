@@ -108,8 +108,8 @@ class TestsTest extends TestCase
         Storage::fake('public');
         $invalidFile = UploadedFile::fake()->create(
             self::INVALID_FILE_NAME,
-            self::INVALID_FILE_SIZE_KB,
-            self::INVALID_FILE_MIME_TYPE,
+            self::INVALID_EXCEEDED_FILE_SIZE_KB,
+            self::INVALID_NOT_SUPPORTED_FILE_MIME_TYPE,
         );
 
         $response = $this->withToken($this->token)
