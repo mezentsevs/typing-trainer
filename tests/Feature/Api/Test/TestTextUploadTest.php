@@ -134,6 +134,19 @@ class TestTextUploadTest extends TestTestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testTestTextUploadWithInvalidStringFile(string $language): void
+    {
+        $response = $this->withToken($this->token)
+            ->postJson(self::TEST_UPLOAD_URI, [
+                'language' => $language,
+                'file' => self::INVALID_STRING_FILE,
+            ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'file', 'The file field must be a file.');
+    }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testTestTextUploadWithNotSupportedFileMimeType(string $language): void
     {
         $response = $this->withToken($this->token)
