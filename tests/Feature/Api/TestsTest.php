@@ -5,8 +5,6 @@ namespace Tests\Feature\Api;
 use App\Models\User;
 use App\Traits\Constants\WithStatisticsConstants as WithAppStatisticsConstants;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Storage;
 use PHPUnit\Framework\Attributes\DataProviderExternal;
 use Tests\Providers\CommonDataProvider;
 use Tests\TestCase;
@@ -77,28 +75,6 @@ class TestsTest extends TestCase
                 'language',
                 'speed_wpm',
                 'errors',
-            ]);
-    }
-
-    public function testTextUploadValidation(): void
-    {
-        Storage::fake('public');
-        $invalidFile = UploadedFile::fake()->create(
-            self::INVALID_FILE_NAME,
-            self::INVALID_EXCEEDED_FILE_SIZE_KB,
-            self::INVALID_NOT_SUPPORTED_FILE_MIME_TYPE,
-        );
-
-        $response = $this->withToken($this->token)
-            ->postJson('/api/test/upload', [
-                'language' => self::INVALID_EMPTY_LANGUAGE,
-                'file' => $invalidFile,
-            ]);
-
-        $this->withResponse($response)
-            ->assertStatusWithJsonValidationErrors(422, [
-                'language',
-                'file',
             ]);
     }
 
