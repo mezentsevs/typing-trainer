@@ -12,6 +12,19 @@ class TestTextUploadTest extends TestTestCase
     use WithFileFakes;
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testTestTextUploadSuccess(string $language): void
+    {
+        $response = $this->withToken($this->token)
+            ->postJson(self::TEST_UPLOAD_URI, [
+                'language' => $language,
+                'file' => $this->fakeValidUploadedFile(),
+            ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithMessage(200, 'File uploaded');
+    }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testTestTextUploadSuccessHasJsonContentType(string $language): void
     {
         $response = $this->withToken($this->token)
