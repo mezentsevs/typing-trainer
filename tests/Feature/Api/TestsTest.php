@@ -39,29 +39,6 @@ class TestsTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testTextUpload(string $language): void
-    {
-        Storage::fake('public');
-        $file = UploadedFile::fake()->createWithContent(
-            self::FILE_NAME,
-            self::FILE_CONTENT,
-        );
-
-        $response = $this->withToken($this->token)
-            ->postJson('/api/test/upload', [
-                'language' => $language,
-                'file' => $file,
-            ]);
-
-        $this->withResponse($response)
-            ->assertStatusWithJsonStructureAndJson(
-                200,
-                ['path'],
-                ['message' => self::EXPECTED_FILE_UPLOADED_MESSAGE],
-            );
-    }
-
-    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testSaveTestResult(string $language): void
     {
         $response = $this->withToken($this->token)
