@@ -7,11 +7,14 @@ use App\Rules\GenreSupported;
 use App\Rules\LanguageSupported;
 use App\Rules\MaxUnsignedInteger;
 use App\Services\TestService;
+use App\Traits\Constants\WithFileConstants;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class TestController extends Controller
 {
+    use WithFileConstants;
+
     public function __construct(protected TestService $testService)
     {
     }
@@ -32,7 +35,7 @@ class TestController extends Controller
     {
         $request->validate([
             'language' => ['bail', 'required', 'string', new LanguageSupported()],
-            'file' => 'bail|required|file|mimes:txt|max:3',
+            'file' => ['bail', 'required', 'file', 'mimes:txt', 'max:' . self::MAX_FILE_SIZE_KB],
         ]);
 
         return response()->json([

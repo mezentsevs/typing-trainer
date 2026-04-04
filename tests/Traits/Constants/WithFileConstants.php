@@ -2,9 +2,11 @@
 
 namespace Tests\Traits\Constants;
 
+use App\Traits\Constants\WithFileConstants as WithAppFileConstants;
+
 trait WithFileConstants
 {
-    protected const int MAX_FILE_SIZE_KB = 3;
+    use WithAppFileConstants;
 
     protected const int FILE_SIZE_KB = 1;
     protected const string FILE_MIME_TYPE = 'text/plain';
