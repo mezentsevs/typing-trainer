@@ -8,12 +8,13 @@ use App\Rules\LanguageSupported;
 use App\Rules\MaxUnsignedInteger;
 use App\Services\TestService;
 use App\Traits\Constants\WithFileConstants;
+use App\Traits\Constants\WithStatisticsConstants;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class TestController extends Controller
 {
-    use WithFileConstants;
+    use WithFileConstants, WithStatisticsConstants;
 
     public function __construct(protected TestService $testService)
     {
@@ -48,9 +49,9 @@ class TestController extends Controller
     {
         $request->validate([
             'language' => ['bail', 'required', 'string', new LanguageSupported()],
-            'time_seconds' => ['bail', 'required', 'integer:strict', 'min:0', new MaxUnsignedInteger()],
-            'speed_wpm' => ['bail', 'required', 'integer:strict', 'min:0', new MaxUnsignedInteger()],
-            'errors' => ['bail', 'required', 'integer:strict', 'min:0', new MaxUnsignedInteger()],
+            'time_seconds' => ['bail', 'required', 'integer:strict', 'min:' . self::MIN_TIME_SECONDS, new MaxUnsignedInteger()],
+            'speed_wpm' => ['bail', 'required', 'integer:strict', 'min:' . self::MIN_SPEED_WPM, new MaxUnsignedInteger()],
+            'errors' => ['bail', 'required', 'integer:strict', 'min:' . self::MIN_ERRORS_COUNT, new MaxUnsignedInteger()],
         ]);
 
         return response()->json(TestResult::create([
