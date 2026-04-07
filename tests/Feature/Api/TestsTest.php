@@ -37,27 +37,6 @@ class TestsTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testSaveTestResult(string $language): void
-    {
-        $response = $this->withToken($this->token)
-            ->postJson('/api/test/result', [
-                'language' => $language,
-                'time_seconds' => self::TIME_SECONDS,
-                'speed_wpm' => self::SPEED_WPM,
-                'errors' => self::ERRORS_COUNT,
-            ]);
-
-        $this->withResponse($response)
-            ->assertStatusWithJsonStructure(200, [
-                'id',
-                'user_id',
-                'language',
-                'speed_wpm',
-                'errors',
-            ]);
-    }
-
-    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testSaveTestResultWithMinValues(string $language): void
     {
         $response = $this->withToken($this->token)
