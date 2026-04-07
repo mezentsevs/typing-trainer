@@ -17,4 +17,15 @@ trait WithTestConstants
         'message',
         'path',
     ];
+
+    protected const array TEST_RESULT_RESPONSE_JSON_STRUCTURE = [
+        'id',
+        'user_id',
+        'language',
+        'time_seconds',
+        'speed_wpm',
+        'errors',
+        'created_at',
+        'updated_at',
+    ];
 }
