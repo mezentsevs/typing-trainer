@@ -25,4 +25,19 @@ class TestResultTest extends TestTestCase
         $this->withResponse($response)
             ->assertStatusWithJsonStructure(200, self::TEST_RESULT_RESPONSE_JSON_STRUCTURE);
     }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testTestResultSaveSuccessHasJsonContentType(string $language): void
+    {
+        $response = $this->withToken($this->token)
+            ->postJson(self::TEST_RESULT_URI, [
+                'language' => $language,
+                'time_seconds' => self::TIME_SECONDS,
+                'speed_wpm' => self::SPEED_WPM,
+                'errors' => self::ERRORS_COUNT,
+            ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithHeaderNameAndValue(200, 'Content-Type', 'application/json');
+    }
 }
