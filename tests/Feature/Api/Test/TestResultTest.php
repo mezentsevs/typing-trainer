@@ -68,4 +68,18 @@ class TestResultTest extends TestTestCase
         $this->withResponse($response)
             ->assertStatusWithHeaderNameAndValue(401, 'Content-Type', 'application/json');
     }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testTestResultSaveWithoutAuthenticationHasJsonStructure(string $language): void
+    {
+        $response = $this->postJson(self::TEST_RESULT_URI, [
+            'language' => $language,
+            'time_seconds' => self::TIME_SECONDS,
+            'speed_wpm' => self::SPEED_WPM,
+            'errors' => self::ERRORS_COUNT,
+        ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithJsonStructure(401, ['message']);
+    }
 }
