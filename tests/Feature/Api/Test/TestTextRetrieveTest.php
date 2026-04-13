@@ -191,6 +191,6 @@ class TestTextRetrieveTest extends TestTestCase
             ->postJson($testTextUri);
 
         $this->withResponse($response)
-            ->assertStatusWithJsonStructure(405, ['message']);
+            ->assertStatusWithJsonStructure(405, self::MESSAGE_JSON_STRUCTURE);
     }
 }

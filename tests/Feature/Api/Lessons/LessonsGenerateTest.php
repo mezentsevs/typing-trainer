@@ -108,7 +108,7 @@ class LessonsGenerateTest extends LessonTestCase
             ]);
 
         $this->withResponse($response)
-            ->assertStatusWithJsonStructureAndJson(200, ['message'], ['message' => 'Lessons generated']);
+            ->assertStatusWithJsonStructureAndJson(200, self::MESSAGE_JSON_STRUCTURE, ['message' => 'Lessons generated']);
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
@@ -144,7 +144,7 @@ class LessonsGenerateTest extends LessonTestCase
         ]);
 
         $this->withResponse($response)
-            ->assertStatusWithJsonStructure(401, ['message']);
+            ->assertStatusWithJsonStructure(401, self::MESSAGE_JSON_STRUCTURE);
     }
 
     public function testLessonsGenerateWithMissingLanguage(): void
@@ -381,6 +381,6 @@ class LessonsGenerateTest extends LessonTestCase
             ]);
 
         $this->withResponse($response)
-            ->assertStatusWithJsonStructure(405, ['message']);
+            ->assertStatusWithJsonStructure(405, self::MESSAGE_JSON_STRUCTURE);
     }
 }

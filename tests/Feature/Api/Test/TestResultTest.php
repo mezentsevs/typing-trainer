@@ -80,6 +80,6 @@ class TestResultTest extends TestTestCase
         ]);
 
         $this->withResponse($response)
-            ->assertStatusWithJsonStructure(401, ['message']);
+            ->assertStatusWithJsonStructure(401, self::MESSAGE_JSON_STRUCTURE);
     }
 }

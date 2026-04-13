@@ -7,6 +7,7 @@ use App\Traits\Constants\WithDatabaseConstants;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use Tests\Traits\Assertions\WithResponseAssertions;
+use Tests\Traits\Constants\WithResponseConstants;
 use Tests\Traits\Constants\WithTokenConstants;
 use Tests\Traits\WithUri;
 use Tests\Traits\WithUser;
@@ -16,6 +17,7 @@ abstract class ApiTestCase extends TestCase
     use RefreshDatabase,
         WithDatabaseConstants,
         WithResponseAssertions,
+        WithResponseConstants,
         WithTokenConstants,
         WithUri,
         WithUser;

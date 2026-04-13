@@ -99,7 +99,7 @@ class LessonsResultTest extends LessonTestCase
         ]);
 
         $this->withResponse($response)
-            ->assertStatusWithJsonStructure(401, ['message']);
+            ->assertStatusWithJsonStructure(401, self::MESSAGE_JSON_STRUCTURE);
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
@@ -936,7 +936,7 @@ class LessonsResultTest extends LessonTestCase
             ]);
 
         $this->withResponse($response)
-            ->assertStatusWithJsonStructure(403, ['message']);
+            ->assertStatusWithJsonStructure(403, self::MESSAGE_JSON_STRUCTURE);
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
@@ -995,6 +995,6 @@ class LessonsResultTest extends LessonTestCase
             ]);
 
         $this->withResponse($response)
-            ->assertStatusWithJsonStructure(405, ['message']);
+            ->assertStatusWithJsonStructure(405, self::MESSAGE_JSON_STRUCTURE);
     }
 }

@@ -68,7 +68,7 @@ class LessonsShowTest extends LessonTestCase
         $response = $this->getJson($lessonUri);
 
         $this->withResponse($response)
-            ->assertStatusWithJsonStructure(401, ['message']);
+            ->assertStatusWithJsonStructure(401, self::MESSAGE_JSON_STRUCTURE);
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
@@ -143,7 +143,7 @@ class LessonsShowTest extends LessonTestCase
             ->getJson($lessonUri);
 
         $this->withResponse($response)
-            ->assertStatusWithJsonStructure(404, ['message']);
+            ->assertStatusWithJsonStructure(404, self::MESSAGE_JSON_STRUCTURE);
     }
 
     public function testLessonsShowWithUnknownLanguage(): void
@@ -304,6 +304,6 @@ class LessonsShowTest extends LessonTestCase
             ->postJson($lessonUri);
 
         $this->withResponse($response)
-            ->assertStatusWithJsonStructure(405, ['message']);
+            ->assertStatusWithJsonStructure(405, self::MESSAGE_JSON_STRUCTURE);
     }
 }
