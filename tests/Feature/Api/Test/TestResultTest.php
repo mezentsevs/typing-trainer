@@ -166,4 +166,18 @@ class TestResultTest extends TestTestCase
         $this->withResponse($response)
             ->assertStatusWithErrorAndMessage(422, 'language', 'The language field must be a string.');
     }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testTestResultSaveWithMissingTimeSeconds(string $language): void
+    {
+        $response = $this->withToken($this->token)
+            ->postJson(self::TEST_RESULT_URI, [
+                'language' => $language,
+                'speed_wpm' => self::SPEED_WPM,
+                'errors' => self::ERRORS_COUNT,
+            ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'time_seconds', 'The time seconds field is required.');
+    }
 }
