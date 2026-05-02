@@ -517,7 +517,7 @@ class LessonsResultTest extends LessonTestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testLessonsResultSaveWithInvalidTimeSeconds(string $language): void
+    public function testLessonsResultSaveWithBelowMinTimeSeconds(string $language): void
     {
         $lesson = $this->createLesson($this->user, ['language' => $language]);
 
@@ -525,7 +525,7 @@ class LessonsResultTest extends LessonTestCase
             ->postJson(self::LESSONS_RESULT_URI, [
                 'lesson_id' => $lesson->id,
                 'language' => $lesson->language,
-                'time_seconds' => self::INVALID_INT_TIME_SECONDS,
+                'time_seconds' => self::MIN_TIME_SECONDS - 1,
                 'speed_wpm' => self::SPEED_WPM,
                 'errors' => self::ERRORS_COUNT,
             ]);
