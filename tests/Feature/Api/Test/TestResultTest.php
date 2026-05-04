@@ -319,4 +319,18 @@ class TestResultTest extends TestTestCase
         $this->withResponse($response)
             ->assertStatusWithErrorAndMessage(422, 'time_seconds', 'The time seconds field must be at least 0.');
     }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testTestResultSaveWithMissingSpeedWpm(string $language): void
+    {
+        $response = $this->withToken($this->token)
+            ->postJson(self::TEST_RESULT_URI, [
+                'language' => $language,
+                'time_seconds' => self::TIME_SECONDS,
+                'errors' => self::ERRORS_COUNT,
+            ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'speed_wpm', 'The speed wpm field is required.');
+    }
 }
