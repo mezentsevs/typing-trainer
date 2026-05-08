@@ -378,4 +378,19 @@ class TestResultTest extends TestTestCase
         $this->withResponse($response)
             ->assertStatusWithErrorAndMessage(422, 'speed_wpm', 'The speed wpm field must be an integer.');
     }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testTestResultSaveWithInvalidNumericStringSpeedWpm(string $language): void
+    {
+        $response = $this->withToken($this->token)
+            ->postJson(self::TEST_RESULT_URI, [
+                'language' => $language,
+                'time_seconds' => self::TIME_SECONDS,
+                'speed_wpm' => self::INVALID_NUMERIC_STRING_SPEED_WPM,
+                'errors' => self::ERRORS_COUNT,
+            ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'speed_wpm', 'The speed wpm field must be an integer.');
+    }
 }
