@@ -457,4 +457,19 @@ class TestResultTest extends TestTestCase
                 'The speed wpm field must not be greater than ' . self::MAX_UNSIGNED_INTEGER . '.',
             );
     }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testTestResultSaveWithBelowMinSpeedWpm(string $language): void
+    {
+        $response = $this->withToken($this->token)
+            ->postJson(self::TEST_RESULT_URI, [
+                'language' => $language,
+                'time_seconds' => self::TIME_SECONDS,
+                'speed_wpm' => self::MIN_SPEED_WPM - 1,
+                'errors' => self::ERRORS_COUNT,
+            ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'speed_wpm', 'The speed wpm field must be at least 0.');
+    }
 }
