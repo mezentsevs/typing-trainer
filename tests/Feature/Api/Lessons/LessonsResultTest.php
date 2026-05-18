@@ -700,7 +700,7 @@ class LessonsResultTest extends LessonTestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testLessonsResultSaveWithInvalidSpeedWpm(string $language): void
+    public function testLessonsResultSaveWithBelowMinSpeedWpm(string $language): void
     {
         $lesson = $this->createLesson($this->user, ['language' => $language]);
 
@@ -709,7 +709,7 @@ class LessonsResultTest extends LessonTestCase
                 'lesson_id' => $lesson->id,
                 'language' => $lesson->language,
                 'time_seconds' => self::TIME_SECONDS,
-                'speed_wpm' => self::INVALID_INT_SPEED_WPM,
+                'speed_wpm' => self::MIN_SPEED_WPM - 1,
                 'errors' => self::ERRORS_COUNT,
             ]);
 
