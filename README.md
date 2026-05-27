@@ -162,6 +162,13 @@ That's it! Thank you!
 <img width="1920" height="1200" alt="2025-07-31_19-26-42" src="https://github.com/user-attachments/assets/1576cf32-9352-4725-9f75-11de55088c8f" />
 <img width="1920" height="1200" alt="2025-07-31_19-27-36" src="https://github.com/user-attachments/assets/2ffca5bd-2ff5-459d-890d-87f4331c60d8" />
 
+## ⭐ If You Found This Useful
+
+If this project helped you - whether it saved you time, taught you something, or gave you an idea - please consider leaving a star or a like.
+A ⭐, 👍, ❤️, or 💎 tells me that the work matters. It's a small gesture that genuinely fuels my motivation to keep improving the project and building new tools.
+
+Thanks for your interest in this project!
+
 ## License
 
 The 'Typing trainer' is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
