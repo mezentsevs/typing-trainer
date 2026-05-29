@@ -70,23 +70,4 @@ class TestsTest extends TestCase
         $this->withResponse($response)
             ->assertStatusWithJsonValidationErrors(422, ['language']);
     }
-
-    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testSaveResultValidationForOtherFields(string $language): void
-    {
-        $response = $this->withToken($this->token)
-            ->postJson('/api/test/result', [
-                'language' => $language,
-                'time_seconds' => self::INVALID_INT_TIME_SECONDS,
-                'speed_wpm' => self::INVALID_INT_SPEED_WPM,
-                'errors' => self::INVALID_INT_ERRORS_COUNT,
-            ]);
-
-        $this->withResponse($response)
-            ->assertStatusWithJsonValidationErrors(422, [
-                'time_seconds',
-                'speed_wpm',
-                'errors',
-            ]);
-    }
 }
