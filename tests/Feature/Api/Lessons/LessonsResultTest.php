@@ -495,6 +495,24 @@ class LessonsResultTest extends LessonTestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testLessonsResultSaveWithBelowMinTimeSeconds(string $language): void
+    {
+        $lesson = $this->createLesson($this->user, ['language' => $language]);
+
+        $response = $this->withToken($this->token)
+            ->postJson(self::LESSONS_RESULT_URI, [
+                'lesson_id' => $lesson->id,
+                'language' => $lesson->language,
+                'time_seconds' => self::MIN_TIME_SECONDS - 1,
+                'speed_wpm' => self::SPEED_WPM,
+                'errors' => self::ERRORS_COUNT,
+            ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'time_seconds', 'The time seconds field must be at least 0.');
+    }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testLessonsResultSaveWithAboveMaxUnsignedIntegerTimeSeconds(string $language): void
     {
         $lesson = $this->createLesson($this->user, ['language' => $language]);
@@ -514,24 +532,6 @@ class LessonsResultTest extends LessonTestCase
                 'time_seconds',
                 'The time seconds field must not be greater than ' . self::MAX_UNSIGNED_INTEGER . '.',
             );
-    }
-
-    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testLessonsResultSaveWithBelowMinTimeSeconds(string $language): void
-    {
-        $lesson = $this->createLesson($this->user, ['language' => $language]);
-
-        $response = $this->withToken($this->token)
-            ->postJson(self::LESSONS_RESULT_URI, [
-                'lesson_id' => $lesson->id,
-                'language' => $lesson->language,
-                'time_seconds' => self::MIN_TIME_SECONDS - 1,
-                'speed_wpm' => self::SPEED_WPM,
-                'errors' => self::ERRORS_COUNT,
-            ]);
-
-        $this->withResponse($response)
-            ->assertStatusWithErrorAndMessage(422, 'time_seconds', 'The time seconds field must be at least 0.');
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
@@ -678,6 +678,24 @@ class LessonsResultTest extends LessonTestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testLessonsResultSaveWithBelowMinSpeedWpm(string $language): void
+    {
+        $lesson = $this->createLesson($this->user, ['language' => $language]);
+
+        $response = $this->withToken($this->token)
+            ->postJson(self::LESSONS_RESULT_URI, [
+                'lesson_id' => $lesson->id,
+                'language' => $lesson->language,
+                'time_seconds' => self::TIME_SECONDS,
+                'speed_wpm' => self::MIN_SPEED_WPM - 1,
+                'errors' => self::ERRORS_COUNT,
+            ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'speed_wpm', 'The speed wpm field must be at least 0.');
+    }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testLessonsResultSaveWithAboveMaxUnsignedIntegerSpeedWpm(string $language): void
     {
         $lesson = $this->createLesson($this->user, ['language' => $language]);
@@ -697,24 +715,6 @@ class LessonsResultTest extends LessonTestCase
                 'speed_wpm',
                 'The speed wpm field must not be greater than ' . self::MAX_UNSIGNED_INTEGER . '.',
             );
-    }
-
-    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testLessonsResultSaveWithBelowMinSpeedWpm(string $language): void
-    {
-        $lesson = $this->createLesson($this->user, ['language' => $language]);
-
-        $response = $this->withToken($this->token)
-            ->postJson(self::LESSONS_RESULT_URI, [
-                'lesson_id' => $lesson->id,
-                'language' => $lesson->language,
-                'time_seconds' => self::TIME_SECONDS,
-                'speed_wpm' => self::MIN_SPEED_WPM - 1,
-                'errors' => self::ERRORS_COUNT,
-            ]);
-
-        $this->withResponse($response)
-            ->assertStatusWithErrorAndMessage(422, 'speed_wpm', 'The speed wpm field must be at least 0.');
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
@@ -861,6 +861,24 @@ class LessonsResultTest extends LessonTestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testLessonsResultSaveWithBelowMinErrors(string $language): void
+    {
+        $lesson = $this->createLesson($this->user, ['language' => $language]);
+
+        $response = $this->withToken($this->token)
+            ->postJson(self::LESSONS_RESULT_URI, [
+                'lesson_id' => $lesson->id,
+                'language' => $lesson->language,
+                'time_seconds' => self::TIME_SECONDS,
+                'speed_wpm' => self::SPEED_WPM,
+                'errors' => self::MIN_ERRORS_COUNT - 1,
+            ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithErrorAndMessage(422, 'errors', 'The errors field must be at least 0.');
+    }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testLessonsResultSaveWithAboveMaxUnsignedIntegerErrors(string $language): void
     {
         $lesson = $this->createLesson($this->user, ['language' => $language]);
@@ -880,24 +898,6 @@ class LessonsResultTest extends LessonTestCase
                 'errors',
                 'The errors field must not be greater than ' . self::MAX_UNSIGNED_INTEGER . '.',
             );
-    }
-
-    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testLessonsResultSaveWithBelowMinErrors(string $language): void
-    {
-        $lesson = $this->createLesson($this->user, ['language' => $language]);
-
-        $response = $this->withToken($this->token)
-            ->postJson(self::LESSONS_RESULT_URI, [
-                'lesson_id' => $lesson->id,
-                'language' => $lesson->language,
-                'time_seconds' => self::TIME_SECONDS,
-                'speed_wpm' => self::SPEED_WPM,
-                'errors' => self::MIN_ERRORS_COUNT - 1,
-            ]);
-
-        $this->withResponse($response)
-            ->assertStatusWithErrorAndMessage(422, 'errors', 'The errors field must be at least 0.');
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
