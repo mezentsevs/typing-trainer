@@ -883,7 +883,7 @@ class LessonsResultTest extends LessonTestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testLessonsResultSaveWithInvalidErrors(string $language): void
+    public function testLessonsResultSaveWithBelowMinErrors(string $language): void
     {
         $lesson = $this->createLesson($this->user, ['language' => $language]);
 
@@ -893,7 +893,7 @@ class LessonsResultTest extends LessonTestCase
                 'language' => $lesson->language,
                 'time_seconds' => self::TIME_SECONDS,
                 'speed_wpm' => self::SPEED_WPM,
-                'errors' => self::INVALID_INT_ERRORS_COUNT,
+                'errors' => self::MIN_ERRORS_COUNT - 1,
             ]);
 
         $this->withResponse($response)
