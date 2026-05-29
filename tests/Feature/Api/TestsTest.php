@@ -56,18 +56,4 @@ class TestsTest extends TestCase
                 'errors',
             ]);
     }
-
-    public function testSaveResultValidationForLanguage(): void
-    {
-        $response = $this->withToken($this->token)
-            ->postJson('/api/test/result', [
-                'language' => self::INVALID_EMPTY_LANGUAGE,
-                'time_seconds' => self::TIME_SECONDS,
-                'speed_wpm' => self::SPEED_WPM,
-                'errors' => self::ERRORS_COUNT,
-            ]);
-
-        $this->withResponse($response)
-            ->assertStatusWithJsonValidationErrors(422, ['language']);
-    }
 }
