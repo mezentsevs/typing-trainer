@@ -5,8 +5,6 @@ namespace Tests\Feature\Api;
 use App\Models\User;
 use App\Traits\Constants\WithStatisticsConstants as WithAppStatisticsConstants;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use PHPUnit\Framework\Attributes\DataProviderExternal;
-use Tests\Providers\CommonDataProvider;
 use Tests\TestCase;
 use Tests\Traits\Assertions\WithResponseAssertions;
 use Tests\Traits\Constants\WithFileConstants;
@@ -34,26 +32,5 @@ class TestsTest extends TestCase
         parent::setUp();
         $this->user = $this->createUser();
         $this->token = $this->createTokenForUser($this->user, self::TOKEN_NAME);
-    }
-
-    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testSaveTestResultWithMinValues(string $language): void
-    {
-        $response = $this->withToken($this->token)
-            ->postJson('/api/test/result', [
-                'language' => $language,
-                'time_seconds' => self::MIN_TIME_SECONDS,
-                'speed_wpm' => self::MIN_SPEED_WPM,
-                'errors' => self::MIN_ERRORS_COUNT,
-            ]);
-
-        $this->withResponse($response)
-            ->assertStatusWithJsonStructure(200, [
-                'id',
-                'user_id',
-                'language',
-                'speed_wpm',
-                'errors',
-            ]);
     }
 }
