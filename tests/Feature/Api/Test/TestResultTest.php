@@ -97,6 +97,19 @@ class TestResultTest extends TestTestCase
             ->assertStatusWithErrorAndMessage(422, 'language', 'The language field is required.');
     }
 
+    public function testTestResultSaveValidationErrorHasJsonContentType(): void
+    {
+        $response = $this->withToken($this->token)
+            ->postJson(self::TEST_RESULT_URI, [
+                'time_seconds' => self::TIME_SECONDS,
+                'speed_wpm' => self::SPEED_WPM,
+                'errors' => self::ERRORS_COUNT,
+            ]);
+
+        $this->withResponse($response)
+            ->assertStatusWithHeaderNameAndValue(422, 'Content-Type', 'application/json');
+    }
+
     public function testTestResultSaveWithNullLanguage(): void
     {
         $response = $this->withToken($this->token)
