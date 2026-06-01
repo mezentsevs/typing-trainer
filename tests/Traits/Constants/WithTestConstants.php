@@ -10,6 +10,7 @@ trait WithTestConstants
     protected const string TEST_TEXT_URI_TEMPLATE_WITH_GENRE_ONLY = self::TEST_TEXT_URI_BASE . '?genre=%s';
     protected const string TEST_UPLOAD_URI = '/api/test/upload';
     protected const string TEST_RESULT_URI = '/api/test/result';
+    protected const string TEST_RESULT_URI_TEMPLATE = self::TEST_RESULT_URI . '?language=%s&time_seconds=%d&speed_wpm=%d&errors=%d';
 
     protected const array TEST_TEXT_RESPONSE_JSON_STRUCTURE = ['text'];
 

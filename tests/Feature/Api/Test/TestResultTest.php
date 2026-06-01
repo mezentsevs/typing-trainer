@@ -638,4 +638,27 @@ class TestResultTest extends TestTestCase
                 'The errors field must not be greater than ' . self::MAX_UNSIGNED_INTEGER . '.',
             );
     }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testTestResultSaveWithGetMethod(string $language): void
+    {
+        $testResultUri = sprintf(
+            self::TEST_RESULT_URI_TEMPLATE,
+            $language,
+            self::TIME_SECONDS,
+            self::SPEED_WPM,
+            self::ERRORS_COUNT,
+        );
+
+        $response = $this->withToken($this->token)
+            ->getJson($testResultUri);
+
+        $route = $this->normalizeUriForMessage(self::TEST_RESULT_URI);
+
+        $this->withResponse($response)
+            ->assertStatusWithMessage(
+                405,
+                "The GET method is not supported for route {$route}. Supported methods: POST.",
+            );
+    }
 }
