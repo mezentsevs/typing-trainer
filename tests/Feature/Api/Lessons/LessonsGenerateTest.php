@@ -372,11 +372,10 @@ class LessonsGenerateTest extends LessonTestCase
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testLessonsGenerateMethodNotSupportedHasJsonStructure(string $language): void
     {
+        $lessonsGenerateUri = sprintf(self::LESSONS_GENERATE_URI_TEMPLATE, $language, self::MULTIPLE_LESSON_COUNT);
+
         $response = $this->withToken($this->token)
-            ->getJson(self::LESSONS_GENERATE_URI, [
-                'language' => $language,
-                'lesson_count' => self::MULTIPLE_LESSON_COUNT,
-            ]);
+            ->getJson($lessonsGenerateUri);
 
         $this->withResponse($response)
             ->assertStatusWithJsonStructure(405, self::MESSAGE_JSON_STRUCTURE);
