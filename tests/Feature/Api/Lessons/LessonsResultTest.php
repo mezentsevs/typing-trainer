@@ -1009,14 +1009,17 @@ class LessonsResultTest extends LessonTestCase
     {
         $lesson = $this->createLesson($this->user, ['language' => $language]);
 
+        $lessonsResultUri = sprintf(
+            self::LESSONS_RESULT_URI_TEMPLATE,
+            $lesson->id,
+            $lesson->language,
+            self::TIME_SECONDS,
+            self::SPEED_WPM,
+            self::ERRORS_COUNT,
+        );
+
         $response = $this->withToken($this->token)
-            ->getJson(self::LESSONS_RESULT_URI, [
-                'lesson_id' => $lesson->id,
-                'language' => $lesson->language,
-                'time_seconds' => self::TIME_SECONDS,
-                'speed_wpm' => self::SPEED_WPM,
-                'errors' => self::ERRORS_COUNT,
-            ]);
+            ->getJson($lessonsResultUri);
 
         $this->withResponse($response)
             ->assertStatusWithJsonStructure(405, self::MESSAGE_JSON_STRUCTURE);
