@@ -661,4 +661,22 @@ class TestResultTest extends TestTestCase
                 "The GET method is not supported for route {$route}. Supported methods: POST.",
             );
     }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testTestResultSaveMethodNotSupportedHasJsonContentType(string $language): void
+    {
+        $testResultUri = sprintf(
+            self::TEST_RESULT_URI_TEMPLATE,
+            $language,
+            self::TIME_SECONDS,
+            self::SPEED_WPM,
+            self::ERRORS_COUNT,
+        );
+
+        $response = $this->withToken($this->token)
+            ->getJson($testResultUri);
+
+        $this->withResponse($response)
+            ->assertStatusWithHeaderNameAndValue(405, 'Content-Type', 'application/json');
+    }
 }
