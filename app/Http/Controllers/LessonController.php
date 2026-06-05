@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Lesson\LessonShowRequest;
 use App\Models\Lesson;
 use App\Models\LessonResult;
 use App\Rules\LanguageSupported;
@@ -21,16 +22,8 @@ class LessonController extends Controller
     {
     }
 
-    public function show(string $language, int $lessonNumber): JsonResponse
+    public function show(LessonShowRequest $request, string $language, int $lessonNumber): JsonResponse
     {
-        validator([
-            'language' => $language,
-            'lesson_number' => $lessonNumber,
-        ], [
-            'language' => [new LanguageSupported()],
-            'lesson_number' => sprintf('bail|integer|min:%d|max:%d', self::MIN_LESSON_COUNT, self::MAX_LESSON_COUNT),
-        ])->validate();
-
         return response()->json([
             'lesson' => Lesson::where('user_id', auth()->id())
                 ->where('language', $language)
