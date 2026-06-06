@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Lesson\LessonGenerateRequest;
 use App\Http\Requests\Lesson\LessonShowRequest;
 use App\Models\Lesson;
 use App\Models\LessonResult;
@@ -32,17 +33,8 @@ class LessonController extends Controller
         ]);
     }
 
-    public function generate(Request $request): JsonResponse
+    public function generate(LessonGenerateRequest $request): JsonResponse
     {
-        $request->validate([
-            'language' => ['bail', 'required', 'string', new LanguageSupported()],
-            'lesson_count' => sprintf(
-                'bail|required|integer:strict|min:%d|max:%d',
-                self::MIN_LESSON_COUNT,
-                self::MAX_LESSON_COUNT,
-            ),
-        ]);
-
         $this->lessonService->generateLessons($request->language, $request->lesson_count, auth()->id());
 
         return response()->json(['message' => 'Lessons generated']);
