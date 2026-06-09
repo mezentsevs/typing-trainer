@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Test\TestGetTextRequest;
 use App\Models\TestResult;
-use App\Rules\GenreSupported;
 use App\Rules\LanguageSupported;
 use App\Rules\MaxUnsignedInteger;
 use App\Services\TestService;
@@ -20,13 +20,8 @@ class TestController extends Controller
     {
     }
 
-    public function getText(Request $request): JsonResponse
+    public function getText(TestGetTextRequest $request): JsonResponse
     {
-        $request->validate([
-            'language' => ['bail', 'required', new LanguageSupported()],
-            'genre' => ['bail', 'nullable', new GenreSupported()],
-        ]);
-
         return response()->json([
             'text' => $this->testService->getText($request->language, auth()->id(), $request->genre),
         ]);
