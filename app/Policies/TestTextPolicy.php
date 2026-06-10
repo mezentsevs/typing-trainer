@@ -10,4 +10,9 @@ class TestTextPolicy
     {
         return auth()->check();
     }
+
+    public function upload(User $user): bool
+    {
+        return auth()->check();
+    }
 }

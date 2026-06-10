@@ -3,18 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Test\TestGetTextRequest;
+use App\Http\Requests\Test\TestUploadTextRequest;
 use App\Models\TestResult;
 use App\Rules\LanguageSupported;
 use App\Rules\MaxUnsignedInteger;
 use App\Services\TestService;
-use App\Traits\Constants\WithFileConstants;
 use App\Traits\Constants\WithStatisticsConstants;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class TestController extends Controller
 {
-    use WithFileConstants, WithStatisticsConstants;
+    use WithStatisticsConstants;
 
     public function __construct(protected TestService $testService)
     {
@@ -27,13 +27,8 @@ class TestController extends Controller
         ]);
     }
 
-    public function uploadText(Request $request): JsonResponse
+    public function uploadText(TestUploadTextRequest $request): JsonResponse
     {
-        $request->validate([
-            'language' => ['bail', 'required', 'string', new LanguageSupported()],
-            'file' => ['bail', 'required', 'file', 'mimes:txt', 'max:' . self::MAX_FILE_SIZE_KB],
-        ]);
-
         return response()->json([
             'message' => 'File uploaded',
             'path' => $request->file('file')->storeAs('uploads', 'test_' . auth()->id() . "_{$request->language}.txt", 'public'),
