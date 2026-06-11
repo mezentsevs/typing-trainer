@@ -1,0 +1,52 @@
+<?php
+
+namespace App\Http\Requests\Test;
+
+use App\Http\Requests\BaseRequest;
+use App\Models\TestResult;
+use App\Rules\LanguageSupported;
+use App\Rules\MaxUnsignedInteger;
+use App\Traits\Constants\WithStatisticsConstants;
+
+class TestSaveResultRequest extends BaseRequest
+{
+    use WithStatisticsConstants;
+
+    public function authorize(): bool
+    {
+        return $this->user()->can('create', TestResult::class);
+    }
+
+    public function rules(): array
+    {
+        return [
+            'language' => [
+                'bail',
+                'required',
+                'string',
+                new LanguageSupported(),
+            ],
+            'time_seconds' => [
+                'bail',
+                'required',
+                'integer:strict',
+                'min:' . self::MIN_TIME_SECONDS,
+                new MaxUnsignedInteger(),
+            ],
+            'speed_wpm' => [
+                'bail',
+                'required',
+                'integer:strict',
+                'min:' . self::MIN_SPEED_WPM,
+                new MaxUnsignedInteger(),
+            ],
+            'errors' => [
+                'bail',
+                'required',
+                'integer:strict',
+                'min:' . self::MIN_ERRORS_COUNT,
+                new MaxUnsignedInteger(),
+            ],
+        ];
+    }
+}
