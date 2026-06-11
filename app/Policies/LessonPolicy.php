@@ -21,9 +21,4 @@ class LessonPolicy
     {
         return auth()->check();
     }
-
-    public function saveResult(User $user, Lesson $lesson): bool
-    {
-        return $user->id === $lesson->user_id;
-    }
 }

@@ -38,7 +38,7 @@ class LessonController extends Controller
 
     public function saveResult(LessonSaveResultRequest $request): JsonResponse
     {
-        $this->authorize('saveResult', Lesson::findOrFail($request->lesson_id));
+        $this->authorize('create', [LessonResult::class, Lesson::findOrFail($request->lesson_id)]);
 
         return response()->json(LessonResult::create([
             'user_id' => auth()->id(),
