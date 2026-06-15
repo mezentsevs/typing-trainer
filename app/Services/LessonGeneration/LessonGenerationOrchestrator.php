@@ -17,10 +17,10 @@ class LessonGenerationOrchestrator
     /**
      * @throws RandomException
      */
-    public function generate(string $language, int $lessonCount, int $userId): void
+    public function generate(int $userId, string $language, int $lessonCount): void
     {
-        $this->deleteLessons($language, $userId);
-        $this->deleteLessonResults($language, $userId);
+        $this->deleteLessons($userId, $language);
+        $this->deleteLessonResults($userId, $language);
 
         $lessonBlueprints = $this->lessonSequenceGenerator->generate($language, $lessonCount);
 
@@ -32,14 +32,14 @@ class LessonGenerationOrchestrator
         Lesson::insert($lessons);
     }
 
-    protected function deleteLessons(string $language, int $userId): void
+    protected function deleteLessons(int $userId, string $language): void
     {
         Lesson::where('user_id', $userId)
             ->where('language', $language)
             ->delete();
     }
 
-    protected function deleteLessonResults(string $language, int $userId): void
+    protected function deleteLessonResults(int $userId, string $language): void
     {
         LessonResult::where('user_id', $userId)
             ->where('language', $language)

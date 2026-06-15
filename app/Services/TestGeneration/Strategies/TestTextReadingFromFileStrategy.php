@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 
 class TestTextReadingFromFileStrategy implements TestTextSupplyingStrategy
 {
-    public function getText(string $language, int $userId, ?string $genre): ?string
+    public function getText(int $userId, string $language, ?string $genre): ?string
     {
         $filePath = "uploads/test_{$userId}_{$language}.txt";
 

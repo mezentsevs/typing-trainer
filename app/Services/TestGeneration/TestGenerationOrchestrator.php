@@ -13,10 +13,10 @@ class TestGenerationOrchestrator
     {
     }
 
-    public function getText(string $language, int $userId, ?string $genre): string
+    public function getText(int $userId, string $language, ?string $genre): string
     {
         foreach ($this->testTextSupplyingStrategies as $strategy) {
-            $text = $strategy->getText($language, $userId, $genre);
+            $text = $strategy->getText($userId, $language, $genre);
             if ($text !== null) {
                 return $text;
             }

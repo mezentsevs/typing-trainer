@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 class TestTextRetrievingFromDatabaseStrategy implements TestTextSupplyingStrategy
 {
-    public function getText(string $language, int $userId, ?string $genre): ?string
+    public function getText(int $userId, string $language, ?string $genre): ?string
     {
         $testText = TestText::where('language', $language)
             ->when($genre, function (Builder $query, string $genre) {

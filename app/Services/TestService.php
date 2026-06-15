@@ -10,8 +10,8 @@ class TestService
     {
     }
 
-    public function getText(string $language, int $userId, ?string $genre = null): string
+    public function getText(int $userId, string $language, ?string $genre = null): string
     {
-        return $this->testGenerationOrchestrator->getText($language, $userId, $genre);
+        return $this->testGenerationOrchestrator->getText($userId, $language, $genre);
     }
 }

@@ -46,7 +46,7 @@ class LessonServiceTest extends TestCase
             'language' => $language,
         ]);
 
-        $this->service->generateLessons($language, $lessonCount, $this->user->id);
+        $this->service->generateLessons($this->user->id, $language, $lessonCount);
 
         foreach ($existingLessons as $lesson) {
             $this->assertDatabaseMissing('lessons', [
@@ -70,7 +70,7 @@ class LessonServiceTest extends TestCase
     #[DataProviderExternal(LessonDataProvider::class, 'provideLessonsSequenceData')]
     public function testGenerateLessonsWithValidSequenceAndContent(array $data): void
     {
-        $this->service->generateLessons($data['language'], $data['lessonCount'], $this->user->id);
+        $this->service->generateLessons($this->user->id, $data['language'], $data['lessonCount']);
 
         $lesson = Lesson::where('user_id', $this->user->id)
             ->where('language', $data['language'])

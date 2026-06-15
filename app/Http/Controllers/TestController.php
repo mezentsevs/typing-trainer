@@ -18,7 +18,7 @@ class TestController extends Controller
     public function getText(TestGetTextRequest $request): JsonResponse
     {
         return response()->json([
-            'text' => $this->testService->getText($request->language, auth()->id(), $request->genre),
+            'text' => $this->testService->getText(auth()->id(), $request->language, $request->genre),
         ]);
     }
 

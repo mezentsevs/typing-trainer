@@ -16,9 +16,9 @@ class LessonService
     /**
      * @throws RandomException
      */
-    public function generateLessons(string $language, int $lessonCount, int $userId): void
+    public function generateLessons(int $userId, string $language, int $lessonCount): void
     {
-        $this->lessonGenerationOrchestrator->generate($language, $lessonCount, $userId);
+        $this->lessonGenerationOrchestrator->generate($userId, $language, $lessonCount);
     }
 
     public function saveResult(LessonSaveResultDto $dto): LessonResult

@@ -32,7 +32,7 @@ class LessonController extends Controller
 
     public function generate(LessonGenerateRequest $request): JsonResponse
     {
-        $this->lessonService->generateLessons($request->language, $request->lesson_count, auth()->id());
+        $this->lessonService->generateLessons(auth()->id(), $request->language, $request->lesson_count);
 
         return response()->json(['message' => 'Lessons generated']);
     }

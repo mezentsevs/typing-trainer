@@ -4,5 +4,5 @@ namespace App\Services\TestGeneration\Strategies\Contracts;
 
 interface TestTextSupplyingStrategy
 {
-    public function getText(string $language, int $userId, ?string $genre): ?string;
+    public function getText(int $userId, string $language, ?string $genre): ?string;
 }
