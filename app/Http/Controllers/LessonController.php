@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Dtos\LessonSaveResultDto;
 use App\Http\Requests\Lesson\LessonGenerateRequest;
 use App\Http\Requests\Lesson\LessonSaveResultRequest;
 use App\Http\Requests\Lesson\LessonShowRequest;
@@ -40,13 +41,15 @@ class LessonController extends Controller
     {
         $this->authorize('create', [LessonResult::class, Lesson::findOrFail($request->lesson_id)]);
 
-        return response()->json(LessonResult::create([
-            'user_id' => auth()->id(),
-            'lesson_id' => $request->lesson_id,
+        $dto = LessonSaveResultDto::fromArray([
+            'userId' => auth()->id(),
+            'lessonId' => $request->lesson_id,
             'language' => $request->language,
-            'time_seconds' => $request->time_seconds,
-            'speed_wpm' => $request->speed_wpm,
+            'timeSeconds' => $request->time_seconds,
+            'speedWpm' => $request->speed_wpm,
             'errors' => $request->errors,
-        ]));
+        ]);
+
+        return response()->json($this->lessonService->saveResult($dto));
     }
 }
