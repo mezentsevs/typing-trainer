@@ -30,7 +30,7 @@ class LessonServiceTest extends TestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testGenerateLessonsDeletesExistingAndCreatesNew(string $language): void
+    public function testGenerateDeletesExistingAndCreatesNew(string $language): void
     {
         $lessonCount = 5;
         $existingLessonCount = 3;
@@ -46,7 +46,7 @@ class LessonServiceTest extends TestCase
             'language' => $language,
         ]);
 
-        $this->service->generateLessons($this->user->id, $language, $lessonCount);
+        $this->service->generate($this->user->id, $language, $lessonCount);
 
         foreach ($existingLessons as $lesson) {
             $this->assertDatabaseMissing('lessons', [
@@ -68,9 +68,9 @@ class LessonServiceTest extends TestCase
     }
 
     #[DataProviderExternal(LessonDataProvider::class, 'provideLessonsSequenceData')]
-    public function testGenerateLessonsWithValidSequenceAndContent(array $data): void
+    public function testGenerateWithValidSequenceAndContent(array $data): void
     {
-        $this->service->generateLessons($this->user->id, $data['language'], $data['lessonCount']);
+        $this->service->generate($this->user->id, $data['language'], $data['lessonCount']);
 
         $lesson = Lesson::where('user_id', $this->user->id)
             ->where('language', $data['language'])

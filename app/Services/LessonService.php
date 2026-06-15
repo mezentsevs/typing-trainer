@@ -16,7 +16,7 @@ class LessonService
     /**
      * @throws RandomException
      */
-    public function generateLessons(int $userId, string $language, int $lessonCount): void
+    public function generate(int $userId, string $language, int $lessonCount): void
     {
         $this->lessonGenerationOrchestrator->generate($userId, $language, $lessonCount);
     }
