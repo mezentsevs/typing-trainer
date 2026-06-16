@@ -2,7 +2,7 @@
 
 namespace App\Dtos;
 
-class LessonSaveResultDto extends SaveResultDto
+class LessonSaveResultDto extends BaseSaveResultDto
 {
     public readonly int $lessonId;
 
