@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Services;
 
+use App\Dtos\LessonGenerateDto;
 use App\Models\Lesson;
 use App\Models\LessonResult;
 use App\Models\User;
@@ -46,7 +47,13 @@ class LessonServiceTest extends TestCase
             'language' => $language,
         ]);
 
-        $this->service->generate($this->user->id, $language, $lessonCount);
+        $dto = LessonGenerateDto::fromArray([
+            'userId' => $this->user->id,
+            'language' => $language,
+            'lessonCount' => $lessonCount,
+        ]);
+
+        $this->service->generate($dto);
 
         foreach ($existingLessons as $lesson) {
             $this->assertDatabaseMissing('lessons', [
@@ -70,7 +77,13 @@ class LessonServiceTest extends TestCase
     #[DataProviderExternal(LessonDataProvider::class, 'provideLessonsSequenceData')]
     public function testGenerateWithValidSequenceAndContent(array $data): void
     {
-        $this->service->generate($this->user->id, $data['language'], $data['lessonCount']);
+        $dto = LessonGenerateDto::fromArray([
+            'userId' => $this->user->id,
+            'language' => $data['language'],
+            'lessonCount' => $data['lessonCount'],
+        ]);
+
+        $this->service->generate($dto);
 
         $lesson = Lesson::where('user_id', $this->user->id)
             ->where('language', $data['language'])

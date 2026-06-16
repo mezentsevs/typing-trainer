@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Dtos\LessonGenerateDto;
 use App\Dtos\LessonSaveResultDto;
 use App\Http\Requests\Lesson\LessonGenerateRequest;
 use App\Http\Requests\Lesson\LessonSaveResultRequest;
@@ -32,7 +33,13 @@ class LessonController extends Controller
 
     public function generate(LessonGenerateRequest $request): JsonResponse
     {
-        $this->lessonService->generate(auth()->id(), $request->language, $request->lesson_count);
+        $dto = LessonGenerateDto::fromArray([
+            'userId' => auth()->id(),
+            'language' => $request->language,
+            'lessonCount' => $request->lesson_count,
+        ]);
+
+        $this->lessonService->generate($dto);
 
         return response()->json(['message' => 'Lessons generated']);
     }

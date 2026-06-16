@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Api\Auth;
 
+use App\Dtos\LessonGenerateDto;
 use App\Services\LessonService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use PHPUnit\Framework\Attributes\DataProviderExternal;
@@ -139,7 +140,15 @@ class LogoutTest extends TestCase
     {
         $user = $this->createUser();
         $token = $this->createTokenForUser($user, self::TOKEN_NAME);
-        $this->lessonService->generate($user->id, $language, self::SINGLE_LESSON_COUNT);
+
+        $dto = LessonGenerateDto::fromArray([
+            'userId' => $user->id,
+            'language' => $language,
+            'lessonCount' => self::SINGLE_LESSON_COUNT,
+        ]);
+
+        $this->lessonService->generate($dto);
+
         $lessonUri = sprintf(self::LESSONS_SHOW_URI_TEMPLATE, $language, self::LESSON_NUMBER_FOR_ACCESS);
 
         $response = $this->withToken($token)
