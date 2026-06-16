@@ -2,7 +2,7 @@
 
 namespace App\Dtos;
 
-class BaseSaveResultDto extends BaseDto
+abstract class BaseSaveResultDto extends BaseDto
 {
     public function __construct(
         public readonly int $userId,
