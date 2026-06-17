@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Dtos\LessonGenerateDto;
 use App\Dtos\LessonSaveResultDto;
+use App\Dtos\LessonShowDto;
 use App\Http\Requests\Lesson\LessonGenerateRequest;
 use App\Http\Requests\Lesson\LessonSaveResultRequest;
 use App\Http\Requests\Lesson\LessonShowRequest;
@@ -23,12 +24,13 @@ class LessonController extends Controller
 
     public function show(LessonShowRequest $request, string $language, int $lessonNumber): JsonResponse
     {
-        return response()->json([
-            'lesson' => Lesson::where('user_id', auth()->id())
-                ->where('language', $language)
-                ->where('number', $lessonNumber)
-                ->firstOrFail(),
+        $dto = LessonShowDto::fromArray([
+            'userId' => auth()->id(),
+            'language' => $language,
+            'lessonNumber' => $lessonNumber,
         ]);
+
+        return response()->json(['lesson' => $this->lessonService->show($dto)]);
     }
 
     public function generate(LessonGenerateRequest $request): JsonResponse

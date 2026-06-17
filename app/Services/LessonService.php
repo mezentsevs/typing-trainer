@@ -4,6 +4,8 @@ namespace App\Services;
 
 use App\Dtos\LessonGenerateDto;
 use App\Dtos\LessonSaveResultDto;
+use App\Dtos\LessonShowDto;
+use App\Models\Lesson;
 use App\Models\LessonResult;
 use App\Services\LessonGeneration\LessonGenerationOrchestrator;
 use Random\RandomException;
@@ -12,6 +14,14 @@ class LessonService
 {
     public function __construct(protected LessonGenerationOrchestrator $lessonGenerationOrchestrator)
     {
+    }
+
+    public function show(LessonShowDto $dto): Lesson
+    {
+        return Lesson::where('user_id', $dto->userId)
+            ->where('language', $dto->language)
+            ->where('number', $dto->lessonNumber)
+            ->firstOrFail();
     }
 
     /**
