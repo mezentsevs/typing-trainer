@@ -2,21 +2,21 @@
 
 namespace App\Services\TestGeneration;
 
-use App\Services\TestGeneration\Strategies\Contracts\TestTextSupplyingStrategy;
+use App\Services\TestGeneration\Strategies\Contracts\TestRetrieveStrategy;
 
 class TestGenerationOrchestrator
 {
     /**
-     * @param TestTextSupplyingStrategy[] $testTextSupplyingStrategies
+     * @param TestRetrieveStrategy[] $strategies
      */
-    public function __construct(protected array $testTextSupplyingStrategies)
+    public function __construct(protected array $strategies)
     {
     }
 
-    public function getText(int $userId, string $language, ?string $genre): string
+    public function retrieve(int $userId, string $language, ?string $genre): string
     {
-        foreach ($this->testTextSupplyingStrategies as $strategy) {
-            $text = $strategy->getText($userId, $language, $genre);
+        foreach ($this->strategies as $strategy) {
+            $text = $strategy->retrieve($userId, $language, $genre);
             if ($text !== null) {
                 return $text;
             }

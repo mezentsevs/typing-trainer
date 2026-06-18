@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Dtos\TestRetrieveDto;
 use App\Services\TestGeneration\TestGenerationOrchestrator;
 
 class TestService
@@ -10,8 +11,12 @@ class TestService
     {
     }
 
-    public function getText(int $userId, string $language, ?string $genre = null): string
+    public function retrieve(TestRetrieveDto $dto): string
     {
-        return $this->testGenerationOrchestrator->getText($userId, $language, $genre);
+        return $this->testGenerationOrchestrator->retrieve(
+            $dto->userId,
+            $dto->language,
+            $dto->genre,
+        );
     }
 }

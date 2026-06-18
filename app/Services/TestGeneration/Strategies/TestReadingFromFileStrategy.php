@@ -3,12 +3,12 @@
 namespace App\Services\TestGeneration\Strategies;
 
 use App\Helpers\StringHelper;
-use App\Services\TestGeneration\Strategies\Contracts\TestTextSupplyingStrategy;
+use App\Services\TestGeneration\Strategies\Contracts\TestRetrieveStrategy;
 use Illuminate\Support\Facades\Storage;
 
-class TestTextReadingFromFileStrategy implements TestTextSupplyingStrategy
+class TestReadingFromFileStrategy implements TestRetrieveStrategy
 {
-    public function getText(int $userId, string $language, ?string $genre): ?string
+    public function retrieve(int $userId, string $language, ?string $genre): ?string
     {
         $filePath = "uploads/test_{$userId}_{$language}.txt";
 

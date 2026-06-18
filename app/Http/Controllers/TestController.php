@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Test\TestGetTextRequest;
+use App\Dtos\TestRetrieveDto;
+use App\Http\Requests\Test\TestRetrieveRequest;
 use App\Http\Requests\Test\TestSaveResultRequest;
 use App\Http\Requests\Test\TestUploadTextRequest;
 use App\Models\TestResult;
@@ -15,11 +16,15 @@ class TestController extends Controller
     {
     }
 
-    public function getText(TestGetTextRequest $request): JsonResponse
+    public function retrieve(TestRetrieveRequest $request): JsonResponse
     {
-        return response()->json([
-            'text' => $this->testService->getText(auth()->id(), $request->language, $request->genre),
+        $dto = TestRetrieveDto::fromArray([
+            'userId' => auth()->id(),
+            'language' => $request->language,
+            'genre' => $request->genre,
         ]);
+
+        return response()->json(['text' => $this->testService->retrieve($dto)]);
     }
 
     public function uploadText(TestUploadTextRequest $request): JsonResponse

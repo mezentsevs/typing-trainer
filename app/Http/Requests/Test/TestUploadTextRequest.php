@@ -3,7 +3,7 @@
 namespace App\Http\Requests\Test;
 
 use App\Http\Requests\BaseRequest;
-use App\Models\TestText;
+use App\Models\Test;
 use App\Rules\LanguageSupported;
 use App\Traits\Constants\WithFileConstants;
 
@@ -13,7 +13,7 @@ class TestUploadTextRequest extends BaseRequest
 
     public function authorize(): bool
     {
-        return $this->user()->can('upload', TestText::class);
+        return $this->user()->can('upload', Test::class);
     }
 
     public function rules(): array

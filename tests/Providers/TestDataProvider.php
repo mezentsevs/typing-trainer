@@ -20,7 +20,7 @@ class TestDataProvider
         return $result;
     }
 
-    public static function provideTestTextRequestData(): array
+    public static function provideTestRetrieveRequestData(): array
     {
         $languages = Language::supportedValues();
         $genres = Genre::supportedValues();

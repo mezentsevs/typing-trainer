@@ -2,10 +2,10 @@
 
 namespace App\Providers;
 
-use App\Services\TestGeneration\Strategies\TestTextGeneratingCloudAiStrategy;
-use App\Services\TestGeneration\Strategies\TestTextGeneratingLocalAiStrategy;
-use App\Services\TestGeneration\Strategies\TestTextReadingFromFileStrategy;
-use App\Services\TestGeneration\Strategies\TestTextRetrievingFromDatabaseStrategy;
+use App\Services\TestGeneration\Strategies\TestGeneratingCloudAiStrategy;
+use App\Services\TestGeneration\Strategies\TestGeneratingLocalAiStrategy;
+use App\Services\TestGeneration\Strategies\TestReadingFromFileStrategy;
+use App\Services\TestGeneration\Strategies\TestRetrievingFromDatabaseStrategy;
 use App\Services\TestGeneration\TestGenerationOrchestrator;
 use App\Services\TestService;
 use Illuminate\Support\ServiceProvider;
@@ -19,10 +19,10 @@ class TestServiceProvider extends ServiceProvider
         });
 
         $this->app->tag([
-            TestTextGeneratingLocalAiStrategy::class,
-            TestTextGeneratingCloudAiStrategy::class,
-            TestTextReadingFromFileStrategy::class,
-            TestTextRetrievingFromDatabaseStrategy::class,
+            TestGeneratingLocalAiStrategy::class,
+            TestGeneratingCloudAiStrategy::class,
+            TestReadingFromFileStrategy::class,
+            TestRetrievingFromDatabaseStrategy::class,
         ], 'testTextSupplyingStrategies');
 
         $this->app->bind(TestGenerationOrchestrator::class, function ($app) {
@@ -31,9 +31,9 @@ class TestServiceProvider extends ServiceProvider
             );
         });
 
-        $this->app->bind(TestTextGeneratingLocalAiStrategy::class);
-        $this->app->bind(TestTextGeneratingCloudAiStrategy::class);
-        $this->app->bind(TestTextReadingFromFileStrategy::class);
-        $this->app->bind(TestTextRetrievingFromDatabaseStrategy::class);
+        $this->app->bind(TestGeneratingLocalAiStrategy::class);
+        $this->app->bind(TestGeneratingCloudAiStrategy::class);
+        $this->app->bind(TestReadingFromFileStrategy::class);
+        $this->app->bind(TestRetrievingFromDatabaseStrategy::class);
     }
 }

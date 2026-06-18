@@ -2,15 +2,15 @@
 
 namespace App\Services\TestGeneration\Strategies;
 
-use App\Models\TestText;
-use App\Services\TestGeneration\Strategies\Contracts\TestTextSupplyingStrategy;
+use App\Models\Test;
+use App\Services\TestGeneration\Strategies\Contracts\TestRetrieveStrategy;
 use Illuminate\Database\Eloquent\Builder;
 
-class TestTextRetrievingFromDatabaseStrategy implements TestTextSupplyingStrategy
+class TestRetrievingFromDatabaseStrategy implements TestRetrieveStrategy
 {
-    public function getText(int $userId, string $language, ?string $genre): ?string
+    public function retrieve(int $userId, string $language, ?string $genre): ?string
     {
-        $testText = TestText::where('language', $language)
+        $testText = Test::where('language', $language)
             ->when($genre, function (Builder $query, string $genre) {
                 $query->where('genre', $genre);
             })

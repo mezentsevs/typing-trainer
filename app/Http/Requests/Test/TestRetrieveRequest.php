@@ -3,15 +3,15 @@
 namespace App\Http\Requests\Test;
 
 use App\Http\Requests\BaseRequest;
-use App\Models\TestText;
+use App\Models\Test;
 use App\Rules\GenreSupported;
 use App\Rules\LanguageSupported;
 
-class TestGetTextRequest extends BaseRequest
+class TestRetrieveRequest extends BaseRequest
 {
     public function authorize(): bool
     {
-        return $this->user()->can('viewAny', TestText::class);
+        return $this->user()->can('viewAny', Test::class);
     }
 
     public function rules(): array

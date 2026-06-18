@@ -4,7 +4,7 @@ namespace App\Services\TestGeneration\Strategies;
 
 use App\Enums\AiType;
 
-class TestTextGeneratingLocalAiStrategy extends TestTextGeneratingAbstractAiStrategy
+class TestGeneratingLocalAiStrategy extends TestGeneratingAbstractAiStrategy
 {
     protected function getAiType(): AiType
     {

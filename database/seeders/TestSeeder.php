@@ -15,10 +15,10 @@
 namespace Database\Seeders;
 
 use App\Enums\Language;
-use App\Models\TestText;
+use App\Models\Test;
 use Illuminate\Database\Seeder;
 
-class TestTextSeeder extends Seeder
+class TestSeeder extends Seeder
 {
     public function run(): void
     {
@@ -2997,7 +2997,7 @@ class TestTextSeeder extends Seeder
 
         foreach ($texts as $language => $languageTexts) {
             foreach ($languageTexts as $textData) {
-                TestText::create([
+                Test::create([
                     'language' => $language,
                     'genre' => $textData['genre'],
                     'text' => $textData['text'],

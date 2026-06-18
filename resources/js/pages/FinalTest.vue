@@ -96,7 +96,7 @@ const resetState = (): void => {
 const fetchText = async (): Promise<void> => {
     const response: AxiosResponse<{
         text: string;
-    }> = await axios.get('/test/text', { params: { language, genre: genre.value } });
+    }> = await axios.get('/test/retrieve', { params: { language, genre: genre.value } });
 
     text.value = response.data.text;
 };

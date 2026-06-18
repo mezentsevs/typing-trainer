@@ -4,14 +4,14 @@ namespace App\Services\TestGeneration\Strategies;
 
 use App\Enums\AiType;
 use App\Helpers\StringHelper;
-use App\Services\TestGeneration\Strategies\Contracts\TestTextSupplyingStrategy;
+use App\Services\TestGeneration\Strategies\Contracts\TestRetrieveStrategy;
 use Exception;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
-abstract class TestTextGeneratingAbstractAiStrategy implements TestTextSupplyingStrategy
+abstract class TestGeneratingAbstractAiStrategy implements TestRetrieveStrategy
 {
     private string $language;
     private ?string $genre;
@@ -20,7 +20,7 @@ abstract class TestTextGeneratingAbstractAiStrategy implements TestTextSupplying
 
     abstract protected function getAiType(): AiType;
 
-    public function getText(int $userId, string $language, ?string $genre): ?string
+    public function retrieve(int $userId, string $language, ?string $genre): ?string
     {
         $this->initializeStrategy($language, $genre);
 
