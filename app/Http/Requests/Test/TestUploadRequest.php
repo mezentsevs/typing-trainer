@@ -7,7 +7,7 @@ use App\Models\Test;
 use App\Rules\LanguageSupported;
 use App\Traits\Constants\WithFileConstants;
 
-class TestUploadTextRequest extends BaseRequest
+class TestUploadRequest extends BaseRequest
 {
     use WithFileConstants;
 

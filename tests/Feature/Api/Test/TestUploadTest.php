@@ -7,12 +7,12 @@ use PHPUnit\Framework\Attributes\DataProviderExternal;
 use Tests\Providers\CommonDataProvider;
 use Tests\Traits\Fakes\WithFileFakes;
 
-class TestTextUploadTest extends TestTestCase
+class TestUploadTest extends TestTestCase
 {
     use WithFileFakes;
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testTestTextUploadSuccess(string $language): void
+    public function testTestUploadSuccess(string $language): void
     {
         $response = $this->withToken($this->token)
             ->postJson(self::TEST_UPLOAD_URI, [
@@ -25,7 +25,7 @@ class TestTextUploadTest extends TestTestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testTestTextUploadSuccessHasJsonContentType(string $language): void
+    public function testTestUploadSuccessHasJsonContentType(string $language): void
     {
         $response = $this->withToken($this->token)
             ->postJson(self::TEST_UPLOAD_URI, [
@@ -38,7 +38,7 @@ class TestTextUploadTest extends TestTestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testTestTextUploadSuccessHasJsonStructure(string $language): void
+    public function testTestUploadSuccessHasJsonStructure(string $language): void
     {
         $response = $this->withToken($this->token)
             ->postJson(self::TEST_UPLOAD_URI, [
@@ -51,7 +51,7 @@ class TestTextUploadTest extends TestTestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testTestTextUploadWithoutAuthentication(string $language): void
+    public function testTestUploadWithoutAuthentication(string $language): void
     {
         $response = $this->postJson(self::TEST_UPLOAD_URI, [
             'language' => $language,
@@ -63,7 +63,7 @@ class TestTextUploadTest extends TestTestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testTestTextUploadWithInvalidToken(string $language): void
+    public function testTestUploadWithInvalidToken(string $language): void
     {
         $response = $this->withToken(self::INVALID_TOKEN)
             ->postJson(self::TEST_UPLOAD_URI, [
@@ -75,7 +75,7 @@ class TestTextUploadTest extends TestTestCase
             ->assertStatusWithMessage(401, 'Unauthenticated.');
     }
 
-    public function testTestTextUploadWithMissingLanguage(): void
+    public function testTestUploadWithMissingLanguage(): void
     {
         $response = $this->withToken($this->token)
             ->postJson(self::TEST_UPLOAD_URI, [
@@ -86,7 +86,7 @@ class TestTextUploadTest extends TestTestCase
             ->assertStatusWithErrorAndMessage(422, 'language', 'The language field is required.');
     }
 
-    public function testTestTextUploadWithEmptyLanguage(): void
+    public function testTestUploadWithEmptyLanguage(): void
     {
         $response = $this->withToken($this->token)
             ->postJson(self::TEST_UPLOAD_URI, [
@@ -98,7 +98,7 @@ class TestTextUploadTest extends TestTestCase
             ->assertStatusWithErrorAndMessage(422, 'language', 'The language field is required.');
     }
 
-    public function testTestTextUploadWithUnknownLanguage(): void
+    public function testTestUploadWithUnknownLanguage(): void
     {
         $response = $this->withToken($this->token)
             ->postJson(self::TEST_UPLOAD_URI, [
@@ -110,7 +110,7 @@ class TestTextUploadTest extends TestTestCase
             ->assertStatusWithErrorAndMessage(422, 'language', 'The selected language is not supported.');
     }
 
-    public function testTestTextUploadWithInvalidIntLanguage(): void
+    public function testTestUploadWithInvalidIntLanguage(): void
     {
         $response = $this->withToken($this->token)
             ->postJson(self::TEST_UPLOAD_URI, [
@@ -122,7 +122,7 @@ class TestTextUploadTest extends TestTestCase
             ->assertStatusWithErrorAndMessage(422, 'language', 'The language field must be a string.');
     }
 
-    public function testTestTextUploadWithInvalidSqlInjectionLanguage(): void
+    public function testTestUploadWithInvalidSqlInjectionLanguage(): void
     {
         $response = $this->withToken($this->token)
             ->postJson(self::TEST_UPLOAD_URI, [
@@ -135,7 +135,7 @@ class TestTextUploadTest extends TestTestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testTestTextUploadWithMissingFile(string $language): void
+    public function testTestUploadWithMissingFile(string $language): void
     {
         $response = $this->withToken($this->token)
             ->postJson(self::TEST_UPLOAD_URI, [
@@ -147,7 +147,7 @@ class TestTextUploadTest extends TestTestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testTestTextUploadWithInvalidStringFile(string $language): void
+    public function testTestUploadWithInvalidStringFile(string $language): void
     {
         $response = $this->withToken($this->token)
             ->postJson(self::TEST_UPLOAD_URI, [
@@ -160,7 +160,7 @@ class TestTextUploadTest extends TestTestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testTestTextUploadWithNotSupportedFileMimeType(string $language): void
+    public function testTestUploadWithNotSupportedFileMimeType(string $language): void
     {
         $response = $this->withToken($this->token)
             ->postJson(self::TEST_UPLOAD_URI, [
@@ -173,7 +173,7 @@ class TestTextUploadTest extends TestTestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
-    public function testTestTextUploadWithExceededFileSize(string $language): void
+    public function testTestUploadWithExceededFileSize(string $language): void
     {
         $response = $this->withToken($this->token)
             ->postJson(self::TEST_UPLOAD_URI, [
