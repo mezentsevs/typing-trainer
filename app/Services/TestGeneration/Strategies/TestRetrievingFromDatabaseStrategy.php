@@ -10,13 +10,13 @@ class TestRetrievingFromDatabaseStrategy implements TestRetrieveStrategy
 {
     public function retrieve(int $userId, string $language, ?string $genre): ?string
     {
-        $testText = Test::where('language', $language)
+        $test = Test::where('language', $language)
             ->when($genre, function (Builder $query, string $genre) {
                 $query->where('genre', $genre);
             })
             ->inRandomOrder()
             ->first();
 
-        return $testText ? $testText->text : null;
+        return $test ? $test->text : null;
     }
 }
