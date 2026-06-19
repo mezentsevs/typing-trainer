@@ -23,11 +23,11 @@ class TestServiceProvider extends ServiceProvider
             TestGeneratingCloudAiStrategy::class,
             TestReadingFromFileStrategy::class,
             TestRetrievingFromDatabaseStrategy::class,
-        ], 'testTextSupplyingStrategies');
+        ], 'testRetrieveStrategies');
 
         $this->app->bind(TestGenerationOrchestrator::class, function ($app) {
             return new TestGenerationOrchestrator(
-                iterator_to_array($app->tagged('testTextSupplyingStrategies'), false),
+                iterator_to_array($app->tagged('testRetrieveStrategies'), false),
             );
         });
 
