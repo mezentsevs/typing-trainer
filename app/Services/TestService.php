@@ -3,7 +3,9 @@
 namespace App\Services;
 
 use App\Dtos\TestRetrieveDto;
+use App\Dtos\TestSaveResultDto;
 use App\Dtos\TestUploadDto;
+use App\Models\TestResult;
 use App\Services\TestGeneration\TestGenerationOrchestrator;
 
 class TestService
@@ -28,5 +30,16 @@ class TestService
             'test_' . $dto->userId . "_{$dto->language}.txt",
             'public',
         );
+    }
+
+    public function saveResult(TestSaveResultDto $dto): TestResult
+    {
+        return TestResult::create([
+            'user_id' => $dto->userId,
+            'language' => $dto->language,
+            'time_seconds' => $dto->timeSeconds,
+            'speed_wpm' => $dto->speedWpm,
+            'errors' => $dto->errors,
+        ]);
     }
 }
