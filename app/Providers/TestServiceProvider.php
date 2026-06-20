@@ -2,10 +2,10 @@
 
 namespace App\Providers;
 
-use App\Services\TestGeneration\Strategies\TestGeneratingCloudAiStrategy;
-use App\Services\TestGeneration\Strategies\TestGeneratingLocalAiStrategy;
-use App\Services\TestGeneration\Strategies\TestReadingFromFileStrategy;
-use App\Services\TestGeneration\Strategies\TestRetrievingFromDatabaseStrategy;
+use App\Services\TestGeneration\Strategies\TestRetrieveAiCloudStrategy;
+use App\Services\TestGeneration\Strategies\TestRetrieveAiLocalStrategy;
+use App\Services\TestGeneration\Strategies\TestRetrieveDatabaseStrategy;
+use App\Services\TestGeneration\Strategies\TestRetrieveFileStrategy;
 use App\Services\TestGeneration\TestGenerationOrchestrator;
 use App\Services\TestService;
 use Illuminate\Support\ServiceProvider;
@@ -19,10 +19,10 @@ class TestServiceProvider extends ServiceProvider
         });
 
         $this->app->tag([
-            TestGeneratingLocalAiStrategy::class,
-            TestGeneratingCloudAiStrategy::class,
-            TestReadingFromFileStrategy::class,
-            TestRetrievingFromDatabaseStrategy::class,
+            TestRetrieveAiLocalStrategy::class,
+            TestRetrieveAiCloudStrategy::class,
+            TestRetrieveFileStrategy::class,
+            TestRetrieveDatabaseStrategy::class,
         ], 'testRetrieveStrategies');
 
         $this->app->bind(TestGenerationOrchestrator::class, function ($app) {
@@ -31,9 +31,9 @@ class TestServiceProvider extends ServiceProvider
             );
         });
 
-        $this->app->bind(TestGeneratingLocalAiStrategy::class);
-        $this->app->bind(TestGeneratingCloudAiStrategy::class);
-        $this->app->bind(TestReadingFromFileStrategy::class);
-        $this->app->bind(TestRetrievingFromDatabaseStrategy::class);
+        $this->app->bind(TestRetrieveAiLocalStrategy::class);
+        $this->app->bind(TestRetrieveAiCloudStrategy::class);
+        $this->app->bind(TestRetrieveFileStrategy::class);
+        $this->app->bind(TestRetrieveDatabaseStrategy::class);
     }
 }

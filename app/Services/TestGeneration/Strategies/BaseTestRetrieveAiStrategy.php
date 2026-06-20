@@ -11,7 +11,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
-abstract class TestGeneratingAbstractAiStrategy implements TestRetrieveStrategy
+abstract class BaseTestRetrieveAiStrategy implements TestRetrieveStrategy
 {
     private string $language;
     private ?string $genre;

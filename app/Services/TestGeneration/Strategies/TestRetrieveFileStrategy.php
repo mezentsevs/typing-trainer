@@ -6,7 +6,7 @@ use App\Helpers\StringHelper;
 use App\Services\TestGeneration\Strategies\Contracts\TestRetrieveStrategy;
 use Illuminate\Support\Facades\Storage;
 
-class TestReadingFromFileStrategy implements TestRetrieveStrategy
+class TestRetrieveFileStrategy implements TestRetrieveStrategy
 {
     public function retrieve(int $userId, string $language, ?string $genre): ?string
     {

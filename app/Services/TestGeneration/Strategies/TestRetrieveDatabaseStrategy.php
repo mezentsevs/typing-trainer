@@ -6,7 +6,7 @@ use App\Models\Test;
 use App\Services\TestGeneration\Strategies\Contracts\TestRetrieveStrategy;
 use Illuminate\Database\Eloquent\Builder;
 
-class TestRetrievingFromDatabaseStrategy implements TestRetrieveStrategy
+class TestRetrieveDatabaseStrategy implements TestRetrieveStrategy
 {
     public function retrieve(int $userId, string $language, ?string $genre): ?string
     {
