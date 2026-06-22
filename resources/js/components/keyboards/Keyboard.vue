@@ -25,7 +25,7 @@
                             ? HIGHLIGHTED_BUTTON_CLASS
                             : NORMAL_BUTTON_CLASS,
                         key.width ? `w-${key.width}` : 'w-10',
-                        key.value === 'backspace' ? 'text-sm' : '',
+                        key.value === 'backspace' ? 'text-sm px-1' : '',
                     ]"
                     :style="getKeyStyle(key)">
                     <span class="block">{{ key.display }}</span>
@@ -224,7 +224,7 @@ const KEYBOARD_LAYOUTS: Record<Language, KeyboardLayout> = {
                 specialPosition: SpecialPosition.TopLeft,
                 zone: Zone.Right,
             },
-            { value: 'backspace', display: 'Backspace', width: 80, zone: Zone.Right },
+            { value: 'backspace', display: 'Backspace', width: 76, zone: Zone.Right },
         ],
         [
             { value: 'tab', display: 'Tab', width: 60, zone: Zone.Left },
@@ -576,7 +576,7 @@ const KEYBOARD_LAYOUTS: Record<Language, KeyboardLayout> = {
                 specialPosition: SpecialPosition.TopLeft,
                 zone: Zone.Right,
             },
-            { value: 'backspace', display: 'Backspace', width: 80, zone: Zone.Right },
+            { value: 'backspace', display: 'Backspace', width: 76, zone: Zone.Right },
         ],
         [
             { value: 'tab', display: 'Tab', width: 60, zone: Zone.Left },
