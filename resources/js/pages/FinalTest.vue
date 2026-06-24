@@ -20,8 +20,8 @@
                     :key="index"
                     :class="{
                         'error-char': typed[index] && typed[index] !== char,
-                        'current-word': isCurrentWord[index],
                         'current-char': index === typed.length && !isTestCompleted,
+                        'current-word': isCurrentWord[index],
                         space: char === ' ',
                         'line-break': char === '\n',
                     }">
