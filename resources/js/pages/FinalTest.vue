@@ -21,6 +21,7 @@
                     :class="{
                         'error-char': typed[index] && typed[index] !== char,
                         'current-word': isCurrentWord[index],
+                        'current-char': index === typed.length && !isTestCompleted,
                         space: char === ' ',
                         'line-break': char === '\n',
                     }">
