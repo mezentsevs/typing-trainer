@@ -1,11 +1,3 @@
-.error-char {
-    @apply bg-red-200 text-red-800;
-}
-
-.current-char {
-    @apply bg-blue-100 dark:bg-blue-700;
-}
-
 .current-word {
     @apply underline decoration-gray-300 dark:decoration-gray-700;
 }
@@ -17,4 +9,16 @@
 .current-word.line-break::before {
     @apply text-gray-300 dark:text-gray-700;
     content: "↵";
+}
+
+.current-char {
+    @apply bg-blue-100 dark:bg-blue-700;
+}
+
+.typed-char {
+    @apply opacity-70;
+}
+
+.error-char {
+    @apply bg-red-200 text-red-800;
 }

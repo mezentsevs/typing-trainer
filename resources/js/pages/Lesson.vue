@@ -23,11 +23,12 @@
                     v-for="(char, index) in text"
                     :key="index"
                     :class="{
-                        'error-char': typed[index] && typed[index] !== char,
-                        'current-char': index === typed.length && !isLessonCompleted,
                         'current-word': isCurrentWord[index],
                         space: char === ' ',
                         'line-break': char === '\n',
+                        'current-char': index === typed.length && !isLessonCompleted,
+                        'typed-char': typed[index] === char,
+                        'error-char': typed[index] && typed[index] !== char,
                     }">
                     {{ char }}
                 </span>
