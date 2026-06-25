@@ -15,19 +15,7 @@
 
         <main>
             <TextContainer ref="textContainerRef" class="h-28 mt-4 text-lg font-mono">
-                <span
-                    v-for="(char, index) in text"
-                    :key="index"
-                    :class="{
-                        'current-word': isCurrentWord[index],
-                        space: char === ' ',
-                        'line-break': char === '\n',
-                        'current-char': index === typed.length && !isTestCompleted,
-                        'typed-char': typed[index] === char,
-                        'error-char': typed[index] && typed[index] !== char,
-                    }">
-                    {{ char }}
-                </span>
+                <TypingText :text :typed :is-current-word :is-completed="isTestCompleted" />
             </TextContainer>
             <TextArea
                 id="typed"
@@ -48,6 +36,11 @@
 </template>
 
 <script lang="ts" setup>
+import { ComputedRef, Ref, ref } from 'vue';
+import { Language } from '@/enums/KeyboardEnums';
+import { RouteLocationNormalizedLoaded, useRoute } from 'vue-router';
+import { useHandleTypingInput, useCurrentWord, useProgress } from '@/composables/TypingComposables';
+import axios, { AxiosResponse } from 'axios';
 import ContentCard from '@/pages/partials/cards/ContentCard.vue';
 import FinalTestSetup from '@/pages/partials/FinalTestSetup.vue';
 import Heading from '@/components/uikit/headings/Heading.vue';
@@ -59,11 +52,7 @@ import SuccessBanner from '@/components/uikit/banners/SuccessBanner.vue';
 import TextArea from '@/components/uikit/inputs/TextArea.vue';
 import TextContainer from '@/components/uikit/containers/TextContainer.vue';
 import TypingContext from '@/interfaces/typing/TypingContext';
-import axios, { AxiosResponse } from 'axios';
-import { ComputedRef, Ref, ref } from 'vue';
-import { Language } from '@/enums/KeyboardEnums';
-import { RouteLocationNormalizedLoaded, useRoute } from 'vue-router';
-import { useHandleTypingInput, useCurrentWord, useProgress } from '@/composables/TypingComposables';
+import TypingText from '@/components/typing/TypingText.vue';
 
 const route: RouteLocationNormalizedLoaded<string | symbol> = useRoute();
 const { handleTypingInput }: Record<string, Function> = useHandleTypingInput();
