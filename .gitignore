@@ -16,7 +16,6 @@ _ide_helper.php
 /node_modules
 /public/adminer.php
 /public/build
-/public/docs
 /public/hot
 /public/storage
 /storage/*.key

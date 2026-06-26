@@ -1,0 +1,315 @@
+openapi: 3.0.3
+info:
+  title: 'Typing Trainer API Documentation'
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost'
+tags:
+  -
+    name: Endpoints
+    description: ''
+paths:
+  /api/register:
+    post:
+      summary: ''
+      operationId: postApiRegister
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must match the regex /^[a-zA-Z \-0-9]+$/. Must not be greater than 255 characters.'
+                  example: b
+                email:
+                  type: string
+                  description: 'Must be a valid email address. Must not be greater than 255 characters.'
+                  example: zbailey@example.net
+                password:
+                  type: string
+                  description: 'Must match the regex /^[!-~]+$/. Must be at least 8 characters. Must not be greater than 255 characters.'
+                  example: '-0pBNvYgxw'
+              required:
+                - name
+                - email
+                - password
+      security: []
+  /api/login:
+    post:
+      summary: ''
+      operationId: postApiLogin
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'Must be a valid email address. Must not be greater than 255 characters.'
+                  example: gbailey@example.net
+                password:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: '+-0pBNvYgxwmi/#iw'
+              required:
+                - email
+                - password
+      security: []
+  /api/logout:
+    post:
+      summary: ''
+      operationId: postApiLogout
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  '/api/lessons/{language}/{lessonNumber}':
+    get:
+      summary: ''
+      operationId: getApiLessonsLanguageLessonNumber
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                language:
+                  type: string
+                  description: ''
+                  example: null
+                lesson_number:
+                  type: integer
+                  description: 'Must be at least 1. Must not be greater than 20.'
+                  example: 16
+      security: []
+    parameters:
+      -
+        in: path
+        name: language
+        description: ''
+        example: architecto
+        required: true
+        schema:
+          type: string
+      -
+        in: path
+        name: lessonNumber
+        description: ''
+        example: architecto
+        required: true
+        schema:
+          type: string
+  /api/lessons/generate:
+    post:
+      summary: ''
+      operationId: postApiLessonsGenerate
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                language:
+                  type: string
+                  description: ''
+                  example: architecto
+                lesson_count:
+                  type: integer
+                  description: 'Must be at least 1. Must not be greater than 20.'
+                  example: 12
+              required:
+                - language
+                - lesson_count
+      security: []
+  /api/lessons/result:
+    post:
+      summary: ''
+      operationId: postApiLessonsResult
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                lesson_id:
+                  type: integer
+                  description: 'The <code>id</code> of an existing record in the lessons table.'
+                  example: 16
+                language:
+                  type: string
+                  description: ''
+                  example: architecto
+                time_seconds:
+                  type: integer
+                  description: 'Must be at least 0.'
+                  example: 39
+                speed_wpm:
+                  type: integer
+                  description: 'Must be at least 0.'
+                  example: 84
+                errors:
+                  type: integer
+                  description: 'Must be at least 0.'
+                  example: 12
+              required:
+                - lesson_id
+                - language
+                - time_seconds
+                - speed_wpm
+                - errors
+      security: []
+  /api/test/retrieve:
+    get:
+      summary: ''
+      operationId: getApiTestRetrieve
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                language:
+                  type: string
+                  description: ''
+                  example: architecto
+                genre:
+                  type: string
+                  description: ''
+                  example: null
+                  nullable: true
+              required:
+                - language
+      security: []
+  /api/test/upload:
+    post:
+      summary: ''
+      operationId: postApiTestUpload
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                language:
+                  type: string
+                  description: ''
+                  example: architecto
+                file:
+                  type: string
+                  format: binary
+                  description: 'Must be a file. Must not be greater than 3 kilobytes.'
+              required:
+                - language
+                - file
+      security: []
+  /api/test/result:
+    post:
+      summary: ''
+      operationId: postApiTestResult
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                language:
+                  type: string
+                  description: ''
+                  example: architecto
+                time_seconds:
+                  type: integer
+                  description: 'Must be at least 0.'
+                  example: 39
+                speed_wpm:
+                  type: integer
+                  description: 'Must be at least 0.'
+                  example: 84
+                errors:
+                  type: integer
+                  description: 'Must be at least 0.'
+                  example: 12
+              required:
+                - language
+                - time_seconds
+                - speed_wpm
+                - errors
+      security: []
