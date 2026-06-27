@@ -1,0 +1,18 @@
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+    @apply opacity-0 transition-opacity;
+}
+
+input[type='number']:hover::-webkit-inner-spin-button,
+input[type='number']:hover::-webkit-outer-spin-button,
+input[type='number']:focus::-webkit-inner-spin-button,
+input[type='number']:focus::-webkit-outer-spin-button {
+    @apply opacity-60;
+}
+
+.dark input[type='number']:hover::-webkit-inner-spin-button,
+.dark input[type='number']:hover::-webkit-outer-spin-button,
+.dark input[type='number']:focus::-webkit-inner-spin-button,
+.dark input[type='number']:focus::-webkit-outer-spin-button {
+    @apply opacity-15;
+}
