@@ -1,6 +1,7 @@
 <template>
     <div
         class="min-h-screen grow bg-gradient-to-br from-blue-100 via-white to-purple-50 dark:from-gray-900 dark:via-blue-950 dark:to-purple-950 text-center flex flex-col items-center justify-center">
+        <LogoIcon class="w-12 h-12 mb-4 text-blue-500 dark:text-blue-600 animate-wiggle-once" />
         <h1 class="pb-2 flex items-center text-5xl md:text-7xl font-mono">
             <TypingAnimation
                 :text="APP_NAME"
@@ -37,6 +38,7 @@ import { useAuthStore } from '@/stores/Auth';
 import AuthActions from '@/interfaces/auth/AuthActions';
 import AuthGetters from '@/interfaces/auth/AuthGetters';
 import AuthState from '@/interfaces/auth/AuthState';
+import LogoIcon from '@/components/icons/LogoIcon.vue';
 import TypingAnimation from '@/components/uikit/animations/TypingAnimation.vue';
 
 const authStore: Store<string, AuthState, AuthGetters, AuthActions> = useAuthStore();
@@ -88,6 +90,25 @@ const logout = async (): Promise<void> => {
     }
     100% {
         transform: translateY(0);
+    }
+}
+
+.animate-wiggle-once {
+    animation: wiggle 0.5s ease-in-out 1;
+}
+
+@keyframes wiggle {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(15deg);
+    }
+    75% {
+        transform: rotate(-15deg);
+    }
+    100% {
+        transform: rotate(0deg);
     }
 }
 
