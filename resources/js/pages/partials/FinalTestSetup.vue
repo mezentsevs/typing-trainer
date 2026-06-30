@@ -23,12 +23,18 @@
             </PrimarySpinnerButton>
         </form>
         <ErrorMessage :message="error" />
+        <div class="mt-4 flex items-center gap-1.5 text-gray-400 dark:text-gray-500 text-xs">
+            <AiIcon class="w-6 h-6 shrink-0" />
+            <span>{{ AI_DISCLAIMER }}</span>
+        </div>
     </SetupCard>
 </template>
 
 <script lang="ts" setup>
+import { AI_DISCLAIMER } from '@/consts/AiConsts';
 import { Genre } from '@/enums/FinalTestEnums';
 import { Ref, ref } from 'vue';
+import AiIcon from '@/components/icons/AiIcon.vue';
 import ErrorMessage from '@/components/uikit/messages/ErrorMessage.vue';
 import Heading from '@/components/uikit/headings/Heading.vue';
 import Input from '@/components/uikit/inputs/Input.vue';
