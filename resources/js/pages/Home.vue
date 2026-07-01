@@ -20,6 +20,7 @@
                 Logout
             </button>
         </div>
+        <AiDisclaimer :text="AI_DISCLAIMER" class="mt-8" />
         <div class="absolute inset-0 pointer-events-none overflow-hidden">
             <div
                 v-for="(circle, index) in CIRCLES"
@@ -31,10 +32,12 @@
 </template>
 
 <script lang="ts" setup>
+import { AI_DISCLAIMER } from '@/consts/AiConsts';
 import { APP_NAME, APP_SLOGAN } from '@/consts/AppConsts';
 import { Router, useRouter } from 'vue-router';
 import { Store } from 'pinia';
 import { useAuthStore } from '@/stores/Auth';
+import AiDisclaimer from '@/components/uikit/disclaimers/AiDisclaimer.vue';
 import AuthActions from '@/interfaces/auth/AuthActions';
 import AuthGetters from '@/interfaces/auth/AuthGetters';
 import AuthState from '@/interfaces/auth/AuthState';
