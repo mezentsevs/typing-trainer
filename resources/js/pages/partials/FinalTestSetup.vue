@@ -18,7 +18,7 @@
                 class="mb-4 w-full"
                 style="border-radius: 0.15rem"
                 @change="uploadFile" />
-            <PrimarySpinnerButton class="w-full" :loading="loading" @click="onStart">
+            <PrimarySpinnerButton class="w-full" :loading @click="onStart">
                 Start
             </PrimarySpinnerButton>
         </form>

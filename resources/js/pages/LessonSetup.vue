@@ -19,31 +19,32 @@
                 max="20"
                 class="mb-4 w-full"
                 required />
-            <PrimaryButton class="w-full">Generate</PrimaryButton>
+            <PrimarySpinnerButton class="w-full" :loading>Generate</PrimarySpinnerButton>
         </form>
         <ErrorMessage :message="error" />
     </SetupCard>
 </template>
 
 <script lang="ts" setup>
+import { Language } from '@/enums/KeyboardEnums';
+import { Ref, ref } from 'vue';
+import { Router, useRouter } from 'vue-router';
+import axios from 'axios';
 import ErrorMessage from '@/components/uikit/messages/ErrorMessage.vue';
 import Heading from '@/components/uikit/headings/Heading.vue';
 import Input from '@/components/uikit/inputs/Input.vue';
 import InputLabel from '@/components/uikit/inputs/partials/InputLabel.vue';
 import LessonSetupForm from '@/interfaces/LessonSetupForm';
-import PrimaryButton from '@/components/uikit/buttons/PrimaryButton.vue';
+import PrimarySpinnerButton from '@/components/uikit/buttons/PrimarySpinnerButton.vue';
 import Select from '@/components/uikit/inputs/Select.vue';
 import SetupCard from '@/pages/partials/cards/SetupCard.vue';
 import UIKitSelectOption from '@/interfaces/uikit/UIKitSelectOption';
-import axios from 'axios';
-import { Language } from '@/enums/KeyboardEnums';
-import { Ref, ref } from 'vue';
-import { Router, useRouter } from 'vue-router';
 
 const router: Router = useRouter();
 
 const form: Ref<LessonSetupForm> = ref({ language: Language.En, lessonCount: 10 });
 const error: Ref<string> = ref('');
+const loading: Ref<boolean> = ref(false);
 
 const languages: UIKitSelectOption[] = [
     { label: 'English', value: Language.En },
@@ -52,6 +53,7 @@ const languages: UIKitSelectOption[] = [
 
 const generateLessons = async (): Promise<void> => {
     try {
+        loading.value = true;
         await axios.post('/lessons/generate', {
             language: form.value.language,
             lesson_count: form.value.lessonCount,
@@ -62,6 +64,8 @@ const generateLessons = async (): Promise<void> => {
         if (err instanceof Error) {
             error.value = 'Lessons generation failed';
         }
+    } finally {
+        loading.value = false;
     }
 };
 </script>
