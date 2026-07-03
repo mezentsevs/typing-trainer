@@ -10,6 +10,7 @@ import {
     createWebHistory,
 } from 'vue-router';
 
+import { APP_NAME } from '@/consts/AppConsts';
 import FinalTest from '@/pages/FinalTest.vue';
 import Home from '@/pages/Home.vue';
 import Lesson from '@/pages/Lesson.vue';
@@ -18,12 +19,24 @@ import Login from '@/pages/auth/Login.vue';
 import Register from '@/pages/auth/Register.vue';
 
 const routes: RouteRecordRaw[] = [
-    { path: '/', component: Home, meta: { requiresAuth: true } },
-    { path: '/login', component: Login },
-    { path: '/register', component: Register },
-    { path: '/setup', component: LessonSetup, meta: { requiresAuth: true } },
-    { path: '/lesson/:language/:number', component: Lesson, meta: { requiresAuth: true } },
-    { path: '/test/:language', component: FinalTest, meta: { requiresAuth: true } },
+    { path: '/', component: Home, meta: { requiresAuth: true, title: 'Home' } },
+    { path: '/login', component: Login, meta: { title: 'Login' } },
+    { path: '/register', component: Register, meta: { title: 'Register' } },
+    {
+        path: '/setup',
+        component: LessonSetup,
+        meta: { requiresAuth: true, title: 'Setup Lessons' },
+    },
+    {
+        path: '/lesson/:language/:number',
+        component: Lesson,
+        meta: { requiresAuth: true, title: 'Lesson' },
+    },
+    {
+        path: '/test/:language',
+        component: FinalTest,
+        meta: { requiresAuth: true, title: 'Final Test' },
+    },
 ];
 
 const router: Router = createRouter({
@@ -44,6 +57,8 @@ router.beforeEach(
         } else {
             next();
         }
+
+        document.title = to.meta.title ? `${to.meta.title} - ${APP_NAME}` : APP_NAME;
     },
 );
 
