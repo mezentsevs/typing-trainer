@@ -72,6 +72,28 @@ paths:
                 - email
                 - password
       security: []
+  /api/me:
+    get:
+      summary: ''
+      operationId: getApiMe
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
   /api/logout:
     post:
       summary: ''
