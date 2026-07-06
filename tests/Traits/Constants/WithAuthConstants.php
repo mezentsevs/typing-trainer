@@ -6,9 +6,19 @@ trait WithAuthConstants
 {
     use WithTokenConstants;
 
+    protected const string ME_URI = '/api/me';
     protected const string REGISTER_URI = '/api/register';
     protected const string LOGIN_URI = '/api/login';
     protected const string LOGOUT_URI = '/api/logout';
+
+    protected const array ME_RESPONSE_USER_JSON_STRUCTURE = [
+        'id',
+        'name',
+        'email',
+        'email_verified_at',
+        'created_at',
+        'updated_at',
+    ];
 
     protected const array REGISTER_RESPONSE_USER_JSON_STRUCTURE = [
         'id',
