@@ -10,6 +10,16 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
+    public function me(): JsonResponse
+    {
+        /**
+         * @var User $user
+         */
+        $user = Auth::user();
+
+        return response()->json(['user' => $user]);
+    }
+
     public function register(Request $request): JsonResponse
     {
         $request->validate([

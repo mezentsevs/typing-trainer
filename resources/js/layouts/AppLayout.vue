@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, ComputedRef } from 'vue';
+import { computed, ComputedRef, onMounted } from 'vue';
 import { Store } from 'pinia';
 import { useAuthStore } from '@/stores/Auth';
 import AuthActions from '@/interfaces/auth/AuthActions';
@@ -22,4 +22,10 @@ import UserBadge from '@/components/uikit/badges/UserBadge.vue';
 const authStore: Store<string, AuthState, AuthGetters, AuthActions> = useAuthStore();
 
 const userName: ComputedRef<string> = computed((): string => authStore.user?.name ?? '');
+
+onMounted(async (): Promise<void> => {
+    if (authStore.token && !authStore.user) {
+        await authStore.fetchMe();
+    }
+});
 </script>

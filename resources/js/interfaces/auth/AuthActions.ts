@@ -1,4 +1,5 @@
 export default interface AuthActions {
+    fetchMe(): Promise<void>;
     login(email: string, password: string): Promise<void>;
     register(
         name: string,
