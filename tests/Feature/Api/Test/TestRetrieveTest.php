@@ -57,6 +57,18 @@ class TestRetrieveTest extends TestTestCase
             ->assertStatusWithMessage(401, 'Unauthenticated.');
     }
 
+    #[DataProviderExternal(TestDataProvider::class, 'provideTestRetrieveRequestData')]
+    public function testTestRetrieveWithInvalidTokenHasJsonContentType(array $data): void
+    {
+        $testRetrieveUri = sprintf(self::TEST_RETRIEVE_URI_TEMPLATE, $data['language'], $data['genre']);
+
+        $response = $this->withToken(self::INVALID_TOKEN)
+            ->getJson($testRetrieveUri);
+
+        $this->withResponse($response)
+            ->assertStatusWithHeaderNameAndValue(401, self::CONTENT_TYPE_HEADER_NAME, self::JSON_MIME_TYPE);
+    }
+
     #[DataProviderExternal(TestDataProvider::class, 'provideSupportedGenres')]
     public function testTestRetrieveWithUnknownLanguage(string $genre): void
     {
