@@ -89,6 +89,15 @@ class LogoutTest extends TestCase
             ->assertStatusWithMessage(401, 'Unauthenticated.');
     }
 
+    public function testLogoutWithInvalidTokenHasJsonContentType(): void
+    {
+        $response = $this->withToken(self::INVALID_TOKEN)
+            ->postJson(self::LOGOUT_URI);
+
+        $this->withResponse($response)
+            ->assertStatusWithHeaderNameAndValue(401, self::CONTENT_TYPE_HEADER_NAME, self::JSON_MIME_TYPE);
+    }
+
     public function testLogoutWithInvalidTokenFormat(): void
     {
         $response = $this->withHeader(self::AUTHORIZATION_HEADER_NAME, self::INVALID_TOKEN)
