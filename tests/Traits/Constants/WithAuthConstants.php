@@ -4,7 +4,7 @@ namespace Tests\Traits\Constants;
 
 trait WithAuthConstants
 {
-    use WithTokenConstants;
+    use WithResponseConstants, WithTokenConstants;
 
     protected const string ME_URI = '/api/me';
     protected const string REGISTER_URI = '/api/register';
@@ -59,6 +59,4 @@ trait WithAuthConstants
     protected const string INVALID_EMPTY_PASSWORD = '';
 
     protected const string AUTHORIZATION_HEADER_NAME = 'Authorization';
-    protected const string CONTENT_TYPE_HEADER_NAME = 'Content-Type';
-    protected const string JSON_MIME_TYPE = 'application/json';
 }

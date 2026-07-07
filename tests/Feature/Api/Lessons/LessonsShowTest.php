@@ -85,6 +85,19 @@ class LessonsShowTest extends LessonTestCase
     }
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
+    public function testLessonsShowExistingWithInvalidTokenHasJsonContentType(string $language): void
+    {
+        $lesson = $this->createLesson($this->user, ['language' => $language]);
+        $lessonUri = sprintf(self::LESSONS_SHOW_URI_TEMPLATE, $lesson->language, $lesson->number);
+
+        $response = $this->withToken(self::INVALID_TOKEN)
+            ->getJson($lessonUri);
+
+        $this->withResponse($response)
+            ->assertStatusWithHeaderNameAndValue(401, self::CONTENT_TYPE_HEADER_NAME, self::JSON_MIME_TYPE);
+    }
+
+    #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testLessonsShowNonexistentWithInvalidToken(string $language): void
     {
         $lessonUri = sprintf(self::LESSONS_SHOW_URI_TEMPLATE, $language, self::LESSON_NUMBER_FOR_ACCESS);
