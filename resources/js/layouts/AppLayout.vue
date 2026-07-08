@@ -4,7 +4,9 @@
             <UserBadge v-if="userName" :name="userName" />
             <ThemeToggle />
         </div>
-        <slot />
+        <FadeTransition>
+            <slot />
+        </FadeTransition>
     </BaseLayout>
 </template>
 
@@ -16,6 +18,7 @@ import AuthActions from '@/interfaces/auth/AuthActions';
 import AuthGetters from '@/interfaces/auth/AuthGetters';
 import AuthState from '@/interfaces/auth/AuthState';
 import BaseLayout from '@/layouts/BaseLayout.vue';
+import FadeTransition from '@/components/uikit/transitions/FadeTransition.vue';
 import ThemeToggle from '@/components/uikit/toggles/ThemeToggle.vue';
 import UserBadge from '@/components/uikit/badges/UserBadge.vue';
 
