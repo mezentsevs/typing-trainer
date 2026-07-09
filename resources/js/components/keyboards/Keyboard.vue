@@ -1,11 +1,13 @@
 <template>
-    <button
-        v-if="isMinimized"
-        class="keyboard-preview-button w-32 mx-auto my-4 p-2 flex justify-center items-center gap-2 border border-opacity-50 border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 active:bg-gray-50 dark:active:bg-gray-900 text-gray-500 dark:text-gray-300 text-sm font-medium select-none cursor-pointer rounded-lg shadow-sm"
-        @click="toggleKeyboard">
-        <KeyboardIcon class="w-6 h-6 shrink-0 fill-gray-500 dark:fill-gray-300" />
-        Keyboard
-    </button>
+    <div v-if="isMinimized" class="group relative w-32 mx-auto my-4">
+        <Tooltip text="Show Keyboard" />
+        <button
+            class="keyboard-preview-button w-full p-2 flex justify-center items-center gap-2 border border-opacity-50 border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 active:bg-gray-50 dark:active:bg-gray-900 text-gray-500 dark:text-gray-300 text-sm font-medium select-none cursor-pointer rounded-lg shadow-sm"
+            @click="toggleKeyboard">
+            <KeyboardIcon class="w-6 h-6 shrink-0 fill-gray-500 dark:fill-gray-300" />
+            Keyboard
+        </button>
+    </div>
 
     <section
         v-else
@@ -112,11 +114,12 @@
 </template>
 
 <script lang="ts" setup>
-import KeyboardIcon from '@/components/icons/KeyboardIcon.vue';
-import KeyboardKey from '@/interfaces/KeyboardKey';
+import { computed, ComputedRef, Ref, ref } from 'vue';
 import { KeyboardLayout } from '@/types/KeyboardTypes';
 import { Language, SpecialPosition, Zone } from '@/enums/KeyboardEnums';
-import { computed, ComputedRef, Ref, ref } from 'vue';
+import KeyboardIcon from '@/components/icons/KeyboardIcon.vue';
+import KeyboardKey from '@/interfaces/KeyboardKey';
+import Tooltip from '@/components/uikit/tooltips/Tooltip.vue';
 
 const props = defineProps<{
     language: Language;
