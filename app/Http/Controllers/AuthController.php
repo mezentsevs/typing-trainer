@@ -2,14 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Dtos\RegisterDto;
+use App\Http\Requests\Auth\RegisterRequest;
 use App\Models\User;
+use App\Services\AuthService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
+    public function __construct(protected AuthService $authService)
+    {
+    }
+
     public function me(): JsonResponse
     {
         /**
@@ -20,24 +26,15 @@ class AuthController extends Controller
         return response()->json(['user' => $user]);
     }
 
-    public function register(Request $request): JsonResponse
+    public function register(RegisterRequest $request): JsonResponse
     {
-        $request->validate([
-            'name' => 'bail|required|string|max:255|regex:/^[a-zA-Z \-0-9]+$/',
-            'email' => 'bail|required|string|email|max:255|unique:users',
-            'password' => 'bail|required|string|min:8|max:255|confirmed|regex:/^[!-~]+$/',
-        ]);
-
-        $user = User::create([
+        $dto = RegisterDto::fromArray([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'password' => $request->password,
         ]);
 
-        return response()->json([
-            'token' => $user->createToken('auth_token')->plainTextToken,
-            'user' => $user,
-        ], 201);
+        return response()->json($this->authService->register($dto), 201);
     }
 
     public function login(Request $request): JsonResponse
