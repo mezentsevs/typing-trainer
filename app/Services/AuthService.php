@@ -35,7 +35,9 @@ class AuthService
             return null;
         }
 
-        /** @var User $user */
+        /**
+         * @var User $user
+         */
         $user = Auth::user();
 
         $token = $user->createToken('auth_token')->plainTextToken;
@@ -44,5 +46,16 @@ class AuthService
             'token' => $token,
             'user' => $user,
         ];
+    }
+
+    public function logout(): void
+    {
+        /**
+         * @var User $user
+         */
+        $user = Auth::user();
+
+        $user->tokens()->delete();
+        Auth::forgetGuards();
     }
 }

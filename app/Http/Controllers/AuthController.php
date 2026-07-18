@@ -54,13 +54,7 @@ class AuthController extends Controller
 
     public function logout(): JsonResponse
     {
-        /**
-         * @var User $user
-         */
-        $user = Auth::user();
-
-        $user->tokens()->delete();
-        Auth::forgetGuards();
+        $this->authService->logout();
 
         return response()->json(['message' => 'Logged out']);
     }
