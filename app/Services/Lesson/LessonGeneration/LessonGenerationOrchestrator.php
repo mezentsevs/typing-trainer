@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\LessonGeneration;
+namespace App\Services\Lesson\LessonGeneration;
 
 use App\Models\Lesson;
 use App\Models\LessonResult;

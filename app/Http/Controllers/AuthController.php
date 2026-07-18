@@ -6,7 +6,7 @@ use App\Dtos\Auth\LoginDto;
 use App\Dtos\Auth\RegisterDto;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\Auth\RegisterRequest;
-use App\Services\AuthService;
+use App\Services\Auth\AuthService;
 use Illuminate\Http\JsonResponse;
 
 class AuthController extends Controller

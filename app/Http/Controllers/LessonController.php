@@ -10,7 +10,7 @@ use App\Http\Requests\Lesson\LessonSaveResultRequest;
 use App\Http\Requests\Lesson\LessonShowRequest;
 use App\Models\Lesson;
 use App\Models\LessonResult;
-use App\Services\LessonService;
+use App\Services\Lesson\LessonService;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\JsonResponse;
 

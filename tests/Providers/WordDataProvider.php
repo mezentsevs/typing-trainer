@@ -3,7 +3,7 @@
 namespace Tests\Providers;
 
 use App\Enums\Language;
-use App\Services\WordGeneration\WordCharDataProvider;
+use App\Services\Word\WordGeneration\WordCharDataProvider;
 
 class WordDataProvider
 {

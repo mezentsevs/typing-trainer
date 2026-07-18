@@ -2,13 +2,13 @@
 
 namespace App\Providers;
 
-use App\Services\WordGeneration\WordCharDataProvider;
-use App\Services\WordGeneration\WordCharProbabilitySelector;
-use App\Services\WordGeneration\WordCharSetsInitializer;
-use App\Services\WordGeneration\WordGenerationOrchestrator;
-use App\Services\WordGeneration\WordLettersPartGenerator;
-use App\Services\WordGeneration\WordSpecialCharsAppender;
-use App\Services\WordService;
+use App\Services\Word\WordGeneration\WordCharDataProvider;
+use App\Services\Word\WordGeneration\WordCharProbabilitySelector;
+use App\Services\Word\WordGeneration\WordCharSetsInitializer;
+use App\Services\Word\WordGeneration\WordGenerationOrchestrator;
+use App\Services\Word\WordGeneration\WordLettersPartGenerator;
+use App\Services\Word\WordGeneration\WordSpecialCharsAppender;
+use App\Services\Word\WordService;
 use Illuminate\Support\ServiceProvider;
 
 class WordServiceProvider extends ServiceProvider

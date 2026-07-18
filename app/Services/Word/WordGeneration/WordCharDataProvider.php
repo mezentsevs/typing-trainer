@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\WordGeneration;
+namespace App\Services\Word\WordGeneration;
 
 use App\Enums\Language;
 

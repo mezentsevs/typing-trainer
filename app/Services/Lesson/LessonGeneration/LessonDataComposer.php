@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Services\LessonGeneration;
+namespace App\Services\Lesson\LessonGeneration;
 
-use App\Services\LessonGeneration\ValueObjects\LessonBlueprint;
+use App\Services\Lesson\LessonGeneration\ValueObjects\LessonBlueprint;
 use Random\RandomException;
 
 class LessonDataComposer

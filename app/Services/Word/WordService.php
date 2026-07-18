@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\Word;
 
-use App\Services\WordGeneration\WordGenerationOrchestrator;
+use App\Services\Word\WordGeneration\WordGenerationOrchestrator;
 use Random\RandomException;
 
 class WordService

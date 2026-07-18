@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\Lesson;
 
 use App\Dtos\Lesson\LessonGenerateDto;
 use App\Dtos\Lesson\LessonSaveResultDto;
 use App\Dtos\Lesson\LessonShowDto;
 use App\Models\Lesson;
 use App\Models\LessonResult;
-use App\Services\LessonGeneration\LessonGenerationOrchestrator;
+use App\Services\Lesson\LessonGeneration\LessonGenerationOrchestrator;
 use Random\RandomException;
 
 class LessonService

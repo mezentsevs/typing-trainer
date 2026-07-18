@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Services\TestGeneration\Strategies;
+namespace App\Services\Test\TestGeneration\Strategies;
 
 use App\Helpers\StringHelper;
-use App\Services\TestGeneration\Strategies\Contracts\TestRetrieveStrategy;
+use App\Services\Test\TestGeneration\Strategies\Contracts\TestRetrieveStrategy;
 use Illuminate\Support\Facades\Storage;
 
 class TestRetrieveFileStrategy implements TestRetrieveStrategy

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Services\TestGeneration;
+namespace App\Services\Test\TestGeneration;
 
-use App\Services\TestGeneration\Strategies\Contracts\TestRetrieveStrategy;
+use App\Services\Test\TestGeneration\Strategies\Contracts\TestRetrieveStrategy;
 
 class TestGenerationOrchestrator
 {

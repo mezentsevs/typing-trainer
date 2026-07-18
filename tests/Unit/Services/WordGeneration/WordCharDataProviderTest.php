@@ -3,7 +3,7 @@
 namespace Tests\Unit\Services\WordGeneration;
 
 use App\Enums\Language;
-use App\Services\WordGeneration\WordCharDataProvider;
+use App\Services\Word\WordGeneration\WordCharDataProvider;
 use PHPUnit\Framework\Attributes\DataProviderExternal;
 use Tests\Providers\CommonDataProvider;
 use Tests\TestCase;

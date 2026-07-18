@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\TestGeneration\Strategies\Contracts;
+namespace App\Services\Test\TestGeneration\Strategies\Contracts;
 
 interface TestRetrieveStrategy
 {

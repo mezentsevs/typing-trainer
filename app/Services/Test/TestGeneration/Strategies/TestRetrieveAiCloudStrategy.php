@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\TestGeneration\Strategies;
+namespace App\Services\Test\TestGeneration\Strategies;
 
 use App\Enums\AiType;
 

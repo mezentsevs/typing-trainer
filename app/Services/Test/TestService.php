@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\Test;
 
 use App\Dtos\Test\TestRetrieveDto;
 use App\Dtos\Test\TestSaveResultDto;
 use App\Dtos\Test\TestUploadDto;
 use App\Models\TestResult;
-use App\Services\TestGeneration\TestGenerationOrchestrator;
+use App\Services\Test\TestGeneration\TestGenerationOrchestrator;
 
 class TestService
 {

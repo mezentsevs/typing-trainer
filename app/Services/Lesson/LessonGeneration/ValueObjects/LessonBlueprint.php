@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\LessonGeneration\ValueObjects;
+namespace App\Services\Lesson\LessonGeneration\ValueObjects;
 
 class LessonBlueprint
 {

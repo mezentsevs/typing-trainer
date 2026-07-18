@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Services\LessonGeneration;
+namespace App\Services\Lesson\LessonGeneration;
 
 use App\Enums\Language;
-use App\Services\LessonGeneration\ValueObjects\LessonBlueprint;
+use App\Services\Lesson\LessonGeneration\ValueObjects\LessonBlueprint;
 
 class LessonSequenceGenerator
 {

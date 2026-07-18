@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Services;
 
-use App\Services\WordGeneration\WordCharDataProvider;
-use App\Services\WordService;
+use App\Services\Word\WordGeneration\WordCharDataProvider;
+use App\Services\Word\WordService;
 use PHPUnit\Framework\Attributes\DataProviderExternal;
 use Tests\Providers\WordDataProvider;
 use Tests\TestCase;

@@ -2,12 +2,12 @@
 
 namespace App\Providers;
 
-use App\Services\TestGeneration\Strategies\TestRetrieveAiCloudStrategy;
-use App\Services\TestGeneration\Strategies\TestRetrieveAiLocalStrategy;
-use App\Services\TestGeneration\Strategies\TestRetrieveDatabaseStrategy;
-use App\Services\TestGeneration\Strategies\TestRetrieveFileStrategy;
-use App\Services\TestGeneration\TestGenerationOrchestrator;
-use App\Services\TestService;
+use App\Services\Test\TestGeneration\Strategies\TestRetrieveAiCloudStrategy;
+use App\Services\Test\TestGeneration\Strategies\TestRetrieveAiLocalStrategy;
+use App\Services\Test\TestGeneration\Strategies\TestRetrieveDatabaseStrategy;
+use App\Services\Test\TestGeneration\Strategies\TestRetrieveFileStrategy;
+use App\Services\Test\TestGeneration\TestGenerationOrchestrator;
+use App\Services\Test\TestService;
 use Illuminate\Support\ServiceProvider;
 
 class TestServiceProvider extends ServiceProvider

@@ -8,7 +8,7 @@ use App\Dtos\Test\TestUploadDto;
 use App\Http\Requests\Test\TestRetrieveRequest;
 use App\Http\Requests\Test\TestSaveResultRequest;
 use App\Http\Requests\Test\TestUploadRequest;
-use App\Services\TestService;
+use App\Services\Test\TestService;
 use Illuminate\Http\JsonResponse;
 
 class TestController extends Controller

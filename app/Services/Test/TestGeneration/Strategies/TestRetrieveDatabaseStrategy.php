@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Services\TestGeneration\Strategies;
+namespace App\Services\Test\TestGeneration\Strategies;
 
 use App\Models\Test;
-use App\Services\TestGeneration\Strategies\Contracts\TestRetrieveStrategy;
+use App\Services\Test\TestGeneration\Strategies\Contracts\TestRetrieveStrategy;
 use Illuminate\Database\Eloquent\Builder;
 
 class TestRetrieveDatabaseStrategy implements TestRetrieveStrategy

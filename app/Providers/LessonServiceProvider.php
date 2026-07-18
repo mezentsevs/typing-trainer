@@ -2,12 +2,12 @@
 
 namespace App\Providers;
 
-use App\Services\LessonGeneration\LessonDataComposer;
-use App\Services\LessonGeneration\LessonGenerationOrchestrator;
-use App\Services\LessonGeneration\LessonSequenceGenerator;
-use App\Services\LessonGeneration\LessonTextGenerator;
-use App\Services\LessonService;
-use App\Services\WordService;
+use App\Services\Lesson\LessonGeneration\LessonDataComposer;
+use App\Services\Lesson\LessonGeneration\LessonGenerationOrchestrator;
+use App\Services\Lesson\LessonGeneration\LessonSequenceGenerator;
+use App\Services\Lesson\LessonGeneration\LessonTextGenerator;
+use App\Services\Lesson\LessonService;
+use App\Services\Word\WordService;
 use Illuminate\Support\ServiceProvider;
 
 class LessonServiceProvider extends ServiceProvider

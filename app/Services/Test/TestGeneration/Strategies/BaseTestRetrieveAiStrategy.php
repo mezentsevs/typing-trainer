@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Services\TestGeneration\Strategies;
+namespace App\Services\Test\TestGeneration\Strategies;
 
 use App\Enums\AiType;
 use App\Helpers\StringHelper;
-use App\Services\TestGeneration\Strategies\Contracts\TestRetrieveStrategy;
+use App\Services\Test\TestGeneration\Strategies\Contracts\TestRetrieveStrategy;
 use Exception;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Arr;

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Services\LessonGeneration;
+namespace App\Services\Lesson\LessonGeneration;
 
-use App\Services\LessonGeneration\ValueObjects\LessonBlueprint;
-use App\Services\WordService;
+use App\Services\Lesson\LessonGeneration\ValueObjects\LessonBlueprint;
+use App\Services\Word\WordService;
 use Random\RandomException;
 
 class LessonTextGenerator
