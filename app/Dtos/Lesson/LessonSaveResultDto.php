@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Dtos;
+namespace App\Dtos\Lesson;
+
+use App\Dtos\BaseSaveResultDto;
 
 class LessonSaveResultDto extends BaseSaveResultDto
 {

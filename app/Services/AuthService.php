@@ -2,8 +2,8 @@
 
 namespace App\Services;
 
-use App\Dtos\LoginDto;
-use App\Dtos\RegisterDto;
+use App\Dtos\Auth\LoginDto;
+use App\Dtos\Auth\RegisterDto;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;

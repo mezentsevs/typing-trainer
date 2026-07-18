@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Services;
 
-use App\Dtos\LessonGenerateDto;
+use App\Dtos\Lesson\LessonGenerateDto;
 use App\Models\Lesson;
 use App\Models\LessonResult;
 use App\Models\User;

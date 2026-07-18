@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Dtos\LessonGenerateDto;
-use App\Dtos\LessonSaveResultDto;
-use App\Dtos\LessonShowDto;
+use App\Dtos\Lesson\LessonGenerateDto;
+use App\Dtos\Lesson\LessonSaveResultDto;
+use App\Dtos\Lesson\LessonShowDto;
 use App\Http\Requests\Lesson\LessonGenerateRequest;
 use App\Http\Requests\Lesson\LessonSaveResultRequest;
 use App\Http\Requests\Lesson\LessonShowRequest;

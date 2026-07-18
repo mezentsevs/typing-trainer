@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Dtos;
+namespace App\Dtos\Lesson;
 
-use Illuminate\Http\UploadedFile;
+use App\Dtos\BaseDto;
 
-class TestUploadDto extends BaseDto
+class LessonGenerateDto extends BaseDto
 {
     public function __construct(
         public readonly int $userId,
         public readonly string $language,
-        public readonly UploadedFile $file,
+        public readonly int $lessonCount,
     ) {
     }
 }

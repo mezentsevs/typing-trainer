@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Dtos\TestRetrieveDto;
-use App\Dtos\TestSaveResultDto;
-use App\Dtos\TestUploadDto;
+use App\Dtos\Test\TestRetrieveDto;
+use App\Dtos\Test\TestSaveResultDto;
+use App\Dtos\Test\TestUploadDto;
 use App\Http\Requests\Test\TestRetrieveRequest;
 use App\Http\Requests\Test\TestSaveResultRequest;
 use App\Http\Requests\Test\TestUploadRequest;

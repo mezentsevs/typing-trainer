@@ -1,13 +1,15 @@
 <?php
 
-namespace App\Dtos;
+namespace App\Dtos\Test;
 
-class LessonGenerateDto extends BaseDto
+use App\Dtos\BaseDto;
+
+class TestRetrieveDto extends BaseDto
 {
     public function __construct(
         public readonly int $userId,
         public readonly string $language,
-        public readonly int $lessonCount,
+        public readonly ?string $genre,
     ) {
     }
 }

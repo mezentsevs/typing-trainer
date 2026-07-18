@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Api\Auth;
 
-use App\Dtos\LessonGenerateDto;
+use App\Dtos\Lesson\LessonGenerateDto;
 use App\Services\LessonService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use PHPUnit\Framework\Attributes\DataProviderExternal;

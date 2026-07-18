@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Dtos\LoginDto;
-use App\Dtos\RegisterDto;
+use App\Dtos\Auth\LoginDto;
+use App\Dtos\Auth\RegisterDto;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Services\AuthService;

@@ -2,9 +2,9 @@
 
 namespace App\Services;
 
-use App\Dtos\TestRetrieveDto;
-use App\Dtos\TestSaveResultDto;
-use App\Dtos\TestUploadDto;
+use App\Dtos\Test\TestRetrieveDto;
+use App\Dtos\Test\TestSaveResultDto;
+use App\Dtos\Test\TestUploadDto;
 use App\Models\TestResult;
 use App\Services\TestGeneration\TestGenerationOrchestrator;
 

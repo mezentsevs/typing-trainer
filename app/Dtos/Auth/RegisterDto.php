@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Dtos;
+namespace App\Dtos\Auth;
+
+use App\Dtos\BaseDto;
 
 class RegisterDto extends BaseDto
 {
