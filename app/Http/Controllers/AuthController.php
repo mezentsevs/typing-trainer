@@ -6,10 +6,8 @@ use App\Dtos\LoginDto;
 use App\Dtos\RegisterDto;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\Auth\RegisterRequest;
-use App\Models\User;
 use App\Services\AuthService;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -19,12 +17,7 @@ class AuthController extends Controller
 
     public function me(): JsonResponse
     {
-        /**
-         * @var User $user
-         */
-        $user = Auth::user();
-
-        return response()->json(['user' => $user]);
+        return response()->json(['user' => $this->authService->me()]);
     }
 
     public function register(RegisterRequest $request): JsonResponse

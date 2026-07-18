@@ -10,6 +10,16 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthService
 {
+    public function me(): User
+    {
+        /**
+         * @var User $user
+         */
+        $user = Auth::user();
+
+        return $user;
+    }
+
     public function register(RegisterDto $dto): array
     {
         $user = User::create([
