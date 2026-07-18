@@ -85,12 +85,9 @@ const register = async (): Promise<void> => {
             form.value.password,
             form.value.passwordConfirmation,
         );
-
         await router.push('/');
-    } catch (err) {
-        if (err instanceof Error) {
-            error.value = 'Registration failed';
-        }
+    } catch (err: any) {
+        error.value = err?.response?.data?.message || 'Registration failed';
     }
 };
 </script>

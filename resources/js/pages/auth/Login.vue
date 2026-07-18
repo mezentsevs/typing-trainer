@@ -61,12 +61,9 @@ const form: Ref<AuthLoginForm> = ref({ email: '', password: '' });
 const login = async (): Promise<void> => {
     try {
         await authStore.login(form.value.email, form.value.password);
-
         await router.push('/');
-    } catch (err) {
-        if (err instanceof Error) {
-            error.value = 'Login failed';
-        }
+    } catch (err: any) {
+        error.value = err?.response?.data?.message || 'Login failed';
     }
 };
 </script>
