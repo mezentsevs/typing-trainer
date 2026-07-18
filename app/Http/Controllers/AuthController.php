@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Dtos\LoginDto;
 use App\Dtos\RegisterDto;
+use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Models\User;
 use App\Services\AuthService;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
@@ -37,26 +38,18 @@ class AuthController extends Controller
         return response()->json($this->authService->register($dto), 201);
     }
 
-    public function login(Request $request): JsonResponse
+    public function login(LoginRequest $request): JsonResponse
     {
-        $request->validate([
-            'email' => 'bail|required|string|email|max:255',
-            'password' => 'bail|required|string|max:255',
+        $dto = LoginDto::fromArray([
+            'email' => $request->email,
+            'password' => $request->password,
         ]);
 
-        if (!Auth::attempt($request->only('email', 'password'))) {
-            return response()->json(['message' => 'Invalid credentials'], 401);
-        }
+        $result = $this->authService->login($dto);
 
-        /**
-         * @var User $user
-         */
-        $user = Auth::user();
-
-        return response()->json([
-            'token' => $user->createToken('auth_token')->plainTextToken,
-            'user' => $user,
-        ]);
+        return $result
+            ? response()->json($result)
+            : response()->json(['message' => 'Invalid credentials'], 401);
     }
 
     public function logout(): JsonResponse
