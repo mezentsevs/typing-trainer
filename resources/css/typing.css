@@ -11,6 +11,10 @@
     content: "↵";
 }
 
+.char-box {
+    @apply transition-[background-color] duration-150 ease-linear;
+}
+
 .current-char {
     @apply bg-blue-100 dark:bg-blue-700;
 }

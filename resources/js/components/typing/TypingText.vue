@@ -3,6 +3,7 @@
         v-for="(char, index) in text"
         :key="index"
         :class="{
+            'char-box': true,
             'current-word': isCurrentWord[index],
             space: char === ' ',
             'line-break': char === '\n',
