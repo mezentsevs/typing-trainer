@@ -7,7 +7,7 @@
             <slot />
         </span>
         <span v-if="loading" class="spinner absolute inset-0 flex items-center justify-center">
-            <Spinner class="w-auto h-[1em] animate-spin" />
+            <SpinnerIcon class="w-auto h-[1em] animate-spin" />
         </span>
     </BaseButton>
 </template>
@@ -16,7 +16,7 @@
 import { Button } from '@/enums/UIKitEnums';
 import { UIKitButton } from '@/types/UIKitTypes';
 import BaseButton from '@/components/uikit/buttons/BaseButton.vue';
-import Spinner from '@/components/uikit/spinners/Spinner.vue';
+import SpinnerIcon from '@/components/icons/SpinnerIcon.vue';
 
 withDefaults(
     defineProps<{
