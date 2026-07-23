@@ -1,116 +1,126 @@
 <template>
-    <div v-if="isMinimized" class="group relative w-32 mx-auto my-4">
-        <Tooltip text="Show Keyboard" />
-        <button
-            class="keyboard-preview-button w-full p-2 flex justify-center items-center gap-2 border border-opacity-50 border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 active:bg-gray-50 dark:active:bg-gray-900 text-gray-500 dark:text-gray-300 text-sm font-medium select-none cursor-pointer rounded-lg shadow-sm"
-            @click="toggleKeyboard">
-            <KeyboardIcon class="w-6 h-6 shrink-0 fill-gray-500 dark:fill-gray-300" />
-            Keyboard
-        </button>
-    </div>
+    <transition
+        mode="out-in"
+        enter-active-class="transition-all duration-200 ease-out"
+        enter-from-class="opacity-0 scale-95"
+        leave-active-class="transition-all duration-200 ease-out"
+        leave-to-class="opacity-0 scale-95">
+        <div v-if="isMinimized" key="minimized" class="group relative w-32 mx-auto my-4">
+            <Tooltip text="Show Keyboard" />
+            <button
+                class="keyboard-preview-button w-full p-2 flex justify-center items-center gap-2 border border-opacity-50 border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 active:bg-gray-50 dark:active:bg-gray-900 text-gray-500 dark:text-gray-300 text-sm font-medium select-none cursor-pointer rounded-lg shadow-sm"
+                @click="toggleKeyboard">
+                <KeyboardIcon class="w-6 h-6 shrink-0 fill-gray-500 dark:fill-gray-300" />
+                Keyboard
+            </button>
+        </div>
 
-    <section
-        v-else
-        class="keyboard max-w-[680px] mx-auto flex flex-col gap-2 p-4 select-none cursor-pointer"
-        @click="toggleKeyboard">
-        <div
-            v-for="(row, rowIndex) in keyboardLayout"
-            :key="rowIndex"
-            class="flex justify-between gap-1">
-            <template v-if="rowIndex === 0">
-                <button
-                    v-for="key in row"
-                    :key="key.value"
-                    :class="[
-                        COMMON_BUTTON_CLASS,
-                        isHighlighted(key.value, key.zone) || isHighlighted(key.special, key.zone)
-                            ? HIGHLIGHTED_BUTTON_CLASS
-                            : NORMAL_BUTTON_CLASS,
-                        key.width ? `w-${key.width}` : 'w-10',
-                        key.value === 'backspace' ? 'text-sm px-1' : '',
-                    ]"
-                    :style="getKeyStyle(key)">
-                    <span class="block">{{ key.display }}</span>
-                    <span
-                        v-if="key.special"
-                        class="absolute text-xs"
-                        :class="
-                            key.specialPosition === SpecialPosition.TopLeft
-                                ? 'top-0 left-1'
-                                : 'top-0 right-1'
-                        ">
-                        {{ key.special }}
-                    </span>
-                </button>
-            </template>
-            <template v-else-if="rowIndex === 4">
-                <button
-                    :key="row[0].value"
-                    :class="[
-                        COMMON_BUTTON_CLASS,
-                        isHighlighted(row[0].value, row[0].zone)
-                            ? HIGHLIGHTED_BUTTON_CLASS
-                            : NORMAL_BUTTON_CLASS,
-                        row[0].width ? `w-${row[0].width}` : 'w-10',
-                    ]"
-                    :style="getKeyStyle(row[0])">
-                    <span class="block">{{ row[0].display }}</span>
-                </button>
-                <div class="flex gap-1">
+        <section
+            v-else
+            key="expanded"
+            class="keyboard max-w-[680px] mx-auto flex flex-col gap-2 p-4 select-none cursor-pointer"
+            @click="toggleKeyboard">
+            <div
+                v-for="(row, rowIndex) in keyboardLayout"
+                :key="rowIndex"
+                class="flex justify-between gap-1">
+                <template v-if="rowIndex === 0">
                     <button
-                        v-for="key in row.slice(1, 4)"
+                        v-for="key in row"
                         :key="key.value"
                         :class="[
                             COMMON_BUTTON_CLASS,
-                            isHighlighted(key.value, key.zone)
+                            isHighlighted(key.value, key.zone) ||
+                            isHighlighted(key.special, key.zone)
+                                ? HIGHLIGHTED_BUTTON_CLASS
+                                : NORMAL_BUTTON_CLASS,
+                            key.width ? `w-${key.width}` : 'w-10',
+                            key.value === 'backspace' ? 'text-sm px-1' : '',
+                        ]"
+                        :style="getKeyStyle(key)">
+                        <span class="block">{{ key.display }}</span>
+                        <span
+                            v-if="key.special"
+                            class="absolute text-xs"
+                            :class="
+                                key.specialPosition === SpecialPosition.TopLeft
+                                    ? 'top-0 left-1'
+                                    : 'top-0 right-1'
+                            ">
+                            {{ key.special }}
+                        </span>
+                    </button>
+                </template>
+                <template v-else-if="rowIndex === 4">
+                    <button
+                        :key="row[0].value"
+                        :class="[
+                            COMMON_BUTTON_CLASS,
+                            isHighlighted(row[0].value, row[0].zone)
+                                ? HIGHLIGHTED_BUTTON_CLASS
+                                : NORMAL_BUTTON_CLASS,
+                            row[0].width ? `w-${row[0].width}` : 'w-10',
+                        ]"
+                        :style="getKeyStyle(row[0])">
+                        <span class="block">{{ row[0].display }}</span>
+                    </button>
+                    <div class="flex gap-1">
+                        <button
+                            v-for="key in row.slice(1, 4)"
+                            :key="key.value"
+                            :class="[
+                                COMMON_BUTTON_CLASS,
+                                isHighlighted(key.value, key.zone)
+                                    ? HIGHLIGHTED_BUTTON_CLASS
+                                    : NORMAL_BUTTON_CLASS,
+                                key.width ? `w-${key.width}` : 'w-10',
+                            ]"
+                            :style="getKeyStyle(key)">
+                            <span class="block">{{ key.display }}</span>
+                        </button>
+                    </div>
+                    <button
+                        :key="row[4].value"
+                        :class="[
+                            COMMON_BUTTON_CLASS,
+                            isHighlighted(row[4].value, row[4].zone)
+                                ? HIGHLIGHTED_BUTTON_CLASS
+                                : NORMAL_BUTTON_CLASS,
+                            row[4].width ? `w-${row[4].width}` : 'w-10',
+                        ]"
+                        :style="getKeyStyle(row[4])">
+                        <span class="block">{{ row[4].display }}</span>
+                    </button>
+                </template>
+                <template v-else>
+                    <button
+                        v-for="key in row"
+                        :key="key.value"
+                        :class="[
+                            COMMON_BUTTON_CLASS,
+                            isHighlighted(key.value, key.zone) ||
+                            isHighlighted(key.special, key.zone)
                                 ? HIGHLIGHTED_BUTTON_CLASS
                                 : NORMAL_BUTTON_CLASS,
                             key.width ? `w-${key.width}` : 'w-10',
                         ]"
                         :style="getKeyStyle(key)">
                         <span class="block">{{ key.display }}</span>
+                        <span
+                            v-if="key.special"
+                            class="absolute text-xs"
+                            :class="
+                                key.specialPosition === SpecialPosition.TopLeft
+                                    ? 'top-0 left-1'
+                                    : 'top-0 right-1'
+                            ">
+                            {{ key.special }}
+                        </span>
                     </button>
-                </div>
-                <button
-                    :key="row[4].value"
-                    :class="[
-                        COMMON_BUTTON_CLASS,
-                        isHighlighted(row[4].value, row[4].zone)
-                            ? HIGHLIGHTED_BUTTON_CLASS
-                            : NORMAL_BUTTON_CLASS,
-                        row[4].width ? `w-${row[4].width}` : 'w-10',
-                    ]"
-                    :style="getKeyStyle(row[4])">
-                    <span class="block">{{ row[4].display }}</span>
-                </button>
-            </template>
-            <template v-else>
-                <button
-                    v-for="key in row"
-                    :key="key.value"
-                    :class="[
-                        COMMON_BUTTON_CLASS,
-                        isHighlighted(key.value, key.zone) || isHighlighted(key.special, key.zone)
-                            ? HIGHLIGHTED_BUTTON_CLASS
-                            : NORMAL_BUTTON_CLASS,
-                        key.width ? `w-${key.width}` : 'w-10',
-                    ]"
-                    :style="getKeyStyle(key)">
-                    <span class="block">{{ key.display }}</span>
-                    <span
-                        v-if="key.special"
-                        class="absolute text-xs"
-                        :class="
-                            key.specialPosition === SpecialPosition.TopLeft
-                                ? 'top-0 left-1'
-                                : 'top-0 right-1'
-                        ">
-                        {{ key.special }}
-                    </span>
-                </button>
-            </template>
-        </div>
-    </section>
+                </template>
+            </div>
+        </section>
+    </transition>
 </template>
 
 <script lang="ts" setup>
