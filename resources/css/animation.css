@@ -1,0 +1,12 @@
+.animate-pulse-scale-once {
+    animation: pulse-scale 0.2s ease-in-out 1;
+}
+
+@keyframes pulse-scale {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}

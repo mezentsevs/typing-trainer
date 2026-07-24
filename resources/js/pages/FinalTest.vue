@@ -28,7 +28,9 @@
                 @input="onInput" />
             <Keyboard :language :typed :text :is-minimized="true" />
             <div v-if="isTestCompleted" class="mb-4 flex flex-row justify-center">
-                <PrimaryRouterLinkButton class="w-32">Finish</PrimaryRouterLinkButton>
+                <PrimaryRouterLinkButton class="w-32 animate-pulse-scale-once">
+                    Finish
+                </PrimaryRouterLinkButton>
             </div>
         </main>
     </ContentCard>

@@ -36,11 +36,14 @@
                 <PrimaryRouterLinkButton
                     v-if="nextLessonNumber"
                     :to="`/lesson/${language}/${nextLessonNumber}`"
-                    class="w-32"
+                    class="w-32 animate-pulse-scale-once"
                     @click="onNext">
                     Next
                 </PrimaryRouterLinkButton>
-                <SuccessRouterLinkButton v-else :to="`/test/${language}`" class="w-32">
+                <SuccessRouterLinkButton
+                    v-else
+                    :to="`/test/${language}`"
+                    class="w-32 animate-pulse-scale-once">
                     Final Test
                 </SuccessRouterLinkButton>
             </div>
