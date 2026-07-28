@@ -9,35 +9,43 @@
         <Heading :level="1" class="text-2xl mb-6">Register</Heading>
         <form @submit.prevent="register">
             <InputLabel for="name" value="Name" />
-            <Input
+            <InputWithIcon
                 id="name"
                 v-model="form.name"
-                v-focus
-                class="mb-4 w-full"
+                auto-focus
+                class="mb-4"
                 required
-                autocomplete="on" />
+                autocomplete="on">
+                <UserIcon />
+            </InputWithIcon>
             <InputLabel for="email" value="Email" />
-            <Input
+            <InputWithIcon
                 id="email"
                 v-model="form.email"
                 type="email"
-                class="mb-4 w-full"
+                class="mb-4"
                 required
-                autocomplete="on" />
+                autocomplete="on">
+                <EnvelopeIcon />
+            </InputWithIcon>
             <InputLabel for="password" value="Password" />
-            <Input
+            <InputWithIcon
                 id="password"
                 v-model="form.password"
                 type="password"
-                class="mb-4 w-full"
-                required />
+                class="mb-4"
+                required>
+                <LockIcon />
+            </InputWithIcon>
             <InputLabel for="passwordConfirmation" value="Confirm Password" />
-            <Input
+            <InputWithIcon
                 id="passwordConfirmation"
                 v-model="form.passwordConfirmation"
                 type="password"
-                class="mb-4 w-full"
-                required />
+                class="mb-4"
+                required>
+                <LockIcon />
+            </InputWithIcon>
             <PrimaryButton class="w-full">Register</PrimaryButton>
         </form>
         <ErrorMessage :message="error" />
@@ -49,22 +57,25 @@
 </template>
 
 <script lang="ts" setup>
+import { Ref, ref } from 'vue';
+import { Router, useRouter } from 'vue-router';
+import { Store } from 'pinia';
+import { useAuthStore } from '@/stores/Auth';
 import AuthActions from '@/interfaces/auth/AuthActions';
 import AuthCard from '@/pages/partials/cards/AuthCard.vue';
 import AuthGetters from '@/interfaces/auth/AuthGetters';
 import AuthRegisterForm from '@/interfaces/auth/AuthRegisterForm';
 import AuthState from '@/interfaces/auth/AuthState';
+import EnvelopeIcon from '@/components/icons/EnvelopeIcon.vue';
 import ErrorMessage from '@/components/uikit/messages/ErrorMessage.vue';
 import Heading from '@/components/uikit/headings/Heading.vue';
-import Input from '@/components/uikit/inputs/Input.vue';
 import InputLabel from '@/components/uikit/inputs/partials/InputLabel.vue';
+import InputWithIcon from '@/components/uikit/inputs/InputWithIcon.vue';
+import LockIcon from '@/components/icons/LockIcon.vue';
 import LogoIcon from '@/components/icons/LogoIcon.vue';
 import PrimaryButton from '@/components/uikit/buttons/PrimaryButton.vue';
 import PrimaryRouterLink from '@/components/uikit/links/PrimaryRouterLink.vue';
-import { Ref, ref } from 'vue';
-import { Router, useRouter } from 'vue-router';
-import { Store } from 'pinia';
-import { useAuthStore } from '@/stores/Auth';
+import UserIcon from '@/components/icons/UserIcon.vue';
 
 const authStore: Store<string, AuthState, AuthGetters, AuthActions> = useAuthStore();
 const router: Router = useRouter();
