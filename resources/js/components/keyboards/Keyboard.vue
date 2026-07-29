@@ -1,9 +1,9 @@
 <template>
     <transition
         mode="out-in"
-        enter-active-class="transition-all duration-200 ease-out"
+        enter-active-class="transition-all duration-100 ease-out"
         enter-from-class="opacity-0 scale-95"
-        leave-active-class="transition-all duration-200 ease-out"
+        leave-active-class="transition-all duration-100 ease-out"
         leave-to-class="opacity-0 scale-95">
         <div v-if="isMinimized" key="minimized" class="group relative w-32 mx-auto my-4">
             <Tooltip text="Show Keyboard" />
