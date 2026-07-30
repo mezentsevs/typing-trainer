@@ -139,7 +139,7 @@ const props = defineProps<{
 }>();
 
 const COMMON_BUTTON_CLASS: string =
-    'p-2 border border-opacity-50 border-gray-300 dark:border-gray-700 text-center rounded shadow-sm relative';
+    'p-2 border border-opacity-50 border-gray-300 dark:border-gray-700 text-center rounded shadow-sm relative transition-colors duration-150 ease-linear';
 const HIGHLIGHTED_BUTTON_CLASS: string = 'bg-green-500 text-white dark:text-black';
 const NORMAL_BUTTON_CLASS: string = 'bg-gray-50 dark:bg-gray-900 dark:text-gray-300';
 
