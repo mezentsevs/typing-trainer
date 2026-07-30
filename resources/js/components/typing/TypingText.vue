@@ -4,7 +4,7 @@
         :key="index"
         :class="{
             'char-box': true,
-            'current-word': isCurrentWord[index],
+            'current-word': index >= isCurrentWord.start && index <= isCurrentWord.end,
             space: char === ' ',
             'line-break': char === '\n',
             'current-char': index === typed.length && !isCompleted,
@@ -16,10 +16,12 @@
 </template>
 
 <script lang="ts" setup>
+import TypingUnit from '@/interfaces/typing/TypingUnit';
+
 defineProps<{
     text: string;
     typed: string;
-    isCurrentWord: boolean[];
+    isCurrentWord: TypingUnit;
     isCompleted: boolean;
 }>();
 </script>

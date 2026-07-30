@@ -1,11 +1,11 @@
+import { computed, ComputedRef, Ref, ref } from 'vue';
 import axios from 'axios';
-import { computed, ComputedRef, Ref } from 'vue';
 
+import { getCurrentTypingUnit } from '@/helpers/StringHelper';
+import { scrollToCurrentChar } from '@/helpers/DomHelper';
 import SaveResultRequestPayload from '@/interfaces/payloads/SaveResultRequestPayload';
 import TypingContext from '@/interfaces/typing/TypingContext';
 import TypingUnit from '@/interfaces/typing/TypingUnit';
-import { getCurrentTypingUnit } from '@/helpers/StringHelper';
-import { scrollToCurrentChar } from '@/helpers/DomHelper';
 
 export const useHandleTypingInput = (): Record<string, Function> => {
     const handleTypingInput = async (
@@ -51,26 +51,36 @@ export const useHandleTypingInput = (): Record<string, Function> => {
 export const useCurrentWord = (
     text: Ref<string>,
     typed: Ref<string>,
-): Record<string, ComputedRef<boolean[]>> => {
-    const currentTypingUnit: ComputedRef<TypingUnit | null> = computed((): TypingUnit | null =>
-        getCurrentTypingUnit(text.value, typed.value.length),
-    );
+): Record<string, ComputedRef<TypingUnit>> => {
+    const isCurrentWord: Ref<TypingUnit> = ref({ start: -1, end: -1 });
+    let lastStart: number = -1;
+    let lastEnd: number = -1;
 
-    const isCurrentWord: ComputedRef<boolean[]> = computed((): boolean[] => {
-        const arr: boolean[] = Array(text.value.length).fill(false) as boolean[];
+    const updateCurrentWord = (): void => {
+        const unit: TypingUnit | null = getCurrentTypingUnit(text.value, typed.value.length);
 
-        if (!currentTypingUnit.value) {
-            return arr;
+        if (!unit) {
+            isCurrentWord.value = { start: -1, end: -1 };
+            lastStart = -1;
+            lastEnd = -1;
+            return;
         }
 
-        for (let i: number = currentTypingUnit.value.start; i <= currentTypingUnit.value.end; i++) {
-            arr[i] = true;
+        if (unit.start === lastStart && unit.end === lastEnd) {
+            return;
         }
 
-        return arr;
-    });
+        lastStart = unit.start;
+        lastEnd = unit.end;
+        isCurrentWord.value = { start: unit.start, end: unit.end };
+    };
 
-    return { isCurrentWord };
+    return {
+        isCurrentWord: computed((): TypingUnit => {
+            updateCurrentWord();
+            return isCurrentWord.value;
+        }),
+    };
 };
 
 export const useProgress = (
