@@ -4,7 +4,7 @@
         <slot name="base-logo" />
 
         <div
-            class="w-full mt-6 px-6 py-4 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-md overflow-hidden sm:rounded-lg">
+            class="w-full mt-6 px-6 py-4 sm:rounded-lg overflow-hidden bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-sm hover:shadow-md dark:hover:shadow-lg transition-shadow duration-200">
             <slot />
         </div>
     </div>
