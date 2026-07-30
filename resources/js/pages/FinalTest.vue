@@ -38,7 +38,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ComputedRef, Ref, ref } from 'vue';
+import { ComputedRef, Ref, ref, onUnmounted } from 'vue';
 import { Language } from '@/enums/KeyboardEnums';
 import { RouteLocationNormalizedLoaded, useRoute } from 'vue-router';
 import { useHandleTypingInput, useCurrentWord, useProgress } from '@/composables/TypingComposables';
@@ -55,6 +55,7 @@ import TextArea from '@/components/uikit/inputs/TextArea.vue';
 import TextContainer from '@/components/uikit/containers/TextContainer.vue';
 import TypingContext from '@/interfaces/typing/TypingContext';
 import TypingText from '@/components/typing/TypingText.vue';
+import TypingUnit from '@/interfaces/typing/TypingUnit';
 
 const route: RouteLocationNormalizedLoaded<string | symbol> = useRoute();
 const { handleTypingInput }: Record<string, Function> = useHandleTypingInput();
@@ -74,7 +75,7 @@ const typed: Ref<string> = ref('');
 const MAX_FILE_SIZE_KB: number = 3;
 const language: Language = route.params.language as Language;
 
-const { isCurrentWord }: Record<string, ComputedRef<boolean[]>> = useCurrentWord(text, typed);
+const { isCurrentWord }: Record<string, ComputedRef<TypingUnit>> = useCurrentWord(text, typed);
 const { progress }: Record<string, ComputedRef<number>> = useProgress(text, typed, isTestCompleted);
 
 const resetState = (): void => {
@@ -153,4 +154,6 @@ const onStart = async (selectedGenre: string): Promise<void> => {
         textContainer.value = textContainerRef.value.getContainerElement();
     }
 };
+
+onUnmounted((): void => resetState());
 </script>
