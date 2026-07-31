@@ -17,18 +17,18 @@ export const useHandleTypingInput = (): Record<string, Function> => {
             context.startTime.value = Date.now();
         }
 
-        const typedChars: string[] = context.typed.value.split('');
+        const typedLength: number = context.typed.value.length;
         let errorCount: number = 0;
 
-        for (let i: number = 0; i < Math.min(typedChars.length, context.text.value.length); i++) {
-            if (typedChars[i] !== context.text.value[i]) {
+        for (let i: number = 0; i < Math.min(typedLength, context.text.value.length); i++) {
+            if (context.typed.value.charAt(i) !== context.text.value.charAt(i)) {
                 errorCount++;
             }
         }
 
         context.errors.value = errorCount;
 
-        if (context.typed.value.length >= context.text.value.length) {
+        if (typedLength >= context.text.value.length) {
             context.typed.value = context.typed.value.slice(0, context.text.value.length);
             context.isCompleted.value = true;
 
@@ -38,11 +38,11 @@ export const useHandleTypingInput = (): Record<string, Function> => {
         }
 
         context.time.value = Math.round((Date.now() - context.startTime.value) / 1000);
-        const words: number = context.typed.value.length / 5;
+        const words: number = typedLength / 5;
         context.speed.value =
             context.time.value > 0 ? Math.round((words / context.time.value) * 60) : 0;
 
-        scrollToCurrentChar(context.textContainer.value, context.typed.value.length);
+        scrollToCurrentChar(context.textContainer.value, typedLength);
     };
 
     return { handleTypingInput };
