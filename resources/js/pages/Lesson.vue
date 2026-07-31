@@ -55,7 +55,12 @@
 import { Language } from '@/enums/KeyboardEnums';
 import { ref, computed, onMounted, onUnmounted, Ref, ComputedRef } from 'vue';
 import { RouteLocationNormalizedLoaded, useRoute } from 'vue-router';
-import { useHandleTypingInput, useCurrentWord, useProgress } from '@/composables/TypingComposables';
+import {
+    useHandleTypingInput,
+    useCurrentWord,
+    useProgress,
+    UseHandleTypingInputReturn,
+} from '@/composables/TypingComposables';
 import axios, { AxiosResponse } from 'axios';
 import ContentCard from '@/pages/partials/cards/ContentCard.vue';
 import Heading from '@/components/uikit/headings/Heading.vue';
@@ -74,7 +79,8 @@ import TypingText from '@/components/typing/TypingText.vue';
 import TypingUnit from '@/interfaces/typing/TypingUnit';
 
 const route: RouteLocationNormalizedLoaded<string | symbol> = useRoute();
-const { handleTypingInput }: Record<string, Function> = useHandleTypingInput();
+const { handleTypingInput, cleanupScrollThrottle }: UseHandleTypingInputReturn =
+    useHandleTypingInput();
 
 const errors: Ref<number> = ref(0);
 const isLessonCompleted: Ref<boolean> = ref(false);
@@ -173,5 +179,8 @@ onMounted(async (): Promise<void> => {
     }
 });
 
-onUnmounted((): void => resetState());
+onUnmounted((): void => {
+    resetState();
+    cleanupScrollThrottle();
+});
 </script>

@@ -7,7 +7,26 @@ import SaveResultRequestPayload from '@/interfaces/payloads/SaveResultRequestPay
 import TypingContext from '@/interfaces/typing/TypingContext';
 import TypingUnit from '@/interfaces/typing/TypingUnit';
 
-export const useHandleTypingInput = (): Record<string, Function> => {
+export interface UseHandleTypingInputReturn {
+    handleTypingInput: (
+        context: TypingContext,
+        saveResultRequestUrl: string,
+        saveResultRequestPayload: SaveResultRequestPayload,
+    ) => Promise<void>;
+    cleanupScrollThrottle: () => void;
+}
+
+export const useHandleTypingInput = (): UseHandleTypingInputReturn => {
+    let scrollThrottleTimeout: ReturnType<typeof setTimeout> | null = null;
+
+    const scrollToCurrentCharThrottled = (container: HTMLElement | null, index: number): void => {
+        if (scrollThrottleTimeout) return;
+        scrollToCurrentChar(container, index);
+        scrollThrottleTimeout = setTimeout((): void => {
+            scrollThrottleTimeout = null;
+        }, 100);
+    };
+
     const handleTypingInput = async (
         context: TypingContext,
         saveResultRequestUrl: string,
@@ -42,10 +61,17 @@ export const useHandleTypingInput = (): Record<string, Function> => {
         context.speed.value =
             context.time.value > 0 ? Math.round((words / context.time.value) * 60) : 0;
 
-        scrollToCurrentChar(context.textContainer.value, typedLength);
+        scrollToCurrentCharThrottled(context.textContainer.value, typedLength);
     };
 
-    return { handleTypingInput };
+    const cleanupScrollThrottle = (): void => {
+        if (scrollThrottleTimeout) {
+            clearTimeout(scrollThrottleTimeout);
+            scrollThrottleTimeout = null;
+        }
+    };
+
+    return { handleTypingInput, cleanupScrollThrottle };
 };
 
 export const useCurrentWord = (

@@ -41,7 +41,12 @@
 import { ComputedRef, Ref, ref, onUnmounted } from 'vue';
 import { Language } from '@/enums/KeyboardEnums';
 import { RouteLocationNormalizedLoaded, useRoute } from 'vue-router';
-import { useHandleTypingInput, useCurrentWord, useProgress } from '@/composables/TypingComposables';
+import {
+    useHandleTypingInput,
+    useCurrentWord,
+    useProgress,
+    UseHandleTypingInputReturn,
+} from '@/composables/TypingComposables';
 import axios, { AxiosResponse } from 'axios';
 import ContentCard from '@/pages/partials/cards/ContentCard.vue';
 import FinalTestSetup from '@/pages/partials/FinalTestSetup.vue';
@@ -58,7 +63,8 @@ import TypingText from '@/components/typing/TypingText.vue';
 import TypingUnit from '@/interfaces/typing/TypingUnit';
 
 const route: RouteLocationNormalizedLoaded<string | symbol> = useRoute();
-const { handleTypingInput }: Record<string, Function> = useHandleTypingInput();
+const { handleTypingInput, cleanupScrollThrottle }: UseHandleTypingInputReturn =
+    useHandleTypingInput();
 
 const error: Ref<string> = ref('');
 const errors: Ref<number> = ref(0);
@@ -155,5 +161,8 @@ const onStart = async (selectedGenre: string): Promise<void> => {
     }
 };
 
-onUnmounted((): void => resetState());
+onUnmounted((): void => {
+    resetState();
+    cleanupScrollThrottle();
+});
 </script>
