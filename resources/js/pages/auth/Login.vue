@@ -1,7 +1,7 @@
 <template>
     <AuthCard>
         <template #logo>
-            <router-link to="/">
+            <router-link to="/" class="mb-6">
                 <LogoIcon class="w-12 h-12 text-blue-500 dark:text-blue-600" />
             </router-link>
         </template>
