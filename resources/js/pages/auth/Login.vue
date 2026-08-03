@@ -28,7 +28,7 @@
                 required>
                 <LockIcon />
             </InputWithIcon>
-            <PrimaryButton class="w-full">Login</PrimaryButton>
+            <PrimaryButton class="w-full mt-2">Login</PrimaryButton>
         </form>
         <ErrorMessage :message="error" />
         <p class="mt-4">
