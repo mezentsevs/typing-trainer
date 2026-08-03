@@ -5,7 +5,7 @@
         enter-from-class="opacity-0 scale-95"
         leave-active-class="transition-all duration-100 ease-out"
         leave-to-class="opacity-0 scale-95">
-        <div v-if="isMinimized" key="minimized" class="group relative w-32 mx-auto my-4">
+        <div v-if="isMinimized" key="minimized" class="group relative w-32 mx-auto">
             <Tooltip text="Show Keyboard" />
             <button
                 class="keyboard-preview-button w-full p-2 flex justify-center items-center gap-2 border border-opacity-50 border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 active:bg-gray-50 dark:active:bg-gray-900 text-gray-500 dark:text-gray-300 text-sm font-medium select-none cursor-pointer rounded-lg shadow-sm"
@@ -18,7 +18,7 @@
         <section
             v-else
             key="expanded"
-            class="keyboard max-w-[680px] mx-auto flex flex-col gap-2 p-4 select-none cursor-pointer"
+            class="keyboard max-w-[680px] mx-auto flex flex-col gap-2 px-4 select-none cursor-pointer"
             @click="toggleKeyboard">
             <div
                 v-for="(row, rowIndex) in keyboardLayout"

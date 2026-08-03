@@ -12,13 +12,13 @@
             </SuccessBanner>
         </header>
 
-        <aside class="mt-4 flex flex-row items-stretch space-x-4">
+        <aside class="mt-6 flex flex-row items-stretch space-x-4">
             <NewCharactersPanel :new-chars="lesson?.new_chars ?? ''" class="w-1/2" />
             <StatisticsPanel :language :time :speed :errors :progress class="w-1/2" />
         </aside>
 
         <main>
-            <TextContainer ref="textContainerRef" class="h-28 mt-4 text-lg font-mono">
+            <TextContainer ref="textContainerRef" class="h-28 mt-6 text-lg font-mono">
                 <TypingText :text :typed :is-current-word :is-completed="isLessonCompleted" />
             </TextContainer>
             <TextArea
@@ -26,13 +26,13 @@
                 ref="textArea"
                 v-model="typed"
                 v-focus
-                class="w-full mt-4 resize-none"
+                class="w-full mt-6 resize-none"
                 :disabled="isLessonCompleted"
                 rows="4"
                 spellcheck="false"
                 @input="onInput" />
-            <Keyboard :language :typed :text />
-            <div v-if="isLessonCompleted" class="mb-4 flex flex-row justify-center">
+            <Keyboard :language :typed :text class="mt-4" />
+            <div v-if="isLessonCompleted" class="mt-6 flex flex-row justify-center">
                 <PrimaryRouterLinkButton
                     v-if="nextLessonNumber"
                     :to="`/lesson/${language}/${nextLessonNumber}`"

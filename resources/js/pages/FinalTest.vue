@@ -9,25 +9,25 @@
             </SuccessBanner>
         </header>
 
-        <aside class="mt-4 flex flex-row justify-center">
+        <aside class="mt-6 flex flex-row justify-center">
             <StatisticsPanel :language :time :speed :errors :progress class="w-1/2" />
         </aside>
 
         <main>
-            <TextContainer ref="textContainerRef" class="h-28 mt-4 text-lg font-mono">
+            <TextContainer ref="textContainerRef" class="h-28 mt-6 text-lg font-mono">
                 <TypingText :text :typed :is-current-word :is-completed="isTestCompleted" />
             </TextContainer>
             <TextArea
                 id="typed"
                 v-model="typed"
                 v-focus
-                class="w-full mt-4 resize-none"
+                class="w-full mt-6 resize-none"
                 :disabled="isTestCompleted"
                 rows="4"
                 spellcheck="false"
                 @input="onInput" />
-            <Keyboard :language :typed :text :is-minimized="true" />
-            <div v-if="isTestCompleted" class="mb-4 flex flex-row justify-center">
+            <Keyboard :language :typed :text :is-minimized="true" class="mt-4" />
+            <div v-if="isTestCompleted" class="mt-6 flex flex-row justify-center">
                 <PrimaryRouterLinkButton class="w-32 animate-pulse-scale-once">
                     Finish
                 </PrimaryRouterLinkButton>
