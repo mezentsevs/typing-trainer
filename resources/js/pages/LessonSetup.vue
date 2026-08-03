@@ -19,7 +19,7 @@
                 max="20"
                 class="mb-4 w-full"
                 required />
-            <PrimarySpinnerButton class="w-full" :loading>Generate</PrimarySpinnerButton>
+            <PrimarySpinnerButton class="w-full mt-2" :loading>Generate</PrimarySpinnerButton>
         </form>
         <ErrorMessage :message="error" />
     </SetupCard>
