@@ -46,7 +46,7 @@
                 required>
                 <LockIcon />
             </InputWithIcon>
-            <PrimaryButton class="w-full">Register</PrimaryButton>
+            <PrimaryButton class="w-full mt-2">Register</PrimaryButton>
         </form>
         <ErrorMessage :message="error" />
         <p class="mt-4">
