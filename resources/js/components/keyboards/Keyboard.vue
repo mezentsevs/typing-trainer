@@ -8,7 +8,7 @@
         <div v-if="isMinimized" key="minimized" class="group relative w-32 mx-auto">
             <Tooltip text="Show Keyboard" />
             <button
-                class="keyboard-preview-button w-full p-2 flex justify-center items-center gap-2 border border-opacity-50 border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 active:bg-gray-50 dark:active:bg-gray-900 text-gray-500 dark:text-gray-300 text-sm font-medium select-none cursor-pointer rounded-lg shadow-sm"
+                class="keyboard-preview-button w-full px-2 py-1 flex justify-center items-center gap-2 border border-opacity-50 border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 active:bg-gray-50 dark:active:bg-gray-900 text-gray-500 dark:text-gray-300 text-sm font-medium select-none cursor-pointer rounded-md shadow-sm"
                 @click="toggleKeyboard">
                 <KeyboardIcon class="w-6 h-6 shrink-0 fill-gray-500 dark:fill-gray-300" />
                 Keyboard
