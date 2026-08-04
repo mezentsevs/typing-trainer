@@ -14,14 +14,14 @@
         </aside>
 
         <main>
-            <TextContainer ref="textContainerRef" class="h-28 mt-6 text-lg font-mono">
+            <TextContainer ref="textContainerRef" class="h-28 mt-4 text-lg font-mono">
                 <TypingText :text :typed :is-current-word :is-completed="isTestCompleted" />
             </TextContainer>
             <TextArea
                 id="typed"
                 v-model="typed"
                 v-focus
-                class="w-full mt-6 resize-none"
+                class="w-full mt-4 resize-none"
                 :disabled="isTestCompleted"
                 rows="4"
                 spellcheck="false"
