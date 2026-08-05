@@ -69,7 +69,6 @@ const { handleTypingInput, cleanupScrollThrottle }: UseHandleTypingInputReturn =
 const currentKey: Ref<string> = ref(crypto.randomUUID());
 const error: Ref<string> = ref('');
 const errors: Ref<number> = ref(0);
-const genre: Ref<string> = ref('');
 const isTestCompleted: Ref<boolean> = ref(false);
 const speed: Ref<number> = ref(0);
 const startTime: Ref<number> = ref(0);
@@ -78,6 +77,7 @@ const textContainer: Ref<HTMLElement | null> = ref(null);
 const textContainerRef: Ref<typeof TextContainer | null> = ref(null);
 const time: Ref<number> = ref(0);
 const typed: Ref<string> = ref('');
+let genre: string = '';
 
 const MAX_FILE_SIZE_KB: number = 3;
 const language: Language = route.params.language as Language;
@@ -97,7 +97,7 @@ const resetState = (): void => {
 const fetchText = async (): Promise<void> => {
     const response: AxiosResponse<{
         text: string;
-    }> = await axios.get('/test/retrieve', { params: { language, genre: genre.value } });
+    }> = await axios.get('/test/retrieve', { params: { language, genre } });
 
     text.value = response.data.text;
 };
@@ -155,7 +155,7 @@ const onInput = async (): Promise<void> => {
 const onStart = async (selectedGenre: string): Promise<void> => {
     currentKey.value = crypto.randomUUID();
     resetState();
-    genre.value = selectedGenre;
+    genre = selectedGenre;
     await fetchText();
 
     if (textContainerRef.value) {
