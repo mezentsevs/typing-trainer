@@ -1,5 +1,5 @@
 <template>
-    <ContentCard v-if="text">
+    <ContentCard v-if="text" :key="currentKey">
         <header class="flex flex-row items-center relative">
             <Heading :level="1" class="text-2xl">Final Test</Heading>
             <SuccessBanner
@@ -66,6 +66,7 @@ const route: RouteLocationNormalizedLoaded<string | symbol> = useRoute();
 const { handleTypingInput, cleanupScrollThrottle }: UseHandleTypingInputReturn =
     useHandleTypingInput();
 
+const currentKey: Ref<string> = ref(crypto.randomUUID());
 const error: Ref<string> = ref('');
 const errors: Ref<number> = ref(0);
 const genre: Ref<string> = ref('');
@@ -152,6 +153,7 @@ const onInput = async (): Promise<void> => {
 };
 
 const onStart = async (selectedGenre: string): Promise<void> => {
+    currentKey.value = crypto.randomUUID();
     resetState();
     genre.value = selectedGenre;
     await fetchText();

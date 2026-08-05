@@ -1,5 +1,5 @@
 <template>
-    <ContentCard>
+    <ContentCard :key="currentKey">
         <header class="flex flex-row items-center relative">
             <Heading :level="1" class="text-2xl">
                 Lesson
@@ -23,7 +23,6 @@
             </TextContainer>
             <TextArea
                 id="typed"
-                ref="textArea"
                 v-model="typed"
                 v-focus
                 class="w-full mt-4 resize-none"
@@ -82,13 +81,13 @@ const route: RouteLocationNormalizedLoaded<string | symbol> = useRoute();
 const { handleTypingInput, cleanupScrollThrottle }: UseHandleTypingInputReturn =
     useHandleTypingInput();
 
+const currentKey: Ref<string> = ref(crypto.randomUUID());
 const errors: Ref<number> = ref(0);
 const isLessonCompleted: Ref<boolean> = ref(false);
 const lesson: Ref<Lesson | null> = ref(null);
 const speed: Ref<number> = ref(0);
 const startTime: Ref<number> = ref(0);
 const text: Ref<string> = ref('');
-const textArea: Ref<typeof TextArea | null> = ref(null);
 const textContainer: Ref<HTMLElement | null> = ref(null);
 const textContainerRef: Ref<typeof TextContainer | null> = ref(null);
 const time: Ref<number> = ref(0);
@@ -161,12 +160,13 @@ const onNext = async (): Promise<void> => {
         return;
     }
 
+    currentKey.value = crypto.randomUUID();
     lessonNumber++;
     resetState();
     await fetchLesson();
 
-    if (textArea.value) {
-        textArea.value.area.focus();
+    if (textContainerRef.value) {
+        textContainer.value = textContainerRef.value.getContainerElement();
     }
 };
 
