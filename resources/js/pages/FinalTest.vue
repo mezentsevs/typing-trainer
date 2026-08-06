@@ -38,7 +38,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ComputedRef, Ref, ref, onUnmounted } from 'vue';
+import { ComputedRef, Ref, ref, onUnmounted, nextTick } from 'vue';
 import { Language } from '@/enums/KeyboardEnums';
 import { RouteLocationNormalizedLoaded, useRoute } from 'vue-router';
 import {
@@ -157,6 +157,7 @@ const onStart = async (selectedGenre: string): Promise<void> => {
     resetState();
     genre = selectedGenre;
     await fetchText();
+    await nextTick();
 
     if (textContainerRef.value) {
         textContainer.value = textContainerRef.value.getContainerElement();

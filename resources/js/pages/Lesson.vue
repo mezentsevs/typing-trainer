@@ -52,7 +52,7 @@
 
 <script lang="ts" setup>
 import { Language } from '@/enums/KeyboardEnums';
-import { ref, computed, onMounted, onUnmounted, Ref, ComputedRef } from 'vue';
+import { ref, computed, onMounted, onUnmounted, Ref, ComputedRef, nextTick } from 'vue';
 import { RouteLocationNormalizedLoaded, useRoute } from 'vue-router';
 import {
     useHandleTypingInput,
@@ -164,6 +164,7 @@ const onNext = async (): Promise<void> => {
     lessonNumber++;
     resetState();
     await fetchLesson();
+    await nextTick();
 
     if (textContainerRef.value) {
         textContainer.value = textContainerRef.value.getContainerElement();
