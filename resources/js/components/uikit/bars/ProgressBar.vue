@@ -15,10 +15,8 @@ const props = defineProps<{
     progress: number;
 }>();
 
-const style: ComputedRef<Record<string, string>> = computed(
-    (): Record<string, string> => ({
-        width: `${props.progress}%`,
-        backgroundColor: `rgb(${255 - (props.progress / 100) * (255 - 34)}, ${255 - (props.progress / 100) * (255 - 197)}, ${255 - (props.progress / 100) * (255 - 94)})`,
-    }),
-);
+const style: ComputedRef<Record<string, string>> = computed((): Record<string, string> => ({
+    width: `${props.progress}%`,
+    backgroundColor: `rgb(${255 - (props.progress / 100) * (255 - 34)}, ${255 - (props.progress / 100) * (255 - 197)}, ${255 - (props.progress / 100) * (255 - 94)})`,
+}));
 </script>
