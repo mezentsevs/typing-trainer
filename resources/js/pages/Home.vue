@@ -9,7 +9,7 @@
                 cursor-class="border-r-[currentColor] text-blue-700 dark:text-cyan-400" />
         </h1>
         <p
-            class="mt-8 text-lg md:text-xl text-gray-700 dark:text-gray-300 font-sans animate-pulse-opacity-slow">
+            class="mt-8 text-lg md:text-xl text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-purple-950 dark:from-cyan-400 dark:to-purple-500 font-sans animate-pulse-opacity-slow">
             {{ APP_SLOGAN }}
         </p>
         <div class="mt-12 flex flex-col items-center gap-6">
