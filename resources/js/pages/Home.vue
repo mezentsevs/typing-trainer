@@ -1,8 +1,8 @@
 <template>
     <div
         class="min-h-screen grow bg-gradient-to-br from-blue-100 via-white to-purple-50 dark:from-gray-900 dark:via-blue-950 dark:to-purple-950 text-center flex flex-col items-center justify-center">
-        <LogoIcon class="w-12 h-12 mb-4 text-blue-500 dark:text-blue-600 animate-wiggle-once" />
-        <h1 class="pb-2 flex items-center text-4xl md:text-6xl font-bold">
+        <LogoIcon class="w-12 h-12 text-blue-500 dark:text-blue-600 animate-wiggle-once" />
+        <h1 class="mt-8 flex items-center text-4xl md:text-6xl font-bold">
             <TypingAnimation
                 :text="APP_NAME"
                 text-class="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-purple-950 dark:from-cyan-400 dark:to-purple-500"
@@ -12,7 +12,7 @@
             class="mt-8 text-lg md:text-xl text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-purple-950 dark:from-cyan-400 dark:to-purple-500 font-sans animate-pulse-opacity-slow">
             {{ APP_SLOGAN }}
         </p>
-        <div class="mt-12 flex flex-col items-center gap-6">
+        <div class="mt-8 flex flex-col items-center gap-6">
             <router-link to="/setup" :class="[COMMON_BUTTON_CLASS, START_BUTTON_CLASS]">
                 Start
             </router-link>
