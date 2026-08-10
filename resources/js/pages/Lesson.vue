@@ -1,5 +1,5 @@
 <template>
-    <ContentCard :key="currentKey">
+    <ContentCard v-if="text" :key="currentKey">
         <header class="flex flex-row items-center relative">
             <Heading :level="1" class="text-2xl">
                 Lesson
@@ -48,6 +48,9 @@
             </div>
         </main>
     </ContentCard>
+    <div v-else class="min-h-screen flex items-center justify-center">
+        <p class="text-gray-500 dark:text-gray-400">Loading...</p>
+    </div>
 </template>
 
 <script lang="ts" setup>
