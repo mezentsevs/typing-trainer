@@ -34,7 +34,7 @@
             </div>
         </main>
     </ContentCard>
-    <FinalTestSetup v-else :uploadFile :error @start="onStart" />
+    <FinalTestSetup v-else :error :loading="isTestLoading" :onUpload @start="onStart" />
 </template>
 
 <script lang="ts" setup>
@@ -70,6 +70,8 @@ const currentKey: Ref<string> = ref(crypto.randomUUID());
 const error: Ref<string> = ref('');
 const errors: Ref<number> = ref(0);
 const isTestCompleted: Ref<boolean> = ref(false);
+const isTestLoading: Ref<boolean> = ref(false);
+const selectedFile: Ref<File | null> = ref(null);
 const speed: Ref<number> = ref(0);
 const startTime: Ref<number> = ref(0);
 const text: Ref<string> = ref('');
@@ -85,6 +87,10 @@ const language: Language = route.params.language as Language;
 const { isCurrentWord }: Record<string, ComputedRef<TypingUnit>> = useCurrentWord(text, typed);
 const { progress }: Record<string, ComputedRef<number>> = useProgress(text, typed, isTestCompleted);
 
+const prepareTest = (): void => {
+    currentKey.value = crypto.randomUUID();
+};
+
 const resetState = (): void => {
     errors.value = 0;
     isTestCompleted.value = false;
@@ -94,7 +100,7 @@ const resetState = (): void => {
     typed.value = '';
 };
 
-const fetchText = async (): Promise<void> => {
+const fetchTest = async (): Promise<void> => {
     const response: AxiosResponse<{
         text: string;
     }> = await axios.get('/test/retrieve', { params: { language, genre } });
@@ -102,29 +108,56 @@ const fetchText = async (): Promise<void> => {
     text.value = response.data.text;
 };
 
-const uploadFile = async (event: Event): Promise<void> => {
+const updateTextContainer = (): void => {
+    if (textContainerRef.value) {
+        textContainer.value = textContainerRef.value.getContainerElement();
+    }
+};
+
+const afterTestFetched = async (): Promise<void> => {
+    await nextTick();
+    updateTextContainer();
+};
+
+const loadTest = async (): Promise<void> => {
     try {
-        const file = (event.target as HTMLInputElement).files?.[0];
+        await fetchTest();
+        await afterTestFetched();
+        error.value = '';
+    } catch {
+        error.value = 'Test loading failed';
+    }
+};
 
-        if (file) {
-            if (file.size > MAX_FILE_SIZE_KB * 1024) {
-                error.value = `Uploaded file size exceeded (max ${MAX_FILE_SIZE_KB} KB)`;
-
-                return;
-            }
-
-            const formData = new FormData();
-
-            formData.append('file', file);
-            formData.append('language', language);
-
-            await axios.post('/test/upload', formData);
-            await fetchText();
+const uploadFile = async (file: File): Promise<void> => {
+    try {
+        if (file.size > MAX_FILE_SIZE_KB * 1024) {
+            error.value = `Uploaded file size exceeded (max ${MAX_FILE_SIZE_KB} KB)`;
+            return;
         }
+
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('language', language);
+
+        await axios.post('/test/upload', formData);
+        await fetchTest();
+        await afterTestFetched();
+        selectedFile.value = null;
+        error.value = '';
     } catch (err) {
         if (err instanceof Error) {
-            error.value = 'Upload failed';
+            error.value = 'File uploading failed';
         }
+    }
+};
+
+const onUpload = (event: Event): void => {
+    const file = (event.target as HTMLInputElement).files?.[0];
+
+    if (file) {
+        selectedFile.value = file;
+        uploadFile(file);
     }
 };
 
@@ -153,15 +186,18 @@ const onInput = async (): Promise<void> => {
 };
 
 const onStart = async (selectedGenre: string): Promise<void> => {
-    currentKey.value = crypto.randomUUID();
+    isTestLoading.value = true;
+    prepareTest();
     resetState();
     genre = selectedGenre;
-    await fetchText();
-    await nextTick();
 
-    if (textContainerRef.value) {
-        textContainer.value = textContainerRef.value.getContainerElement();
+    if (selectedFile.value) {
+        await uploadFile(selectedFile.value);
+    } else {
+        await loadTest();
     }
+
+    isTestLoading.value = false;
 };
 
 onUnmounted((): void => {

@@ -17,7 +17,7 @@
                 accept=".txt"
                 class="mb-4 w-full"
                 style="border-radius: 0.15rem"
-                @change="uploadFile" />
+                @change="onUpload" />
             <PrimarySpinnerButton class="w-full mt-2" :loading @click="onStart">
                 Start
             </PrimarySpinnerButton>
@@ -44,7 +44,8 @@ import UIKitSelectOption from '@/interfaces/uikit/UIKitSelectOption';
 
 defineProps<{
     error: string;
-    uploadFile: (event: Event) => Promise<void>;
+    loading: boolean;
+    onUpload: (event: Event) => void;
 }>();
 
 const emit = defineEmits<{
@@ -52,12 +53,8 @@ const emit = defineEmits<{
 }>();
 
 const genre: Ref<string> = ref('');
-const loading: Ref<boolean> = ref(false);
 
-const onStart = (): void => {
-    loading.value = true;
-    emit('start', genre.value);
-};
+const onStart = (): void => emit('start', genre.value);
 
 const genres: UIKitSelectOption[] = [
     { label: 'None', value: Genre.None },

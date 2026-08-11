@@ -48,12 +48,19 @@
             </div>
         </main>
     </ContentCard>
-    <div v-else class="min-h-screen flex items-center justify-center">
-        <p class="text-gray-500 dark:text-gray-400">Loading...</p>
+    <div v-else class="min-h-screen flex flex-col items-center justify-center">
+        <template v-if="loadError">
+            <ErrorMessage message="Lesson loading failed" />
+            <PrimaryButton :type="Button.Button" class="w-32 mt-4" @click="onRetry">
+                Retry
+            </PrimaryButton>
+        </template>
+        <InfoMessage v-else message="Loading..." />
     </div>
 </template>
 
 <script lang="ts" setup>
+import { Button } from '@/enums/UIKitEnums';
 import { Language } from '@/enums/KeyboardEnums';
 import { ref, computed, onMounted, onUnmounted, Ref, ComputedRef, nextTick } from 'vue';
 import { RouteLocationNormalizedLoaded, useRoute } from 'vue-router';
@@ -65,10 +72,13 @@ import {
 } from '@/composables/TypingComposables';
 import axios, { AxiosResponse } from 'axios';
 import ContentCard from '@/pages/partials/cards/ContentCard.vue';
+import ErrorMessage from '@/components/uikit/messages/ErrorMessage.vue';
 import Heading from '@/components/uikit/headings/Heading.vue';
+import InfoMessage from '@/components/uikit/messages/InfoMessage.vue';
 import Keyboard from '@/components/keyboards/Keyboard.vue';
 import Lesson from '@/interfaces/Lesson';
 import NewCharactersPanel from '@/components/panels/NewCharactersPanel.vue';
+import PrimaryButton from '@/components/uikit/buttons/PrimaryButton.vue';
 import PrimaryRouterLinkButton from '@/components/uikit/buttons/PrimaryRouterLinkButton.vue';
 import SaveResultRequestPayload from '@/interfaces/payloads/SaveResultRequestPayload';
 import StatisticsPanel from '@/components/panels/StatisticsPanel.vue';
@@ -88,6 +98,7 @@ const currentKey: Ref<string> = ref(crypto.randomUUID());
 const errors: Ref<number> = ref(0);
 const isLessonCompleted: Ref<boolean> = ref(false);
 const lesson: Ref<Lesson | null> = ref(null);
+const loadError: Ref<boolean> = ref(false);
 const speed: Ref<number> = ref(0);
 const startTime: Ref<number> = ref(0);
 const text: Ref<string> = ref('');
@@ -113,6 +124,11 @@ const nextLessonNumber: ComputedRef<number> = computed((): number => {
     return lesson.value.number < lesson.value.total ? lesson.value.number + 1 : 0;
 });
 
+const prepareNextLesson = (): void => {
+    currentKey.value = crypto.randomUUID();
+    lessonNumber++;
+};
+
 const resetState = (): void => {
     errors.value = 0;
     isLessonCompleted.value = false;
@@ -131,6 +147,27 @@ const fetchLesson = async (): Promise<void> => {
 
     lesson.value = response.data.lesson;
     text.value = response.data.lesson.text;
+};
+
+const updateTextContainer = (): void => {
+    if (textContainerRef.value) {
+        textContainer.value = textContainerRef.value.getContainerElement();
+    }
+};
+
+const afterLessonFetched = async (): Promise<void> => {
+    await nextTick();
+    updateTextContainer();
+};
+
+const loadLesson = async (): Promise<void> => {
+    try {
+        await fetchLesson();
+        await afterLessonFetched();
+        loadError.value = false;
+    } catch {
+        loadError.value = true;
+    }
 };
 
 const onInput = async (): Promise<void> => {
@@ -163,24 +200,18 @@ const onNext = async (): Promise<void> => {
         return;
     }
 
-    currentKey.value = crypto.randomUUID();
-    lessonNumber++;
+    prepareNextLesson();
     resetState();
-    await fetchLesson();
-    await nextTick();
+    await loadLesson();
+};
 
-    if (textContainerRef.value) {
-        textContainer.value = textContainerRef.value.getContainerElement();
-    }
+const onRetry = async (): Promise<void> => {
+    await loadLesson();
 };
 
 onMounted(async (): Promise<void> => {
     resetState();
-    await fetchLesson();
-
-    if (textContainerRef.value) {
-        textContainer.value = textContainerRef.value.getContainerElement();
-    }
+    await loadLesson();
 });
 
 onUnmounted((): void => {
