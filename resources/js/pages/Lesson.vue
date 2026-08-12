@@ -55,7 +55,7 @@
                 Retry
             </PrimaryButton>
         </template>
-        <InfoMessage v-else message="Loading..." />
+        <SpinnerIcon v-else class="w-8 h-8 text-gray-500 dark:text-gray-400 animate-spin" />
     </div>
 </template>
 
@@ -74,13 +74,13 @@ import axios, { AxiosResponse } from 'axios';
 import ContentCard from '@/pages/partials/cards/ContentCard.vue';
 import ErrorMessage from '@/components/uikit/messages/ErrorMessage.vue';
 import Heading from '@/components/uikit/headings/Heading.vue';
-import InfoMessage from '@/components/uikit/messages/InfoMessage.vue';
 import Keyboard from '@/components/keyboards/Keyboard.vue';
 import Lesson from '@/interfaces/Lesson';
 import NewCharactersPanel from '@/components/panels/NewCharactersPanel.vue';
 import PrimaryButton from '@/components/uikit/buttons/PrimaryButton.vue';
 import PrimaryRouterLinkButton from '@/components/uikit/buttons/PrimaryRouterLinkButton.vue';
 import SaveResultRequestPayload from '@/interfaces/payloads/SaveResultRequestPayload';
+import SpinnerIcon from '@/components/icons/SpinnerIcon.vue';
 import StatisticsPanel from '@/components/panels/StatisticsPanel.vue';
 import SuccessBanner from '@/components/uikit/banners/SuccessBanner.vue';
 import SuccessRouterLinkButton from '@/components/uikit/buttons/SuccessRouterLinkButton.vue';
