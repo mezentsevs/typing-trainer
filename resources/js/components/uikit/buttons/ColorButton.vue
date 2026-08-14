@@ -1,7 +1,7 @@
 <template>
     <button
         :type
-        class="w-48 px-4 py-2 border-2 rounded-lg bg-transparent text-lg font-mono text-center transition-all duration-200 ease-in-out"
+        class="w-48 px-4 py-2 border-2 rounded-lg text-white dark:bg-transparent text-lg text-center transition-all duration-200 ease-in-out"
         :class="variantClass"
         @click="onClick">
         <slot />
@@ -29,10 +29,10 @@ const emit = defineEmits<{
 
 const variantClass: ComputedRef<string> = computed((): string => {
     if (props.variant === ColorButtonVariant.Danger) {
-        return 'border-rose-500 text-rose-500 hover:bg-rose-500/5 active:bg-rose-500/10 dark:border-red-500 dark:text-red-400 dark:hover:bg-red-500/10 dark:shadow-[0_0_10px_0_rgba(239,68,68,0.5)] dark:hover:shadow-[0_0_15px_0_rgba(239,68,68,0.7)] dark:active:bg-red-500/20';
+        return 'border-red-600 bg-red-500 hover:bg-red-600 active:bg-red-700 dark:border-red-500 dark:text-red-400 dark:hover:bg-red-500/10 dark:active:bg-red-500/20 dark:shadow-[0_0_10px_0_rgba(239,68,68,0.5)] dark:hover:shadow-[0_0_15px_0_rgba(239,68,68,0.7)]';
     }
 
-    return 'border-blue-500 text-blue-500 hover:bg-blue-500/5 active:bg-blue-500/10 dark:border-cyan-500 dark:text-cyan-400 dark:hover:bg-cyan-500/10 dark:shadow-[0_0_10px_0_rgba(6,182,212,0.5)] dark:hover:shadow-[0_0_15px_0_rgba(6,182,212,0.7)] dark:active:bg-cyan-500/20';
+    return 'border-blue-600 bg-blue-500 hover:bg-blue-600 active:bg-blue-700 dark:border-cyan-500 dark:text-cyan-400 dark:hover:bg-cyan-500/10 dark:active:bg-cyan-500/20 dark:shadow-[0_0_10px_0_rgba(6,182,212,0.5)] dark:hover:shadow-[0_0_15px_0_rgba(6,182,212,0.7)]';
 });
 
 const onClick = (): void => {
