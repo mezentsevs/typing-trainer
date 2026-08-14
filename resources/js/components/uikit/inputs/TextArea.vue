@@ -2,7 +2,7 @@
     <textarea
         ref="area"
         :value="model"
-        class="custom-scroll-textarea p-2 border border-opacity-50 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-blue-500 dark:focus:border-blue-600 focus:ring-blue-500 dark:focus:ring-blue-600 rounded-lg shadow-sm transition-[box-shadow] duration-150"
+        class="custom-scroll-textarea p-2 border border-opacity-50 border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 dark:text-gray-300 focus:border-blue-500 dark:focus:border-blue-600 focus:ring-blue-500 dark:focus:ring-blue-600 rounded-lg shadow-sm transition-[box-shadow] duration-150"
         @input="onInput"
         @paste.prevent
         @cut.prevent
