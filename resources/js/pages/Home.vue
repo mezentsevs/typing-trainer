@@ -13,12 +13,8 @@
             {{ APP_SLOGAN }}
         </p>
         <div class="mt-8 flex flex-col items-center gap-6">
-            <router-link to="/setup" :class="[COMMON_BUTTON_CLASS, START_BUTTON_CLASS]">
-                Start
-            </router-link>
-            <button :class="[COMMON_BUTTON_CLASS, LOGOUT_BUTTON_CLASS]" @click="logout">
-                Logout
-            </button>
+            <ColorButton @click="onStart">Start</ColorButton>
+            <ColorButton :variant="ColorButtonVariant.Danger" @click="onLogout">Logout</ColorButton>
         </div>
         <AiDisclaimer :text="AI_DISCLAIMER" class="mt-8" />
         <div class="absolute inset-0 pointer-events-none overflow-hidden">
@@ -34,6 +30,7 @@
 <script lang="ts" setup>
 import { AI_DISCLAIMER } from '@/consts/AiConsts';
 import { APP_NAME, APP_SLOGAN } from '@/consts/AppConsts';
+import { ColorButtonVariant } from '@/enums/UIKitEnums';
 import { Router, useRouter } from 'vue-router';
 import { Store } from 'pinia';
 import { useAuthStore } from '@/stores/Auth';
@@ -41,6 +38,7 @@ import AiDisclaimer from '@/components/uikit/disclaimers/AiDisclaimer.vue';
 import AuthActions from '@/interfaces/auth/AuthActions';
 import AuthGetters from '@/interfaces/auth/AuthGetters';
 import AuthState from '@/interfaces/auth/AuthState';
+import ColorButton from '@/components/uikit/buttons/ColorButton.vue';
 import LogoIcon from '@/components/icons/LogoIcon.vue';
 import TypingAnimation from '@/components/uikit/animations/TypingAnimation.vue';
 
@@ -52,14 +50,12 @@ const CIRCLES: Record<string, string>[] = [
     { class: 'bottom-20 right-20 w-32 h-32 bg-fuchsia-300/70 dark:bg-purple-500 delay-1000' },
     { class: 'top-1/2 left-1/4 w-16 h-16 bg-rose-300/70 dark:bg-red-500 delay-500' },
 ];
-const COMMON_BUTTON_CLASS: string =
-    'w-48 py-2 px-4 bg-transparent border-2 text-lg font-mono transition-all duration-200 ease-in-out text-center rounded-lg';
-const LOGOUT_BUTTON_CLASS: string =
-    'border-rose-500 text-rose-500 hover:bg-rose-500/5 active:bg-rose-500/10 dark:border-red-500 dark:text-red-400 dark:hover:bg-red-500/10 dark:shadow-[0_0_10px_0_rgba(239,68,68,0.5)] dark:hover:shadow-[0_0_15px_0_rgba(239,68,68,0.7)] dark:active:bg-red-500/20';
-const START_BUTTON_CLASS: string =
-    'border-blue-500 text-blue-500 hover:bg-blue-500/5 active:bg-blue-500/10 dark:border-cyan-500 dark:text-cyan-400 dark:hover:bg-cyan-500/10 dark:shadow-[0_0_10px_0_rgba(6,182,212,0.5)] dark:hover:shadow-[0_0_15px_0_rgba(6,182,212,0.7)] dark:active:bg-cyan-500/20';
 
-const logout = async (): Promise<void> => {
+const onStart = async (): Promise<void> => {
+    await router.push('/setup');
+};
+
+const onLogout = async (): Promise<void> => {
     await authStore.logout();
     await router.push('/login');
 };

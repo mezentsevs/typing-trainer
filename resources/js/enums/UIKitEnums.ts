@@ -3,3 +3,8 @@ export enum Button {
     Reset = 'reset',
     Submit = 'submit',
 }
+
+export enum ColorButtonVariant {
+    Primary = 'primary',
+    Danger = 'danger',
+}

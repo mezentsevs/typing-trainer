@@ -14,13 +14,12 @@
 
 <script lang="ts" setup>
 import { Button } from '@/enums/UIKitEnums';
-import { UIKitButton } from '@/types/UIKitTypes';
 import BaseButton from '@/components/uikit/buttons/BaseButton.vue';
 import SpinnerIcon from '@/components/icons/SpinnerIcon.vue';
 
 withDefaults(
     defineProps<{
-        type?: UIKitButton;
+        type?: Button;
         loading?: boolean;
     }>(),
     {

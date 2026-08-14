@@ -5,13 +5,12 @@
 </template>
 
 <script lang="ts" setup>
-import BaseButton from '@/components/uikit/buttons/BaseButton.vue';
 import { Button } from '@/enums/UIKitEnums';
-import { UIKitButton } from '@/types/UIKitTypes';
+import BaseButton from '@/components/uikit/buttons/BaseButton.vue';
 
 withDefaults(
     defineProps<{
-        type?: UIKitButton;
+        type?: Button;
     }>(),
     {
         type: Button.Submit,

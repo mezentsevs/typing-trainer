@@ -7,9 +7,9 @@
 </template>
 
 <script lang="ts" setup>
-import { UIKitButton } from '@/types/UIKitTypes';
+import { Button } from '@/enums/UIKitEnums';
 
 defineProps<{
-    type: UIKitButton;
+    type: Button;
 }>();
 </script>
