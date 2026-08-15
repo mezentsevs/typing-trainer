@@ -9,6 +9,19 @@ export const calculateSpeed = (typedLength: number, timeSeconds: number): number
     return Math.round((typedLength / 5 / timeSeconds) * 60);
 };
 
+export const calculateErrors = (text: string, typed: string): number => {
+    const length = Math.min(text.length, typed.length);
+    let errorCount = 0;
+
+    for (let i = 0; i < length; i++) {
+        if (typed.charAt(i) !== text.charAt(i)) {
+            errorCount++;
+        }
+    }
+
+    return errorCount;
+};
+
 export const isSuccess = (textLength: number, errors: number): boolean => {
     if (textLength <= 0) {
         return false;

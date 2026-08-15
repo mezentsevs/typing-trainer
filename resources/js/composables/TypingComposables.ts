@@ -1,7 +1,12 @@
 import { computed, ComputedRef, Ref, ref } from 'vue';
 import axios from 'axios';
 
-import { calculateElapsedTimeSeconds, calculateSpeed, isSuccess } from '@/helpers/TypingHelper';
+import {
+    calculateElapsedTimeSeconds,
+    calculateErrors,
+    calculateSpeed,
+    isSuccess,
+} from '@/helpers/TypingHelper';
 import { getCurrentTypingUnit } from '@/helpers/StringHelper';
 import { scrollToCurrentChar } from '@/helpers/DomHelper';
 import SaveResultRequestPayload from '@/interfaces/payloads/SaveResultRequestPayload';
@@ -39,15 +44,10 @@ export const useHandleTypingInput = (): UseHandleTypingInputReturn => {
 
         const textLength: number = context.text.value.length;
         const typedLength: number = context.typed.value.length;
-        let errorCount: number = 0;
 
-        for (let i: number = 0; i < Math.min(typedLength, textLength); i++) {
-            if (context.typed.value.charAt(i) !== context.text.value.charAt(i)) {
-                errorCount++;
-            }
-        }
-
-        context.errors.value = errorCount;
+        context.time.value = calculateElapsedTimeSeconds(context.startTime.value);
+        context.speed.value = calculateSpeed(typedLength, context.time.value);
+        context.errors.value = calculateErrors(context.text.value, context.typed.value);
 
         if (typedLength >= textLength) {
             context.typed.value = context.typed.value.slice(0, textLength);
@@ -58,9 +58,6 @@ export const useHandleTypingInput = (): UseHandleTypingInputReturn => {
 
             return;
         }
-
-        context.time.value = calculateElapsedTimeSeconds(context.startTime.value);
-        context.speed.value = calculateSpeed(typedLength, context.time.value);
 
         scrollToCurrentCharThrottled(context.textContainer.value, typedLength);
     };
