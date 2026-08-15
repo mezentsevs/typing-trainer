@@ -6,10 +6,15 @@
                 <template v-if="lesson">{{ lesson.number }}/{{ lesson.total }}</template>
             </Heading>
             <SuccessBanner
-                v-if="isLessonCompleted"
+                v-if="isCompleted && isSuccessful"
                 class="absolute left-1/2 transform -translate-x-1/2">
-                Completed!
+                Success!
             </SuccessBanner>
+            <FailureBanner
+                v-else-if="isCompleted"
+                class="absolute left-1/2 transform -translate-x-1/2">
+                Failure.
+            </FailureBanner>
         </header>
 
         <aside class="mt-6 flex flex-row items-stretch space-x-4">
@@ -19,19 +24,19 @@
 
         <main>
             <TextContainer ref="textContainerRef" class="h-28 mt-4 text-lg font-mono">
-                <TypingText :text :typed :is-current-word :is-completed="isLessonCompleted" />
+                <TypingText :text :typed :is-current-word :is-completed="isCompleted" />
             </TextContainer>
             <TextArea
                 id="typed"
                 v-model="typed"
                 v-focus
                 class="w-full mt-4 resize-none"
-                :disabled="isLessonCompleted"
+                :disabled="isCompleted"
                 rows="4"
                 spellcheck="false"
                 @input="onInput" />
             <Keyboard :language :typed :text class="mt-4" />
-            <div v-if="isLessonCompleted" class="mt-6 flex flex-row justify-center">
+            <div v-if="isCompleted" class="mt-6 flex flex-row justify-center">
                 <PrimaryRouterLinkButton
                     v-if="nextLessonNumber"
                     :to="`/lesson/${language}/${nextLessonNumber}`"
@@ -73,6 +78,7 @@ import {
 import axios, { AxiosResponse } from 'axios';
 import ContentCard from '@/pages/partials/cards/ContentCard.vue';
 import ErrorMessage from '@/components/uikit/messages/ErrorMessage.vue';
+import FailureBanner from '@/components/uikit/banners/FailureBanner.vue';
 import Heading from '@/components/uikit/headings/Heading.vue';
 import Keyboard from '@/components/keyboards/Keyboard.vue';
 import Lesson from '@/interfaces/Lesson';
@@ -96,7 +102,8 @@ const { handleTypingInput, cleanupScrollThrottle }: UseHandleTypingInputReturn =
 
 const currentKey: Ref<string> = ref(crypto.randomUUID());
 const errors: Ref<number> = ref(0);
-const isLessonCompleted: Ref<boolean> = ref(false);
+const isCompleted: Ref<boolean> = ref(false);
+const isSuccessful: Ref<boolean> = ref(false);
 const lesson: Ref<Lesson | null> = ref(null);
 const loadError: Ref<boolean> = ref(false);
 const speed: Ref<number> = ref(0);
@@ -108,9 +115,7 @@ const time: Ref<number> = ref(0);
 const typed: Ref<string> = ref('');
 
 const { isCurrentWord }: Record<string, ComputedRef<TypingUnit>> = useCurrentWord(text, typed);
-const {
-    progress,
-}: Record<string, ComputedRef<number>> = useProgress(text, typed, isLessonCompleted);
+const { progress }: Record<string, ComputedRef<number>> = useProgress(text, typed, isCompleted);
 
 const language: Language = route.params.language as Language;
 
@@ -131,7 +136,8 @@ const prepareNextLesson = (): void => {
 
 const resetState = (): void => {
     errors.value = 0;
-    isLessonCompleted.value = false;
+    isCompleted.value = false;
+    isSuccessful.value = false;
     lesson.value = null;
     speed.value = 0;
     startTime.value = 0;
@@ -174,7 +180,8 @@ const onInput = async (): Promise<void> => {
     await handleTypingInput(
         {
             errors,
-            isCompleted: isLessonCompleted,
+            isCompleted,
+            isSuccessful,
             language,
             speed,
             startTime,
@@ -196,7 +203,7 @@ const onInput = async (): Promise<void> => {
 };
 
 const onNext = async (): Promise<void> => {
-    if (!isLessonCompleted.value) {
+    if (!isCompleted.value) {
         return;
     }
 

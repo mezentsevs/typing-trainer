@@ -2,6 +2,7 @@ import { computed, ComputedRef, Ref, ref } from 'vue';
 import axios from 'axios';
 
 import { getCurrentTypingUnit } from '@/helpers/StringHelper';
+import { isSuccess } from '@/helpers/TypingHelper';
 import { scrollToCurrentChar } from '@/helpers/DomHelper';
 import SaveResultRequestPayload from '@/interfaces/payloads/SaveResultRequestPayload';
 import TypingContext from '@/interfaces/typing/TypingContext';
@@ -36,10 +37,11 @@ export const useHandleTypingInput = (): UseHandleTypingInputReturn => {
             context.startTime.value = Date.now();
         }
 
+        const textLength: number = context.text.value.length;
         const typedLength: number = context.typed.value.length;
         let errorCount: number = 0;
 
-        for (let i: number = 0; i < Math.min(typedLength, context.text.value.length); i++) {
+        for (let i: number = 0; i < Math.min(typedLength, textLength); i++) {
             if (context.typed.value.charAt(i) !== context.text.value.charAt(i)) {
                 errorCount++;
             }
@@ -47,9 +49,10 @@ export const useHandleTypingInput = (): UseHandleTypingInputReturn => {
 
         context.errors.value = errorCount;
 
-        if (typedLength >= context.text.value.length) {
-            context.typed.value = context.typed.value.slice(0, context.text.value.length);
+        if (typedLength >= textLength) {
+            context.typed.value = context.typed.value.slice(0, textLength);
             context.isCompleted.value = true;
+            context.isSuccessful.value = isSuccess(textLength, context.errors.value);
 
             await axios.post(saveResultRequestUrl, saveResultRequestPayload);
 

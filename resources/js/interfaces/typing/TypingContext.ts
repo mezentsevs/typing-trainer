@@ -3,6 +3,7 @@ import { ComputedRef, Ref } from 'vue';
 export default interface TypingContext {
     errors: Ref<number>;
     isCompleted: Ref<boolean>;
+    isSuccessful: Ref<boolean>;
     language: string;
     speed: Ref<number>;
     startTime: Ref<number>;
