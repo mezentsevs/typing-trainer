@@ -1,8 +1,8 @@
 import { computed, ComputedRef, Ref, ref } from 'vue';
 import axios from 'axios';
 
+import { calculateElapsedTimeSeconds, calculateSpeed, isSuccess } from '@/helpers/TypingHelper';
 import { getCurrentTypingUnit } from '@/helpers/StringHelper';
-import { isSuccess } from '@/helpers/TypingHelper';
 import { scrollToCurrentChar } from '@/helpers/DomHelper';
 import SaveResultRequestPayload from '@/interfaces/payloads/SaveResultRequestPayload';
 import TypingContext from '@/interfaces/typing/TypingContext';
@@ -59,10 +59,8 @@ export const useHandleTypingInput = (): UseHandleTypingInputReturn => {
             return;
         }
 
-        context.time.value = Math.round((Date.now() - context.startTime.value) / 1000);
-        const words: number = typedLength / 5;
-        context.speed.value =
-            context.time.value > 0 ? Math.round((words / context.time.value) * 60) : 0;
+        context.time.value = calculateElapsedTimeSeconds(context.startTime.value);
+        context.speed.value = calculateSpeed(typedLength, context.time.value);
 
         scrollToCurrentCharThrottled(context.textContainer.value, typedLength);
     };
