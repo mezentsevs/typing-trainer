@@ -2,6 +2,10 @@ import { computed, ComputedRef, Ref, ref } from 'vue';
 import axios from 'axios';
 
 import {
+    BaseSaveResultRequestPayload,
+    SaveResultRequestPayload,
+} from '@/interfaces/payloads/SaveResultRequestPayload';
+import {
     calculateElapsedTimeSeconds,
     calculateErrors,
     calculateSpeed,
@@ -9,7 +13,6 @@ import {
 } from '@/helpers/TypingHelper';
 import { getCurrentTypingUnit } from '@/helpers/StringHelper';
 import { scrollToCurrentChar } from '@/helpers/DomHelper';
-import SaveResultRequestPayload from '@/interfaces/payloads/SaveResultRequestPayload';
 import TypingContext from '@/interfaces/typing/TypingContext';
 import TypingUnit from '@/interfaces/typing/TypingUnit';
 
@@ -17,7 +20,7 @@ export interface UseHandleTypingInputReturn {
     handleTypingInput: (
         context: TypingContext,
         saveResultRequestUrl: string,
-        saveResultRequestPayload: SaveResultRequestPayload,
+        baseSaveResultRequestPayload: BaseSaveResultRequestPayload,
     ) => Promise<void>;
     cleanupScrollThrottle: () => void;
 }
@@ -36,7 +39,7 @@ export const useHandleTypingInput = (): UseHandleTypingInputReturn => {
     const handleTypingInput = async (
         context: TypingContext,
         saveResultRequestUrl: string,
-        saveResultRequestPayload: SaveResultRequestPayload,
+        baseSaveResultRequestPayload: BaseSaveResultRequestPayload,
     ): Promise<void> => {
         if (!context.startTime.value) {
             context.startTime.value = Date.now();
@@ -53,6 +56,13 @@ export const useHandleTypingInput = (): UseHandleTypingInputReturn => {
             context.typed.value = context.typed.value.slice(0, textLength);
             context.isCompleted.value = true;
             context.isSuccessful.value = isSuccess(textLength, context.errors.value);
+
+            const saveResultRequestPayload: SaveResultRequestPayload = {
+                ...baseSaveResultRequestPayload,
+                time_seconds: context.time.value,
+                speed_wpm: context.speed.value,
+                errors: context.errors.value,
+            };
 
             await axios.post(saveResultRequestUrl, saveResultRequestPayload);
 

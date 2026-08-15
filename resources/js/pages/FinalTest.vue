@@ -43,6 +43,7 @@
 </template>
 
 <script lang="ts" setup>
+import { BaseSaveResultRequestPayload } from '@/interfaces/payloads/SaveResultRequestPayload';
 import { ComputedRef, Ref, ref, onUnmounted, nextTick } from 'vue';
 import { Language } from '@/enums/KeyboardEnums';
 import { RouteLocationNormalizedLoaded, useRoute } from 'vue-router';
@@ -59,7 +60,6 @@ import FinalTestSetup from '@/pages/partials/FinalTestSetup.vue';
 import Heading from '@/components/uikit/headings/Heading.vue';
 import Keyboard from '@/components/keyboards/Keyboard.vue';
 import PrimaryRouterLinkButton from '@/components/uikit/buttons/PrimaryRouterLinkButton.vue';
-import SaveResultRequestPayload from '@/interfaces/payloads/SaveResultRequestPayload';
 import StatisticsPanel from '@/components/panels/StatisticsPanel.vue';
 import SuccessBanner from '@/components/uikit/banners/SuccessBanner.vue';
 import TextArea from '@/components/uikit/inputs/TextArea.vue';
@@ -187,10 +187,7 @@ const onInput = async (): Promise<void> => {
         '/test/result',
         {
             language,
-            time_seconds: time.value,
-            speed_wpm: speed.value,
-            errors: errors.value,
-        } as SaveResultRequestPayload,
+        } as BaseSaveResultRequestPayload,
     );
 };
 

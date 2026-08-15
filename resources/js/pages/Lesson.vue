@@ -65,6 +65,7 @@
 </template>
 
 <script lang="ts" setup>
+import { BaseSaveResultRequestPayload } from '@/interfaces/payloads/SaveResultRequestPayload';
 import { Button } from '@/enums/UIKitEnums';
 import { Language } from '@/enums/KeyboardEnums';
 import { ref, computed, onMounted, onUnmounted, Ref, ComputedRef, nextTick } from 'vue';
@@ -86,7 +87,6 @@ import LoadingSpinner from '@/components/uikit/spinners/LoadingSpinner.vue';
 import NewCharactersPanel from '@/components/panels/NewCharactersPanel.vue';
 import PrimaryButton from '@/components/uikit/buttons/PrimaryButton.vue';
 import PrimaryRouterLinkButton from '@/components/uikit/buttons/PrimaryRouterLinkButton.vue';
-import SaveResultRequestPayload from '@/interfaces/payloads/SaveResultRequestPayload';
 import StatisticsPanel from '@/components/panels/StatisticsPanel.vue';
 import SuccessBanner from '@/components/uikit/banners/SuccessBanner.vue';
 import SuccessRouterLinkButton from '@/components/uikit/buttons/SuccessRouterLinkButton.vue';
@@ -195,10 +195,7 @@ const onInput = async (): Promise<void> => {
         {
             lesson_id: lesson.value?.id,
             language,
-            time_seconds: time.value,
-            speed_wpm: speed.value,
-            errors: errors.value,
-        } as SaveResultRequestPayload,
+        } as BaseSaveResultRequestPayload,
     );
 };
 
