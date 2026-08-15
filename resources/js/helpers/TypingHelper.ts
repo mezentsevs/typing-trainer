@@ -28,6 +28,14 @@ export const calculateErrors = (text: string, typed: string): number => {
     return errorCount;
 };
 
+export const calculateProgress = (textLength: number, typedLength: number): number => {
+    if (textLength <= 0) {
+        return 0;
+    }
+
+    return Math.floor((typedLength / textLength) * 100);
+};
+
 export const isSuccess = (textLength: number, errors: number): boolean => {
     if (textLength <= 0) {
         return false;

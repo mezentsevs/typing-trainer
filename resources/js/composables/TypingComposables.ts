@@ -8,6 +8,7 @@ import {
 import {
     calculateElapsedTimeSeconds,
     calculateErrors,
+    calculateProgress,
     calculateSpeed,
     isSuccess,
 } from '@/helpers/TypingHelper';
@@ -127,7 +128,7 @@ export const useProgress = (
             return 100;
         }
 
-        return text.value.length ? Math.floor((typed.value.length / text.value.length) * 100) : 0;
+        return calculateProgress(text.value.length, typed.value.length);
     });
 
     return { progress };
