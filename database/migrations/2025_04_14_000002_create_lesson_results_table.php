@@ -15,6 +15,7 @@ return new class () extends Migration {
             $table->unsignedInteger('time_seconds');
             $table->unsignedInteger('speed_wpm');
             $table->unsignedInteger('errors');
+            $table->boolean('success');
             $table->timestamps();
         });
     }
