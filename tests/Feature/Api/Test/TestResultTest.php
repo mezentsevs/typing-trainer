@@ -21,6 +21,7 @@ class TestResultTest extends TestTestCase
                 'time_seconds' => self::TIME_SECONDS,
                 'speed_wpm' => self::SPEED_WPM,
                 'errors' => self::ERRORS_COUNT,
+                'success' => self::SUCCESS,
             ]);
 
         $this->withResponse($response)
@@ -36,6 +37,7 @@ class TestResultTest extends TestTestCase
                 'time_seconds' => self::TIME_SECONDS,
                 'speed_wpm' => self::SPEED_WPM,
                 'errors' => self::ERRORS_COUNT,
+                'success' => self::SUCCESS,
             ]);
 
         $this->withResponse($response)
@@ -50,6 +52,7 @@ class TestResultTest extends TestTestCase
             'time_seconds' => self::TIME_SECONDS,
             'speed_wpm' => self::SPEED_WPM,
             'errors' => self::ERRORS_COUNT,
+            'success' => self::SUCCESS,
         ]);
 
         $this->withResponse($response)
@@ -64,6 +67,7 @@ class TestResultTest extends TestTestCase
             'time_seconds' => self::TIME_SECONDS,
             'speed_wpm' => self::SPEED_WPM,
             'errors' => self::ERRORS_COUNT,
+            'success' => self::SUCCESS,
         ]);
 
         $this->withResponse($response)
@@ -78,6 +82,7 @@ class TestResultTest extends TestTestCase
             'time_seconds' => self::TIME_SECONDS,
             'speed_wpm' => self::SPEED_WPM,
             'errors' => self::ERRORS_COUNT,
+            'success' => self::SUCCESS,
         ]);
 
         $this->withResponse($response)
@@ -91,6 +96,7 @@ class TestResultTest extends TestTestCase
                 'time_seconds' => self::TIME_SECONDS,
                 'speed_wpm' => self::SPEED_WPM,
                 'errors' => self::ERRORS_COUNT,
+                'success' => self::SUCCESS,
             ]);
 
         $this->withResponse($response)
@@ -104,6 +110,7 @@ class TestResultTest extends TestTestCase
                 'time_seconds' => self::TIME_SECONDS,
                 'speed_wpm' => self::SPEED_WPM,
                 'errors' => self::ERRORS_COUNT,
+                'success' => self::SUCCESS,
             ]);
 
         $this->withResponse($response)
@@ -118,6 +125,7 @@ class TestResultTest extends TestTestCase
                 'time_seconds' => self::TIME_SECONDS,
                 'speed_wpm' => self::SPEED_WPM,
                 'errors' => self::ERRORS_COUNT,
+                'success' => self::SUCCESS,
             ]);
 
         $this->withResponse($response)
@@ -132,6 +140,7 @@ class TestResultTest extends TestTestCase
                 'time_seconds' => self::TIME_SECONDS,
                 'speed_wpm' => self::SPEED_WPM,
                 'errors' => self::ERRORS_COUNT,
+                'success' => self::SUCCESS,
             ]);
 
         $this->withResponse($response)
@@ -146,6 +155,7 @@ class TestResultTest extends TestTestCase
                 'time_seconds' => self::TIME_SECONDS,
                 'speed_wpm' => self::SPEED_WPM,
                 'errors' => self::ERRORS_COUNT,
+                'success' => self::SUCCESS,
             ]);
 
         $this->withResponse($response)
@@ -160,6 +170,7 @@ class TestResultTest extends TestTestCase
                 'time_seconds' => self::TIME_SECONDS,
                 'speed_wpm' => self::SPEED_WPM,
                 'errors' => self::ERRORS_COUNT,
+                'success' => self::SUCCESS,
             ]);
 
         $this->withResponse($response)
@@ -174,6 +185,7 @@ class TestResultTest extends TestTestCase
                 'time_seconds' => self::TIME_SECONDS,
                 'speed_wpm' => self::SPEED_WPM,
                 'errors' => self::ERRORS_COUNT,
+                'success' => self::SUCCESS,
             ]);
 
         $this->withResponse($response)
@@ -188,6 +200,7 @@ class TestResultTest extends TestTestCase
                 'language' => $language,
                 'speed_wpm' => self::SPEED_WPM,
                 'errors' => self::ERRORS_COUNT,
+                'success' => self::SUCCESS,
             ]);
 
         $this->withResponse($response)
@@ -203,6 +216,7 @@ class TestResultTest extends TestTestCase
                 'time_seconds' => null,
                 'speed_wpm' => self::SPEED_WPM,
                 'errors' => self::ERRORS_COUNT,
+                'success' => self::SUCCESS,
             ]);
 
         $this->withResponse($response)
@@ -218,6 +232,7 @@ class TestResultTest extends TestTestCase
                 'time_seconds' => self::INVALID_BOOL_TIME_SECONDS,
                 'speed_wpm' => self::SPEED_WPM,
                 'errors' => self::ERRORS_COUNT,
+                'success' => self::SUCCESS,
             ]);
 
         $this->withResponse($response)
@@ -233,6 +248,7 @@ class TestResultTest extends TestTestCase
                 'time_seconds' => self::INVALID_STRING_TIME_SECONDS,
                 'speed_wpm' => self::SPEED_WPM,
                 'errors' => self::ERRORS_COUNT,
+                'success' => self::SUCCESS,
             ]);
 
         $this->withResponse($response)
@@ -248,6 +264,7 @@ class TestResultTest extends TestTestCase
                 'time_seconds' => self::INVALID_NUMERIC_STRING_TIME_SECONDS,
                 'speed_wpm' => self::SPEED_WPM,
                 'errors' => self::ERRORS_COUNT,
+                'success' => self::SUCCESS,
             ]);
 
         $this->withResponse($response)
@@ -263,6 +280,7 @@ class TestResultTest extends TestTestCase
                 'time_seconds' => self::INVALID_FLOAT_TIME_SECONDS,
                 'speed_wpm' => self::SPEED_WPM,
                 'errors' => self::ERRORS_COUNT,
+                'success' => self::SUCCESS,
             ]);
 
         $this->withResponse($response)
@@ -278,6 +296,7 @@ class TestResultTest extends TestTestCase
                 'time_seconds' => self::MIN_TIME_SECONDS,
                 'speed_wpm' => self::SPEED_WPM,
                 'errors' => self::ERRORS_COUNT,
+                'success' => self::SUCCESS,
             ]);
 
         $this->withResponse($response)
@@ -293,6 +312,7 @@ class TestResultTest extends TestTestCase
                 'time_seconds' => self::MAX_UNSIGNED_INTEGER,
                 'speed_wpm' => self::SPEED_WPM,
                 'errors' => self::ERRORS_COUNT,
+                'success' => self::SUCCESS,
             ]);
 
         $this->withResponse($response)
@@ -308,6 +328,7 @@ class TestResultTest extends TestTestCase
                 'time_seconds' => self::MIN_TIME_SECONDS - 1,
                 'speed_wpm' => self::SPEED_WPM,
                 'errors' => self::ERRORS_COUNT,
+                'success' => self::SUCCESS,
             ]);
 
         $this->withResponse($response)
@@ -323,6 +344,7 @@ class TestResultTest extends TestTestCase
                 'time_seconds' => self::MAX_UNSIGNED_INTEGER + 1,
                 'speed_wpm' => self::SPEED_WPM,
                 'errors' => self::ERRORS_COUNT,
+                'success' => self::SUCCESS,
             ]);
 
         $this->withResponse($response)
@@ -341,6 +363,7 @@ class TestResultTest extends TestTestCase
                 'language' => $language,
                 'time_seconds' => self::TIME_SECONDS,
                 'errors' => self::ERRORS_COUNT,
+                'success' => self::SUCCESS,
             ]);
 
         $this->withResponse($response)
@@ -356,6 +379,7 @@ class TestResultTest extends TestTestCase
                 'time_seconds' => self::TIME_SECONDS,
                 'speed_wpm' => null,
                 'errors' => self::ERRORS_COUNT,
+                'success' => self::SUCCESS,
             ]);
 
         $this->withResponse($response)
@@ -371,6 +395,7 @@ class TestResultTest extends TestTestCase
                 'time_seconds' => self::TIME_SECONDS,
                 'speed_wpm' => self::INVALID_BOOL_SPEED_WPM,
                 'errors' => self::ERRORS_COUNT,
+                'success' => self::SUCCESS,
             ]);
 
         $this->withResponse($response)
@@ -386,6 +411,7 @@ class TestResultTest extends TestTestCase
                 'time_seconds' => self::TIME_SECONDS,
                 'speed_wpm' => self::INVALID_STRING_SPEED_WPM,
                 'errors' => self::ERRORS_COUNT,
+                'success' => self::SUCCESS,
             ]);
 
         $this->withResponse($response)
@@ -401,6 +427,7 @@ class TestResultTest extends TestTestCase
                 'time_seconds' => self::TIME_SECONDS,
                 'speed_wpm' => self::INVALID_NUMERIC_STRING_SPEED_WPM,
                 'errors' => self::ERRORS_COUNT,
+                'success' => self::SUCCESS,
             ]);
 
         $this->withResponse($response)
@@ -416,6 +443,7 @@ class TestResultTest extends TestTestCase
                 'time_seconds' => self::TIME_SECONDS,
                 'speed_wpm' => self::INVALID_FLOAT_SPEED_WPM,
                 'errors' => self::ERRORS_COUNT,
+                'success' => self::SUCCESS,
             ]);
 
         $this->withResponse($response)
@@ -431,6 +459,7 @@ class TestResultTest extends TestTestCase
                 'time_seconds' => self::TIME_SECONDS,
                 'speed_wpm' => self::MIN_SPEED_WPM,
                 'errors' => self::ERRORS_COUNT,
+                'success' => self::SUCCESS,
             ]);
 
         $this->withResponse($response)
@@ -446,6 +475,7 @@ class TestResultTest extends TestTestCase
                 'time_seconds' => self::TIME_SECONDS,
                 'speed_wpm' => self::MAX_UNSIGNED_INTEGER,
                 'errors' => self::ERRORS_COUNT,
+                'success' => self::SUCCESS,
             ]);
 
         $this->withResponse($response)
@@ -461,6 +491,7 @@ class TestResultTest extends TestTestCase
                 'time_seconds' => self::TIME_SECONDS,
                 'speed_wpm' => self::MIN_SPEED_WPM - 1,
                 'errors' => self::ERRORS_COUNT,
+                'success' => self::SUCCESS,
             ]);
 
         $this->withResponse($response)
@@ -476,6 +507,7 @@ class TestResultTest extends TestTestCase
                 'time_seconds' => self::TIME_SECONDS,
                 'speed_wpm' => self::MAX_UNSIGNED_INTEGER + 1,
                 'errors' => self::ERRORS_COUNT,
+                'success' => self::SUCCESS,
             ]);
 
         $this->withResponse($response)
@@ -494,6 +526,7 @@ class TestResultTest extends TestTestCase
                 'language' => $language,
                 'time_seconds' => self::TIME_SECONDS,
                 'speed_wpm' => self::SPEED_WPM,
+                'success' => self::SUCCESS,
             ]);
 
         $this->withResponse($response)
@@ -509,6 +542,7 @@ class TestResultTest extends TestTestCase
                 'time_seconds' => self::TIME_SECONDS,
                 'speed_wpm' => self::SPEED_WPM,
                 'errors' => null,
+                'success' => self::SUCCESS,
             ]);
 
         $this->withResponse($response)
@@ -524,6 +558,7 @@ class TestResultTest extends TestTestCase
                 'time_seconds' => self::TIME_SECONDS,
                 'speed_wpm' => self::SPEED_WPM,
                 'errors' => self::INVALID_BOOL_ERRORS_COUNT,
+                'success' => self::SUCCESS,
             ]);
 
         $this->withResponse($response)
@@ -539,6 +574,7 @@ class TestResultTest extends TestTestCase
                 'time_seconds' => self::TIME_SECONDS,
                 'speed_wpm' => self::SPEED_WPM,
                 'errors' => self::INVALID_STRING_ERRORS_COUNT,
+                'success' => self::SUCCESS,
             ]);
 
         $this->withResponse($response)
@@ -554,6 +590,7 @@ class TestResultTest extends TestTestCase
                 'time_seconds' => self::TIME_SECONDS,
                 'speed_wpm' => self::SPEED_WPM,
                 'errors' => self::INVALID_NUMERIC_STRING_ERRORS_COUNT,
+                'success' => self::SUCCESS,
             ]);
 
         $this->withResponse($response)
@@ -569,6 +606,7 @@ class TestResultTest extends TestTestCase
                 'time_seconds' => self::TIME_SECONDS,
                 'speed_wpm' => self::SPEED_WPM,
                 'errors' => self::INVALID_FLOAT_ERRORS_COUNT,
+                'success' => self::SUCCESS,
             ]);
 
         $this->withResponse($response)
@@ -584,6 +622,7 @@ class TestResultTest extends TestTestCase
                 'time_seconds' => self::TIME_SECONDS,
                 'speed_wpm' => self::SPEED_WPM,
                 'errors' => self::MIN_ERRORS_COUNT,
+                'success' => self::SUCCESS,
             ]);
 
         $this->withResponse($response)
@@ -599,6 +638,7 @@ class TestResultTest extends TestTestCase
                 'time_seconds' => self::TIME_SECONDS,
                 'speed_wpm' => self::SPEED_WPM,
                 'errors' => self::MAX_UNSIGNED_INTEGER,
+                'success' => self::SUCCESS,
             ]);
 
         $this->withResponse($response)
@@ -614,6 +654,7 @@ class TestResultTest extends TestTestCase
                 'time_seconds' => self::TIME_SECONDS,
                 'speed_wpm' => self::SPEED_WPM,
                 'errors' => self::MIN_ERRORS_COUNT - 1,
+                'success' => self::SUCCESS,
             ]);
 
         $this->withResponse($response)
@@ -629,6 +670,7 @@ class TestResultTest extends TestTestCase
                 'time_seconds' => self::TIME_SECONDS,
                 'speed_wpm' => self::SPEED_WPM,
                 'errors' => self::MAX_UNSIGNED_INTEGER + 1,
+                'success' => self::SUCCESS,
             ]);
 
         $this->withResponse($response)
@@ -648,6 +690,7 @@ class TestResultTest extends TestTestCase
             self::TIME_SECONDS,
             self::SPEED_WPM,
             self::ERRORS_COUNT,
+            self::SUCCESS,
         );
 
         $response = $this->withToken($this->token)
@@ -671,6 +714,7 @@ class TestResultTest extends TestTestCase
             self::TIME_SECONDS,
             self::SPEED_WPM,
             self::ERRORS_COUNT,
+            self::SUCCESS,
         );
 
         $response = $this->withToken($this->token)
@@ -689,6 +733,7 @@ class TestResultTest extends TestTestCase
             self::TIME_SECONDS,
             self::SPEED_WPM,
             self::ERRORS_COUNT,
+            self::SUCCESS,
         );
 
         $response = $this->withToken($this->token)

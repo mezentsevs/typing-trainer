@@ -30,6 +30,7 @@ class LessonResultFactory extends Factory
             'time_seconds' => $this->faker->numberBetween(0, self::MAX_UNSIGNED_INTEGER),
             'speed_wpm' => $this->faker->numberBetween(0, self::MAX_UNSIGNED_INTEGER),
             'errors' => $this->faker->numberBetween(0, self::MAX_UNSIGNED_INTEGER),
+            'success' => $this->faker->boolean(),
             'created_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
             'updated_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
         ];

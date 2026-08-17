@@ -10,7 +10,7 @@ trait WithTestConstants
     protected const string TEST_RETRIEVE_URI_TEMPLATE_WITH_GENRE_ONLY = self::TEST_RETRIEVE_URI . '?genre=%s';
     protected const string TEST_UPLOAD_URI = '/api/test/upload';
     protected const string TEST_RESULT_URI = '/api/test/result';
-    protected const string TEST_RESULT_URI_TEMPLATE = self::TEST_RESULT_URI . '?language=%s&time_seconds=%d&speed_wpm=%d&errors=%d';
+    protected const string TEST_RESULT_URI_TEMPLATE = self::TEST_RESULT_URI . '?language=%s&time_seconds=%d&speed_wpm=%d&errors=%d&success=%d';
 
     protected const array TEST_RETRIEVE_RESPONSE_JSON_STRUCTURE = ['text'];
 
@@ -26,6 +26,7 @@ trait WithTestConstants
         'time_seconds',
         'speed_wpm',
         'errors',
+        'success',
         'created_at',
         'updated_at',
     ];

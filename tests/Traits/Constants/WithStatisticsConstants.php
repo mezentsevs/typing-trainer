@@ -21,4 +21,6 @@ trait WithStatisticsConstants
     protected const string INVALID_STRING_ERRORS_COUNT = 'invalidStringErrorsCount';
     protected const string INVALID_NUMERIC_STRING_ERRORS_COUNT = '2';
     protected const float INVALID_FLOAT_ERRORS_COUNT = 2.5;
+
+    protected const bool SUCCESS = true;
 }
