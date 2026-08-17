@@ -63,6 +63,7 @@ export const useHandleTypingInput = (): UseHandleTypingInputReturn => {
                 time_seconds: context.time.value,
                 speed_wpm: context.speed.value,
                 errors: context.errors.value,
+                success: context.isSuccessful.value,
             };
 
             await axios.post(saveResultRequestUrl, saveResultRequestPayload);
