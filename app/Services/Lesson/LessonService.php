@@ -45,6 +45,7 @@ class LessonService
             'time_seconds' => $dto->timeSeconds,
             'speed_wpm' => $dto->speedWpm,
             'errors' => $dto->errors,
+            'success' => $dto->success,
         ]);
     }
 }

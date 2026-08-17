@@ -52,6 +52,11 @@ class LessonSaveResultRequest extends BaseRequest
                 'min:' . self::MIN_ERRORS_COUNT,
                 new MaxUnsignedInteger(),
             ],
+            'success' => [
+                'bail',
+                'required',
+                'boolean',
+            ],
         ];
     }
 }

@@ -10,6 +10,7 @@ abstract class BaseSaveResultDto extends BaseDto
         public readonly int $timeSeconds,
         public readonly int $speedWpm,
         public readonly int $errors,
+        public readonly bool $success,
     ) {
     }
 }

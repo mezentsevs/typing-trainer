@@ -50,6 +50,7 @@ class TestController extends Controller
             'timeSeconds' => $request->time_seconds,
             'speedWpm' => $request->speed_wpm,
             'errors' => $request->errors,
+            'success' => $request->success,
         ]);
 
         return response()->json($this->testService->saveResult($dto));

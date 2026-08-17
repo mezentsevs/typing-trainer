@@ -15,6 +15,7 @@ use Illuminate\Support\Carbon;
  * @property int $time_seconds
  * @property int $speed_wpm
  * @property int $errors
+ * @property bool $success
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read User $user
@@ -26,6 +27,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder<static>|TestResult whereId($value)
  * @method static Builder<static>|TestResult whereLanguage($value)
  * @method static Builder<static>|TestResult whereSpeedWpm($value)
+ * @method static Builder<static>|TestResult whereSuccess($value)
  * @method static Builder<static>|TestResult whereTimeSeconds($value)
  * @method static Builder<static>|TestResult whereUpdatedAt($value)
  * @method static Builder<static>|TestResult whereUserId($value)
@@ -35,7 +37,7 @@ class TestResult extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'language', 'time_seconds', 'speed_wpm', 'errors'];
+    protected $fillable = ['user_id', 'language', 'time_seconds', 'speed_wpm', 'errors', 'success'];
 
     public function user(): BelongsTo
     {

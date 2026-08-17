@@ -15,8 +15,9 @@ class LessonSaveResultDto extends BaseSaveResultDto
         int $timeSeconds,
         int $speedWpm,
         int $errors,
+        bool $success,
     ) {
-        parent::__construct($userId, $language, $timeSeconds, $speedWpm, $errors);
+        parent::__construct($userId, $language, $timeSeconds, $speedWpm, $errors, $success);
         $this->lessonId = $lessonId;
     }
 }

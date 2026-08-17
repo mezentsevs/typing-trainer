@@ -16,6 +16,7 @@ use Illuminate\Support\Carbon;
  * @property int $time_seconds
  * @property int $speed_wpm
  * @property int $errors
+ * @property bool $success
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read Lesson $lesson
@@ -29,6 +30,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder<static>|LessonResult whereLanguage($value)
  * @method static Builder<static>|LessonResult whereLessonId($value)
  * @method static Builder<static>|LessonResult whereSpeedWpm($value)
+ * @method static Builder<static>|LessonResult whereSuccess($value)
  * @method static Builder<static>|LessonResult whereTimeSeconds($value)
  * @method static Builder<static>|LessonResult whereUpdatedAt($value)
  * @method static Builder<static>|LessonResult whereUserId($value)
@@ -38,7 +40,7 @@ class LessonResult extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'lesson_id', 'language', 'time_seconds', 'speed_wpm', 'errors'];
+    protected $fillable = ['user_id', 'lesson_id', 'language', 'time_seconds', 'speed_wpm', 'errors', 'success'];
 
     public function user(): BelongsTo
     {
