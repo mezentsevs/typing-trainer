@@ -23,4 +23,7 @@ trait WithStatisticsConstants
     protected const float INVALID_FLOAT_ERRORS_COUNT = 2.5;
 
     protected const bool SUCCESS = true;
+    protected const int INVALID_INT_SUCCESS = 2;
+    protected const string INVALID_STRING_SUCCESS = 'invalidStringSuccess';
+    protected const float INVALID_FLOAT_SUCCESS = 1.5;
 }
