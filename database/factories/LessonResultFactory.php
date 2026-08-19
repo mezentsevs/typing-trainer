@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Enums\Language;
+use App\Languages\Registry\LanguageRegistry;
 use App\Models\Lesson;
 use App\Models\LessonResult;
 use App\Models\User;
@@ -26,7 +26,7 @@ class LessonResultFactory extends Factory
         return [
             'user_id' => User::factory(),
             'lesson_id' => Lesson::factory(),
-            'language' => $this->faker->randomElement([Language::En->value, Language::Ru->value]),
+            'language' => $this->faker->randomElement(app(LanguageRegistry::class)->getSupportedCodes()),
             'time_seconds' => $this->faker->numberBetween(0, self::MAX_UNSIGNED_INTEGER),
             'speed_wpm' => $this->faker->numberBetween(0, self::MAX_UNSIGNED_INTEGER),
             'errors' => $this->faker->numberBetween(0, self::MAX_UNSIGNED_INTEGER),
