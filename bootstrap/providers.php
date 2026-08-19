@@ -5,6 +5,7 @@ return [
     App\Providers\AuthServiceProvider::class,
     App\Providers\LanguageServiceProvider::class,
     App\Providers\LessonServiceProvider::class,
+    App\Providers\SeederServiceProvider::class,
     App\Providers\TestServiceProvider::class,
     App\Providers\WordServiceProvider::class,
 ];
