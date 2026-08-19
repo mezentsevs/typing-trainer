@@ -35,7 +35,12 @@
                 rows="4"
                 spellcheck="false"
                 @input="onInput" />
-            <Keyboard :language :typed :text class="mt-4" />
+            <Keyboard
+                :layout="keyboardLayout"
+                :text
+                :typed
+                :upper-or-special-regex="upperOrSpecialRegex"
+                class="mt-4" />
             <div v-if="isCompleted" class="mt-6 flex flex-row justify-center">
                 <PrimaryRouterLinkButton
                     v-if="nextLessonNumber"
@@ -67,7 +72,7 @@
 <script lang="ts" setup>
 import { BaseSaveResultRequestPayload } from '@/interfaces/payloads/SaveResultRequestPayload';
 import { Button } from '@/enums/UIKitEnums';
-import { Language } from '@/enums/KeyboardEnums';
+import { languageRegistry } from '@/languages/registry/LanguageRegistry';
 import { ref, computed, onMounted, onUnmounted, Ref, ComputedRef, nextTick } from 'vue';
 import { RouteLocationNormalizedLoaded, useRoute } from 'vue-router';
 import {
@@ -95,6 +100,8 @@ import TextContainer from '@/components/uikit/containers/TextContainer.vue';
 import TypingContext from '@/interfaces/typing/TypingContext';
 import TypingText from '@/components/typing/TypingText.vue';
 import TypingUnit from '@/interfaces/typing/TypingUnit';
+import type { KeyboardLayout } from '@/types/KeyboardTypes';
+import type Language from '@/languages/contracts/Language';
 
 const route: RouteLocationNormalizedLoaded<string | symbol> = useRoute();
 const { handleTypingInput, cleanupScrollThrottle }: UseHandleTypingInputReturn =
@@ -117,7 +124,11 @@ const typed: Ref<string> = ref('');
 const { isCurrentWord }: Record<string, ComputedRef<TypingUnit>> = useCurrentWord(text, typed);
 const { progress }: Record<string, ComputedRef<number>> = useProgress(text, typed, isCompleted);
 
-const language: Language = route.params.language as Language;
+const language: string = route.params.language as string;
+
+const languageObject: Language = languageRegistry.getSupportedOrDefault(language);
+const keyboardLayout: KeyboardLayout = languageObject.getKeyboardLayout();
+const upperOrSpecialRegex: RegExp = languageObject.getUpperOrSpecialRegex();
 
 let lessonNumber: number = parseInt(route.params.number as string);
 

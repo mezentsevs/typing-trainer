@@ -31,7 +31,13 @@
                 rows="4"
                 spellcheck="false"
                 @input="onInput" />
-            <Keyboard :language :typed :text :is-minimized="true" class="mt-4" />
+            <Keyboard
+                :is-minimized="true"
+                :layout="keyboardLayout"
+                :text
+                :typed
+                :upper-or-special-regex="upperOrSpecialRegex"
+                class="mt-4" />
             <div v-if="isCompleted" class="mt-6 flex flex-row justify-center">
                 <PrimaryRouterLinkButton class="w-32 animate-pulse-scale-once">
                     Finish
@@ -45,7 +51,7 @@
 <script lang="ts" setup>
 import { BaseSaveResultRequestPayload } from '@/interfaces/payloads/SaveResultRequestPayload';
 import { ComputedRef, Ref, ref, onUnmounted, nextTick } from 'vue';
-import { Language } from '@/enums/KeyboardEnums';
+import { languageRegistry } from '@/languages/registry/LanguageRegistry';
 import { RouteLocationNormalizedLoaded, useRoute } from 'vue-router';
 import {
     useHandleTypingInput,
@@ -67,6 +73,8 @@ import TextContainer from '@/components/uikit/containers/TextContainer.vue';
 import TypingContext from '@/interfaces/typing/TypingContext';
 import TypingText from '@/components/typing/TypingText.vue';
 import TypingUnit from '@/interfaces/typing/TypingUnit';
+import type { KeyboardLayout } from '@/types/KeyboardTypes';
+import type Language from '@/languages/contracts/Language';
 
 const route: RouteLocationNormalizedLoaded<string | symbol> = useRoute();
 const { handleTypingInput, cleanupScrollThrottle }: UseHandleTypingInputReturn =
@@ -89,7 +97,11 @@ const typed: Ref<string> = ref('');
 let genre: string = '';
 
 const MAX_FILE_SIZE_KB: number = 3;
-const language: Language = route.params.language as Language;
+const language: string = route.params.language as string;
+
+const languageObject: Language = languageRegistry.getSupportedOrDefault(language);
+const keyboardLayout: KeyboardLayout = languageObject.getKeyboardLayout();
+const upperOrSpecialRegex: RegExp = languageObject.getUpperOrSpecialRegex();
 
 const { isCurrentWord }: Record<string, ComputedRef<TypingUnit>> = useCurrentWord(text, typed);
 const { progress }: Record<string, ComputedRef<number>> = useProgress(text, typed, isCompleted);

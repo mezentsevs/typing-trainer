@@ -1,0 +1,374 @@
+import { SpecialPosition, Zone } from '@/enums/KeyboardEnums';
+import Language from '@/languages/contracts/Language';
+import type { KeyboardLayout } from '@/types/KeyboardTypes';
+
+export default class EnLanguage extends Language {
+    public static readonly CODE: string = 'en';
+
+    public getCode(): string {
+        return EnLanguage.CODE;
+    }
+
+    public getLabel(): string {
+        return 'English';
+    }
+
+    public getKeyboardLayout(): KeyboardLayout {
+        return [
+            [
+                {
+                    value: '`',
+                    display: '`',
+                    special: '~',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Left,
+                },
+                {
+                    value: '1',
+                    display: '1',
+                    special: '!',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Left,
+                },
+                {
+                    value: '2',
+                    display: '2',
+                    special: '@',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Left,
+                },
+                {
+                    value: '3',
+                    display: '3',
+                    special: '#',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Left,
+                },
+                {
+                    value: '4',
+                    display: '4',
+                    special: '$',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Left,
+                },
+                {
+                    value: '5',
+                    display: '5',
+                    special: '%',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Left,
+                },
+                {
+                    value: '6',
+                    display: '6',
+                    special: '^',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Right,
+                },
+                {
+                    value: '7',
+                    display: '7',
+                    special: '&',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Right,
+                },
+                {
+                    value: '8',
+                    display: '8',
+                    special: '*',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Right,
+                },
+                {
+                    value: '9',
+                    display: '9',
+                    special: '(',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Right,
+                },
+                {
+                    value: '0',
+                    display: '0',
+                    special: ')',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Right,
+                },
+                {
+                    value: '-',
+                    display: '-',
+                    special: '_',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Right,
+                },
+                {
+                    value: '=',
+                    display: '=',
+                    special: '+',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Right,
+                },
+                { value: 'backspace', display: 'Backspace', width: 76, zone: Zone.Right },
+            ],
+            [
+                { value: 'tab', display: 'Tab', width: 60, zone: Zone.Left },
+                {
+                    value: 'q',
+                    display: 'q',
+                    special: 'Q',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Left,
+                },
+                {
+                    value: 'w',
+                    display: 'w',
+                    special: 'W',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Left,
+                },
+                {
+                    value: 'e',
+                    display: 'e',
+                    special: 'E',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Left,
+                },
+                {
+                    value: 'r',
+                    display: 'r',
+                    special: 'R',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Left,
+                },
+                {
+                    value: 't',
+                    display: 't',
+                    special: 'T',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Left,
+                },
+                {
+                    value: 'y',
+                    display: 'y',
+                    special: 'Y',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Right,
+                },
+                {
+                    value: 'u',
+                    display: 'u',
+                    special: 'U',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Right,
+                },
+                {
+                    value: 'i',
+                    display: 'i',
+                    special: 'I',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Right,
+                },
+                {
+                    value: 'o',
+                    display: 'o',
+                    special: 'O',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Right,
+                },
+                {
+                    value: 'p',
+                    display: 'p',
+                    special: 'P',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Right,
+                },
+                {
+                    value: '[',
+                    display: '[',
+                    special: '{',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Right,
+                },
+                {
+                    value: ']',
+                    display: ']',
+                    special: '}',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Right,
+                },
+                {
+                    value: '\\',
+                    display: '\\',
+                    special: '|',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Right,
+                },
+            ],
+            [
+                { value: 'capslock', display: 'Caps', width: 70, zone: Zone.Left },
+                {
+                    value: 'a',
+                    display: 'a',
+                    special: 'A',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Left,
+                },
+                {
+                    value: 's',
+                    display: 's',
+                    special: 'S',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Left,
+                },
+                {
+                    value: 'd',
+                    display: 'd',
+                    special: 'D',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Left,
+                },
+                {
+                    value: 'f',
+                    display: 'f',
+                    special: 'F',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Left,
+                },
+                {
+                    value: 'g',
+                    display: 'g',
+                    special: 'G',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Left,
+                },
+                {
+                    value: 'h',
+                    display: 'h',
+                    special: 'H',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Right,
+                },
+                {
+                    value: 'j',
+                    display: 'j',
+                    special: 'J',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Right,
+                },
+                {
+                    value: 'k',
+                    display: 'k',
+                    special: 'K',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Right,
+                },
+                {
+                    value: 'l',
+                    display: 'l',
+                    special: 'L',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Right,
+                },
+                {
+                    value: ';',
+                    display: ';',
+                    special: ':',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Right,
+                },
+                {
+                    value: "'",
+                    display: "'",
+                    special: '"',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Right,
+                },
+                { value: 'enter', display: 'Enter', width: 90, zone: Zone.Right },
+            ],
+            [
+                { value: 'shift', display: 'Shift', width: 90, zone: Zone.Left },
+                {
+                    value: 'z',
+                    display: 'z',
+                    special: 'Z',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Left,
+                },
+                {
+                    value: 'x',
+                    display: 'x',
+                    special: 'X',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Left,
+                },
+                {
+                    value: 'c',
+                    display: 'c',
+                    special: 'C',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Left,
+                },
+                {
+                    value: 'v',
+                    display: 'v',
+                    special: 'V',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Left,
+                },
+                {
+                    value: 'b',
+                    display: 'b',
+                    special: 'B',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Left,
+                },
+                {
+                    value: 'n',
+                    display: 'n',
+                    special: 'N',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Right,
+                },
+                {
+                    value: 'm',
+                    display: 'm',
+                    special: 'M',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Right,
+                },
+                {
+                    value: ',',
+                    display: ',',
+                    special: '<',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Right,
+                },
+                {
+                    value: '.',
+                    display: '.',
+                    special: '>',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Right,
+                },
+                {
+                    value: '/',
+                    display: '/',
+                    special: '?',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Right,
+                },
+                { value: 'shift', display: 'Shift', width: 110, zone: Zone.Right },
+            ],
+            [
+                { value: 'ctrl', display: 'Ctrl', width: 50, zone: Zone.Left },
+                { value: 'alt', display: 'Alt', width: 50, zone: Zone.Left },
+                { value: ' ', display: 'Space', width: 250 },
+                { value: 'alt', display: 'Alt', width: 50, zone: Zone.Right },
+                { value: 'ctrl', display: 'Ctrl', width: 50, zone: Zone.Right },
+            ],
+        ];
+    }
+
+    public getUpperOrSpecialRegex(): RegExp {
+        return /[A-Z~!@#$%^&*()_+{}|:"<>?]/;
+    }
+}
