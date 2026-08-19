@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Languages\Registry\LanguageRegistry;
 use App\Services\Word\WordGeneration\WordCharDataProvider;
 use App\Services\Word\WordGeneration\WordCharProbabilitySelector;
 use App\Services\Word\WordGeneration\WordCharSetsInitializer;
@@ -39,7 +40,10 @@ class WordServiceProvider extends ServiceProvider
         });
 
         $this->app->bind(WordSpecialCharsAppender::class, function ($app) {
-            return new WordSpecialCharsAppender($app->make(WordCharDataProvider::class));
+            return new WordSpecialCharsAppender(
+                $app->make(WordCharDataProvider::class),
+                $app->make(LanguageRegistry::class),
+            );
         });
 
         $this->app->bind(WordCharProbabilitySelector::class);
