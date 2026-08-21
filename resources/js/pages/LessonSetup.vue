@@ -30,6 +30,7 @@ import { languageRegistry } from '@/languages/registry/LanguageRegistry';
 import { Ref, ref } from 'vue';
 import { Router, useRouter } from 'vue-router';
 import axios from 'axios';
+import EnLanguage from '@/languages/EnLanguage';
 import ErrorMessage from '@/components/uikit/messages/ErrorMessage.vue';
 import Heading from '@/components/uikit/headings/Heading.vue';
 import Input from '@/components/uikit/inputs/Input.vue';
@@ -43,7 +44,7 @@ import type UIKitSelectOption from '@/interfaces/uikit/UIKitSelectOption';
 const router: Router = useRouter();
 
 const form: Ref<LessonSetupForm> = ref({
-    language: languageRegistry.getSupportedCodes()[0] ?? '',
+    language: EnLanguage.CODE,
     lessonCount: 10,
 });
 const error: Ref<string> = ref('');
