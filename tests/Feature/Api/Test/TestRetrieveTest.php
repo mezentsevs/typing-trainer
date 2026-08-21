@@ -3,13 +3,15 @@
 namespace Tests\Feature\Api\Test;
 
 use App\Enums\Genre;
-use App\Enums\Language;
 use PHPUnit\Framework\Attributes\DataProviderExternal;
 use Tests\Providers\CommonDataProvider;
 use Tests\Providers\TestDataProvider;
+use Tests\Traits\Constants\WithLanguageRegistryConstants;
 
 class TestRetrieveTest extends TestTestCase
 {
+    use WithLanguageRegistryConstants;
+
     #[DataProviderExternal(TestDataProvider::class, 'provideTestRetrieveRequestData')]
     public function testTestRetrieveSuccessHasJsonContentType(array $data): void
     {
@@ -72,7 +74,7 @@ class TestRetrieveTest extends TestTestCase
     #[DataProviderExternal(TestDataProvider::class, 'provideSupportedGenres')]
     public function testTestRetrieveWithUnknownLanguage(string $genre): void
     {
-        $testRetrieveUri = sprintf(self::TEST_RETRIEVE_URI_TEMPLATE, Language::Unknown->value, $genre);
+        $testRetrieveUri = sprintf(self::TEST_RETRIEVE_URI_TEMPLATE, self::UNKNOWN_LANGUAGE, $genre);
 
         $response = $this->withToken($this->token)
             ->getJson($testRetrieveUri);
@@ -96,7 +98,7 @@ class TestRetrieveTest extends TestTestCase
     #[DataProviderExternal(TestDataProvider::class, 'provideSupportedGenres')]
     public function testTestRetrieveValidationErrorHasJsonContentType(string $genre): void
     {
-        $testRetrieveUri = sprintf(self::TEST_RETRIEVE_URI_TEMPLATE, Language::Unknown->value, $genre);
+        $testRetrieveUri = sprintf(self::TEST_RETRIEVE_URI_TEMPLATE, self::UNKNOWN_LANGUAGE, $genre);
 
         $response = $this->withToken($this->token)
             ->getJson($testRetrieveUri);

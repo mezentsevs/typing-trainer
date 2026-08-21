@@ -2,14 +2,15 @@
 
 namespace Tests\Feature\Api\Lessons;
 
-use App\Enums\Language;
 use PHPUnit\Framework\Attributes\DataProviderExternal;
 use Tests\Providers\CommonDataProvider;
+use Tests\Traits\Constants\WithLanguageRegistryConstants;
 use Tests\Traits\WithLesson;
 
 class LessonsShowTest extends LessonTestCase
 {
-    use WithLesson;
+    use WithLanguageRegistryConstants,
+        WithLesson;
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testLessonsShowSuccess(string $language): void
@@ -173,7 +174,7 @@ class LessonsShowTest extends LessonTestCase
 
     public function testLessonsShowWithUnknownLanguage(): void
     {
-        $lessonUri = sprintf(self::LESSONS_SHOW_URI_TEMPLATE, Language::Unknown->value, self::LESSON_NUMBER_FOR_ACCESS);
+        $lessonUri = sprintf(self::LESSONS_SHOW_URI_TEMPLATE, self::UNKNOWN_LANGUAGE, self::LESSON_NUMBER_FOR_ACCESS);
 
         $response = $this->withToken($this->token)
             ->getJson($lessonUri);
@@ -184,7 +185,7 @@ class LessonsShowTest extends LessonTestCase
 
     public function testLessonsShowValidationErrorHasJsonContentType(): void
     {
-        $lessonUri = sprintf(self::LESSONS_SHOW_URI_TEMPLATE, Language::Unknown->value, self::LESSON_NUMBER_FOR_ACCESS);
+        $lessonUri = sprintf(self::LESSONS_SHOW_URI_TEMPLATE, self::UNKNOWN_LANGUAGE, self::LESSON_NUMBER_FOR_ACCESS);
 
         $response = $this->withToken($this->token)
             ->getJson($lessonUri);

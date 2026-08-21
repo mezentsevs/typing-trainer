@@ -2,15 +2,17 @@
 
 namespace Tests\Feature\Api\Test;
 
-use App\Enums\Language;
 use App\Traits\Constants\WithStatisticsConstants as WithAppStatisticsConstants;
 use PHPUnit\Framework\Attributes\DataProviderExternal;
 use Tests\Providers\CommonDataProvider;
+use Tests\Traits\Constants\WithLanguageRegistryConstants;
 use Tests\Traits\Constants\WithStatisticsConstants;
 
 class TestResultTest extends TestTestCase
 {
-    use WithAppStatisticsConstants, WithStatisticsConstants;
+    use WithAppStatisticsConstants,
+        WithLanguageRegistryConstants,
+        WithStatisticsConstants;
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testTestResultSaveSuccess(string $language): void
@@ -151,7 +153,7 @@ class TestResultTest extends TestTestCase
     {
         $response = $this->withToken($this->token)
             ->postJson(self::TEST_RESULT_URI, [
-                'language' => Language::Unknown->value,
+                'language' => self::UNKNOWN_LANGUAGE,
                 'time_seconds' => self::TIME_SECONDS,
                 'speed_wpm' => self::SPEED_WPM,
                 'errors' => self::ERRORS_COUNT,

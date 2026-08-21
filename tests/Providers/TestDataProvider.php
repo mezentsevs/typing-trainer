@@ -3,7 +3,6 @@
 namespace Tests\Providers;
 
 use App\Enums\Genre;
-use App\Enums\Language;
 
 class TestDataProvider
 {
@@ -22,7 +21,7 @@ class TestDataProvider
 
     public static function provideTestRetrieveRequestData(): array
     {
-        $languages = Language::supportedValues();
+        $languages = CommonDataProvider::getSupportedLanguageCodes();
         $genres = Genre::supportedValues();
         $result = [];
 

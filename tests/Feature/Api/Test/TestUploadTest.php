@@ -2,14 +2,15 @@
 
 namespace Tests\Feature\Api\Test;
 
-use App\Enums\Language;
 use PHPUnit\Framework\Attributes\DataProviderExternal;
 use Tests\Providers\CommonDataProvider;
+use Tests\Traits\Constants\WithLanguageRegistryConstants;
 use Tests\Traits\Fakes\WithFileFakes;
 
 class TestUploadTest extends TestTestCase
 {
-    use WithFileFakes;
+    use WithFileFakes,
+        WithLanguageRegistryConstants;
 
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testTestUploadSuccess(string $language): void
@@ -115,7 +116,7 @@ class TestUploadTest extends TestTestCase
     {
         $response = $this->withToken($this->token)
             ->postJson(self::TEST_UPLOAD_URI, [
-                'language' => Language::Unknown->value,
+                'language' => self::UNKNOWN_LANGUAGE,
                 'file' => $this->fakeValidUploadedFile(),
             ]);
 

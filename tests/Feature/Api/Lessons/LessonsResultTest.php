@@ -2,16 +2,17 @@
 
 namespace Tests\Feature\Api\Lessons;
 
-use App\Enums\Language;
 use App\Traits\Constants\WithStatisticsConstants as WithAppStatisticsConstants;
 use PHPUnit\Framework\Attributes\DataProviderExternal;
 use Tests\Providers\CommonDataProvider;
+use Tests\Traits\Constants\WithLanguageRegistryConstants;
 use Tests\Traits\Constants\WithStatisticsConstants;
 use Tests\Traits\WithLesson;
 
 class LessonsResultTest extends LessonTestCase
 {
     use WithAppStatisticsConstants,
+        WithLanguageRegistryConstants,
         WithLesson,
         WithStatisticsConstants;
 
@@ -321,7 +322,7 @@ class LessonsResultTest extends LessonTestCase
         $response = $this->withToken($this->token)
             ->postJson(self::LESSONS_RESULT_URI, [
                 'lesson_id' => $lesson->id,
-                'language' => Language::Unknown->value,
+                'language' => self::UNKNOWN_LANGUAGE,
                 'time_seconds' => self::TIME_SECONDS,
                 'speed_wpm' => self::SPEED_WPM,
                 'errors' => self::ERRORS_COUNT,

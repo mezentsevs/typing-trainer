@@ -2,13 +2,15 @@
 
 namespace Tests\Feature\Api\Lessons;
 
-use App\Enums\Language;
 use App\Models\Lesson;
 use PHPUnit\Framework\Attributes\DataProviderExternal;
 use Tests\Providers\CommonDataProvider;
+use Tests\Traits\Constants\WithLanguageRegistryConstants;
 
 class LessonsGenerateTest extends LessonTestCase
 {
+    use WithLanguageRegistryConstants;
+
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testLessonsGenerateWithSingleLessonCountSuccess(string $language): void
     {
@@ -197,7 +199,7 @@ class LessonsGenerateTest extends LessonTestCase
     {
         $response = $this->withToken($this->token)
             ->postJson(self::LESSONS_GENERATE_URI, [
-                'language' => Language::Unknown->value,
+                'language' => self::UNKNOWN_LANGUAGE,
                 'lesson_count' => self::MULTIPLE_LESSON_COUNT,
             ]);
 

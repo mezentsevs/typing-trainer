@@ -2,7 +2,8 @@
 
 namespace Tests\Providers;
 
-use App\Enums\Language;
+use App\Languages\Contracts\Language;
+use App\Languages\Registry\LanguageRegistry;
 
 class CommonDataProvider
 {
@@ -10,10 +11,23 @@ class CommonDataProvider
     {
         $result = [];
 
-        foreach (Language::supportedValues() as $language) {
-            $result[$language] = [$language];
+        foreach (self::getSupportedLanguageCodes() as $code) {
+            $result[$code] = [$code];
         }
 
         return $result;
+    }
+
+    public static function getSupportedLanguageCodes(): array
+    {
+        $codes = [];
+
+        foreach (LanguageRegistry::LANGUAGE_CLASSES as $languageClass) {
+            /** @var Language $language */
+            $language = new $languageClass();
+            $codes[] = $language->getCode();
+        }
+
+        return $codes;
     }
 }
