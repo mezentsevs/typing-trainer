@@ -11,11 +11,11 @@ class WordCharSetsInitializer
     public function initialize(string $language, array $availableChars, array $newChars): array
     {
         $availableLetterChars = array_filter($availableChars, function ($char) {
-            return preg_match('/[a-zA-ZА-яёЁ0-9]/u', $char);
+            return preg_match('/[\p{L}\p{N}]/u', $char);
         });
 
         $newLetterChars = array_filter($newChars, function ($char) {
-            return preg_match('/[a-zA-ZА-яёЁ0-9]/u', $char);
+            return preg_match('/[\p{L}\p{N}]/u', $char);
         });
 
         $allVowelChars = $this->wordCharDataProvider->getVowels($language);
@@ -27,11 +27,11 @@ class WordCharSetsInitializer
         $newConsonantChars = array_intersect($allConsonantChars, $newLetterChars);
 
         $availableNumberChars = array_filter($availableLetterChars, function ($char) {
-            return preg_match('/[0-9]/u', $char);
+            return preg_match('/\p{N}/u', $char);
         });
 
         $newNumberChars = array_filter($newLetterChars, function ($char) {
-            return preg_match('/[0-9]/u', $char);
+            return preg_match('/\p{N}/u', $char);
         });
 
         return [

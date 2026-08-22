@@ -1,15 +1,15 @@
 <?php
 
-namespace Tests\Providers\Languages;
+namespace Tests\Providers\Languages\Lesson;
 
-use App\Languages\EnLanguage;
-use Tests\Providers\Languages\Contracts\LanguageLessonDataProvider;
+use App\Languages\IdLanguage;
+use Tests\Providers\Languages\Lesson\Contracts\LanguageLessonDataProvider;
 
-class EnLessonDataProvider extends LanguageLessonDataProvider
+class IdLessonDataProvider extends LanguageLessonDataProvider
 {
-    protected const string LANGUAGE_CODE = EnLanguage::CODE;
+    protected const string LANGUAGE_CODE = IdLanguage::CODE;
 
-    protected const string CHARS = 'asdfjkl;qwertyuiophgzxcvbnm,./ASDFJKL;QWERTYUIOPHGZXCVBNM,./1234567890-=!@#$%^&*()_+[]{}|\:"\'<>?~`';
+    protected const string CHARS = 'asdfjkl;qwertyuiophgzxcvbnm,./ASDFJKL;QWERTYUIOPHGZXCVBNM,./1234567890-=!@#$%^&*()_+[]{}|\\:"\'<>?~`';
 
     protected const array NEW_CHARS_SEQUENCE = [
         1 => 'asdfj',
@@ -23,7 +23,7 @@ class EnLessonDataProvider extends LanguageLessonDataProvider
         9 => 'CVBNM,./1',
         10 => '234567890',
         11 => '-=!@#$%^&*',
-        12 => '()_+[]{}|\:',
+        12 => '()_+[]{}|\\:',
         13 => '"\'<>?~`',
         14 => self::CHARS,
         15 => self::CHARS,

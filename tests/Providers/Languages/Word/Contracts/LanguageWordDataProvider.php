@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Providers\Languages\Contracts;
+namespace Tests\Providers\Languages\Word\Contracts;
 
 use App\Services\Word\WordGeneration\WordCharDataProvider;
 

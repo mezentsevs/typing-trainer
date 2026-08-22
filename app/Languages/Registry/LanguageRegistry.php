@@ -3,14 +3,30 @@
 namespace App\Languages\Registry;
 
 use App\Languages\Contracts\Language;
+use App\Languages\DeLanguage;
 use App\Languages\EnLanguage;
+use App\Languages\EsLanguage;
+use App\Languages\FrLanguage;
+use App\Languages\IdLanguage;
+use App\Languages\ItLanguage;
+use App\Languages\PlLanguage;
+use App\Languages\PtLanguage;
 use App\Languages\RuLanguage;
+use App\Languages\TrLanguage;
 
 class LanguageRegistry
 {
     public const array LANGUAGE_CLASSES = [
+        DeLanguage::class,
         EnLanguage::class,
+        EsLanguage::class,
+        FrLanguage::class,
+        IdLanguage::class,
+        ItLanguage::class,
+        PlLanguage::class,
+        PtLanguage::class,
         RuLanguage::class,
+        TrLanguage::class,
     ];
 
     /** @var array<string, Language> */

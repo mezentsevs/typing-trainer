@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\Providers\Languages;
+namespace Tests\Providers\Languages\Lesson;
 
 use App\Languages\RuLanguage;
-use Tests\Providers\Languages\Contracts\LanguageLessonDataProvider;
+use Tests\Providers\Languages\Lesson\Contracts\LanguageLessonDataProvider;
 
 class RuLessonDataProvider extends LanguageLessonDataProvider
 {

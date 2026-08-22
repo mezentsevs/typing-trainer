@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\Providers\Languages;
+namespace Tests\Providers\Languages\Word;
 
 use App\Languages\RuLanguage;
-use Tests\Providers\Languages\Contracts\LanguageWordDataProvider;
+use Tests\Providers\Languages\Word\Contracts\LanguageWordDataProvider;
 
 class RuWordDataProvider extends LanguageWordDataProvider
 {

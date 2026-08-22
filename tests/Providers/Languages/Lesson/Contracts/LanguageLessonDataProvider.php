@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Providers\Languages\Contracts;
+namespace Tests\Providers\Languages\Lesson\Contracts;
 
 abstract class LanguageLessonDataProvider
 {
