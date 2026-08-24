@@ -9,22 +9,22 @@ class DeLessonDataProvider extends LanguageLessonDataProvider
 {
     protected const string LANGUAGE_CODE = DeLanguage::CODE;
 
-    protected const string CHARS = 'asdfghjklöä#qwertzuiopü+\\yxcvbnm,.-ßASDFGHJKLÖÄQWERTZUIOPÜYXCVBNM;:_1234567890!"§$%&/()=?`°²³{[]}~|@€µ\'';
+    protected const string CHARS = 'asdfghjklöä#qwertzuiopü+*\\yxcvbnmß,.-ASDFGHJKLÖÄQWERTZUIOPÜYXCVBNMẞ;:_1234567890!"§$%&/()=?`°²³{[]}~|@€µ\'';
 
     protected const array NEW_CHARS_SEQUENCE = [
         1 => 'asdfgh',
         2 => 'jklöä#',
         3 => 'qwertz',
-        4 => 'uiopü+\\',
-        5 => 'yxcvbnm',
-        6 => ',.-ßASD',
-        7 => 'FGHJKLÖÄ',
-        8 => 'QWERTZUI',
+        4 => 'uiopü+*',
+        5 => '\\yxcvbn',
+        6 => 'mß,.-AS',
+        7 => 'DFGHJKLÖ',
+        8 => 'ÄQWERTZUI',
         9 => 'OPÜYXCVBN',
-        10 => 'M;:_123456',
-        11 => '7890!"§$%&/',
-        12 => '()=?`°²³{[]}',
-        13 => '~|@€µ\'',
+        10 => 'Mẞ;:_12345',
+        11 => '67890!"§$%&',
+        12 => '/()=?`°²³{[]',
+        13 => '}~|@€µ\'',
         14 => self::CHARS,
         15 => self::CHARS,
         16 => self::CHARS,
