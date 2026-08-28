@@ -807,7 +807,7 @@ class EsTestSeeder extends LanguageTestSeeder
                     Los hologramas en la fachada
                     pintan promesas de madrugada.
                     El tren elevado surca la bruma,
-                    y el rio oscuro refleja la luna.
+                    y el río oscuro refleja la luna.
                     La red palpita con luz callada,
                     y el dato corre por la alambrada.
                     Allí un androide de alma sencilla
@@ -1134,15 +1134,15 @@ class EsTestSeeder extends LanguageTestSeeder
                     Cada golpe es un bit de tu propia historia,
                     que enciende la pantalla de gloria.
                     La constancia es el código que recompensa,
-                    y tu velocidad se vuelre recompensa.
+                    y tu velocidad se vuelve recompensa.
                     No importa el apagón, no importa el fallo,
                     tu escrito avanza como un rayo.
                     El ritmo constante te lleva a la cima,
                     y el texto se llena de luz y de rima.
                     Practica sin pausa, con gozo y con tino,
                     que el teclado es tu puerto, tu dulce destino.
-                    Los dedos se mueven con pulso electrico,
-                    y el cursor avanza como un profetico.
+                    Los dedos se mueven con pulso eléctrico,
+                    y el cursor avanza como un profético.
                     Tu mente es el norte, tu pulso la guía,
                     y la escritura fluye como una elegía.
                     Al final del logueo, con calma y con paz,
@@ -1595,7 +1595,7 @@ class EsTestSeeder extends LanguageTestSeeder
                     Mis dedos despegan al cosmos callado,
                     donde cada tecla es un astro dorado.
                     La fila guía es mi torre de mando,
-                    que orienta mis manos con ritmo y mando.
+                    que orienta mis manos con suave encanto.
                     Sin ver el teclado, la ruta se traza,
                     y el texto en pantalla se vuelve una plaza.
                     La barra espaciadora es el aliento del viaje,
