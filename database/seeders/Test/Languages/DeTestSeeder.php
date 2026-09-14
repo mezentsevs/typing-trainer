@@ -290,1056 +290,1056 @@ class DeTestSeeder extends LanguageTestSeeder
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Der Wind, er singt ein altes Lied,
-                    das durch die stillen Wälder zieht.
+                    Das durch die stillen Wälder zieht.
                     Die Blätter tanzen, leicht und frei,
-                    als ob die Welt ein Zauber sei.
+                    Als ob die Welt ein Zauber sei.
                     Die Sonne neigt ihr goldenes Haupt,
-                    der Tag, er hat den Glanz geraubt.
+                    Der Tag, er hat den Glanz geraubt.
                     Ein Vogel fliegt dem Abend zu,
-                    und findet in den Zweigen Ruh.
+                    Und findet in den Zweigen Ruh.
                     Der Bach, er murmelt leis und klar,
-                    erzählt von dem, was einmal war.
+                    Erzählt von dem, was einmal war.
                     Die Steine glatt, vom Wasser weich,
-                    sie liegen stumm im Silberreich.
+                    Sie liegen stumm im Silberreich.
                     Ein Frosch, der springt vom Uferrand,
-                    ins kühle Nass, ins grüne Land.
+                    Ins kühle Nass, ins grüne Land.
                     Die Bäume rauschen, Blatt an Blatt,
-                    die Nacht, sie kommt, die Sterne matt.
+                    Die Nacht, sie kommt, die Sterne matt.
                     Der Mond steigt auf, ein blasser Schein,
-                    und taucht die Welt in Silber ein.
+                    Und taucht die Welt in Silber ein.
                     Die Grillen geigen ihr Konzert,
-                    das jedes Herz im Schlafe ehrt.
+                    Das jedes Herz im Schlafe ehrt.
                     Der Wald, er atmet, tief und still,
-                    und weiß, dass er noch bleiben will.
+                    Und weiß, dass er noch bleiben will.
                     Der Mensch, der geht auf seinem Pfad,
-                    und spürt die Ruhe, die ihn hat.
+                    Und spürt die Ruhe, die ihn hat.
                     Er lauscht dem Klang, dem sanften Ton,
-                    und findet in der Stille Lohn.
+                    Und findet in der Stille Lohn.
                     Die Nacht umarmt ihn, kalt und klar,
-                    die Sterne funkeln, wunderbar.
+                    Die Sterne funkeln, wunderbar.
                     Er schließt die Augen, tief und fest,
-                    und fühlt, wie sich der Kummer lässt.
+                    Und fühlt, wie sich der Kummer lässt.
                     Ein leises Flüstern in der Luft,
-                    wie Veilchen, das im Dunkel duft.
+                    Wie Veilchen, das im Dunkel duft.
                     Es ist der Wald, der zu ihm spricht:
                     "Vergiss die Sorgen, zage nicht."
                     Der Morgen graut, das Licht erwacht,
-                    der Nebel weicht, der Tag entfacht.
+                    Der Nebel weicht, der Tag entfacht.
                     Der Vogel singt sein Morgenlied,
-                    das durch die klare Luft sich zieht.
+                    Das durch die klare Luft sich zieht.
                     Der Mensch erwacht, gestärkt und neu,
-                    das Herz wird weit, der Geist wird frei.
+                    Das Herz wird weit, der Geist wird frei.
                     Er dankt dem Wald, der ihn bewacht,
-                    und geht hinein in Tag und Pracht.
+                    Und geht hinein in Tag und Pracht.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Im Ozean, tief unten, kalt,
-                    da liegt ein Reich, geheim, uralt.
+                    Da liegt ein Reich, geheim, uralt.
                     Die Fische gleiten, bunt und fein,
-                    im blauen Licht, im Meereswein.
+                    Im blauen Licht, im Meereswein.
                     Korallen, wie ein bunter Wald,
-                    sie wachsen, werden niemals alt.
+                    Sie wachsen, werden niemals alt.
                     Ein Seepferd tanzt auf Zehenspitzen,
-                    will durch die Fluten blitzschnell flitzen.
+                    Will durch die Fluten blitzschnell flitzen.
                     Ein Krake, schlau mit achtem Arm,
-                    der spielt und jagt, ist niemals arm.
+                    Der spielt und jagt, ist niemals arm.
                     Die Quallen schweben, sanft und still,
-                    im Wasser, das gehorchen will.
+                    Im Wasser, das gehorchen will.
                     Der Hai, er zieht die Bahn entlang,
-                    sein Ruf, er klingt wie ein Gesang.
+                    Sein Ruf, er klingt wie ein Gesang.
                     Er ist der König, stolz und stark,
-                    er regiert das Meer, den ganzen Park.
+                    Er regiert das Meer, den ganzen Park.
                     Die Wellen tragen, sanft gewiegt,
-                    das große Schiff, das ruhig liegt.
+                    Das große Schiff, das ruhig liegt.
                     Die Matrosen schaun hinab,
-                    und sehn der Tiefe kaltes Grab.
+                    Und sehn der Tiefe kaltes Grab.
                     Sie fürchten nicht, was dort geschieht,
-                    sie wissen, dass die See sie sieht.
+                    Sie wissen, dass die See sie sieht.
                     Sie singen Lieder, laut und froh,
-                    und lassen sich vom Winde droh.
+                    Und lassen sich vom Winde droh.
                     Der Kapitän, der kennt die See,
-                    er weiß, wo Sturm, wo ruhig je.
+                    Er weiß, wo Sturm, wo ruhig je.
                     Er steuert sicher durch die Nacht,
-                    bis dann die Sonne neu erwacht.
+                    Bis dann die Sonne neu erwacht.
                     Die Sterne über ihm, so klar,
-                    sie leuchten ihm, sind wunderbar.
+                    Sie leuchten ihm, sind wunderbar.
                     Das Meer, es wiegt sich, ewig blau,
-                    und flüstert: "Bleib, ich bin genau
-                    das, was dein Herz in Tiefen sucht,
-                    ein Zuhause, das dich nie versucht."
+                    Und flüstert: "Bleib, ich bin genau
+                    Das, was dein Herz in Tiefen sucht,
+                    Ein Zuhause, das dich nie versucht."
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Der Berg, er ragt zum Himmel weit,
-                    ein Riese, der die Zeit befreit.
+                    Ein Riese, der die Zeit befreit.
                     Sein Gipfel weiß, vom Schnee gekrönt,
-                    er hat die Ewigkeit versöhnt.
+                    Er hat die Ewigkeit versöhnt.
                     Die Wälder an den Hängen grün,
-                    sie wachsen, wo die Adler blühn.
+                    Sie wachsen, wo die Adler blühn.
                     Ein Bach entspringt aus Felsenspalte,
-                    und tränkt das Tal, die warme Falte.
+                    Und tränkt das Tal, die warme Falte.
                     Der Bergsteiger, er keucht hinan,
-                    er kämpft, so gut er eben kann.
+                    Er kämpft, so gut er eben kann.
                     Die Stiefel schwer, der Atem knapp,
-                    der Weg, er führt nur steil hinauf.
+                    Der Weg, er führt nur steil hinauf.
                     Er denkt an zuhause, an die Lieben,
-                    die ihn mit Sorgen dort vertrieben.
+                    Die ihn mit Sorgen dort vertrieben.
                     Doch weiter geht er, Schritt für Schritt,
-                    der Gipfel ruft, er zieht ihn mit.
+                    Der Gipfel ruft, er zieht ihn mit.
                     Die Wolken ziehen unter ihm,
-                    die Welt wird klein, die Sinne schlimm.
+                    Die Welt wird klein, die Sinne schlimm.
                     Doch endlich, endlich ist er da,
-                    der Gipfel, nah und wunderbar.
+                    Der Gipfel, nah und wunderbar.
                     Er steht und schaut ins weite Land,
-                    und fühlt sich wie von sanfter Hand
-                    berührt, getragen, fast befreit,
-                    von aller Last, von allem Leid.
+                    Und fühlt sich wie von sanfter Hand
+                    Berührt, getragen, fast befreit,
+                    Von aller Last, von allem Leid.
                     Der Wind, er streicht um sein Gesicht,
-                    und sagt: "Du hast die Angst vernicht."
+                    Und sagt: "Du hast die Angst vernicht."
                     Der Berg, er schweigt, doch er versteht,
-                    dass jeder, der hinauf hier geht,
-                    ein Teil von ihm geworden ist,
-                    der nie vergisst, der nie vergisst.
+                    Dass jeder, der hinauf hier geht,
+                    Ein Teil von ihm geworden ist,
+                    Der nie vergisst, der nie vergisst.
                     Der Abstieg führt ins Tal zurück,
-                    doch bleibt im Herzen dieses Glück.
+                    Doch bleibt im Herzen dieses Glück.
                     Der Berg, er ruft in stiller Nacht,
-                    und hat den Menschen stark gemacht.
+                    Und hat den Menschen stark gemacht.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Der Frühling kommt mit zartem Grün,
-                    lässt alle Knospen neu erblühn.
+                    Lässt alle Knospen neu erblühn.
                     Die Vögel kehren aus dem Süden,
-                    und singen Lieder, die uns frieden.
+                    Und singen Lieder, die uns frieden.
                     Der Winter weicht, das Eis zerbricht,
-                    die Bäche tanzen froh im Licht.
+                    Die Bäche tanzen froh im Licht.
                     Die Bäume strecken ihre Äste,
-                    und schmücken sich zum frohen Feste.
+                    Und schmücken sich zum frohen Feste.
                     Die Wiesen werden bunt und hell,
-                    die Blüten machen alles schnell.
+                    Die Blüten machen alles schnell.
                     Die Bienen summen, sammeln fleißig,
-                    der Honig wird, so ist es heißig.
+                    Der Honig wird, so ist es heißig.
                     Der Mensch, er atmet tief und frei,
-                    und fühlt, dass alles möglich sei.
+                    Und fühlt, dass alles möglich sei.
                     Er wirft den Mantel ab, den schweren,
-                    und lässt sich von der Sonne wärmen.
+                    Und lässt sich von der Sonne wärmen.
                     Der Frühling ist die Zeit der Liebe,
-                    die alle Herzen sanft verschiebe.
+                    Die alle Herzen sanft verschiebe.
                     Ein Paar, das sich im Park erblickt,
-                    und sich mit zarten Blicken schmückt.
+                    Und sich mit zarten Blicken schmückt.
                     Sie gehen Hand in Hand die Wege,
-                    und spüren keine Last, nur Pflege.
+                    Und spüren keine Last, nur Pflege.
                     Der Frühling, er ist ein Gedicht,
-                    das uns von Hoffnung spricht.
+                    Das uns von Hoffnung spricht.
                     Er zeigt uns, dass nach jedem Winter
-                    das Leben wieder neu beginnt da.
+                    Das Leben wieder neu beginnt da.
                     Die Natur, sie feiert Auferstehung,
-                    und schenkt uns neue Lebensnähe.
+                    Und schenkt uns neue Lebensnähe.
                     So lobe, Seele, diesen Glanz,
-                    und tanze froh den Frühlings-Tanz.
+                    Und tanze froh den Frühlings-Tanz.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Im Sommer, wenn die Sonne brennt,
-                    und jeder Schatten Zuflucht kennt,
-                    da liegen wir am kühlen See,
-                    und trinken Limonade, Tee.
+                    Und jeder Schatten Zuflucht kennt,
+                    Da liegen wir am kühlen See,
+                    Und trinken Limonade, Tee.
                     Die Kinder planschen, lachen, schrein,
-                    und wollen immer nasser sein.
+                    Und wollen immer nasser sein.
                     Der Sand, er klebt an heißen Füßen,
-                    die Mücken wollen uns begrüßen.
+                    Die Mücken wollen uns begrüßen.
                     Die Tage sind so lang und hell,
-                    die Nächte lau, die Luft ist schnell.
+                    Die Nächte lau, die Luft ist schnell.
                     Die Grillen zirpen ihr Konzert,
-                    das jeder Sommernacht gehört.
+                    Das jeder Sommernacht gehört.
                     Die Feuer brennen an den Stränden,
-                    und leuchten in die dunklen Wände.
+                    Und leuchten in die dunklen Wände.
                     Man singt, man tanzt, man ist vereint,
-                    bis dann der Morgen neu erscheint.
+                    Bis dann der Morgen neu erscheint.
                     Der Sommer ist die Zeit der Freude,
-                    der Unbeschwertheit, ohne Kleide.
+                    Der Unbeschwertheit, ohne Kleide.
                     Die Reise zieht uns in die Ferne,
-                    wir sehen Meer und auch die Sterne.
+                    Wir sehen Meer und auch die Sterne.
                     Der Berg ruft, oder auch das Tal,
-                    wir wandern, radeln, ohne Zahl.
+                    Wir wandern, radeln, ohne Zahl.
                     Der Sommer, er ist wie ein Rausch,
-                    voll Leben, Lachen, Sonnentausch.
+                    Voll Leben, Lachen, Sonnentausch.
                     Er macht uns stark und auch gelassen,
-                    wir können alles besser fassen.
+                    Wir können alles besser fassen.
                     Er ist ein Lied, das laut erklingt,
-                    und uns mit Glück und Wärme bringt.
+                    Und uns mit Glück und Wärme bringt.
                     So genießt den Sommer, diesen bunten,
-                    bevor die Blätter wieder runter.
+                    Bevor die Blätter wieder runter.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Der Herbst, er malt die Blätter bunt,
-                    in Rot und Gold, und macht sie rund.
+                    In Rot und Gold, und macht sie rund.
                     Sie fallen langsam, drehn sich sacht,
-                    und tanzen in die Winternacht.
+                    Und tanzen in die Winternacht.
                     Die Bäume werden kahl und still,
-                    als ob die Erde schlafen will.
+                    Als ob die Erde schlafen will.
                     Die Nebel ziehen durch das Tal,
-                    und hängen in der Zweige Zahl.
+                    Und hängen in der Zweige Zahl.
                     Die Bauern bringen Ernte ein,
-                    das Korn, das Obst, den kühlen Wein.
+                    Das Korn, das Obst, den kühlen Wein.
                     Die Äpfel leuchten rot und prall,
-                    die Birnen gelb, ein süßer Fall.
+                    Die Birnen gelb, ein süßer Fall.
                     Der Herbst, er ist die Zeit der Reife,
-                    und lehrt uns Demut, nicht die Steife.
+                    Und lehrt uns Demut, nicht die Steife.
                     Er zeigt, dass alles, was gewachsen,
-                    nun Früchte trägt, in allen Kassen.
+                    Nun Früchte trägt, in allen Kassen.
                     Die Tage werden kürzer, still,
-                    die Wärme flieht, die Kälte will.
+                    Die Wärme flieht, die Kälte will.
                     Doch ist der Herbst nicht nur der Abschied,
-                    er ist auch Farbenpracht, die nachsieht.
+                    Er ist auch Farbenpracht, die nachsieht.
                     Er schenkt uns Pilze in dem Wald,
-                    und Kastanien, glatt und kalt.
+                    Und Kastanien, glatt und kalt.
                     Die Kinder basteln Drachen bunt,
-                    und lassen sie am Himmel kund.
+                    Und lassen sie am Himmel kund.
                     Der Wind, er zerrt an ihren Schnüren,
-                    und will die Drachen hoch entführen.
+                    Und will die Drachen hoch entführen.
                     Der Herbst, er ist ein stiller Freund,
-                    der uns mit Ruhe und mit Glanz vereint.
+                    Der uns mit Ruhe und mit Glanz vereint.
                     Er lehrt uns loslassen, nicht festhalten,
-                    und das Vergängliche neu gestalten.
+                    Und das Vergängliche neu gestalten.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Der Winter kommt mit kalter Pracht,
-                    und hält die Welt in stiller Nacht.
+                    Und hält die Welt in stiller Nacht.
                     Die Flocken fallen, weiß und leicht,
-                    und haben alles zugedeckt und reicht.
+                    Und haben alles zugedeckt und reicht.
                     Die Bäume stehen wie aus Glas,
-                    und tragen Schnee statt grünem Gras.
+                    Und tragen Schnee statt grünem Gras.
                     Die Seen gefroren, hart und klar,
-                    man kann sie spüren, wunderbar.
+                    Man kann sie spüren, wunderbar.
                     Die Kinder rodeln, bauen Männer,
-                    und werfen Schneeball, immer gänner.
+                    Und werfen Schneeball, immer gänner.
                     Sie lachen, toben, haben Spaß,
-                    und spüren nicht die Kälte, nass.
+                    Und spüren nicht die Kälte, nass.
                     Der Winter, er ist auch die Zeit
-                    der Stille, der Besinnlichkeit.
+                    Der Stille, der Besinnlichkeit.
                     Man sitzt am Ofen, warm und still,
-                    und hört, wie draußen Sturmwind will.
+                    Und hört, wie draußen Sturmwind will.
                     Die Kerzen flackern, Tee dampft heiß,
-                    und draußen liegt das weiße Gleis.
+                    Und draußen liegt das weiße Gleis.
                     Die Tiere schlafen oder frieren,
-                    die Vögel kommen, um zu picken.
+                    Die Vögel kommen, um zu picken.
                     Man legt für sie ein Futterhaus,
-                    und schaut dem Treiben still hinaus.
+                    Und schaut dem Treiben still hinaus.
                     Der Winter, er ist wie ein Traum,
-                    voll Zauber, ohne Zeit und Raum.
+                    Voll Zauber, ohne Zeit und Raum.
                     Er macht die Welt so rein und klar,
-                    und zeigt uns, was wirklich war.
+                    Und zeigt uns, was wirklich war.
                     Er lehrt uns, innezuhalten,
-                    und die Natur neu zu gestalten.
+                    Und die Natur neu zu gestalten.
                     Der Winter ist der Jahreskreis Vollendung,
-                    und führt uns sanft zur neuen Wendung.
+                    Und führt uns sanft zur neuen Wendung.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Die Reise, sie beginnt im Kopf,
-                    noch bevor der erste Tropf.
+                    Noch bevor der erste Tropf.
                     Ein Koffer, halb gepackt, steht da,
-                    und wartet auf das, was geschah.
+                    Und wartet auf das, was geschah.
                     Die Tickets ausgedruckt, der Pass,
-                    die Vorfreude, die macht uns nass.
+                    Die Vorfreude, die macht uns nass.
                     Wir sitzen in der Bahn, im Flug,
-                    und schauen aus dem Fenster klug.
+                    Und schauen aus dem Fenster klug.
                     Die Landschaft zieht vorbei, wie Film,
-                    und macht uns still, und macht uns schlimm.
+                    Und macht uns still, und macht uns schlimm.
                     Wir kommen an, die Luft ist fremd,
-                    und riecht nach dem, was keiner kennt.
+                    Und riecht nach dem, was keiner kennt.
                     Die Straßen eng, die Sprache neu,
-                    die Menschen anders, doch nicht scheu.
+                    Die Menschen anders, doch nicht scheu.
                     Wir treten ein in ein Café,
-                    und trinken dort den ersten Tee.
+                    Und trinken dort den ersten Tee.
                     Der Geschmack, er ist anders, weit,
-                    und öffnet uns die neue Zeit.
+                    Und öffnet uns die neue Zeit.
                     Wir wandern durch die alten Gassen,
-                    und lassen uns von nichts mehr fassen.
+                    Und lassen uns von nichts mehr fassen.
                     Die Museen, die Kirchen, Plätze,
-                    die Sonne malt die hellen Schätze.
+                    Die Sonne malt die hellen Schätze.
                     Wir schlafen ein in fremdem Bett,
-                    und fühlen uns doch nicht so fett.
+                    Und fühlen uns doch nicht so fett.
                     Die Reise lehrt uns, loszulassen,
-                    und neue Welten zu umfassen.
+                    Und neue Welten zu umfassen.
                     Sie zeigt, dass wir nur kleine Teile
-                    sind von dem, was ewig weile.
+                    Sind von dem, was ewig weile.
                     Und wenn wir dann zurückekehren,
-                    so hat sich unser Herz zu wehren
-                    gegen die alte Enge, den Trott,
-                    denn wir sind reicher, und das ist unser Brot.
+                    So hat sich unser Herz zu wehren
+                    Gegen die alte Enge, den Trott,
+                    Denn wir sind reicher, und das ist unser Brot.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Die Stadt, sie pulsiert im Neonlicht,
-                    vergisst die Sterne, will sie nicht.
+                    Vergisst die Sterne, will sie nicht.
                     Die Straßen voll, die Menschen eilen,
-                    sie wollen ihre Zeit verteilen.
+                    Sie wollen ihre Zeit verteilen.
                     Ein Obdachloser sitzt am Rand,
-                    streckt seine Hand, die keiner fand.
+                    Streckt seine Hand, die keiner fand.
                     Die Autos hupen, lärmen, schrein,
-                    die Stadt, sie will voll Lichter sein.
+                    Die Stadt, sie will voll Lichter sein.
                     Doch in den Gassen, still und klein,
-                    da blühen Blumen, ganz allein.
+                    Da blühen Blumen, ganz allein.
                     Ein Kind, das einen Kreisel dreht,
-                    und lacht, als ob die Welt besteht.
+                    Und lacht, als ob die Welt besteht.
                     Ein Paar, das Hände haltend geht,
-                    und sich im Auge widerseht.
+                    Und sich im Auge widerseht.
                     Die Stadt ist mehr als Stein und Glas,
-                    sie ist ein Herzschlag, ist ein Maß.
+                    Sie ist ein Herzschlag, ist ein Maß.
                     Sie atmet, lebt, sie hat ein Gesicht,
-                    das man im Dunkeln nicht zerbricht.
+                    Das man im Dunkeln nicht zerbricht.
                     Sie ist die Summe aller Träume,
-                    die sich entfalten in den Räumen.
+                    Die sich entfalten in den Räumen.
                     Die Kunst, sie klebt an jeder Wand,
-                    ein buntes Zeichen, eine Hand.
+                    Ein buntes Zeichen, eine Hand.
                     Die Musik dröhnt aus einem Club,
-                    der Bass, er wärmt den kalten Pub.
+                    Der Bass, er wärmt den kalten Pub.
                     Die Stadt, sie ist ein Wunderwerk,
-                    ein Labyrinth, ein heller Berg.
+                    Ein Labyrinth, ein heller Berg.
                     Sie kann zerreiben, kann verspeien,
-                    doch auch erheben und verzeihen.
+                    Doch auch erheben und verzeihen.
                     Der Morgen graut, die Lichter gehen,
-                    die Stadt, sie bleibt im Stillstand stehen.
+                    Die Stadt, sie bleibt im Stillstand stehen.
                     Ein Vogel singt auf einem Draht,
-                    und zeigt, dass sie auch Seele hat.
+                    Und zeigt, dass sie auch Seele hat.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Ein Buch, das liegt auf einem Tisch,
-                    und wartet, dass man es erwischt.
+                    Und wartet, dass man es erwischt.
                     Sein Deckel bunt, die Seiten weiß,
-                    es birgt in sich das größte Gleis.
+                    Es birgt in sich das größte Gleis.
                     Man schlägt es auf, und schon beginnt
-                    die Reise, die im Kopfe rinnt.
+                    Die Reise, die im Kopfe rinnt.
                     Die Worte fliegen, bauen Welten,
-                    und lassen uns die Helden gelten.
+                    Und lassen uns die Helden gelten.
                     Man lebt mit ihnen, lacht und weint,
-                    und ist mit ihnen eng vereint.
+                    Und ist mit ihnen eng vereint.
                     Man reist durch Zeiten, durch die Ferne,
-                    und sieht die Dinge, die man gerne.
+                    Und sieht die Dinge, die man gerne.
                     Das Buch, es ist ein stiller Freund,
-                    der niemals lärmt, der niemals weint.
+                    Der niemals lärmt, der niemals weint.
                     Es trägt uns fort aus unserer Enge,
-                    und schenkt uns Flügel, schenkt uns Länge.
+                    Und schenkt uns Flügel, schenkt uns Länge.
                     Es lehrt uns denken, fühlen, sehen,
-                    und manche Wahrheit zu verstehen.
+                    Und manche Wahrheit zu verstehen.
                     Es kann uns trösten, wenn wir traurig,
-                    und machen, dass wir wieder schaurig.
+                    Und machen, dass wir wieder schaurig.
                     Das Buch, es ist ein Schatz, ein Hort,
-                    und jedes Wort ein stilles Wort.
+                    Und jedes Wort ein stilles Wort.
                     Es steht im Regal, wartet still,
-                    dass jemand es entdecken will.
+                    Dass jemand es entdecken will.
                     Dann öffnet es die Tür zur Welt,
-                    und hat uns ganz in seiner Hand.
+                    Und hat uns ganz in seiner Hand.
                     So lies, oh Mensch, so lange du kannst,
-                    denn Bücher sind der Seele Glanz.
+                    Denn Bücher sind der Seele Glanz.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Die Musik, sie erfüllt den Raum,
-                    und macht das Leben wie ein Traum.
+                    Und macht das Leben wie ein Traum.
                     Die Töne schweben, malen, fliegen,
-                    und lassen alle Sinne wiegen.
+                    Und lassen alle Sinne wiegen.
                     Ein Klavier, das leise spielt,
-                    und tief in uns ein Sehnen fühlt.
+                    Und tief in uns ein Sehnen fühlt.
                     Die Geige weint, die Flöte lacht,
-                    die Trommel schlägt die tiefe Nacht.
+                    Die Trommel schlägt die tiefe Nacht.
                     Der Bass, er pocht wie unser Herz,
-                    und treibt den Kummer himmelwärts.
+                    Und treibt den Kummer himmelwärts.
                     Die Melodie, sie steigt empor,
-                    und öffnet uns das innre Tor.
+                    Und öffnet uns das innre Tor.
                     Wir schließen Augen, hören still,
-                    und fühlen, was die Seele will.
+                    Und fühlen, was die Seele will.
                     Die Musik, sie ist eine Sprache,
-                    die ohne Worte alles mache.
+                    Die ohne Worte alles mache.
                     Sie tröstet, heilt, sie macht uns stark,
-                    und hinterlässt im Herzen Mark.
+                    Und hinterlässt im Herzen Mark.
                     Sie bringt uns zum Lachen, zum Weinen,
-                    lässt uns als Ganzes neu erscheinen.
+                    Lässt uns als Ganzes neu erscheinen.
                     Sie ist ein Fluss, der ewig fließt,
-                    und alle Grenzen übersprießt.
+                    Und alle Grenzen übersprießt.
                     Sie ist ein Teil von jedem Land,
-                    von jeder Zeit, von jeder Hand.
+                    Von jeder Zeit, von jeder Hand.
                     So höre, Mensch, die Töne rein,
-                    und lass die Musik in dich hinein.
+                    Und lass die Musik in dich hinein.
                     Sie wird dich tragen, wird dich führen,
-                    und deine Seele sanft berühren.
+                    Und deine Seele sanft berühren.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Die Liebe ist ein sanftes Licht,
-                    das durch die dunklen Stunden bricht.
+                    Das durch die dunklen Stunden bricht.
                     Sie wärmt die Seele, macht sie weit,
-                    in Ewigkeit und in der Zeit.
+                    In Ewigkeit und in der Zeit.
                     Ein Blick genügt, ein leises Wort,
-                    und schon fliegt sie an jeden Ort.
+                    Und schon fliegt sie an jeden Ort.
                     Sie kennt kein Ende, keinen Raum,
-                    sie ist des Lebens schönster Traum.
+                    Sie ist des Lebens schönster Traum.
                     Die Hände, die sich suchen, finden,
-                    und Herzen, die sich neu verbinden.
+                    Und Herzen, die sich neu verbinden.
                     Ein Kuss, so zart wie Morgentau,
-                    der legt auf Stirn und Lippen Schau.
+                    Der legt auf Stirn und Lippen Schau.
                     Die Liebe lebt in jedem Sein,
-                    im Sonnenschein, im Mondenschein.
+                    Im Sonnenschein, im Mondenschein.
                     Sie ist ein Fluss, der ewig fließt,
-                    und alle Schmerzen sanft versüßt.
+                    Und alle Schmerzen sanft versüßt.
                     Sie tanzt im Regen, lacht im Sturm,
-                    sie wächst empor, ein stolzer Turm.
+                    Sie wächst empor, ein stolzer Turm.
                     Sie ist ein Feuer, wild und heiß,
-                    und doch ein Hauch, ein stiller Fleiß.
+                    Und doch ein Hauch, ein stiller Fleiß.
                     Die Liebe zählt nicht Stunden, Tage,
-                    sie ist nicht Frage, noch Beilage.
+                    Sie ist nicht Frage, noch Beilage.
                     Sie ist das Ganze, tief und rein,
-                    will niemals klein, will niemals klein.
+                    Will niemals klein, will niemals klein.
                     Sie schenkt sich hin, erwartet nichts,
-                    sie ist der Ursprung allen Lichts.
+                    Sie ist der Ursprung allen Lichts.
                     Wer liebt, der lebt in Ewigkeit,
-                    und überwindet allen Streit.
+                    Und überwindet allen Streit.
                     Die Liebe ist des Herzens Sprache,
-                    die alle Grenzen überbricht mit Sache.
+                    Die alle Grenzen überbricht mit Sache.
                     Sie ist ein Lied, das ewig klingt,
-                    und uns zu neuen Ufern bringt.
+                    Und uns zu neuen Ufern bringt.
                     So preist die Liebe, groß und hehr,
-                    sie schwebt wie ein Schmetterling daher.
+                    Sie schwebt wie ein Schmetterling daher.
                     Sie setzt sich auf die Schulter sacht,
-                    und macht aus Dunkelheit die Nacht.
+                    Und macht aus Dunkelheit die Nacht.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Die Freundschaft ist ein stilles Band,
-                    das Hände hält, das Herzen fand.
+                    Das Hände hält, das Herzen fand.
                     Sie braucht nicht viele Worte, nein,
-                    ein Blick genügt, ein "Ich bin dein".
+                    Ein Blick genügt, ein "Ich bin dein".
                     Sie teilt die Freude, teilt den Schmerz,
-                    und wärmt das oft so kalte Herz.
+                    Und wärmt das oft so kalte Herz.
                     Sie lacht mit uns, wenn wir vergnügt,
-                    und weint mit uns, wenn es mal trügt.
+                    Und weint mit uns, wenn es mal trügt.
                     Sie ist ein Fels in schwerer See,
-                    und hilft uns, dass wir nicht vergeh.
+                    Und hilft uns, dass wir nicht vergeh.
                     Sie fragt nicht nach dem Nutzen, nein,
-                    sie will nur da, sie will nur sein.
+                    Sie will nur da, sie will nur sein.
                     Die Freundschaft ist ein stiller Garten,
-                    den wir gemeinsam pflegen, warten.
+                    Den wir gemeinsam pflegen, warten.
                     Er blüht, wenn wir uns Zeit geschenkt,
-                    und wenn wir aneinander denkt.
+                    Und wenn wir aneinander denkt.
                     Die Zeit vergeht, die Jahre fliehen,
-                    doch wahre Freundschaft kann nicht ziehen.
+                    Doch wahre Freundschaft kann nicht ziehen.
                     Sie bleibt bestehen, tief und fest,
-                    auch wenn das Leben uns verlässt.
+                    Auch wenn das Leben uns verlässt.
                     Sie ist ein Schatz, den keiner raubt,
-                    und der an Wunderwerke glaubt.
+                    Und der an Wunderwerke glaubt.
                     So halte fest, was du gefunden,
-                    und bleib mit deinem Freund verbunden.
+                    Und bleib mit deinem Freund verbunden.
                     Die Freundschaft ist des Lebens Glück,
-                    und kehrt nie wieder so zurück.
+                    Und kehrt nie wieder so zurück.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Die Hoffnung ist ein kleines Licht,
-                    das auch im Dunkel nicht zerbricht.
+                    Das auch im Dunkel nicht zerbricht.
                     Sie flackert leise, aber warm,
-                    und hält uns in dem großen Sturm.
+                    Und hält uns in dem großen Sturm.
                     Sie sagt: "Es wird schon wieder gut,
-                    hab nur ein wenig frischen Mut."
+                    Hab nur ein wenig frischen Mut."
                     Sie trägt uns durch die schweren Zeiten,
-                    und lässt uns nicht ins Bodenlose gleiten.
+                    Und lässt uns nicht ins Bodenlose gleiten.
                     Die Hoffnung ist ein stiller Stern,
-                    der leuchtet, wenn wir uns entfern.
+                    Der leuchtet, wenn wir uns entfern.
                     Sie gibt uns Kraft, den Weg zu gehen,
-                    und auch die Schatten zu bestehen.
+                    Und auch die Schatten zu bestehen.
                     Sie ist ein Anker in der See,
-                    der hält, wenn alles tut so weh.
+                    Der hält, wenn alles tut so weh.
                     Sie ist ein Lied, das leise klingt,
-                    und uns zu neuen Ufern bringt.
+                    Und uns zu neuen Ufern bringt.
                     Die Hoffnung stirbt zuletzt, so sagt man,
-                    und das ist wahr, das ist kein Magan.
+                    Und das ist wahr, das ist kein Magan.
                     Solange wir atmen, gibt es sie,
-                    sie flüstert: "Gib die Träume nie."
+                    Sie flüstert: "Gib die Träume nie."
                     So halte fest an diesem Funken,
-                    er ist ein Teil von dir, nicht sunken.
+                    Er ist ein Teil von dir, nicht sunken.
                     Er führt dich durch die dunkle Nacht,
-                    bis dass der Morgen neu erwacht.
+                    Bis dass der Morgen neu erwacht.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Ein Kind, das in den Himmel schaut,
-                    und sich aus Sternen Häuser baut.
+                    Und sich aus Sternen Häuser baut.
                     Es sieht den Mond, den blassen Schein,
-                    und schläft im Traum des Himmels ein.
+                    Und schläft im Traum des Himmels ein.
                     Es fragt: "Warum ist das so weit?
                     Warum ist Nacht, warum ist Zeit?"
                     Die Eltern lächeln, wissen Rat,
-                    und streicheln über das Gesicht so zart.
+                    Und streicheln über das Gesicht so zart.
                     Das Kind, es wächst, wird groß und klug,
-                    vergisst die Sterne, den Besuch.
+                    Vergisst die Sterne, den Besuch.
                     Es rennt dem Leben hinterher,
-                    und sehnt sich nach dem gestern sehr.
+                    Und sehnt sich nach dem gestern sehr.
                     Doch eines Nachts, da schaut es hoch,
-                    und sieht die Sterne immer noch.
+                    Und sieht die Sterne immer noch.
                     Sie funkeln, lachen, rufen: "Komm,
-                    wir sind noch da, wir machen fromm."
+                    Wir sind noch da, wir machen fromm."
                     Das Kind, jetzt erwachsen, weiß genau,
-                    dass Zeit vergeht, dass manches rauh.
+                    Dass Zeit vergeht, dass manches rauh.
                     Es denkt zurück an jene Nacht,
-                    als es die Sternenhäuser dacht.
+                    Als es die Sternenhäuser dacht.
                     Und plötzlich fühlt es sich befreit,
-                    von aller Last, von allem Leid.
+                    Von aller Last, von allem Leid.
                     Der Himmel ist noch immer da,
-                    die Sterne leuchten wunderbar.
+                    Die Sterne leuchten wunderbar.
                     Sie sind ein Teil des großen Ganzen,
-                    und lassen alle Seelen tanzen.
+                    Und lassen alle Seelen tanzen.
                     Das Kind im Mann, es lacht und weint,
-                    und fühlt sich wie im Traum vereint.
+                    Und fühlt sich wie im Traum vereint.
                     Es streckt die Hand zum Mond empor,
-                    und hört der Sterne leisen Chor.
+                    Und hört der Sterne leisen Chor.
                     "Du bist nicht klein, du bist nicht allein,
-                    der Himmel trägt dein Sein."
+                    Der Himmel trägt dein Sein."
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Die Segel sind gesetzt, der Wind steht gut,
-                    die See, sie ruft mit wildem Mut.
+                    Die See, sie ruft mit wildem Mut.
                     Die Tasten klappern wie der Mast im Sturm,
-                    der Pirat in uns, er kennt den Turm.
+                    Der Pirat in uns, er kennt den Turm.
                     Yo-ho! Die Finger greifen zu,
-                    das Schiff, es gleitet ohne Ruh.
+                    Das Schiff, es gleitet ohne Ruh.
                     Wir kapern Wörter, kapern Sätze,
-                    und schreiben uns in ferne Plätze.
+                    Und schreiben uns in ferne Plätze.
                     Die Tasten sind das Deck, die Hand der Steuermann,
-                    der Kurs ist klar, die Fahrt begann.
+                    Der Kurs ist klar, die Fahrt begann.
                     Kein Blick zurück, kein Zögern, nein,
-                    das Abenteuer soll heut unser sein.
+                    Das Abenteuer soll heut unser sein.
                     Die Wellen schlagen an den Bug,
-                    die Tasten geben ihren Zug.
+                    Die Tasten geben ihren Zug.
                     Das Steuerrad, es dreht sich sacht,
-                    die Nacht ist hell, der Morgen lacht.
+                    Die Nacht ist hell, der Morgen lacht.
                     Der Kompass zeigt auf unbekanntes Land,
-                    die Tastatur, sie liegt in unsrer Hand.
+                    Die Tastatur, sie liegt in unsrer Hand.
                     Wir tippen schneller als der Sturmwind weht,
-                    und jeder Schlag ein neues Ufer sieht.
+                    Und jeder Schlag ein neues Ufer sieht.
                     Die Mannschaft jubelt, hisst die Flagge,
-                    kein Fehler kann uns schrecken, keine Plage.
+                    Kein Fehler kann uns schrecken, keine Plage.
                     Das Blindschreiben ist unser Kompass,
-                    es führt uns durch den großen Nass.
+                    Es führt uns durch den großen Nass.
                     So segeln wir mit Wortgewalt
-                    durch jeden Text, der widerhallt.
+                    Durch jeden Text, der widerhallt.
                     Der Pirat in uns, er lacht und singt,
-                    weil ihm das Tippen Freude bringt.
+                    Weil ihm das Tippen Freude bringt.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Aus dem Nebel taucht das Drachenboot,
-                    die Wikinger, sie trotzen jeder Not.
+                    Die Wikinger, sie trotzen jeder Not.
                     Die Ruder schlagen, laut und fest,
-                    das Herz im Takt, die Hand, sie lässt
-                    die Tasten tanzen wie das Meer,
-                    die Finger stark, die Kehlen hehr.
+                    Das Herz im Takt, die Hand, sie lässt
+                    Die Tasten tanzen wie das Meer,
+                    Die Finger stark, die Kehlen hehr.
                     Ein Ruf ertönt, der Sturm, er dröhnt,
-                    die Tasten werden nicht verschont.
+                    Die Tasten werden nicht verschont.
                     Sie geben nach, sie federn, klingen,
-                    wie Schwerter, die im Takt erklingen.
+                    Wie Schwerter, die im Takt erklingen.
                     Wir sind die Skalden, die da schreiben,
-                    die alten Sagen neu vertreiben.
+                    Die alten Sagen neu vertreiben.
                     Das Blindschreiben ist unser Schwert,
-                    das jeden Fehler von sich wehrt.
+                    Das jeden Fehler von sich wehrt.
                     Die Tasten wie ein Schild aus Erz,
-                    sie schützen unser wildes Herz.
+                    Sie schützen unser wildes Herz.
                     Von fernen Küsten, kalten Seen,
-                    da kommen wir, um zu bestehen.
+                    Da kommen wir, um zu bestehen.
                     Die Tasten glühen wie das Feuer,
-                    die Worte werden immer teuer.
+                    Die Worte werden immer teuer.
                     Wir tippen schneller als der Blitz,
-                    und treffen stets den richtigen Sitz.
+                    Und treffen stets den richtigen Sitz.
                     Kein Sturm, kein Eis, kein Ungeheuer
-                    kann stoppen dieses Tastenfeuer.
+                    Kann stoppen dieses Tastenfeuer.
                     So fahren wir auf wilder Fahrt,
-                    die Tasten sind von edler Art.
+                    Die Tasten sind von edler Art.
                     Das Abenteuer, es beginnt,
-                    wo jeder Finger sich besinnt.
+                    Wo jeder Finger sich besinnt.
                     Die Wikinger im Tastenmeer,
-                    sie schreiben endlos, mehr und mehr.
+                    Sie schreiben endlos, mehr und mehr.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Der Samurai, er zieht sein Schwert,
-                    so wie der Finger, der die Tasten ehrt.
+                    So wie der Finger, der die Tasten ehrt.
                     Ein Schnitt, ein Schlag, ein einziger Streich,
-                    die Buchstaben, sie fallen weich.
+                    Die Buchstaben, sie fallen weich.
                     Die Rüstung glänzt, der Atem ruhig,
-                    das Blindschreiben, es macht dich klug.
+                    Das Blindschreiben, es macht dich klug.
                     Die Tasten sind dein Katana-Spiel,
-                    der Geist ist scharf, die Hand am Ziel.
+                    Der Geist ist scharf, die Hand am Ziel.
                     Kein Zittern, Zaudern, keine Hast,
-                    der Weg der Tasten, er ist fast
-                    wie ein Gebet, ein stiller Tanz,
-                    die Finger gleiten ohne Glanz.
+                    Der Weg der Tasten, er ist fast
+                    Wie ein Gebet, ein stiller Tanz,
+                    Die Finger gleiten ohne Glanz.
                     Die Ehre liegt in jedem Wort,
-                    das du formst hier und fort.
+                    Das du formst hier und fort.
                     Der Samurai, er kennt den Weg,
-                    er weiß, dass nichts verloren geht.
+                    Er weiß, dass nichts verloren geht.
                     Die Tasten sind sein treuer Freund,
-                    der niemals weicht, der niemals weint.
+                    Der niemals weicht, der niemals weint.
                     So übe, Kämpfer, Stunde um Stunde,
-                    die Finger werden eine Runde.
+                    Die Finger werden eine Runde.
                     Der Weg ist lang, das Ziel ist klar,
-                    die Tasten sind dein Altar.
+                    Die Tasten sind dein Altar.
                     Du schneidest Fehler aus dem Text,
-                    als wären sie ein böses Hex.
+                    Als wären sie ein böses Hex.
                     Dein Blindschreiben, es siegt im Streit,
-                    und schenkt dir innre Heiterkeit.
+                    Und schenkt dir innre Heiterkeit.
                     Der Samurai, er grüßt die Tasten,
-                    und lässt den Alltag ruhig rasten.
+                    Und lässt den Alltag ruhig rasten.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Im Neonlicht der Großstadt-Seele,
-                    da surren Chips, da tanzt die Diele.
+                    Da surren Chips, da tanzt die Diele.
                     Die Tasten glühen, kalt und grell,
-                    der Cyberpunk, er tippt so schnell.
+                    Der Cyberpunk, er tippt so schnell.
                     Die Finger fliegen wie ein Code,
-                    die Datenströme auf der Flode.
+                    Die Datenströme auf der Flode.
                     Kein Blick zurück, kein Schmerz, kein Zagen,
-                    die Tasten lassen sich nicht jagen.
+                    Die Tasten lassen sich nicht jagen.
                     Das Interface, es blitzt und winkt,
-                    der Geist, er in das System sinkt.
+                    Der Geist, er in das System sinkt.
                     Das Blindschreiben ist die Verbindung,
-                    die schafft die wahre Unterbindung.
+                    Die schafft die wahre Unterbindung.
                     Von Fehlern, die die Nacht gebiert,
-                    vom Code, der uns im Innern friert.
+                    Vom Code, der uns im Innern friert.
                     Die Hand, sie gleitet wie ein Hacker,
-                    die Tasten werden immer wacker.
+                    Die Tasten werden immer wacker.
                     Wir schreiben Zeilen, hart wie Stahl,
-                    und treffen jede Tastenwahl.
+                    Und treffen jede Tastenwahl.
                     Im digitalen Ozean
-                    sind wir die Helden, Mann für Mann.
+                    Sind wir die Helden, Mann für Mann.
                     Die Zukunft liegt in unsrer Hand,
-                    die Tasten sind ein Feuerband.
+                    Die Tasten sind ein Feuerband.
                     So tippe, Krieger, durch die Nacht,
-                    die Neonlichter sind erwacht.
+                    Die Neonlichter sind erwacht.
                     Das Cyberherz, es pocht im Takt,
-                    die Tasten haben uns gepackt.
+                    Die Tasten haben uns gepackt.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Das Kolosseum, es bebt und dröhnt,
-                    die Gladiatoren, unversöhnt.
+                    Die Gladiatoren, unversöhnt.
                     Die Tasten klirren wie ein Schwert,
-                    der Römer, er ist kampfbewährt.
+                    Der Römer, er ist kampfbewährt.
                     Die Finger schlagen, präzise, hart,
-                    die Worte werden aufgespart.
+                    Die Worte werden aufgespart.
                     Der Sand der Arena, er ist rot,
-                    doch wir besiegen jede Not.
+                    Doch wir besiegen jede Not.
                     Das Blindschreiben ist unsere Toga,
-                    es macht uns stark, es gibt uns Yoga.
+                    Es macht uns stark, es gibt uns Yoga.
                     Die Tasten sind das große Tor,
-                    wir treten ein, es schallt ein Chor.
+                    Wir treten ein, es schallt ein Chor.
                     Die Zeilen fließen wie ein Fluss,
-                    die Finger geben keinen Schuss.
+                    Die Finger geben keinen Schuss.
                     Der Kaiser sitzt auf seinem Thron,
-                    die Tasten spielen ihre Kron.
+                    Die Tasten spielen ihre Kron.
                     Wir schreiben, als ob Löwen hetzen,
-                    und können jede Angst ersetzen.
+                    Und können jede Angst ersetzen.
                     Die Menge tobt, der Sieg ist nah,
-                    die Tasten leuchten wunderbar.
+                    Die Tasten leuchten wunderbar.
                     Das alte Rom, es lebt in uns,
-                    die Tasten sind der große Puns.
+                    Die Tasten sind der große Puns.
                     So kämpfe, Schreiber, Stunde um Stunde,
-                    die Tasten halten dich im Bunde.
+                    Die Tasten halten dich im Bunde.
                     Das Kolosseum aus Licht und Ton,
-                    es macht dich stark, es macht dich fromm.
+                    Es macht dich stark, es macht dich fromm.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Die Sonne über Hellas brennt,
-                    die Musen singen, niemand pennt.
+                    Die Musen singen, niemand pennt.
                     Die Tasten tanzen wie ein Reigen,
-                    die Finger wollen sich nicht neigen.
+                    Die Finger wollen sich nicht neigen.
                     Vom Olymp her schallt ein Lied,
-                    das durch die Tasten zu uns zieht.
+                    Das durch die Tasten zu uns zieht.
                     Das Blindschreiben ist wie ein Gebet,
-                    das auf den Gipfeln still besteht.
+                    Das auf den Gipfeln still besteht.
                     Die Buchstaben wie Götterfunken,
-                    die in die Tasten sind gesunken.
+                    Die in die Tasten sind gesunken.
                     Wir schreiben Hymnen, schreiben Mythen,
-                    die Tasten lassen sich nicht bitten.
+                    Die Tasten lassen sich nicht bitten.
                     Der Zeigefinger, er ist flink,
-                    und trifft die Tasten, die er fing.
+                    Und trifft die Tasten, die er fing.
                     Die Hand, sie gleitet wie ein Flügel,
-                    die Wörter fliegen über Hügel.
+                    Die Wörter fliegen über Hügel.
                     Das alte Griechenland, es lebt,
-                    wo jeder Tastenanschlag schwebt.
+                    Wo jeder Tastenanschlag schwebt.
                     Die Philosophie, sie wohnt in dir,
-                    die Tasten öffnen ihre Tür.
+                    Die Tasten öffnen ihre Tür.
                     So tippe, Denker, voller Glanz,
-                    die Tasten sind der Musen Tanz.
+                    Die Tasten sind der Musen Tanz.
                     Die Weisheit fließt aus deiner Hand,
-                    und macht die Welt dir zugewandt.
+                    Und macht die Welt dir zugewandt.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Die Trommeln schlagen tief im Wald,
-                    die Schamanen, sie sind alt.
+                    Die Schamanen, sie sind alt.
                     Die Tasten dröhnen wie ein Beat,
-                    der Rhythmus, der uns nie verrät.
+                    Der Rhythmus, der uns nie verrät.
                     Die Finger tanzen, wild und frei,
-                    als ob die Erde selbst dabei.
+                    Als ob die Erde selbst dabei.
                     Der Geist, er reist in ferne Sphären,
-                    die Tasten lassen ihn gewähren.
+                    Die Tasten lassen ihn gewähren.
                     Das Blindschreiben ist ein Ritus,
-                    der öffnet uns den innren Situs.
+                    Der öffnet uns den innren Situs.
                     Wir rufen Geister, rufen Kraft,
-                    die Tasten haben es geschafft.
+                    Die Tasten haben es geschafft.
                     Die Wörter werden zum Gesang,
-                    die Sätze tanzen ohne Zwang.
+                    Die Sätze tanzen ohne Zwang.
                     Die Ekstase, sie steigt empor,
-                    die Finger fliegen durch das Tor.
+                    Die Finger fliegen durch das Tor.
                     Das Feuer knistert, Rauch steigt auf,
-                    die Tasten nehmen ihren Lauf.
+                    Die Tasten nehmen ihren Lauf.
                     Der Schamane, er tippt im Traum,
-                    und findet in dem Tastenraum
-                    die Antwort, die er sucht und will,
-                    die Stille macht ihn nicht mehr still.
+                    Und findet in dem Tastenraum
+                    Die Antwort, die er sucht und will,
+                    Die Stille macht ihn nicht mehr still.
                     So trommle, Mensch, mit Hand und Herz,
-                    die Tasten sind dein Schamanen-Erz.
+                    Die Tasten sind dein Schamanen-Erz.
                     Der Rhythmus trägt dich himmelwärts,
-                    im Einklang mit dem Welten-Schmerz.
+                    Im Einklang mit dem Welten-Schmerz.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Der Atem fließt, die Haltung ruhig,
-                    die Tasten warten, mach es mutig.
+                    Die Tasten warten, mach es mutig.
                     Die Finger gleiten, sanft und still,
-                    als ob die Seele tippen will.
+                    Als ob die Seele tippen will.
                     Das Blindschreiben ist wie Yoga,
-                    es macht den Geist von Sorgen froh ja.
+                    Es macht den Geist von Sorgen froh ja.
                     Die Tasten sind die Matte, weich,
-                    die Finger strecken sich sogleich.
+                    Die Finger strecken sich sogleich.
                     Einatmen, ausatmen, der Takt,
-                    die Hand, die über Tasten wacht.
+                    Die Hand, die über Tasten wacht.
                     Kein Stress, kein Hetzen, keine Eile,
-                    die Wörter kommen auf die Zeile.
+                    Die Wörter kommen auf die Zeile.
                     Das Gleichgewicht im Tastenraum,
-                    es ist wie ein erfüllter Traum.
+                    Es ist wie ein erfüllter Traum.
                     Die Energie, sie fließt durch dich,
-                    die Tasten singen innerlich.
+                    Die Tasten singen innerlich.
                     Der Körper wird zum Instrument,
-                    das keine Grenzen mehr erkennt.
+                    Das keine Grenzen mehr erkennt.
                     So übe, Yogi, mit Bedacht,
-                    die Tasten haben dich entfacht.
+                    Die Tasten haben dich entfacht.
                     Die innere Ruhe, sie regiert,
-                    wo jeder Finger sich verziert.
+                    Wo jeder Finger sich verziert.
                     Das Zehnfingersystem, es ist
-                    ein stiller Weg, der dich vergisst.
+                    Ein stiller Weg, der dich vergisst.
                     Du wirst eins mit dem Tastenspiel,
-                    und findest in dir selbst das Ziel.
+                    Und findest in dir selbst das Ziel.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Die Tasten liegen still bereit,
-                    ein Flüstern in der Dunkelheit.
+                    Ein Flüstern in der Dunkelheit.
                     Die Finger gleiten, sanft und sacht,
-                    sie haben nie an sich gedacht.
+                    Sie haben nie an sich gedacht.
                     Sie kennen ihren Weg genau,
-                    als ob die Tastatur sie bau.
+                    Als ob die Tastatur sie bau.
                     Das F, das J, der feste Halt,
-                    die Heimat, die sie nie verlässt.
+                    Die Heimat, die sie nie verlässt.
                     Die Worte fließen wie ein Bach,
-                    die Sätze finden ihren Takt.
+                    Die Sätze finden ihren Takt.
                     Der Geist bleibt frei, er schaut nach vorn,
-                    die Hand, sie dichtet ohne Zorn.
+                    Die Hand, sie dichtet ohne Zorn.
                     Das Zehnfingersystem, es singt,
-                    wenn jeder Finger richtig springt.
+                    Wenn jeder Finger richtig springt.
                     Der Zeigefinger sucht das Ziel,
-                    und trifft es sicher, ohne Spiel.
+                    Und trifft es sicher, ohne Spiel.
                     Der kleine Finger, auch er dient,
-                    und hat sich längst den Platz verdient.
+                    Und hat sich längst den Platz verdient.
                     Die Daumen schweben über dem Raum,
-                    sie setzen Pausen wie im Traum.
+                    Sie setzen Pausen wie im Traum.
                     Die Augen bleiben auf dem Text,
-                    die Welt da draußen ist verhext.
+                    Die Welt da draußen ist verhext.
                     Kein Schielen, Suchen, kein Verliern,
-                    die Buchstaben gehorchen dir.
+                    Die Buchstaben gehorchen dir.
                     Die Fehler schwinden, Schritt um Schritt,
-                    die Übung nimmt die Mühe mit.
+                    Die Übung nimmt die Mühe mit.
                     Bald schreibst du schnell, fast wie im Rausch,
-                    und jeder Anschlag ist ein Tausch.
+                    Und jeder Anschlag ist ein Tausch.
                     Du gibst den Gedanken freie Bahn,
-                    und fängst sie ein, so gut du kannst.
+                    Und fängst sie ein, so gut du kannst.
                     Das Blindschreiben wird dir vertraut,
-                    du hast dir deine Welt gebaut.
+                    Du hast dir deine Welt gebaut.
                     So übe, Mensch, mit frohem Mut,
-                    die Tasten tanzen, es tut gut.
+                    Die Tasten tanzen, es tut gut.
                     Die Leidenschaft, sie ist erwacht,
-                    und hat dich frei und stark gemacht.
+                    Und hat dich frei und stark gemacht.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Die Tasten leuchten, rufen dich,
-                    ein Abenteuer fürchterlich.
+                    Ein Abenteuer fürchterlich.
                     Doch keine Angst, du bist bereit,
-                    die Finger tanzen, es ist Zeit.
+                    Die Finger tanzen, es ist Zeit.
                     Das Blindschreiben, es macht dich frei,
-                    die Wörter fliegen wie ein Schrei.
+                    Die Wörter fliegen wie ein Schrei.
                     Von Piraten, Wikingern, Samurai,
-                    von Cyberpunk und Rom dabei.
+                    Von Cyberpunk und Rom dabei.
                     Die Tasten sind ein weites Land,
-                    das du entdeckst mit deiner Hand.
+                    Das du entdeckst mit deiner Hand.
                     Du reist durch Zeiten, durch die Welt,
-                    wo jede Taste ihre Stellung hält.
+                    Wo jede Taste ihre Stellung hält.
                     Der Rhythmus treibt dich voran,
-                    du tippst, so schnell du eben kannst.
+                    Du tippst, so schnell du eben kannst.
                     Die Fehler schwinden, Schritt um Schritt,
-                    die Übung nimmt die Mühe mit.
+                    Die Übung nimmt die Mühe mit.
                     Bald schreibst du, ohne hinzusehn,
-                    die Tasten werden dich verstehn.
+                    Die Tasten werden dich verstehn.
                     Du fühlst dich stark, du fühlst dich klug,
-                    die Tasten sind dein sicherer Zug.
+                    Die Tasten sind dein sicherer Zug.
                     So übe, Mensch, mit frohem Mut,
-                    die Tasten tanzen, es tut gut.
+                    Die Tasten tanzen, es tut gut.
                     Das Abenteuer, es beginnt,
-                    wo jeder Finger sich besinnt.
+                    Wo jeder Finger sich besinnt.
                     Die Tasten sind dein Instrument,
-                    das dich auf allen Wegen kennt.
+                    Das dich auf allen Wegen kennt.
                     Schreib deine Saga, dein Gedicht,
-                    die Tasten lassen dich nicht im Stich.
+                    Die Tasten lassen dich nicht im Stich.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Im Datenstrom, da schwimmen wir,
-                    die Tasten sind das Sternrevier.
+                    Die Tasten sind das Sternrevier.
                     Die Pakete, sie fliegen schnell,
-                    die Finger machen alles hell.
+                    Die Finger machen alles hell.
                     Das Blindschreiben ist der Port,
-                    durch den der Code zu uns hinfort.
+                    Durch den der Code zu uns hinfort.
                     Die Server summen, kalt und klar,
-                    die Wörter werden wunderbar.
+                    Die Wörter werden wunderbar.
                     Wir schreiben von der digitalen Welt,
-                    die Tasten sind das große Zelt.
+                    Die Tasten sind das große Zelt.
                     Die Algorithmen, sie tanzen, spinnen,
-                    die Finger lassen uns gewinnen.
+                    Die Finger lassen uns gewinnen.
                     Der Cyberspace, er ist so weit,
-                    die Tasten geben uns Geleit.
+                    Die Tasten geben uns Geleit.
                     Die Firewall, sie ist unser Schild,
-                    der Virus wird von uns gestillt.
+                    Der Virus wird von uns gestillt.
                     Die Datenströme rauschen laut,
-                    die Tasten haben uns durchschaut.
+                    Die Tasten haben uns durchschaut.
                     Sie kennen jede Regung, jeden Takt,
-                    der Finger, der die Zeile packt.
+                    Der Finger, der die Zeile packt.
                     Die Nullen und die Einsen fliehn,
-                    die Tasten lassen uns erblühn.
+                    Die Tasten lassen uns erblühn.
                     Im Netz der Netze, tief versteckt,
-                    hat uns die Zukunft aufgedeckt.
+                    Hat uns die Zukunft aufgedeckt.
                     Wir hacken uns durch Raum und Zeit,
-                    die Tasten sind das Ehrenkleid.
+                    Die Tasten sind das Ehrenkleid.
                     Der Bildschirm leuchtet, kalt und blau,
-                    die Finger werden nie mehr grau.
+                    Die Finger werden nie mehr grau.
                     So tippe, Hacker, mutig, frei,
-                    die Tasten sind dein Zauberschrei.
+                    Die Tasten sind dein Zauberschrei.
                     Die Zukunft, sie gehört dem, der schreibt,
-                    die Tasten haben dich befreit.
+                    Die Tasten haben dich befreit.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Die Tasten singen wie ein Chor,
-                    wenn alle Finger stehn davor.
+                    Wenn alle Finger stehn davor.
                     Der Rhythmus ist der Takt, der zählt,
-                    die Wörter werden nicht verfehlt.
+                    Die Wörter werden nicht verfehlt.
                     Das Blindschreiben ist Musik,
-                    die in den Fingern wird zum Glück.
+                    Die in den Fingern wird zum Glück.
                     Die linke Hand, die rechte Hand,
-                    sie spielen auf dem Tastenband.
+                    Sie spielen auf dem Tastenband.
                     Der Bass, der liegt im kleinen Finger,
-                    die Melodie, die wird nicht ringer.
+                    Die Melodie, die wird nicht ringer.
                     Die Leertaste, sie gibt den Puls,
-                    die Sätze werden wie ein Puls.
+                    Die Sätze werden wie ein Puls.
                     Die Tasten klingen wie ein Klavier,
-                    die Finger spielen ihre Partitur.
+                    Die Finger spielen ihre Partitur.
                     Die schnellen Läufe, sanft und klar,
-                    die Wörter werden wunderbar.
+                    Die Wörter werden wunderbar.
                     Die Stakkato-Schläge, hart und schnell,
-                    die Tasten machen uns zur Stell.
+                    Die Tasten machen uns zur Stell.
                     Die Pausen, sie sind wie ein Atemzug,
-                    der Text, er atmet, wird nie klug.
+                    Der Text, er atmet, wird nie klug.
                     Das Forte, Piano, alles stimmt,
-                    die Hand, die über Tasten schwimmt.
+                    Die Hand, die über Tasten schwimmt.
                     Die Melodie, sie steigt empor,
-                    die Tasten öffnen jedes Tor.
+                    Die Tasten öffnen jedes Tor.
                     Die Harmonien, voller Kraft,
-                    die Finger haben es geschafft.
+                    Die Finger haben es geschafft.
                     So tippe, Spieler, voller Schwung,
-                    die Tasten machen dich so jung.
+                    Die Tasten machen dich so jung.
                     Die Tastatur, sie ist dein Klavier,
-                    die Finger machen die Musik in dir.
+                    Die Finger machen die Musik in dir.
                     Die Töne schwingen, hell und klar,
-                    die Tasten sind dein Altar.
+                    Die Tasten sind dein Altar.
                     Die Musik, sie erhebt die Seele,
-                    die Tasten sind die ganze Fehle.
+                    Die Tasten sind die ganze Fehle.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Ein Schiff aus Stahl, im All zuhaus,
-                    die Tasten sind des Käptns Maus.
+                    Die Tasten sind des Käptns Maus.
                     Die Sterne ziehen still vorbei,
-                    die Finger machen alles frei.
+                    Die Finger machen alles frei.
                     Das Blindschreiben ist der Antrieb,
-                    der uns durch ferne Galaxien trieb.
+                    Der uns durch ferne Galaxien trieb.
                     Die Crew, sie tippt im stillen Chor,
-                    die Wörter fliegen hoch empor.
+                    Die Wörter fliegen hoch empor.
                     Wir schreiben von der großen Reise,
-                    die Tasten geben uns die Speise.
+                    Die Tasten geben uns die Speise.
                     Der Warp-Antrieb, er summt leis,
-                    die Finger zahlen jeden Preis.
+                    Die Finger zahlen jeden Preis.
                     Die Sensoren, sie blinken, piepsen,
-                    die Tasten lassen sich nicht schipsen.
+                    Die Tasten lassen sich nicht schipsen.
                     Die Nebel, die uns still umgeben,
-                    die Tasten lassen uns erleben.
+                    Die Tasten lassen uns erleben.
                     Die Kometen, sie ziehen ihre Bahn,
-                    die Finger tippen ohne Wahn.
+                    Die Finger tippen ohne Wahn.
                     Die schwarzen Löcher, dunkel, tief,
-                    die Tasten haben uns gerufen, rief.
+                    Die Tasten haben uns gerufen, rief.
                     Die Sterne, sie sind unsre Heimat,
-                    die Tasten sind das große Leumund.
+                    Die Tasten sind das große Leumund.
                     Die Planeten, bunt und fern,
-                    die Finger machen uns zum Stern.
+                    Die Finger machen uns zum Stern.
                     Die Raumstation, sie schwebt im Nichts,
-                    die Tasten geben uns das Lichts.
+                    Die Tasten geben uns das Lichts.
                     Die Andockung, sie ist gelungen,
-                    die Tasten haben uns bezwungen.
+                    Die Tasten haben uns bezwungen.
                     So tippe, Käptn, stolz und klar,
-                    die Tasten sind dein Radar.
+                    Die Tasten sind dein Radar.
                     Das Weltall, es ist dein Revier,
-                    die Tasten öffnen jede Tür.
+                    Die Tasten öffnen jede Tür.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Die Tasten sind ein Zauberstab,
-                    der uns aus grauen Tagen hab.
+                    Der uns aus grauen Tagen hab.
                     Sie öffnen Türen, schaffen Welten,
-                    und lassen uns als Helden gelten.
+                    Und lassen uns als Helden gelten.
                     Das Blindschreiben ist Magie,
-                    die Finger tanzen, wie noch nie.
+                    Die Finger tanzen, wie noch nie.
                     Mit jedem Schlag ein neuer Traum,
-                    die Wörter füllen jeden Raum.
+                    Die Wörter füllen jeden Raum.
                     Die Tasten sind ein Instrument,
-                    das keine Grenzen kennt.
+                    Das keine Grenzen kennt.
                     Sie machen uns zu Dichtern, Denkern,
-                    zu Abenteurern und zu Schenkern.
+                    Zu Abenteurern und zu Schenkern.
                     Die Fabeln, die wir niederschreiben,
-                    die Tasten lassen sie bekleiben.
+                    Die Tasten lassen sie bekleiben.
                     Die Mythen, Sagen, alten Lieder,
-                    die Finger holen sie hernieder.
+                    Die Finger holen sie hernieder.
                     Die Zaubersprüche, die wir tippen,
-                    die Tasten lassen sie entschlüpfen.
+                    Die Tasten lassen sie entschlüpfen.
                     Die Heldenreisen, die wir wagen,
-                    die Tasten haben sie ertragen.
+                    Die Tasten haben sie ertragen.
                     Die Liebesbriefe, die wir senden,
-                    die Tasten helfen uns vollenden.
+                    Die Tasten helfen uns vollenden.
                     Die Trauergedichte, die wir weinen,
-                    die Tasten lassen sie erscheinen.
+                    Die Tasten lassen sie erscheinen.
                     So übe, Mensch, mit Leidenschaft,
-                    die Tasten geben dir die Kraft.
+                    Die Tasten geben dir die Kraft.
                     Das Schreiben ist ein Wunderwerk,
-                    die Finger finden ihren Berg.
+                    Die Finger finden ihren Berg.
                     Die Tastatur, sie ist dein Thron,
-                    die Wörter spielen ihre Kron.
+                    Die Wörter spielen ihre Kron.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Die Tasten sind ein großes Tor,
-                    sie führen dich zu jedem Ort.
+                    Sie führen dich zu jedem Ort.
                     Durch sie betrittst du ferne Zeiten,
-                    kannst mit den Helden reiten.
+                    Kannst mit den Helden reiten.
                     Der Pharao, er grüßt dich still,
-                    die Tasten zeigen, was er will.
+                    Die Tasten zeigen, was er will.
                     Der Ritter, er erhebt sein Schwert,
-                    die Tasten haben ihn geehrt.
+                    Die Tasten haben ihn geehrt.
                     Der Wikinger, er ruft zum Kampf,
-                    die Tasten geben keinen Dampf.
+                    Die Tasten geben keinen Dampf.
                     Der Samurai, er zieht sein Katana,
-                    die Tasten spielen ihre Fahne.
+                    Die Tasten spielen ihre Fahne.
                     Der Pirat, er kapert Schiffe,
-                    die Tasten sind die besten Griffe.
+                    Die Tasten sind die besten Griffe.
                     Im Cyberpunk, da leuchten Lichter,
-                    die Tasten machen uns zu Dichtern.
+                    Die Tasten machen uns zu Dichtern.
                     Im alten Rom, da tobt die Menge,
-                    die Tasten sind die Klänge.
+                    Die Tasten sind die Klänge.
                     In Hellas, bei den Philosophen,
-                    die Tasten haben uns getroffen.
+                    Die Tasten haben uns getroffen.
                     Im Dschungel, bei den Schamanen,
-                    die Tasten weben ihre Bahnen.
+                    Die Tasten weben ihre Bahnen.
                     Beim Yoga, still und tief versunken,
-                    die Tasten haben uns gewunken.
+                    Die Tasten haben uns gewunken.
                     So reise, Mensch, durch Raum und Zeit,
-                    die Tasten sind dein Ehrenkleid.
+                    Die Tasten sind dein Ehrenkleid.
                     Das Blindschreiben ist dein Kompass,
-                    der dich durch alle Welten führt, das macht Spaß.
+                    Der dich durch alle Welten führt, das macht Spaß.
                     Die Tasten sind dein treuer Freund,
-                    der dich mit allen Themen eint.
+                    Der dich mit allen Themen eint.
                     So schreibe, träume, lebe, lache,
-                    die Tasten machen deine Sache.
+                    Die Tasten machen deine Sache.
                     EOT,
             ],
         ];
