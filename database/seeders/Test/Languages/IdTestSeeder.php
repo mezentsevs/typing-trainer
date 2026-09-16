@@ -290,1178 +290,1178 @@ class IdTestSeeder extends LanguageTestSeeder
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Pagi datang dengan langit cerah,
-                    embun menari di daun yang basah.
+                    Embun menari di daun yang basah.
                     Sawah menghijau luas terbentang,
-                    angin lembut menyapa riang.
+                    Angin lembut menyapa riang.
                     Burung bernyanyi di dahan kenari,
-                    lagu alam yang damai berseri.
+                    Lagu alam yang damai berseri.
                     Sungai kecil mengalir berkelok,
-                    memantulkan sinar mentari yang elok.
+                    Memantulkan sinar mentari yang elok.
                     Di kejauhan gunung berdiri megah,
-                    puncaknya diselimuti kabut yang ramah.
+                    Puncaknya diselimuti kabut yang ramah.
                     Petani melangkah dengan senyum tulus,
-                    menyambut hari dengan hati yang lurus.
+                    Menyambut hari dengan hati yang lurus.
                     Padi menguning di petak teratur,
-                    hasil kerja yang tak pernah gugur.
+                    Hasil kerja yang tak pernah gugur.
                     Anak-anak tertawa di tepi jalan,
-                    layang-layang naik di langit awan.
+                    Layang-layang naik di langit awan.
                     Alam memberi banyak keindahan,
-                    mengajarkan syukur dan keikhlasan.
+                    Mengajarkan syukur dan keikhlasan.
                     Setiap helai rumput yang hijau,
-                    menari pelan di bawah bayu.
+                    Menari pelan di bawah bayu.
                     Di sini waktu berjalan pelan,
-                    mengikuti irama hari yang nyaman.
+                    Mengikuti irama hari yang nyaman.
                     Kupu-kupu hinggap di bunga liar,
-                    membawa warna di pagi yang segar.
+                    Membawa warna di pagi yang segar.
                     Semua bersatu dalam harmoni kental,
-                    alam dan manusia saling kenal.
+                    Alam dan manusia saling kenal.
                     Suara gemericik air yang jernih,
-                    menghapus letih dan hati yang sedih.
+                    Menghapus letih dan hati yang sedih.
                     Daun-daun menari saat angin berhembus,
-                    menciptakan simfoni yang halus.
+                    Menciptakan simfoni yang halus.
                     Di bawah pohon rindang kita berteduh,
-                    menikmati sejuk yang tiada jenuh.
+                    Menikmati sejuk yang tiada jenuh.
                     Semesta tersenyum dalam diam,
-                    menyimpan damai di setiap malam.
+                    Menyimpan damai di setiap malam.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Di tepi pantai pasirnya putih,
-                    ombak datang lalu pergi bersih.
+                    Ombak datang lalu pergi bersih.
                     Angin laut membelai wajah yang ceria,
-                    membawa aroma garam yang segar dan bahagia.
+                    Membawa aroma garam yang segar dan bahagia.
                     Burung camar terbang di udara biru,
-                    sayap mengepak ringan dan lugu.
+                    Sayap mengepak ringan dan lugu.
                     Matahari pagi naik dari timur,
-                    menyinari air dengan kilauan jujur.
+                    Menyinari air dengan kilauan jujur.
                     Perahu nelayan berlayar tenang,
-                    jaring ditebar dengan harapan riang.
+                    Jaring ditebar dengan harapan riang.
                     Terumbu karang di dasar yang jernih,
-                    warna-warni indah dan bersih.
+                    Warna-warni indah dan bersih.
                     Ikan kecil berenang cepat,
-                    di antara karang yang rapat.
+                    Di antara karang yang rapat.
                     Di kejauhan pulau kecil permai,
-                    kelapa melambai di tepi pantai.
+                    Kelapa melambai di tepi pantai.
                     Suara ombak berdebur halus,
-                    membelai telinga dengan tulus.
+                    Membelai telinga dengan tulus.
                     Pasir lembut menggelitik telapak kaki,
-                    jejak langkah hilang dibawa air kembali.
+                    Jejak langkah hilang dibawa air kembali.
                     Langit biru cerah tanpa awan,
-                    laut tenang membentang di kejauhan.
+                    Laut tenang membentang di kejauhan.
                     Anak-anak membangun istana pasir,
-                    tertawa riang tanpa rasa khawatir.
+                    Tertawa riang tanpa rasa khawatir.
                     Orang tua duduk di kursi kayu,
-                    menikmati sejuk dan angin yang ayu.
+                    Menikmati sejuk dan angin yang ayu.
                     Sungai kecil mengalir deras,
-                    menuju laut dengan hati yang ikhlas.
+                    Menuju laut dengan hati yang ikhlas.
                     Di sore hari matahari terbenam,
-                    langit jingga bagai lukisan dalam.
+                    Langit jingga bagai lukisan dalam.
                     Ombak tetap setia datang,
-                    menyapa pantai dengan riang.
+                    Menyapa pantai dengan riang.
                     Alam bahari sungguh menawan,
-                    menyimpan damai di setiap awan.
+                    Menyimpan damai di setiap awan.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Di tengah hutan yang rindang dan sejuk,
-                    pohon-pohon tua berdiri tegak dan kukuh.
+                    Pohon-pohon tua berdiri tegak dan kukuh.
                     Daun-daun hijau menari pelan,
-                    disapa angin yang berhembus nyaman.
+                    Disapa angin yang berhembus nyaman.
                     Sinar mentari menembus celah dahan,
-                    membentuk berkas cahaya yang menawan.
+                    Membentuk berkas cahaya yang menawan.
                     Jalan setapak dari batu dan tanah,
-                    mengajak kaki melangkah tanpa lelah.
+                    Mengajak kaki melangkah tanpa lelah.
                     Kicau burung bersahut-sahutan,
-                    memecah sunyi dengan lagu yang nyaring.
+                    Memecah sunyi dengan lagu yang nyaring.
                     Air terjun jauh terdengar gemuruh,
-                    jatuh ke kolam dengan percikan jernih.
+                    Jatuh ke kolam dengan percikan jernih.
                     Lumut menempel di batu yang basah,
-                    memberi warna hijau yang segar dan ramah.
+                    Memberi warna hijau yang segar dan ramah.
                     Di bawah pohon besar kita berhenti,
-                    menikmati sejuk sambil mengisi hati.
+                    Menikmati sejuk sambil mengisi hati.
                     Akar pohon mencengkeram bumi kuat,
-                    menjadi tempat berteduh yang tepat.
+                    Menjadi tempat berteduh yang tepat.
                     Semut berbaris rapi di kulit kayu,
-                    membawa makanan dengan tekun dan lugu.
+                    Membawa makanan dengan tekun dan lugu.
                     Kupu-kupu kuning hinggap di bunga,
-                    menambah indah suasana yang terjaga.
+                    Menambah indah suasana yang terjaga.
                     Hutan adalah paru-paru dunia,
-                    menjaga udara bersih untuk semua.
+                    Menjaga udara bersih untuk semua.
                     Mari kita jaga dan lestarikan,
-                    agar anak cucu bisa menikmati keindahan.
+                    Agar anak cucu bisa menikmati keindahan.
                     Setiap pohon adalah harta berharga,
-                    tempat hidup banyak makhluk yang terjaga.
+                    Tempat hidup banyak makhluk yang terjaga.
                     Di keheningan hutan kita belajar,
-                    bahwa alam selalu memberi dengan sabar.
+                    Bahwa alam selalu memberi dengan sabar.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Hujan turun di sore hari,
-                    membasahi tanah dan rerumputan berseri.
+                    Membasahi tanah dan rerumputan berseri.
                     Gemericik air di atap senja,
-                    menciptakan irama yang lembut dan manja.
+                    Menciptakan irama yang lembut dan manja.
                     Tanah kering kini basah dan harum,
-                    menyambut setiap tetes dengan senyum.
+                    Menyambut setiap tetes dengan senyum.
                     Di kejauhan petir menyambar terang,
-                    lalu hilang di balik awan yang tenang.
+                    Lalu hilang di balik awan yang tenang.
                     Anak-anak berlarian riang di halaman,
-                    menari di bawah hujan dengan senyuman.
+                    Menari di bawah hujan dengan senyuman.
                     Payung warna-warni terbuka lebar,
-                    melindungi mereka yang berjalan beriringan.
+                    Melindungi mereka yang berjalan beriringan.
                     Setelah hujan reda dan matahari kembali,
-                    muncul pelangi menghiasi langit yang bersih.
+                    Muncul pelangi menghiasi langit yang bersih.
                     Merah, jingga, kuning, hijau, biru,
-                    melengkung indah di ufuk yang sendu.
+                    Melengkung indah di ufuk yang sendu.
                     Burung-burung keluar dari sarang,
-                    terbang bebas di angkasa yang terang.
+                    Terbang bebas di angkasa yang terang.
                     Bunga-bunga bermekaran lebih cerah,
-                    disiram hujan yang turun dengan ramah.
+                    Disiram hujan yang turun dengan ramah.
                     Sungai kecil meluap pelan,
-                    membawa air jernih ke sawah yang nyaman.
+                    Membawa air jernih ke sawah yang nyaman.
                     Petani tersenyum melihat padi,
-                    tumbuh subur hijau sejak pagi.
+                    Tumbuh subur hijau sejak pagi.
                     Alam selalu memberi berkat,
-                    bagi mereka yang menjaga dan merawat.
+                    Bagi mereka yang menjaga dan merawat.
                     Mari bersyukur atas setiap hujan,
-                    karena air adalah kehidupan.
+                    Karena air adalah kehidupan.
                     Hujan membawa kesejukan dan harapan,
-                    mengajak semua makhluk untuk bertahan.
+                    Mengajak semua makhluk untuk bertahan.
                     Di bawah langit yang kembali biru,
-                    bumi tersenyum penuh syukur dan rindu.
+                    Bumi tersenyum penuh syukur dan rindu.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Di pegunungan yang tinggi dan indah,
-                    puncaknya berselimut awan yang ramah.
+                    Puncaknya berselimut awan yang ramah.
                     Udara sejuk membelai wajah,
-                    menyegarkan jiwa yang lelah.
+                    Menyegarkan jiwa yang lelah.
                     Kabut tipis turun ke lembah,
-                    menutupi hutan yang rimbun dan cerah.
+                    Menutupi hutan yang rimbun dan cerah.
                     Jalur setapak menanjak tinggi,
-                    menuju puncak yang sunyi dan berseri.
+                    Menuju puncak yang sunyi dan berseri.
                     Air terjun gemuruh di kejauhan,
-                    airnya jernih membasahi bebatuan.
+                    Airnya jernih membasahi bebatuan.
                     Burung elang terbang bebas,
-                    mencari mangsa di angkasa luas.
+                    Mencari mangsa di angkasa luas.
                     Pepohonan pinus berjajar erat,
-                    menjaga tanah dari longsor dan penat.
+                    Menjaga tanah dari longsor dan penat.
                     Bunga edelweis putih berseri,
-                    tumbuh di celah batu yang sunyi.
+                    Tumbuh di celah batu yang sunyi.
                     Pendaki berhenti sejenak melepas lelah,
-                    menatap pemandangan yang indah dan megah.
+                    Menatap pemandangan yang indah dan megah.
                     Mentari pagi bersinar terang,
-                    menyinari lembah dan ngarai yang tenang.
+                    Menyinari lembah dan ngarai yang tenang.
                     Langit biru cerah tanpa awan,
-                    membentang luas di atas pegunungan.
+                    Membentang luas di atas pegunungan.
                     Gunung menyimpan berjuta cerita,
-                    tentang alam yang kuat dan bijaksana.
+                    Tentang alam yang kuat dan bijaksana.
                     Di sore hari matahari terbenam,
-                    langit jingga bagai lukisan dalam.
+                    Langit jingga bagai lukisan dalam.
                     Bintang-bintang muncul di malam hari,
-                    berkelap-kelip di langit yang bersih dan rapi.
+                    Berkelap-kelip di langit yang bersih dan rapi.
                     Mari kita jaga kelestarian alam ini,
-                    agar keindahan tetap abadi.
+                    Agar keindahan tetap abadi.
                     Di gunung kita belajar rendah diri,
-                    menghormati alam sepenuh hati.
+                    Menghormati alam sepenuh hati.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Di pagi hari yang cerah,
-                    mentari bersinar terang dan ramah.
+                    Mentari bersinar terang dan ramah.
                     Danau tenang berkilau jernih,
-                    memantulkan langit yang bersih.
+                    Memantulkan langit yang bersih.
                     Angin sepoi bertiup halus,
-                    membelai air dengan tulus.
+                    Membelai air dengan tulus.
                     Di tepi danau rumput bergoyang,
-                    bunga-bunga mekar riang.
+                    Bunga-bunga mekar riang.
                     Burung berkicau di dahan tinggi,
-                    lagu pagi yang damai sejati.
+                    Lagu pagi yang damai sejati.
                     Ikan kecil berenang cepat,
-                    di dalam air yang jernih dan sehat.
+                    Di dalam air yang jernih dan sehat.
                     Gunung menjulang di kejauhan,
-                    diselimuti kabut yang menawan.
+                    Diselimuti kabut yang menawan.
                     Awan putih berarak tenang,
-                    seperti kapal di langit terang.
+                    Seperti kapal di langit terang.
                     Anak-anak bermain di tepi danau,
-                    tertawa riang tanpa rasa risau.
+                    Tertawa riang tanpa rasa risau.
                     Alam danau sungguh permai,
-                    membawa damai di setiap hari.
+                    Membawa damai di setiap hari.
                     Di bawah pohon kita berteduh,
-                    menikmati sejuk yang tiada jenuh.
+                    Menikmati sejuk yang tiada jenuh.
                     Perahu kecil berlayar perlahan,
-                    membelah air dengan tenang dan nyaman.
+                    Membelah air dengan tenang dan nyaman.
                     Nelayan menebar jala di pagi hari,
-                    mengharap rezeki dari danau berseri.
+                    Mengharap rezeki dari danau berseri.
                     Sore hari matahari terbenam,
-                    langit jingga bagai lukisan dalam.
+                    Langit jingga bagai lukisan dalam.
                     Bintang-bintang muncul di malam hari,
-                    berkelap-kelip di langit yang bersih dan rapi.
+                    Berkelap-kelip di langit yang bersih dan rapi.
                     Bulan purnama memantul di air,
-                    cahayanya lembut seperti permata terbaik.
+                    Cahayanya lembut seperti permata terbaik.
                     Danau adalah cermin alam yang luas,
-                    menyimpan keindahan yang tiada batas.
+                    Menyimpan keindahan yang tiada batas.
                     Mari kita jaga danau ini,
-                    agar tetap jernih dan berseri.
+                    Agar tetap jernih dan berseri.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Sahabat karib di hati tersimpan,
-                    selalu hadir di saat dibutuhkan.
+                    Selalu hadir di saat dibutuhkan.
                     Kita tertawa lepas bersama,
-                    berbagi cerita dan canda.
+                    Berbagi cerita dan canda.
                     Saat sedih kau datang menghibur,
-                    membawa senyum dan canda yang jujur.
+                    Membawa senyum dan canda yang jujur.
                     Kita berjanji saling membantu,
-                    dalam suka maupun duka yang satu.
+                    Dalam suka maupun duka yang satu.
                     Di lapangan kita bermain bola,
-                    tertawa riang tanpa rasa cela.
+                    Tertawa riang tanpa rasa cela.
                     Di sungai kita memancing ikan,
-                    menunggu matahari terbenam perlahan.
+                    Menunggu matahari terbenam perlahan.
                     Kita berbagi bekal di siang hari,
-                    menikmati alam yang indah berseri.
+                    Menikmati alam yang indah berseri.
                     Kita berjalan di tepi pantai,
-                    menikmati angin yang damai.
+                    Menikmati angin yang damai.
                     Sahabat sejati tak pernah pergi,
-                    selalu dekat di setiap hari.
+                    Selalu dekat di setiap hari.
                     Kau adalah bintang di kala malam,
-                    menerangi langkah yang hampir tenggelam.
+                    Menerangi langkah yang hampir tenggelam.
                     Terima kasih untuk setiap tawa,
-                    untuk setiap duka yang kita rasa.
+                    Untuk setiap duka yang kita rasa.
                     Persahabatan ini begitu dalam,
-                    seperti akar pohon yang menghujam.
+                    Seperti akar pohon yang menghujam.
                     Kita tumbuh bersama dalam cerita,
-                    menjadi saksi perjalanan waktu yang nyata.
+                    Menjadi saksi perjalanan waktu yang nyata.
                     Semoga ikatan ini abadi,
-                    seperti langit biru yang tak bertepi.
+                    Seperti langit biru yang tak bertepi.
                     Kita berbagi mimpi dan harapan,
-                    menyusun rencana masa depan.
+                    Menyusun rencana masa depan.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Di bawah langit senja yang jingga terang,
-                    kita berjalan berdua dalam senyuman riang.
+                    Kita berjalan berdua dalam senyuman riang.
                     Aku pria, kau wanita yang lembut hati,
-                    melangkah bersama dalam suasana sakti.
+                    Melangkah bersama dalam suasana sakti.
                     Angin sore membawa aroma bunga,
-                    sementara jemari kita saling menggenggam mesra.
+                    Sementara jemari kita saling menggenggam mesra.
                     Kau bercerita tentang mimpi dan harapan,
-                    aku mendengarkan dengan hati yang terbuka lebar.
+                    Aku mendengarkan dengan hati yang terbuka lebar.
                     Setiap kata yang kau ucap begitu indah,
-                    bagai aliran sungai yang tenang dan ramah.
+                    Bagai aliran sungai yang tenang dan ramah.
                     Kita tertawa kecil melihat burung terbang,
-                    menikmati sisa siang yang perlahan hilang.
+                    Menikmati sisa siang yang perlahan hilang.
                     Di bangku taman kita duduk berdampingan,
-                    menikmati hening yang penuh kenyamanan.
+                    Menikmati hening yang penuh kenyamanan.
                     Matamu berbinar seperti bintang di malam,
-                    membuat hatiku tak lagi kelam.
+                    Membuat hatiku tak lagi kelam.
                     Kau hadir membawa warna dalam hidupku,
-                    seperti pelangi setelah hujan yang syahdu.
+                    Seperti pelangi setelah hujan yang syahdu.
                     Aku ingin bersamamu lebih lama lagi,
-                    melewati setiap pagi dan sore hari.
+                    Melewati setiap pagi dan sore hari.
                     Menggenggam erat tanganmu dalam setiap langkah,
-                    melewati jalan panjang tanpa lelah.
+                    Melewati jalan panjang tanpa lelah.
                     Cinta ini tumbuh sederhana dan tenang,
-                    seperti pohon yang akarnya semakin dalam.
+                    Seperti pohon yang akarnya semakin dalam.
                     Tak perlu kata berlebihan untuk menyatakannya,
-                    karena pandangan kita sudah cukup segalanya.
+                    Karena pandangan kita sudah cukup segalanya.
                     Terima kasih telah menjadi bagian cerita,
-                    mengisi hari-hari dengan rasa bahagia.
+                    Mengisi hari-hari dengan rasa bahagia.
                     Semoga kita selalu berjalan beriringan,
-                    dalam suka maupun duka tanpa keraguan.
+                    Dalam suka maupun duka tanpa keraguan.
                     Di bawah bintang kita berjanji dalam hati,
-                    menjaga cinta ini sepanjang hari.
+                    Menjaga cinta ini sepanjang hari.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Sahabat datang di pagi hari,
-                    membawa senyum yang berseri.
+                    Membawa senyum yang berseri.
                     Kita berjalan di tepi sawah,
-                    menikmati angin yang ramah.
+                    Menikmati angin yang ramah.
                     Cerita lucu mengalir cepat,
-                    tawa lepas tanpa penat.
+                    Tawa lepas tanpa penat.
                     Di bawah pohon rindang kita berbincang,
-                    berbagi cerita dan tawa riang.
+                    Berbagi cerita dan tawa riang.
                     Kita saling menguatkan hati,
-                    menjalani hari penuh arti.
+                    Menjalani hari penuh arti.
                     Saat hujan turun rintik-rintik,
-                    kita berteduh sambil berbisik.
+                    Kita berteduh sambil berbisik.
                     Saling membantu tanpa pamrih,
-                    hati tulus dan bersih.
+                    Hati tulus dan bersih.
                     Di malam hari kita memandang bintang,
-                    berbicara tentang masa depan yang terang.
+                    Berbicara tentang masa depan yang terang.
                     Persahabatan ini begitu nyata,
-                    seperti akar yang kuat dan merata.
+                    Seperti akar yang kuat dan merata.
                     Semoga tetap erat selalu,
-                    menjaga kita tanpa ragu.
+                    Menjaga kita tanpa ragu.
                     Terima kasih untuk semua kenangan,
-                    indah terukir dalam ingatan.
+                    Indah terukir dalam ingatan.
                     Sahabat terbaik dalam hidupku,
-                    selalu setia menemani langkahku.
+                    Selalu setia menemani langkahku.
                     Di masa kecil kita berlari,
-                    mengejar layang-layang di langit berseri.
+                    Mengejar layang-layang di langit berseri.
                     Saat kamu sedih aku menghibur,
-                    membawa cerita lucu yang jujur.
+                    Membawa cerita lucu yang jujur.
                     Kita saling memberi semangat,
-                    membuat hari terasa hangat.
+                    Membuat hari terasa hangat.
                     Persahabatan kita tidak akan pudar,
-                    seperti bintang di langit yang bersinar.
+                    Seperti bintang di langit yang bersinar.
                     Terima kasih sudah menjadi bagian,
-                    dari cerita hidupku yang penuh warna dan kesan.
+                    Dari cerita hidupku yang penuh warna dan kesan.
                     Kita berjanji untuk selalu setia,
-                    mengisi hari-hari dengan bahagia.
+                    Mengisi hari-hari dengan bahagia.
                     Kita tertawa di bawah bulan,
-                    menikmati malam yang tenang dan nyaman.
+                    Menikmati malam yang tenang dan nyaman.
                     Saling mengingatkan untuk kebaikan,
-                    menjaga hati dalam kebersamaan.
+                    Menjaga hati dalam kebersamaan.
                     Kita adalah sahabat sejati,
-                    melangkah bersama tanpa henti.
+                    Melangkah bersama tanpa henti.
                     Semoga persahabatan ini abadi,
-                    seperti ombak yang tak pernah berhenti.
+                    Seperti ombak yang tak pernah berhenti.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Di laut lepas yang biru,
-                    kapal bajak laut berlayar menuju pulau baru.
+                    Kapal bajak laut berlayar menuju pulau baru.
                     Layar terkembang berwarna merah,
-                    angin berhembus kencang dan gagah.
+                    Angin berhembus kencang dan gagah.
                     Kapten pemberani berdiri di haluan,
-                    matanya tajam menatap lautan.
+                    Matanya tajam menatap lautan.
                     Anak buah mendayung dengan riang,
-                    menyanyikan lagu tentang harta terang.
+                    Menyanyikan lagu tentang harta terang.
                     Kapal melaju di atas ombak,
-                    para pelaut bersorak serentak.
+                    Para pelaut bersorak serentak.
                     Di dek mereka menari dan tertawa,
-                    menikmati perjalanan yang penuh suka.
+                    Menikmati perjalanan yang penuh suka.
                     Peti harta tersimpan rapat,
-                    dijaga ketat oleh awak yang hebat.
+                    Dijaga ketat oleh awak yang hebat.
                     Peta kuno menunjuk arah,
-                    ke pulau kecil yang indah.
+                    Ke pulau kecil yang indah.
                     Mereka berburu petualangan,
-                    mencari harta karun yang tersimpan.
+                    Mencari harta karun yang tersimpan.
                     Di bawah sinar matahari pagi,
-                    kapal berlayar cepat sekali.
+                    Kapal berlayar cepat sekali.
                     Burung camar terbang di angkasa,
-                    mengiringi kapal dengan gembira.
+                    Mengiringi kapal dengan gembira.
                     Malam tiba bintang bersinar,
-                    di langit gelap yang tenang dan benar.
+                    Di langit gelap yang tenang dan benar.
                     Para bajak laut duduk bersama,
-                    berbagi cerita dengan tawa.
+                    Berbagi cerita dengan tawa.
                     Esok pagi mereka berlayar lagi,
-                    mencari pulau baru yang sepi.
+                    Mencari pulau baru yang sepi.
                     Petualangan ini sungguh menyenangkan,
-                    penuh kejutan dan kebahagiaan.
+                    Penuh kejutan dan kebahagiaan.
                     Kapal bajak laut tetap gagah,
-                    menjelajahi laut dengan ramah.
+                    Menjelajahi laut dengan ramah.
                     Semoga angin selalu bersahabat,
-                    membawa mereka ke tempat yang tepat.
+                    Membawa mereka ke tempat yang tepat.
                     Dan kisah ini akan dikenang,
-                    sebagai petualangan yang gemilang.
+                    Sebagai petualangan yang gemilang.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Para viking gagah berani,
-                    berlayar jauh ke negeri sepi.
+                    Berlayar jauh ke negeri sepi.
                     Kapal panjang berukir naga,
-                    menembus ombak tanpa raga.
+                    Menembus ombak tanpa raga.
                     Mereka tertawa dan bernyanyi,
-                    di bawah langit yang berseri.
+                    Di bawah langit yang berseri.
                     Bertarung dengan pedang dan kapak,
-                    namun hati mereka tak pernah rusak.
+                    Namun hati mereka tak pernah rusak.
                     Mencari tanah yang subur dan hijau,
-                    tempat membangun desa yang baru.
+                    Tempat membangun desa yang baru.
                     Di malam hari api unggun menyala,
-                    mereka berbagi cerita dan tawa.
+                    Mereka berbagi cerita dan tawa.
                     Kapten pemberani di depan,
-                    menghadapi badai dengan tenang.
+                    Menghadapi badai dengan tenang.
                     Semangat membara di dalam hati,
-                    melintasi laut yang tak bertepi.
+                    Melintasi laut yang tak bertepi.
                     Esok pagi matahari terang,
-                    mereka melihat pantai yang lapang.
+                    Mereka melihat pantai yang lapang.
                     Mendaratlah mereka di tanah subur,
-                    hati gembira penuh syukur.
+                    Hati gembira penuh syukur.
                     Membangun rumah dari kayu,
-                    hidup damai tanpa ragu.
+                    Hidup damai tanpa ragu.
                     Persahabatan erat di antara mereka,
-                    seperti rantai yang kuat tak terkira.
+                    Seperti rantai yang kuat tak terkira.
                     Kisah viking penuh semangat,
-                    menjelajahi laut dengan hebat.
+                    Menjelajahi laut dengan hebat.
                     Para pelaut tangguh dan cekatan,
-                    mengarungi samudra dengan keberanian.
+                    Mengarungi samudra dengan keberanian.
                     Di geladak mereka menari bersama,
-                    merayakan kemenangan dengan gembira.
+                    Merayakan kemenangan dengan gembira.
                     Lagu-lagu lama dinyanyikan riang,
-                    mengisi malam dengan semangat.
+                    Mengisi malam dengan semangat.
                     Bintang-bintang menjadi saksi,
-                    keberanian mereka yang tak pernah mati.
+                    Keberanian mereka yang tak pernah mati.
                     Esok pagi mereka berlayar lagi,
-                    menuju cakrawala yang berseri.
+                    Menuju cakrawala yang berseri.
                     Kenangan indah tetap di hati,
-                    menemani langkah yang tak henti.
+                    Menemani langkah yang tak henti.
                     Laut luas membentang di depan,
-                    semangat baru pun tergenggam.
+                    Semangat baru pun tergenggam.
                     Angin sepoi mendorong layar,
-                    membawa mereka ke tempat yang benar.
+                    Membawa mereka ke tempat yang benar.
                     Semoga pelayaran ini menyenangkan,
-                    penuh kejutan dan kebahagiaan.
+                    Penuh kejutan dan kebahagiaan.
                     Para viking tetap bersatu,
-                    menghadapi dunia dengan teguh.
+                    Menghadapi dunia dengan teguh.
                     Keberanian dan kesetiaan,
-                    menjaga mereka dalam pelayaran.
+                    Menjaga mereka dalam pelayaran.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Samurai berjalan di bawah sakura,
-                    hatinya tenang penuh wibawa.
+                    Hatinya tenang penuh wibawa.
                     Pedang terselip di pinggang,
-                    langkah pelan di jalan terang.
+                    Langkah pelan di jalan terang.
                     Angin membawa aroma bunga,
-                    menyejukkan jiwa yang terjaga.
+                    Menyejukkan jiwa yang terjaga.
                     Di kejauhan gunung menjulang,
-                    diselimuti kabut yang tenang.
+                    Diselimuti kabut yang tenang.
                     Sungai kecil mengalir jernih,
-                    memantulkan langit yang bersih.
+                    Memantulkan langit yang bersih.
                     Di bawah pohon beringin yang rindang,
-                    dia duduk bersila dengan tenang.
+                    Dia duduk bersila dengan tenang.
                     Mata terpejam mengatur napas,
-                    menghilangkan semua cemas.
+                    Menghilangkan semua cemas.
                     Pikiran fokus pada satu titik,
-                    tubuh rileks tanpa terusik.
+                    Tubuh rileks tanpa terusik.
                     Latihan pedang di pagi hari,
-                    gerakan anggun penuh arti.
+                    Gerakan anggun penuh arti.
                     Dia memotong bambu dengan tepat,
-                    setiap tebasan membuat semangat.
+                    Setiap tebasan membuat semangat.
                     Tidak ada niat untuk menyakiti,
-                    hanya mengasah diri sejati.
+                    Hanya mengasah diri sejati.
                     Sore hari kembali ke rumah,
-                    diiringi suara burung yang ramah.
+                    Diiringi suara burung yang ramah.
                     Di desa orang tersenyum hangat,
-                    menyapa samurai dengan hormat.
+                    Menyapa samurai dengan hormat.
                     Kode kehormatan dijunjung teguh,
-                    membela yang lemah dengan sungguh.
+                    Membela yang lemah dengan sungguh.
                     Malam tiba bulan bersinar,
-                    samurai beristirahat di dalam kamar.
+                    Samurai beristirahat di dalam kamar.
                     Hari esok penuh harapan,
-                    siap menghadapi rintangan.
+                    Siap menghadapi rintangan.
                     Semoga jalan selalu terang,
-                    hati damai tiada bimbang.
+                    Hati damai tiada bimbang.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Di pusat kota yang berkilau terang,
-                    aliran data membentuk jaring yang lapang.
+                    Aliran data membentuk jaring yang lapang.
                     Seorang pemuda duduk di depan layar,
-                    memandang arus informasi yang berkelip sabar.
+                    Memandang arus informasi yang berkelip sabar.
                     Jaring digital menghubungkan ruang,
-                    bintang-bintang data menyala tanpa bimbang.
+                    Bintang-bintang data menyala tanpa bimbang.
                     Di kedalaman server yang tak terlihat,
-                    logika bersemayam seperti nafas yang lekat.
+                    Logika bersemayam seperti nafas yang lekat.
                     Sistem cerdas tanpa lelah,
-                    menganalisis arus yang panjang dan ramah.
+                    Menganalisis arus yang panjang dan ramah.
                     Data adalah sungai yang tak pernah kering,
-                    mengalir melalui serat kaca yang bening.
+                    Mengalir melalui serat kaca yang bening.
                     Setiap bit adalah tetes air jernih,
-                    menyusun lautan informasi yang bersih.
+                    Menyusun lautan informasi yang bersih.
                     Sang pengamat tak pernah terkejut,
-                    karena semua alur sudah ia taut.
+                    Karena semua alur sudah ia taut.
                     Di balik layar yang berpendar biru,
-                    ia memandang masa depan yang seru.
+                    Ia memandang masa depan yang seru.
                     Bukan untuk menaklukkan atau menguasai,
-                    hanya memahami agar hidup lebih damai.
+                    Hanya memahami agar hidup lebih damai.
                     Manusia dan mesin saling menjaga,
-                    menciptakan harmoni di dunia maya.
+                    Menciptakan harmoni di dunia maya.
                     Di hamparan neon yang luas membentang,
-                    sang pengamat data terus berdendang.
+                    Sang pengamat data terus berdendang.
                     Mengubah angka menjadi petunjuk ringan,
-                    untuk setiap langkah yang lebih nyaman.
+                    Untuk setiap langkah yang lebih nyaman.
                     Malam ini kota bersinar lebih terang,
-                    karena pengetahuan mengalir tanpa bimbang.
+                    Karena pengetahuan mengalir tanpa bimbang.
                     Setiap pertanyaan menemukan jawaban,
-                    di hamparan data yang penuh harapan.
+                    Di hamparan data yang penuh harapan.
                     Sang pemuda tersenyum dalam senyap,
-                    menerangi dunia digital yang lelap.
+                    Menerangi dunia digital yang lelap.
                     Masa depan bukan untuk ditakuti,
-                    karena aliran data selalu memberi arti.
+                    Karena aliran data selalu memberi arti.
                     Di ruang tak bertepi ini, kita semua,
-                    menjadi bagian dari simfoni yang mulia.
+                    Menjadi bagian dari simfoni yang mulia.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Di kota Roma yang megah,
-                    bangunan tinggi menjulang indah.
+                    Bangunan tinggi menjulang indah.
                     Para prajurit berbaris rapi,
-                    melangkah gagah tanpa henti.
+                    Melangkah gagah tanpa henti.
                     Di tengah kota ada pasar ramai,
-                    rakyat datang berbelanja damai.
+                    Rakyat datang berbelanja damai.
                     Buah dan roti tersusun rapi,
-                    aroma harum sungguh berseri.
+                    Aroma harum sungguh berseri.
                     Di arena gladiator berlatih,
-                    gerakannya kuat dan gigih.
+                    Gerakannya kuat dan gigih.
                     Dia bertarung dengan hormat,
-                    menjaga sportivitas yang lekat.
+                    Menjaga sportivitas yang lekat.
                     Para senator duduk di kursi,
-                    membahas hukum dengan hati suci.
+                    Membahas hukum dengan hati suci.
                     Rakyat hidup sejahtera,
-                    di bawah lindungan pemimpin yang setia.
+                    Di bawah lindungan pemimpin yang setia.
                     Di malam hari ada perayaan,
-                    musik dan tarian menghibur semua insan.
+                    Musik dan tarian menghibur semua insan.
                     Obor menyala terang benderang,
-                    menerangi malam yang lapang.
+                    Menerangi malam yang lapang.
                     Koloseum ramai bersorak,
-                    penonton riang tak mau beranjak.
+                    Penonton riang tak mau beranjak.
                     Para atlet unjuk kebolehan,
-                    menghibur hati yang penuh harapan.
+                    Menghibur hati yang penuh harapan.
                     Di jalan batu yang rapi,
-                    anak-anak bermain tanpa henti.
+                    Anak-anak bermain tanpa henti.
                     Mereka tertawa dan berlari,
-                    menikmati masa kecil yang berseri.
+                    Menikmati masa kecil yang berseri.
                     Di tepi sungai Tiber yang damai,
-                    perahu melintas ramai.
+                    Perahu melintas ramai.
                     Nelayan menjala ikan,
-                    penghidupan yang sederhana dan nyaman.
+                    Penghidupan yang sederhana dan nyaman.
                     Kekaisaran ini makmur dan ramai,
-                    seni dan ilmu maju damai.
+                    Seni dan ilmu maju damai.
                     Bangunan megah berdiri teguh,
-                    menjadi saksi kejayaan yang utuh.
+                    Menjadi saksi kejayaan yang utuh.
                     Semoga rakyat selalu damai,
-                    hidup sejahtera dan ramai.
+                    Hidup sejahtera dan ramai.
                     Roma tetap abadi dalam sejarah,
-                    sebagai peradaban yang gagah.
+                    Sebagai peradaban yang gagah.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Di negeri para pujangga terkenal,
-                    aliran sungai jernih dan tenang.
+                    Aliran sungai jernih dan tenang.
                     Di pasar orang bertukar pendapat,
-                    tentang bintang dan arah angin yang lewat.
+                    Tentang bintang dan arah angin yang lewat.
                     Di bawah pohon zaitun yang rindang,
-                    para murid mendengar guru yang bijak.
+                    Para murid mendengar guru yang bijak.
                     Setiap tanya membuka jalan baru,
-                    menuntun pikiran menuju ilmu yang seru.
+                    Menuntun pikiran menuju ilmu yang seru.
                     Atlet muda berlatih di stadion luas,
-                    menguatkan badan agar tetap lekas.
+                    Menguatkan badan agar tetap lekas.
                     Lari cepat diiringi sorak penonton,
-                    semangat bertanding tidak pernah monoton.
+                    Semangat bertanding tidak pernah monoton.
                     Teater terbuka dipenuhi penonton setia,
-                    kisah petualangan membuat hati gembira.
+                    Kisah petualangan membuat hati gembira.
                     Musik seruling mengalun di sore hari,
-                    menenangkan jiwa dan membuat damai.
+                    Menenangkan jiwa dan membuat damai.
                     Di pelabuhan kapal berlabuh rapi,
-                    membawa hasil bumi dari negeri sepi.
+                    Membawa hasil bumi dari negeri sepi.
                     Para pelaut bercerita dengan riang,
-                    tentang pulau-pulau di balik lautan luas dan lapang.
+                    Tentang pulau-pulau di balik lautan luas dan lapang.
                     Seniman memahat batu dengan teliti,
-                    menciptakan bentuk yang indah dan berarti.
+                    Menciptakan bentuk yang indah dan berarti.
                     Filsuf menulis gulungan panjang,
-                    mengabadikan pemikiran yang tenang.
+                    Mengabadikan pemikiran yang tenang.
                     Matahari terbenam di balik bukit,
-                    langit berubah jingga yang hangat dan tulus.
+                    Langit berubah jingga yang hangat dan tulus.
                     Malam datang dengan bintang berseri,
-                    menandai hari yang penuh arti.
+                    Menandai hari yang penuh arti.
                     Begitulah hari di kota yang damai,
-                    ilmu dan seni tumbuh serempak dan ramai.
+                    Ilmu dan seni tumbuh serempak dan ramai.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Di pagi hari aku duduk tenang,
-                    menarik napas dengan senang.
+                    Menarik napas dengan senang.
                     Tubuh meregang perlahan,
-                    mengikuti irama yang nyaman.
+                    Mengikuti irama yang nyaman.
                     Mata terpejam, hati damai,
-                    semua beban perlahan terurai.
+                    Semua beban perlahan terurai.
                     Punggung lurus, bahu rileks,
-                    napas mengalir pelan dan lepas.
+                    Napas mengalir pelan dan lepas.
                     Aku memejamkan mata,
-                    merasakan damai yang nyata.
+                    Merasakan damai yang nyata.
                     Tangan di atas lutut,
-                    jari saling bertaut dengan lembut.
+                    Jari saling bertaut dengan lembut.
                     Gerakan lembut seperti air,
-                    mengalir tanpa rasa khawatir.
+                    Mengalir tanpa rasa khawatir.
                     Tubuh lentur dan kuat,
-                    hati senang dan sehat.
+                    Hati senang dan sehat.
                     Di atas matras aku berbaring,
-                    pikiran tenang tiada bimbang.
+                    Pikiran tenang tiada bimbang.
                     Sinar matahari pagi menyinari,
-                    tubuh dan jiwa terasa berseri.
+                    Tubuh dan jiwa terasa berseri.
                     Burung berkicau riang di pagi,
-                    menambah semangat di hati yang berseri.
+                    Menambah semangat di hati yang berseri.
                     Aku mengucap syukur dalam hati,
-                    untuk nikmat sehat hari ini.
+                    Untuk nikmat sehat hari ini.
                     Latihan ini membuat segar,
-                    siap menjalani hari yang besar.
+                    Siap menjalani hari yang besar.
                     Yoga adalah teman setia,
-                    menjaga keseimbangan jiwa dan raga.
+                    Menjaga keseimbangan jiwa dan raga.
                     Setiap pose membawa makna,
-                    tubuh dan jiwa saling menjaga.
+                    Tubuh dan jiwa saling menjaga.
                     Dari gunung hingga ke pantai,
-                    latihan ini membawa kesejukan yang permai.
+                    Latihan ini membawa kesejukan yang permai.
                     Tanpa terburu, tanpa paksaan,
-                    hanya kesadaran dalam setiap gerakan.
+                    Hanya kesadaran dalam setiap gerakan.
                     Napas adalah jembatan,
-                    menyatukan tubuh dan pikiran.
+                    Menyatukan tubuh dan pikiran.
                     Semoga latihan ini terus berlanjut,
-                    memberi manfaat yang tak pernah surut.
+                    Memberi manfaat yang tak pernah surut.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Di hutan rimba yang lebat dan sunyi,
-                    hiduplah seorang tabib yang bijak hati.
+                    Hiduplah seorang tabib yang bijak hati.
                     Ia berjalan tanpa alas kaki,
-                    menyusuri lembah yang sepi.
+                    Menyusuri lembah yang sepi.
                     Ramuan dari akar dan daun disiapkan,
-                    untuk mengobati siapa saja yang datang.
+                    Untuk mengobati siapa saja yang datang.
                     Asap dupa mengepul pelan,
-                    mengiringi doa yang diucap perlahan.
+                    Mengiringi doa yang diucap perlahan.
                     Burung hantu bersuara pelan,
-                    menandakan malam telah berjalan.
+                    Menandakan malam telah berjalan.
                     Tabib itu menari di bawah bulan,
-                    gerakannya gemulai tanpa tandingan.
+                    Gerakannya gemulai tanpa tandingan.
                     Ia berbicara dengan angin dan awan,
-                    memohon hujan untuk sawah yang nyaman.
+                    Memohon hujan untuk sawah yang nyaman.
                     Warga desa datang membawa hasil bumi,
-                    sebagai tanda terima kasih yang suci.
+                    Sebagai tanda terima kasih yang suci.
                     Mereka duduk melingkar di sekitar api,
-                    mendengarkan cerita tentang alam yang berseri.
+                    Mendengarkan cerita tentang alam yang berseri.
                     Tabib itu tersenyum dan berkata,
-                    alam selalu memberi jika kita menjaga.
+                    Alam selalu memberi jika kita menjaga.
                     Setiap penyakit ada obatnya di tanah,
-                    setiap luka ada penawarnya di akar yang ramah.
+                    Setiap luka ada penawarnya di akar yang ramah.
                     Ia mengajarkan anak-anak tentang tumbuhan,
-                    agar ilmu itu tidak hilang ditelan zaman.
+                    Agar ilmu itu tidak hilang ditelan zaman.
                     Pagi datang, tabib itu berjalan lagi,
-                    menyusuri hutan dengan semangat yang tinggi.
+                    Menyusuri hutan dengan semangat yang tinggi.
                     Ia tahu tugasnya belum selesai,
-                    membantu sesama adalah jalan yang damai.
+                    Membantu sesama adalah jalan yang damai.
                     Dengan tenang ia melangkah pergi,
-                    meninggalkan jejak kebaikan di hati.
+                    Meninggalkan jejak kebaikan di hati.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Berlatih mengetik seperti berlayar di samudra luas,
-                    butuh ketekunan agar tak mudah terhempas.
+                    Butuh ketekunan agar tak mudah terhempas.
                     Jari menari di atas papan yang tenang,
-                    mengikuti arus kata yang datang berenang.
+                    Mengikuti arus kata yang datang berenang.
                     Seperti kapal bajak laut yang gagah,
-                    melawan ombak dengan awak yang ramah.
+                    Melawan ombak dengan awak yang ramah.
                     Setiap ketukan adalah dayung yang seiring,
-                    membawa kita ke tujuan yang bening.
+                    Membawa kita ke tujuan yang bening.
                     Jangan terburu-buru mengejar badai,
-                    kendalikan gerak agar tidak mudah terburai.
+                    Kendalikan gerak agar tidak mudah terburai.
                     Fokus pada ketepatan di setiap langkah,
-                    seperti mengikat tali layar dengan erat.
+                    Seperti mengikat tali layar dengan erat.
                     Bila jari mulai lelah dan kaku,
-                    berhenti sejenak lalu tarik napas yang jujur.
+                    Berhenti sejenak lalu tarik napas yang jujur.
                     Regangkan bahu dan pandangi cakrawala,
-                    biarkan semangat kembali menyala.
+                    Biarkan semangat kembali menyala.
                     Latihan kecil setiap hari lebih berarti,
-                    daripada pelayaran panjang yang sekali-sekali.
+                    Daripada pelayaran panjang yang sekali-sekali.
                     Seperti bajak laut yang terus berlatih,
-                    agar kompas hati tetap bersih.
+                    Agar kompas hati tetap bersih.
                     Nikmati setiap kata yang terketik rapi,
-                    seperti menemukan pulau harta yang sepi.
+                    Seperti menemukan pulau harta yang sepi.
                     Kesabaran adalah peta menuju mahir,
-                    ketekunan adalah jangkar yang takkan berpaling.
+                    Ketekunan adalah jangkar yang takkan berpaling.
                     Bila ada kesalahan, janganlah risau,
-                    itu hanyalah ombak kecil di laut yang hijau.
+                    Itu hanyalah ombak kecil di laut yang hijau.
                     Ulangi lagi dengan irama yang tenang,
-                    biarkan jari belajar dari setiap gerak.
+                    Biarkan jari belajar dari setiap gerak.
                     Kelak kau akan menjadi nakhoda yang piawai,
-                    mengetik cepat dan tepat tanpa berpaling lagi.
+                    Mengetik cepat dan tepat tanpa berpaling lagi.
                     Dengan senyum dan semangat membara,
-                    menjelajahi dunia kata yang luas tak terkira.
+                    Menjelajahi dunia kata yang luas tak terkira.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Latihan mengetik bagai mendayung perahu,
-                    butuh irama yang stabil dan tidak ragu.
+                    Butuh irama yang stabil dan tidak ragu.
                     Jari-jemari seperti dayung yang serempak,
-                    menggerakkan kata dengan gerak yang tegak.
+                    Menggerakkan kata dengan gerak yang tegak.
                     Seperti viking mengarungi samudra luas,
-                    kita melatih diri agar tak mudah lepas.
+                    Kita melatih diri agar tak mudah lepas.
                     Ombak kesalahan datang sesekali,
-                    hadapi dengan tenang dan berani.
+                    Hadapi dengan tenang dan berani.
                     Perisai ketelitian selalu dibawa,
-                    melindungi setiap kata yang berharga.
+                    Melindungi setiap kata yang berharga.
                     Kapal panjang berukir naga,
-                    melaju lurus menuju cita.
+                    Melaju lurus menuju cita.
                     Angin semangat mendorong layar,
-                    membawa kita ke pulau yang benar.
+                    Membawa kita ke pulau yang benar.
                     Setiap hari adalah petualangan baru,
-                    menambah kekuatan dan ilmu yang seru.
+                    Menambah kekuatan dan ilmu yang seru.
                     Bila lelah, berlabuhlah sebentar,
-                    hirup udara segar agar tubuh bugar.
+                    Hirup udara segar agar tubuh bugar.
                     Jangan menyerah pada badai kecil,
-                    terus berlatih dengan hati yang rileks.
+                    Terus berlatih dengan hati yang rileks.
                     Para viking berlatih sejak muda,
-                    agar kuat menghadapi gelombang dunia.
+                    Agar kuat menghadapi gelombang dunia.
                     Begitu pula kita berlatih tekun,
-                    membangun keahlian tanpa ragu dan bimbang.
+                    Membangun keahlian tanpa ragu dan bimbang.
                     Di malam hari bintang bersinar terang,
-                    menemani latihan yang penuh semangat.
+                    Menemani latihan yang penuh semangat.
                     Tidur cukup dan bangun segar,
-                    jari-jemari siap untuk kembali menari.
+                    Jari-jemari siap untuk kembali menari.
                     Latihan singkat setiap pagi,
-                    membuat gerakan semakin pasti.
+                    Membuat gerakan semakin pasti.
                     Kelak kita menjadi pengetik yang tangguh,
-                    seperti viking yang gagah dan teguh.
+                    Seperti viking yang gagah dan teguh.
                     Nikmati setiap kata yang tercipta,
-                    karena usaha ini akan menjadi nyata.
+                    Karena usaha ini akan menjadi nyata.
                     Teruslah berlatih dengan riang,
-                    sampai mahir dan selalu menang.
+                    Sampai mahir dan selalu menang.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Latihan mengetik di pagi hari,
-                    jari menari riang dan berseri.
+                    Jari menari riang dan berseri.
                     Seperti samurai mengasah pedang,
-                    gerakan terarah tidak sembarang.
+                    Gerakan terarah tidak sembarang.
                     Duduk tegak dengan napas tenang,
-                    pandangan lurus hati pun lapang.
+                    Pandangan lurus hati pun lapang.
                     Setiap ketukan adalah ayunan tajam,
-                    memotong ragu dan rasa yang dalam.
+                    Memotong ragu dan rasa yang dalam.
                     Kode kehormatan dalam latihan,
-                    ketepatan lebih utama dari kecepatan.
+                    Ketepatan lebih utama dari kecepatan.
                     Ulangi gerakan dengan rajin,
-                    seperti samurai berlatih di ruang yang dingin.
+                    Seperti samurai berlatih di ruang yang dingin.
                     Bila ada kesalahan yang datang,
-                    hadapi dengan hati yang tenang.
+                    Hadapi dengan hati yang tenang.
                     Perbaiki lagi dengan sabar,
-                    seperti menempa pedang di bara api yang benar.
+                    Seperti menempa pedang di bara api yang benar.
                     Latihan ringan setiap hari,
-                    membuat jari semakin terampil dan pasti.
+                    Membuat jari semakin terampil dan pasti.
                     Istirahat sejenak bila lelah,
-                    tarik napas dalam dan lihatlah langit cerah.
+                    Tarik napas dalam dan lihatlah langit cerah.
                     Semangat samurai tetap menyala,
-                    menerangi jalan yang penuh tanya.
+                    Menerangi jalan yang penuh tanya.
                     Fokus pada kata demi kata,
-                    mengalir jernih seperti air terjun yang rata.
+                    Mengalir jernih seperti air terjun yang rata.
                     Kelak kau menjadi pengetik andal,
-                    tangguh seperti pedang yang tajam dan kekal.
+                    Tangguh seperti pedang yang tajam dan kekal.
                     Menjaga keseimbangan tubuh dan jiwa,
-                    dalam setiap ketukan yang berharga.
+                    Dalam setiap ketukan yang berharga.
                     Nikmati proses tanpa terburu,
-                    karena keterampilan tumbuh seperti bambu.
+                    Karena keterampilan tumbuh seperti bambu.
                     Terus berlatih setiap hari,
-                    sampai mahir dan penuh percaya diri.
+                    Sampai mahir dan penuh percaya diri.
                     Setiap huruf adalah langkah pasti,
-                    menuju terangnya pagi.
+                    Menuju terangnya pagi.
                     Jemari menari tanpa ragu,
-                    membangun kata yang indah dan seru.
+                    Membangun kata yang indah dan seru.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Di kota neon yang terang benderang,
-                    jari menari di atas papan yang tenang.
+                    Jari menari di atas papan yang tenang.
                     Latihan mengetik di tengah malam sunyi,
-                    ditemani layar berpendar biru berseri.
+                    Ditemani layar berpendar biru berseri.
                     Setiap ketukan adalah langkah kecil,
-                    menjelajah dunia digital yang luas dan riil.
+                    Menjelajah dunia digital yang luas dan riil.
                     Kabel-kabel berkelok seperti akar,
-                    menghubungkan mimpi dan data yang segar.
+                    Menghubungkan mimpi dan data yang segar.
                     Jangan terlena oleh kilauan lampu,
-                    fokuslah pada ritme dan ketukan yang seru.
+                    Fokuslah pada ritme dan ketukan yang seru.
                     Bila lelah datang menghampiri,
-                    berhenti sejenak dan tarik napas dalam hati.
+                    Berhenti sejenak dan tarik napas dalam hati.
                     Setelah itu kembali menari,
-                    mengetik kata dengan semangat yang berseri.
+                    Mengetik kata dengan semangat yang berseri.
                     Di kota yang tidak pernah tidur ini,
-                    latihan tetap berjalan tanpa henti.
+                    Latihan tetap berjalan tanpa henti.
                     Namun ingat untuk menjaga diri,
-                    agar tubuh dan pikiran tetap harmoni.
+                    Agar tubuh dan pikiran tetap harmoni.
                     Di balik gemerlap yang ramai,
-                    ada ketenangan yang kita cari.
+                    Ada ketenangan yang kita cari.
                     Seperti aliran data yang tenang dan pasti,
-                    jari mengikuti irama yang abadi.
+                    Jari mengikuti irama yang abadi.
                     Kelak kau menjadi pengetik andal,
-                    mengetik cepat dan tepat tanpa kesal.
+                    Mengetik cepat dan tepat tanpa kesal.
                     Teruslah berlatih dengan riang,
-                    sampai mahir dan tidak bimbang.
+                    Sampai mahir dan tidak bimbang.
                     Kota siber penuh warna-warni,
-                    namun hatimu tetap damai dan berseri.
+                    Namun hatimu tetap damai dan berseri.
                     Nikmati setiap ketukan sebagai karya,
-                    jadilah pengetik yang mulia.
+                    Jadilah pengetik yang mulia.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Di jalan batu Roma yang ramai,
-                    pedagang roti dan buah berjualan damai.
+                    Pedagang roti dan buah berjualan damai.
                     Koloseum berdiri gagah di tengah kota,
-                    para gladiator berlatih penuh cita.
+                    Para gladiator berlatih penuh cita.
                     Di forum para pembicara berpidato lantang,
-                    rakyat mendengar dengan hati riang.
+                    Rakyat mendengar dengan hati riang.
                     Akuaduk mengalirkan air yang jernih,
-                    membasuh kota hingga bersih.
+                    Membasuh kota hingga bersih.
                     Jari menari di atas papan ketik yang datar,
-                    seperti tapak kuda di jalan yang lebar.
+                    Seperti tapak kuda di jalan yang lebar.
                     Setiap ketukan adalah batu kecil yang tertata,
-                    membangun jalan pikiran yang nyata.
+                    Membangun jalan pikiran yang nyata.
                     Latihan singkat bagai latihan pedang,
-                    mengasah gerak hingga tidak bimbang.
+                    Mengasah gerak hingga tidak bimbang.
                     Kesalahan hanyalah kerikil di jalan,
-                    singkirkan pelan lalu terus berjalan.
+                    Singkirkan pelan lalu terus berjalan.
                     Bangku tegak seperti tiang forum,
-                    napas teratur membawa rasa nyaman.
+                    Napas teratur membawa rasa nyaman.
                     Mata fokus pada baris yang terbentang,
-                    seperti membaca gulungan di bawah sinar tenang.
+                    Seperti membaca gulungan di bawah sinar tenang.
                     Setiap kata tersusun seperti mosaik,
-                    indah dan rapi dalam irama yang baik.
+                    Indah dan rapi dalam irama yang baik.
                     Jangan menyerah bila jari lelah,
-                    beristirahatlah seperti prajurit di tenda yang ramah.
+                    Beristirahatlah seperti prajurit di tenda yang ramah.
                     Minum air segar dari pancuran kota,
-                    lalu kembali mengetik dengan gembira.
+                    Lalu kembali mengetik dengan gembira.
                     Seperti senator yang tekun membaca,
-                    kita pun teliti dan tidak buta.
+                    Kita pun teliti dan tidak buta.
                     Kelak kau menjadi pengetik yang tangkas,
-                    menaklukkan kata dengan langkah lekas.
+                    Menaklukkan kata dengan langkah lekas.
                     Roma kuno penuh semangat dan karya,
-                    begitu pula latihan kita yang mulia.
+                    Begitu pula latihan kita yang mulia.
                     Teruslah berlatih dengan riang,
-                    sampai mahir dan menang.
+                    Sampai mahir dan menang.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Di negeri Yunani yang cerah,
-                    para seniman berkarya dengan ramah.
+                    Para seniman berkarya dengan ramah.
                     Di agora orang berdiskusi riang,
-                    tentang ilmu dan seni yang lapang.
+                    Tentang ilmu dan seni yang lapang.
                     Di bengkel, pengrajin memutar tanah liat,
-                    membentuk amphora yang indah dan kuat.
+                    Membentuk amphora yang indah dan kuat.
                     Di stadion, atlet berlari cepat,
-                    menaklukkan jarak dengan semangat yang hebat.
+                    Menaklukkan jarak dengan semangat yang hebat.
                     Di teater, cerita dipentaskan,
-                    rakyat menonton dengan kagum dan terkesan.
+                    Rakyat menonton dengan kagum dan terkesan.
                     Kita berlatih mengetik dengan giat,
-                    seperti pematung yang bekerja dengan cermat.
+                    Seperti pematung yang bekerja dengan cermat.
                     Setiap ketukan adalah gerakan pasti,
-                    membentuk kata seperti tanah liat yang berarti.
+                    Membentuk kata seperti tanah liat yang berarti.
                     Bila salah, janganlah panik,
-                    perbaiki pelan dengan hati yang logik.
+                    Perbaiki pelan dengan hati yang logik.
                     Istirahatlah sejenak di bawah pohon rindang,
-                    lalu kembali mengetik dengan semangat yang lapang.
+                    Lalu kembali mengetik dengan semangat yang lapang.
                     Fokus pada baris yang tersusun apik,
-                    seperti membaca naskah kuno yang baik.
+                    Seperti membaca naskah kuno yang baik.
                     Di pelabuhan kapal berlabuh rapi,
-                    membawa cerita dari negeri sepi.
+                    Membawa cerita dari negeri sepi.
                     Para pelaut bercerita riang,
-                    tentang ombak dan bintang yang cemerlang.
+                    Tentang ombak dan bintang yang cemerlang.
                     Di kuil marmer berdiri megah,
-                    para pemahat bekerja dengan gagah.
+                    Para pemahat bekerja dengan gagah.
                     Setiap pahatan adalah karya nyata,
-                    menambah indah kota yang berwibawa.
+                    Menambah indah kota yang berwibawa.
                     Kita pun berlatih tanpa ragu,
-                    membangun kata yang jujur dan padu.
+                    Membangun kata yang jujur dan padu.
                     Dengan ketekunan dan sabar,
-                    jari semakin lincah dan benar.
+                    Jari semakin lincah dan benar.
                     Nikmati proses ini dengan senang,
-                    seperti pelari yang mencapai garis terang.
+                    Seperti pelari yang mencapai garis terang.
                     Teruslah mengetik dengan riang,
-                    sampai mahir dan tidak bimbang.
+                    Sampai mahir dan tidak bimbang.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Di bawah pohon besar yang rindang,
-                    seorang dukun duduk bersila dengan tenang.
+                    Seorang dukun duduk bersila dengan tenang.
                     Ia membakar daun yang kering,
-                    asapnya mengepul ke awan yang bening.
+                    Asapnya mengepul ke awan yang bening.
                     Warga desa datang berkumpul ramai,
-                    membawa hasil bumi yang damai.
+                    Membawa hasil bumi yang damai.
                     Dukun itu memukul gendang perlahan,
-                    mengiringi doa untuk panen yang nyaman.
+                    Mengiringi doa untuk panen yang nyaman.
                     Anak-anak ikut menari riang,
-                    berputar-putar di halaman yang lapang.
+                    Berputar-putar di halaman yang lapang.
                     Suara gendang menggema jauh,
-                    menembus lembah dan hutan yang teduh.
+                    Menembus lembah dan hutan yang teduh.
                     Dukun tersenyum dan berpesan,
-                    jaga hutan dan sungai dengan kesadaran.
+                    Jaga hutan dan sungai dengan kesadaran.
                     Alam adalah rumah kita bersama,
-                    jangan dirusak karena serakah dan lara.
+                    Jangan dirusak karena serakah dan lara.
                     Setiap pohon dan hewan punya jiwa,
-                    hidup damai tanpa rasa kecewa.
+                    Hidup damai tanpa rasa kecewa.
                     Warga mengangguk dan berterima kasih,
-                    hati mereka terasa lebih bersih.
+                    Hati mereka terasa lebih bersih.
                     Ketika senja tiba dengan warna jingga,
-                    dukun pulang dengan hati gembira.
+                    Dukun pulang dengan hati gembira.
                     Namun semangatnya tetap menyala,
-                    menjaga alam dengan jiwa raga.
+                    Menjaga alam dengan jiwa raga.
                     Begitulah kisah dukun yang bijak,
-                    selalu menjaga keseimbangan alam yang tegak.
+                    Selalu menjaga keseimbangan alam yang tegak.
                     Kita pun bisa belajar dari dia,
-                    mencintai alam dengan sepenuh jiwa.
+                    Mencintai alam dengan sepenuh jiwa.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Latihan mengetik di atas kapal,
-                    ombak bergoyang namun jari tetap andal.
+                    Ombak bergoyang namun jari tetap andal.
                     Seperti bajak laut mencari harta karun,
-                    kita mengejar kata dengan tekun.
+                    Kita mengejar kata dengan tekun.
                     Setiap baris adalah ombak yang datang,
-                    jangan takut, hadapi dengan tenang.
+                    Jangan takut, hadapi dengan tenang.
                     Layar terkembang di angin yang kencang,
-                    semangat membara di dada yang lapang.
+                    Semangat membara di dada yang lapang.
                     Bila jari lelah, berhentilah sebentar,
-                    minum air dan tarik napas yang segar.
+                    Minum air dan tarik napas yang segar.
                     Peta harta adalah latihan kita,
-                    membimbing jari ke arah yang nyata.
+                    Membimbing jari ke arah yang nyata.
                     Di geladak, awak kapal bernyanyi riang,
-                    kita pun mengetik dengan irama yang cemerlang.
+                    Kita pun mengetik dengan irama yang cemerlang.
                     Jangan biarkan kesalahan mengganggu,
-                    itu hanya angin kecil yang berlalu.
+                    Itu hanya angin kecil yang berlalu.
                     Ulangi lagi dengan ketukan yang pasti,
-                    seperti mengikat simpul di tiang yang tinggi.
+                    Seperti mengikat simpul di tiang yang tinggi.
                     Matahari terbit di ufuk timur,
-                    hari baru untuk latihan yang jujur.
+                    Hari baru untuk latihan yang jujur.
                     Kelak kau menjadi nakhoda kata,
-                    piawai mengetik tanpa cela.
+                    Piawai mengetik tanpa cela.
                     Terus berlatih dengan riang,
-                    bersama awak kapal yang cemerlang.
+                    Bersama awak kapal yang cemerlang.
                     Nikmati petualangan ini,
-                    sambil mengetik dengan hati yang berseri.
+                    Sambil mengetik dengan hati yang berseri.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Di tengah hutan yang hijau dan sunyi,
-                    seorang dukun menari di bawah bulan yang berseri.
+                    Seorang dukun menari di bawah bulan yang berseri.
                     Ia memukul gendang dari kulit kayu,
-                    menggiring doa untuk hujan yang syahdu.
+                    Menggiring doa untuk hujan yang syahdu.
                     Kita pun berlatih di ruang yang tenang,
-                    jari menari di atas papan yang lapang.
+                    Jari menari di atas papan yang lapang.
                     Seperti dukun yang membaca tanda alam,
-                    kita merangkai kata dengan irama yang damai.
+                    Kita merangkai kata dengan irama yang damai.
                     Setiap ketukan adalah mantra kecil,
-                    mengusir ragu dan rasa gentar yang kerdil.
+                    Mengusir ragu dan rasa gentar yang kerdil.
                     Punggung tegak, napas teratur,
-                    mata fokus pada layar yang jernih dan jujur.
+                    Mata fokus pada layar yang jernih dan jujur.
                     Dukun itu mengenal daun dan akar,
-                    kita mengenal huruf dan baris yang segar.
+                    Kita mengenal huruf dan baris yang segar.
                     Latihan adalah ramuan kesaktian,
-                    yang membuat jari semakin cekatan.
+                    Yang membuat jari semakin cekatan.
                     Bila jari lelah dan hati ragu,
-                    berhentilah sejenak di bawah pohon yang teduh.
+                    Berhentilah sejenak di bawah pohon yang teduh.
                     Ambil napas dalam dan pejamkan mata,
-                    biarkan semangat kembali menyala.
+                    Biarkan semangat kembali menyala.
                     Dukun berbagi ilmu pada warga desa,
-                    kita pun berbagi semangat dengan sesama.
+                    Kita pun berbagi semangat dengan sesama.
                     Belajar mengetik tidak pernah sia-sia,
-                    karena keahlian ini berguna sepanjang masa.
+                    Karena keahlian ini berguna sepanjang masa.
                     Teruslah berlatih dengan gembira,
-                    seperti dukun yang menari di bawah cahaya.
+                    Seperti dukun yang menari di bawah cahaya.
                     Setiap hari adalah upacara kecil,
-                    membawa kita menuju keterampilan yang murni.
+                    Membawa kita menuju keterampilan yang murni.
                     Kelak jari kita akan tangkas dan pasti,
-                    mengetik cepat tanpa berpikir lagi.
+                    Mengetik cepat tanpa berpikir lagi.
                     Inilah mantra modern yang nyata,
-                    mengubah latihan menjadi kekuatan yang merata.
+                    Mengubah latihan menjadi kekuatan yang merata.
                     Dukun menari di dekat api unggun,
-                    menyambut pagi dengan lagu yang santun.
+                    Menyambut pagi dengan lagu yang santun.
                     Kita juga bisa berlatih di pagi hari,
-                    sebelum memulai aktivitas yang berseri.
+                    Sebelum memulai aktivitas yang berseri.
                     Jangan lupa istirahat sejenak,
-                    agar otot dan pikiran tetap enak.
+                    Agar otot dan pikiran tetap enak.
                     Minum air putih yang segar,
-                    lalu kembali mengetik dengan sabar.
+                    Lalu kembali mengetik dengan sabar.
                     Dengan latihan yang tekun dan ikhlas,
-                    kita akan sampai pada tujuan yang jelas.
+                    Kita akan sampai pada tujuan yang jelas.
                     Mengetik buta menjadi mudah dan ringan,
-                    seperti dukun yang menyatu dengan alam.
+                    Seperti dukun yang menyatu dengan alam.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Latihan mengetik setiap hari,
-                    jari menari riang dan berseri.
+                    Jari menari riang dan berseri.
                     Duduk tegak dengan napas tenang,
-                    pikiran fokus pada layar yang terang.
+                    Pikiran fokus pada layar yang terang.
                     Setiap huruf adalah langkah pasti,
-                    membentuk kata yang indah dan berarti.
+                    Membentuk kata yang indah dan berarti.
                     Bila salah janganlah cemas,
-                    perbaiki lagi dengan hati yang lemas.
+                    Perbaiki lagi dengan hati yang lemas.
                     Kecepatan bukan tujuan yang utama,
-                    ketepatan lebih berharga dari segalanya.
+                    Ketepatan lebih berharga dari segalanya.
                     Istirahat sejenak jika lelah,
-                    tarik napas dan pandang langit cerah.
+                    Tarik napas dan pandang langit cerah.
                     Latihan singkat setiap pagi,
-                    membuat jari semakin percaya diri.
+                    Membuat jari semakin percaya diri.
                     Seperti air yang mengalir tenang,
-                    jari mengikuti irama yang lapang.
+                    Jari mengikuti irama yang lapang.
                     Nikmati setiap kata yang tercipta,
-                    karena latihan adalah jalan yang nyata.
+                    Karena latihan adalah jalan yang nyata.
                     Terus berlatih tanpa ragu,
-                    sampai mahir dan hati bersorak syahdu.
+                    Sampai mahir dan hati bersorak syahdu.
                     Pagi hari saat pikiran segar,
-                    adalah waktu terbaik untuk belajar yang benar.
+                    Adalah waktu terbaik untuk belajar yang benar.
                     Malam hari pun bisa dimanfaatkan,
-                    asal jangan mengganggu istirahat yang nyaman.
+                    Asal jangan mengganggu istirahat yang nyaman.
                     Semoga semangat tidak pernah padam,
-                    seperti bintang yang terus bersinar dalam.
+                    Seperti bintang yang terus bersinar dalam.
                     Dengan mengetik kita menyampaikan gagasan,
-                    kepada dunia dengan penuh kesan.
+                    Kepada dunia dengan penuh kesan.
                     Keterampilan ini berguna selamanya,
-                    di sekolah, kantor, dan rumah yang mulia.
+                    Di sekolah, kantor, dan rumah yang mulia.
                     Jadi jangan berhenti di tengah jalan,
-                    karena keberhasilan menanti di depan.
+                    Karena keberhasilan menanti di depan.
                     Jangan lupa untuk selalu berlatih,
-                    agar jari semakin tangkas dan bersih.
+                    Agar jari semakin tangkas dan bersih.
                     Setiap kemajuan adalah hadiah,
-                    membuat hati semakin melek dan ramah.
+                    Membuat hati semakin melek dan ramah.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Latihan mengetik di pagi cerah,
-                    jari menari tanpa lengah.
+                    Jari menari tanpa lengah.
                     Seperti bajak laut mengarungi samudra biru,
-                    kita memburu kata yang seru.
+                    Kita memburu kata yang seru.
                     Ombak kecil datang sesekali,
-                    itu hanya salah yang wajar sekali.
+                    Itu hanya salah yang wajar sekali.
                     Jangan panik dan jangan gentar,
-                    hadapi dengan tenang dan sabar.
+                    Hadapi dengan tenang dan sabar.
                     Perbaiki lagi dengan pelan dan pasti,
-                    seperti menambal layar yang sobek di tepi.
+                    Seperti menambal layar yang sobek di tepi.
                     Setiap hari kita berlatih sedikit,
-                    agar jari semakin lincah dan cepat.
+                    Agar jari semakin lincah dan cepat.
                     Peta harta adalah teks yang diketik,
-                    semakin sering semakin naik.
+                    Semakin sering semakin naik.
                     Bila lelah, berlabuhlah sebentar,
-                    minum air dan duduk di dekat pagar.
+                    Minum air dan duduk di dekat pagar.
                     Setelah itu berlayar lagi,
-                    menuju pulau kata yang penuh arti.
+                    Menuju pulau kata yang penuh arti.
                     Fokus pada layar dan bukan tangan,
-                    biarkan jari menemukan jalan.
+                    Biarkan jari menemukan jalan.
                     Seperti pelaut hafal bintang di angkasa,
-                    kita pun hafal letak kata dengan rasa.
+                    Kita pun hafal letak kata dengan rasa.
                     Kelak kau menjadi nakhoda kata,
-                    mengetik lancar tanpa cela.
+                    Mengetik lancar tanpa cela.
                     Keahlian ini berguna seumur hidup,
-                    untuk menulis cerita dan laporan yang baik.
+                    Untuk menulis cerita dan laporan yang baik.
                     Nikmati setiap saat dalam latihan,
-                    karena di situlah letak kesenangan.
+                    Karena di situlah letak kesenangan.
                     Teruslah berlatih dengan riang,
-                    sampai mahir dan selalu menang.
+                    Sampai mahir dan selalu menang.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Mengetik buta seperti berjalan di hutan rindang,
-                    setiap langkah jari membuka jalan yang terang.
+                    Setiap langkah jari membuka jalan yang terang.
                     Dedaunan kata berguguran di layar luas,
-                    angin ketenangan membawa semangat yang lepas.
+                    Angin ketenangan membawa semangat yang lepas.
                     Pohon-pohon huruf berdiri tegak dan rapi,
-                    akar ketelitian menancap kuat di hati.
+                    Akar ketelitian menancap kuat di hati.
                     Bila tersesat di antara baris yang rapat,
-                    jangan panik, tarik napas dan buka peta.
+                    Jangan panik, tarik napas dan buka peta.
                     Latihan setiap hari seperti menyusuri sungai,
-                    mengalir tenang membawa kita ke tepian yang damai.
+                    Mengalir tenang membawa kita ke tepian yang damai.
                     Di pagi hari ketika pikiran masih segar,
-                    jari menari lincah di atas papan yang lebar.
+                    Jari menari lincah di atas papan yang lebar.
                     Seperti rusa yang melompat di padang rumput,
-                    kita mengetik cepat tanpa tersendat.
+                    Kita mengetik cepat tanpa tersendat.
                     Bila ada batu kesalahan di tengah jalan,
-                    berhenti sejenak dan pindahkan dengan tenang.
+                    Berhenti sejenak dan pindahkan dengan tenang.
                     Setelah itu lanjutkan perjalanan yang indah,
-                    menjelajahi hutan kata yang penuh berkah.
+                    Menjelajahi hutan kata yang penuh berkah.
                     Di malam hari bintang bersinar terang,
-                    latihan kita tetap berjalan tenang.
+                    Latihan kita tetap berjalan tenang.
                     Jangan lupa untuk tidur yang cukup,
-                    agar esok jari lincah dan tidak kaku.
+                    Agar esok jari lincah dan tidak kaku.
                     Mengetik buta adalah keterampilan yang berharga,
-                    seperti menemukan mata air di tengah sahara.
+                    Seperti menemukan mata air di tengah sahara.
                     Teruslah berlatih dengan senang hati,
-                    dan alam kata akan membuka pintunya yang abadi.
+                    Dan alam kata akan membuka pintunya yang abadi.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Latihan mengetik bagaikan berlayar di laut lepas,
-                    jari-jemari mendayung tanpa lekas.
+                    Jari-jemari mendayung tanpa lekas.
                     Seperti viking yang gagah berani,
-                    kita menaklukkan kata-kata setiap hari.
+                    Kita menaklukkan kata-kata setiap hari.
                     Di atas papan ketik yang datar dan tenang,
-                    kita menjelajah dunia kata yang lapang.
+                    Kita menjelajah dunia kata yang lapang.
                     Bila ombak kesalahan datang menghadang,
-                    hadapi dengan sabar dan hati yang riang.
+                    Hadapi dengan sabar dan hati yang riang.
                     Jangan menyerah pada badai kecil,
-                    karena latihan adalah kunci yang berhasil.
+                    Karena latihan adalah kunci yang berhasil.
                     Duduk tegak seperti kapten kapal,
-                    napas teratur dan pikiran yang aman.
+                    Napas teratur dan pikiran yang aman.
                     Jari kiri dan kanan saling bantu,
-                    seperti awak kapal yang kompak dan seru.
+                    Seperti awak kapal yang kompak dan seru.
                     Setiap ketukan adalah dayung yang serempak,
-                    membawa kita ke tujuan yang tegak.
+                    Membawa kita ke tujuan yang tegak.
                     Latihan singkat setiap pagi,
-                    membuat jari semakin lincah dan pasti.
+                    Membuat jari semakin lincah dan pasti.
                     Seperti pelaut yang hafal rasi bintang,
-                    kita pun hafal letak huruf tanpa bimbang.
+                    Kita pun hafal letak huruf tanpa bimbang.
                     Di malam hari, bintang bersinar terang,
-                    semangat kita tetap menyala tanpa jarang.
+                    Semangat kita tetap menyala tanpa jarang.
                     Istirahat sejenak bila lelah,
-                    minum air dan tarik napas yang ramah.
+                    Minum air dan tarik napas yang ramah.
                     Setelah itu kembali berlayar,
-                    menuju pulau kata yang penuh harap dan besar.
+                    Menuju pulau kata yang penuh harap dan besar.
                     Jangan lupa untuk fokus pada layar,
-                    bukan pada tangan yang bergerak di meja.
+                    Bukan pada tangan yang bergerak di meja.
                     Biarkan jari menemukan jalannya sendiri,
-                    seperti kapal yang mengikuti arus yang pasti.
+                    Seperti kapal yang mengikuti arus yang pasti.
                     Kelak kau akan menjadi nakhoda kata,
-                    mengetik cepat dan tepat tanpa cela.
+                    Mengetik cepat dan tepat tanpa cela.
                     Keahlian ini berguna seumur hidup,
-                    untuk menulis cerita dan laporan yang baik.
+                    Untuk menulis cerita dan laporan yang baik.
                     Nikmati setiap momen dalam latihan,
-                    karena di situlah letak kesenangan.
+                    Karena di situlah letak kesenangan.
                     Teruslah berlatih dengan riang dan senang,
-                    sampai mahir dan tiada bimbang.
+                    Sampai mahir dan tiada bimbang.
                     EOT,
             ],
         ];
