@@ -290,1338 +290,1338 @@ class ItTestSeeder extends LanguageTestSeeder
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Nel bosco antico dove il sole splende,
-                    la luce filtra tra le fronde e scende.
+                    La luce filtra tra le fronde e scende.
                     Gli uccelli cantano una dolce melodia,
-                    che riempie il cuore di pura allegria.
+                    Che riempie il cuore di pura allegria.
                     Il ruscello scorre limpido e sereno,
-                    tra i sassi brilla come un bel baleno.
+                    Tra i sassi brilla come un bel baleno.
                     Le farfalle danzano leggere nell'aria,
-                    la natura appare viva e straordinaria.
+                    La natura appare viva e straordinaria.
                     Il profumo dei fiori riempie il mattino,
-                    ogni petalo è un piccolo giardino.
+                    Ogni petalo è un piccolo giardino.
                     Le api laboriose vanno di fiore in fiore,
-                    portano nettare con grande amore.
+                    Portano nettare con grande amore.
                     Il muschio verde copre le radici,
-                    come morbidi e antichi tappeti felici.
+                    Come morbidi e antichi tappeti felici.
                     Le felci si aprono al tocco del vento,
-                    in un movimento lento e attento.
+                    In un movimento lento e attento.
                     Il picchio batte il suo ritmo costante,
-                    un suono amico, mai invadente.
+                    Un suono amico, mai invadente.
                     Lo scoiattolo salta da un ramo all'altro,
-                    con gesti rapidi, senza alcun smacco.
+                    Con gesti rapidi, senza alcun smacco.
                     Le nuvole bianche passano nel cielo,
-                    come vele di un immenso velo.
+                    Come vele di un immenso velo.
                     Il sole alto riscalda la radura,
-                    e dona a ogni cosa una luce pura.
+                    E dona a ogni cosa una luce pura.
                     Le bacche rosse brillano tra le spine,
-                    dolci tesori per piccole cucine.
+                    Dolci tesori per piccole cucine.
                     Il bosco intero vive in armonia,
-                    ogni creatura segue la sua via.
+                    Ogni creatura segue la sua via.
                     La volpe silenziosa osserva il sentiero,
-                    con occhi attenti e il corpo leggero.
+                    Con occhi attenti e il corpo leggero.
                     Il gufo riposa in attesa della sera,
-                    nella sua nicchia di quercia severa.
+                    Nella sua nicchia di quercia severa.
                     Il tempo qui scorre con passo gentile,
-                    ogni istante appare nuovo e sottile.
+                    Ogni istante appare nuovo e sottile.
                     La brezza fresca accarezza le foglie,
-                    e ogni pensiero pesante si scioglie.
+                    E ogni pensiero pesante si scioglie.
                     Camminare nel verde è un'idea leggera,
-                    un ritorno alla bellezza più vera.
+                    Un ritorno alla bellezza più vera.
                     Le felci e i fiori, gli alberi e il ruscello,
-                    compongono un mondo sempre bello.
+                    Compongono un mondo sempre bello.
                     E quando il tramonto tinge di rosa,
-                    la foresta diventa ancor più preziosa.
+                    La foresta diventa ancor più preziosa.
                     La natura insegna la pace profonda,
-                    ogni vivente al suo posto si sponda.
+                    Ogni vivente al suo posto si sponda.
                     E il cuore grato ringrazia il paesaggio amato,
-                    per questo dono che non è mai scontato.
+                    Per questo dono che non è mai scontato.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     La primavera sveglia il prato in fiore,
-                    con mille colori e un dolce odore.
+                    Con mille colori e un dolce odore.
                     Le margherite aprono il loro viso,
-                    al sole che dona un caldo sorriso.
+                    Al sole che dona un caldo sorriso.
                     Le rondini volano nel cielo azzurro,
-                    con ali veloci, senza alcun sussurro.
+                    Con ali veloci, senza alcun sussurro.
                     Il grano giovane ondeggia piano,
-                    mosso dal vento come un oceano.
+                    Mosso dal vento come un oceano.
                     Le colline verdi si stendono lontano,
-                    dipinte da un pittore sovrano.
+                    Dipinte da un pittore sovrano.
                     Il contadino cammina tra i filari,
-                    cura le viti con gesti chiari.
+                    Cura le viti con gesti chiari.
                     La terra umida profuma di vita,
-                    ogni zolla è una promessa infinita.
+                    Ogni zolla è una promessa infinita.
                     Il ciliegio in fiore si veste di bianco,
-                    un manto gentile, mai stanco.
+                    Un manto gentile, mai stanco.
                     Le api ronzano tra i petali rosa,
-                    in una danza continua e gioiosa.
+                    In una danza continua e gioiosa.
                     Il ruscello canta la sua canzone,
-                    con note limpide in ogni stagione.
+                    Con note limpide in ogni stagione.
                     I pesci piccoli guizzano felici,
-                    tra le alghe verdi e le radici.
+                    Tra le alghe verdi e le radici.
                     La libellula si posa sul giunco,
-                    con ali di vetro e un volo lungo.
+                    Con ali di vetro e un volo lungo.
                     Il bosco si copre di foglie nuove,
-                    mentre il sole più alto si muove.
+                    Mentre il sole più alto si muove.
                     Il cuculo chiama da un ramo lontano,
-                    il suo verso è un saluto quotidiano.
+                    Il suo verso è un saluto quotidiano.
                     La sera arriva con la sua brezza,
-                    e la natura riposa con dolcezza.
+                    E la natura riposa con dolcezza.
                     Le stelle accendono il firmamento,
-                    e il cuore si placa in un momento.
+                    E il cuore si placa in un momento.
                     La primavera è una festa gentile,
-                    che rende ogni cosa più sottile.
+                    Che rende ogni cosa più sottile.
                     E chi cammina in questa meraviglia,
-                    sente che ogni tristezza si scompiglia.
+                    Sente che ogni tristezza si scompiglia.
                     La gioia cresce come un seme piantato,
-                    nel cuore che dalla natura è stato toccato.
+                    Nel cuore che dalla natura è stato toccato.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Il mare d'estate brilla come un tesoro,
-                    le onde si infrangono in un coro.
+                    Le onde si infrangono in un coro.
                     La sabbia dorata accoglie i passi lenti,
-                    mentre il sole accende i cuori contenti.
+                    Mentre il sole accende i cuori contenti.
                     I bambini giocano con secchielli e pale,
-                    costruiscono castelli di forme speciali.
+                    Costruiscono castelli di forme speciali.
                     Le barche a vela danzano nel blu,
-                    con le vele bianche come nuvole quaggiù.
+                    Con le vele bianche come nuvole quaggiù.
                     Il vento salato profuma di avventura,
-                    e ogni respiro è una gioia pura.
+                    E ogni respiro è una gioia pura.
                     I gabbiani volano in cerchi eleganti,
-                    e sembrano messaggeri importanti.
+                    E sembrano messaggeri importanti.
                     Le conchiglie sparse sulla riva,
-                    sono piccoli doni che la marea scrive.
+                    Sono piccoli doni che la marea scrive.
                     Il pescatore lancia la sua rete,
-                    con gesti antichi, mai in quiete.
+                    Con gesti antichi, mai in quiete.
                     Il tramonto dipinge il cielo di rosa,
-                    un quadro caldo che il cuore riposa.
+                    Un quadro caldo che il cuore riposa.
                     Le stelle appaiono piano nel blu,
-                    e la luna sorride lassù.
+                    E la luna sorride lassù.
                     La sera scende con dolcezza infinita,
-                    e l'aria fresca lenisce ogni ferita.
+                    E l'aria fresca lenisce ogni ferita.
                     Il suono del mare accompagna i sogni,
-                    con ritmi lenti, senza bisogni.
+                    Con ritmi lenti, senza bisogni.
                     La notte sul lido è un abbraccio sincero,
-                    un momento magico, leggero e vero.
+                    Un momento magico, leggero e vero.
                     E chi ascolta il mare in silenzio,
-                    trova nel cuore un grande consenso.
+                    Trova nel cuore un grande consenso.
                     La natura parla con voce amica,
-                    e ogni tristezza diventa antica.
+                    E ogni tristezza diventa antica.
                     Il mare d'estate è una festa gentile,
-                    che rende ogni giorno più sottile.
+                    Che rende ogni giorno più sottile.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Il deserto racconta storie di sabbia,
-                    dove il tempo si distende e non ingabbia.
+                    Dove il tempo si distende e non ingabbia.
                     Le dune dorate si alzano al sole,
-                    come onde immobili senza parole.
+                    Come onde immobili senza parole.
                     Il cielo immenso abbraccia la terra,
-                    e la luce diffusa ogni ombra afferra.
+                    E la luce diffusa ogni ombra afferra.
                     Il beduino cammina con passo lento,
-                    guidato dal vento e dal firmamento.
+                    Guidato dal vento e dal firmamento.
                     La carovana prosegue la sua via,
-                    tra miraggi e calda nostalgia.
+                    Tra miraggi e calda nostalgia.
                     I cammelli pazienti portano il peso,
-                    con un ritmo costante e mai scosceso.
+                    Con un ritmo costante e mai scosceso.
                     Le tende nere punteggiano il piano,
-                    e il tè profumato scalda ogni mano.
+                    E il tè profumato scalda ogni mano.
                     Le storie antiche riempiono la sera,
-                    racconti di luna e di polvere leggera.
+                    Racconti di luna e di polvere leggera.
                     Le palme lontane annunciano l'oasi,
-                    dove l'acqua sgorga tra sassi e vasi.
+                    Dove l'acqua sgorga tra sassi e vasi.
                     I datteri dolci pendono dai rami,
-                    e i bambini ridono senza richiami.
+                    E i bambini ridono senza richiami.
                     La notte cala con un manto di stelle,
-                    e il deserto brilla di luci belle.
+                    E il deserto brilla di luci belle.
                     La via lattea disegna un sentiero,
-                    per chi viaggia con il cuore sincero.
+                    Per chi viaggia con il cuore sincero.
                     Il silenzio profondo è un dolce canto,
-                    che placa la sete e asciuga il pianto.
+                    Che placa la sete e asciuga il pianto.
                     Il vento caldo accarezza la sabbia,
-                    e ogni granello una storia raccoglie.
+                    E ogni granello una storia raccoglie.
                     La volpe del deserto appare e poi scappa,
-                    come un'ombra leggera che il buio tappa.
+                    Come un'ombra leggera che il buio tappa.
                     Il falco domina l'azzurro del cielo,
-                    con occhi freddi come acciaio.
+                    Con occhi freddi come acciaio.
                     Il deserto insegna la pazienza vera,
-                    a chi cerca la propria primavera.
+                    A chi cerca la propria primavera.
                     E quando l'alba tinge di rosa,
-                    la distesa infinita diventa preziosa.
+                    La distesa infinita diventa preziosa.
                     Il sole sorge come un grande fuoco,
-                    e dona al mondo un calore poco.
+                    E dona al mondo un calore poco.
                     Il viandante riparte con il passo lieve,
-                    portando nel cuore una gioia breve.
+                    Portando nel cuore una gioia breve.
                     Il deserto non è vuoto, ma pieno di vita,
-                    una lezione dolce e infinita.
+                    Una lezione dolce e infinita.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Il fiume scende dalla montagna,
-                    come un nastro d'argento che bagna.
+                    Come un nastro d'argento che bagna.
                     Le sue acque fresche e canterine,
-                    accarezzano le pietre vicine.
+                    Accarezzano le pietre vicine.
                     I salici piangenti sulle sponde,
-                    si specchiano nell'acqua profonde.
+                    Si specchiano nell'acqua profonde.
                     Le libellule blu volano leggere,
-                    tra i giunchi e le erbe sincere.
+                    Tra i giunchi e le erbe sincere.
                     Il ponte antico di pietra scura,
-                    unisce le due rive con bravura.
+                    Unisce le due rive con bravura.
                     Il pescatore paziente aspetta,
-                    con la lenza che l'acqua rispetta.
+                    Con la lenza che l'acqua rispetta.
                     I raggi del sole sulla corrente,
-                    creano riflessi per la mente.
+                    Creano riflessi per la mente.
                     Le anatre nuotano in fila indiana,
-                    verso l'ansa dove l'acqua è piana.
+                    Verso l'ansa dove l'acqua è piana.
                     I bambini lanciano i sassi piatti,
-                    facendo salti sui flutti esatti.
+                    Facendo salti sui flutti esatti.
                     Il mormorio dolce accompagna il giorno,
-                    e ogni rumore sembra più adorno.
+                    E ogni rumore sembra più adorno.
                     I pioppi alti si piegano al vento,
-                    con un fruscio leggero e attento.
+                    Con un fruscio leggero e attento.
                     Le rane cantano la loro canzone,
-                    da una riva all'altra in unione.
+                    Da una riva all'altra in unione.
                     Il tramonto colora il fiume d'oro,
-                    e il paesaggio diventa un tesoro.
+                    E il paesaggio diventa un tesoro.
                     La sera scende con le sue ombre,
-                    mentre la luna si specchia e non ingombre.
+                    Mentre la luna si specchia e non ingombre.
                     Il fiume insegna la calma paziente,
-                    a chi lo ascolta con cuore presente.
+                    A chi lo ascolta con cuore presente.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     L'amicizia è come un raggio di sole,
-                    che scalda il cuore e non si duole.
+                    Che scalda il cuore e non si duole.
                     Un amico vero ti sta vicino,
-                    nei giorni lieti e in quelli di brina.
+                    Nei giorni lieti e in quelli di brina.
                     Ricorda i giochi sotto il portone,
-                    le corse in cortile, la merenda sul muretto.
+                    Le corse in cortile, la merenda sul muretto.
                     Le confidenze scambiate a bassa voce,
-                    i sogni grandi, la speranza veloce.
+                    I sogni grandi, la speranza veloce.
                     Un amico ascolta senza giudicare,
-                    e sa quando è il momento di parlare.
+                    E sa quando è il momento di parlare.
                     Ti tende la mano se cadi per terra,
-                    e con un sorriso la tristezza afferra.
+                    E con un sorriso la tristezza afferra.
                     Non servono promesse solenni,
-                    bastano gesti semplici e perenni.
+                    Bastano gesti semplici e perenni.
                     Una risata condivisa a metà,
-                    una spalla su cui sfogare le tempeste di età.
+                    Una spalla su cui sfogare le tempeste di età.
                     L'amicizia è un bene prezioso,
-                    un tesoro silenzioso e luminoso.
+                    Un tesoro silenzioso e luminoso.
                     Cresce con gli anni, si fa più forte,
-                    supera le distanze e la sorte.
+                    Supera le distanze e la sorte.
                     Anche se la vita prende strade diverse,
-                    restano le storie e le emozioni disperse.
+                    Restano le storie e le emozioni disperse.
                     Un saluto breve, un messaggio inatteso,
-                    riportano il tempo a un tempo sospeso.
+                    Riportano il tempo a un tempo sospeso.
                     L'amico è colui che ti conosce bene,
-                    e nei tuoi occhi il bene e il male tiene.
+                    E nei tuoi occhi il bene e il male tiene.
                     Non ti abbandona quando sbagli,
-                    ma ti aiuta a rialzarti dai tuoi sbagli.
+                    Ma ti aiuta a rialzarti dai tuoi sbagli.
                     È un faro acceso nella notte scura,
-                    una presenza sicura che rassicura.
+                    Una presenza sicura che rassicura.
                     L'amicizia non ha età né confini,
-                    unisce le persone come buoni vicini.
+                    Unisce le persone come buoni vicini.
                     È un ponte che collega due cuori,
-                    fatto di memorie e di colori.
+                    Fatto di memorie e di colori.
                     Ringrazio il cielo per ogni amico vero,
-                    che rende il cammino meno severo.
+                    Che rende il cammino meno severo.
                     Insieme si ride, si scherza e si sogna,
-                    e il tempo non ruba, ma dona.
+                    E il tempo non ruba, ma dona.
                     L'amicizia è una pianta da curare,
-                    con gesti gentili e parole rare.
+                    Con gesti gentili e parole rare.
                     Ma quando fiorisce, è una meraviglia,
-                    che illumina il volto e la famiglia.
+                    Che illumina il volto e la famiglia.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     L'amore è un fiore nato in primavera,
-                    che porta gioia e luce sincera.
+                    Che porta gioia e luce sincera.
                     Nel tuo sorriso vedo il sole chiaro,
-                    che scalda il cuore e non è mai avaro.
+                    Che scalda il cuore e non è mai avaro.
                     La tua voce è un fiume che canta,
-                    e ogni parola un dolce incanto.
+                    E ogni parola un dolce incanto.
                     I tuoi occhi brillano come il cielo,
-                    e nel mio petto non c'è più gelo.
+                    E nel mio petto non c'è più gelo.
                     Con te cammino lungo la via,
-                    e il tempo si ferma in armonia.
+                    E il tempo si ferma in armonia.
                     Le tue mani sfiorano le mie,
-                    e sento nascere mille poesie.
+                    E sento nascere mille poesie.
                     Il tuo abbraccio è un caldo rifugio,
-                    dove ogni paura trova un indugio.
+                    Dove ogni paura trova un indugio.
                     Sei la rugiada sul prato al mattino,
-                    e il dolce profumo di un giardino.
+                    E il dolce profumo di un giardino.
                     Sei la mia casa, il mio porto sicuro,
-                    il fuoco acceso quando fuori è scuro.
+                    Il fuoco acceso quando fuori è scuro.
                     L'amore cresce come un albero forte,
-                    che resiste al vento e alla sorte.
+                    Che resiste al vento e alla sorte.
                     Le radici profonde tengono la terra,
-                    e il tempo non le serra.
+                    E il tempo non le serra.
                     E mentre il tramonto tinge il cielo di rosa,
-                    ripenso a te e ogni cosa è preziosa.
+                    Ripenso a te e ogni cosa è preziosa.
                     Il tuo nome è un canto leggero,
-                    che nel mio cuore è sempre il primo pensiero.
+                    Che nel mio cuore è sempre il primo pensiero.
                     Sei la melodia che non ha fine,
-                    e che supera ogni confine.
+                    E che supera ogni confine.
                     L'amore vero non conosce fretta,
-                    matura piano come una violetta.
+                    Matura piano come una violetta.
                     E nel tuo abbraccio trovo riposo,
-                    un dono raro, un bene prezioso.
+                    Un dono raro, un bene prezioso.
                     Con te la pioggia diventa carezza,
-                    e ogni attesa è dolce sicurezza.
+                    E ogni attesa è dolce sicurezza.
                     Ti guardo e il mondo si fa più chiaro,
-                    come un mattino senza più riparo.
+                    Come un mattino senza più riparo.
                     La tua risata è un raggio di sole,
-                    che riscalda e non duole.
+                    Che riscalda e non duole.
                     L'amore è un canto che non ha fine,
-                    una melodia che supera le spine.
+                    Una melodia che supera le spine.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Sulle onde salate di un mare lontano,
-                    una ciurma felice rema piano piano.
+                    Una ciurma felice rema piano piano.
                     La vela gonfia di vento e di sogni,
-                    tra isole verdi e scogli bisogni.
+                    Tra isole verdi e scogli bisogni.
                     Il capitano sorride sicuro,
-                    e indica un punto sul mare scuro.
+                    E indica un punto sul mare scuro.
                     La mappa antica segna un tesoro,
-                    nascosto in un'isola d'oro.
+                    Nascosto in un'isola d'oro.
                     I marinai cantano a gran voce,
-                    con il ritmo delle onde veloci.
+                    Con il ritmo delle onde veloci.
                     La notte è chiara, la luna piena,
-                    e il viaggio continua senza catena.
+                    E il viaggio continua senza catena.
                     Si ride, si scherza, si mangia in allegria,
-                    e il cuore è caldo come una bella poesia.
+                    E il cuore è caldo come una bella poesia.
                     Le stelle guidano la prua leggera,
-                    verso un'alba nuova e sincera.
+                    Verso un'alba nuova e sincera.
                     Il pappagallo sul braccio del nostromo,
-                    ripete parole come un uomo.
+                    Ripete parole come un uomo.
                     La cambusa profuma di spezie rare,
-                    e di arance dolci da gustare.
+                    E di arance dolci da gustare.
                     Il mozzo giovane impara i nodi,
-                    con le dita svelte in mille modi.
+                    Con le dita svelte in mille modi.
                     La nave avanza tra le correnti,
-                    e i cuori restano sempre attenti.
+                    E i cuori restano sempre attenti.
                     Non c'è paura, solo allegria,
-                    e la speranza non va mai via.
+                    E la speranza non va mai via.
                     Il tesoro forse è solo una scusa,
-                    per vivere insieme una gioia diffusa.
+                    Per vivere insieme una gioia diffusa.
                     La vera ricchezza è la compagnia,
-                    che rende dolce ogni traversia.
+                    Che rende dolce ogni traversia.
                     All'alba appare l'isola amica,
-                    con la sua spiaggia chiara e antica.
+                    Con la sua spiaggia chiara e antica.
                     Si getta l'ancora in acqua bassa,
-                    e la ciurma scende in una festa grassa.
+                    E la ciurma scende in una festa grassa.
                     Il tesoro attende sotto le palme,
-                    con perle lucide e conchiglie calme.
+                    Con perle lucide e conchiglie calme.
                     Si riparte con il cuore contento,
-                    e il vento spinge la vela d'argento.
+                    E il vento spinge la vela d'argento.
                     La storia dei pirati è una canzone,
-                    che unisce le voci in un'unica intenzione.
+                    Che unisce le voci in un'unica intenzione.
                     La libertà è il bene più grande,
-                    che brilla come l'oro e si spande.
+                    Che brilla come l'oro e si spande.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Sul mare del nord solca la prua,
-                    una nave di quercia robusta e pura.
+                    Una nave di quercia robusta e pura.
                     I remi si alzano con forza e vanto,
-                    e il drago scolpito guarda l'incanto.
+                    E il drago scolpito guarda l'incanto.
                     La vela a strisce rosse e bianche,
-                    si gonfia di vento senza stanche.
+                    Si gonfia di vento senza stanche.
                     L'equipaggio ride con voci calde,
-                    e la rotta è chiara tra le onde salde.
+                    E la rotta è chiara tra le onde salde.
                     Si naviga verso terre lontane,
-                    dove i prati sono verdi e le messi piane.
+                    Dove i prati sono verdi e le messi piane.
                     Il giovane vichingo impara a remare,
-                    e sogna un giorno di poter guidare.
+                    E sogna un giorno di poter guidare.
                     Il capitano insegna con pazienza,
-                    e ogni gesto è una nuova scienza.
+                    E ogni gesto è una nuova scienza.
                     Le storie attorno al fuoco la sera,
-                    riempiono i cuori di gioia vera.
+                    Riempiono i cuori di gioia vera.
                     Si parla di draghi e di tesori,
-                    di viaggi felici e di mille colori.
+                    Di viaggi felici e di mille colori.
                     La tempesta a volte arriva forte,
-                    ma la ciurma non teme la sorte.
+                    Ma la ciurma non teme la sorte.
                     Insieme si salpa, insieme si torna,
-                    e ogni vittoria la gioia adorna.
+                    E ogni vittoria la gioia adorna.
                     Il sole tramonta nel mare nero,
-                    e il drago di prua diventa leggero.
+                    E il drago di prua diventa leggero.
                     La luna illumina le onde scure,
-                    e la notte promette nuove avventure.
+                    E la notte promette nuove avventure.
                     I vichinghi non sono solo guerrieri,
-                    ma anche sognatori e veri pionieri.
+                    Ma anche sognatori e veri pionieri.
                     Costruiscono case e coltivano il grano,
-                    e vivono in pace con il vicino lontano.
+                    E vivono in pace con il vicino lontano.
                     La forza più grande è l'amicizia,
-                    che rende la vita una dolce delizia.
+                    Che rende la vita una dolce delizia.
                     E quando la vela si ammaina piano,
-                    il porto accoglie ogni marinaio sano.
+                    Il porto accoglie ogni marinaio sano.
                     La nave riposa sulle acque quiete,
-                    e il cuore è pieno di una gioia lieve.
+                    E il cuore è pieno di una gioia lieve.
                     Il viaggio continua domani ancora,
-                    verso il sole che il mare colora.
+                    Verso il sole che il mare colora.
                     La storia dei vichinghi è una canzone,
-                    che unisce le voci in un'unica intenzione.
+                    Che unisce le voci in un'unica intenzione.
                     La libertà è il bene più prezioso,
-                    che brilla come l'oro più luminoso.
+                    Che brilla come l'oro più luminoso.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Un amico è un dono che non ha prezzo,
-                    un legame puro, senza disprezzo.
+                    Un legame puro, senza disprezzo.
                     Insieme si ride, si scherza, si corre,
-                    e il tempo diventa una dolce scorre.
+                    E il tempo diventa una dolce scorre.
                     Nei giorni difficili lui ti sostiene,
-                    e la sua parola un rimedio diviene.
+                    E la sua parola un rimedio diviene.
                     Le confidenze si scambiano piano,
-                    e il cuore si alleggerisce lontano.
+                    E il cuore si alleggerisce lontano.
                     Si condivide il pane e la strada,
-                    senza invidia che l'anima cada.
+                    Senza invidia che l'anima cada.
                     L'amicizia non conosce distanza,
-                    resta viva in ogni circostanza.
+                    Resta viva in ogni circostanza.
                     Anche se la vita cambia i sentieri,
-                    i ricordi restano dei veri forzieri.
+                    I ricordi restano dei veri forzieri.
                     Un messaggio breve, una chiamata,
-                    ridanno luce a una fiammata.
+                    Ridanno luce a una fiammata.
                     L'amico vero ti accoglie sempre,
-                    con un sorriso che tutto stempre.
+                    Con un sorriso che tutto stempre.
                     Ti ascolta senza giudicare,
-                    e sa quando è il momento di parlare.
+                    E sa quando è il momento di parlare.
                     Ti incoraggia nei progetti nuovi,
-                    e nei tuoi passi crede e si commuove.
+                    E nei tuoi passi crede e si commuove.
                     La sua presenza è un faro acceso,
-                    un punto fermo in un mondo teso.
+                    Un punto fermo in un mondo teso.
                     Non servono grandi dichiarazioni,
-                    bastano i fatti e le buone azioni.
+                    Bastano i fatti e le buone azioni.
                     Un caffè insieme, una passeggiata,
-                    rendono l'amicizia più amata.
+                    Rendono l'amicizia più amata.
                     Si cresce insieme, si diventa grandi,
-                    e l'amicizia supera i confini.
+                    E l'amicizia supera i confini.
                     È un filo d'oro che unisce i cuori,
-                    e dona giorni pieni di colori.
+                    E dona giorni pieni di colori.
                     Ringrazio il cielo per ogni amico,
-                    che con la sua presenza io ho capito.
+                    Che con la sua presenza io ho capito.
                     L'amicizia è un tesoro da custodire,
-                    con piccoli gesti da condividire.
+                    Con piccoli gesti da condividire.
                     E chi trova un amico vero,
-                    ha per sempre un bene sincero.
+                    Ha per sempre un bene sincero.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Nel paese del sol levante cammina piano,
-                    un guerriero gentile con il cuore sano.
+                    Un guerriero gentile con il cuore sano.
                     La spada al fianco è lucida e leggera,
-                    forgiata con cura da una mano sincera.
+                    Forgiata con cura da una mano sincera.
                     Il samurai saluta il mattino,
-                    e il suo passo è un dolce cammino.
+                    E il suo passo è un dolce cammino.
                     Rispetta il bosco, il fiume e il fiore,
-                    e in ogni cosa vede un valore.
+                    E in ogni cosa vede un valore.
                     La sua casa è semplice e quieta,
-                    con un giardino che mai si vieta.
+                    Con un giardino che mai si vieta.
                     La meditazione calma la mente,
-                    e il tè verde profuma dolcemente.
+                    E il tè verde profuma dolcemente.
                     L'armatura brilla sotto il sole,
-                    ma il suo spirito non è mai di parole.
+                    Ma il suo spirito non è mai di parole.
                     Preferisce la pace alla battaglia,
-                    e la saggezza che il tempo intaglia.
+                    E la saggezza che il tempo intaglia.
                     Insegna ai giovani l'arte della calma,
-                    e la forza che nasce da un'anima alma.
+                    E la forza che nasce da un'anima alma.
                     La calligrafia riempie i suoi giorni,
-                    con tratti lievi come dei contorni.
+                    Con tratti lievi come dei contorni.
                     La luna piena illumina il sentiero,
-                    e il samurai cammina leggero.
+                    E il samurai cammina leggero.
                     Le stagioni passano con colori,
-                    e il suo cuore non conosce timori.
+                    E il suo cuore non conosce timori.
                     La fedeltà e l'onore sono le sue stelle,
-                    che guidano le scelte più belle.
+                    Che guidano le scelte più belle.
                     Non cerca gloria né ricchezza vana,
-                    ma un'esistenza piena e sana.
+                    Ma un'esistenza piena e sana.
                     La natura gli parla con dolcezza,
-                    e lui risponde con gentilezza.
+                    E lui risponde con gentilezza.
                     Il vento tra i ciliegi in fiore,
-                    porta un messaggio d'amore.
+                    Porta un messaggio d'amore.
                     Il samurai sorride al tramonto,
-                    e il mondo appare più tondo.
+                    E il mondo appare più tondo.
                     La notte scende con il suo manto,
-                    e lui riposa in un dolce canto.
+                    E lui riposa in un dolce canto.
                     Domani ancora insegnerà la via,
-                    con la forza della sua fantasia.
+                    Con la forza della sua fantasia.
                     La storia del samurai è un fiore,
-                    che sboccia sempre con onore.
+                    Che sboccia sempre con onore.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Nella città di luce e di metallo,
-                    dove ogni strada è un nuovo ballo,
-                    vive una gente dal cuore acceso,
-                    che sogna un mondo più disteso.
+                    Dove ogni strada è un nuovo ballo,
+                    Vive una gente dal cuore acceso,
+                    Che sogna un mondo più disteso.
                     I grattacieli sfiorano le stelle,
-                    e le finestre sono verdi e belle.
+                    E le finestre sono verdi e belle.
                     I treni volano sopra i tetti,
-                    come frecce d'argento perfetti.
+                    Come frecce d'argento perfetti.
                     La notte brilla di mille colori,
-                    e i sogni viaggiano senza timori.
+                    E i sogni viaggiano senza timori.
                     I giovani programmano il domani,
-                    con le loro menti e le loro mani.
+                    Con le loro menti e le loro mani.
                     I robot amici aiutano la gente,
-                    con gesti gentili e sorridenti.
+                    Con gesti gentili e sorridenti.
                     Le reti uniscono le idee,
-                    come fili di luce e di maree.
+                    Come fili di luce e di maree.
                     Non è solo freddo acciaio e vetro,
-                    ma un cuore caldo che batte dentro.
+                    Ma un cuore caldo che batte dentro.
                     La musica elettronica riempie le piazze,
-                    e i ballerini intrecciano le danze.
+                    E i ballerini intrecciano le danze.
                     I murales raccontano storie nuove,
-                    di amicizia e di belle prove.
+                    Di amicizia e di belle prove.
                     Nel mercato digitale si scambiano doni,
-                    non solo beni ma anche suoni.
+                    Non solo beni ma anche suoni.
                     La tecnologia serve la pace,
-                    e ogni paura si disfa e tace.
+                    E ogni paura si disfa e tace.
                     Un anziano sorride al suo androide,
-                    che gli porta il tè e un po' di gioie.
+                    Che gli porta il tè e un po' di gioie.
                     I bambini giocano con gli ologrammi,
-                    e imparano presto a essere uomini.
+                    E imparano presto a essere uomini.
                     La notte scende ma la città non dorme,
-                    ha mille occhi e mille forme.
+                    Ha mille occhi e mille forme.
                     Eppure c'è spazio per il silenzio,
-                    nei parchi verdi dove il vento è intenso.
+                    Nei parchi verdi dove il vento è intenso.
                     Il futuro non fa paura a chi spera,
-                    perché ogni giorno una gioia è vera.
+                    Perché ogni giorno una gioia è vera.
                     Le lezioni degli errori passati,
-                    restano indietro, ormai superati.
+                    Restano indietro, ormai superati.
                     E chi la vive con cuore aperto,
-                    trova un amico e un porto certo.
+                    Trova un amico e un porto certo.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Nell'antica Roma dal sole dorato,
-                    ogni strada è un sogno lastricato.
+                    Ogni strada è un sogno lastricato.
                     Le colonne bianche si alzano al cielo,
-                    come un abbraccio di marmo e di velo.
+                    Come un abbraccio di marmo e di velo.
                     Il foro vive di voci e colori,
-                    di mercanti, poeti e sognatori.
+                    Di mercanti, poeti e sognatori.
                     Le fontane cantano allegre e chiare,
-                    e l'acqua fresca invita a sognare.
+                    E l'acqua fresca invita a sognare.
                     I bambini giocano tra le rovine,
-                    con pietre lisce e monete piccine.
+                    Con pietre lisce e monete piccine.
                     Il senato discute con saggezza,
-                    cercando per tutti una certezza.
+                    Cercando per tutti una certezza.
                     Non solo spade e armature lucenti,
-                    ma anche libri e strumenti attenti.
+                    Ma anche libri e strumenti attenti.
                     Gli architetti disegnano ponti,
-                    che uniscono valli, fiumi e monti.
+                    Che uniscono valli, fiumi e monti.
                     Le terme accolgono con calore,
-                    e ogni cittadino trova il suo onore.
+                    E ogni cittadino trova il suo onore.
                     Il pane caldo profuma di grano,
-                    e il fornaio sorride da lontano.
+                    E il fornaio sorride da lontano.
                     Le strade consolari portano pace,
-                    e il commercio fiorisce e non tace.
+                    E il commercio fiorisce e non tace.
                     Si scambiano stoffe, spezie e vino,
-                    in un abbraccio amico e genuino.
+                    In un abbraccio amico e genuino.
                     L'amicizia tra i popoli è un dono,
-                    che rende il mondo più buono.
+                    Che rende il mondo più buono.
                     La sera scende sui tetti rossi,
-                    e il tramonto colora i grossi.
+                    E il tramonto colora i grossi.
                     Le lucerne si accendono piano,
-                    e la città si illumina lontano.
+                    E la città si illumina lontano.
                     La luna veglia sui giardini,
-                    pieni di allori e di rosmarini.
+                    Pieni di allori e di rosmarini.
                     Un vecchio racconta storie antiche,
-                    di viaggi lontani e terre amiche.
+                    Di viaggi lontani e terre amiche.
                     I giovani ascoltano incantati,
-                    con gli occhi pieni e i cuori caldi.
+                    Con gli occhi pieni e i cuori caldi.
                     La civiltà romana è un seme,
-                    che ancora oggi fruttifica insieme.
+                    Che ancora oggi fruttifica insieme.
                     La sua lezione è la pazienza,
-                    la forza unita alla scienza.
+                    La forza unita alla scienza.
                     E chi cammina tra le sue vie,
-                    sente un'eco di armonie.
+                    Sente un'eco di armonie.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Il cielo notturno è un manto di stelle,
-                    che brilla con luci dolci e belle.
+                    Che brilla con luci dolci e belle.
                     La luna piena sorride serena,
-                    e illumina la valle amena.
+                    E illumina la valle amena.
                     Le costellazioni disegnano storie,
-                    di eroi, di amori e di memorie.
+                    Di eroi, di amori e di memorie.
                     La via lattea è un fiume d'argento,
-                    che scorre lento nel firmamento.
+                    Che scorre lento nel firmamento.
                     Il vento leggero muove le foglie,
-                    e ogni rumore la notte accoglie.
+                    E ogni rumore la notte accoglie.
                     I grilli cantano la loro canzone,
-                    in un concerto senza tensione.
+                    In un concerto senza tensione.
                     Le lucciole danzano nel prato,
-                    come piccoli fuochi d'un incanto.
+                    Come piccoli fuochi d'un incanto.
                     Il profumo dei tigli riempie l'aria,
-                    e la mente si placa, non è più varia.
+                    E la mente si placa, non è più varia.
                     Chi osserva il cielo con cuore aperto,
-                    sente che ogni sogno è scoperto.
+                    Sente che ogni sogno è scoperto.
                     Le stelle cadenti passano veloci,
-                    e portano con sé desideri gioiosi.
+                    E portano con sé desideri gioiosi.
                     Ma il cielo sa ascoltare chi spera,
-                    e risponde con una pace vera.
+                    E risponde con una pace vera.
                     La notte non è buia e triste,
-                    ma un abbraccio che il cuore riveste.
+                    Ma un abbraccio che il cuore riveste.
                     È il tempo del riposo e del silenzio,
-                    un dono grande, un grande consenso.
+                    Un dono grande, un grande consenso.
                     La natura riposa sotto le stelle,
-                    e sogna mille albe nuove e belle.
+                    E sogna mille albe nuove e belle.
                     Anche il buio ha la sua dolcezza,
-                    che avvolge il mondo con tenerezza.
+                    Che avvolge il mondo con tenerezza.
                     E quando l'alba tinge il cielo di rosa,
-                    la notte se ne va silenziosa.
+                    La notte se ne va silenziosa.
                     Ma il ricordo di tanta meraviglia,
-                    resta nel cuore come una scintilla.
+                    Resta nel cuore come una scintilla.
                     Il cielo notturno insegna la quiete,
-                    e dona a tutti una vita più lieta.
+                    E dona a tutti una vita più lieta.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Le montagne si alzano verso il cielo,
-                    con le cime che sfidano il gelo.
+                    Con le cime che sfidano il gelo.
                     I prati verdi le cingono ai piedi,
-                    e i fiori colorati intrecciano i credi.
+                    E i fiori colorati intrecciano i credi.
                     Il torrente scende con allegria,
-                    e canta una dolce melodia.
+                    E canta una dolce melodia.
                     Le nuvole bianche avvolgono le vette,
-                    come sciarpe soffici e perfette.
+                    Come sciarpe soffici e perfette.
                     I pascoli accolgono le mucche serene,
-                    che mangiano l'erba e non hanno pene.
+                    Che mangiano l'erba e non hanno pene.
                     Le campane lontane suonano a festa,
-                    e ogni rumore la pace innesta.
+                    E ogni rumore la pace innesta.
                     I sentieri si snodano tra i boschi,
-                    con i profumi dei pini e dei muschi.
+                    Con i profumi dei pini e dei muschi.
                     Il camoscio osserva dall'alto sicuro,
-                    e il suo salto è un gesto puro.
+                    E il suo salto è un gesto puro.
                     Le aquile volano in cerchi ampi,
-                    sui versanti e sui campi.
+                    Sui versanti e sui campi.
                     La baita in pietra accoglie il viandante,
-                    con il fuoco acceso e un brodo fragrante.
+                    Con il fuoco acceso e un brodo fragrante.
                     Si riposa sul tavolo di legno,
-                    e il tempo scorre con un dolce contegno.
+                    E il tempo scorre con un dolce contegno.
                     La sera scende sulle cime rosa,
-                    e la natura diventa preziosa.
+                    E la natura diventa preziosa.
                     Le prime stelle appaiono lontane,
-                    e il cielo si riempie di luci arcane.
+                    E il cielo si riempie di luci arcane.
                     Il silenzio avvolge ogni cosa,
-                    come una coperta tiepida e riposa.
+                    Come una coperta tiepida e riposa.
                     Le montagne insegnano la forza e la pace,
-                    e ogni fatica diventa capace.
+                    E ogni fatica diventa capace.
                     Chi cammina in alto con rispetto,
-                    trova un amico in ogni nuovo aspetto.
+                    Trova un amico in ogni nuovo aspetto.
                     La fatica del salire è un dono,
-                    che apre il cuore a un nuovo suono.
+                    Che apre il cuore a un nuovo suono.
                     La vista dalla vetta è un incanto,
-                    un panorama che scioglie ogni pianto.
+                    Un panorama che scioglie ogni pianto.
                     Le montagne sono un tesoro infinito,
-                    che riempie l'anima di un bene pulito.
+                    Che riempie l'anima di un bene pulito.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Nell'antica Grecia dal cielo turchese,
-                    ogni strada è un canto e un'impresa.
+                    Ogni strada è un canto e un'impresa.
                     Le colonne bianche sorreggono il sole,
-                    e le muse sussurrano parole.
+                    E le muse sussurrano parole.
                     I filosofi passeggiano nel giardino,
-                    e discutono del destino.
+                    E discutono del destino.
                     Non solo spade e scudi lucenti,
-                    ma anche libri e strumenti attenti.
+                    Ma anche libri e strumenti attenti.
                     Il teatro risuona di versi e canti,
-                    e gli attori danzano con passi tanti.
+                    E gli attori danzano con passi tanti.
                     La piazza accoglie il popolo intero,
-                    con le sue voci e il suo pensiero.
+                    Con le sue voci e il suo pensiero.
                     I bambini imparano a leggere e a contare,
-                    e sognano di poter navigare.
+                    E sognano di poter navigare.
                     Le navi solcano il mare azzurro,
-                    cariche di grano e di un sussurro.
+                    Cariche di grano e di un sussurro.
                     I mercanti scambiano oli e stoffe,
-                    e le monete brillano tra le goffe.
+                    E le monete brillano tra le goffe.
                     L'amicizia tra le città è un dono,
-                    che rende il mondo più buono.
+                    Che rende il mondo più buono.
                     La palestra insegna la forza e la grazia,
-                    e ogni giovane la fatica abbraccia.
+                    E ogni giovane la fatica abbraccia.
                     La poesia riempie le serate,
-                    con storie di eroi e di fate.
+                    Con storie di eroi e di fate.
                     Il vino dolce e il pane caldo,
-                    rendono il convivio saldo.
+                    Rendono il convivio saldo.
                     La luna illumina il partenone,
-                    e il vento porta una canzone.
+                    E il vento porta una canzone.
                     Le stelle raccontano miti antichi,
-                    di dei e di eroi amici.
+                    Di dei e di eroi amici.
                     La civiltà greca è un seme,
-                    che ancora oggi fruttifica insieme.
+                    Che ancora oggi fruttifica insieme.
                     La sua lezione è la bellezza,
-                    unita alla forza e alla saggezza.
+                    Unita alla forza e alla saggezza.
                     E chi cammina tra le sue vie,
-                    sente un'eco di armonie.
+                    Sente un'eco di armonie.
                     Il pensiero libero cresce qui,
-                    come un ulivo nel giardino di Zeus.
+                    Come un ulivo nel giardino di Zeus.
                     La democrazia muove i suoi passi,
-                    tra i sorrisi e i compassi.
+                    Tra i sorrisi e i compassi.
                     E la notte scende dolcemente,
-                    su una terra che è per sempre viva e presente.
+                    Su una terra che è per sempre viva e presente.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Nel cuore della foresta antica e pura,
-                    vive uno sciamano con la sua natura.
+                    Vive uno sciamano con la sua natura.
                     Conosce le erbe, i canti e le stelle,
-                    e parla con le creature belle.
+                    E parla con le creature belle.
                     Il tamburo ritma la sera,
-                    e la brezza porta una luce vera.
+                    E la brezza porta una luce vera.
                     La tribù si raduna attorno al fuoco,
-                    e il tempo sembra fermarsi un poco.
+                    E il tempo sembra fermarsi un poco.
                     Lo sciamano sorride con dolcezza,
-                    e dona a tutti la sua saggezza.
+                    E dona a tutti la sua saggezza.
                     Insegna ai piccoli a rispettare,
-                    ogni essere vivente, senza esitare.
+                    Ogni essere vivente, senza esitare.
                     Le danze della sera uniscono i cuori,
-                    e scacciano via i brutti umori.
+                    E scacciano via i brutti umori.
                     Le piume colorate girano leggere,
-                    tra le voci amiche e sincere.
+                    Tra le voci amiche e sincere.
                     Il fumo sale verso il cielo limpido,
-                    e ogni paura diventa un sussurro timido.
+                    E ogni paura diventa un sussurro timido.
                     La natura ascolta e risponde piano,
-                    con il suono di un ruscello lontano.
+                    Con il suono di un ruscello lontano.
                     Il sole tramonta dietro le cime,
-                    e la notte accende mille prime.
+                    E la notte accende mille prime.
                     Lo sciamano racconta storie antiche,
-                    di spiriti buoni e terre amiche.
+                    Di spiriti buoni e terre amiche.
                     I bambini ascoltano incantati,
-                    con gli occhi pieni e i cuori caldi.
+                    Con gli occhi pieni e i cuori caldi.
                     La luna illumina il villaggio quieto,
-                    e il sonno arriva lieve e lieto.
+                    E il sonno arriva lieve e lieto.
                     I sogni sono pieni di colori,
-                    di animali e di nuovi albori.
+                    Di animali e di nuovi albori.
                     La vita scorre in armonia,
-                    con il vento, la terra e la magia.
+                    Con il vento, la terra e la magia.
                     Lo sciamano è un ponte tra i mondi,
-                    un faro acceso tra i fondi.
+                    Un faro acceso tra i fondi.
                     La sua presenza è un dono grande,
-                    che il tempo e lo spazio espande.
+                    Che il tempo e lo spazio espande.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Al mattino presto, sul tappetino blu,
-                    il respiro calmo scende e va su.
+                    Il respiro calmo scende e va su.
                     Il corpo si allunga come un giovane ramo,
-                    e la mente si placa nel dolce richiamo.
+                    E la mente si placa nel dolce richiamo.
                     Le braccia si alzano verso il cielo terso,
-                    e il cuore si apre in un gesto diverso.
+                    E il cuore si apre in un gesto diverso.
                     La schiena si piega con lentezza,
-                    e ogni movimento è una carezza.
+                    E ogni movimento è una carezza.
                     Il sole entra dalla finestra chiara,
-                    e la stanza si riempie di luce rara.
+                    E la stanza si riempie di luce rara.
                     Non c'è paura, solo quiete vera,
-                    dove ogni tensione si fa leggera.
+                    Dove ogni tensione si fa leggera.
                     Il respiro accompagna ogni posa,
-                    come un'onda che sulla riva si posa.
+                    Come un'onda che sulla riva si posa.
                     I muscoli si sciolgono piano piano,
-                    e il sorriso ritorna sul volto umano.
+                    E il sorriso ritorna sul volto umano.
                     La pratica unisce corpo e mente,
-                    in un abbraccio caldo e presente.
+                    In un abbraccio caldo e presente.
                     Non serve essere atleti perfetti,
-                    bastano gesti semplici e schietti.
+                    Bastano gesti semplici e schietti.
                     Il gatto e la mucca, il cane e la rana,
-                    ogni figura la pace risana.
+                    Ogni figura la pace risana.
                     Le gambe incrociate, la schiena dritta,
-                    e il silenzio dentro non è una fitta.
+                    E il silenzio dentro non è una fitta.
                     Gli occhi chiusi, il cuore sereno,
-                    il mondo esterno diventa un baleno.
+                    Il mondo esterno diventa un baleno.
                     La gratitudine riempie il petto,
-                    e ogni pensiero pesante è respinto.
+                    E ogni pensiero pesante è respinto.
                     La lezione finisce con un inchino,
-                    e il giorno inizia con passo genuino.
+                    E il giorno inizia con passo genuino.
                     La forza e la calma restano dentro,
-                    come un sole caldo nel centro.
+                    Come un sole caldo nel centro.
                     La pratica costante porta pace,
-                    e la vita diventa più capace.
+                    E la vita diventa più capace.
                     Chi respira con cura e attenzione,
-                    trova sempre una nuova occasione.
+                    Trova sempre una nuova occasione.
                     La gioia abita in ogni cellula,
-                    e la luce diventa una favola.
+                    E la luce diventa una favola.
                     Così il tappetino è un piccolo spazio quieto,
-                    dove ogni pensiero diventa più lieto.
+                    Dove ogni pensiero diventa più lieto.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Alla tastiera come su una nave,
-                    le dita danzano leggere e brave.
+                    Le dita danzano leggere e brave.
                     Non serve guardare dove posare,
-                    la memoria guida senza sbagliare.
+                    La memoria guida senza sbagliare.
                     Ogni tasto è un'onda che va,
-                    e la scrittura scorre qua e là.
+                    E la scrittura scorre qua e là.
                     Il pirata naviga senza paura,
-                    e il dattilografo scrive con bravura.
+                    E il dattilografo scrive con bravura.
                     La pratica rende il gesto sicuro,
-                    come la bussola nel cielo scuro.
+                    Come la bussola nel cielo scuro.
                     All'inizio il ritmo è lento e incerto,
-                    ma poi diventa un flusso aperto.
+                    Ma poi diventa un flusso aperto.
                     La costanza è la vela che spinge,
-                    e la precisione ogni timone stringe.
+                    E la precisione ogni timone stringe.
                     Non avere fretta, ascolta il vento,
-                    e ogni errore diventa un lamento.
+                    E ogni errore diventa un lamento.
                     Un lamento breve che poi scompare,
-                    mentre la mano avanza sul mare.
+                    Mentre la mano avanza sul mare.
                     Le parole si allineano in fila,
-                    come marinai in una flottiglia.
+                    Come marinai in una flottiglia.
                     Il capitano del testo sorride,
-                    e ogni periodo ben si divide.
+                    E ogni periodo ben si divide.
                     La pausa è il porto dove riposare,
-                    per riprendere il viaggio senza stentare.
+                    Per riprendere il viaggio senza stentare.
                     Così il dattilografo e il pirata,
-                    condividono la stessa rotta amata.
+                    Condividono la stessa rotta amata.
                     La libertà di muoversi spediti,
-                    senza timori e senza divieti.
+                    Senza timori e senza divieti.
                     La tastiera è un oceano infinito,
-                    dove ogni dito è un remo gradito.
+                    Dove ogni dito è un remo gradito.
                     E quando il documento è finito,
-                    il cuore esulta come un tesoro capito.
+                    Il cuore esulta come un tesoro capito.
                     La gioia è grande, la rotta è chiara,
-                    la pratica rende l'arte rara.
+                    La pratica rende l'arte rara.
                     Continua a scrivere, giorno dopo giorno,
-                    e il tuo viaggio sarà senza ritorno.
+                    E il tuo viaggio sarà senza ritorno.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Come il vichingo salpa senza paura,
-                    così le dita partono in avventura.
+                    Così le dita partono in avventura.
                     La tastiera è il mare, le parole le onde,
-                    e le dita navigano senza sponde.
+                    E le dita navigano senza sponde.
                     Non serve guardare dove si va,
-                    la pratica guida con serenità.
+                    La pratica guida con serenità.
                     All'inizio il remo è incerto e lento,
-                    ma poi diventa un movimento attento.
+                    Ma poi diventa un movimento attento.
                     La costanza è la vela che spinge,
-                    e la precisione ogni rotta stringe.
+                    E la precisione ogni rotta stringe.
                     Non temere l'errore, è solo un vento,
-                    che passa e poi diventa un lamento.
+                    Che passa e poi diventa un lamento.
                     Un lamento breve che si dissolve,
-                    mentre la mano sul mare risolve.
+                    Mentre la mano sul mare risolve.
                     Le parole si allineano sulla prua,
-                    come una ciurma che mai si stancò.
+                    Come una ciurma che mai si stancò.
                     Il ritmo del testo avanza fiero,
-                    e ogni frase è un porto sincero.
+                    E ogni frase è un porto sincero.
                     La pausa è l'ancora che ferma il viaggio,
-                    per riprendere poi con più coraggio.
+                    Per riprendere poi con più coraggio.
                     Così il vichingo e le dita leggere,
-                    condividono il ritmo del piacere.
+                    Condividono il ritmo del piacere.
                     La forza non è solo nel braccio,
-                    ma nella calma che evita l'impaccio.
+                    Ma nella calma che evita l'impaccio.
                     Il drago di prua guarda lontano,
-                    e le dita scrivono piano piano.
+                    E le dita scrivono piano piano.
                     Ogni seduta è una nuova traversata,
-                    che rende la mente più allenata.
+                    Che rende la mente più allenata.
                     E quando il documento è completo,
-                    il cuore esulta come un tesoro segreto.
+                    Il cuore esulta come un tesoro segreto.
                     La gioia è grande, la rotta è chiara,
-                    la pratica rende l'arte rara.
+                    La pratica rende l'arte rara.
                     Continua a esercitarti con ardore,
-                    e il tuo viaggio sarà pieno d'onore.
+                    E il tuo viaggio sarà pieno d'onore.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Come il samurai all'alba si desta,
-                    la mano sulla tastiera è lesta.
+                    La mano sulla tastiera è lesta.
                     La pratica è un sentiero di pace,
-                    che rende il gesto sempre più capace.
+                    Che rende il gesto sempre più capace.
                     Non serve guardare il tasto vicino,
-                    la memoria guida con un filo fino.
+                    La memoria guida con un filo fino.
                     All'inizio il passo è incerto e lento,
-                    poi diventa un dolce movimento.
+                    Poi diventa un dolce movimento.
                     La costanza è la spada affilata,
-                    che rende la via ben illuminata.
+                    Che rende la via ben illuminata.
                     L'errore è un maestro paziente,
-                    che insegna a ogni nuova gente.
+                    Che insegna a ogni nuova gente.
                     Le parole si allineano piano,
-                    come fiori in un prato lontano.
+                    Come fiori in un prato lontano.
                     Il samurai del testo avanza quieto,
-                    e ogni frase è un dialogo segreto.
+                    E ogni frase è un dialogo segreto.
                     La pausa è la rugiada del mattino,
-                    che rinfresca il cammino.
+                    Che rinfresca il cammino.
                     Il guerriero e la tastiera sono uniti,
-                    da un ritmo che mai è finito.
+                    Da un ritmo che mai è finito.
                     La forza sta nel cuore sereno,
-                    che scrive con un gesto pieno.
+                    Che scrive con un gesto pieno.
                     La tastiera è un giardino zen,
-                    dove ogni tasto è un piccolo bene.
+                    Dove ogni tasto è un piccolo bene.
                     Il respiro accompagna ogni riga,
-                    e la mente si libera e si sbriga.
+                    E la mente si libera e si sbriga.
                     Non c'è fretta, non c'è rumore,
-                    solo il suono di un ritmo migliore.
+                    Solo il suono di un ritmo migliore.
                     La costanza del bushi è la pace,
-                    che rende la scrittura più tenace.
+                    Che rende la scrittura più tenace.
                     La pratica regolare è un dono,
-                    che rende ogni pensiero più sereno.
+                    Che rende ogni pensiero più sereno.
                     E quando il documento è completo,
-                    il cuore esulta in un canto lieto.
+                    Il cuore esulta in un canto lieto.
                     La gioia è grande, la via è serena,
-                    la pratica rende l'arte più amena.
+                    La pratica rende l'arte più amena.
                     Continua a esercitarti con costanza,
-                    e troverai nella scrittura la tua danza.
+                    E troverai nella scrittura la tua danza.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Nella città di luce e di segnali,
-                    dove i pensieri viaggiano sui canali,
-                    le dita sulla tastiera danzano piano,
-                    come un robot dal cuore umano.
+                    Dove i pensieri viaggiano sui canali,
+                    Le dita sulla tastiera danzano piano,
+                    Come un robot dal cuore umano.
                     Non serve guardare il tasto lontano,
-                    la pratica guida la mano.
+                    La pratica guida la mano.
                     La rete elettrica pulsa di energia,
-                    e la scrittura scorre in armonia.
+                    E la scrittura scorre in armonia.
                     All'inizio il gesto è incerto e lento,
-                    ma poi diventa un movimento attento.
+                    Ma poi diventa un movimento attento.
                     La costanza è un chip potente,
-                    che rende la mente più efficiente.
+                    Che rende la mente più efficiente.
                     L'errore è un bug da correggere,
-                    che insegna a non disperdere.
+                    Che insegna a non disperdere.
                     Le parole si allineano sullo schermo,
-                    come luci di un ologramma eterno.
+                    Come luci di un ologramma eterno.
                     Il navigante digitale del testo avanza,
-                    e ogni frase una porta spalanca.
+                    E ogni frase una porta spalanca.
                     La pausa è un download di quiete,
-                    che ricarica le dita liete.
+                    Che ricarica le dita liete.
                     Il futuro non fa paura a chi sa,
-                    che ogni piccola pratica varrà.
+                    Che ogni piccola pratica varrà.
                     La tastiera è un ponte di luce,
-                    che unisce la mente e la voce.
+                    Che unisce la mente e la voce.
                     Le idee fluiscono senza sforzo,
-                    come dati in un dolce rinforzo.
+                    Come dati in un dolce rinforzo.
                     La pazienza è un firewall sicuro,
-                    che protegge il ritmo puro.
+                    Che protegge il ritmo puro.
                     Non c'è rumore, solo il ticchettio,
-                    che accompagna il pensiero mio.
+                    Che accompagna il pensiero mio.
                     La notte brilla di mille colori,
-                    ma la scrittura non ha timori.
+                    Ma la scrittura non ha timori.
                     Ogni dito è un hacker gentile,
-                    che apre porte in un mondo sottile.
+                    Che apre porte in un mondo sottile.
                     E quando il documento è completo,
-                    il cuore esulta in un canto lieto.
+                    Il cuore esulta in un canto lieto.
                     La gioia è grande, la via è serena,
-                    la digitazione diventa una stella amena.
+                    La digitazione diventa una stella amena.
                     Continua a esercitarti con passione,
-                    e la scrittura sarà la tua canzone.
+                    E la scrittura sarà la tua canzone.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Come il romano costruisce strade dritte,
-                    le dita scrivono senza sconfitte.
+                    Le dita scrivono senza sconfitte.
                     La tastiera è il selciato antico,
-                    che porta lontano il pensiero amico.
+                    Che porta lontano il pensiero amico.
                     Non serve guardare ogni pietra incerta,
-                    la pratica rende la via aperta.
+                    La pratica rende la via aperta.
                     All'inizio il passo è incerto e lento,
-                    poi diventa un movimento attento.
+                    Poi diventa un movimento attento.
                     La costanza è l'arco che sorregge,
-                    e la precisione ogni riga regge.
+                    E la precisione ogni riga regge.
                     L'errore è una pietra da spostare,
-                    che insegna a meglio camminare.
+                    Che insegna a meglio camminare.
                     Le parole si allineano come colonne,
-                    in un foro di idee belle e buone.
+                    In un foro di idee belle e buone.
                     Il legionario del testo avanza sicuro,
-                    e ogni frase è un ponte puro.
+                    E ogni frase è un ponte puro.
                     La pausa è una fontana fresca,
-                    che rinfresca la mente e la rende lesta.
+                    Che rinfresca la mente e la rende lesta.
                     La disciplina è il segreto antico,
-                    che rende il gesto un dono amico.
+                    Che rende il gesto un dono amico.
                     La tastiera è un anfiteatro,
-                    dove ogni dito è un attore grato.
+                    Dove ogni dito è un attore grato.
                     Le idee si incontrano in armonia,
-                    come un discorso in piena sintonia.
+                    Come un discorso in piena sintonia.
                     Non c'è fretta, ma passo costante,
-                    come un acquedotto mai vacante.
+                    Come un acquedotto mai vacante.
                     La calma romana guida la mano,
-                    e il testo scorre piano piano.
+                    E il testo scorre piano piano.
                     Ogni seduta è un'opera nuova,
-                    che la costanza mette alla prova.
+                    Che la costanza mette alla prova.
                     E quando il documento è completo,
-                    il cuore esulta in un canto lieto.
+                    Il cuore esulta in un canto lieto.
                     La gioia è grande, la via è dritta,
-                    la pratica rende l'arte invitta.
+                    La pratica rende l'arte invitta.
                     Continua a scrivere con fervore,
-                    e la tastiera diventerà un valore.
+                    E la tastiera diventerà un valore.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Come il poeta sulla collina canta,
-                    la mano sulla tastiera incanta.
+                    La mano sulla tastiera incanta.
                     L'arte della scrittura è un dono antico,
-                    che rende il pensiero puro e amico.
+                    Che rende il pensiero puro e amico.
                     Non serve guardare le lettere incise,
-                    la pratica guida le dita decise.
+                    La pratica guida le dita decise.
                     All'inizio il ritmo è lento e incerto,
-                    come un sentiero nel bosco aperto.
+                    Come un sentiero nel bosco aperto.
                     La costanza è l'alloro che corona,
-                    e la precisione ogni passo sprona.
+                    E la precisione ogni passo sprona.
                     L'errore è un maestro paziente,
-                    che insegna con cuore attento.
+                    Che insegna con cuore attento.
                     Le parole si allineano come colonne,
-                    in un portico di idee belle e buone.
+                    In un portico di idee belle e buone.
                     Il filosofo del testo avanza piano,
-                    e ogni frase è un pensiero sano.
+                    E ogni frase è un pensiero sano.
                     La pausa è l'ombra di un ulivo,
-                    che rinfresca il cammino estivo.
+                    Che rinfresca il cammino estivo.
                     La disciplina greca è armonia,
-                    che unisce la forza alla poesia.
+                    Che unisce la forza alla poesia.
                     La tastiera è un'agorà di idee,
-                    dove ogni dito porta le sue galee.
+                    Dove ogni dito porta le sue galee.
                     Le parole navigano serene,
-                    come triremi dalle vele piene.
+                    Come triremi dalle vele piene.
                     Non c'è fretta, ma passo misurato,
-                    come un discorso ben calibrato.
+                    Come un discorso ben calibrato.
                     La calma ateniese guida la mano,
-                    e il testo scorre come un fiume sano.
+                    E il testo scorre come un fiume sano.
                     Ogni seduta è una palestra,
-                    che rende la mente più lesta.
+                    Che rende la mente più lesta.
                     La vittoria non è nella velocità,
-                    ma nella costanza e nella verità.
+                    Ma nella costanza e nella verità.
                     E quando il documento è completo,
-                    il cuore esulta in un canto quieto.
+                    Il cuore esulta in un canto quieto.
                     La gioia è grande, la via è chiara,
-                    la pratica rende l'arte rara.
+                    La pratica rende l'arte rara.
                     Continua a scrivere con passione,
-                    e la scrittura sarà la tua canzone.
+                    E la scrittura sarà la tua canzone.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Come lo sciamano ascolta il tamburo,
-                    la mano scrive con un ritmo sicuro.
+                    La mano scrive con un ritmo sicuro.
                     La tastiera è un cerchio di pietre antiche,
-                    dove le dita danzano amiche.
+                    Dove le dita danzano amiche.
                     Non serve guardare il segno vicino,
-                    la pratica guida come un destino.
+                    La pratica guida come un destino.
                     All'inizio il passo è lento e incerto,
-                    poi diventa un sentiero aperto.
+                    Poi diventa un sentiero aperto.
                     La costanza è un canto notturno,
-                    che rende il gesto mai taciturno.
+                    Che rende il gesto mai taciturno.
                     L'errore è uno spirito guida,
-                    che insegna la via che non sfida.
+                    Che insegna la via che non sfida.
                     Le parole si allineano come piume,
-                    in un cielo di nuove scommesse.
+                    In un cielo di nuove scommesse.
                     Il tamburo del testo batte piano,
-                    e ogni frase è un sussurro umano.
+                    E ogni frase è un sussurro umano.
                     La pausa è il respiro della terra,
-                    che ogni tensione afferra.
+                    Che ogni tensione afferra.
                     La saggezza antica insegna calma,
-                    e la digitazione diventa un'alma.
+                    E la digitazione diventa un'alma.
                     La tastiera è una radura quieta,
-                    dove il pensiero si posa e non si vieta.
+                    Dove il pensiero si posa e non si vieta.
                     Le dita volano leggere e sicure,
-                    come uccelli che non hanno paure.
+                    Come uccelli che non hanno paure.
                     Non c'è fretta, solo armonia,
-                    tra il gesto e la poesia.
+                    Tra il gesto e la poesia.
                     Ogni seduta è un rito sereno,
-                    che riempie il cuore di un bene pieno.
+                    Che riempie il cuore di un bene pieno.
                     La connessione tra mente e mano,
-                    è un ponte bello e lontano.
+                    È un ponte bello e lontano.
                     La pratica costante è la magia,
-                    che apre le porte alla via.
+                    Che apre le porte alla via.
                     Le storie dei saggi accompagnano il ritmo,
-                    e ogni parola è un dono legittimo.
+                    E ogni parola è un dono legittimo.
                     E quando il documento è completo,
-                    il cuore esulta in un canto quieto.
+                    Il cuore esulta in un canto quieto.
                     La gioia è grande, la via è chiara,
-                    la pratica rende l'arte più cara.
+                    La pratica rende l'arte più cara.
                     Continua a scrivere con pazienza,
-                    e la scrittura diventerà una scienza.
+                    E la scrittura diventerà una scienza.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Come lo yogi respira sereno,
-                    la mano scrive con un gesto pieno.
+                    La mano scrive con un gesto pieno.
                     La tastiera è il tappetino disteso,
-                    dove ogni dito trova il suo peso.
+                    Dove ogni dito trova il suo peso.
                     Non serve guardare il tasto incerto,
-                    la pratica rende il passo esperto.
+                    La pratica rende il passo esperto.
                     All'inizio il gesto è lento e rigido,
-                    poi diventa un flusso fluido e vivido.
+                    Poi diventa un flusso fluido e vivido.
                     La costanza è il respiro profondo,
-                    che rende il ritmo sempre più rotondo.
+                    Che rende il ritmo sempre più rotondo.
                     L'errore è una posa da correggere,
-                    che insegna a non disperdere.
+                    Che insegna a non disperdere.
                     Le parole si allineano come asana,
-                    in una sequenza dolce e piana.
+                    In una sequenza dolce e piana.
                     Il maestro del testo guida con cura,
-                    e ogni frase è una posa sicura.
+                    E ogni frase è una posa sicura.
                     La pausa è il riposo del guerriero,
-                    che ricarica il corpo e il pensiero.
+                    Che ricarica il corpo e il pensiero.
                     La disciplina del tappetino,
-                    si unisce al ritmo del mattino.
+                    Si unisce al ritmo del mattino.
                     La tastiera è uno spazio di quiete,
-                    dove la mente resta sana e lieta.
+                    Dove la mente resta sana e lieta.
                     Le dita si muovono con armonia,
-                    come il saluto al sole in sintonia.
+                    Come il saluto al sole in sintonia.
                     Non c'è fretta, solo consapevolezza,
-                    che rende la scrittura una carezza.
+                    Che rende la scrittura una carezza.
                     Ogni sessione è una meditazione,
-                    che porta chiarezza e connessione.
+                    Che porta chiarezza e connessione.
                     La pratica costante è la via,
-                    per trasformare la fatica in allegria.
+                    Per trasformare la fatica in allegria.
                     Il respiro accompagna ogni parola,
-                    e la mente si libera da ogni scoria.
+                    E la mente si libera da ogni scoria.
                     Così il dattilografo e lo yogi,
-                    condividono un cammino senza intoppi.
+                    Condividono un cammino senza intoppi.
                     La forza non è nello sforzo cieco,
-                    ma nella calma che evita l'impiccio.
+                    Ma nella calma che evita l'impiccio.
                     E quando il documento è finito,
-                    il cuore è leggero e rifinito.
+                    Il cuore è leggero e rifinito.
                     La gioia è grande, la via è serena,
-                    la pratica rende l'arte più amena.
+                    La pratica rende l'arte più amena.
                     Continua a digitare con presenza,
-                    e la scrittura diventerà la tua essenza.
+                    E la scrittura diventerà la tua essenza.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Scrivere senza guardare è un cammino,
-                    che inizia piano, come un mattino.
+                    Che inizia piano, come un mattino.
                     Le dita imparano la strada giusta,
-                    e la memoria diventa robusta.
+                    E la memoria diventa robusta.
                     All'inizio il gesto è incerto e lento,
-                    ma il ritmo cresce con l'allenamento.
+                    Ma il ritmo cresce con l'allenamento.
                     La schiena dritta e le spalle calme,
-                    aiutano il corpo a restare in salme.
+                    Aiutano il corpo a restare in salme.
                     Ogni errore è una piccola guida,
-                    che mostra dove serve più pratica.
+                    Che mostra dove serve più pratica.
                     Non serve correre, serve costanza,
-                    e la fatica diventa sostanza.
+                    E la fatica diventa sostanza.
                     Lo sguardo resta fisso allo schermo,
-                    e il testo scorre con un ritmo fermo.
+                    E il testo scorre con un ritmo fermo.
                     La pausa breve rinfresca le dita,
-                    e rende la prova più gradita.
+                    E rende la prova più gradita.
                     Con il passare lento dei giorni,
-                    i gesti diventano meno ingombri.
+                    I gesti diventano meno ingombri.
                     La velocità giunge da sola,
-                    come una barca che lascia la sponda.
+                    Come una barca che lascia la sponda.
                     Scrivere così apre la mente,
-                    e il pensiero scorre liberamente.
+                    E il pensiero scorre liberamente.
                     Non ci sono limiti o barriere,
-                    per chi esercita con maniere sincere.
+                    Per chi esercita con maniere sincere.
                     La tastiera diventa un campo aperto,
-                    dove ogni parola trova il suo certo.
+                    Dove ogni parola trova il suo certo.
                     La gioia sta nel produrre un testo,
-                    con il ritmo costante e onesto.
+                    Con il ritmo costante e onesto.
                     Il risultato non è mai perfetto,
-                    ma il percorso regala il suo effetto.
+                    Ma il percorso regala il suo effetto.
                     Così la pratica quotidiana,
-                    rende la scrittura chiara e piana.
+                    Rende la scrittura chiara e piana.
                     E quando il documento è concluso,
-                    il cuore riposa senza alcun urto.
+                    Il cuore riposa senza alcun urto.
                     Scrivere senza guardare è un dono,
-                    che matura nel tempo e non abbandona.
+                    Che matura nel tempo e non abbandona.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     La tastiera è un campo di grano maturo,
-                    dove ogni tasto è un chicco puro.
+                    Dove ogni tasto è un chicco puro.
                     Le dita falciano con ritmo lieve,
-                    e il testo cresce come una neve.
+                    E il testo cresce come una neve.
                     Non serve guardare il solco nero,
-                    la pratica insegna il sentiero.
+                    La pratica insegna il sentiero.
                     All'inizio la falce è incerta e dura,
-                    poi diventa una danza sicura.
+                    Poi diventa una danza sicura.
                     La costanza è l'acqua che bagna,
-                    e la precisione ogni spiga guadagna.
+                    E la precisione ogni spiga guadagna.
                     L'errore è una zolla da sciogliere,
-                    che insegna a meglio raccogliere.
+                    Che insegna a meglio raccogliere.
                     Le parole si allineano come covoni,
-                    ordinati in fila senza toni.
+                    Ordinati in fila senza toni.
                     Il mietitore del testo avanza calmo,
-                    e ogni frase è un respiro salmo.
+                    E ogni frase è un respiro salmo.
                     La pausa è l'ombra di un albero amico,
-                    che rinfresca il corpo e il pensiero antico.
+                    Che rinfresca il corpo e il pensiero antico.
                     Il ritmo dolce culla la mente,
-                    e lo sguardo resta fisso e presente.
+                    E lo sguardo resta fisso e presente.
                     Le idee maturano senza fretta,
-                    come spighe che il sole aspetta.
+                    Come spighe che il sole aspetta.
                     La digitazione è una mietitura,
-                    che richiede cura e struttura.
+                    Che richiede cura e struttura.
                     Ogni seduta è un campo arato,
-                    che produce un testo pregiato.
+                    Che produce un testo pregiato.
                     La fatica iniziale è un seme,
-                    che fiorisce in un giardino che non teme.
+                    Che fiorisce in un giardino che non teme.
                     La gioia cresce con la costanza,
-                    e la scrittura diventa una danza.
+                    E la scrittura diventa una danza.
                     Non serve forza, solo attenzione,
-                    e ogni dito trova la sua posizione.
+                    E ogni dito trova la sua posizione.
                     Il corpo riposa nella postura giusta,
-                    e la mente non è più angusta.
+                    E la mente non è più angusta.
                     Le spalle morbide, il collo sereno,
-                    e il respiro fluisce come un treno.
+                    E il respiro fluisce come un treno.
                     La velocità arriva da sola,
-                    quando il gesto è una cosa sola.
+                    Quando il gesto è una cosa sola.
                     Ogni errore corretto con calma,
-                    porta un frutto che mai disallma.
+                    Porta un frutto che mai disallma.
                     La tastiera è un orto felice,
-                    che dona parole come radici.
+                    Che dona parole come radici.
                     E quando il raccolto è completo,
-                    il cuore esulta in un canto quieto.
+                    Il cuore esulta in un canto quieto.
                     La gioia è grande, la via è piana,
-                    la pratica rende l'arte sovrana.
+                    La pratica rende l'arte sovrana.
                     Continua a seminare con amore,
-                    e la scrittura sarà un fiore.
+                    E la scrittura sarà un fiore.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     La tastiera è una fucina accesa,
-                    dove ogni dito forgia la sua impresa.
+                    Dove ogni dito forgia la sua impresa.
                     Il ritmo calmo è il mantice che soffia,
-                    e la mente si alleggerisce come una foglia.
+                    E la mente si alleggerisce come una foglia.
                     Non serve guardare il ferro rovente,
-                    la pratica insegna il gesto paziente.
+                    La pratica insegna il gesto paziente.
                     All'inizio il martello è incerto e greve,
-                    poi diventa un colpo leggero e lieve.
+                    Poi diventa un colpo leggero e lieve.
                     La costanza è il fuoco che non si spegne,
-                    e la precisione ogni forma sostiene.
+                    E la precisione ogni forma sostiene.
                     L'errore è una scoria da togliere,
-                    che insegna a meglio accogliere.
+                    Che insegna a meglio accogliere.
                     Le parole si piegano come lame,
-                    in un'armonia di note e di trame.
+                    In un'armonia di note e di trame.
                     Il fabbro del testo avanza sicuro,
-                    e ogni frase è un metallo puro.
+                    E ogni frase è un metallo puro.
                     La pausa è l'acqua che tempra il lavoro,
-                    e dona al corpo un nuovo ristoro.
+                    E dona al corpo un nuovo ristoro.
                     La disciplina della fucina,
-                    rende la scrittura una cosa divina.
+                    Rende la scrittura una cosa divina.
                     La tastiera è un banco di creta,
-                    dove ogni dito modella la meta.
+                    Dove ogni dito modella la meta.
                     Le idee prendono forma e sostanza,
-                    come vasi di antica costanza.
+                    Come vasi di antica costanza.
                     Non c'è fretta, solo pazienza,
-                    e la scrittura diventa una scienza.
+                    E la scrittura diventa una scienza.
                     Ogni seduta è una fusione,
-                    tra il pensiero e la posizione.
+                    Tra il pensiero e la posizione.
                     La gioia cresce con il lavoro,
-                    e il testo brilla come l'oro.
+                    E il testo brilla come l'oro.
                     La postura giusta è l'incudine,
-                    che regge il colpo senza fine.
+                    Che regge il colpo senza fine.
                     Il respiro accompagna ogni battuta,
-                    e la mente resta avveduta.
+                    E la mente resta avveduta.
                     La velocità arriva con l'età,
-                    come un metallo che perde l'oscurità.
+                    Come un metallo che perde l'oscurità.
                     Non serve forzare il ritmo,
-                    basta seguire il proprio algoritmo.
+                    Basta seguire il proprio algoritmo.
                     La tastiera è una fucina amica,
-                    che rende la fatica una gioia antica.
+                    Che rende la fatica una gioia antica.
                     E quando il manufatto è finito,
-                    il cuore è forte e rifinito.
+                    Il cuore è forte e rifinito.
                     La gioia è grande, la via è calda,
-                    la pratica rende l'arte salda.
+                    La pratica rende l'arte salda.
                     Continua a forgiare con amore,
-                    e la scrittura sarà un onore.
+                    E la scrittura sarà un onore.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     La digitazione è un fiume che scorre,
-                    tra le dita che danzano senza porre
-                    domande inutili o incertezze,
-                    ma seguono il ritmo delle certezze.
+                    Tra le dita che danzano senza porre
+                    Domande inutili o incertezze,
+                    Ma seguono il ritmo delle certezze.
                     Non serve guardare la riva lontana,
-                    la pratica guida come una canna.
+                    La pratica guida come una canna.
                     All'inizio l'acqua è fredda e scura,
-                    e il corpo cerca la sua andatura.
+                    E il corpo cerca la sua andatura.
                     Poi la corrente diventa amica,
-                    e ogni movimento si mimetica.
+                    E ogni movimento si mimetica.
                     La costanza è la sponda sicura,
-                    che contiene la piena e rassicura.
+                    Che contiene la piena e rassicura.
                     L'errore è un sasso sul fondo,
-                    che il piede scansa in un secondo.
+                    Che il piede scansa in un secondo.
                     Le parole galleggiano serene,
-                    come foglie portate da una carena.
+                    Come foglie portate da una carena.
                     Il timoniere del testo avanza piano,
-                    e ogni frase è un gesto umano.
+                    E ogni frase è un gesto umano.
                     La pausa è l'ansa dove riposare,
-                    prima di riprendere a navigare.
+                    Prima di riprendere a navigare.
                     La disciplina del fiume insegna,
-                    che la lentezza non è una vergogna.
+                    Che la lentezza non è una vergogna.
                     La tastiera è un corso d'acqua viva,
-                    dove la mente si purifica.
+                    Dove la mente si purifica.
                     Le idee nuotano come pesci,
-                    in un acquario di nuovi intrecci.
+                    In un acquario di nuovi intrecci.
                     Non c'è fretta, solo flusso,
-                    e il pensiero diventa un lusso.
+                    E il pensiero diventa un lusso.
                     Ogni sessione è una discesa,
-                    che rende la scrittura più distesa.
+                    Che rende la scrittura più distesa.
                     La gioia cresce con l'abitudine,
-                    e il gesto diventa una virtudine.
+                    E il gesto diventa una virtudine.
                     La postura giusta è la barca,
-                    che tiene il corpo in una marca.
+                    Che tiene il corpo in una marca.
                     Il respiro accompagna l'onda,
-                    e la mente con il cuore si sponda.
+                    E la mente con il cuore si sponda.
                     La velocità arriva da sola,
-                    come una barca che non si incolla.
+                    Come una barca che non si incolla.
                     Non serve remare controvento,
-                    basta assecondare il movimento.
+                    Basta assecondare il movimento.
                     La tastiera è un fiume gentile,
-                    che porta lontano il pensiero sottile.
+                    Che porta lontano il pensiero sottile.
                     E quando il viaggio è completo,
-                    il cuore è leggero e quieto.
+                    Il cuore è leggero e quieto.
                     La gioia è grande, il ritmo è sereno,
-                    la pratica rende il gesto più pieno.
+                    La pratica rende il gesto più pieno.
                     Continua a esercitarti con costanza,
-                    e la scrittura diventerà padronanza.
+                    E la scrittura diventerà padronanza.
                     EOT,
             ],
         ];
