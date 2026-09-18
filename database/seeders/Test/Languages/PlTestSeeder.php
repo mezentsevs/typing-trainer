@@ -290,1140 +290,1140 @@ class PlTestSeeder extends LanguageTestSeeder
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Las o świcie wstaje z rosy,
-                    słońce maluje złote kłosy.
+                    Słońce maluje złote kłosy.
                     Idę ścieżką wśród paproci,
-                    co zielone liście złoci.
+                    Co zielone liście złoci.
                     Wiatr porusza stare drzewa,
-                    a w oddali kukułka śpiewa.
+                    A w oddali kukułka śpiewa.
                     Strumyk sączy się po kamieniach,
-                    słońce gra na jego cieniach.
+                    Słońce gra na jego cieniach.
                     Motyl siada na kwiat dzikiej róży,
-                    wiatr mu skrzydła delikatnie burzy.
+                    Wiatr mu skrzydła delikatnie burzy.
                     Pszczoła zbiera nektar z kwiatów,
-                    by miód powstał dla naszych bratów.
+                    By miód powstał dla naszych bratów.
                     Sarna zerka zza krzewu,
-                    patrzy na mnie bez gniewu.
+                    Patrzy na mnie bez gniewu.
                     Dzięcioł stuka w starą sosnę,
-                    echo niesie to radośnie.
+                    Echo niesie to radośnie.
                     Wiewiórka skacze po gałęzi,
-                    orzech w łapkach swoich więzi.
+                    Orzech w łapkach swoich więzi.
                     Pachną zioła i żywica,
-                    las mnie wita, zachwyca.
+                    Las mnie wita, zachwyca.
                     Tu czas płynie wolno, miarowo,
-                    każda chwila jest tu zdrowo.
+                    Każda chwila jest tu zdrowo.
                     Zmęczone myśli odpoczywają,
-                    a drzewa cicho się kłaniają.
+                    A drzewa cicho się kłaniają.
                     W lesie każdy znajdzie ukojenie,
-                    zielone daje mu wytchnienie.
+                    Zielone daje mu wytchnienie.
                     Wystarczy usiąść pod bukiem starym,
-                    posłuchać szumu, co jest darem.
+                    Posłuchać szumu, co jest darem.
                     I nagle wszystko staje się proste,
-                    gdy las otwiera serca mosty.
+                    Gdy las otwiera serca mosty.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Wiosenny poranek wstał ponad łąką,
-                    słońce powitało ziemię gorącą.
+                    Słońce powitało ziemię gorącą.
                     Rosa na trawach lśni srebrzyście,
-                    jak rozsypane perły oczywiście.
+                    Jak rozsypane perły oczywiście.
                     Wiatr porusza gałęzie wierzb,
-                    a w stawie przegląda się nieba sterb.
+                    A w stawie przegląda się nieba sterb.
                     Kaczki pływają w parach po wodzie,
-                    ciesząc się ciepłem w wiosennej pogodzie.
+                    Ciesząc się ciepłem w wiosennej pogodzie.
                     Złote kaczeńce na brzegu kwitną,
-                    a w górze jaskółki skrzydłami zgrzytną.
+                    A w górze jaskółki skrzydłami zgrzytną.
                     Skowronek śpiewa wysoko w chmurze,
-                    a jego pieśń płynie w niebieskim lazurze.
+                    A jego pieśń płynie w niebieskim lazurze.
                     Stokrotki białe patrzą w słońce,
-                    a pszczoły brzęczą na kwiatów łące.
+                    A pszczoły brzęczą na kwiatów łące.
                     Zapach świeżej ziemi się unosi,
-                    a ciepły wiatr o chwilę ciszy prosi.
+                    A ciepły wiatr o chwilę ciszy prosi.
                     Bocian brodzi w mokrej trawie,
-                    szuka śniadania w spokojnej zabawie.
+                    Szuka śniadania w spokojnej zabawie.
                     Dzieci puszczają latawce pod niebo,
-                    a ich śmiech niesie się z wielką potrzebą.
+                    A ich śmiech niesie się z wielką potrzebą.
                     Świat się obudził do życia nowego,
-                    pełen radości i tchu świeżego.
+                    Pełen radości i tchu świeżego.
                     Każdy listek i każda gałązka
-                    cieszy się jak wesoła łąka.
+                    Cieszy się jak wesoła łąka.
                     Wiosna to czas nadziei i wiary,
-                    co serce wypełnia po same miary.
+                    Co serce wypełnia po same miary.
                     Dlatego warto wyjść na spacer,
-                    zobaczyć, jak przyroda tańczy w plener.
+                    Zobaczyć, jak przyroda tańczy w plener.
                     Bo wiosna w każdym budzi radość,
-                    i sercu daje nową zdatność.
+                    I sercu daje nową zdatność.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Letnie popołudnie na łące pachnącej,
-                    słońce grzeje mocno, wiatr tańczy gorący.
+                    Słońce grzeje mocno, wiatr tańczy gorący.
                     Złote kłosy zbóż chylą się pokornie,
-                    a motyle krążą wokół nich upornie.
+                    A motyle krążą wokół nich upornie.
                     Mak czerwony świeci pośród zieleni,
-                    a chabry błękitne jak kawałki nieba w cieniu.
+                    A chabry błękitne jak kawałki nieba w cieniu.
                     Pszczoły zbierają nektar z kwiatów pilnie,
-                    a trzmiel ciężki lata trochę mylnie.
+                    A trzmiel ciężki lata trochę mylnie.
                     Konik polny skacze w trawie wysokiej,
-                    a biedronka wspina się po łodydze srokiej.
+                    A biedronka wspina się po łodydze srokiej.
                     Świerszcz przygrywa cichą serenadę,
-                    co w letnim skwarze daje ochłodę.
+                    Co w letnim skwarze daje ochłodę.
                     W oddali słychać śpiew skowronka,
-                    co wzlatuje w górę jak jasna koronka.
+                    Co wzlatuje w górę jak jasna koronka.
                     Chmury powoli suną po błękicie,
-                    jak statki białe w niebieskim zenicie.
+                    Jak statki białe w niebieskim zenicie.
                     Strumyk szemrze wśród kamieni gładkich,
-                    a woda chłodzi stopy w dni tak rzadkie.
+                    A woda chłodzi stopy w dni tak rzadkie.
                     Dzieci brodzą po kolana w trawie,
-                    szukając czterolistnej koniczyny w zabawie.
+                    Szukając czterolistnej koniczyny w zabawie.
                     Śmiech ich dzwoni jak srebrne dzwoneczki,
-                    a wiatr unosi radosne piosneczki.
+                    A wiatr unosi radosne piosneczki.
                     Letnia łąka to królestwo barw i woni,
-                    gdzie każdy zakątek życiem dzwoni.
+                    Gdzie każdy zakątek życiem dzwoni.
                     Tu czas się zatrzymuje na moment,
-                    a serce wdzięczność czuje i komplement.
+                    A serce wdzięczność czuje i komplement.
                     Wystarczy usiąść na ciepłej ziemi,
-                    posłuchać, jak łąka oddycha z wszystkimi.
+                    Posłuchać, jak łąka oddycha z wszystkimi.
                     I nagle wszystkie troski znikają,
-                    a myśli spokojnie odpoczywają.
+                    A myśli spokojnie odpoczywają.
                     Letni dzień na łące to skarb prawdziwy,
-                    co w pamięci zostaje na długie niwy.
+                    Co w pamięci zostaje na długie niwy.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Wysokie szczyty w chmurach toną,
-                    a niżej lasy zielenią koroną.
+                    A niżej lasy zielenią koroną.
                     Strome zbocza pokryte głazami,
-                    gdzie orzeł krąży nad nami.
+                    Gdzie orzeł krąży nad nami.
                     Potok spływa z hukiem po skałach,
-                    jak srebrna wstęga w górskich chwałach.
+                    Jak srebrna wstęga w górskich chwałach.
                     Woda zimna, czysta, bystra,
-                    a w niej pstrągi, co migają jak iskra.
+                    A w niej pstrągi, co migają jak iskra.
                     Ścieżka wije się między turniami,
-                    a przewodnik idzie z nami.
+                    A przewodnik idzie z nami.
                     Plecak ciężki, ale serce lekkie,
-                    bo widoki piękne i dalekie.
+                    Bo widoki piękne i dalekie.
                     Na przełęczy wiatr mocno wieje,
-                    a w dole wioska cicho się śmieje.
+                    A w dole wioska cicho się śmieje.
                     Chmury płyną pod stopami,
-                    a słońce gra złotymi promieniami.
+                    A słońce gra złotymi promieniami.
                     Tu czuje się wolność i przestrzeń,
-                    każdy krok to nowa pieśń.
+                    Każdy krok to nowa pieśń.
                     Górskie kwiaty na halach kwitną,
-                    a owce skubią trawę błękitną.
+                    A owce skubią trawę błękitną.
                     Dzwonki ich dzwonią w oddali,
-                    a mgły się snują po dolinie dalej.
+                    A mgły się snują po dolinie dalej.
                     Wieczorem niebo pełne gwiazd,
-                    a księżyc wstaje spoza jazd.
+                    A księżyc wstaje spoza jazd.
                     Ognisko strzela iskrami w górę,
-                    a my śpiewamy pod chmurę.
+                    A my śpiewamy pod chmurę.
                     W górach czas inaczej płynie,
-                    tu każdy problem w dolinie zginie.
+                    Tu każdy problem w dolinie zginie.
                     Bo góry uczą pokory i siły,
-                    i dają spokój, co jest miły.
+                    I dają spokój, co jest miły.
                     Warto więc ruszyć na górski szlak,
-                    gdzie wiatr i słońce wyryły znak.
+                    Gdzie wiatr i słońce wyryły znak.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Morze o świcie budzi się powoli,
-                    fale szepczą cicho, niosąc zapach soli.
+                    Fale szepczą cicho, niosąc zapach soli.
                     Złote słońce wstaje ponad wodą,
-                    malując niebo różową pogodą.
+                    Malując niebo różową pogodą.
                     Mewy krzyczą radośnie nad falami,
-                    kołują nad morzem, szukają rybami.
+                    Kołują nad morzem, szukają rybami.
                     Piaszczysta plaża ciągnie się daleko,
-                    a na niej muszle leżą cicho, lekko.
+                    A na niej muszle leżą cicho, lekko.
                     Każda fala coś nowego przynosi,
-                    o spokój i ciszę cicho prosi.
+                    O spokój i ciszę cicho prosi.
                     Idę boso po mokrym piasku,
-                    a woda chłodzi stopy w blasku.
+                    A woda chłodzi stopy w blasku.
                     Ślady stóp znikają w mgnieniu fali,
-                    bo morze je delikatnie w dali.
+                    Bo morze je delikatnie w dali.
                     Rybacy wypływają w morze głębokie,
-                    sieci zarzucają w fale szerokie.
+                    Sieci zarzucają w fale szerokie.
                     Ich łodzie kołyszą się na fali,
-                    a oni śpiewają w oddali.
+                    A oni śpiewają w oddali.
                     Słońce wspina się po błękicie,
-                    światło tańczy na wodzie obficie.
+                    Światło tańczy na wodzie obficie.
                     Błękit nieba łączy się z morzem,
-                    na horyzoncie tworząc jedno łoże.
+                    Na horyzoncie tworząc jedno łoże.
                     Popołudnie mija na złotej plaży,
-                    wiatr delikatnie fale gładzi.
+                    Wiatr delikatnie fale gładzi.
                     Dzieci budują zamki z piasku,
-                    a ich śmiech niesie się w brzasku.
+                    A ich śmiech niesie się w brzasku.
                     Wieczorem słońce zachodzi powoli,
-                    niebo czerwienią się wokół gwoli.
+                    Niebo czerwienią się wokół gwoli.
                     Fale ciemnieją, szumią spokojnie,
-                    a księżyc wstaje na niebie strojnie.
+                    A księżyc wstaje na niebie strojnie.
                     Morze w noc szepce tajemnice stare,
-                    o podróżach, przygodach i morskiej wiarze.
+                    O podróżach, przygodach i morskiej wiarze.
                     Każdy, kto słucha, usłyszy wieści,
-                    co serce koi i w duszy ma treści.
+                    Co serce koi i w duszy ma treści.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Jesienny wiatr po polach wieje,
-                    słońce nisko już się śmieje.
+                    Słońce nisko już się śmieje.
                     Złote liście spadają z drzew,
-                    a w oddali słychać ptaków śpiew.
+                    A w oddali słychać ptaków śpiew.
                     W sadach jabłka już dojrzały,
-                    dzieci zrywają je przez dzień cały.
+                    Dzieci zrywają je przez dzień cały.
                     Na polach dynie pomarańczowe,
-                    a w ogrodach astry fioletowe.
+                    A w ogrodach astry fioletowe.
                     Pełne kosze grzybów w lesie,
-                    zbieracz z uśmiechem do domu niesie.
+                    Zbieracz z uśmiechem do domu niesie.
                     Jesień w parku mieni się kolorami,
-                    kasztany spadają pod nogami.
+                    Kasztany spadają pod nogami.
                     Spacer wśród liści to zabawa,
-                    kasztany w kieszeni to podstawa.
+                    Kasztany w kieszeni to podstawa.
                     Słońce świeci ciepło jeszcze czasem,
-                    a liście tańczą z wiatrem basem.
+                    A liście tańczą z wiatrem basem.
                     Wieczorem mgła nad łąką siada,
-                    a księżyc srebrny zza chmur wygląda.
+                    A księżyc srebrny zza chmur wygląda.
                     Jesień to czas zbiorów i radości,
-                    pełno kolorów, ciepła w gości.
+                    Pełno kolorów, ciepła w gości.
                     Ptaki odlatują w dalekie strony,
-                    a my zostajemy, ciesząc się plony.
+                    A my zostajemy, ciesząc się plony.
                     Jesień w sadzie pachnie jabłkami,
-                    a w spiżarni słoiki z przetworami.
+                    A w spiżarni słoiki z przetworami.
                     Dzieci zbierają liście kolorowe,
-                    tworzą bukiety piękne i zdrowe.
+                    Tworzą bukiety piękne i zdrowe.
                     W parku alejka złotem usłana,
-                    a na ławce starsza pani roześmiana.
+                    A na ławce starsza pani roześmiana.
                     Jesień to czas spokoju i wytchnienia,
-                    po letnich upałach, pełna natchnienia.
+                    Po letnich upałach, pełna natchnienia.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Zimowy poranek cicho budzi las ze snu,
-                    słońce wstaje, choć jeszcze mroźno tu.
+                    Słońce wstaje, choć jeszcze mroźno tu.
                     Śnieg iskrzy się jak gwiazdy w oddali,
-                    a ja brodzę po białej, miękkiej fali.
+                    A ja brodzę po białej, miękkiej fali.
                     Ptaki milczą, tylko lekki wiatr śpiewa,
-                    i delikatnie muska czubki drzewa.
+                    I delikatnie muska czubki drzewa.
                     Idę ścieżką, która ginie w dali,
-                    a śnieg pod stopami cicho się żali.
+                    A śnieg pod stopami cicho się żali.
                     W oddali dzięcioł robi stuk,
-                    to dzięcioł robi w drewnie huk.
+                    To dzięcioł robi w drewnie huk.
                     Pod stopami śnieg cicho chrzęści,
-                    a ja idę, nie zważając na części.
+                    A ja idę, nie zważając na części.
                     Las zimą to królestwo bieli,
-                    gdzie każdy zakątek radością się dzieli.
+                    Gdzie każdy zakątek radością się dzieli.
                     Słońce chowa się za górskim szczytem,
-                    a niebo barwi się wieczornym bytem.
+                    A niebo barwi się wieczornym bytem.
                     Wracam do domu z uśmiechem na twarzy,
-                    a las za mną w ciszy marzy.
+                    A las za mną w ciszy marzy.
                     I choć zimno, serce moje grzeje,
-                    bo piękno lasu we mnie się śmieje.
+                    Bo piękno lasu we mnie się śmieje.
                     Wrócę tu jutro, gdy świt nastanie,
-                    by znów poczuć to zimowe czekanie.
+                    By znów poczuć to zimowe czekanie.
                     Przyroda w zimie nie jest uśpiona,
-                    tylko cicho odpoczywa zielona.
+                    Tylko cicho odpoczywa zielona.
                     I uczy nas, że cisza to siła,
-                    a spokój w sercu jest jak miła.
+                    A spokój w sercu jest jak miła.
                     Więc chodź do lasu w zimowy czas,
-                    a znajdziesz spokój i radość w sam raz.
+                    A znajdziesz spokój i radość w sam raz.
                     Zimowe słońce nisko świeci,
-                    i złote blaski na śniegu nieci.
+                    I złote blaski na śniegu nieci.
                     Dzieci lepią bałwana wesoło,
-                    i biegają po śniegu wokoło.
+                    I biegają po śniegu wokoło.
                     Wieczorem przy kominku ciepło gra,
-                    a za oknem biała mgła.
+                    A za oknem biała mgła.
                     I tak mija zimowy czas,
-                    a my siedzimy razem, nie sami, wśród nas.
+                    A my siedzimy razem, nie sami, wśród nas.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Na morzu spokojnym fale lekko drgają,
-                    a mewy nad wodą radośnie wołają.
+                    A mewy nad wodą radośnie wołają.
                     Słońce świeci złote, niebo jest bez chmur,
-                    a ja stoję na piasku, patrząc w przestwór.
+                    A ja stoję na piasku, patrząc w przestwór.
                     Woda muska brzeg, jakby chciała coś rzec,
-                    i zostawia muszle, co błyszczą jak mlecz.
+                    I zostawia muszle, co błyszczą jak mlecz.
                     Zbieram je do kosza, każdą po kolei,
-                    bo każda jest inna, choć z tej samej fali.
+                    Bo każda jest inna, choć z tej samej fali.
                     Rybacy wypływają, śpiewając pieśń starą,
-                    a wiatr im wtóruje, niosąc ją za parą.
+                    A wiatr im wtóruje, niosąc ją za parą.
                     Ich łodzie się kołyszą na błękitnej fali,
-                    i nikną powoli w słonecznej oddali.
+                    I nikną powoli w słonecznej oddali.
                     Dzieci biegają po mokrym piasku,
-                    a śmiech ich dzwoni w słonecznym blasku.
+                    A śmiech ich dzwoni w słonecznym blasku.
                     Budują zamki, kopią głębokie doły,
-                    i skaczą przez fale, jak małe anioły.
+                    I skaczą przez fale, jak małe anioły.
                     Wieczorem słońce chyli się ku morzu,
-                    i maluje niebo w różanym kolorze.
+                    I maluje niebo w różanym kolorze.
                     Fale ciemnieją, szumią coraz ciszej,
-                    a ja słucham, jak morze oddycha w ciszy.
+                    A ja słucham, jak morze oddycha w ciszy.
                     Wracam do domu, niosąc muszle w dłoni,
-                    i czuję, jak serce spokojem dzwoni.
+                    I czuję, jak serce spokojem dzwoni.
                     Morze dało mi radość i ukojenie,
-                    i w duszy zostawiło piękne wspomnienie.
+                    I w duszy zostawiło piękne wspomnienie.
                     Wrócę tu jutro, by znów usiąść na brzegu,
-                    i patrzeć, jak fale płyną w swoim biegu.
+                    I patrzeć, jak fale płyną w swoim biegu.
                     Bo morze to skarb, co nigdy nie zginie,
-                    i w każdym z nas żyje, jak woda w głębinie.
+                    I w każdym z nas żyje, jak woda w głębinie.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Rzeka o poranku lśni jak srebrny szlak,
-                    płynie przez łąki, gdzie rośnie mak.
+                    Płynie przez łąki, gdzie rośnie mak.
                     Fale jej tańczą wesoło,
-                    odbijają niebo wokoło.
+                    Odbijają niebo wokoło.
                     Kamienie na dnie gładkie i lśniące,
-                    woda je muska, fale tańczące.
+                    Woda je muska, fale tańczące.
                     Rybki mkną jak błyskawice,
-                    w trzcinach chowają swe tajemnice.
+                    W trzcinach chowają swe tajemnice.
                     Nad brzegiem wierzba zielone wianki,
-                    wiatr jej gałęzie gładzi od ranka.
+                    Wiatr jej gałęzie gładzi od ranka.
                     Ptaki śpiewają w koronie drzew,
-                    a ja słucham ich leśny śpiew.
+                    A ja słucham ich leśny śpiew.
                     Rzeka uczy spokoju i cierpliwości,
-                    płynie przed siebie, nie zazdrości.
+                    Płynie przed siebie, nie zazdrości.
                     Przeszkody omija z gracją,
-                    a my uczymy się tej lekcji z racją.
+                    A my uczymy się tej lekcji z racją.
                     Gdy latem słońce mocno grzeje,
-                    rzeka daje ochłodę i nadzieję.
+                    Rzeka daje ochłodę i nadzieję.
                     Dzieci pluskają się w płytkiej wodzie,
-                    śmieją się, brodzą, w słońca pogodzie.
+                    Śmieją się, brodzą, w słońca pogodzie.
                     Rzeka prowadzi mnie w dalekie strony,
-                    gdzie lasy szumią i kwitną jabłonie.
+                    Gdzie lasy szumią i kwitną jabłonie.
                     Płynę myślami po jej fali,
-                    a serce raduje się, nic nie oddali.
+                    A serce raduje się, nic nie oddali.
                     Jaskółki nad wodą szybują nisko,
-                    a ich lot jest piękny i blisko.
+                    A ich lot jest piękny i blisko.
                     Wieczorna rosa na trawie lśni,
-                    a ja czuję spokój w sercu, nie sny.
+                    A ja czuję spokój w sercu, nie sny.
                     Wieczorem, gdy księżyc lśni na niebie,
-                    rzeka srebrzyście błyszczy dla ciebie.
+                    Rzeka srebrzyście błyszczy dla ciebie.
                     Świetliki tańczą nad brzegiem,
-                    a ja wracam do domu biegiem.
+                    A ja wracam do domu biegiem.
                     Serce mam lekkie, pełne wdzięczności,
-                    za dar rzeki i jej mądrości.
+                    Za dar rzeki i jej mądrości.
                     Wrócę tu jutro, by znowu posłuchać,
-                    jak woda śpiewa i uczy słuchać.
+                    Jak woda śpiewa i uczy słuchać.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Przyjaźń to skarb, co w sercu zostaje,
-                    gdy wracam myślą w rodzinne kraje.
+                    Gdy wracam myślą w rodzinne kraje.
                     Tam nad strumieniem biegliśmy boso,
-                    a słońce w wodzie błyszczało rosą.
+                    A słońce w wodzie błyszczało rosą.
                     Zbieraliśmy kamyki na brzegu rzeki,
-                    budowali tamy, aż po kolana w biegu.
+                    Budowali tamy, aż po kolana w biegu.
                     Śmiech nasz niósł się po łące zielonej,
-                    gdy goniliśmy motyle szalonej.
+                    Gdy goniliśmy motyle szalonej.
                     W chmurach szukaliśmy kształtów różnych,
-                    leżąc na trawie, wśród szumów próżnych.
+                    Leżąc na trawie, wśród szumów próżnych.
                     Kiedy deszcz złapał nas na drodze,
-                    dzieliliśmy się kurtką w niepogodzie.
+                    Dzieliliśmy się kurtką w niepogodzie.
                     Pod jednym drzewem czekaliśmy razem,
-                    aż burza przeszła z hukiem i wrzaskiem.
+                    Aż burza przeszła z hukiem i wrzaskiem.
                     Potem w kałużach skakaliśmy w deszczu,
-                    bo przyjaźń radość daje w tym dreszczu.
+                    Bo przyjaźń radość daje w tym dreszczu.
                     W szkolnej ławce siedzieliśmy blisko,
-                    pomagaliśmy sobie zawsze wszystko.
+                    Pomagaliśmy sobie zawsze wszystko.
                     Ty rysowałeś, ja pisałem litery,
-                    wspólnie tworzyliśmy różne maniery.
+                    Wspólnie tworzyliśmy różne maniery.
                     Po latach wciąż o sobie pamiętamy,
-                    choć różne drogi nas powołały znane.
+                    Choć różne drogi nas powołały znane.
                     W sercu je nosimy z radością,
-                    i w rozmowach do nich wracamy z miłością.
+                    I w rozmowach do nich wracamy z miłością.
                     Przyjaźń to most, co łączy na lata,
-                    i nie zniszczy go żadna wichura świata.
+                    I nie zniszczy go żadna wichura świata.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Miłość to czułość, co w sercu gości,
-                    i dodaje skrzydeł do radości.
+                    I dodaje skrzydeł do radości.
                     Miłość to ogień, co grzeje dłonie,
-                    i chroni przed chłodem w każdej stronie.
+                    I chroni przed chłodem w każdej stronie.
                     Miłość to wierność, co nie przemija,
-                    i z każdym dniem mocniej nas spija.
+                    I z każdym dniem mocniej nas spija.
                     Miłość to zrozumienie bez słów,
-                    i wspólne patrzenie w przyszłość znów.
+                    I wspólne patrzenie w przyszłość znów.
                     Miłość to śmiech, co łzy osusza,
-                    i w sercu zamieszkuje jak dusza.
+                    I w sercu zamieszkuje jak dusza.
                     Miłość to dotyk, co daje pewność,
-                    i wypełnia sobą całą rzeczywistość.
+                    I wypełnia sobą całą rzeczywistość.
                     Miłość to wsparcie w każdej potrzebie,
-                    i chleb powszedni na wspólnym niebie.
+                    I chleb powszedni na wspólnym niebie.
                     Miłość to wierny kompan podróży,
-                    co nigdy się nie nudzi i nie dłuży.
+                    Co nigdy się nie nudzi i nie dłuży.
                     Miłość to piękno, co z czasem rośnie,
-                    i kwitnie w sercach jak wiosną wiośnie.
+                    I kwitnie w sercach jak wiosną wiośnie.
                     Miłość to skarb, co się nie wyczerpie,
-                    i w każdym geście się rozpościera.
+                    I w każdym geście się rozpościera.
                     Miłość to obietnica na długie lata,
-                    co w sercu trwa, nie zna końca świata.
+                    Co w sercu trwa, nie zna końca świata.
                     Miłość to dom, do którego wracamy,
-                    i w nim spokój znajdujemy, znamy.
+                    I w nim spokój znajdujemy, znamy.
                     Miłość to spokojny port w czasie burzy,
-                    co daje siłę, by przetrwać najdłużej.
+                    Co daje siłę, by przetrwać najdłużej.
                     Miłość to wierna gwiazda na niebie,
-                    co prowadzi do celu i chroni ciebie.
+                    Co prowadzi do celu i chroni ciebie.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Z lat dziecinnych w sercu radość gości,
-                    tam nasza łąka i śmiech w całości.
+                    Tam nasza łąka i śmiech w całości.
                     Budowaliśmy tamy na strumieniu,
-                    w słońcu i deszczu, w każdym cieniu.
+                    W słońcu i deszczu, w każdym cieniu.
                     W chmurach szukaliśmy kształtów różnych,
-                    leżąc na trawie, wśród marzeń próżnych.
+                    Leżąc na trawie, wśród marzeń próżnych.
                     Dzieliliśmy się kanapką i snem,
-                    i każdy dzień był wspólnym dniem.
+                    I każdy dzień był wspólnym dniem.
                     Gdy deszcz nas złapał, biegliśmy w dal,
-                    i żaden z nas nie czuł wtedy żal.
+                    I żaden z nas nie czuł wtedy żal.
                     W szkolnej ławce siedzieliśmy blisko,
-                    i pomagaliśmy sobie wszystko.
+                    I pomagaliśmy sobie wszystko.
                     Ty rysowałeś, ja pisałem wiersze,
-                    i razem tworzyliśmy światy szersze.
+                    I razem tworzyliśmy światy szersze.
                     Po lekcjach graliśmy w piłkę za szkołą,
-                    i gnaliśmy przed siebie wesoło.
+                    I gnaliśmy przed siebie wesoło.
                     Czasami kłóciliśmy się o głupstwo małe,
-                    ale zaraz wracał śmiech i słońce całe.
+                    Ale zaraz wracał śmiech i słońce całe.
                     Zimą lepiliśmy bałwana na śniegu,
-                    i zjeżdżaliśmy z górki w szybkim biegu.
+                    I zjeżdżaliśmy z górki w szybkim biegu.
                     Wiosną puszczaliśmy łódki po wodzie,
-                    i cieszyliśmy się w słońca pogodzie.
+                    I cieszyliśmy się w słońca pogodzie.
                     Pamiętam zapach pieczonych ziemniaków,
-                    i nasze wyprawy do leśnych krzaków.
+                    I nasze wyprawy do leśnych krzaków.
                     Zbieraliśmy jagody do blaszanych kubków,
-                    a potem jedliśmy je w cieniu dębów.
+                    A potem jedliśmy je w cieniu dębów.
                     Dziś odległość między nami, lecz serca bliskie,
-                    jak dawniej ufne, szczere i czyste.
+                    Jak dawniej ufne, szczere i czyste.
                     Przyjaciel z dzieciństwa to skarb bezcenny,
-                    co przetrwa wszystko, jest niezmienny.
+                    Co przetrwa wszystko, jest niezmienny.
                     W sercu noszę te chwile jak klejnot,
-                    i wiem, że przyjaźń to życia splot.
+                    I wiem, że przyjaźń to życia splot.
                     Choć los nas rzucił w różne strony świata,
-                    przyjaźń zostaje jak dawna data.
+                    Przyjaźń zostaje jak dawna data.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Piraci na morzu wesoło śpiewają,
-                    bo wiatr im sprzyja, fale się kłaniają.
+                    Bo wiatr im sprzyja, fale się kłaniają.
                     Na horyzoncie wyspa się wyłania,
-                    tam skarb ukryty, to ich powołania.
+                    Tam skarb ukryty, to ich powołania.
                     Kapitan trzyma mapę w ręce drżącej,
-                    i patrzy przez lunetę w dal gorącej.
+                    I patrzy przez lunetę w dal gorącej.
                     Załoga wiosłuje w rytmie piosenki,
-                    a mewy im wtórzą, robiąc uniki.
+                    A mewy im wtórzą, robiąc uniki.
                     Gdy dotarli do brzegu, piasek złocisty,
-                    palmy wysokie, cień cienisty.
+                    Palmy wysokie, cień cienisty.
                     Kopią głęboko, szukają skrzyni,
-                    słońce im świeci, nikt się nie chyli.
+                    Słońce im świeci, nikt się nie chyli.
                     Łopata uderza w wieko z łoskotem,
-                    a serca biją szybciej z powrotem.
+                    A serca biją szybciej z powrotem.
                     Otwierają wieko, blask ich oślepia,
-                    złoto i perły, radość się krzepia.
+                    Złoto i perły, radość się krzepia.
                     Dzielą się łupem sprawiedliwie, zgodnie,
-                    bo przyjaźń ważniejsza niż skarby przytulnie.
+                    Bo przyjaźń ważniejsza niż skarby przytulnie.
                     Wracają na statek, śpiewając wesoło,
-                    a morze ich niesie w daleką stronę.
+                    A morze ich niesie w daleką stronę.
                     Piracka przygoda to nie tylko złoto,
-                    lecz wspólne chwile, co dają ochotę.
+                    Lecz wspólne chwile, co dają ochotę.
                     Gdy słońce zachodzi, oni wciąż płyną,
-                    i nowe przygody przed nimi się winą.
+                    I nowe przygody przed nimi się winą.
                     A morze szepce im pieśń o wolności,
-                    i uczy, że skarbem są przyjaźni włości.
+                    I uczy, że skarbem są przyjaźni włości.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Wikingowie wyruszyli w morze szerokie,
-                    wiatr w żaglach dętych, fale głębokie.
+                    Wiatr w żaglach dętych, fale głębokie.
                     Długa łódź niesie ich przez morskie dale,
-                    a oni śpiewają o chwale i chwały.
+                    A oni śpiewają o chwale i chwały.
                     Każdy z nich silny, odważny i śmiały,
-                    ramię przy ramieniu, jak bracia wspaniali.
+                    Ramię przy ramieniu, jak bracia wspaniali.
                     Na dziobie rzeźbiony smok się unosi,
-                    i przed niebezpieczeństwem ich w drodze wyprosi.
+                    I przed niebezpieczeństwem ich w drodze wyprosi.
                     Po wielu dniach ujrzeli ląd zielony,
-                    brzeg skalisty, lasami zielony.
+                    Brzeg skalisty, lasami zielony.
                     Przybili do brzegu, rzucili kotwice,
-                    radość w ich sercach, bo nowe ziemice.
+                    Radość w ich sercach, bo nowe ziemice.
                     Zbudowali obóz, rozpalili ognisko,
-                    i snuli opowieści, aż gwiazdy zabłysną.
+                    I snuli opowieści, aż gwiazdy zabłysną.
                     Polowali w lasach, łowili ryby w morzu,
-                    i odkrywali rzeki w górskim przestworzu.
+                    I odkrywali rzeki w górskim przestworzu.
                     Znaleźli dolinę, gdzie zboże rodziło,
-                    i źródło słodkie, co pragnienie chłodziło.
+                    I źródło słodkie, co pragnienie chłodziło.
                     Postanowili osiąść, domy budować,
-                    i nową osadę wspólnie kształtować.
+                    I nową osadę wspólnie kształtować.
                     Pracowali razem, każdy z ochotą,
-                    bo wspólny cel dawał siłę i cnotę.
+                    Bo wspólny cel dawał siłę i cnotę.
                     Wieczorem śpiewali pieśni o domach,
-                    i o dalekich, porzuconych stronach.
+                    I o dalekich, porzuconych stronach.
                     Lecz nie żałowali swojej wyprawy,
-                    bo wolność im była jak powiew trawy.
+                    Bo wolność im była jak powiew trawy.
                     Nauczyli się żyć w zgodzie z naturą,
-                    i szanować las, rzekę i górę.
+                    I szanować las, rzekę i górę.
                     Wikingowie to lud twardy, lecz prawy,
-                    co szukał szczęścia wśród morskiej sprawy.
+                    Co szukał szczęścia wśród morskiej sprawy.
                     Ich serca biły mocno, odważnie,
-                    i w przyjaźni trwali nieprzerwanie.
+                    I w przyjaźni trwali nieprzerwanie.
                     A gdy wracali myślą do rodzinnych brzegów,
-                    wiedzieli, że zostawili ślad wśród śniegów.
+                    Wiedzieli, że zostawili ślad wśród śniegów.
                     Bo życie to podróż, a nie tylko meta,
-                    i każdy dzień nową przygodę wita.
+                    I każdy dzień nową przygodę wita.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Wikingowie na drakkarze w morze wyruszają,
-                    wiatr im w żagle dmie, fale się kłaniają.
+                    Wiatr im w żagle dmie, fale się kłaniają.
                     Smok na dziobie lśni, oczy mu płoną,
-                    załoga śpiewa pieśń uniesioną.
+                    Załoga śpiewa pieśń uniesioną.
                     Płyną dni i noce, przez mgły i przez burze,
-                    aż widzą przed sobą zielone wzgórze.
+                    Aż widzą przed sobą zielone wzgórze.
                     Ląd nieznany, dziki, lecz piękny i czysty,
-                    a załoga z drakkara skacze na brzeg piaszczysty.
+                    A załoga z drakkara skacze na brzeg piaszczysty.
                     Budują domy z drewna i kamieni,
-                    i żyją spokojnie pośród leśnej zieleni.
+                    I żyją spokojnie pośród leśnej zieleni.
                     Polują, łowią ryby, zbierają jagody,
-                    i cieszą się razem z każdej pogody.
+                    I cieszą się razem z każdej pogody.
                     Wieczorem przy ogniu opowiadają sagi,
-                    i śmieją się głośno, każdy jest odważny.
+                    I śmieją się głośno, każdy jest odważny.
                     Dzieci uczą się rzemiosła i tańca,
-                    a dorośli im przygrywają do końca.
+                    A dorośli im przygrywają do końca.
                     Gdy zima nadchodzi, biała i sroga,
-                    trzymają się razem, to ich droga.
+                    Trzymają się razem, to ich droga.
                     Dzielą się jedzeniem, ciepłem i chlebem,
-                    i wesoło płynie im czas pod niebem.
+                    I wesoło płynie im czas pod niebem.
                     Wiosną znów wychodzą na morskie szlaki,
-                    by handlować, poznawać nowe znaki.
+                    By handlować, poznawać nowe znaki.
                     Wracają z darami, z opowieścią barwną,
-                    a ich twarze jaśnieją radością jawną.
+                    A ich twarze jaśnieją radością jawną.
                     Bo wiking to nie tylko wojownik groźny,
-                    lecz także przyjaciel szczery i możny.
+                    Lecz także przyjaciel szczery i możny.
                     Kocha morze, las i górskie szczyty,
-                    i szanuje dom, co jest rozbity.
+                    I szanuje dom, co jest rozbity.
                     Gdy patrzy w gwiazdy, widzi drogę w dali,
-                    i serce mu bije, radość się pali.
+                    I serce mu bije, radość się pali.
                     Wikingowie w sercu noszą odwagę,
-                    i wspólnie tworzą zgraną załogę.
+                    I wspólnie tworzą zgraną załogę.
                     A kiedy wracają do rodzinnych stron,
-                    śpiewają pieśń, co płynie jak dzwon.
+                    Śpiewają pieśń, co płynie jak dzwon.
                     Niech ta opowieść doda ci wiary,
-                    i przypomni, że wspólna siła to dary.
+                    I przypomni, że wspólna siła to dary.
                     Bo nawet na morzu, wśród wichrów i fal,
-                    z przyjaciółmi łatwiej pokonasz żal.
+                    Z przyjaciółmi łatwiej pokonasz żal.
                     Więc śmiało naprzód, z pieśnią na ustach,
-                    a przyjaźń doda ci sił w trudach.
+                    A przyjaźń doda ci sił w trudach.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Samuraj o świcie miecz swój podnosi,
-                    w ciszy ogrodu o spokój prosi.
+                    W ciszy ogrodu o spokój prosi.
                     Ruchy ma pewne, oddech miarowy,
-                    każdy krok stawia jak taniec nowy.
+                    Każdy krok stawia jak taniec nowy.
                     Lśniąca stal w słońcu błysk posyła,
-                    a w sercu wojownika siła miła.
+                    A w sercu wojownika siła miła.
                     Droga, którą idzie, ciernista bywa,
-                    lecz cierpliwość w trudach go nie omija.
+                    Lecz cierpliwość w trudach go nie omija.
                     Mistrz go uczył latami wytrwale,
-                    jak trzymać miecz i stąpać po skale.
+                    Jak trzymać miecz i stąpać po skale.
                     Ważna jest karność, szacunek i honor,
-                    i żeby serce nie stało się słabe.
+                    I żeby serce nie stało się słabe.
                     Ćwiczy codziennie, zanim świt wstanie,
-                    bo doskonałość rodzi się w ranie.
+                    Bo doskonałość rodzi się w ranie.
                     Nie chodzi o walkę, lecz o moc ducha,
-                    co w chwilach próby innych wysłucha.
+                    Co w chwilach próby innych wysłucha.
                     Samuraj pomaga słabszym w potrzebie,
-                    i dzieli się chlebem, gdy widzi biedę.
+                    I dzieli się chlebem, gdy widzi biedę.
                     Wioska go ceni, dzieci pozdrawiają,
-                    a starcy rady u niego szukają.
+                    A starcy rady u niego szukają.
                     Wieczorem siada nad cichym stawem,
-                    i myśli o życiu jakby nad trawą.
+                    I myśli o życiu jakby nad trawą.
                     Karpie w wodzie kręgi zataczają,
-                    jakby z samurajem w ciszy się zgadzały.
+                    Jakby z samurajem w ciszy się zgadzały.
                     W pełni księżyca, gdy sady srebrnieją,
-                    wojownik wraca do chaty, gdzie grzeją.
+                    Wojownik wraca do chaty, gdzie grzeją.
                     Sączy herbatę, patrzy w żar ogniska,
-                    i cieszy się, że dom jest blisko.
+                    I cieszy się, że dom jest blisko.
                     Rano wyrusza znów na trening,
-                    bo droga wojownika to nie progi, ni lenik.
+                    Bo droga wojownika to nie progi, ni lenik.
                     Każdy dzień nową lekcję przynosi,
-                    a serce spokojnie się unosi.
+                    A serce spokojnie się unosi.
                     Samuraj wie, że prawdziwa siła
-                    to nie ta, co wrogów pokona, lecz miła.
+                    To nie ta, co wrogów pokona, lecz miła.
                     To umiejętność, by drugim pomagać,
-                    i nigdy w gniewie na bliźnich nie nagać.
+                    I nigdy w gniewie na bliźnich nie nagać.
                     Kto zrozumie tę prawdę w swej głowie,
-                    ten jak samuraj w spokoju się zowie.
+                    Ten jak samuraj w spokoju się zowie.
                     Więc ćwicz wytrwale, ucz się co rano,
-                    a zdobędziesz ducha, co sercu jest dano.
+                    A zdobędziesz ducha, co sercu jest dano.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     W neonowym mieście, gdzie noce jasne,
-                    młody koder marzy, by serca były własne.
+                    Młody koder marzy, by serca były własne.
                     Kable jak wstęgi oplatają mury,
-                    a drony niosą paczki do góry.
+                    A drony niosą paczki do góry.
                     Ludzie w pośpiechu mkną przez aleje,
-                    lecz on nie ucieka, on działa i śmieje.
+                    Lecz on nie ucieka, on działa i śmieje.
                     Buduje programy, co łączą ludzi,
-                    i w sercach radość na nowo budzi.
+                    I w sercach radość na nowo budzi.
                     Sztuczna inteligencja uczy się od niego,
-                    jak pomagać innym, bez zysku żadnego.
+                    Jak pomagać innym, bez zysku żadnego.
                     W parkach sadzi drzewa, choć beton wokoło,
-                    a przyjaciele idą z nim wesoło.
+                    A przyjaciele idą z nim wesoło.
                     Razem malują murale na ścianach,
-                    a farba im ścieka po dłoniach.
+                    A farba im ścieka po dłoniach.
                     Wieczorem na dachu puszczają latawce,
-                    a wiatr im śpiewa w rytm i w tańce.
+                    A wiatr im śpiewa w rytm i w tańce.
                     Neonowe światła tańczą na wietrze,
-                    a ich śmiech płynie w dal, w przestworze.
+                    A ich śmiech płynie w dal, w przestworze.
                     Ktoś powie, że jutro to mrok i cień,
-                    lecz oni widzą w nim nowy dzień.
+                    Lecz oni widzą w nim nowy dzień.
                     Technologia służy, gdy serce czyste,
-                    i buduje mosty, nie mury oczywiste.
+                    I buduje mosty, nie mury oczywiste.
                     A gdy ktoś zgubi się w cyfrowej mgle,
-                    przyjaciel poda rękę, nie zostawi w zle.
+                    Przyjaciel poda rękę, nie zostawi w zle.
                     Razem znajdą światło wśród kabli i drga,
-                    i zbudują dom, gdzie radość gra.
+                    I zbudują dom, gdzie radość gra.
                     Więc śnij o jutrze w neonowym śnie,
-                    i twórz świat lepszy dla siebie i mnie.
+                    I twórz świat lepszy dla siebie i mnie.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Rankiem w starożytnym Rzymie słońce jasno wstaje,
-                    złote promienie na całe forum hojnie rozdaje.
+                    Złote promienie na całe forum hojnie rozdaje.
                     Zewsząd ludzie się schodzą, handel rozpoczynają,
-                    kupcy z oliwkami i winem głośno zachwalają.
+                    Kupcy z oliwkami i winem głośno zachwalają.
                     Obok garncarz stawia dzbany z gliny na ławie,
-                    każdy jest piękny, nie ma w nich żadnej wady prawie.
+                    Każdy jest piękny, nie ma w nich żadnej wady prawie.
                     Przechodzi legionista w lśniącej zbroi po drodze,
-                    po długiej wojnie do domu wraca w spokoju i zgodzie.
+                    Po długiej wojnie do domu wraca w spokoju i zgodzie.
                     Przyjaciele witają go z wielką radością,
-                    dzielą się z nim chlebem, winem i opowieścią.
+                    Dzielą się z nim chlebem, winem i opowieścią.
                     W termach woda chłodzi zmęczone ciała przyjemnie,
-                    wieczorem uczta, co radość dawała niezmiennie.
+                    Wieczorem uczta, co radość dawała niezmiennie.
                     Młody uczeń słucha uważnie mistrza rady,
-                    jak budować mosty, drogi, akwedukty i ogrody.
+                    Jak budować mosty, drogi, akwedukty i ogrody.
                     Dzieci w ogrodzie gonią barwne ptaki wesoło,
-                    a ich śmiech niesie się przez wszystkie krzaki wokoło.
+                    A ich śmiech niesie się przez wszystkie krzaki wokoło.
                     Kobiety plotą wianki z róż i bluszczu przy fontannie,
-                    przy plusku wody rozmawiają o życiu nienagannie.
+                    Przy plusku wody rozmawiają o życiu nienagannie.
                     Wieczór nadchodzi, niebo robi się fioletowe,
-                    gwiazdy błyszczą na nim jak klejnoty zupełnie nowe.
+                    Gwiazdy błyszczą na nim jak klejnoty zupełnie nowe.
                     Rzym układa się powoli do spokojnego snu,
-                    księżyc srebrny wschodzi nad miastem, nucąc mu.
+                    Księżyc srebrny wschodzi nad miastem, nucąc mu.
                     I choć minęły stulecia już całe,
-                    miasto to w pieśniach trwa wiecznie wspaniałe.
+                    Miasto to w pieśniach trwa wiecznie wspaniałe.
                     Bo historia Rzymu to skarbiec wspaniały,
-                    pełen mądrości, przyjaźni i chwały.
+                    Pełen mądrości, przyjaźni i chwały.
                     Kamienne ulice niosą echo dawnych lat,
-                    gdy każdy dzień był jak radosny kwiat.
+                    Gdy każdy dzień był jak radosny kwiat.
                     Na wzgórzach wille, a w nich wesołych gości,
-                    wszyscy dzielą się radością i miłości.
+                    Wszyscy dzielą się radością i miłości.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Poranek w greckim mieście słońce złote wita,
-                    a ludzie wychodzą z domów, radość ich chwyta.
+                    A ludzie wychodzą z domów, radość ich chwyta.
                     Na agorze kupcy kramy otwierają,
-                    i owoce, chleb i oliwki sprzedają.
+                    I owoce, chleb i oliwki sprzedają.
                     Rzemieślnik przy warsztacie glinę ugniata,
-                    i piękne dzbany na kole obrabia.
+                    I piękne dzbany na kole obrabia.
                     Ulicą przechodzą uczniowie z tabliczkami,
-                    i powtarzają wiersze, śmiejąc się czasami.
+                    I powtarzają wiersze, śmiejąc się czasami.
                     Na stadionie biegacze szybko mkną po torze,
-                    a tłum ich dopinguje, serca biją w górze.
+                    A tłum ich dopinguje, serca biją w górze.
                     Zapaśnicy na arenie mocują się z siłą,
-                    a sędzia uważnie patrzy, by było miło.
+                    A sędzia uważnie patrzy, by było miło.
                     Rzeźbiarz w cieniu pracuje nad kamieniem,
-                    i nadaje mu kształt z wielkim natchnieniem.
+                    I nadaje mu kształt z wielkim natchnieniem.
                     Młody uczeń uczy się u mistrza cierpliwie,
-                    jak rzeźbić w kamieniu, malować farbami olejnymi.
+                    Jak rzeźbić w kamieniu, malować farbami olejnymi.
                     Rybacy wracają z pełnymi sieciami,
-                    i dzielą się zdobyczą z sąsiadami.
+                    I dzielą się zdobyczą z sąsiadami.
                     Żeglarze wypływają w dalekie podróże,
-                    i wracają z opowieściami, co są duże.
+                    I wracają z opowieściami, co są duże.
                     Kobiety na dachu rozwieszają tkaniny,
-                    co mienią się barwami wśród zielonej krzewiny.
+                    Co mienią się barwami wśród zielonej krzewiny.
                     Dzieci gonią za motylem po łące,
-                    a ich śmiech dzwoni jak srebrne słońce.
+                    A ich śmiech dzwoni jak srebrne słońce.
                     Teatr wypełnia się widzami w chórze,
-                    aktorzy grają, śmiech płynie w górze.
+                    Aktorzy grają, śmiech płynie w górze.
                     Wieczorem wszyscy zasiadają razem,
-                    i cieszą się wspólnym posiłkiem, czasem.
+                    I cieszą się wspólnym posiłkiem, czasem.
                     Przyjaciele rozmawiają o planach i snach,
-                    a morze szumi im do wtóru w falach.
+                    A morze szumi im do wtóru w falach.
                     Słońce powoli chowa się za wzgórza,
-                    a niebo mieni się barwami, jak róża.
+                    A niebo mieni się barwami, jak róża.
                     Gwiazdy pojawiają się na ciemnym niebie,
-                    a księżyc srebrny wschodzi, cieszy ciebie.
+                    A księżyc srebrny wschodzi, cieszy ciebie.
                     Świerszcze grają cicho w wysokiej trawie,
-                    a myśli płyną spokojnie w tej sprawie.
+                    A myśli płyną spokojnie w tej sprawie.
                     I tak kończy się dzień w greckiej krainie,
-                    gdzie radość i przyjaźń nigdy nie zginie.
+                    Gdzie radość i przyjaźń nigdy nie zginie.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Na greckim wzgórzu słońce złote wstaje,
-                    promienie jasne na dolinę daje.
+                    Promienie jasne na dolinę daje.
                     Oliwne gaje srebrzą się o świcie,
-                    a wiatr w gałęziach gra delikatnie, skrycie.
+                    A wiatr w gałęziach gra delikatnie, skrycie.
                     Rybacy w porcie szykują swe sieci,
-                    a śmiech ich niesie się po fali, co leci.
+                    A śmiech ich niesie się po fali, co leci.
                     Dzieci biegają po kamiennych dróżkach,
-                    i chowają kwiaty w małych koszyczkach.
+                    I chowają kwiaty w małych koszyczkach.
                     Na agorze starcy gawędzą wesoło,
-                    i cieszą się życiem wokół.
+                    I cieszą się życiem wokół.
                     Młodzież na stadionie rzuca dyskiem,
-                    a tłum ich podziwia z wielkim uściskiem.
+                    A tłum ich podziwia z wielkim uściskiem.
                     W teatrze wieczorem komedia śmieszy,
-                    a publiczność śmieje się z całych sił, nie spieszy.
+                    A publiczność śmieje się z całych sił, nie spieszy.
                     Dziewczęta plotą wianki z liści laurowych,
-                    i tańczą przy dźwiękach kitar ludowych.
+                    I tańczą przy dźwiękach kitar ludowych.
                     Chłopcy ścigają się po krętych dróżkach,
-                    a radość mieszka na ich młodych twarzach.
+                    A radość mieszka na ich młodych twarzach.
                     Nauczyciel w cieniu uczy geometrii,
-                    i tłumaczy cierpliwie, bez żadnej afery i ironii.
+                    I tłumaczy cierpliwie, bez żadnej afery i ironii.
                     Uczniowie słuchają z otwartymi głowami,
-                    i budują mosty z marzeniami.
+                    I budują mosty z marzeniami.
                     Wieczorem wszyscy siadają do stołu,
-                    i dzielą się chlebem, serem, warzywami pospołu.
+                    I dzielą się chlebem, serem, warzywami pospołu.
                     Opowiadają o podróżach i planach,
-                    a morze szumi im w oddali, jak w tkaninach.
+                    A morze szumi im w oddali, jak w tkaninach.
                     Księżyc wschodzi nad spokojną wodą,
-                    i srebrzy fale łagodną urodą.
+                    I srebrzy fale łagodną urodą.
                     Grecy wracają do swoich domów,
-                    i śnią o nowych dniach pełnych uśmiechów.
+                    I śnią o nowych dniach pełnych uśmiechów.
                     Tu radość mieszka w każdym kamieniu,
-                    i uczy żyć w zgodzie i natchnieniu.
+                    I uczy żyć w zgodzie i natchnieniu.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Stary szaman rankiem w lesie wstaje,
-                    słońce mu promienie w darze daje.
+                    Słońce mu promienie w darze daje.
                     Idzie ścieżką, zioła zbiera w kosz,
-                    każde ziele ma swój dobry los.
+                    Każde ziele ma swój dobry los.
                     Zbiera zioła o poranku,
-                    by przygotować napój w dzbanku.
+                    By przygotować napój w dzbanku.
                     Zna sekrety kwiatów i ziół moc,
-                    jak nieść pomoc w ciemną noc.
+                    Jak nieść pomoc w ciemną noc.
                     Zna mowę ptaków i drzew,
-                    i wsłuchuje się w każdy śpiew.
+                    I wsłuchuje się w każdy śpiew.
                     Bęben szamana cicho wybrzmiewa,
-                    wiatr w gałęziach mu wtórzy, śpiewa.
+                    Wiatr w gałęziach mu wtórzy, śpiewa.
                     Tańczy wokół ogniska z radością,
-                    dzieli się z bliskimi miłością.
+                    Dzieli się z bliskimi miłością.
                     Pomaga ludziom w całej wiosce,
-                    niesie zdrowie w prostej piosce.
+                    Niesie zdrowie w prostej piosce.
                     Dzieci siadają przy nim wieczorem,
-                    a on opowiada z humorem.
+                    A on opowiada z humorem.
                     Jak rzeka uczy spokoju,
-                    i jak ogień dodaje sił w znoju.
+                    I jak ogień dodaje sił w znoju.
                     Wszyscy słuchają z otwartymi sercami,
-                    a księżyc świeci nad ich głowami.
+                    A księżyc świeci nad ich głowami.
                     Uczy szacunku do ziemi i drzew,
-                    i radości, co jest jak śpiew.
+                    I radości, co jest jak śpiew.
                     Gdy noc zapada, wioska cicho śni,
-                    a szaman przy ogniu czuwa w te dni.
+                    A szaman przy ogniu czuwa w te dni.
                     O świcie znów wyrusza w świat,
-                    by pomagać od wielu lat.
+                    By pomagać od wielu lat.
                     Przyroda wita go szumem liści,
-                    on pozdrawia ją w dobrej myśli.
+                    On pozdrawia ją w dobrej myśli.
                     I tak wędruje od lat wielu,
-                    pełen spokoju i prostych celów.
+                    Pełen spokoju i prostych celów.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     W ciszy poranka, zanim świt nastanie,
-                    szaman wyrusza na leśne polanie.
+                    Szaman wyrusza na leśne polanie.
                     Zbiera zioła ożywcze i zdrowe,
-                    by w chorych sercach rozbudzić na nowe.
+                    By w chorych sercach rozbudzić na nowe.
                     Idzie ścieżkami, które zna od lat,
-                    a wiatr mu szepce, jak najlepszy brat.
+                    A wiatr mu szepce, jak najlepszy brat.
                     Napotka sarnę, co cicho przystanie,
-                    i podziękuje za to spotkanie.
+                    I podziękuje za to spotkanie.
                     Ptaki nad głową śpiewają radośnie,
-                    a on uśmiecha się lekko i prośnie.
+                    A on uśmiecha się lekko i prośnie.
                     Nie szuka skarbów, nie chce zaszczytów,
-                    woli prostotę zielonych szczytów.
+                    Woli prostotę zielonych szczytów.
                     Wieczorem w wiosce rozpala ognisko,
-                    a ludzie schodzą się do niego blisko.
+                    A ludzie schodzą się do niego blisko.
                     Siadają razem, słuchają opowieści,
-                    i w sercach czują spokój, co nie złości.
+                    I w sercach czują spokój, co nie złości.
                     Mówi o lesie, co uczy pokory,
-                    i o strumieniu, co rany leczy skory.
+                    I o strumieniu, co rany leczy skory.
                     O tym, jak słońce daje siłę każdej chwili,
-                    i jak przyjaźń wszystkie troski umili.
+                    I jak przyjaźń wszystkie troski umili.
                     Dzieci z otwartymi ustami słuchają,
-                    i w wyobraźni po lesie biegają.
+                    I w wyobraźni po lesie biegają.
                     Dorośli kiwają głowami z wdziękiem,
-                    bo w słowach szamana jest serce z pękiem.
+                    Bo w słowach szamana jest serce z pękiem.
                     Gdy noc zapada, a gwiazdy już świecą,
-                    bęben cichutko gra piosenkę nieco.
+                    Bęben cichutko gra piosenkę nieco.
                     Wszyscy wstają, by w kręgu zatańczyć,
-                    i radość wspólną w ruchu zaznaczyć.
+                    I radość wspólną w ruchu zaznaczyć.
                     Potem spokojnie kładą się spać,
-                    a szaman czuwa, by im coś dać.
+                    A szaman czuwa, by im coś dać.
                     O świcie znów na leśną ścieżkę wraca,
-                    i nikogo z ludzi nie wyklucza, nie skraca.
+                    I nikogo z ludzi nie wyklucza, nie skraca.
                     Niesie pomoc każdemu, kto jej potrzebuje,
-                    bo dobro w jego sercu nieustannie pulsuje.
+                    Bo dobro w jego sercu nieustannie pulsuje.
                     I tak mija mu dzień za dniem w radości,
-                    w harmonii z naturą i w miłości.
+                    W harmonii z naturą i w miłości.
                     A kiedy wraca, wszyscy go witają,
-                    i wdzięczność w sercach cicho składają.
+                    I wdzięczność w sercach cicho składają.
                     Bo mędrzec to nie ten, co posiadł dużo,
-                    lecz ten, co serce ma jak czyste morze.
+                    Lecz ten, co serce ma jak czyste morze.
                     I uczy innych, że w prostym życiu
-                    można odnaleźć szczęście w każdym byciu.
+                    Można odnaleźć szczęście w każdym byciu.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Poranek cichy na zielonej łące,
-                    słońce wstaje, grzeje serce gorące.
+                    Słońce wstaje, grzeje serce gorące.
                     Siadam na macie w świeżej trawie,
-                    spokojny oddech w piersi stawię.
+                    Spokojny oddech w piersi stawię.
                     Wdech i wydech, ramiona w górę,
-                    patrzę w niebo, nie na chmurę.
+                    Patrzę w niebo, nie na chmurę.
                     Ciało się budzi z radością,
-                    napełniam serce miłością.
+                    Napełniam serce miłością.
                     Pozycja drzewa, stoję pewnie,
-                    wiatr mnie kołysze przyjemnie.
+                    Wiatr mnie kołysze przyjemnie.
                     Potem skłon do ziemi nisko,
-                    czuję, jak serce bije blisko.
+                    Czuję, jak serce bije blisko.
                     Pozycja kota, plecy rozluźniam,
-                    myśli spokojne, nic nie tłumię.
+                    Myśli spokojne, nic nie tłumię.
                     Oddech rytmem lasu płynie,
-                    słychać ptaki w oddali, w krzewinie.
+                    Słychać ptaki w oddali, w krzewinie.
                     Siadam cicho, oczy zamykam,
-                    spokój w sercu, nic nie znikam.
+                    Spokój w sercu, nic nie znikam.
                     Joga to nie tylko ćwiczenie,
-                    to dla ducha i ciała wytchnienie.
+                    To dla ducha i ciała wytchnienie.
                     Każdy dzień przynosi nową radość,
-                    i w sercu budzi wdzięczność i stałość.
+                    I w sercu budzi wdzięczność i stałość.
                     Dziękuję łące za gościnę,
-                    że dała mi ciszę i krzewinę.
+                    Że dała mi ciszę i krzewinę.
                     Wracam do domu z uśmiechem na twarzy,
-                    a łąka za mną się delikatnie jarzy.
+                    A łąka za mną się delikatnie jarzy.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Poranek wita mnie słońcem na niebie,
-                    a ja na macie siedzę, wdycham spokój w siebie.
+                    A ja na macie siedzę, wdycham spokój w siebie.
                     Wdech głęboki, wydech powolny,
-                    a świat wokół staje się wolny.
+                    A świat wokół staje się wolny.
                     Ciało się budzi z lekkim drżeniem,
-                    i wypełnia spokojnym tchnieniem.
+                    I wypełnia spokojnym tchnieniem.
                     Ręce wznoszę ku górze wysoko,
-                    i patrzę w niebo szeroko.
+                    I patrzę w niebo szeroko.
                     Pozycja drzewa, stoję pewnie,
-                    wiatr mnie muska przyjemnie.
+                    Wiatr mnie muska przyjemnie.
                     Skłon do ziemi, plecy miękkie,
-                    a myśli robią się lekkie.
+                    A myśli robią się lekkie.
                     Pozycja kota, grzbiet okrągły,
-                    i wszystkie troski się rozprzęgły.
+                    I wszystkie troski się rozprzęgły.
                     Siedzę cicho, oczy zamknięte,
-                    a serce bije równo, święte.
+                    A serce bije równo, święte.
                     Joga to nie tylko ćwiczenie,
-                    to dla ducha i ciała wytchnienie.
+                    To dla ducha i ciała wytchnienie.
                     Każdy dzień przynosi nową nadzieję,
-                    i w sercu spokojnie się śmieje.
+                    I w sercu spokojnie się śmieje.
                     Dziękuję za ciepło i za ciszę,
-                    i w sercu radość słyszę.
+                    I w sercu radość słyszę.
                     Wracam do domu z uśmiechem na twarzy,
-                    a serce spokojem się jarzy.
+                    A serce spokojem się jarzy.
                     Niech każdy znajdzie swoją ciszę,
-                    i w niej radość usłyszy.
+                    I w niej radość usłyszy.
                     Bo spokój to skarb prawdziwy,
-                    co czyni dzień szczęśliwy.
+                    Co czyni dzień szczęśliwy.
                     Joga uczy mnie cierpliwości,
-                    i daje siłę do radości.
+                    I daje siłę do radości.
                     Dzięki niej czuję się lekki,
-                    i mam umysł jasny i rześki.
+                    I mam umysł jasny i rześki.
                     Na macie każdy ruch ma znaczenie,
-                    i przynosi mi ukojenie.
+                    I przynosi mi ukojenie.
                     Z każdym dniem staję się silniejszy,
-                    i na trudności odporniejszy.
+                    I na trudności odporniejszy.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Na klawiaturze pływam jak po wodzie,
-                    a palce moje tańczą w swobodzie.
+                    A palce moje tańczą w swobodzie.
                     Rano ćwiczę, zanim wstanie słońce,
-                    i pisanie staje się gorące.
+                    I pisanie staje się gorące.
                     Nie straszna mi burza ani błędów fala,
-                    bo moja cierpliwość je oddala.
+                    Bo moja cierpliwość je oddala.
                     Z każdej pomyłki nauka wypływa,
-                    a moja wprawa ciągle przybywa.
+                    A moja wprawa ciągle przybywa.
                     Wieczorem, gdy gwiazdy cicho lśnią,
-                    moje dłonie spokojnie śpią.
+                    Moje dłonie spokojnie śpią.
                     Lecz zanim zasnę, jeszcze chwilę piszę,
-                    a serce przy tym równo kołysze.
+                    A serce przy tym równo kołysze.
                     Nie szukam skarbów w dalekiej stronie,
-                    bo umiejętność ta we mnie płonie.
+                    Bo umiejętność ta we mnie płonie.
                     Każdy dzień to nowa morska wyprawa,
-                    a dłoń moja jest szybka i żwawa.
+                    A dłoń moja jest szybka i żwawa.
                     Kiedy piszę list do przyjaciela,
-                    radość w sercu się rozdziela.
+                    Radość w sercu się rozdziela.
                     Szybkość rośnie z regularną wprawą,
-                    a spokój w sercu jest już sprawą.
+                    A spokój w sercu jest już sprawą.
                     Hej, ho! Żagle w górę! Czas na rejs!
                     Niech tekst popłynie, zniknie stres.
                     Niech każda litera będzie jak fala,
-                    co niesie radość i smutki oddala.
+                    Co niesie radość i smutki oddala.
                     Ćwicz codziennie, nawet krótką chwilę,
-                    a z czasem poczujesz, jak płyniesz mile.
+                    A z czasem poczujesz, jak płyniesz mile.
                     Bo piraci na klawiaturze czasem bywają,
-                    i z wprawą wesoło się zabawiają.
+                    I z wprawą wesoło się zabawiają.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     W szklanych wieżach, gdzie neony lśnią,
-                    młodzi twórcy kolorowe sny śnią.
+                    Młodzi twórcy kolorowe sny śnią.
                     Każdy dzień to nowa cyfrowa treść,
-                    którą piszą, by radość w świat nieść.
+                    Którą piszą, by radość w świat nieść.
                     Jego palce po klawiszach biegają,
-                    a litery radośnie się uśmiechają.
+                    A litery radośnie się uśmiechają.
                     Programuje mosty z czystego kodu,
-                    by ludziom dać trochę ciepła i chłodu.
+                    By ludziom dać trochę ciepła i chłodu.
                     Wirtualne parki, gry i zabawy,
-                    dla małych i dużych, pełne ciekawej sprawy.
+                    Dla małych i dużych, pełne ciekawej sprawy.
                     Sztuczna inteligencja mu wtóruje,
-                    i w pracy ochoczo współpracuje.
+                    I w pracy ochoczo współpracuje.
                     Razem zbierają dane z każdej chmury,
-                    i budują mosty z wiary i natury.
+                    I budują mosty z wiary i natury.
                     Drony nad dachami cicho brzęczą,
-                    a oni w rytmie serca się wdzięczą.
+                    A oni w rytmie serca się wdzięczą.
                     Wieczorem na dachu, wśród gwiazd jasnych,
-                    liczą pomysły, co nie mają dni własnych.
+                    Liczą pomysły, co nie mają dni własnych.
                     Marzą o jutrze pełnym barw i śmiechu,
-                    i ciepłych domach bez trosk i grzechu.
+                    I ciepłych domach bez trosk i grzechu.
                     Ktoś mówi, że technika to zimny chłód,
-                    a oni widzą w niej radość i cud.
+                    A oni widzą w niej radość i cud.
                     Budują aplikację do pomocy,
-                    by nikt nie został w samotności nocy.
+                    By nikt nie został w samotności nocy.
                     Przyjaciel obok, gdy ekran świeci,
-                    i razem piszą, nikt nie odleci.
+                    I razem piszą, nikt nie odleci.
                     Niech każdy z nas w cyberprzestrzeni
-                    znajdzie coś, co go odmieni.
+                    Znajdzie coś, co go odmieni.
                     Bo przyszłość to nie mrok, lecz jasny blask,
-                    gdy serce czyste, a cel jak trzask.
+                    Gdy serce czyste, a cel jak trzask.
                     Więc śnij o jutrze w neonowym śnie,
-                    i twórz świat lepszy dla siebie i mnie.
+                    I twórz świat lepszy dla siebie i mnie.
                     Wspólnie tworzą nowy czas,
-                    w którym radość jest w nas.
+                    W którym radość jest w nas.
                     A gdy zmęczenie przyjdzie, to zrobią przerwę,
-                    i zjedzą razem owoc, co dodaje werwę.
+                    I zjedzą razem owoc, co dodaje werwę.
                     I znów do pracy z nowym zapałem,
-                    bo wspólny cel jest ich ideałem.
+                    Bo wspólny cel jest ich ideałem.
                     Niech technologia służy każdemu z nas,
-                    i daje radość w każdy czas.
+                    I daje radość w każdy czas.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Piszę wiersz o porannym lesie,
-                    a myśl moja po klawiszach się niesie.
+                    A myśl moja po klawiszach się niesie.
                     Palce tańczą jak motyle na kwiatach,
-                    piszę zdania w różnych postaciach.
+                    Piszę zdania w różnych postaciach.
                     Nie patrzę na dłonie, ufam im szczerze,
-                    a moje myśli płyną jak powietrze.
+                    A moje myśli płyną jak powietrze.
                     Każdego dnia ćwiczę z ochotą,
-                    by pisać szybciej z nową prostotą.
+                    By pisać szybciej z nową prostotą.
                     Pisanie bez spoglądania to sztuka,
-                    która w codzienności pomaga i szuka.
+                    Która w codzienności pomaga i szuka.
                     Gdy błąd się zdarzy, nie tracę ducha,
-                    poprawiam i ćwiczę, to jest otucha.
+                    Poprawiam i ćwiczę, to jest otucha.
                     Z czasem prędkość rośnie jak fala,
-                    a moja radość się rozpała.
+                    A moja radość się rozpała.
                     Piszę listy, wiersze i notatki,
-                    a palce moje są jak zwinne statki.
+                    A palce moje są jak zwinne statki.
                     Na klawiaturze czuję się jak w domu,
-                    nie oddam jej nikomu.
+                    Nie oddam jej nikomu.
                     Piszę o słońcu, co wstaje nad łąką,
-                    i o rzece, co płynie strugą.
+                    I o rzece, co płynie strugą.
                     Moje palce tańczą w rytmie radości,
-                    a pisanie daje mi dużo wartości.
+                    A pisanie daje mi dużo wartości.
                     Nie zrażam się, gdy błąd mnie dopadnie,
-                    poprawiam i piszę dalej, to jest ładne.
+                    Poprawiam i piszę dalej, to jest ładne.
                     Ćwiczę wytrwale, dzień po dniu,
-                    a wprawa przychodzi w moim cieniu.
+                    A wprawa przychodzi w moim cieniu.
                     I tak płyną moje teksty po fali,
-                    a ja się cieszę, że piszę w oddali.
+                    A ja się cieszę, że piszę w oddali.
                     Wiatr w oknie szumi, ja piszę w ciszy,
-                    a moje myśli są jak leśne zacisze.
+                    A moje myśli są jak leśne zacisze.
                     Na koniec wiersza wdzięczność czuję,
-                    że pisanie bezwzrokowe życie buduje.
+                    Że pisanie bezwzrokowe życie buduje.
                     Nie poddawaj się, nawet gdy trudno,
-                    bo po burzy zawsze wychodzi słońce cudno.
+                    Bo po burzy zawsze wychodzi słońce cudno.
                     Twoje dłonie nabiorą lekkości,
-                    gdy dasz im czas i cierpliwości.
+                    Gdy dasz im czas i cierpliwości.
                     Więc śmiało, zacznij bez zwłoki,
-                    a zobaczysz wnet postępy w skoki.
+                    A zobaczysz wnet postępy w skoki.
                     Każdy mistrz kiedyś zaczynał od zera,
-                    więc nie zrażaj się, to droga szczera.
+                    Więc nie zrażaj się, to droga szczera.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Samuraj w ciszy ogrodu trwał,
-                    a w jego dłoni miecz cicho grał.
+                    A w jego dłoni miecz cicho grał.
                     Uczył się pilnie od rana do zmroku,
-                    i nie ustawał w wytrwałym kroku.
+                    I nie ustawał w wytrwałym kroku.
                     Lecz po treningu siadał w cieniu,
-                    słuchał muzyki w ptaków pieniu.
+                    Słuchał muzyki w ptaków pieniu.
                     Pisał wiersze, śpiewał radośnie,
-                    a wiatr mu wtórował miłośnie.
+                    A wiatr mu wtórował miłośnie.
                     Podobnie ten, kto chce pisać bez patrzenia,
-                    musi ćwiczyć cierpliwie, lecz z wytchnieniem.
+                    Musi ćwiczyć cierpliwie, lecz z wytchnieniem.
                     Dłoń pewnie spoczywa na klawiaturze,
-                    a myśli płyną jak rzeka w naturze.
+                    A myśli płyną jak rzeka w naturze.
                     Każdy dzień to lekcja cierpliwości,
-                    bo pisanie to sztuka pełna radości.
+                    Bo pisanie to sztuka pełna radości.
                     Gdy błąd się zdarzy, nie traci ducha,
-                    poprawia znak i dalej słucha.
+                    Poprawia znak i dalej słucha.
                     Pisanie bez spoglądania to droga do wprawy,
-                    co uczy cierpliwości i dobrej zabawy.
+                    Co uczy cierpliwości i dobrej zabawy.
                     Potrzeba regularnej, spokojnej pracy,
-                    a palce biegają jak wesołe ptaki.
+                    A palce biegają jak wesołe ptaki.
                     Latają lekko po klawiszowym polu,
-                    nie czując zmęczenia ani bólu.
+                    Nie czując zmęczenia ani bólu.
                     Praktyka czyni mistrza, to prawda znana,
-                    lecz bez odpoczynku droga jest przegrana.
+                    Lecz bez odpoczynku droga jest przegrana.
                     Niech muzyka, poezja i medytacja
-                    przynoszą spokój, to twoja racja.
+                    Przynoszą spokój, to twoja racja.
                     Z czasem piszesz szybciej i radośnie,
-                    a twoje palce tańczą jak na wiośnie.
+                    A twoje palce tańczą jak na wiośnie.
                     Nie zrażaj się, gdy błąd się pojawi,
-                    bo z każdej pomyłki wprawa się zjawi.
+                    Bo z każdej pomyłki wprawa się zjawi.
                     I tak jak samuraj doskonali miecz,
-                    ty doskonalisz pisanie, to jest rzecz.
+                    Ty doskonalisz pisanie, to jest rzecz.
                     Niech spokój towarzyszy twojej dłoni,
-                    a mistrzostwo w pisaniu się odsłoni.
+                    A mistrzostwo w pisaniu się odsłoni.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Pisanie bez patrzenia to piękna droga,
-                    która prowadzi do serca błoga.
+                    Która prowadzi do serca błoga.
                     Wystarczy codziennie usiąść wytrwale,
-                    a palce zaczną tańczyć wcale.
+                    A palce zaczną tańczyć wcale.
                     Nie zrażaj się, gdy błąd się zdarzy,
-                    on szybko zniknie, gdy umysł marzy.
+                    On szybko zniknie, gdy umysł marzy.
                     Z czasem prędkość sama rośnie,
-                    a twoje myśli płyną radośnie.
+                    A twoje myśli płyną radośnie.
                     To jak nauka pływania w wodzie,
-                    potem płyniesz już w swobodzie.
+                    Potem płyniesz już w swobodzie.
                     Ćwicz regularnie, choćby mało,
-                    lepiej krótko, byle się udało.
+                    Lepiej krótko, byle się udało.
                     Piszesz listy, wiersze, wspomnienia,
-                    a serce nabiera nowego natchnienia.
+                    A serce nabiera nowego natchnienia.
                     Patrz przed siebie, ufaj dłoniom,
-                    one prowadzą jak najlepszym koniom.
+                    One prowadzą jak najlepszym koniom.
                     Z każdym dniem czujesz się pewniej,
-                    pisanie staje się lżejsze i przyjemniej.
+                    Pisanie staje się lżejsze i przyjemniej.
                     Więc nie czekaj, zacznij bez zwłoki,
-                    a zobaczysz, jak rosną postępy w skoki.
+                    A zobaczysz, jak rosną postępy w skoki.
                     Pamiętaj też o wygodnej postawie,
-                    bo wygoda sprzyja dobrej sprawie.
+                    Bo wygoda sprzyja dobrej sprawie.
                     Rób krótkie przerwy, przeciągnij ręce,
-                    a wtedy pisanie będzie w podzięce.
+                    A wtedy pisanie będzie w podzięce.
                     Niech twoje palce będą jak motyle,
-                    co tańczą lekko, nie tracąc chwile.
+                    Co tańczą lekko, nie tracąc chwile.
                     Pisanie wtedy jest przyjemnością,
-                    co serce wypełnia radością.
+                    Co serce wypełnia radością.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Pisanie bez patrzenia to piękna sztuka,
-                    która w codziennym życiu pomaga i szuka.
+                    Która w codziennym życiu pomaga i szuka.
                     Wystarczy codziennie usiąść przy biurku,
-                    i ćwiczyć cierpliwie, bez żadnego lęku.
+                    I ćwiczyć cierpliwie, bez żadnego lęku.
                     Nie zrażaj się, gdy błąd się pojawi,
-                    bo z każdej pomyłki wprawa się zjawi.
+                    Bo z każdej pomyłki wprawa się zjawi.
                     Z czasem palce tańczą po klawiszach,
-                    a myśli płyną jak rzeka w zaciszach.
+                    A myśli płyną jak rzeka w zaciszach.
                     Pisanie staje się wtedy przyjemnością,
-                    i codziennie cieszy serce radością.
+                    I codziennie cieszy serce radością.
                     Wystarczy krótka praktyka co rano,
-                    by dłonie pisały składnie i starannie.
+                    By dłonie pisały składnie i starannie.
                     Nie goń za prędkością, lecz za spokojem,
-                    a szybkość przyjdzie z każdym dniem, z ukojem.
+                    A szybkość przyjdzie z każdym dniem, z ukojem.
                     Patrz przed siebie, ufaj swojej dłoni,
-                    a ona cię przez tekst poprowadzi bez pogoni.
+                    A ona cię przez tekst poprowadzi bez pogoni.
                     Piszesz listy, wiersze i notatki,
-                    a dłonie są zwinne jak leśne ptaki.
+                    A dłonie są zwinne jak leśne ptaki.
                     Gdy ćwiczysz wytrwale, z dnia na dzień,
-                    rośnie twoja wprawa, znika cień.
+                    Rośnie twoja wprawa, znika cień.
                     Każdy mistrz zaczynał od pierwszych liter,
-                    a dziś jego palce biegają jak wicher.
+                    A dziś jego palce biegają jak wicher.
                     Niech twoja droga będzie pełna radości,
-                    i niech nie opuszcza cię cierpliwości.
+                    I niech nie opuszcza cię cierpliwości.
                     Codzienna praktyka to klucz do celu,
-                    który przynosi spokój i radość bez lęku.
+                    Który przynosi spokój i radość bez lęku.
                     Więc śmiało, usiądź i zacznij już teraz,
-                    a klawiatura pokaże ci swój urok nie raz.
+                    A klawiatura pokaże ci swój urok nie raz.
                     Niech pisanie stanie się twoim przyjacielem,
-                    a nie obowiązkiem, co bywa nieśmiałym celem.
+                    A nie obowiązkiem, co bywa nieśmiałym celem.
                     I pamiętaj, że każdy ma swój dar,
-                    a pisanie to piękny czar.
+                    A pisanie to piękny czar.
                     Ciesz się każdym małym krokiem,
-                    który przybliża cię do spokoju potokiem.
+                    Który przybliża cię do spokoju potokiem.
                     A gdy już płynnie piszesz bez znoju,
-                    twoje serce raduje się w pokoju.
+                    Twoje serce raduje się w pokoju.
                     Pisanie bez patrzenia to przyjaciel prawdziwy,
-                    który pomaga w pracy i jest cierpliwy.
+                    Który pomaga w pracy i jest cierpliwy.
                     EOT,
             ],
         ];
