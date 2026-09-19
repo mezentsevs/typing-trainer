@@ -290,1358 +290,1358 @@ class PtTestSeeder extends LanguageTestSeeder
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     O sol desponta atrás da serra amada,
-                    e a luz dourada deixa a terra enfeitada.
+                    E a luz dourada deixa a terra enfeitada.
                     O rio canta a sua canção serena,
-                    e o vento sopra pela noite amena.
+                    E o vento sopra pela noite amena.
                     As flores abrem pétalas molhadas,
-                    as aves tecem notas delicadas.
+                    As aves tecem notas delicadas.
                     No campo verde o orvalho ainda brilha,
-                    a vida pulsa em cada ramo e trilha.
+                    A vida pulsa em cada ramo e trilha.
                     O céu azul estende-se em calma pura,
-                    e a brisa traz perfume de doçura.
+                    E a brisa traz perfume de doçura.
                     A terra fértil brota em mil sementes,
-                    o sol aquece as folhas reluzentes.
+                    O sol aquece as folhas reluzentes.
                     As borboletas bailam sem cansaço,
-                    e o riacho corre em límpido abraço.
+                    E o riacho corre em límpido abraço.
                     A tarde chega com o seu manto quente,
-                    e o horizonte pinta o céu contente.
+                    E o horizonte pinta o céu contente.
                     As nuvens dançam formas passageiras,
-                    as tardes são assim, tão feiticeiras.
+                    As tardes são assim, tão feiticeiras.
                     O bosque acolhe a sombra generosa,
-                    e a paz faz-se na relva silenciosa.
+                    E a paz faz-se na relva silenciosa.
                     O som dos pássaros enche o ar,
-                    e a natureza ensina a respirar.
+                    E a natureza ensina a respirar.
                     O entardecer desenha tons dourados,
-                    e os campos ficam todos adornados.
+                    E os campos ficam todos adornados.
                     A lua surge no azul profundo,
-                    e a noite abraça o imenso mundo.
+                    E a noite abraça o imenso mundo.
                     As estrelas piscam com ternura,
-                    e a terra dorme em plena formosura.
+                    E a terra dorme em plena formosura.
                     O ciclo segue em harmonia imensa,
-                    e o coração na calma recompensa.
+                    E o coração na calma recompensa.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     O mar imenso canta em ondas claras,
-                    e a areia guarda conchas raras.
+                    E a areia guarda conchas raras.
                     A brisa salga os cabelos soltos,
-                    e os olhos brilham em tons revoltos.
+                    E os olhos brilham em tons revoltos.
                     O azul profundo encontra o céu,
-                    e o sol põe-se num doce véu.
+                    E o sol põe-se num doce véu.
                     As gaivotas voam em harmonia,
-                    e o horizonte acende a fantasia.
+                    E o horizonte acende a fantasia.
                     As ondas quebram com rumor suave,
-                    e o vento sopra como quem sabe.
+                    E o vento sopra como quem sabe.
                     Na praia longa, a espuma dança,
-                    e o coração enche-se de esperança.
+                    E o coração enche-se de esperança.
                     O farol distante acende a luz,
-                    e a noite traz o seu manto de capuz.
+                    E a noite traz o seu manto de capuz.
                     As estrelas surgem no infinito,
-                    e o mar reflete um brilho bonito.
+                    E o mar reflete um brilho bonito.
                     Os barcos dormem no ancoradouro,
-                    e a lua banha o mar em ouro.
+                    E a lua banha o mar em ouro.
                     A maré sobe devagar,
-                    e a paz espalha-se pelo ar.
+                    E a paz espalha-se pelo ar.
                     O caranguejo corre na areia,
-                    e a noite fica mais serena.
+                    E a noite fica mais serena.
                     As crianças brincam na maré,
-                    e o tempo passa como quem é.
+                    E o tempo passa como quem é.
                     O mar ensina a calma e o movimento,
-                    e a alma encontra o seu alento.
+                    E a alma encontra o seu alento.
                     A natureza em sua grandeza,
-                    transforma a vida em pura beleza.
+                    Transforma a vida em pura beleza.
                     O amanhecer devolve a cor,
-                    e o mar continua o seu louvor.
+                    E o mar continua o seu louvor.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     No alto da montanha o vento canta,
-                    e a névoa leve o vale que levanta.
+                    E a névoa leve o vale que levanta.
                     O rio lá em baixo brilha em prata,
-                    e a relva verde o orvalho não desata.
+                    E a relva verde o orvalho não desata.
                     As pedras contam histórias de eras passadas,
-                    e as flores crescem entre rochas caladas.
+                    E as flores crescem entre rochas caladas.
                     O trilho estreito sobe em curvas belas,
-                    e o céu abre-se em cores amarelas.
+                    E o céu abre-se em cores amarelas.
                     A águia voa em círculos serenos,
-                    e o ar da serra traz perfumes amenos.
+                    E o ar da serra traz perfumes amenos.
                     No sopé da encosta, um riacho canta,
-                    e a água fria a sede toda espanta.
+                    E a água fria a sede toda espanta.
                     Os fetos dançam com o vento,
-                    e o sol aquece o firme movimento.
+                    E o sol aquece o firme movimento.
                     A tarde chega com dourada luz,
-                    e a sombra fresca o caminhante conduz.
+                    E a sombra fresca o caminhante conduz.
                     O pôr do sol incendeia a paisagem,
-                    e a noite chega com suave passagem.
+                    E a noite chega com suave passagem.
                     A lua nasce por trás do penedo,
-                    e o medo some, fica só o enredo.
+                    E o medo some, fica só o enredo.
                     As estrelas brilham no manto escuro,
-                    e o coração sente-se mais seguro.
+                    E o coração sente-se mais seguro.
                     O grilo canta na moita florida,
-                    e a paz abraça a terra adormecida.
+                    E a paz abraça a terra adormecida.
                     O vento frio sussurra entre as copas,
-                    e a noite cobre as mais remotas rochas.
+                    E a noite cobre as mais remotas rochas.
                     O orvalho cai e brilha na folhagem,
-                    e a madrugada tece a sua mensagem.
+                    E a madrugada tece a sua mensagem.
                     O céu começa a clarear devagar,
-                    e os pássaros ensaiam o cantar.
+                    E os pássaros ensaiam o cantar.
                     A aurora rompe em tons de rosa e fogo,
-                    e a serra inteira acorda em novo jogo.
+                    E a serra inteira acorda em novo jogo.
                     O sol renasce e a montanha desperta,
-                    e a vida segue em plena descoberta.
+                    E a vida segue em plena descoberta.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     O bosque guarda sombras e clareiras,
-                    e o musgo cobre as pedras feiticeiras.
+                    E o musgo cobre as pedras feiticeiras.
                     O riacho desce em riso cristalino,
-                    e as folhas dançam num rumor divino.
+                    E as folhas dançam num rumor divino.
                     Ali o sol penetra em finos raios,
-                    e a relva fresca exibe os seus ensaios.
+                    E a relva fresca exibe os seus ensaios.
                     As flores silvestres pintam o chão,
-                    e a brisa sopra em suave canção.
+                    E a brisa sopra em suave canção.
                     O pássaro pequeno faz o seu ninho,
-                    e o vento carrega o perfume do caminho.
+                    E o vento carrega o perfume do caminho.
                     A tarde alonga as sombras preguiçosas,
-                    e as borboletas voam caprichosas.
+                    E as borboletas voam caprichosas.
                     O entardecer derrama tons de mel,
-                    e o céu veste-se de um azul fiel.
+                    E o céu veste-se de um azul fiel.
                     As nuvens tingem seda cor de rosa,
-                    e a natureza fica silenciosa.
+                    E a natureza fica silenciosa.
                     A lua surge entre as árvores caladas,
-                    e as estrelas brilham prateadas.
+                    E as estrelas brilham prateadas.
                     O grilo inicia o seu sereno canto,
-                    e o ar enche-se de um profundo encanto.
+                    E o ar enche-se de um profundo encanto.
                     A coruja pousa no galho antigo,
-                    e a noite envolve o bosque como abrigo.
+                    E a noite envolve o bosque como abrigo.
                     O orvalho cai e molha cada folha,
-                    e a terra bebe a água que a recolha.
+                    E a terra bebe a água que a recolha.
                     O riacho segue o seu caminho lento,
-                    e as pedras brilham com o orvalho atento.
+                    E as pedras brilham com o orvalho atento.
                     A madrugada chega em tom suave,
-                    e a vida brota em cada ramo grave.
+                    E a vida brota em cada ramo grave.
                     O sol retorna com o seu manto claro,
-                    e o bosque acorda em um fulgor raro.
+                    E o bosque acorda em um fulgor raro.
                     O ciclo segue em harmonia imensa,
-                    e a alma encontra paz que recompensa.
+                    E a alma encontra paz que recompensa.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     O campo aberto estende-se sereno,
-                    e o trigo balança em tom ameno.
+                    E o trigo balança em tom ameno.
                     A estrada de terra corta a planície,
-                    e a vida simples ganha superfície.
+                    E a vida simples ganha superfície.
                     O céu imenso abraça a terra quente,
-                    e o sol derrama luz sobre a semente.
+                    E o sol derrama luz sobre a semente.
                     As margaridas dançam com o vento,
-                    e o ar carrega um doce sentimento.
+                    E o ar carrega um doce sentimento.
                     As cigarras cantam na tarde clara,
-                    e a brisa sopra a poeira que separa.
+                    E a brisa sopra a poeira que separa.
                     O trator distante sulca o chão,
-                    e a foice canta na palma da mão.
+                    E a foice canta na palma da mão.
                     As espigas douram sob o calor,
-                    e a colheita enche o peito de fervor.
+                    E a colheita enche o peito de fervor.
                     O poço de água espelha o céu bonito,
-                    e o balde sobe com um rangido inscrito.
+                    E o balde sobe com um rangido inscrito.
                     A tarde cai com luz avermelhada,
-                    e a terra inteira fica iluminada.
+                    E a terra inteira fica iluminada.
                     O gado volta em passo preguiçoso,
-                    e o vaqueiro assobia bem dengoso.
+                    E o vaqueiro assobia bem dengoso.
                     A noite chega com cheiro a mato,
-                    e a lua branca cobre o chão de prato.
+                    E a lua branca cobre o chão de prato.
                     As estrelas piscam na escuridão,
-                    e a fogueira aquece a solidão.
+                    E a fogueira aquece a solidão.
                     Os grilos cantam o seu hino noturno,
-                    e o campo dorme num sossego diurno.
+                    E o campo dorme num sossego diurno.
                     O vento frio da madrugada clara,
-                    sacode as folhas e a poeira separa.
+                    Sacode as folhas e a poeira separa.
                     O galo canta anunciando o dia,
-                    e a natureza acorda em alegria.
+                    E a natureza acorda em alegria.
                     O ciclo repete-se com beleza,
-                    e a alma encontra paz na singeleza.
+                    E a alma encontra paz na singeleza.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     A chuva fina cai sobre a varanda,
-                    e a terra seca a água desanda.
+                    E a terra seca a água desanda.
                     As folhas lavam poeira e cansaço,
-                    e o cheiro a terra molhada é um abraço.
+                    E o cheiro a terra molhada é um abraço.
                     O céu cinzento esconde o sol quente,
-                    e a brisa sopra um ar mais fresquinho e contente.
+                    E a brisa sopra um ar mais fresquinho e contente.
                     As poças brilham como espelhos raros,
-                    e os pingos dançam em compassos claros.
+                    E os pingos dançam em compassos claros.
                     O sapo canta no quintal florido,
-                    e o vento traz um som bem parecido.
+                    E o vento traz um som bem parecido.
                     A planta bebe a dádiva do céu,
-                    e a rosa desabrocha sem véu.
+                    E a rosa desabrocha sem véu.
                     O riacho cresce com a água nova,
-                    e a correnteza o caminho renova.
+                    E a correnteza o caminho renova.
                     A tarde passa nesse ritmo brando,
-                    e a chuva cai sem nunca ir parando.
+                    E a chuva cai sem nunca ir parando.
                     Ao longe um trovão ronca baixinho,
-                    e o relâmpago risca o céu sozinho.
+                    E o relâmpago risca o céu sozinho.
                     A tempestade chega de mansinho,
-                    e a casa vira abrigo e carinho.
+                    E a casa vira abrigo e carinho.
                     As crianças olham pela janela,
-                    e a chuva lava a rua amarela.
+                    E a chuva lava a rua amarela.
                     A enxurrada corre no passeio,
-                    e a noite chega sem nenhum receio.
+                    E a noite chega sem nenhum receio.
                     A chuva passa e deixa o céu lavado,
-                    e o ar mais puro, limpo e renovado.
+                    E o ar mais puro, limpo e renovado.
                     As estrelas surgem sem preguiça,
-                    e a lua cheia ilumina a missão inteiriça.
+                    E a lua cheia ilumina a missão inteiriça.
                     O sereno cai sobre a madrugada,
-                    e a natureza dorme sossegada.
+                    E a natureza dorme sossegada.
                     A manhã nasce com o sol dourado,
-                    e o mundo inteiro acorda agraciado.
+                    E o mundo inteiro acorda agraciado.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Amigo de infância, guardo na lembrança,
-                    as tardes de rua, pura festança.
+                    As tardes de rua, pura festança.
                     Corríamos juntos atrás da pipa,
-                    e a vida era doce, sem nenhuma tripa.
+                    E a vida era doce, sem nenhuma tripa.
                     O rio era nosso esconderijo amado,
-                    e o tempo corria num ritmo encantado.
+                    E o tempo corria num ritmo encantado.
                     As conversas no passeio ao entardecer,
-                    e os planos que o futuro ia tecer.
+                    E os planos que o futuro ia tecer.
                     Você me estendia a mão na queda,
-                    e a amizade virava uma alameda.
+                    E a amizade virava uma alameda.
                     Nos dias de chuva, jogos no portão,
-                    e a risada solta enchia o coração.
+                    E a risada solta enchia o coração.
                     A merenda partilhada no recreio,
-                    e o ombro amigo no primeiro receio.
+                    E o ombro amigo no primeiro receio.
                     As brigas bobas duravam um instante,
-                    e a reconciliação era constante.
+                    E a reconciliação era constante.
                     Você me ensinou a andar de bicicleta,
-                    e a sua paciência foi minha muleta.
+                    E a sua paciência foi minha muleta.
                     As festas de rua, o milho assado,
-                    e o céu estrelado como um legado.
+                    E o céu estrelado como um legado.
                     A amizade pura, sem outro intento,
-                    era o nosso mais bonito sentimento.
+                    Era o nosso mais bonito sentimento.
                     O tempo passou, a vida levou cada um,
-                    mas o carinho ficou, inteiro e comum.
+                    Mas o carinho ficou, inteiro e comum.
                     Hoje nos falamos por mensagem,
-                    e a distância não apaga a imagem.
+                    E a distância não apaga a imagem.
                     O riso continua o mesmo de antes,
-                    e a confiança segue constante.
+                    E a confiança segue constante.
                     As lembranças são um doce abrigo,
-                    e ter você por perto é um amparo amigo.
+                    E ter você por perto é um amparo amigo.
                     A amizade verdadeira é um tesouro,
-                    que nem o tempo transforma em couro.
+                    Que nem o tempo transforma em couro.
                     Ela brilha na calma e na tormenta,
-                    e a alma inteira se sustenta.
+                    E a alma inteira se sustenta.
                     Que a nossa história siga assim,
-                    com a lealdade firme até o fim.
+                    Com a lealdade firme até o fim.
                     Amigo de infância, laço sincero,
-                    você é a prova de que o bem é vero.
+                    Você é a prova de que o bem é vero.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Teu sorriso acende a manhã mais linda,
-                    e a tua voz é música bem-vinda.
+                    E a tua voz é música bem-vinda.
                     Teus olhos brilham como o sol nascente,
-                    e o coração palpita de repente.
+                    E o coração palpita de repente.
                     O amor chegou sem pressa e sem aviso,
-                    e coloriu o mundo de improviso.
+                    E coloriu o mundo de improviso.
                     A tua mão na minha é porto seguro,
-                    e o teu abraço quebra todo muro.
+                    E o teu abraço quebra todo muro.
                     Caminhamos juntos pela estrada,
-                    e a vida fica mais iluminada.
+                    E a vida fica mais iluminada.
                     As flores brotam por onde passamos,
-                    e os sonhos viram laços que abraçamos.
+                    E os sonhos viram laços que abraçamos.
                     O tempo para quando estou contigo,
-                    e a solidão virou um antigo castigo.
+                    E a solidão virou um antigo castigo.
                     Teu riso é chuva que molha a terra,
-                    e a paz no peito a guerra encerra.
+                    E a paz no peito a guerra encerra.
                     O amor é fogo que aquece sem queimar,
-                    é vento que nos leva a navegar.
+                    É vento que nos leva a navegar.
                     É a calma depois da tempestade,
-                    é a luz que guia a eternidade.
+                    É a luz que guia a eternidade.
                     Contigo eu quero ver o amanhecer,
-                    e a cada dia um novo florescer.
+                    E a cada dia um novo florescer.
                     A nossa história é feita de cuidado,
-                    de gestos simples e afeto guardado.
+                    De gestos simples e afeto guardado.
                     O teu olhar me diz sem precisar,
-                    que o nosso amor é forte como o mar.
+                    Que o nosso amor é forte como o mar.
                     E mesmo quando a noite chega escura,
-                    a tua presença é doce aventura.
+                    A tua presença é doce aventura.
                     O amor é a casa que a vida constrói,
-                    e o coração inteiro se reconstrói.
+                    E o coração inteiro se reconstrói.
                     Teu abraço é abrigo em dia frio,
-                    e a tua voz espanta todo vazio.
+                    E a tua voz espanta todo vazio.
                     Amar-te é fácil e sereno,
-                    é ver o mundo mais bonito e pleno.
+                    É ver o mundo mais bonito e pleno.
                     E assim seguimos, lado a lado,
-                    com o sentimento mais que comprovado.
+                    Com o sentimento mais que comprovado.
                     O amor é simples, puro e verdadeiro,
-                    e floresce em nosso peito o ano inteiro.
+                    E floresce em nosso peito o ano inteiro.
                     E quando o sol se pôr no horizonte,
-                    eu quero estar contigo, monte a monte.
+                    Eu quero estar contigo, monte a monte.
                     A vida é curta, mas o amor é vasto,
-                    e cada instante é um tesouro casto.
+                    E cada instante é um tesouro casto.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Lá vai o barco cortando o mar sem fim,
-                    e o capitão com seu olhar de cetim.
+                    E o capitão com seu olhar de cetim.
                     A vela cheia estufa com o vento,
-                    e a tripulação canta em contentamento.
+                    E a tripulação canta em contentamento.
                     O mapa antigo mostra uma ilha distante,
-                    e o tesouro escondido, tão ofuscante.
+                    E o tesouro escondido, tão ofuscante.
                     A gaivota segue a nossa esteira,
-                    e a noite cai com a lua feiticeira.
+                    E a noite cai com a lua feiticeira.
                     Remamos juntos ao som da canção,
-                    e o medo some, fica a diversão.
+                    E o medo some, fica a diversão.
                     A ilha surge no azul profundo,
-                    e o coração dispara em cada segundo.
+                    E o coração dispara em cada segundo.
                     Desembarcamos na areia clara,
-                    e a floresta densa a vista encara.
+                    E a floresta densa a vista encara.
                     O tesouro brilha em um baú antigo,
-                    e o riso solto vira um abrigo.
+                    E o riso solto vira um abrigo.
                     As moedas de ouro refletem o sol,
-                    e a alegria aquece como um farol.
+                    E a alegria aquece como um farol.
                     Dividimos tudo com justiça e paz,
-                    e a aventura vira história que satisfaz.
+                    E a aventura vira história que satisfaz.
                     O mar nos chama para outra jornada,
-                    e a vida é uma constante balada.
+                    E a vida é uma constante balada.
                     A bandeira negra tremula altaneira,
-                    e a amizade nos torna uma trincheira.
+                    E a amizade nos torna uma trincheira.
                     Os ventos sopram a nosso favor,
-                    e a liberdade é o nosso maior valor.
+                    E a liberdade é o nosso maior valor.
                     O horizonte guarda novas surpresas,
-                    e as ondas carregam doces empresas.
+                    E as ondas carregam doces empresas.
                     A noite estrelada mostra o caminho,
-                    e o pirata canta baixinho.
+                    E o pirata canta baixinho.
                     O amanhecer doura as águas calmas,
-                    e a coragem inflama nossas almas.
+                    E a coragem inflama nossas almas.
                     Seguimos juntos, mar afora,
-                    e a aventura renasce a cada aurora.
+                    E a aventura renasce a cada aurora.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     No fiorde frio, o drakkar se apruma,
-                    e a madeira estala em bruma.
+                    E a madeira estala em bruma.
                     O remo corta a água em dança,
-                    e a proa avança como lança.
+                    E a proa avança como lança.
                     Os guerreiros cantam seu refrão,
-                    e o vento sopra com exaltação.
+                    E o vento sopra com exaltação.
                     A aurora boreal pinta o céu,
-                    e o verde e o roxo formam um véu.
+                    E o verde e o roxo formam um véu.
                     O drakkar balança sobre a onda,
-                    e a tripulação toda se apronta.
+                    E a tripulação toda se apronta.
                     As estrelas guiam a viagem,
-                    e a lua cheia dá sua mensagem.
+                    E a lua cheia dá sua mensagem.
                     O capitão observa o horizonte,
-                    e a esperança brota como fonte.
+                    E a esperança brota como fonte.
                     A ilha gelada surge ao longe,
-                    e o sol da meia-noite se põe e se esconde.
+                    E o sol da meia-noite se põe e se esconde.
                     O drakkar encalha na areia fina,
-                    e a neve fofa o passo domina.
+                    E a neve fofa o passo domina.
                     Descemos todos na praia branca,
-                    e a fogueira acesa a noite estanca.
+                    E a fogueira acesa a noite estanca.
                     O hidromel passa de mão em mão,
-                    e a amizade enche o coração.
+                    E a amizade enche o coração.
                     As runas contam feitos e glórias,
-                    e a noite guarda essas memórias.
+                    E a noite guarda essas memórias.
                     O machado brilha à luz da chama,
-                    e a saga viva a todos chama.
+                    E a saga viva a todos chama.
                     A madrugada chega devagar,
-                    e o sol começa a despontar.
+                    E o sol começa a despontar.
                     O drakkar parte com a maré,
-                    e a tripulação segue com fé.
+                    E a tripulação segue com fé.
                     O vento sopra a nosso favor,
-                    e a jornada segue com ardor.
+                    E a jornada segue com ardor.
                     A vida é feita de coragem,
-                    e o mar ensina essa passagem.
+                    E o mar ensina essa passagem.
                     O horizonte guarda mil surpresas,
-                    e as ondas contam novas empresas.
+                    E as ondas contam novas empresas.
                     A estrela do norte mostra o rumo,
-                    e o coração não sente nenhum prumo.
+                    E o coração não sente nenhum prumo.
                     A vela estufa, o drakkar voa,
-                    e a alma viking ressoa.
+                    E a alma viking ressoa.
                     No convés, a vida é uma festa,
-                    e a bravura nunca se empresta.
+                    E a bravura nunca se empresta.
                     O drakkar corta o mar profundo,
-                    e a coragem move o mundo.
+                    E a coragem move o mundo.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     No antigo Japão, o samurai desperta,
-                    e a lâmina brilha na mão aberta.
+                    E a lâmina brilha na mão aberta.
                     O sol nascente pinta o chão de calma,
-                    e a honra mora dentro da alma.
+                    E a honra mora dentro da alma.
                     O dojo silencioso guarda a arte,
-                    e cada golpe tem sua parte.
+                    E cada golpe tem sua parte.
                     A espada corta o ar com precisão,
-                    e a mente firme guia a mão.
+                    E a mente firme guia a mão.
                     O mestre observa com olhar sereno,
-                    e o discípulo respira pleno.
+                    E o discípulo respira pleno.
                     A disciplina é o caminho da força,
-                    e a paciência a fraqueza escorça.
+                    E a paciência a fraqueza escorça.
                     O guerreiro caminha pela estrada,
-                    e a vida é uma missão sagrada.
+                    E a vida é uma missão sagrada.
                     As cerejeiras florescem no caminho,
-                    e o samurai segue sozinho.
+                    E o samurai segue sozinho.
                     O vento sopra as pétalas no chão,
-                    e a beleza acalma o coração.
+                    E a beleza acalma o coração.
                     A armadura pesa, mas não cansa,
-                    e a coragem é a sua lança.
+                    E a coragem é a sua lança.
                     O dever chama do outro lado do rio,
-                    e o samurai enfrenta o desafio.
+                    E o samurai enfrenta o desafio.
                     A luta é justa, o gesto é claro,
-                    e a vitória tem um gosto raro.
+                    E a vitória tem um gosto raro.
                     A noite cai sobre o vilarejo,
-                    e o guerreiro sente o ensejo.
+                    E o guerreiro sente o ensejo.
                     O chá quente aquece o corpo frio,
-                    e a paz renasce no vazio.
+                    E a paz renasce no vazio.
                     A lua cheia ilumina o telhado,
-                    e o samurai se sente guardado.
+                    E o samurai se sente guardado.
                     A família espera no lar distante,
-                    e a saudade é uma chama constante.
+                    E a saudade é uma chama constante.
                     Mas o caminho do guerreiro é comprido,
-                    e o coração se mantém destemido.
+                    E o coração se mantém destemido.
                     O amanhecer devolve a esperança,
-                    e a jornada continua em mudança.
+                    E a jornada continua em mudança.
                     A lâmina repousa, mas está pronta,
-                    e a honra é a sua mais bela conta.
+                    E a honra é a sua mais bela conta.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Na cidade de neon a chuva cai,
-                    e o brilho artificial a tudo trai.
+                    E o brilho artificial a tudo trai.
                     As ruas fervem em anúncios vivos,
-                    e os passos soam como ecos cativos.
+                    E os passos soam como ecos cativos.
                     O hacker tecla num sótão escuro,
-                    e o código se move como um muro.
+                    E o código se move como um muro.
                     Os dados dançam em ecrãs brilhantes,
-                    e a mente invade sistemas distantes.
+                    E a mente invade sistemas distantes.
                     O implante brilha atrás da orelha,
-                    e a rede é uma teia que aconselha.
+                    E a rede é uma teia que aconselha.
                     O drone cruza o céu calado,
-                    e a lua some atrás do telhado.
+                    E a lua some atrás do telhado.
                     As motos voam sobre avenidas,
-                    e os sonhos viram novas vidas.
+                    E os sonhos viram novas vidas.
                     A noite esconde sombras e perigos,
-                    e os códigos se tornam abrigos.
+                    E os códigos se tornam abrigos.
                     O herói solitário enfrenta a rede,
-                    e a coragem rompe qualquer parede.
+                    E a coragem rompe qualquer parede.
                     A chuva lava o asfalto cinzento,
-                    e o amanhecer traz um novo alento.
+                    E o amanhecer traz um novo alento.
                     Os letreiros piscam sem parar,
-                    e a cidade começa a respirar.
+                    E a cidade começa a respirar.
                     O hacker vence a batalha sem igual,
-                    e a justiça vira um sinal.
+                    E a justiça vira um sinal.
                     A luz do sol reflete no asfalto,
-                    e a esperança brota em sobressalto.
+                    E a esperança brota em sobressalto.
                     O ciberespaço guarda mil portais,
-                    e a alma humana sonha com ideais.
+                    E a alma humana sonha com ideais.
                     A tecnologia é faca de dois gumes,
-                    e o futuro é feito de quebra-lumes.
+                    E o futuro é feito de quebra-lumes.
                     A cidade acorda com seu ruído,
-                    e o herói segue seu partido.
+                    E o herói segue seu partido.
                     As ruas brilham sob o sol que irradia,
-                    e a vida pulsa em plena euforia.
+                    E a vida pulsa em plena euforia.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     No trilho estreito, o aventureiro avança,
-                    e a floresta densa o corpo balança.
+                    E a floresta densa o corpo balança.
                     O sol da manhã doura a copa alta,
-                    e a coragem no peito nunca falta.
+                    E a coragem no peito nunca falta.
                     A mochila pesa, mas o passo é firme,
-                    e o coração valente nada oprime.
+                    E o coração valente nada oprime.
                     O rio ao lado canta uma canção,
-                    e a brisa fresca toca o coração.
+                    E a brisa fresca toca o coração.
                     A montanha ao longe acena em paz,
-                    e o sonho antigo a todos satisfaz.
+                    E o sonho antigo a todos satisfaz.
                     As aves guiam com o seu cantar,
-                    e a esperança nasce a cada olhar.
+                    E a esperança nasce a cada olhar.
                     O mapa dobrado indica o norte,
-                    e a aventura é a nossa sorte.
+                    E a aventura é a nossa sorte.
                     As pedras rolam sob as botas,
-                    e o suor escorre em gotas tortas.
+                    E o suor escorre em gotas tortas.
                     Mas a paisagem recompensa a lida,
-                    e a alma inteira se sente erguida.
+                    E a alma inteira se sente erguida.
                     No alto do pico, o vento forte,
-                    e o mundo inteiro se faz suporte.
+                    E o mundo inteiro se faz suporte.
                     O horizonte abraça o azul do céu,
-                    e o aventureiro solta um riso seu.
+                    E o aventureiro solta um riso seu.
                     A descida é calma, o rio guia,
-                    e a noite chega em paz e harmonia.
+                    E a noite chega em paz e harmonia.
                     A fogueira acesa espanta o frio,
-                    e o cansaço vira um doce vazio.
+                    E o cansaço vira um doce vazio.
                     As estrelas brilham sem igual,
-                    e a jornada vira um ritual.
+                    E a jornada vira um ritual.
                     O viajante dorme sob o manto,
-                    e a natureza canta o seu encanto.
+                    E a natureza canta o seu encanto.
                     O amanhecer devolve a cor,
-                    e a aventura segue com louvor.
+                    E a aventura segue com louvor.
                     A cada trilho, um novo caminho,
-                    e a descoberta acende o carinho.
+                    E a descoberta acende o carinho.
                     O mundo é vasto, cheio de surpresas,
-                    e a coragem quebra as presas.
+                    E a coragem quebra as presas.
                     O aventureiro sabe que a estrada
-                    é a sua casa mais amada.
+                    É a sua casa mais amada.
                     E assim caminha, livre e são,
-                    com a alegria no coração.
+                    Com a alegria no coração.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Em Roma antiga, o fórum fervilhava,
-                    e a toga branca ao vento deslizava.
+                    E a toga branca ao vento deslizava.
                     O cidadão discursa com fervor,
-                    e a praça inteira escuta com louvor.
+                    E a praça inteira escuta com louvor.
                     As colunas erguem templos imponentes,
-                    e as pedras contam feitos reluzentes.
+                    E as pedras contam feitos reluzentes.
                     O gladiador na arena se prepara,
-                    e a multidão em gritos se compara.
+                    E a multidão em gritos se compara.
                     A espada curta brilha sob o sol,
-                    e a vida pende como um arrebol.
+                    E a vida pende como um arrebol.
                     Mas há também o riso e a poesia,
-                    e a festa que se estende em harmonia.
+                    E a festa que se estende em harmonia.
                     O mercado transborda de sabores,
-                    e os vendedores gritam seus louvores.
+                    E os vendedores gritam seus louvores.
                     As uvas doces, o pão fresquinho,
-                    e o vinho corre solto no caminho.
+                    E o vinho corre solto no caminho.
                     O circo máximo reúne o povo,
-                    e a corrida de bigas faz de novo.
+                    E a corrida de bigas faz de novo.
                     Os cavalos disparam lado a lado,
-                    e o povo vibra com o resultado.
+                    E o povo vibra com o resultado.
                     A noite cai e as tochas se acendem,
-                    e os romanos às ruas se estendem.
+                    E os romanos às ruas se estendem.
                     O jantar em família é sagrado,
-                    e o afeto deixa o dia iluminado.
+                    E o afeto deixa o dia iluminado.
                     As crianças correm pelo átrio,
-                    e o avô conta um conto literário.
+                    E o avô conta um conto literário.
                     A vida em Roma é feita de trabalho,
-                    mas também de alegria e de agasalho.
+                    Mas também de alegria e de agasalho.
                     O direito romano inspira leis,
-                    e a justiça protege os plebeus.
+                    E a justiça protege os plebeus.
                     As estradas ligam todo o império,
-                    e o comércio floresce no hemisfério.
+                    E o comércio floresce no hemisfério.
                     O aqueduto traz água pura,
-                    e a fonte jorra com doçura.
+                    E a fonte jorra com doçura.
                     A arquitetura é sólida e bela,
-                    e a cidade se orgulha de sua tela.
+                    E a cidade se orgulha de sua tela.
                     Ao fim do dia, o sol se põe dourado,
-                    e o Tibre corre calmo, sossegado.
+                    E o Tibre corre calmo, sossegado.
                     A lua cheia beija as construções,
-                    e a brisa sopra velhas canções.
+                    E a brisa sopra velhas canções.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Na antiga Grécia, o sol doura o mar,
-                    e as ondas vêm a praia beijar.
+                    E as ondas vêm a praia beijar.
                     O porto acorda com o canto das gaivotas,
-                    e os barcos partem com velas soltas.
+                    E os barcos partem com velas soltas.
                     O mercador arruma a sua mercadoria,
-                    e o riso enche a manhã de alegria.
+                    E o riso enche a manhã de alegria.
                     A ágora reúne o povo inteiro,
-                    e o filósofo fala verdadeiro.
+                    E o filósofo fala verdadeiro.
                     As palavras voam como pombos brancos,
-                    e o pensamento não conhece barrancos.
+                    E o pensamento não conhece barrancos.
                     O jovem sonha com a lua distante,
-                    e a poesia nasce a cada instante.
+                    E a poesia nasce a cada instante.
                     A lira toca suave melodia,
-                    e a dança flui em plena sintonia.
+                    E a dança flui em plena sintonia.
                     As oliveiras brilham sob o sol,
-                    e o azeite novo é um farol.
+                    E o azeite novo é um farol.
                     O oleiro molda o barro com destreza,
-                    e a ânfora nasce com beleza.
+                    E a ânfora nasce com beleza.
                     O atleta treina na palestra aberta,
-                    e a coroa de louros é a meta certa.
+                    E a coroa de louros é a meta certa.
                     A corrida rápida levanta poeira,
-                    e o público vibra na fileira.
+                    E o público vibra na fileira.
                     O salto longo corta o vento,
-                    e o disco voa em movimento.
+                    E o disco voa em movimento.
                     A tarde chega com brisa leve,
-                    e o pôr do sol a tudo se atreve.
+                    E o pôr do sol a tudo se atreve.
                     O céu pinta-se de ouro e rosa,
-                    e a terra fica silenciosa.
+                    E a terra fica silenciosa.
                     As estrelas surgem cintilantes,
-                    e os viajantes tornam-se errantes.
+                    E os viajantes tornam-se errantes.
                     O barco navega rumo ao desconhecido,
-                    e o mar é um caminho destemido.
+                    E o mar é um caminho destemido.
                     A noite abraça os marinheiros,
-                    e a esperança guia os remeiros.
+                    E a esperança guia os remeiros.
                     A aurora devolve a cor ao mundo,
-                    e o coração sente-se fecundo.
+                    E o coração sente-se fecundo.
                     A sabedoria antiga floresce,
-                    e a beleza a todos enriquece.
+                    E a beleza a todos enriquece.
                     O teatro conta histórias de coragem,
-                    e a plateia vive cada imagem.
+                    E a plateia vive cada imagem.
                     A máscara ri e a máscara chora,
-                    e a arte renasce a cada hora.
+                    E a arte renasce a cada hora.
                     O legado grego vive no presente,
-                    e a chama do saber é persistente.
+                    E a chama do saber é persistente.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Na tenda circular o fogo crepita,
-                    e o tambor antigo o ritmo agita.
+                    E o tambor antigo o ritmo agita.
                     O xamã canta uma canção sagrada,
-                    e o fumo sobe em dança alada.
+                    E o fumo sobe em dança alada.
                     A voz se eleva em tom profundo,
-                    e o som invade o coração do mundo.
+                    E o som invade o coração do mundo.
                     Os chocalhos marcam a batida,
-                    e a noite inteira fica colorida.
+                    E a noite inteira fica colorida.
                     A floresta ouve em volta atenta,
-                    e o vento sopra a chama lenta.
+                    E o vento sopra a chama lenta.
                     O xamã chama os bons espíritos,
-                    e o medo foge dos limites.
+                    E o medo foge dos limites.
                     A erva doce perfuma o ar,
-                    e a luz da lua vem abençoar.
+                    E a luz da lua vem abençoar.
                     A terra pulsa sob os pés descalços,
-                    e o tempo para em suaves laços.
+                    E o tempo para em suaves laços.
                     O sonho acorda dentro da visão,
-                    e a cura chega como proteção.
+                    E a cura chega como proteção.
                     As estrelas brilham no céu sem fim,
-                    e o fogo dança como um jardim.
+                    E o fogo dança como um jardim.
                     A tribo inteira canta em coro,
-                    e a união torna-se um tesouro.
+                    E a união torna-se um tesouro.
                     O xamã sorri com serenidade,
-                    e a paz abraça a comunidade.
+                    E a paz abraça a comunidade.
                     A noite passa, o fogo amansa,
-                    e a esperança na alma descansa.
+                    E a esperança na alma descansa.
                     O amanhecer traz a luz dourada,
-                    e a terra inteira é abençoada.
+                    E a terra inteira é abençoada.
                     O rio canta uma canção antiga,
-                    e a floresta é uma amiga.
+                    E a floresta é uma amiga.
                     A vida brota em cada folha,
-                    e o coração se maravilha.
+                    E o coração se maravilha.
                     O tambor cala, mas a vibração
-                    permanece viva no chão.
+                    Permanece viva no chão.
                     O xamã descansa em paz,
-                    e a tribo segue capaz.
+                    E a tribo segue capaz.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     No tapete estendido a mente acalma,
-                    e a respiração conduz o corpo e a alma.
+                    E a respiração conduz o corpo e a alma.
                     O sol da manhã entra pela janela,
-                    e a luz desenha uma trilha bela.
+                    E a luz desenha uma trilha bela.
                     Os braços sobem lentos para o alto,
-                    e o peito se abre como um salto.
+                    E o peito se abre como um salto.
                     A coluna firme encontra a terra,
-                    e a postura certa o cansaço encerra.
+                    E a postura certa o cansaço encerra.
                     O corpo flui em gesto silencioso,
-                    e o pensamento fica preguiçoso.
+                    E o pensamento fica preguiçoso.
                     A pose da árvore ensina o equilíbrio,
-                    e o olhar tranquilo vence o martírio.
+                    E o olhar tranquilo vence o martírio.
                     O guerreiro firme desperta a força,
-                    e a calma interna a fraqueza escorça.
+                    E a calma interna a fraqueza escorça.
                     O alongamento suave desata os nós,
-                    e o coração escuta a própria voz.
+                    E o coração escuta a própria voz.
                     A prática diária constrói a paz,
-                    e a paciência todo medo desfaz.
+                    E a paciência todo medo desfaz.
                     O sol aquece a sala silenciosa,
-                    e a mente voa como borboleta garbosa.
+                    E a mente voa como borboleta garbosa.
                     O tempo para, não existe pressa,
-                    e a alma inteira se confessa.
+                    E a alma inteira se confessa.
                     A cada respiro, uma nova chance,
-                    e o corpo dança em suave avanço.
+                    E o corpo dança em suave avanço.
                     O alongamento abre caminhos novos,
-                    e a flexibilidade cria renovos.
+                    E a flexibilidade cria renovos.
                     A paz invade cada movimento,
-                    e o chão se torna um firmamento.
+                    E o chão se torna um firmamento.
                     A ponte eleva o peito ao céu,
-                    e o cansaço some como um véu.
+                    E o cansaço some como um véu.
                     O relaxamento final acalma tudo,
-                    e o corpo descansa em um sono mudo.
+                    E o corpo descansa em um sono mudo.
                     A mente clara observa o dia,
-                    e a gratidão vira melodia.
+                    E a gratidão vira melodia.
                     O tapete guarda a energia boa,
-                    e o praticante se sente pessoa.
+                    E o praticante se sente pessoa.
                     A prática segue além da sala,
-                    e a vida inteira se iguala.
+                    E a vida inteira se iguala.
                     A calma mora em cada gesto,
-                    e o equilíbrio é o nosso manifesto.
+                    E o equilíbrio é o nosso manifesto.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     O amor é a casa de portas abertas,
-                    onde o coração encontra as mãos certas.
+                    Onde o coração encontra as mãos certas.
                     É a chama acesa em noite fria,
-                    e o riso fácil que o dia anuncia.
+                    E o riso fácil que o dia anuncia.
                     Não mora longe, mora no gesto,
-                    no abraço quente, no olhar honesto.
+                    No abraço quente, no olhar honesto.
                     É a chávena de chá partilhada,
-                    e a conversa que não tem hora marcada.
+                    E a conversa que não tem hora marcada.
                     O amor é o silêncio que acolhe,
-                    e a palavra que o medo recolhe.
+                    E a palavra que o medo recolhe.
                     É o passo junto na estrada,
-                    e a direção partilhada.
+                    E a direção partilhada.
                     É a sombra fresca no verão,
-                    e o cobertor no inverno, a proteção.
+                    E o cobertor no inverno, a proteção.
                     O amor é o pão repartido,
-                    e o sonho que não foi esquecido.
+                    E o sonho que não foi esquecido.
                     É a mão estendida sem pedir,
-                    e a presença que faz sorrir.
+                    E a presença que faz sorrir.
                     Não precisa de grande festa,
-                    pois mora na coisa modesta.
+                    Pois mora na coisa modesta.
                     No bilhete deixado na mesa,
-                    e na lembrança que não pesa.
+                    E na lembrança que não pesa.
                     O amor é o porto seguro,
-                    e o futuro que se torna mais puro.
+                    E o futuro que se torna mais puro.
                     É a dança lenta na cozinha,
-                    e a conversa que a tarde adivinha.
+                    E a conversa que a tarde adivinha.
                     O amor é a terra que floresce,
-                    e a esperança que não esmorece.
+                    E a esperança que não esmorece.
                     É o sol que entra pela janela,
-                    e a vida simples, sempre bela.
+                    E a vida simples, sempre bela.
                     O amor é o verso que se escreve,
-                    e a ternura que a alma serve.
+                    E a ternura que a alma serve.
                     É a estrada longa percorrida,
-                    e a chegada sempre querida.
+                    E a chegada sempre querida.
                     O amor não cobra, não se apressa,
-                    ele apenas chega e não cessa.
+                    Ele apenas chega e não cessa.
                     É a calma depois do aguaceiro,
-                    e a esperança que brota no terreiro.
+                    E a esperança que brota no terreiro.
                     É o olhar que entende sem falar,
-                    e o tempo que não sabe apagar.
+                    E o tempo que não sabe apagar.
                     O amor é a prova mais bonita,
-                    de que a vida inteira acredita.
+                    De que a vida inteira acredita.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     No convés do navio, a brisa assanha,
-                    e o capitão a todos acompanha.
+                    E o capitão a todos acompanha.
                     A vela cheia estufa com o vento,
-                    e a tripulação move-se no intento.
+                    E a tripulação move-se no intento.
                     O mapa antigo aponta o destino,
-                    e o tesouro espera no azul cristalino.
+                    E o tesouro espera no azul cristalino.
                     Mas antes de zarpar, um novo desafio,
-                    dominar o teclado, com calma e brio.
+                    Dominar o teclado, com calma e brio.
                     Dedos que navegam sobre as teclas,
-                    como ondas que dançam, tão belas.
+                    Como ondas que dançam, tão belas.
                     A prática diária é a bússola certa,
-                    e a constância é a vela alerta.
+                    E a constância é a vela alerta.
                     Não olhe para baixo, confie na mão,
-                    e a digitação vira uma canção.
+                    E a digitação vira uma canção.
                     O ritmo aumenta como a maré,
-                    e a precisão firma-se com fé.
+                    E a precisão firma-se com fé.
                     A postura reta mantém o leme,
-                    e o conforto no banco o corpo reme.
+                    E o conforto no banco o corpo reme.
                     As pausas são portos onde se descansa,
-                    e a paciência a alma balança.
+                    E a paciência a alma balança.
                     O pirata que digita com destreza,
-                    conquista os mares com mais firmeza.
+                    Conquista os mares com mais firmeza.
                     As cartas são escritas sem temor,
-                    e a aventura ganha mais valor.
+                    E a aventura ganha mais valor.
                     O tesouro não é só o metal reluzente,
-                    mas a habilidade que a mente sente.
+                    Mas a habilidade que a mente sente.
                     A cada linha, um nó se desata,
-                    e a mente abre-se como uma fragata.
+                    E a mente abre-se como uma fragata.
                     O teclado é o mar, os dedos são remos,
-                    e a prática constante nos faz supremos.
+                    E a prática constante nos faz supremos.
                     Navegamos juntos nessa jornada,
-                    e a digitação torna-se estrada.
+                    E a digitação torna-se estrada.
                     O sol põe-se no horizonte largo,
-                    e o progresso é um doce encargo.
+                    E o progresso é um doce encargo.
                     A noite cai, mas o treino segue,
-                    e a esperança a todos persegue.
+                    E a esperança a todos persegue.
                     O amanhecer traz novo dia,
-                    e a prática renova a alegria.
+                    E a prática renova a alegria.
                     O pirata que escreve sem olhar,
-                    pode os sete mares conquistar.
+                    Pode os sete mares conquistar.
                     A fluência é a joia mais rara,
-                    e a paciência é a chave clara.
+                    E a paciência é a chave clara.
                     Continue firme, marinheiro,
-                    e o teclado será seu cruzeiro.
+                    E o teclado será seu cruzeiro.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     No mar gelado, o drakkar balança,
-                    e a tripulação não descansa.
+                    E a tripulação não descansa.
                     Os remos cortam a onda forte,
-                    e a coragem é o nosso norte.
+                    E a coragem é o nosso norte.
                     O vento frio sopra no estandarte,
-                    e cada viking cumpre a sua parte.
+                    E cada viking cumpre a sua parte.
                     Mas hoje a missão é diferente,
-                    digitar sem olhar, e ser valente.
+                    Digitar sem olhar, e ser valente.
                     As runas brilham no teclado,
-                    e o dedo dança com cuidado.
+                    E o dedo dança com cuidado.
                     A prática diária é o machado,
-                    que talha a dúvida e o enfado.
+                    Que talha a dúvida e o enfado.
                     Não busque a pressa, busque o acerto,
-                    e o progresso vem no tempo certo.
+                    E o progresso vem no tempo certo.
                     A postura firme é o escudo,
-                    que protege o corpo e o estudo.
+                    Que protege o corpo e o estudo.
                     Os olhos ficam no ecrã à frente,
-                    e a mente flui como a corrente.
+                    E a mente flui como a corrente.
                     As pausas são portos de descanso,
-                    e o alongamento é um remanso.
+                    E o alongamento é um remanso.
                     O guerreiro que digita sereno,
-                    encontra no teclado um terreno.
+                    Encontra no teclado um terreno.
                     A velocidade chega como o vento,
-                    e o erro vira aprendizado atento.
+                    E o erro vira aprendizado atento.
                     O drakkar segue rumo ao sucesso,
-                    e a digitação vira um progresso.
+                    E a digitação vira um progresso.
                     A cada linha, uma nova vitória,
-                    e a constância tece a sua história.
+                    E a constância tece a sua história.
                     O teclado é o mar, os dedos são velas,
-                    que navegam por palavras tão belas.
+                    Que navegam por palavras tão belas.
                     Continue, viking, com bravura,
-                    e a digitação vira ventura.
+                    E a digitação vira ventura.
                     A aurora boreal guia o caminho,
-                    e o viking digita com carinho.
+                    E o viking digita com carinho.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     No caminho do guerreiro, a lâmina reluz,
-                    e a mente firme a cada passo conduz.
+                    E a mente firme a cada passo conduz.
                     O dojo silencioso guarda a lição,
-                    e a prática diária é a nossa missão.
+                    E a prática diária é a nossa missão.
                     A espada corta o ar, mas hoje não,
-                    o teclado é o campo, a escrita é a ação.
+                    O teclado é o campo, a escrita é a ação.
                     Os dedos dançam como a folha seca,
-                    e a digitação flui sem que se peça.
+                    E a digitação flui sem que se peça.
                     A postura ereta é o nosso escudo,
-                    e o olhar no ecrã quebra todo mudo.
+                    E o olhar no ecrã quebra todo mudo.
                     Não há pressa, o ritmo vem com calma,
-                    e a paciência é a força que acalma.
+                    E a paciência é a força que acalma.
                     A cada toque, um golpe preciso,
-                    e o erro é mestre, não um aviso.
+                    E o erro é mestre, não um aviso.
                     O samurai tecla com precisão,
-                    e o texto nasce como uma oração.
+                    E o texto nasce como uma oração.
                     A prática constante é o treino do dia,
-                    e a constância vira melodia.
+                    E a constância vira melodia.
                     Os ombros soltos, a respiração tranquila,
-                    e a mente serena nunca vacila.
+                    E a mente serena nunca vacila.
                     O guerreiro que digita sem olhar,
-                    vence a batalha sem ficar magoado.
+                    Vence a batalha sem ficar magoado.
                     As palavras brotam como flores raras,
-                    e a velocidade chega sem amarras.
+                    E a velocidade chega sem amarras.
                     Continue firme, samurai da escrita,
-                    e a fluência será a tua maior conquista.
+                    E a fluência será a tua maior conquista.
                     O teclado é a espada, o ecrã é o campo,
-                    e o progresso é o sol que vai surgindo brando.
+                    E o progresso é o sol que vai surgindo brando.
                     A cada linha, uma nova vitória,
-                    e a dedicação constrói a sua história.
+                    E a dedicação constrói a sua história.
                     O caminho é longo, mas a alma é forte,
-                    e a prática diária muda a tua sorte.
+                    E a prática diária muda a tua sorte.
                     A lua ilumina o dojo silencioso,
-                    e o samurai tecla sem repouso.
+                    E o samurai tecla sem repouso.
                     Mas há pausas, como sombras na estrada,
-                    e o descanso é a bênção sagrada.
+                    E o descanso é a bênção sagrada.
                     O alongamento solta a tensão,
-                    e a calma volta ao coração.
+                    E a calma volta ao coração.
                     O guerreiro que respeita o próprio corpo,
-                    escreve com alma, sem esforço.
+                    Escreve com alma, sem esforço.
                     A digitação às cegas é uma arte,
-                    e o samurai faz dela o seu estandarte.
+                    E o samurai faz dela o seu estandarte.
                     A jornada continua, dia após dia,
-                    e a prática constante é a sua guia.
+                    E a prática constante é a sua guia.
                     No fim, o texto flui como um rio,
-                    e o esforço vira um doce desafio.
+                    E o esforço vira um doce desafio.
                     Aprender a digitar é como o caminho do guerreiro,
-                    exige paciência e um coração inteiro.
+                    Exige paciência e um coração inteiro.
                     Mas a recompensa é grande, sem igual,
-                    e a liberdade de escrever é o ideal.
+                    E a liberdade de escrever é o ideal.
                     Continue, samurai, com honra e fé,
-                    e o teclado será o teu chão de pé.
+                    E o teclado será o teu chão de pé.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Na cidade de neon, a chuva fina,
-                    e a prática diária nos ensina.
+                    E a prática diária nos ensina.
                     O herói digital encara o ecrã,
-                    e a digitação flui como vela.
+                    E a digitação flui como vela.
                     Os dados correm na rede veloz,
-                    e a mente escreve com sua voz.
+                    E a mente escreve com sua voz.
                     O implante não é algo essencial,
-                    o treino constante é o ritual.
+                    O treino constante é o ritual.
                     Os dedos dançam sobre o teclado,
-                    e o texto surge sem cuidado.
+                    E o texto surge sem cuidado.
                     A postura firme na cadeira,
-                    e a constância é a nossa bandeira.
+                    E a constância é a nossa bandeira.
                     A cidade acorda sem demora,
-                    e a paciência o medo aflora.
+                    E a paciência o medo aflora.
                     A velocidade chega sem pressa,
-                    e a fluência torna-se a nossa promessa.
+                    E a fluência torna-se a nossa promessa.
                     No ciberespaço, a liberdade
-                    escreve-se com dedos e lealdade.
+                    Escreve-se com dedos e lealdade.
                     Cada palavra é um byte de luz,
-                    e o erro é mestre que conduz.
+                    E o erro é mestre que conduz.
                     As pausas são portos de energia,
-                    e a calma renova a alegria.
+                    E a calma renova a alegria.
                     O herói que digita sem olhar,
-                    pode a rede inteira navegar.
+                    Pode a rede inteira navegar.
                     O ecrã brilha com o teu texto,
-                    e o progresso torna-se o teu pretexto.
+                    E o progresso torna-se o teu pretexto.
                     A noite cai, mas o treino segue,
-                    e a esperança a todos persegue.
+                    E a esperança a todos persegue.
                     O amanhecer traz novo dia,
-                    e a prática cresce em harmonia.
+                    E a prática cresce em harmonia.
                     A cidade digital é um convite,
-                    e a digitação é o teu limite.
+                    E a digitação é o teu limite.
                     Continue firme, guerreiro do código,
-                    e o teclado será o teu método.
+                    E o teclado será o teu método.
                     As palavras brotam como faíscas,
-                    e a fluência rompe as triscas.
+                    E a fluência rompe as triscas.
                     O neon reflete no asfalto molhado,
-                    e o teclado torna-se um aliado.
+                    E o teclado torna-se um aliado.
                     A jornada continua sem parar,
-                    e o progresso faz-nos acreditar.
+                    E o progresso faz-nos acreditar.
                     Cada dedo sabe o seu caminho,
-                    e o texto flui como um vinho.
+                    E o texto flui como um vinho.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     No fórum de Roma, o dia amanhece,
-                    e a prática diária nos aquece.
+                    E a prática diária nos aquece.
                     O orador discursa com fervor,
-                    e o digitador escreve com louvor.
+                    E o digitador escreve com louvor.
                     A toga branca cobre o dorso,
-                    e a postura reta afasta o remorso.
+                    E a postura reta afasta o remorso.
                     O mármore brilha sob o sol,
-                    e o teclado é o nosso farol.
+                    E o teclado é o nosso farol.
                     A constância é a estrada bela,
-                    e a paciência o medo flagela.
+                    E a paciência o medo flagela.
                     As colunas erguem-se imponentes,
-                    e os dedos voam como diligentes.
+                    E os dedos voam como diligentes.
                     O fórum inteiro ouve atento,
-                    e o texto flui em movimento.
+                    E o texto flui em movimento.
                     Cada palavra é uma lei escrita,
-                    e a fluência é a nossa dita.
+                    E a fluência é a nossa dita.
                     Aprender sem olhar é como esculpir
-                    uma estátua firme a erigir.
+                    Uma estátua firme a erigir.
                     O erro é o escopro que lapida,
-                    e a prática diária nos ensina a vida.
+                    E a prática diária nos ensina a vida.
                     As pausas são o descanso do guerreiro,
-                    e o alongamento é o companheiro.
+                    E o alongamento é o companheiro.
                     O digitador romano segue em frente,
-                    e a velocidade chega suavemente.
+                    E a velocidade chega suavemente.
                     O sol põe-se atrás das colinas,
-                    e a mente serena as próprias sinas.
+                    E a mente serena as próprias sinas.
                     A noite cai, e a lua clara
-                    ilumina o ecrã, que não separa.
+                    Ilumina o ecrã, que não separa.
                     O progresso é o triunfo na arena,
-                    e a constância vence toda pena.
+                    E a constância vence toda pena.
                     Continue firme, escriba da era nova,
-                    e a fluência será tua prova.
+                    E a fluência será tua prova.
                     O teclado é o mármore que esculpes,
-                    e a paciência as falhas sulpes.
+                    E a paciência as falhas sulpes.
                     A cada linha, uma nova inscrição,
-                    e a alegria invade o coração.
+                    E a alegria invade o coração.
                     A jornada é longa, mas o passo é certo,
-                    e o descanso é porto aberto.
+                    E o descanso é porto aberto.
                     Roma antiga inspira a disciplina,
-                    e a digitação torna-se oficina.
+                    E a digitação torna-se oficina.
                     O amanhecer devolve a cor,
-                    e a prática diária é o teu motor.
+                    E a prática diária é o teu motor.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     Na antiga Grécia, o sol doura a praça,
-                    e a prática diária a alma abraça.
+                    E a prática diária a alma abraça.
                     O filósofo ensina a paciência,
-                    e a digitação é uma ciência.
+                    E a digitação é uma ciência.
                     Os dedos dançam como na lira,
-                    e o texto flui sem que sinta-se ira.
+                    E o texto flui sem que sinta-se ira.
                     A ágora reúne o pensamento,
-                    e o teclado é o novo instrumento.
+                    E o teclado é o novo instrumento.
                     A postura ereta é como coluna,
-                    que sustenta a mente e a fortuna.
+                    Que sustenta a mente e a fortuna.
                     O olhar no ecrã, a mão que escreve,
-                    e a constância é o que se atreve.
+                    E a constância é o que se atreve.
                     O erro é mestre, como Sócrates dizia,
-                    e a correção é a nossa guia.
+                    E a correção é a nossa guia.
                     A cada linha, um novo diálogo,
-                    e a fluência torna-se um catálogo.
+                    E a fluência torna-se um catálogo.
                     As pausas são o ócio criativo,
-                    e o descanso é o lenitivo.
+                    E o descanso é o lenitivo.
                     O grego antigo buscava a areté,
-                    e a prática nos leva com fé.
+                    E a prática nos leva com fé.
                     A excelência nasce do hábito,
-                    e a digitação é o nosso rito.
+                    E a digitação é o nosso rito.
                     O teatro grego ensina a catarse,
-                    e a digitação é uma nova fase.
+                    E a digitação é uma nova fase.
                     A velocidade chega como o vento,
-                    e a mente serena encontra o alento.
+                    E a mente serena encontra o alento.
                     O sol põe-se no mar Egeu,
-                    e o progresso é o troféu.
+                    E o progresso é o troféu.
                     A lua sobe sobre o templo,
-                    e a prática é o nosso exemplo.
+                    E a prática é o nosso exemplo.
                     Continue firme, aprendiz de sabedoria,
-                    e a digitação será a tua melodia.
+                    E a digitação será a tua melodia.
                     O teclado é a lira moderna,
-                    e a dedicação é a chama eterna.
+                    E a dedicação é a chama eterna.
                     Cada palavra é um verso solto,
-                    e o esforço é um barco envolto.
+                    E o esforço é um barco envolto.
                     A jornada é longa, mas o passo é leve,
-                    e a constância é a chave que atreve.
+                    E a constância é a chave que atreve.
                     A aurora devolve a luz dourada,
-                    e a prática diária é a estrada.
+                    E a prática diária é a estrada.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     No ritmo do tambor, o xamã canta,
-                    e a prática diária nos encanta.
+                    E a prática diária nos encanta.
                     O fumo sobe em espiral,
-                    e o teclado torna-se um ritual.
+                    E o teclado torna-se um ritual.
                     Os dedos dançam como folhas secas,
-                    e a digitação flui sem brecas.
+                    E a digitação flui sem brecas.
                     A postura é o tronco firme da árvore antiga,
-                    e a constância é a força amiga.
+                    E a constância é a força amiga.
                     O olhar no ecrã, a mente atenta,
-                    e a calma interna se sustenta.
+                    E a calma interna se sustenta.
                     O erro é o caminho que ensina,
-                    e a paciência a alma domina.
+                    E a paciência a alma domina.
                     O xamã tecla com precisão,
-                    e o texto nasce como uma canção.
+                    E o texto nasce como uma canção.
                     Cada palavra é uma prece suave,
-                    e a fluência é a chave.
+                    E a fluência é a chave.
                     As pausas são o descanso sereno,
-                    e o alongamento é o terreno.
+                    E o alongamento é o terreno.
                     O ritmo cresce como a batida,
-                    e a prática diária nos dá vida.
+                    E a prática diária nos dá vida.
                     Continue firme, xamã da escrita,
-                    e a velocidade será a tua dita.
+                    E a velocidade será a tua dita.
                     O teclado é o tambor que chama,
-                    e a digitação é o que proclama.
+                    E a digitação é o que proclama.
                     A noite cai, mas o treino segue,
-                    e a esperança a todos persegue.
+                    E a esperança a todos persegue.
                     O amanhecer traz novo dia,
-                    e a prática renova a alegria.
+                    E a prática renova a alegria.
                     A jornada é longa, mas o passo é firme,
-                    e a paciência nos confirme.
+                    E a paciência nos confirme.
                     A cada toque, uma energia pura,
-                    e a fluência a alma segura.
+                    E a fluência a alma segura.
                     O xamã sorri com serenidade,
-                    e a digitação torna-se verdade.
+                    E a digitação torna-se verdade.
                     O teclado guarda a vibração,
-                    e a prática torna-se devoção.
+                    E a prática torna-se devoção.
                     O sol põe-se no horizonte dourado,
-                    e o progresso é um bem guardado.
+                    E o progresso é um bem guardado.
                     Continue, xamã, com o teu poder,
-                    e a digitação vai florescer.
+                    E a digitação vai florescer.
                     A mente clara observa o caminho,
-                    e a constância tece o teu ninho.
+                    E a constância tece o teu ninho.
                     Os erros são estrelas no escuro,
-                    e a correção é o futuro seguro.
+                    E a correção é o futuro seguro.
                     A prática diária é o ritual sagrado,
-                    e o teclado é o teu aliado.
+                    E o teclado é o teu aliado.
                     A cada linha, uma nova canção,
-                    e a alegria invade o coração.
+                    E a alegria invade o coração.
                     O tambor cala, e o ritmo sereno,
-                    e a prática diária é o teu terreno.
+                    E a prática diária é o teu terreno.
                     O xamã descansa, e o teclado brilha,
-                    e a fluência a todos maravilha.
+                    E a fluência a todos maravilha.
                     A jornada continua, não tem fim,
-                    e a digitação é o teu jardim.
+                    E a digitação é o teu jardim.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     No tapete estendido, o corpo acalma,
-                    e a respiração conduz a alma.
+                    E a respiração conduz a alma.
                     A prática diária é o caminho,
-                    e o teclado é o novo ninho.
+                    E o teclado é o novo ninho.
                     Os dedos dançam como folhas leves,
-                    e a digitação flui sem as breves.
+                    E a digitação flui sem as breves.
                     A postura ereta é a montanha,
-                    e a constância é a façanha.
+                    E a constância é a façanha.
                     O olhar no ecrã, a mente quieta,
-                    e a fluência torna-se completa.
+                    E a fluência torna-se completa.
                     O erro é mestre, não é vilão,
-                    e a correção é a lição.
+                    E a correção é a lição.
                     A cada toque, um alongamento,
-                    e o texto nasce em movimento.
+                    E o texto nasce em movimento.
                     As pausas são o descanso sereno,
-                    e o alongamento é o terreno.
+                    E o alongamento é o terreno.
                     A velocidade chega como a brisa,
-                    e a paciência o medo pisa.
+                    E a paciência o medo pisa.
                     Continue firme, iogue da escrita,
-                    e a digitação será a tua dita.
+                    E a digitação será a tua dita.
                     O teclado é o tapete novo,
-                    e a prática é o teu renovo.
+                    E a prática é o teu renovo.
                     A mente clara observa o instante,
-                    e a constância é o diamante.
+                    E a constância é o diamante.
                     O sol da manhã entra pela janela,
-                    e a fluência torna-se bela.
+                    E a fluência torna-se bela.
                     A jornada é longa, mas o passo é leve,
-                    e a paciência a alma atreve.
+                    E a paciência a alma atreve.
                     A cada linha, uma nova postura,
-                    e a digitação é a tua ventura.
+                    E a digitação é a tua ventura.
                     O iogue que digita sem olhar,
-                    encontra a paz no teclar.
+                    Encontra a paz no teclar.
                     O ritmo cresce como a respiração,
-                    e a prática torna-se devoção.
+                    E a prática torna-se devoção.
                     O alongamento solta a tensão,
-                    e a calma invade o coração.
+                    E a calma invade o coração.
                     O teclado é o mantra que vibra,
-                    e a fluência a todos libra.
+                    E a fluência a todos libra.
                     Continue, iogue, com a tua calma,
-                    e a digitação é a tua palma.
+                    E a digitação é a tua palma.
                     O progresso é o sol que aquece,
-                    e a constância é a prece.
+                    E a constância é a prece.
                     A prática diária faz-te crescer,
-                    e a velocidade vai florescer.
+                    E a velocidade vai florescer.
                     O descanso é parte do treino,
-                    e o teclado é o teu terreno.
+                    E o teclado é o teu terreno.
                     No fim, o texto flui em paz,
-                    e a mente serena é capaz.
+                    E a mente serena é capaz.
                     A jornada continua, sem ter fim,
-                    e a digitação é o teu jardim.
+                    E a digitação é o teu jardim.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     A prática diária da digitação
-                    transforma o teclado em canção.
+                    Transforma o teclado em canção.
                     Os dedos dançam com leveza,
-                    e a mente escreve com certeza.
+                    E a mente escreve com certeza.
                     Não é preciso olhar para a mão,
-                    o tato guia com precisão.
+                    O tato guia com precisão.
                     A postura firme, o olhar atento,
-                    e a constância é o nosso alento.
+                    E a constância é o nosso alento.
                     O ritmo cresce devagar,
-                    e a fluência vem para ficar.
+                    E a fluência vem para ficar.
                     Cada palavra é um pequeno passo,
-                    e o erro é mestre, não embaraço.
+                    E o erro é mestre, não embaraço.
                     A paciência é a chave do processo,
-                    e a prática diária traz o progresso.
+                    E a prática diária traz o progresso.
                     As pausas são portos de descanso,
-                    e o alongamento é um remanso.
+                    E o alongamento é um remanso.
                     A mente serena encontra a calma,
-                    e a digitação acalma a alma.
+                    E a digitação acalma a alma.
                     O teclado é um campo aberto,
-                    e a liberdade é o nosso acerto.
+                    E a liberdade é o nosso acerto.
                     A velocidade chega com o tempo,
-                    e o texto flui em contratempo.
+                    E o texto flui em contratempo.
                     Continue firme, sem desistir,
-                    e a fluência vai surgir.
+                    E a fluência vai surgir.
                     Cada linha é uma vitória,
-                    e a constância tece a história.
+                    E a constância tece a história.
                     O sol nasce e ilumina a mesa,
-                    e a prática diária é a certeza.
+                    E a prática diária é a certeza.
                     A noite cai, mas o treino segue,
-                    e a esperança a todos persegue.
+                    E a esperança a todos persegue.
                     O amanhecer traz novo dia,
-                    e a prática renova a alegria.
+                    E a prática renova a alegria.
                     A jornada é longa, mas o passo é certo,
-                    e o teclado é o teu deserto.
+                    E o teclado é o teu deserto.
                     A cada toque, uma semente,
-                    e a fluência é o que se sente.
+                    E a fluência é o que se sente.
                     O progresso é o sol que aquece,
-                    e a paciência é a prece.
+                    E a paciência é a prece.
                     A digitação às cegas é um dom,
-                    que se conquista com o próprio tom.
+                    Que se conquista com o próprio tom.
                     Não desista, continue a teclar,
-                    e a liberdade vai te abraçar.
+                    E a liberdade vai te abraçar.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     A cada dia, a prática se renova,
-                    e a digitação é uma prova.
+                    E a digitação é uma prova.
                     Os dedos dançam sobre as teclas,
-                    como abelhas em flores tão belas.
+                    Como abelhas em flores tão belas.
                     O olhar descansa no ecrã sereno,
-                    e a mente escreve sem veneno.
+                    E a mente escreve sem veneno.
                     A postura firme, o corpo em paz,
-                    e a constância o progresso traz.
+                    E a constância o progresso traz.
                     Não há pressa, o tempo é amigo,
-                    e o erro é mestre que ensina o abrigo.
+                    E o erro é mestre que ensina o abrigo.
                     Cada palavra é uma semente,
-                    e a fluência floresce na frente.
+                    E a fluência floresce na frente.
                     O teclado é um jardim silencioso,
-                    e a paciência é o sol generoso.
+                    E a paciência é o sol generoso.
                     A velocidade chega como o vento,
-                    e a alma enche-se de contentamento.
+                    E a alma enche-se de contentamento.
                     Continue firme, sem desistir,
-                    e a liberdade vai-te sorrir.
+                    E a liberdade vai-te sorrir.
                     A jornada é longa, mas o passo é leve,
-                    e a prática diária a alma atreve.
+                    E a prática diária a alma atreve.
                     O sol da manhã ilumina a mesa,
-                    e a esperança é a nossa certeza.
+                    E a esperança é a nossa certeza.
                     A noite cai, mas o brilho interno
-                    guia os dedos no caderno eterno.
+                    Guia os dedos no caderno eterno.
                     As pausas trazem o descanso certo,
-                    e o alongamento abre o peito aberto.
+                    E o alongamento abre o peito aberto.
                     A mente serena observa o instante,
-                    e a digitação torna-se constante.
+                    E a digitação torna-se constante.
                     O progresso é o prémio da constância,
-                    e a alegria renova a infância.
+                    E a alegria renova a infância.
                     A cada linha, um novo horizonte,
-                    e a coragem vence toda ponte.
+                    E a coragem vence toda ponte.
                     O teclado responde com carinho,
-                    e os dedos seguem o seu caminho.
+                    E os dedos seguem o seu caminho.
                     A prática diária é a chave dourada,
-                    e a fluência é a alma iluminada.
+                    E a fluência é a alma iluminada.
                     Não desista, o esforço é pequeno,
-                    e o resultado é mais que sereno.
+                    E o resultado é mais que sereno.
                     A digitação às cegas é um dom,
-                    que se conquista com o próprio tom.
+                    Que se conquista com o próprio tom.
                     O ecrã reflete o teu pensamento,
-                    e a escrita flui em movimento.
+                    E a escrita flui em movimento.
                     A cada toque, uma nova história,
-                    e a dedicação tece a glória.
+                    E a dedicação tece a glória.
                     O teclado é um porto seguro,
-                    e a prática diária é o futuro.
+                    E a prática diária é o futuro.
                     Continue firme, com alegria,
-                    e a fluência será a tua guia.
+                    E a fluência será a tua guia.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     A prática diária é como um rio manso,
-                    que corre suave e traz descanso.
+                    Que corre suave e traz descanso.
                     Os dedos dançam sobre o teclado,
-                    e o texto flui sem nenhum enfado.
+                    E o texto flui sem nenhum enfado.
                     Não busques a pressa, busca o acerto,
-                    e o progresso chega no momento certo.
+                    E o progresso chega no momento certo.
                     A postura firme é o teu alicerce,
-                    e a constância é o que te tece.
+                    E a constância é o que te tece.
                     O olhar no ecrã, a mente desperta,
-                    e a fluência é uma porta aberta.
+                    E a fluência é uma porta aberta.
                     Cada toque é um pequeno passo,
-                    e o erro é mestre, não um fracasso.
+                    E o erro é mestre, não um fracasso.
                     A paciência é a chave que abre a estrada,
-                    e a prática diária é a jornada.
+                    E a prática diária é a jornada.
                     As pausas são oásis no deserto,
-                    e o alongamento é o caminho aberto.
+                    E o alongamento é o caminho aberto.
                     A mente serena encontra a calma,
-                    e a digitação acalma a alma.
+                    E a digitação acalma a alma.
                     O teclado é um campo de flores,
-                    e os dedos colhem os sabores.
+                    E os dedos colhem os sabores.
                     A velocidade chega como a brisa,
-                    e a alma enche-se de uma alegria lisa.
+                    E a alma enche-se de uma alegria lisa.
                     Continue firme, sem duvidar,
-                    e a liberdade vai-te guiar.
+                    E a liberdade vai-te guiar.
                     A jornada é longa, mas o passo é firme,
-                    e a paciência a alma confirme.
+                    E a paciência a alma confirme.
                     O sol da manhã ilumina o caminho,
-                    e a prática diária é o teu carinho.
+                    E a prática diária é o teu carinho.
                     A noite cai, mas o brilho interno
-                    guia os dedos no caderno eterno.
+                    Guia os dedos no caderno eterno.
                     Cada palavra é uma semente plantada,
-                    e a fluência é a colheita esperada.
+                    E a fluência é a colheita esperada.
                     O progresso é o fruto da constância,
-                    e a alegria renova a substância.
+                    E a alegria renova a substância.
                     A cada linha, um novo horizonte,
-                    e a coragem vence toda ponte.
+                    E a coragem vence toda ponte.
                     O teclado responde com ternura,
-                    e os dedos seguem com bravura.
+                    E os dedos seguem com bravura.
                     A prática diária é a chave de ouro,
-                    e a digitação é o teu tesouro.
+                    E a digitação é o teu tesouro.
                     Não desistas, o esforço é pequeno,
-                    e o resultado é mais que sereno.
+                    E o resultado é mais que sereno.
                     A digitação às cegas é um dom,
-                    que se conquista com o próprio som.
+                    Que se conquista com o próprio som.
                     O ecrã reflete o teu pensamento,
-                    e a escrita flui em movimento.
+                    E a escrita flui em movimento.
                     A cada toque, uma nova história,
-                    e a dedicação tece a glória.
+                    E a dedicação tece a glória.
                     O teclado é um porto seguro,
-                    e a prática diária é o futuro.
+                    E a prática diária é o futuro.
                     Continue firme, o caminho é reto,
-                    e a fluência será o teu afeto.
+                    E a fluência será o teu afeto.
                     EOT,
             ],
             [
                 'genre' => 'poetry',
                 'text' => <<<EOT
                     A cada manhã, o teclado espera,
-                    e a prática diária é uma primavera.
+                    E a prática diária é uma primavera.
                     Os dedos despertam com o sol,
-                    e a escrita flui como um farol.
+                    E a escrita flui como um farol.
                     Não olhes para baixo, confia na mão,
-                    o tato conhece a direção.
+                    O tato conhece a direção.
                     A postura ereta, o corpo em calma,
-                    e a constância acalma a alma.
+                    E a constância acalma a alma.
                     O ritmo nasce devagar,
-                    como a onda que vem beijar o mar.
+                    Como a onda que vem beijar o mar.
                     Cada palavra é um grão de areia,
-                    e a fluência a todos semeia.
+                    E a fluência a todos semeia.
                     O erro é chuva que rega o chão,
-                    e a correção é a floração.
+                    E a correção é a floração.
                     A paciência é o sol amigo,
-                    que aquece a prática e vence o perigo.
+                    Que aquece a prática e vence o perigo.
                     As pausas são brisas no rosto,
-                    e o alongamento é um gosto.
+                    E o alongamento é um gosto.
                     A mente serena observa o ecrã claro,
-                    e a digitação é um gesto raro.
+                    E a digitação é um gesto raro.
                     O teclado é um rio manso,
-                    e os dedos seguem o seu descanso.
+                    E os dedos seguem o seu descanso.
                     A velocidade chega como a brisa,
-                    e a alma enche-se de uma calma precisa.
+                    E a alma enche-se de uma calma precisa.
                     Continue firme, sem recuar,
-                    e a liberdade vai-te saudar.
+                    E a liberdade vai-te saudar.
                     A jornada é longa, mas o passo é firme,
-                    e a esperança a todos confirme.
+                    E a esperança a todos confirme.
                     O sol da tarde ilumina a mesa,
-                    e a prática diária é a certeza.
+                    E a prática diária é a certeza.
                     A noite cai, e o brilho interno
-                    guia os dedos no caderno eterno.
+                    Guia os dedos no caderno eterno.
                     Cada linha é um novo começo,
-                    e o progresso é o nosso apreço.
+                    E o progresso é o nosso apreço.
                     A dedicação é o alicerce,
-                    e a digitação é o que te fortalece.
+                    E a digitação é o que te fortalece.
                     Não desistas, o esforço é pequeno,
-                    e o resultado é um bem sereno.
+                    E o resultado é um bem sereno.
                     O ecrã reflete o teu ser,
-                    e a escrita é o teu florescer.
+                    E a escrita é o teu florescer.
                     A cada toque, uma nova esperança,
-                    e a constância é a tua dança.
+                    E a constância é a tua dança.
                     O teclado é um porto amigo,
-                    e a prática diária é o abrigo.
+                    E a prática diária é o abrigo.
                     Continue firme, com vontade,
-                    e a fluência é a felicidade.
+                    E a fluência é a felicidade.
                     EOT,
             ],
         ];
