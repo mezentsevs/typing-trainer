@@ -9,22 +9,22 @@ class EsLessonDataProvider extends LanguageLessonDataProvider
 {
     protected const string LANGUAGE_CODE = EsLanguage::CODE;
 
-    protected const string CHARS = 'asdfghjklñqwertyuiopzxcvbnm,.-áéíóúüASDFGHJKLÑQWERTYUIOPZXCVBNM;:_1234567890!"·$%&/()=?¿¡ºª\\|@#~€¬{[]}`^*\'';
+    protected const string CHARS = 'asdfghjklñqwertyuiopzxcvbnm,.-áéíóúüASDFGHJKLÑQWERTYUIOPZXCVBNM;:_ÁÉÍÓÚÜ1234567890!"·$%&/()=?¿¡ºª\\|@#~€¬{[]}*+\'<>ýàèìòùỳâêîôûŷäëïöÿÝÀÈÌÒÙỲÂÊÎÔÛŶÄËÏÖŸ';
 
     protected const array NEW_CHARS_SEQUENCE = [
-        1 => 'asdfgh',
-        2 => 'jklñqw',
-        3 => 'ertyui',
-        4 => 'opzxcvb',
-        5 => 'nm,.-áé',
-        6 => 'íóúüASDF',
-        7 => 'GHJKLÑQW',
-        8 => 'ERTYUIOPZ',
-        9 => 'XCVBNM;:_',
-        10 => '1234567890',
-        11 => '!"·$%&/()=?',
-        12 => '¿¡ºª\\|@#~€¬{',
-        13 => '[]}`^*\'',
+        1 => 'asdfghjk',
+        2 => 'lñqwerty',
+        3 => 'uiopzxcvb',
+        4 => 'nm,.-áéíó',
+        5 => 'úüASDFGHJK',
+        6 => 'LÑQWERTYUI',
+        7 => 'OPZXCVBNM;:',
+        8 => '_ÁÉÍÓÚÜ12345',
+        9 => '67890!"·$%&/(',
+        10 => ')=?¿¡ºª\\|@#~€¬',
+        11 => '{[]}*+\'<>ýàèìòù',
+        12 => 'ỳâêîôûŷäëïöÿÝÀÈÌÒ',
+        13 => 'ÙỲÂÊÎÔÛŶÄËÏÖŸ',
         14 => self::CHARS,
         15 => self::CHARS,
         16 => self::CHARS,

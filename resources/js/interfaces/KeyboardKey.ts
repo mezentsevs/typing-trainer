@@ -3,6 +3,7 @@ import { SpecialPosition, Zone } from '@/enums/KeyboardEnums';
 export default interface KeyboardKey {
     altGr?: string;
     altGrPosition?: SpecialPosition | null;
+    altGrShift?: string;
     display: string;
     special?: string;
     specialPosition?: SpecialPosition | null;

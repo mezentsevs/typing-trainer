@@ -32,7 +32,8 @@
                             COMMON_BUTTON_CLASS,
                             isHighlighted(key.value, key.zone) ||
                             isHighlighted(key.special, key.zone) ||
-                            isHighlighted(key.altGr, key.zone)
+                            isHighlighted(key.altGr, key.zone) ||
+                            isHighlighted(key.altGrShift, key.zone)
                                 ? HIGHLIGHTED_BUTTON_CLASS
                                 : NORMAL_BUTTON_CLASS,
                             key.value === 'backspace' ? 'text-sm px-1' : '',
@@ -59,6 +60,9 @@
                             ">
                             {{ key.altGr }}
                         </span>
+                        <span v-if="key.altGrShift" class="absolute text-xs bottom-0 left-1">
+                            {{ key.altGrShift }}
+                        </span>
                     </button>
                 </template>
                 <template v-else-if="rowIndex === 4">
@@ -81,7 +85,8 @@
                                 COMMON_BUTTON_CLASS,
                                 isHighlighted(key.value, key.zone) ||
                                 isHighlighted(key.special, key.zone) ||
-                                isHighlighted(key.altGr, key.zone)
+                                isHighlighted(key.altGr, key.zone) ||
+                                isHighlighted(key.altGrShift, key.zone)
                                     ? HIGHLIGHTED_BUTTON_CLASS
                                     : NORMAL_BUTTON_CLASS,
                             ]"
@@ -107,6 +112,9 @@
                                 ">
                                 {{ key.altGr }}
                             </span>
+                            <span v-if="key.altGrShift" class="absolute text-xs bottom-0 left-1">
+                                {{ key.altGrShift }}
+                            </span>
                         </button>
                     </div>
                     <button
@@ -115,7 +123,8 @@
                             COMMON_BUTTON_CLASS,
                             isHighlighted(row[4].value, row[4].zone) ||
                             isHighlighted(row[4].special, row[4].zone) ||
-                            isHighlighted(row[4].altGr, row[4].zone)
+                            isHighlighted(row[4].altGr, row[4].zone) ||
+                            isHighlighted(row[4].altGrShift, row[4].zone)
                                 ? HIGHLIGHTED_BUTTON_CLASS
                                 : NORMAL_BUTTON_CLASS,
                         ]"
@@ -141,6 +150,9 @@
                             ">
                             {{ row[4].altGr }}
                         </span>
+                        <span v-if="row[4].altGrShift" class="absolute text-xs bottom-0 left-1">
+                            {{ row[4].altGrShift }}
+                        </span>
                     </button>
                 </template>
                 <template v-else>
@@ -151,7 +163,8 @@
                             COMMON_BUTTON_CLASS,
                             isHighlighted(key.value, key.zone) ||
                             isHighlighted(key.special, key.zone) ||
-                            isHighlighted(key.altGr, key.zone)
+                            isHighlighted(key.altGr, key.zone) ||
+                            isHighlighted(key.altGrShift, key.zone)
                                 ? HIGHLIGHTED_BUTTON_CLASS
                                 : NORMAL_BUTTON_CLASS,
                         ]"
@@ -176,6 +189,9 @@
                                     : 'bottom-0 right-1'
                             ">
                             {{ key.altGr }}
+                        </span>
+                        <span v-if="key.altGrShift" class="absolute text-xs bottom-0 left-1">
+                            {{ key.altGrShift }}
                         </span>
                     </button>
                 </template>
@@ -219,10 +235,11 @@ const getKeyLevel = (char: string): { key: KeyboardKey; level: KeyLevel } | null
     for (const key of flat) {
         if (key.value === char) return { key, level: 'value' };
         if (key.special === char) return { key, level: 'special' };
-        if (key.altGr === char) return { key, level: 'altGr' };
+        if (key.altGrShift === char) return { key, level: 'altGrShift' };
         if (key.altGr && key.altGr.toUpperCase() === char && /[A-Z]/.test(char)) {
             return { key, level: 'altGrShift' };
         }
+        if (key.altGr === char) return { key, level: 'altGr' };
     }
     return null;
 };
@@ -311,7 +328,9 @@ const isHighlighted = (keyValue: string | undefined, zone?: Zone | null): boolea
         if (level === 'value' && key.value === keyValue) return true;
         if (level === 'special' && key.special === keyValue) return true;
         if (level === 'altGr' && key.altGr === keyValue) return true;
-        if (level === 'altGrShift' && key.altGr === keyValue) return true;
+        if (level === 'altGrShift' && (key.altGr === keyValue || key.altGrShift === keyValue)) {
+            return true;
+        }
     }
 
     return false;

@@ -20,13 +20,49 @@ export default class EsLanguage extends Language {
             í: ['´', 'i'],
             ó: ['´', 'o'],
             ú: ['´', 'u'],
+            ý: ['´', 'y'],
+            à: ['`', 'a'],
+            è: ['`', 'e'],
+            ì: ['`', 'i'],
+            ò: ['`', 'o'],
+            ù: ['`', 'u'],
+            ỳ: ['`', 'y'],
+            â: ['^', 'a'],
+            ê: ['^', 'e'],
+            î: ['^', 'i'],
+            ô: ['^', 'o'],
+            û: ['^', 'u'],
+            ŷ: ['^', 'y'],
+            ä: ['¨', 'a'],
+            ë: ['¨', 'e'],
+            ï: ['¨', 'i'],
+            ö: ['¨', 'o'],
+            ü: ['¨', 'u'],
+            ÿ: ['¨', 'y'],
             Á: ['´', 'A'],
             É: ['´', 'E'],
             Í: ['´', 'I'],
             Ó: ['´', 'O'],
             Ú: ['´', 'U'],
-            ü: ['¨', 'u'],
+            Ý: ['´', 'Y'],
+            À: ['`', 'A'],
+            È: ['`', 'E'],
+            Ì: ['`', 'I'],
+            Ò: ['`', 'O'],
+            Ù: ['`', 'U'],
+            Ỳ: ['`', 'Y'],
+            Â: ['^', 'A'],
+            Ê: ['^', 'E'],
+            Î: ['^', 'I'],
+            Ô: ['^', 'O'],
+            Û: ['^', 'U'],
+            Ŷ: ['^', 'Y'],
+            Ä: ['¨', 'A'],
+            Ë: ['¨', 'E'],
+            Ï: ['¨', 'I'],
+            Ö: ['¨', 'O'],
             Ü: ['¨', 'U'],
+            Ÿ: ['¨', 'Y'],
         };
     }
 
@@ -102,8 +138,6 @@ export default class EsLanguage extends Language {
                     special: '/',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Right,
-                    altGr: '{',
-                    altGrPosition: SpecialPosition.BottomRight,
                 },
                 {
                     value: '8',
@@ -111,8 +145,6 @@ export default class EsLanguage extends Language {
                     special: '(',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Right,
-                    altGr: '[',
-                    altGrPosition: SpecialPosition.BottomRight,
                 },
                 {
                     value: '9',
@@ -120,8 +152,6 @@ export default class EsLanguage extends Language {
                     special: ')',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Right,
-                    altGr: ']',
-                    altGrPosition: SpecialPosition.BottomRight,
                 },
                 {
                     value: '0',
@@ -129,8 +159,6 @@ export default class EsLanguage extends Language {
                     special: '=',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Right,
-                    altGr: '}',
-                    altGrPosition: SpecialPosition.BottomRight,
                 },
                 {
                     value: "'",
@@ -138,8 +166,6 @@ export default class EsLanguage extends Language {
                     special: '?',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Right,
-                    altGr: '\\',
-                    altGrPosition: SpecialPosition.BottomRight,
                 },
                 {
                     value: '¡',
@@ -172,8 +198,6 @@ export default class EsLanguage extends Language {
                     special: 'E',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Left,
-                    altGr: '€',
-                    altGrPosition: SpecialPosition.BottomRight,
                 },
                 {
                     value: 'r',
@@ -241,13 +265,6 @@ export default class EsLanguage extends Language {
                     zone: Zone.Right,
                     altGr: ']',
                     altGrPosition: SpecialPosition.BottomRight,
-                },
-                {
-                    value: '\\',
-                    display: '\\',
-                    special: '|',
-                    specialPosition: SpecialPosition.TopLeft,
-                    zone: Zone.Right,
                 },
             ],
             [
@@ -328,11 +345,21 @@ export default class EsLanguage extends Language {
                     special: '¨',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Right,
+                    altGr: '{',
+                    altGrPosition: SpecialPosition.BottomRight,
+                    altGrShift: '}',
                 },
                 { value: 'enter', display: 'Enter', width: 90, zone: Zone.Right },
             ],
             [
-                { value: 'shift', display: 'Shift', width: 90, zone: Zone.Left },
+                { value: 'shift', display: 'Shift', width: 60, zone: Zone.Left },
+                {
+                    value: '<',
+                    display: '<',
+                    special: '>',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Left,
+                },
                 {
                     value: 'z',
                     display: 'z',
@@ -416,6 +443,6 @@ export default class EsLanguage extends Language {
     }
 
     public getUpperOrSpecialRegex(): RegExp {
-        return /[A-ZÑÁÉÍÓÚÜ!·$%&/()=?¿¡ºª_*;:\"']/;
+        return /[A-ZÑÁÉÍÓÚÜÝÀÈÌÒÙỲÂÊÎÔÛŶÄËÏÖŸ!·\"$%&/()=?¿ª^*;:_>¨]/;
     }
 }
