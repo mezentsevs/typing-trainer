@@ -398,8 +398,4 @@ export default class DeLanguage extends Language {
             ],
         ];
     }
-
-    public getUpperOrSpecialRegex(): RegExp {
-        return /[A-ZÄÖÜẞ!§$%&/()=?*:'"_;°^²³{}\[\]\\~|@€µ]/;
-    }
 }

@@ -387,8 +387,4 @@ export default class PlLanguage extends Language {
             ],
         ];
     }
-
-    public getUpperOrSpecialRegex(): RegExp {
-        return /[A-ZĄĆĘŁŃÓŚŹŻ!@#$%^&*()_+{}|:"<>?~`€]/;
-    }
 }

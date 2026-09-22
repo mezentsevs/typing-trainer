@@ -441,8 +441,4 @@ export default class EsLanguage extends Language {
             ],
         ];
     }
-
-    public getUpperOrSpecialRegex(): RegExp {
-        return /[A-ZÑÁÉÍÓÚÜÝÀÈÌÒÙỲÂÊÎÔÛŶÄËÏÖŸ!·\"$%&/()=?¿ª^*;:_>¨]/;
-    }
 }

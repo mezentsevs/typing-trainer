@@ -213,7 +213,6 @@ const props = defineProps<{
     layout: KeyboardLayout;
     text: string;
     typed: string;
-    upperOrSpecialRegex: RegExp;
     deadKeyMap?: Record<string, string[]>;
 }>();
 

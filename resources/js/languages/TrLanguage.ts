@@ -466,8 +466,4 @@ export default class TrLanguage extends Language {
             ],
         ];
     }
-
-    public getUpperOrSpecialRegex(): RegExp {
-        return /[A-ZÇĞIİÖŞÜ!^+%&/()=?_:;*¡¢£¤¥§¶•ªº×–≠€®™←↑↓→þ¨æ´÷©»«‹›°µß]/;
-    }
 }

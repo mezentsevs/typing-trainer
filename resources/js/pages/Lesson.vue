@@ -39,7 +39,6 @@
                 :layout="keyboardLayout"
                 :text
                 :typed
-                :upper-or-special-regex="upperOrSpecialRegex"
                 :dead-key-map="deadKeyMap"
                 class="mt-4" />
             <div v-if="isCompleted" class="mt-6 flex flex-row justify-center">
@@ -129,7 +128,6 @@ const language: string = route.params.language as string;
 
 const languageObject: Language = languageRegistry.getSupportedOrDefault(language);
 const keyboardLayout: KeyboardLayout = languageObject.getKeyboardLayout();
-const upperOrSpecialRegex: RegExp = languageObject.getUpperOrSpecialRegex();
 const deadKeyMap: Record<string, string[]> = languageObject.getDeadKeyMap();
 
 let lessonNumber: number = parseInt(route.params.number as string);

@@ -497,8 +497,4 @@ export default class FrLanguage extends Language {
             ],
         ];
     }
-
-    public getUpperOrSpecialRegex(): RegExp {
-        return /[A-ZÀÂÆÇÉÈÊËÎÏÔŒÙÛÜŸ°+£¨µ%§\.\/¿…±]/;
-    }
 }

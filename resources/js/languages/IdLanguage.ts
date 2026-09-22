@@ -367,8 +367,4 @@ export default class IdLanguage extends Language {
             ],
         ];
     }
-
-    public getUpperOrSpecialRegex(): RegExp {
-        return /[A-Z~!@#$%^&*()_+{}|:"<>?]/;
-    }
 }

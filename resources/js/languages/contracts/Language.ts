@@ -7,8 +7,6 @@ export default abstract class Language {
 
     public abstract getKeyboardLayout(): KeyboardLayout;
 
-    public abstract getUpperOrSpecialRegex(): RegExp;
-
     public getDeadKeyMap(): Record<string, string[]> {
         return {};
     }

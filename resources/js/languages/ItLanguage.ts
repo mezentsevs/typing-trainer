@@ -386,8 +386,4 @@ export default class ItLanguage extends Language {
             ],
         ];
     }
-
-    public getUpperOrSpecialRegex(): RegExp {
-        return /[A-ZÀÈÉÌÒÙÇ°§£!"£$%&/()=?^*;:_]/;
-    }
 }

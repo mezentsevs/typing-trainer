@@ -453,8 +453,4 @@ export default class PtLanguage extends Language {
             ],
         ];
     }
-
-    public getUpperOrSpecialRegex(): RegExp {
-        return /[A-ZÁÂÃÀÇÉÊÍÓÔÕÚÜ!@#$%&/()=?*"_+;:<>|]/;
-    }
 }

@@ -367,8 +367,4 @@ export default class EnLanguage extends Language {
             ],
         ];
     }
-
-    public getUpperOrSpecialRegex(): RegExp {
-        return /[A-Z~!@#$%^&*()_+{}|:"<>?]/;
-    }
 }

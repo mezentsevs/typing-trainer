@@ -367,8 +367,4 @@ export default class RuLanguage extends Language {
             ],
         ];
     }
-
-    public getUpperOrSpecialRegex(): RegExp {
-        return /[А-ЯЁ!"№;%:?*()_+/,]/;
-    }
 }
