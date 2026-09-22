@@ -24,7 +24,7 @@
 
         <main>
             <TextContainer ref="textContainerRef" class="h-28 mt-4 text-lg font-mono">
-                <TypingText :text :typed :is-current-word :is-completed="isCompleted" />
+                <TypingText :text :typed :is-current-word :is-completed />
             </TextContainer>
             <TextArea
                 id="typed"
@@ -35,12 +35,7 @@
                 rows="4"
                 spellcheck="false"
                 @input="onInput" />
-            <Keyboard
-                :layout="keyboardLayout"
-                :text
-                :typed
-                :dead-key-map="deadKeyMap"
-                class="mt-4" />
+            <Keyboard :layout="keyboardLayout" :text :typed :dead-key-map class="mt-4" />
             <div v-if="isCompleted" class="mt-6 flex flex-row justify-center">
                 <PrimaryRouterLinkButton
                     v-if="nextLessonNumber"
