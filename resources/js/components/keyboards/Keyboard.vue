@@ -281,7 +281,7 @@ const requiredAltGr = computed(() => {
 });
 
 const getOppositeZone = (): Zone | null => {
-    const key = currentKeyInfo.value?.key;
+    const key = currentKeyInfo.value?.key ?? deadKeyInfo.value?.baseCharLevel?.key;
     if (!key) return null;
     return key.zone === Zone.Left ? Zone.Right : Zone.Left;
 };
