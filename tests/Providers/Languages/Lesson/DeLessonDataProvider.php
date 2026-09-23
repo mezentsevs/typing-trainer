@@ -9,22 +9,22 @@ class DeLessonDataProvider extends LanguageLessonDataProvider
 {
     protected const string LANGUAGE_CODE = DeLanguage::CODE;
 
-    protected const string CHARS = 'asdfghjklöä#qwertzuiopü+*\\yxcvbnmß,.-ASDFGHJKLÖÄQWERTZUIOPÜYXCVBNMẞ;:_1234567890!"§$%&/()=?`°²³{[]}~|@€µ\'';
+    protected const string CHARS = 'asdfghjklöä#qwertzuiopü+<yxcvbnmß,.-ASDFGHJKLÖÄQWERTZUIOPÜ>YXCVBNMẞ1234567890!"§$%&/()=?°²³{[]}~|@€µ\\*;:_\'âêîôûáéíóúýàèìòùÂÊÎÔÛÁÉÍÓÚÝÀÈÌÒÙ';
 
     protected const array NEW_CHARS_SEQUENCE = [
-        1 => 'asdfgh',
-        2 => 'jklöä#',
-        3 => 'qwertz',
-        4 => 'uiopü+*',
-        5 => '\\yxcvbn',
-        6 => 'mß,.-AS',
-        7 => 'DFGHJKLÖ',
-        8 => 'ÄQWERTZUI',
-        9 => 'OPÜYXCVBN',
-        10 => 'Mẞ;:_12345',
-        11 => '67890!"§$%&',
-        12 => '/()=?`°²³{[]',
-        13 => '}~|@€µ\'',
+        1 => 'asdfghj',
+        2 => 'klöä#qwe',
+        3 => 'rtzuiopü',
+        4 => '+<yxcvbnm',
+        5 => 'ß,.-ASDFG',
+        6 => 'HJKLÖÄQWER',
+        7 => 'TZUIOPÜ>YX',
+        8 => 'CVBNMẞ12345',
+        9 => '67890!"§$%&/',
+        10 => '()=?°²³{[]}~|',
+        11 => '@€µ\\*;:_\'âêîôû',
+        12 => 'áéíóúýàèìòùÂÊÎÔÛ',
+        13 => 'ÁÉÍÓÚÝÀÈÌÒÙ',
         14 => self::CHARS,
         15 => self::CHARS,
         16 => self::CHARS,

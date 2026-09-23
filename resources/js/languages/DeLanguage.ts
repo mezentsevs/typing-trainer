@@ -13,6 +13,43 @@ export default class DeLanguage extends Language {
         return 'Deutsch';
     }
 
+    public getDeadKeyMap(): Record<string, string[]> {
+        return {
+            â: ['^', 'a'],
+            ê: ['^', 'e'],
+            î: ['^', 'i'],
+            ô: ['^', 'o'],
+            û: ['^', 'u'],
+            Â: ['^', 'A'],
+            Ê: ['^', 'E'],
+            Î: ['^', 'I'],
+            Ô: ['^', 'O'],
+            Û: ['^', 'U'],
+            á: ['´', 'a'],
+            é: ['´', 'e'],
+            í: ['´', 'i'],
+            ó: ['´', 'o'],
+            ú: ['´', 'u'],
+            ý: ['´', 'y'],
+            Á: ['´', 'A'],
+            É: ['´', 'E'],
+            Í: ['´', 'I'],
+            Ó: ['´', 'O'],
+            Ú: ['´', 'U'],
+            Ý: ['´', 'Y'],
+            à: ['`', 'a'],
+            è: ['`', 'e'],
+            ì: ['`', 'i'],
+            ò: ['`', 'o'],
+            ù: ['`', 'u'],
+            À: ['`', 'A'],
+            È: ['`', 'E'],
+            Ì: ['`', 'I'],
+            Ò: ['`', 'O'],
+            Ù: ['`', 'U'],
+        };
+    }
+
     public getKeyboardLayout(): KeyboardLayout {
         return [
             [
@@ -113,6 +150,7 @@ export default class DeLanguage extends Language {
                     zone: Zone.Right,
                     altGr: '\\',
                     altGrPosition: SpecialPosition.BottomRight,
+                    altGrShift: 'ẞ',
                 },
                 {
                     value: '´',
@@ -215,15 +253,6 @@ export default class DeLanguage extends Language {
                     altGr: '~',
                     altGrPosition: SpecialPosition.BottomRight,
                 },
-                {
-                    value: '\\',
-                    display: '\\',
-                    special: '|',
-                    specialPosition: SpecialPosition.TopLeft,
-                    zone: Zone.Right,
-                    altGr: '|',
-                    altGrPosition: SpecialPosition.BottomRight,
-                },
             ],
             [
                 { value: 'capslock', display: 'Caps', width: 70, zone: Zone.Left },
@@ -315,6 +344,15 @@ export default class DeLanguage extends Language {
             ],
             [
                 { value: 'shift', display: 'Shift', width: 90, zone: Zone.Left },
+                {
+                    value: '<',
+                    display: '<',
+                    special: '>',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Left,
+                    altGr: '|',
+                    altGrPosition: SpecialPosition.BottomRight,
+                },
                 {
                     value: 'y',
                     display: 'y',
