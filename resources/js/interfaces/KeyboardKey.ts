@@ -1,13 +1,14 @@
 import { SpecialPosition, Zone } from '@/enums/KeyboardEnums';
 
 export default interface KeyboardKey {
-    altGr?: string;
-    altGrPosition?: SpecialPosition | null;
-    altGrShift?: string;
+    value: string;
     display: string;
     special?: string;
     specialPosition?: SpecialPosition | null;
-    value: string;
+    altGr?: string;
+    altGrPosition?: SpecialPosition | null;
+    altGrShift?: string;
+    capsLock?: string;
     width?: number;
     zone?: Zone | null;
 }

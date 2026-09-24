@@ -29,13 +29,8 @@
                         v-for="key in row"
                         :key="key.value"
                         :class="[
-                            COMMON_BUTTON_CLASS,
-                            isHighlighted(key.value, key.zone) ||
-                            isHighlighted(key.special, key.zone) ||
-                            isHighlighted(key.altGr, key.zone) ||
-                            isHighlighted(key.altGrShift, key.zone)
-                                ? HIGHLIGHTED_BUTTON_CLASS
-                                : NORMAL_BUTTON_CLASS,
+                            KEY_COMMON_CLASS,
+                            isKeyHighlighted(key) ? KEY_HIGHLIGHTED_CLASS : KEY_NORMAL_CLASS,
                             key.value === 'backspace' ? 'text-sm px-1' : '',
                         ]"
                         :style="getKeyStyle(key)">
@@ -69,10 +64,8 @@
                     <button
                         :key="row[0].value"
                         :class="[
-                            COMMON_BUTTON_CLASS,
-                            isHighlighted(row[0].value, row[0].zone)
-                                ? HIGHLIGHTED_BUTTON_CLASS
-                                : NORMAL_BUTTON_CLASS,
+                            KEY_COMMON_CLASS,
+                            isKeyHighlighted(row[0]) ? KEY_HIGHLIGHTED_CLASS : KEY_NORMAL_CLASS,
                         ]"
                         :style="getKeyStyle(row[0])">
                         <span class="block">{{ row[0].display }}</span>
@@ -82,13 +75,8 @@
                             v-for="key in row.slice(1, 4)"
                             :key="key.value"
                             :class="[
-                                COMMON_BUTTON_CLASS,
-                                isHighlighted(key.value, key.zone) ||
-                                isHighlighted(key.special, key.zone) ||
-                                isHighlighted(key.altGr, key.zone) ||
-                                isHighlighted(key.altGrShift, key.zone)
-                                    ? HIGHLIGHTED_BUTTON_CLASS
-                                    : NORMAL_BUTTON_CLASS,
+                                KEY_COMMON_CLASS,
+                                isKeyHighlighted(key) ? KEY_HIGHLIGHTED_CLASS : KEY_NORMAL_CLASS,
                             ]"
                             :style="getKeyStyle(key)">
                             <span class="block">{{ key.display }}</span>
@@ -120,13 +108,8 @@
                     <button
                         :key="row[4].value"
                         :class="[
-                            COMMON_BUTTON_CLASS,
-                            isHighlighted(row[4].value, row[4].zone) ||
-                            isHighlighted(row[4].special, row[4].zone) ||
-                            isHighlighted(row[4].altGr, row[4].zone) ||
-                            isHighlighted(row[4].altGrShift, row[4].zone)
-                                ? HIGHLIGHTED_BUTTON_CLASS
-                                : NORMAL_BUTTON_CLASS,
+                            KEY_COMMON_CLASS,
+                            isKeyHighlighted(row[4]) ? KEY_HIGHLIGHTED_CLASS : KEY_NORMAL_CLASS,
                         ]"
                         :style="getKeyStyle(row[4])">
                         <span class="block">{{ row[4].display }}</span>
@@ -160,13 +143,8 @@
                         v-for="key in row"
                         :key="key.value"
                         :class="[
-                            COMMON_BUTTON_CLASS,
-                            isHighlighted(key.value, key.zone) ||
-                            isHighlighted(key.special, key.zone) ||
-                            isHighlighted(key.altGr, key.zone) ||
-                            isHighlighted(key.altGrShift, key.zone)
-                                ? HIGHLIGHTED_BUTTON_CLASS
-                                : NORMAL_BUTTON_CLASS,
+                            KEY_COMMON_CLASS,
+                            isKeyHighlighted(key) ? KEY_HIGHLIGHTED_CLASS : KEY_NORMAL_CLASS,
                         ]"
                         :style="getKeyStyle(key)">
                         <span class="block">{{ key.display }}</span>
@@ -216,10 +194,10 @@ const props = defineProps<{
     deadKeyMap?: Record<string, string[]>;
 }>();
 
-const COMMON_BUTTON_CLASS: string =
+const KEY_COMMON_CLASS: string =
     'p-2 border border-opacity-50 border-gray-300 dark:border-gray-700 text-center rounded shadow-sm relative transition-colors duration-150 ease-linear';
-const HIGHLIGHTED_BUTTON_CLASS: string = 'bg-green-500 text-white dark:text-black';
-const NORMAL_BUTTON_CLASS: string = 'bg-gray-50 dark:bg-gray-900 dark:text-gray-300';
+const KEY_HIGHLIGHTED_CLASS: string = 'bg-green-500 text-white dark:text-black';
+const KEY_NORMAL_CLASS: string = 'bg-gray-50 dark:bg-gray-900 dark:text-gray-300';
 
 const isMinimized: Ref<boolean> = ref(props.isMinimized ?? false);
 
@@ -227,20 +205,43 @@ const nextChar: ComputedRef<string> = computed((): string =>
     props.typed.length < props.text.length ? props.text[props.typed.length] : '',
 );
 
-type KeyLevel = 'value' | 'special' | 'altGr' | 'altGrShift';
+type KeyLevel = 'value' | 'special' | 'altGrShift' | 'altGr' | 'capsLock';
+
+const KEY_LEVEL_PRIORITY: Record<KeyLevel, number> = {
+    value: 0,
+    special: 1,
+    altGrShift: 2,
+    altGr: 3,
+    capsLock: 4,
+};
 
 const getKeyLevel = (char: string): { key: KeyboardKey; level: KeyLevel } | null => {
-    const flat = props.layout.flat();
-    for (const key of flat) {
-        if (key.value === char) return { key, level: 'value' };
-        if (key.special === char) return { key, level: 'special' };
-        if (key.altGrShift === char) return { key, level: 'altGrShift' };
-        if (key.altGr && key.altGr.toUpperCase() === char && /[A-Z]/.test(char)) {
-            return { key, level: 'altGrShift' };
+    if (!char) return null;
+
+    let best: { key: KeyboardKey; level: KeyLevel } | null = null;
+
+    for (const key of props.layout.flat()) {
+        const candidates: [string | undefined, KeyLevel][] = [
+            [key.value, 'value'],
+            [key.special, 'special'],
+            [key.altGrShift, 'altGrShift'],
+            [key.altGr, 'altGr'],
+            [key.capsLock, 'capsLock'],
+        ];
+
+        if (key.altGr && key.altGr.length === 1 && key.altGr.toUpperCase() !== key.altGr) {
+            candidates.push([key.altGr.toUpperCase(), 'altGrShift']);
         }
-        if (key.altGr === char) return { key, level: 'altGr' };
+
+        for (const [value, level] of candidates) {
+            if (value !== char) continue;
+            if (!best || KEY_LEVEL_PRIORITY[level] < KEY_LEVEL_PRIORITY[best.level]) {
+                best = { key, level };
+            }
+        }
     }
-    return null;
+
+    return best;
 };
 
 const deadKeyInfo = computed(() => {
@@ -279,8 +280,10 @@ const requiredAltGr = computed(() => {
     return currentKeyInfo.value?.level === 'altGr' || currentKeyInfo.value?.level === 'altGrShift';
 });
 
+const requiredCapsLock = computed((): boolean => currentKeyInfo.value?.level === 'capsLock');
+
 const getOppositeZone = (): Zone | null => {
-    const key = currentKeyInfo.value?.key ?? deadKeyInfo.value?.baseCharLevel?.key;
+    const key = deadKeyInfo.value?.baseCharLevel?.key ?? currentKeyInfo.value?.key;
     if (!key) return null;
     return key.zone === Zone.Left ? Zone.Right : Zone.Left;
 };
@@ -293,43 +296,32 @@ const getKeyStyle = (key: KeyboardKey): Record<string, string> => {
     return { width: key.width ? `${key.width}px` : '40px' };
 };
 
-const isHighlighted = (keyValue: string | undefined, zone?: Zone | null): boolean => {
-    if (!keyValue) return false;
+const isKeyHighlighted = (key: KeyboardKey): boolean => {
+    const keyValue = key.value;
 
-    if (keyValue === ' ') {
-        return nextChar.value === ' ';
-    }
-    if (keyValue === 'enter') {
-        return nextChar.value === '\n';
-    }
+    if (keyValue === ' ') return nextChar.value === ' ';
+    if (keyValue === 'enter') return nextChar.value === '\n';
     if (keyValue === 'shift') {
         if (!requiredShift.value) return false;
-        return getOppositeZone() === zone;
+        return getOppositeZone() === key.zone;
     }
-    if (keyValue === 'altgr') {
-        return requiredAltGr.value;
-    }
+    if (keyValue === 'altgr') return requiredAltGr.value;
+    if (keyValue === 'capslock') return requiredCapsLock.value;
 
-    if (['ctrl', 'alt', 'capslock'].includes(keyValue)) {
+    if (keyValue === 'ctrl' || keyValue === 'alt') {
         const isControlChar = nextChar.value !== '\n' && nextChar.value.match(/[\x00-\x1F\x7F]/);
         if (!isControlChar) return false;
-        return getOppositeZone() === zone;
+        return getOppositeZone() === key.zone;
     }
 
     if (deadKeyInfo.value) {
-        return deadKeyInfo.value.sequence.some(
-            seq => seq === keyValue || seq.toLowerCase() === keyValue.toLowerCase(),
-        );
+        const deadKey = deadKeyInfo.value.deadKeyLevel?.key;
+        const baseKey = deadKeyInfo.value.baseCharLevel?.key;
+        return key === deadKey || key === baseKey;
     }
 
     if (currentKeyInfo.value) {
-        const { key, level } = currentKeyInfo.value;
-        if (level === 'value' && key.value === keyValue) return true;
-        if (level === 'special' && key.special === keyValue) return true;
-        if (level === 'altGr' && key.altGr === keyValue) return true;
-        if (level === 'altGrShift' && (key.altGr === keyValue || key.altGrShift === keyValue)) {
-            return true;
-        }
+        return currentKeyInfo.value.key === key;
     }
 
     return false;
