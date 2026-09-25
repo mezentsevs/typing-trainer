@@ -9,7 +9,7 @@ class TrLessonDataProvider extends LanguageLessonDataProvider
 {
     protected const string LANGUAGE_CODE = TrLanguage::CODE;
 
-    protected const string CHARS = 'asdfghjklşiqwertyuıopğüzxcvbnmöç.ASDFGHJKLŞİQWERTYUIOPĞÜZXCVBNMÖÇ:1234567890!@#$%^&*()-=+[]{}|\\:"\'<>?~`,.;¡¢£¤¥§¶•ªº×–≠€®™←↑↓→þ¨æ´÷©»«‹›°µß';
+    protected const string CHARS = 'asdfghjklşiqwertyuıopğüzxcvbnmöç.ASDFGHJKLŞİQWERTYUIOPĞÜZXCVBNMÖÇ1234567890!@#$%^&*()-=+[]{}|\\:"\'<>?~`,.;¡¢£¤¥§¶•ªº×–≠€®™←↑↓→þ¨æ´÷©»«‹›°µß';
 
     protected const array NEW_CHARS_SEQUENCE = [
         1 => 'asdfghj',
@@ -19,12 +19,12 @@ class TrLessonDataProvider extends LanguageLessonDataProvider
         5 => '.ASDFGHJK',
         6 => 'LŞİQWERTYU',
         7 => 'IOPĞÜZXCVB',
-        8 => 'NMÖÇ:123456',
-        9 => '7890!@#$%^&*',
-        10 => '()-=+[]{}|\\:"',
-        11 => '\'<>?~`,.;¡¢£¤¥',
-        12 => '§¶•ªº×–≠€®™←↑↓→þ',
-        13 => '¨æ´÷©»«‹›°µß',
+        8 => 'NMÖÇ1234567',
+        9 => '890!@#$%^&*(',
+        10 => ')-=+[]{}|\\:"\'',
+        11 => '<>?~`,.;¡¢£¤¥§',
+        12 => '¶•ªº×–≠€®™←↑↓→þ¨',
+        13 => 'æ´÷©»«‹›°µß',
         14 => self::CHARS,
         15 => self::CHARS,
         16 => self::CHARS,
