@@ -43,8 +43,6 @@ export default class PlLanguage extends Language {
                     special: '#',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Left,
-                    altGr: '€',
-                    altGrPosition: SpecialPosition.BottomRight,
                 },
                 {
                     value: '4',
@@ -163,6 +161,8 @@ export default class PlLanguage extends Language {
                     special: 'U',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Right,
+                    altGr: '€',
+                    altGrPosition: SpecialPosition.BottomRight,
                 },
                 {
                     value: 'i',
@@ -299,6 +299,13 @@ export default class PlLanguage extends Language {
             [
                 { value: 'shift', display: 'Shift', width: 90, zone: Zone.Left },
                 {
+                    value: '<',
+                    display: '<',
+                    special: '>',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Left,
+                },
+                {
                     value: 'z',
                     display: 'z',
                     special: 'Z',
@@ -358,15 +365,11 @@ export default class PlLanguage extends Language {
                 {
                     value: ',',
                     display: ',',
-                    special: '<',
-                    specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Right,
                 },
                 {
                     value: '.',
                     display: '.',
-                    special: '>',
-                    specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Right,
                 },
                 {
