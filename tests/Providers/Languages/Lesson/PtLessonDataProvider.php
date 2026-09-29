@@ -9,22 +9,22 @@ class PtLessonDataProvider extends LanguageLessonDataProvider
 {
     protected const string LANGUAGE_CODE = PtLanguage::CODE;
 
-    protected const string CHARS = 'asdfghjklçqwertyuiopzxcvbnm,.-áâãàéêíóôõúüASDFGHJKLÇQWERTYUIOPZXCVBNM;:_ÁÂÃÀÉÊÍÓÔÕÚÜ1234567890!"#$%&/()=?«»\\|¬@£§¢€{[]}~^´¨ªº±©®¼½¾×÷*';
+    protected const string CHARS = 'asdfghjklçºqwertyuiop+<zxcvbnm,.-áéíóúâêôãõASDFGHJKLÇªQWERTYUIOP*>ZXCVBNM;:_ÁÉÍÓÚÂÊÔÃÕ\\1234567890\'«|!"#$%&/()=?»¬@£§¢‡{[]}€©®™àÀ';
 
     protected const array NEW_CHARS_SEQUENCE = [
         1 => 'asdfghj',
-        2 => 'klçqwert',
-        3 => 'yuiopzxc',
-        4 => 'vbnm,.-á',
-        5 => 'âãàéêíóôõ',
-        6 => 'úüASDFGHJ',
-        7 => 'KLÇQWERTYU',
-        8 => 'IOPZXCVBNM;',
-        9 => ':_ÁÂÃÀÉÊÍÓÔÕ',
-        10 => 'ÚÜ1234567890!',
-        11 => '"#$%&/()=?«»\\|',
-        12 => '¬@£§¢€{[]}~^´¨ª',
-        13 => 'º±©®¼½¾×÷*',
+        2 => 'klçºqwe',
+        3 => 'rtyuiop+',
+        4 => '<zxcvbnm',
+        5 => ',.-áéíóú',
+        6 => 'âêôãõASDF',
+        7 => 'GHJKLÇªQWE',
+        8 => 'RTYUIOP*>Z',
+        9 => 'XCVBNM;:_ÁÉ',
+        10 => 'ÍÓÚÂÊÔÃÕ\\123',
+        11 => '4567890\'«|!"#',
+        12 => '$%&/()=?»¬@£§¢‡',
+        13 => '{[]}€©®™àÀ',
         14 => self::CHARS,
         15 => self::CHARS,
         16 => self::CHARS,

@@ -58,8 +58,6 @@ export default class PtLanguage extends Language {
                     special: '!',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Left,
-                    altGr: '¹',
-                    altGrPosition: SpecialPosition.BottomRight,
                 },
                 {
                     value: '2',
@@ -148,8 +146,6 @@ export default class PtLanguage extends Language {
                     special: '?',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Right,
-                    altGr: '«',
-                    altGrPosition: SpecialPosition.BottomRight,
                 },
                 {
                     value: '«',
@@ -157,8 +153,6 @@ export default class PtLanguage extends Language {
                     special: '»',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Right,
-                    altGr: '»',
-                    altGrPosition: SpecialPosition.BottomRight,
                 },
                 { value: 'backspace', display: 'Backspace', width: 76, zone: Zone.Right },
             ],
@@ -248,17 +242,15 @@ export default class PtLanguage extends Language {
                     special: '*',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Right,
-                    altGr: '×',
+                    altGr: '¨',
                     altGrPosition: SpecialPosition.BottomRight,
                 },
                 {
                     value: '´',
                     display: '´',
-                    special: '¨',
+                    special: '`',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Right,
-                    altGr: '÷',
-                    altGrPosition: SpecialPosition.BottomRight,
                 },
                 {
                     value: '~',
@@ -266,8 +258,6 @@ export default class PtLanguage extends Language {
                     special: '^',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Right,
-                    altGr: '¦',
-                    altGrPosition: SpecialPosition.BottomRight,
                 },
             ],
             [
@@ -278,8 +268,6 @@ export default class PtLanguage extends Language {
                     special: 'A',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Left,
-                    altGr: 'ª',
-                    altGrPosition: SpecialPosition.BottomRight,
                 },
                 {
                     value: 's',
@@ -287,8 +275,6 @@ export default class PtLanguage extends Language {
                     special: 'S',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Left,
-                    altGr: '±',
-                    altGrPosition: SpecialPosition.BottomRight,
                 },
                 {
                     value: 'd',
@@ -296,8 +282,6 @@ export default class PtLanguage extends Language {
                     special: 'D',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Left,
-                    altGr: '¼',
-                    altGrPosition: SpecialPosition.BottomRight,
                 },
                 {
                     value: 'f',
@@ -305,8 +289,6 @@ export default class PtLanguage extends Language {
                     special: 'F',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Left,
-                    altGr: '½',
-                    altGrPosition: SpecialPosition.BottomRight,
                 },
                 {
                     value: 'g',
@@ -314,8 +296,6 @@ export default class PtLanguage extends Language {
                     special: 'G',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Left,
-                    altGr: '¾',
-                    altGrPosition: SpecialPosition.BottomRight,
                 },
                 {
                     value: 'h',
@@ -358,20 +338,18 @@ export default class PtLanguage extends Language {
                     special: 'ª',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Right,
-                    altGr: 'º',
-                    altGrPosition: SpecialPosition.BottomRight,
-                },
-                {
-                    value: '~',
-                    display: '~',
-                    special: '^',
-                    specialPosition: SpecialPosition.TopLeft,
-                    zone: Zone.Right,
                 },
                 { value: 'enter', display: 'Enter', width: 90, zone: Zone.Right },
             ],
             [
                 { value: 'shift', display: 'Shift', width: 90, zone: Zone.Left },
+                {
+                    value: '<',
+                    display: '<',
+                    special: '>',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Left,
+                },
                 {
                     value: 'z',
                     display: 'z',
