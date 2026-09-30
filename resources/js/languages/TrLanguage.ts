@@ -13,6 +13,35 @@ export default class TrLanguage extends Language {
         return 'Türkçe';
     }
 
+    public getDeadKeyMap(): Record<string, string[]> {
+        return {
+            â: ['^', 'a'],
+            ê: ['^', 'e'],
+            î: ['^', 'i'],
+            ô: ['^', 'o'],
+            û: ['^', 'u'],
+            Â: ['^', 'A'],
+            Ê: ['^', 'E'],
+            Î: ['^', 'İ'],
+            Ô: ['^', 'O'],
+            Û: ['^', 'U'],
+            ä: ['¨', 'a'],
+            ë: ['¨', 'e'],
+            ï: ['¨', 'i'],
+            ÿ: ['¨', 'y'],
+            Ä: ['¨', 'A'],
+            Ë: ['¨', 'E'],
+            Ï: ['¨', 'İ'],
+            Ÿ: ['¨', 'Y'],
+            ã: ['~', 'a'],
+            ñ: ['~', 'n'],
+            õ: ['~', 'o'],
+            Ã: ['~', 'A'],
+            Ñ: ['~', 'N'],
+            Õ: ['~', 'O'],
+        };
+    }
+
     public getKeyboardLayout(): KeyboardLayout {
         return [
             [
@@ -131,15 +160,6 @@ export default class TrLanguage extends Language {
                     altGr: '–',
                     altGrPosition: SpecialPosition.BottomRight,
                 },
-                {
-                    value: '=',
-                    display: '=',
-                    special: '+',
-                    specialPosition: SpecialPosition.TopLeft,
-                    zone: Zone.Right,
-                    altGr: '≠',
-                    altGrPosition: SpecialPosition.BottomRight,
-                },
                 { value: 'backspace', display: 'Backspace', width: 76, zone: Zone.Right },
             ],
             [
@@ -159,8 +179,6 @@ export default class TrLanguage extends Language {
                     special: 'W',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Left,
-                    altGr: 'ß',
-                    altGrPosition: SpecialPosition.BottomRight,
                 },
                 {
                     value: 'e',
@@ -177,8 +195,6 @@ export default class TrLanguage extends Language {
                     special: 'R',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Left,
-                    altGr: '®',
-                    altGrPosition: SpecialPosition.BottomRight,
                 },
                 {
                     value: 't',
@@ -186,8 +202,6 @@ export default class TrLanguage extends Language {
                     special: 'T',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Left,
-                    altGr: '™',
-                    altGrPosition: SpecialPosition.BottomRight,
                 },
                 {
                     value: 'y',
@@ -195,8 +209,6 @@ export default class TrLanguage extends Language {
                     special: 'Y',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Right,
-                    altGr: '←',
-                    altGrPosition: SpecialPosition.BottomRight,
                 },
                 {
                     value: 'u',
@@ -204,8 +216,6 @@ export default class TrLanguage extends Language {
                     special: 'U',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Right,
-                    altGr: '↑',
-                    altGrPosition: SpecialPosition.BottomRight,
                 },
                 {
                     value: 'ı',
@@ -213,8 +223,6 @@ export default class TrLanguage extends Language {
                     special: 'I',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Right,
-                    altGr: '↓',
-                    altGrPosition: SpecialPosition.BottomRight,
                 },
                 {
                     value: 'o',
@@ -222,8 +230,6 @@ export default class TrLanguage extends Language {
                     special: 'O',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Right,
-                    altGr: '→',
-                    altGrPosition: SpecialPosition.BottomRight,
                 },
                 {
                     value: 'p',
@@ -231,8 +237,6 @@ export default class TrLanguage extends Language {
                     special: 'P',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Right,
-                    altGr: 'þ',
-                    altGrPosition: SpecialPosition.BottomRight,
                 },
                 {
                     value: 'ğ',
@@ -253,9 +257,9 @@ export default class TrLanguage extends Language {
                     altGrPosition: SpecialPosition.BottomRight,
                 },
                 {
-                    value: '\\',
-                    display: '\\',
-                    special: '|',
+                    value: ',',
+                    display: ',',
+                    special: ';',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Right,
                 },
@@ -277,7 +281,7 @@ export default class TrLanguage extends Language {
                     special: 'S',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Left,
-                    altGr: '´',
+                    altGr: 'ß',
                     altGrPosition: SpecialPosition.BottomRight,
                 },
                 {
@@ -286,8 +290,6 @@ export default class TrLanguage extends Language {
                     special: 'D',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Left,
-                    altGr: '÷',
-                    altGrPosition: SpecialPosition.BottomRight,
                 },
                 {
                     value: 'f',
@@ -295,8 +297,6 @@ export default class TrLanguage extends Language {
                     special: 'F',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Left,
-                    altGr: '×',
-                    altGrPosition: SpecialPosition.BottomRight,
                 },
                 {
                     value: 'g',
@@ -304,8 +304,6 @@ export default class TrLanguage extends Language {
                     special: 'G',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Left,
-                    altGr: '©',
-                    altGrPosition: SpecialPosition.BottomRight,
                 },
                 {
                     value: 'h',
@@ -313,8 +311,6 @@ export default class TrLanguage extends Language {
                     special: 'H',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Right,
-                    altGr: '←',
-                    altGrPosition: SpecialPosition.BottomRight,
                 },
                 {
                     value: 'j',
@@ -322,8 +318,6 @@ export default class TrLanguage extends Language {
                     special: 'J',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Right,
-                    altGr: '»',
-                    altGrPosition: SpecialPosition.BottomRight,
                 },
                 {
                     value: 'k',
@@ -331,8 +325,6 @@ export default class TrLanguage extends Language {
                     special: 'K',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Right,
-                    altGr: '«',
-                    altGrPosition: SpecialPosition.BottomRight,
                 },
                 {
                     value: 'l',
@@ -340,8 +332,6 @@ export default class TrLanguage extends Language {
                     special: 'L',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Right,
-                    altGr: '‹',
-                    altGrPosition: SpecialPosition.BottomRight,
                 },
                 {
                     value: 'ş',
@@ -349,8 +339,6 @@ export default class TrLanguage extends Language {
                     special: 'Ş',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Right,
-                    altGr: '›',
-                    altGrPosition: SpecialPosition.BottomRight,
                 },
                 {
                     value: 'i',
@@ -358,21 +346,27 @@ export default class TrLanguage extends Language {
                     special: 'İ',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Right,
-                    altGr: '°',
-                    altGrPosition: SpecialPosition.BottomRight,
                 },
                 { value: 'enter', display: 'Enter', width: 90, zone: Zone.Right },
             ],
             [
                 { value: 'shift', display: 'Shift', width: 90, zone: Zone.Left },
                 {
+                    value: '<',
+                    display: '<',
+                    special: '>',
+                    specialPosition: SpecialPosition.TopLeft,
+                    zone: Zone.Left,
+                    altGr: '|',
+                    altGrPosition: SpecialPosition.BottomRight,
+                    altGrShift: '\\',
+                },
+                {
                     value: 'z',
                     display: 'z',
                     special: 'Z',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Left,
-                    altGr: '«',
-                    altGrPosition: SpecialPosition.BottomRight,
                 },
                 {
                     value: 'x',
@@ -380,8 +374,6 @@ export default class TrLanguage extends Language {
                     special: 'X',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Left,
-                    altGr: '»',
-                    altGrPosition: SpecialPosition.BottomRight,
                 },
                 {
                     value: 'c',
@@ -389,8 +381,6 @@ export default class TrLanguage extends Language {
                     special: 'C',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Left,
-                    altGr: '©',
-                    altGrPosition: SpecialPosition.BottomRight,
                 },
                 {
                     value: 'v',
@@ -398,8 +388,6 @@ export default class TrLanguage extends Language {
                     special: 'V',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Left,
-                    altGr: '®',
-                    altGrPosition: SpecialPosition.BottomRight,
                 },
                 {
                     value: 'b',
@@ -407,8 +395,6 @@ export default class TrLanguage extends Language {
                     special: 'B',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Left,
-                    altGr: 'µ',
-                    altGrPosition: SpecialPosition.BottomRight,
                 },
                 {
                     value: 'n',
@@ -416,8 +402,6 @@ export default class TrLanguage extends Language {
                     special: 'N',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Right,
-                    altGr: '¨',
-                    altGrPosition: SpecialPosition.BottomRight,
                 },
                 {
                     value: 'm',
@@ -425,8 +409,6 @@ export default class TrLanguage extends Language {
                     special: 'M',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Right,
-                    altGr: '´',
-                    altGrPosition: SpecialPosition.BottomRight,
                 },
                 {
                     value: 'ö',
@@ -434,8 +416,6 @@ export default class TrLanguage extends Language {
                     special: 'Ö',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Right,
-                    altGr: '~',
-                    altGrPosition: SpecialPosition.BottomRight,
                 },
                 {
                     value: 'ç',
@@ -443,8 +423,6 @@ export default class TrLanguage extends Language {
                     special: 'Ç',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Right,
-                    altGr: '\\',
-                    altGrPosition: SpecialPosition.BottomRight,
                 },
                 {
                     value: '.',
@@ -452,8 +430,6 @@ export default class TrLanguage extends Language {
                     special: ':',
                     specialPosition: SpecialPosition.TopLeft,
                     zone: Zone.Right,
-                    altGr: '?',
-                    altGrPosition: SpecialPosition.BottomRight,
                 },
                 { value: 'shift', display: 'Shift', width: 110, zone: Zone.Right },
             ],

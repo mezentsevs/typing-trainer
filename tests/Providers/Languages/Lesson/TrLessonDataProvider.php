@@ -9,22 +9,22 @@ class TrLessonDataProvider extends LanguageLessonDataProvider
 {
     protected const string LANGUAGE_CODE = TrLanguage::CODE;
 
-    protected const string CHARS = 'asdfghjklşiqwertyuıopğüzxcvbnmöç.ASDFGHJKLŞİQWERTYUIOPĞÜZXCVBNMÖÇ1234567890!@#$%^&*()-=+[]{}|\\:"\'<>?~`,.;¡¢£¤¥§¶•ªº×–≠€®™←↑↓→þ¨æ´÷©»«‹›°µß';
+    protected const string CHARS = 'asdfghjklşiqwertyuıopğü,<zxcvbnmöç.ASDFGHJKLŞİQWERTYUIOPĞÜ;>ZXCVBNMÖÇ:"1234567890*-é!\'^+%&/()=?_¡¢£¤¥§¶•ªº×–@€¨~æß|\\';
 
     protected const array NEW_CHARS_SEQUENCE = [
-        1 => 'asdfghj',
-        2 => 'klşiqwer',
-        3 => 'tyuıopğü',
-        4 => 'zxcvbnmöç',
-        5 => '.ASDFGHJK',
-        6 => 'LŞİQWERTYU',
-        7 => 'IOPĞÜZXCVB',
-        8 => 'NMÖÇ1234567',
-        9 => '890!@#$%^&*(',
-        10 => ')-=+[]{}|\\:"\'',
-        11 => '<>?~`,.;¡¢£¤¥§',
-        12 => '¶•ªº×–≠€®™←↑↓→þ¨',
-        13 => 'æ´÷©»«‹›°µß',
+        1 => 'asdfgh',
+        2 => 'jklşiqw',
+        3 => 'ertyuıo',
+        4 => 'pğü,<zx',
+        5 => 'cvbnmöç.',
+        6 => 'ASDFGHJK',
+        7 => 'LŞİQWERTY',
+        8 => 'UIOPĞÜ;>Z',
+        9 => 'XCVBNMÖÇ:"',
+        10 => '1234567890*',
+        11 => '-é!\'^+%&/()=',
+        12 => '?_¡¢£¤¥§¶•ªº×',
+        13 => '–@€¨~æß|\\',
         14 => self::CHARS,
         15 => self::CHARS,
         16 => self::CHARS,
