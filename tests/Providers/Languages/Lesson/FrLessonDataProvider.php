@@ -9,21 +9,21 @@ class FrLessonDataProvider extends LanguageLessonDataProvider
 {
     protected const string LANGUAGE_CODE = FrLanguage::CODE;
 
-    protected const string CHARS = 'qsdfghjklmùazertyuiopwxcvbnéèçàâêîôûëïœQSDFGHJKLMÙAZERTYUIOPWXCVBNÉÈÇÀÂÊÎÔÛËÏŒ1234567890!"#$%&\'()*+,-./:;<=>?@[\\]_{|}€£¤µ§°²äöæüÿÄÖÆÜŸ';
+    protected const string CHARS = 'qsdfghjklmù*azertyuiop$<wxcvbn,;:!éèçàâêîôûëïœQSDFGHJKLM%µAZERTYUIOP£>WXCVBN?./§ÉÈÇÀÙÂÊÎÔÛËÏŒ²&"\'(-_)=1234567890°+~#{[|`\\@]}€¤äöæüÿÄÖÆÜŸ';
 
     protected const array NEW_CHARS_SEQUENCE = [
         1 => 'qsdfghj',
-        2 => 'klmùazer',
-        3 => 'tyuiopwx',
-        4 => 'cvbnéèçà',
-        5 => 'âêîôûëïœQ',
-        6 => 'SDFGHJKLM',
-        7 => 'ÙAZERTYUIO',
-        8 => 'PWXCVBNÉÈÇÀ',
-        9 => 'ÂÊÎÔÛËÏŒ1234',
-        10 => '567890!"#$%&\'',
-        11 => '()*+,-./:;<=>?',
-        12 => '@[\\]_{|}€£¤µ§°²',
+        2 => 'klmù*aze',
+        3 => 'rtyuiop$',
+        4 => '<wxcvbn,',
+        5 => ';:!éèçàâê',
+        6 => 'îôûëïœQSDF',
+        7 => 'GHJKLM%µAZ',
+        8 => 'ERTYUIOP£>W',
+        9 => 'XCVBN?./§ÉÈÇ',
+        10 => 'ÀÙÂÊÎÔÛËÏŒ²&"',
+        11 => '\'(-_)=12345678',
+        12 => '90°+~#{[|`\\@]}€¤',
         13 => 'äöæüÿÄÖÆÜŸ',
         14 => self::CHARS,
         15 => self::CHARS,
