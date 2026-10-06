@@ -9,22 +9,22 @@ class IdLessonDataProvider extends LanguageLessonDataProvider
 {
     protected const string LANGUAGE_CODE = IdLanguage::CODE;
 
-    protected const string CHARS = 'asdfjkl;qwertyuiophgzxcvbnm,./ASDFJKLQWERTYUIOPHGZXCVBNM1234567890-=!@#$%^&*()_+[]{}|\\:"\'<>?~`';
+    protected const string CHARS = 'asdfghjkl;\'qwertyuiop[]\\zxcvbnm,./ASDFGHJKL:"QWERTYUIOP{}|ZXCVBNM<>?`1234567890-=~!@#$%^&*()_+';
 
     protected const array NEW_CHARS_SEQUENCE = [
-        1 => 'asdfj',
-        2 => 'kl;qw',
-        3 => 'ertyui',
-        4 => 'ophgzx',
-        5 => 'cvbnm,',
-        6 => './ASDFJ',
-        7 => 'KLQWERT',
-        8 => 'YUIOPHGZ',
-        9 => 'XCVBNM12',
-        10 => '34567890-',
-        11 => '=!@#$%^&*(',
-        12 => ')_+[]{}|\\:"',
-        13 => '\'<>?~`',
+        1 => 'asdfg',
+        2 => 'hjkl;',
+        3 => '\'qwert',
+        4 => 'yuiop[',
+        5 => ']\\zxcv',
+        6 => 'bnm,./A',
+        7 => 'SDFGHJK',
+        8 => 'L:"QWERT',
+        9 => 'YUIOP{}|',
+        10 => 'ZXCVBNM<>',
+        11 => '?`12345678',
+        12 => '90-=~!@#$%^',
+        13 => '&*()_+',
         14 => self::CHARS,
         15 => self::CHARS,
         16 => self::CHARS,
