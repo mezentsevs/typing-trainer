@@ -1,6 +1,6 @@
 <template>
-    <BaseLayout class="min-h-screen flex items-center justify-center">
-        <div class="fixed top-4 right-4 z-50 flex items-center gap-2">
+    <BaseLayout class="relative min-h-screen flex items-center justify-center">
+        <div class="absolute top-4 right-4 z-50 flex items-center gap-2">
             <UserBadge v-if="userName" :name="userName" />
             <ThemeToggle />
         </div>
