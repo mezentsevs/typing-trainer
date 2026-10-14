@@ -6,18 +6,12 @@
                 Genre
                 <Remark value="(optional)" />
             </InputLabel>
-            <Select id="genre" v-model="genre" v-focus :options="genres" class="mb-4 w-full" />
+            <Select id="genre" v-model="genre" v-focus :options="genres" class="w-full mb-4" />
             <InputLabel for="file">
                 Text
                 <Remark value="(optional, max 3 KB)" />
             </InputLabel>
-            <Input
-                id="file"
-                type="file"
-                accept=".txt"
-                class="mb-4 w-full"
-                style="border-radius: 0.15rem"
-                @change="onUpload" />
+            <FileInput id="file" accept=".txt" class="w-full mb-4" @change="onUpload" />
             <PrimarySpinnerButton class="w-full mt-2" :loading @click="onStart">
                 Start
             </PrimarySpinnerButton>
@@ -33,8 +27,8 @@ import { Genre } from '@/enums/FinalTestEnums';
 import { Ref, ref } from 'vue';
 import AiDisclaimer from '@/components/uikit/disclaimers/AiDisclaimer.vue';
 import ErrorMessage from '@/components/uikit/messages/ErrorMessage.vue';
+import FileInput from '@/components/uikit/inputs/FileInput.vue';
 import Heading from '@/components/uikit/headings/Heading.vue';
-import Input from '@/components/uikit/inputs/Input.vue';
 import InputLabel from '@/components/uikit/inputs/partials/InputLabel.vue';
 import PrimarySpinnerButton from '@/components/uikit/buttons/PrimarySpinnerButton.vue';
 import Remark from '@/components/uikit/remarks/Remark.vue';
