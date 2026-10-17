@@ -2,16 +2,18 @@
     <SetupCard>
         <Heading :level="1" class="text-2xl mb-6">Setup Final Test</Heading>
         <form @submit.prevent>
-            <InputLabel for="genre">
-                Genre
-                <Remark value="(optional)" />
-            </InputLabel>
-            <Select id="genre" v-model="genre" v-focus :options="genres" class="w-full mb-4" />
-            <InputLabel for="file">
-                Text
-                <Remark value="(optional, max 3 KB)" />
-            </InputLabel>
-            <FileInput id="file" accept=".txt" class="w-full mb-4" @change="onUpload" />
+            <fieldset :disabled="loading">
+                <InputLabel for="genre">
+                    Genre
+                    <Remark value="(optional)" />
+                </InputLabel>
+                <Select id="genre" v-model="genre" v-focus :options="genres" class="w-full mb-4" />
+                <InputLabel for="file">
+                    Text
+                    <Remark value="(optional, max 3 KB)" />
+                </InputLabel>
+                <FileInput id="file" accept=".txt" class="w-full mb-4" @change="onUpload" />
+            </fieldset>
             <PrimarySpinnerButton class="w-full mt-2" :loading @click="onStart">
                 Start
             </PrimarySpinnerButton>

@@ -2,23 +2,25 @@
     <SetupCard>
         <Heading :level="1" class="text-2xl mb-6">Setup Lessons</Heading>
         <form @submit.prevent="generateLessons">
-            <InputLabel for="language" value="Language" />
-            <Select
-                id="language"
-                v-model="form.language"
-                v-focus
-                :options="languageSelectOptions"
-                class="mb-4 w-full"
-                required />
-            <InputLabel for="lessonCount" value="Number" />
-            <Input
-                id="lessonCount"
-                v-model.number="form.lessonCount"
-                type="number"
-                min="1"
-                max="20"
-                class="mb-4 w-full"
-                required />
+            <fieldset :disabled="loading">
+                <InputLabel for="language" value="Language" />
+                <Select
+                    id="language"
+                    v-model="form.language"
+                    v-focus
+                    :options="languageSelectOptions"
+                    class="mb-4 w-full"
+                    required />
+                <InputLabel for="lessonCount" value="Number" />
+                <Input
+                    id="lessonCount"
+                    v-model.number="form.lessonCount"
+                    type="number"
+                    min="1"
+                    max="20"
+                    class="mb-4 w-full"
+                    required />
+            </fieldset>
             <PrimarySpinnerButton class="w-full mt-2" :loading>Generate</PrimarySpinnerButton>
         </form>
         <ErrorMessage :message="error" />
