@@ -172,12 +172,18 @@ const uploadFile = async (file: File): Promise<void> => {
     }
 };
 
-const onUpload = (event: Event): void => {
+const onUpload = async (event: Event): Promise<void> => {
     const file = (event.target as HTMLInputElement).files?.[0];
 
     if (file) {
         selectedFile.value = file;
-        uploadFile(file);
+        isTestLoading.value = true;
+
+        try {
+            await uploadFile(file);
+        } finally {
+            isTestLoading.value = false;
+        }
     }
 };
 
