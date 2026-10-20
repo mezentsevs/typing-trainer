@@ -90,6 +90,7 @@ const form: Ref<AuthRegisterForm> = ref({
 
 const register = async (): Promise<void> => {
     try {
+        error.value = '';
         await authStore.register(
             form.value.name,
             form.value.email,

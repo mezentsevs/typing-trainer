@@ -143,7 +143,6 @@ const loadTest = async (): Promise<void> => {
     try {
         await fetchTest();
         await afterTestFetched();
-        error.value = '';
     } catch {
         error.value = 'Test loading failed';
     }
@@ -164,7 +163,6 @@ const uploadFile = async (file: File): Promise<void> => {
         await fetchTest();
         await afterTestFetched();
         selectedFile.value = null;
-        error.value = '';
     } catch (err) {
         if (err instanceof Error) {
             error.value = 'File uploading failed';
@@ -176,6 +174,7 @@ const onUpload = async (event: Event): Promise<void> => {
     const file = (event.target as HTMLInputElement).files?.[0];
 
     if (file) {
+        error.value = '';
         selectedFile.value = file;
         isTestLoading.value = true;
 
@@ -210,6 +209,7 @@ const onInput = async (): Promise<void> => {
 };
 
 const onStart = async (selectedGenre: string): Promise<void> => {
+    error.value = '';
     isTestLoading.value = true;
     prepareTest();
     resetState();

@@ -66,6 +66,7 @@ const form: Ref<AuthLoginForm> = ref({ email: '', password: '' });
 
 const login = async (): Promise<void> => {
     try {
+        error.value = '';
         await authStore.login(form.value.email, form.value.password);
         await router.push('/');
     } catch (err: any) {

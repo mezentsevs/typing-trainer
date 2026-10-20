@@ -56,6 +56,7 @@ const languageSelectOptions: UIKitSelectOption[] = languageRegistry.getSelectOpt
 
 const generateLessons = async (): Promise<void> => {
     try {
+        error.value = '';
         loading.value = true;
         await axios.post('/lessons/generate', {
             language: form.value.language,
