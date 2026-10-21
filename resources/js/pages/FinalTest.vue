@@ -173,16 +173,36 @@ const uploadFile = async (file: File): Promise<void> => {
 const onUpload = async (event: Event): Promise<void> => {
     const file = (event.target as HTMLInputElement).files?.[0];
 
-    if (file) {
-        error.value = '';
-        selectedFile.value = file;
-        isTestLoading.value = true;
+    if (!file) {
+        return;
+    }
 
-        try {
-            await uploadFile(file);
-        } finally {
-            isTestLoading.value = false;
+    try {
+        error.value = '';
+        isTestLoading.value = true;
+        selectedFile.value = file;
+
+        await uploadFile(file);
+    } finally {
+        isTestLoading.value = false;
+    }
+};
+
+const onStart = async (selectedGenre: string): Promise<void> => {
+    try {
+        error.value = '';
+        isTestLoading.value = true;
+        prepareTest();
+        resetState();
+        genre = selectedGenre;
+
+        if (selectedFile.value) {
+            await uploadFile(selectedFile.value);
+        } else {
+            await loadTest();
         }
+    } finally {
+        isTestLoading.value = false;
     }
 };
 
@@ -206,22 +226,6 @@ const onInput = async (): Promise<void> => {
             language,
         } as BaseSaveResultRequestPayload,
     );
-};
-
-const onStart = async (selectedGenre: string): Promise<void> => {
-    error.value = '';
-    isTestLoading.value = true;
-    prepareTest();
-    resetState();
-    genre = selectedGenre;
-
-    if (selectedFile.value) {
-        await uploadFile(selectedFile.value);
-    } else {
-        await loadTest();
-    }
-
-    isTestLoading.value = false;
 };
 
 onUnmounted((): void => {
