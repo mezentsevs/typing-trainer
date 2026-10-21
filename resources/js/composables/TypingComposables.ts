@@ -30,8 +30,12 @@ export const useHandleTypingInput = (): UseHandleTypingInputReturn => {
     let scrollThrottleTimeout: ReturnType<typeof setTimeout> | null = null;
 
     const scrollToCurrentCharThrottled = (container: HTMLElement | null, index: number): void => {
-        if (scrollThrottleTimeout) return;
+        if (scrollThrottleTimeout) {
+            return;
+        }
+
         scrollToCurrentChar(container, index);
+
         scrollThrottleTimeout = setTimeout((): void => {
             scrollThrottleTimeout = null;
         }, 100);
