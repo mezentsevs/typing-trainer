@@ -62,7 +62,6 @@ const generateLessons = async (): Promise<void> => {
             language: form.language,
             lesson_count: form.lessonCount,
         });
-
         await router.push(`/lesson/${form.language}/1`);
     } catch (err) {
         if (err instanceof Error) {
