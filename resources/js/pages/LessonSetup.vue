@@ -29,7 +29,7 @@
 
 <script lang="ts" setup>
 import { languageRegistry } from '@/languages/registry/LanguageRegistry';
-import { Ref, ref } from 'vue';
+import { reactive, Ref, ref } from 'vue';
 import { Router, useRouter } from 'vue-router';
 import axios from 'axios';
 import EnLanguage from '@/languages/EnLanguage';
@@ -45,7 +45,7 @@ import type UIKitSelectOption from '@/interfaces/uikit/UIKitSelectOption';
 
 const router: Router = useRouter();
 
-const form: Ref<LessonSetupForm> = ref({
+const form: LessonSetupForm = reactive({
     language: EnLanguage.CODE,
     lessonCount: 10,
 });
@@ -59,11 +59,11 @@ const generateLessons = async (): Promise<void> => {
         error.value = '';
         loading.value = true;
         await axios.post('/lessons/generate', {
-            language: form.value.language,
-            lesson_count: form.value.lessonCount,
+            language: form.language,
+            lesson_count: form.lessonCount,
         });
 
-        await router.push(`/lesson/${form.value.language}/1`);
+        await router.push(`/lesson/${form.language}/1`);
     } catch (err) {
         if (err instanceof Error) {
             error.value = 'Lessons generation failed';

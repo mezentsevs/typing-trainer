@@ -57,7 +57,7 @@
 </template>
 
 <script lang="ts" setup>
-import { Ref, ref } from 'vue';
+import { reactive, Ref, ref } from 'vue';
 import { Router, useRouter } from 'vue-router';
 import { Store } from 'pinia';
 import { useAuthStore } from '@/stores/Auth';
@@ -81,7 +81,7 @@ const authStore: Store<string, AuthState, AuthGetters, AuthActions> = useAuthSto
 const router: Router = useRouter();
 
 const error: Ref<string> = ref('');
-const form: Ref<AuthRegisterForm> = ref({
+const form: AuthRegisterForm = reactive({
     name: '',
     email: '',
     password: '',
@@ -91,12 +91,7 @@ const form: Ref<AuthRegisterForm> = ref({
 const register = async (): Promise<void> => {
     try {
         error.value = '';
-        await authStore.register(
-            form.value.name,
-            form.value.email,
-            form.value.password,
-            form.value.passwordConfirmation,
-        );
+        await authStore.register(form.name, form.email, form.password, form.passwordConfirmation);
         await router.push('/');
     } catch (err: any) {
         error.value = err?.response?.data?.message || 'Registration failed';

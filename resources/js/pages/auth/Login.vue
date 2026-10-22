@@ -39,7 +39,7 @@
 </template>
 
 <script lang="ts" setup>
-import { Ref, ref } from 'vue';
+import { reactive, Ref, ref } from 'vue';
 import { Router, useRouter } from 'vue-router';
 import { Store } from 'pinia';
 import { useAuthStore } from '@/stores/Auth';
@@ -62,12 +62,12 @@ const authStore: Store<string, AuthState, AuthGetters, AuthActions> = useAuthSto
 const router: Router = useRouter();
 
 const error: Ref<string> = ref('');
-const form: Ref<AuthLoginForm> = ref({ email: '', password: '' });
+const form: AuthLoginForm = reactive({ email: '', password: '' });
 
 const login = async (): Promise<void> => {
     try {
         error.value = '';
-        await authStore.login(form.value.email, form.value.password);
+        await authStore.login(form.email, form.password);
         await router.push('/');
     } catch (err: any) {
         error.value = err?.response?.data?.message || 'Login failed';
