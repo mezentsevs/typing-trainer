@@ -11,7 +11,7 @@
                     :options="languageSelectOptions"
                     class="mb-4 w-full"
                     required />
-                <InputLabel for="lessonCount" value="Number" />
+                <InputLabel for="lessonCount" value="Count" />
                 <Input
                     id="lessonCount"
                     v-model.number="form.lessonCount"
