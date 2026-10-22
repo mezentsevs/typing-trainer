@@ -61,8 +61,8 @@ import PrimaryRouterLink from '@/components/uikit/links/PrimaryRouterLink.vue';
 const authStore: Store<string, AuthState, AuthGetters, AuthActions> = useAuthStore();
 const router: Router = useRouter();
 
-const error: Ref<string> = ref('');
 const form: AuthLoginForm = reactive({ email: '', password: '' });
+const error: Ref<string> = ref('');
 
 const login = async (): Promise<void> => {
     try {

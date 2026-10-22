@@ -80,13 +80,13 @@ import UserIcon from '@/components/icons/UserIcon.vue';
 const authStore: Store<string, AuthState, AuthGetters, AuthActions> = useAuthStore();
 const router: Router = useRouter();
 
-const error: Ref<string> = ref('');
 const form: AuthRegisterForm = reactive({
     name: '',
     email: '',
     password: '',
     passwordConfirmation: '',
 });
+const error: Ref<string> = ref('');
 
 const register = async (): Promise<void> => {
     try {
