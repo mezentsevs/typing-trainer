@@ -183,6 +183,7 @@ import { computed, ComputedRef, Ref, ref } from 'vue';
 import { SpecialPosition, Zone } from '@/enums/KeyboardEnums';
 import KeyboardIcon from '@/components/icons/KeyboardIcon.vue';
 import Tooltip from '@/components/uikit/tooltips/Tooltip.vue';
+import type { CSSProperties } from 'vue';
 import type { KeyboardLayout } from '@/types/KeyboardTypes';
 import type KeyboardKey from '@/interfaces/KeyboardKey';
 
@@ -292,7 +293,7 @@ const toggleKeyboard = (): void => {
     isMinimized.value = !isMinimized.value;
 };
 
-const getKeyStyle = (key: KeyboardKey): Record<string, string> => {
+const getKeyStyle = (key: KeyboardKey): CSSProperties => {
     return { width: key.width ? `${key.width}px` : '40px' };
 };
 
