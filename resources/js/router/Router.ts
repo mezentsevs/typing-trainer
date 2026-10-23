@@ -18,6 +18,13 @@ import LessonSetup from '@/pages/LessonSetup.vue';
 import Login from '@/pages/auth/Login.vue';
 import Register from '@/pages/auth/Register.vue';
 
+declare module 'vue-router' {
+    interface RouteMeta {
+        requiresAuth?: boolean;
+        title?: string;
+    }
+}
+
 const routes: RouteRecordRaw[] = [
     { path: '/', component: Home, meta: { requiresAuth: true, title: 'Home' } },
     { path: '/login', component: Login, meta: { title: 'Login' } },
