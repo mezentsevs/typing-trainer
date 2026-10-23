@@ -94,7 +94,6 @@ import TextArea from '@/components/uikit/inputs/TextArea.vue';
 import TextContainer from '@/components/uikit/containers/TextContainer.vue';
 import TypingContext from '@/interfaces/typing/TypingContext';
 import TypingText from '@/components/typing/TypingText.vue';
-import TypingUnit from '@/interfaces/typing/TypingUnit';
 import type { KeyboardLayout } from '@/types/KeyboardTypes';
 import type Language from '@/languages/contracts/Language';
 
@@ -116,8 +115,8 @@ const textContainerRef: Ref<typeof TextContainer | null> = ref(null);
 const time: Ref<number> = ref(0);
 const typed: Ref<string> = ref('');
 
-const { isCurrentWord }: Record<string, ComputedRef<TypingUnit>> = useCurrentWord(text, typed);
-const { progress }: Record<string, ComputedRef<number>> = useProgress(text, typed, isCompleted);
+const { isCurrentWord } = useCurrentWord(text, typed);
+const { progress } = useProgress(text, typed, isCompleted);
 
 const language: string = route.params.language as string;
 

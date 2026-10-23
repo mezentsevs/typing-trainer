@@ -50,7 +50,7 @@
 
 <script lang="ts" setup>
 import { BaseSaveResultRequestPayload } from '@/interfaces/payloads/SaveResultRequestPayload';
-import { ComputedRef, Ref, ref, onUnmounted, nextTick } from 'vue';
+import { Ref, ref, onUnmounted, nextTick } from 'vue';
 import { languageRegistry } from '@/languages/registry/LanguageRegistry';
 import { RouteLocationNormalizedLoaded, useRoute } from 'vue-router';
 import {
@@ -72,7 +72,6 @@ import TextArea from '@/components/uikit/inputs/TextArea.vue';
 import TextContainer from '@/components/uikit/containers/TextContainer.vue';
 import TypingContext from '@/interfaces/typing/TypingContext';
 import TypingText from '@/components/typing/TypingText.vue';
-import TypingUnit from '@/interfaces/typing/TypingUnit';
 import type { KeyboardLayout } from '@/types/KeyboardTypes';
 import type Language from '@/languages/contracts/Language';
 
@@ -103,8 +102,8 @@ const languageObject: Language = languageRegistry.getSupportedOrDefault(language
 const keyboardLayout: KeyboardLayout = languageObject.getKeyboardLayout();
 const deadKeyMap: Record<string, string[]> = languageObject.getDeadKeyMap();
 
-const { isCurrentWord }: Record<string, ComputedRef<TypingUnit>> = useCurrentWord(text, typed);
-const { progress }: Record<string, ComputedRef<number>> = useProgress(text, typed, isCompleted);
+const { isCurrentWord } = useCurrentWord(text, typed);
+const { progress } = useProgress(text, typed, isCompleted);
 
 const prepareTest = (): void => {
     currentKey.value = crypto.randomUUID();
