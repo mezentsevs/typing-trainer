@@ -39,6 +39,7 @@
 </template>
 
 <script lang="ts" setup>
+import { getApiErrorMessage } from '@/helpers/ErrorHelper';
 import { reactive, Ref, ref } from 'vue';
 import { Router, useRouter } from 'vue-router';
 import { Store } from 'pinia';
@@ -69,8 +70,8 @@ const login = async (): Promise<void> => {
         error.value = '';
         await authStore.login(form.email, form.password);
         await router.push('/');
-    } catch (err: any) {
-        error.value = err?.response?.data?.message || 'Login failed';
+    } catch (err) {
+        error.value = getApiErrorMessage(err, 'Login failed');
     }
 };
 </script>

@@ -57,6 +57,7 @@
 </template>
 
 <script lang="ts" setup>
+import { getApiErrorMessage } from '@/helpers/ErrorHelper';
 import { reactive, Ref, ref } from 'vue';
 import { Router, useRouter } from 'vue-router';
 import { Store } from 'pinia';
@@ -93,8 +94,8 @@ const register = async (): Promise<void> => {
         error.value = '';
         await authStore.register(form.name, form.email, form.password, form.passwordConfirmation);
         await router.push('/');
-    } catch (err: any) {
-        error.value = err?.response?.data?.message || 'Registration failed';
+    } catch (err) {
+        error.value = getApiErrorMessage(err, 'Registration failed');
     }
 };
 </script>
