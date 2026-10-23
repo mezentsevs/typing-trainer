@@ -26,6 +26,10 @@ export interface UseHandleTypingInputReturn {
     cleanupScrollThrottle: () => void;
 }
 
+export interface UseCurrentWordReturn {
+    isCurrentWord: ComputedRef<TypingUnit>;
+}
+
 export const useHandleTypingInput = (): UseHandleTypingInputReturn => {
     let scrollThrottleTimeout: ReturnType<typeof setTimeout> | null = null;
 
@@ -88,10 +92,7 @@ export const useHandleTypingInput = (): UseHandleTypingInputReturn => {
     return { handleTypingInput, cleanupScrollThrottle };
 };
 
-export const useCurrentWord = (
-    text: Ref<string>,
-    typed: Ref<string>,
-): Record<string, ComputedRef<TypingUnit>> => {
+export const useCurrentWord = (text: Ref<string>, typed: Ref<string>): UseCurrentWordReturn => {
     const isCurrentWord: Ref<TypingUnit> = ref({ start: -1, end: -1 });
     let lastStart: number = -1;
     let lastEnd: number = -1;
