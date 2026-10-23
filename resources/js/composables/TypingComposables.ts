@@ -30,6 +30,10 @@ export interface UseCurrentWordReturn {
     isCurrentWord: ComputedRef<TypingUnit>;
 }
 
+export interface UseProgressReturn {
+    progress: ComputedRef<number>;
+}
+
 export const useHandleTypingInput = (): UseHandleTypingInputReturn => {
     let scrollThrottleTimeout: ReturnType<typeof setTimeout> | null = null;
 
@@ -128,7 +132,7 @@ export const useProgress = (
     text: Ref<string>,
     typed: Ref<string>,
     isCompleted: Ref<boolean>,
-): Record<string, ComputedRef<number>> => {
+): UseProgressReturn => {
     const progress: ComputedRef<number> = computed((): number => {
         if (isCompleted.value) {
             return 100;
