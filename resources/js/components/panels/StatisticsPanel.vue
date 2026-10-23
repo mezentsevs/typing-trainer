@@ -17,6 +17,11 @@ import StatisticsPanelItem from '@/components/panels/partials/StatisticsPanelIte
 import { computed, ComputedRef } from 'vue';
 import { formatTime } from '@/helpers/DateTimeHelper';
 
+interface StatisticItem {
+    name: string;
+    value: string | number;
+}
+
 const props = defineProps<{
     language: string;
     time: number;
@@ -25,12 +30,10 @@ const props = defineProps<{
     progress: number;
 }>();
 
-const items: ComputedRef<Record<string, string | number>[]> = computed(
-    (): Record<string, string | number>[] => [
-        { name: 'Language', value: props.language },
-        { name: 'Time', value: formatTime(props.time) },
-        { name: 'Speed', value: `${props.speed} WPM` },
-        { name: 'Errors', value: props.errors },
-    ],
-);
+const items: ComputedRef<StatisticItem[]> = computed((): StatisticItem[] => [
+    { name: 'Language', value: props.language },
+    { name: 'Time', value: formatTime(props.time) },
+    { name: 'Speed', value: `${props.speed} WPM` },
+    { name: 'Errors', value: props.errors },
+]);
 </script>
