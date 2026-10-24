@@ -19,12 +19,17 @@ export const useAuthStore: StoreDefinition<string, AuthState, AuthGetters, AuthA
         },
         actions: {
             async fetchMe(): Promise<void> {
-                const response: AxiosResponse<{
-                    user: AuthStateUser;
-                }> = await axios.get('/me');
+                try {
+                    const response: AxiosResponse<{
+                        user: AuthStateUser;
+                    }> = await axios.get('/me');
 
-                if (response.data?.user) {
-                    this.user = response.data.user;
+                    if (response.data?.user) {
+                        this.user = response.data.user;
+                    }
+                } catch (err) {
+                    // eslint-disable-next-line no-console
+                    console.error(getApiErrorMessage(err, 'User loading failed'));
                 }
             },
             async login(email: string, password: string): Promise<void> {
