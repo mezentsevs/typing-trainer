@@ -3,6 +3,7 @@ import { defineStore, StoreDefinition } from 'pinia';
 
 import { applyToken, purgeToken, retrieveToken } from '@/helpers/TokenHelper';
 import { AuthStateToken, AuthStateUser } from '@/types/AuthTypes';
+import { getApiErrorMessage } from '@/helpers/ErrorHelper';
 import AuthActions from '@/interfaces/auth/AuthActions';
 import AuthGetters from '@/interfaces/auth/AuthGetters';
 import AuthState from '@/interfaces/auth/AuthState';
@@ -63,12 +64,17 @@ export const useAuthStore: StoreDefinition<string, AuthState, AuthGetters, AuthA
                 }
             },
             async logout(): Promise<void> {
-                await axios.post('/logout');
+                try {
+                    await axios.post('/logout');
+                } catch (err) {
+                    // eslint-disable-next-line no-console
+                    console.error(getApiErrorMessage(err, 'Logout failed'));
+                } finally {
+                    this.token = null;
+                    this.user = null;
 
-                this.token = null;
-                this.user = null;
-
-                purgeToken();
+                    purgeToken();
+                }
             },
         },
     });
