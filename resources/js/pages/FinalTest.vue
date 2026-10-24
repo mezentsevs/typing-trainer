@@ -50,8 +50,9 @@
 
 <script lang="ts" setup>
 import { BaseSaveResultRequestPayload } from '@/interfaces/payloads/SaveResultRequestPayload';
-import { Ref, ref, onUnmounted, nextTick } from 'vue';
+import { getApiErrorMessage } from '@/helpers/ErrorHelper';
 import { languageRegistry } from '@/languages/registry/LanguageRegistry';
+import { Ref, ref, onUnmounted, nextTick } from 'vue';
 import { RouteLocationNormalizedLoaded, useRoute } from 'vue-router';
 import {
     useHandleTypingInput,
@@ -142,8 +143,8 @@ const loadTest = async (): Promise<void> => {
     try {
         await fetchTest();
         await afterTestFetched();
-    } catch {
-        error.value = 'Test loading failed';
+    } catch (err) {
+        error.value = getApiErrorMessage(err, 'Test loading failed');
     }
 };
 
@@ -163,9 +164,7 @@ const uploadFile = async (file: File): Promise<void> => {
         await afterTestFetched();
         selectedFile.value = null;
     } catch (err) {
-        if (err instanceof Error) {
-            error.value = 'File uploading failed';
-        }
+        error.value = getApiErrorMessage(err, 'File uploading failed');
     }
 };
 

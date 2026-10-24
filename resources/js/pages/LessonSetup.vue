@@ -28,6 +28,7 @@
 </template>
 
 <script lang="ts" setup>
+import { getApiErrorMessage } from '@/helpers/ErrorHelper';
 import { languageRegistry } from '@/languages/registry/LanguageRegistry';
 import { reactive, Ref, ref } from 'vue';
 import { Router, useRouter } from 'vue-router';
@@ -64,9 +65,7 @@ const generateLessons = async (): Promise<void> => {
         });
         await router.push(`/lesson/${form.language}/1`);
     } catch (err) {
-        if (err instanceof Error) {
-            error.value = 'Lessons generation failed';
-        }
+        error.value = getApiErrorMessage(err, 'Lessons generation failed');
     } finally {
         loading.value = false;
     }
