@@ -12,6 +12,7 @@ import {
     calculateSpeed,
     isSuccess,
 } from '@/helpers/TypingHelper';
+import { getApiErrorMessage } from '@/helpers/ErrorHelper';
 import { getCurrentTypingUnit } from '@/helpers/StringHelper';
 import { scrollToCurrentChar } from '@/helpers/DomHelper';
 import TypingContext from '@/interfaces/typing/TypingContext';
@@ -78,7 +79,12 @@ export const useHandleTypingInput = (): UseHandleTypingInputReturn => {
                 success: context.isSuccessful.value,
             };
 
-            await axios.post(saveResultRequestUrl, saveResultRequestPayload);
+            try {
+                await axios.post(saveResultRequestUrl, saveResultRequestPayload);
+            } catch (err) {
+                // eslint-disable-next-line no-console
+                console.error(getApiErrorMessage(err, 'Result saving failed'));
+            }
 
             return;
         }
