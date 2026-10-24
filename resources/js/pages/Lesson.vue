@@ -55,7 +55,7 @@
     </ContentCard>
     <div v-else class="min-h-screen flex flex-col items-center justify-center">
         <template v-if="loadError">
-            <ErrorMessage message="Lesson loading failed" />
+            <ErrorMessage :message="loadError" />
             <PrimaryButton :type="Button.Button" class="w-32 mt-4" @click="onRetry">
                 Retry
             </PrimaryButton>
@@ -67,6 +67,7 @@
 <script lang="ts" setup>
 import { BaseSaveResultRequestPayload } from '@/interfaces/payloads/SaveResultRequestPayload';
 import { Button } from '@/enums/UIKitEnums';
+import { getApiErrorMessage } from '@/helpers/ErrorHelper';
 import { languageRegistry } from '@/languages/registry/LanguageRegistry';
 import { ref, computed, onMounted, onUnmounted, Ref, ComputedRef, nextTick } from 'vue';
 import { RouteLocationNormalizedLoaded, useRoute } from 'vue-router';
@@ -106,7 +107,7 @@ const errors: Ref<number> = ref(0);
 const isCompleted: Ref<boolean> = ref(false);
 const isSuccessful: Ref<boolean> = ref(false);
 const lesson: Ref<Lesson | null> = ref(null);
-const loadError: Ref<boolean> = ref(false);
+const loadError: Ref<string> = ref('');
 const speed: Ref<number> = ref(0);
 const startTime: Ref<number> = ref(0);
 const text: Ref<string> = ref('');
@@ -173,11 +174,11 @@ const afterLessonFetched = async (): Promise<void> => {
 
 const loadLesson = async (): Promise<void> => {
     try {
+        loadError.value = '';
         await fetchLesson();
         await afterLessonFetched();
-        loadError.value = false;
-    } catch {
-        loadError.value = true;
+    } catch (err) {
+        loadError.value = getApiErrorMessage(err, 'Lesson loading failed');
     }
 };
 
