@@ -3,12 +3,23 @@ import axios from 'axios';
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 
+import { applyBearer, purgeToken, retrieveToken } from '@/helpers/TokenHelper';
 import App from '@/App.vue';
 import router from '@/router/Router';
 import theme from '@/plugins/Theme';
-import { applyBearer, retrieveToken } from '@/helpers/TokenHelper';
 
 axios.defaults.baseURL = '/api';
+axios.interceptors.response.use(
+    response => response,
+    error => {
+        if (axios.isAxiosError(error) && error.response?.status === 401 && retrieveToken()) {
+            purgeToken();
+            router.push('/login');
+        }
+
+        return Promise.reject(error);
+    },
+);
 applyBearer(retrieveToken());
 
 createApp(App)
