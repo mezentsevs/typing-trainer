@@ -2,11 +2,13 @@
 
 namespace App\Dtos;
 
+use ReflectionClass;
+
 abstract class BaseDto
 {
     public static function fromArray(array $data): static
     {
-        $reflection = new \ReflectionClass(static::class);
+        $reflection = new ReflectionClass(static::class);
         $parameters = $reflection->getConstructor()?->getParameters() ?? [];
         $args = [];
 
