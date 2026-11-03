@@ -25,7 +25,7 @@ class LessonSequenceGenerator
         $availableCharsString = '';
 
         for ($i = 0; $i < $lessonCount; $i++) {
-            $charsPerLesson = max(1, ceil($introductionOrderCount / max(1, $lessonCount - $i)));
+            $charsPerLesson = max(1, (int)ceil($introductionOrderCount / max(1, $lessonCount - $i)));
             $newChars = [];
 
             for ($j = 0; $j < $charsPerLesson && !empty($remainingChars); $j++) {
@@ -59,6 +59,6 @@ class LessonSequenceGenerator
             return self::MIN_LESSON_LENGTH;
         }
 
-        return self::MIN_LESSON_LENGTH + (self::MAX_LESSON_LENGTH - self::MIN_LESSON_LENGTH) * ($lessonNumber - 1) / ($lessonCount - 1);
+        return self::MIN_LESSON_LENGTH + (int)((self::MAX_LESSON_LENGTH - self::MIN_LESSON_LENGTH) * ($lessonNumber - 1) / ($lessonCount - 1));
     }
 }
