@@ -1,7 +1,6 @@
 # Typing trainer
 
-PHP (Laravel) + TypeScript (Vue) SPA that generates random touch-typing lessons
-and retrieves final test texts from pluggable sources.
+PHP (Laravel) + TypeScript (Vue) SPA that generates random touch-typing lessons and retrieves final test texts from pluggable sources.
 
 ## Commands
 
@@ -35,13 +34,7 @@ and retrieves final test texts from pluggable sources.
 
 ## Conventions
 
-- Languages are defined twice on purpose: `app/Languages` (PHP) and
-  `resources/js/languages` (TypeScript), each with its own `LanguageRegistry`.
-  Update both sides in sync when adding or changing a language.
-- Final test text sources are strategies tagged `testRetrieveStrategies`
-  in `TestServiceProvider`; add a new source as a new strategy, not as
-  branching inside the orchestrator.
-- Style is enforced by `php-cs-fixer`, `eslint`, and `prettier` - follow the
-  existing configs, do not reformat unrelated code.
-- Prefer modern PHP and TypeScript features supported by the project setup
-  over legacy patterns.
+- Languages are defined twice on purpose: `app/Languages` (PHP) and `resources/js/languages` (TypeScript), each with its own `LanguageRegistry`. Update both sides in sync when adding or changing a language.
+- Final test text sources are strategies tagged `testRetrieveStrategies` in `TestServiceProvider`; add a new source as a new strategy, not as branching inside the orchestrator.
+- Style is enforced by `php-cs-fixer`, `eslint`, and `prettier` - follow the existing configs, do not reformat unrelated code.
+- Prefer modern PHP and TypeScript features supported by the project setup over legacy patterns.
