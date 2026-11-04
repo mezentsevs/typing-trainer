@@ -10,7 +10,7 @@ description: Restructures code without changing its behavior. Use when cleaning 
 1. Inspect - find one small refactoring candidate and explain what is wrong (duplication, long method, unclear name, leaky abstraction, avoidable performance cost). Do not run a broad audit or produce a list of candidates.
 2. Propose - describe the intended change and why it is behavior-preserving. Stop and wait for explicit approval before editing anything.
 3. Implement - make the smallest change that achieves the goal. One refactoring per run, no unrelated edits.
-4. Verify - run the relevant tests and linters, then show the diff.
+4. Verify - run the relevant tests and linters, then list the changed files and summarize the modifications.
 
 ## Essential principles
 

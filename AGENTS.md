@@ -17,20 +17,20 @@ PHP (Laravel) + TypeScript (Vue) SPA that generates random touch-typing lessons 
 ### Always
 
 - Run the relevant tests and linters after code changes.
+- Propose a commit message in English following Conventional Commits after changes are complete, and wait for confirmation.
 
 ### Ask first
 
 - Install, update, or remove dependencies (`composer`, `npm`).
-- Edit config files other than `.env` and `.env.example` (`docker/`, `config/*`, etc.).
+- Edit config files other than `.env` and `.env.example`.
 - Edit existing migrations.
 - Run `php artisan migrate:fresh --seed`.
-- Run any git command (commit, push, branch, etc.).
 
 ### Never
 
+- Run any git command.
 - Edit `.env` or `.env.example`.
-- Commit or expose secrets, tokens, or credentials.
-- Force-push or rewrite git history.
+- Expose secrets, tokens, or credentials.
 
 ## Conventions
 
