@@ -6,11 +6,9 @@ use App\Dtos\BaseSaveResultDto;
 
 class LessonSaveResultDto extends BaseSaveResultDto
 {
-    public readonly int $lessonId;
-
     public function __construct(
         int $userId,
-        int $lessonId,
+        public readonly int $lessonId,
         string $language,
         int $timeSeconds,
         int $speedWpm,
@@ -18,6 +16,5 @@ class LessonSaveResultDto extends BaseSaveResultDto
         bool $success,
     ) {
         parent::__construct($userId, $language, $timeSeconds, $speedWpm, $errors, $success);
-        $this->lessonId = $lessonId;
     }
 }
