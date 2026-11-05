@@ -4,6 +4,8 @@ PHP (Laravel) + TypeScript (Vue) SPA that generates random touch-typing lessons 
 
 ## Commands
 
+The application runs inside a Docker container, not on the host. Before running project commands, check that the container is running; if it is not, start it and work inside it.
+
 - Dev environment: `./vendor/bin/sail up`
 - Fresh DB with seed data: `php artisan migrate:fresh --seed`
 - Backend tests: `php artisan test`
