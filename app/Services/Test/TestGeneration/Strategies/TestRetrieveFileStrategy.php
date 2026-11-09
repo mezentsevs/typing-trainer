@@ -10,13 +10,14 @@ class TestRetrieveFileStrategy implements TestRetrieveStrategy
 {
     public function retrieve(int $userId, string $language, ?string $genre): ?string
     {
+        $disk = Storage::disk('public');
         $filePath = "uploads/test_{$userId}_{$language}.txt";
 
-        if (Storage::disk('public')->exists($filePath)) {
-            if (Storage::disk('public')->lastModified($filePath) < now()->subMinute()->timestamp) {
-                Storage::disk('public')->delete($filePath);
+        if ($disk->exists($filePath)) {
+            if ($disk->lastModified($filePath) < now()->subMinute()->timestamp) {
+                $disk->delete($filePath);
             } else {
-                return StringHelper::normalize(Storage::disk('public')->get($filePath));
+                return StringHelper::normalize($disk->get($filePath));
             }
         }
 
