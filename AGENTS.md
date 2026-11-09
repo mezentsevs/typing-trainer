@@ -19,6 +19,7 @@ The application runs inside a Docker container, not on the host. Before running 
 ### Always
 
 - Run the relevant tests and linters after code changes.
+- Wait for every command to finish and verify the outcome before reporting a result.
 - Propose a commit message in English following Conventional Commits after changes are complete, and wait for confirmation.
 
 ### Ask first
