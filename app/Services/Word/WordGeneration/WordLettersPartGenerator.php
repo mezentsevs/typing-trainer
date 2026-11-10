@@ -36,12 +36,12 @@ class WordLettersPartGenerator
                         ) < WordCharDataProvider::DIGIT_USAGE_CHANCE;
 
             if ($useNumber) {
-                $lettersPart .= $this->wordCharProbabilitySelector->selectNumberChar(
+                $lettersPart .= $this->wordCharProbabilitySelector->selectChar(
                     $charSets['availableNumberChars'],
                     $charSets['newNumberChars'],
                 );
             } else {
-                $lettersPart .= $this->wordCharProbabilitySelector->selectLetterChar(
+                $lettersPart .= $this->wordCharProbabilitySelector->selectChar(
                     $currentCharSet,
                     $currentNewCharSet,
                 );
