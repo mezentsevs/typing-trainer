@@ -1,5 +1,7 @@
 # Typing trainer
 
+<img width="2736" height="1520" alt="653f3b0b70574f6c92d8f072db9877f6" src="https://github.com/user-attachments/assets/4cc2e1ce-8624-4752-8029-ae13491a4454" />
+
 ## Note on Future Development
 
 Please be aware that this application is in active development. The project is continuously evolving with planned fixes, improvements, and additional capabilities. Thank you for your understanding and support.
