@@ -33,24 +33,23 @@ class LessonServiceTest extends TestCase
     #[DataProviderExternal(CommonDataProvider::class, 'provideSupportedLanguages')]
     public function testGenerateDeletesExistingAndCreatesNew(string $language): void
     {
-        $lessonCount = 5;
         $existingLessonCount = 3;
-        $existingLessonResultCount = 3;
+        $newLessonCount = 5;
 
-        $existingLessons = Lesson::factory()->count($existingLessonCount)->create([
-            'user_id' => $this->user->id,
-            'language' => $language,
-        ]);
+        $existingLessons = Lesson::factory()
+            ->has(LessonResult::factory(), 'results')
+            ->count($existingLessonCount)
+            ->create([
+                'user_id' => $this->user->id,
+                'language' => $language,
+            ]);
 
-        $existingLessonResults = LessonResult::factory()->count($existingLessonResultCount)->create([
-            'user_id' => $this->user->id,
-            'language' => $language,
-        ]);
+        $existingLessonResults = $existingLessons->pluck('results')->flatten();
 
         $dto = LessonGenerateDto::fromArray([
             'userId' => $this->user->id,
             'language' => $language,
-            'lessonCount' => $lessonCount,
+            'lessonCount' => $newLessonCount,
         ]);
 
         $this->service->generate($dto);
@@ -71,7 +70,7 @@ class LessonServiceTest extends TestCase
             ->where('language', $language)
             ->get();
 
-        $this->assertCount($lessonCount, $newLessons);
+        $this->assertCount($newLessonCount, $newLessons);
     }
 
     #[DataProviderExternal(LessonDataProvider::class, 'provideLessonsSequenceData')]

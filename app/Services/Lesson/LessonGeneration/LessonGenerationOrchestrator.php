@@ -3,7 +3,6 @@
 namespace App\Services\Lesson\LessonGeneration;
 
 use App\Models\Lesson;
-use App\Models\LessonResult;
 use Random\RandomException;
 
 class LessonGenerationOrchestrator
@@ -19,8 +18,7 @@ class LessonGenerationOrchestrator
      */
     public function generate(int $userId, string $language, int $lessonCount): void
     {
-        $this->deleteLessons($userId, $language);
-        $this->deleteLessonResults($userId, $language);
+        $this->purge($userId, $language);
 
         $lessonBlueprints = $this->lessonSequenceGenerator->generate($language, $lessonCount);
 
@@ -32,16 +30,9 @@ class LessonGenerationOrchestrator
         Lesson::insert($lessons);
     }
 
-    protected function deleteLessons(int $userId, string $language): void
+    protected function purge(int $userId, string $language): void
     {
         Lesson::where('user_id', $userId)
-            ->where('language', $language)
-            ->delete();
-    }
-
-    protected function deleteLessonResults(int $userId, string $language): void
-    {
-        LessonResult::where('user_id', $userId)
             ->where('language', $language)
             ->delete();
     }
