@@ -8,11 +8,6 @@ class FrLanguage extends Language
 {
     public const string CODE = 'fr';
 
-    public function getCode(): string
-    {
-        return self::CODE;
-    }
-
     public function getIntroductionOrder(): array
     {
         return [

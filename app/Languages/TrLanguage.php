@@ -8,11 +8,6 @@ class TrLanguage extends Language
 {
     public const string CODE = 'tr';
 
-    public function getCode(): string
-    {
-        return self::CODE;
-    }
-
     public function getIntroductionOrder(): array
     {
         return [

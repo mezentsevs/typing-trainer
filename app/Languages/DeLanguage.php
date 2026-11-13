@@ -8,11 +8,6 @@ class DeLanguage extends Language
 {
     public const string CODE = 'de';
 
-    public function getCode(): string
-    {
-        return self::CODE;
-    }
-
     public function getIntroductionOrder(): array
     {
         return [

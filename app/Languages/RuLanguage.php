@@ -8,11 +8,6 @@ class RuLanguage extends Language
 {
     public const string CODE = 'ru';
 
-    public function getCode(): string
-    {
-        return self::CODE;
-    }
-
     public function getIntroductionOrder(): array
     {
         return [

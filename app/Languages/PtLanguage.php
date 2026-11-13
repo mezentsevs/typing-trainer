@@ -8,11 +8,6 @@ class PtLanguage extends Language
 {
     public const string CODE = 'pt';
 
-    public function getCode(): string
-    {
-        return self::CODE;
-    }
-
     public function getIntroductionOrder(): array
     {
         return [

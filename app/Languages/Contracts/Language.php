@@ -4,7 +4,12 @@ namespace App\Languages\Contracts;
 
 abstract class Language
 {
-    abstract public function getCode(): string;
+    public const string CODE = '';
+
+    public function getCode(): string
+    {
+        return static::CODE;
+    }
 
     abstract public function getIntroductionOrder(): array;
 

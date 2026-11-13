@@ -8,11 +8,6 @@ class EnLanguage extends Language
 {
     public const string CODE = 'en';
 
-    public function getCode(): string
-    {
-        return self::CODE;
-    }
-
     public function getIntroductionOrder(): array
     {
         return [

@@ -8,11 +8,6 @@ class PlLanguage extends Language
 {
     public const string CODE = 'pl';
 
-    public function getCode(): string
-    {
-        return self::CODE;
-    }
-
     public function getIntroductionOrder(): array
     {
         return [

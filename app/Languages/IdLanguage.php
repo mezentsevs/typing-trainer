@@ -8,11 +8,6 @@ class IdLanguage extends Language
 {
     public const string CODE = 'id';
 
-    public function getCode(): string
-    {
-        return self::CODE;
-    }
-
     public function getIntroductionOrder(): array
     {
         return [
