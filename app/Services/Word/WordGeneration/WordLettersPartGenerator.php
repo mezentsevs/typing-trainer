@@ -30,7 +30,7 @@ class WordLettersPartGenerator
             }
 
             $useNumber = !empty($charSets['availableNumberChars']) &&
-                        rand(
+                        random_int(
                             WordCharDataProvider::RANDOM_MIN_VALUE,
                             WordCharDataProvider::RANDOM_MAX_VALUE,
                         ) < WordCharDataProvider::DIGIT_USAGE_CHANCE;
@@ -51,6 +51,9 @@ class WordLettersPartGenerator
         return $lettersPart;
     }
 
+    /**
+     * @throws RandomException
+     */
     protected function getLetterAlternationSets(array $charSets): array
     {
         $startCharSet = [];
@@ -63,7 +66,7 @@ class WordLettersPartGenerator
 
         switch (true) {
             case $hasVowelChars && $hasConsonantChars:
-                $startType = rand(
+                $startType = random_int(
                     WordCharDataProvider::BINARY_CHOICE_MIN,
                     WordCharDataProvider::BINARY_CHOICE_MAX,
                 ) === WordCharDataProvider::BINARY_CHOICE_DEFAULT
