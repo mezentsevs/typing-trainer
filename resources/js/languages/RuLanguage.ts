@@ -4,10 +4,7 @@ import type { KeyboardLayout } from '@/types/KeyboardTypes';
 
 export default class RuLanguage extends Language {
     public static override readonly CODE: string = 'ru';
-
-    public getLabel(): string {
-        return 'Русский';
-    }
+    public static override readonly LABEL: string = 'Русский';
 
     public getKeyboardLayout(): KeyboardLayout {
         return [

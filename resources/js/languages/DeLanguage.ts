@@ -4,10 +4,7 @@ import type { KeyboardLayout } from '@/types/KeyboardTypes';
 
 export default class DeLanguage extends Language {
     public static override readonly CODE: string = 'de';
-
-    public getLabel(): string {
-        return 'Deutsch';
-    }
+    public static override readonly LABEL: string = 'Deutsch';
 
     public getDeadKeyMap(): Record<string, string[]> {
         return {

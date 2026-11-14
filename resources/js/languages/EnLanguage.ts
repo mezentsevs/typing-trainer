@@ -4,10 +4,7 @@ import type { KeyboardLayout } from '@/types/KeyboardTypes';
 
 export default class EnLanguage extends Language {
     public static override readonly CODE: string = 'en';
-
-    public getLabel(): string {
-        return 'English';
-    }
+    public static override readonly LABEL: string = 'English';
 
     public getKeyboardLayout(): KeyboardLayout {
         return [

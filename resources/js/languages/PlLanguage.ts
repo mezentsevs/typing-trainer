@@ -4,10 +4,7 @@ import type { KeyboardLayout } from '@/types/KeyboardTypes';
 
 export default class PlLanguage extends Language {
     public static override readonly CODE: string = 'pl';
-
-    public getLabel(): string {
-        return 'Polski';
-    }
+    public static override readonly LABEL: string = 'Polski';
 
     public getKeyboardLayout(): KeyboardLayout {
         return [

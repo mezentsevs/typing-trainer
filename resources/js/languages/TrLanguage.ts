@@ -4,10 +4,7 @@ import type { KeyboardLayout } from '@/types/KeyboardTypes';
 
 export default class TrLanguage extends Language {
     public static override readonly CODE: string = 'tr';
-
-    public getLabel(): string {
-        return 'Türkçe';
-    }
+    public static override readonly LABEL: string = 'Türkçe';
 
     public getDeadKeyMap(): Record<string, string[]> {
         return {
