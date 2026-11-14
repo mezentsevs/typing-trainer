@@ -3,11 +3,7 @@ import Language from '@/languages/contracts/Language';
 import type { KeyboardLayout } from '@/types/KeyboardTypes';
 
 export default class RuLanguage extends Language {
-    public static readonly CODE: string = 'ru';
-
-    public getCode(): string {
-        return RuLanguage.CODE;
-    }
+    public static override readonly CODE: string = 'ru';
 
     public getLabel(): string {
         return 'Русский';

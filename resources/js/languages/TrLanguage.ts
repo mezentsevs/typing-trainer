@@ -3,11 +3,7 @@ import Language from '@/languages/contracts/Language';
 import type { KeyboardLayout } from '@/types/KeyboardTypes';
 
 export default class TrLanguage extends Language {
-    public static readonly CODE: string = 'tr';
-
-    public getCode(): string {
-        return TrLanguage.CODE;
-    }
+    public static override readonly CODE: string = 'tr';
 
     public getLabel(): string {
         return 'Türkçe';

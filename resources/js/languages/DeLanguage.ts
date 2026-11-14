@@ -3,11 +3,7 @@ import Language from '@/languages/contracts/Language';
 import type { KeyboardLayout } from '@/types/KeyboardTypes';
 
 export default class DeLanguage extends Language {
-    public static readonly CODE: string = 'de';
-
-    public getCode(): string {
-        return DeLanguage.CODE;
-    }
+    public static override readonly CODE: string = 'de';
 
     public getLabel(): string {
         return 'Deutsch';

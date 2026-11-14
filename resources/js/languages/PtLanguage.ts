@@ -3,11 +3,7 @@ import Language from '@/languages/contracts/Language';
 import type { KeyboardLayout } from '@/types/KeyboardTypes';
 
 export default class PtLanguage extends Language {
-    public static readonly CODE: string = 'pt';
-
-    public getCode(): string {
-        return PtLanguage.CODE;
-    }
+    public static override readonly CODE: string = 'pt';
 
     public getLabel(): string {
         return 'Português';

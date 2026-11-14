@@ -3,11 +3,7 @@ import Language from '@/languages/contracts/Language';
 import type { KeyboardLayout } from '@/types/KeyboardTypes';
 
 export default class EsLanguage extends Language {
-    public static readonly CODE: string = 'es';
-
-    public getCode(): string {
-        return EsLanguage.CODE;
-    }
+    public static override readonly CODE: string = 'es';
 
     public getLabel(): string {
         return 'Español';

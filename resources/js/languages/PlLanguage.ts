@@ -3,11 +3,7 @@ import Language from '@/languages/contracts/Language';
 import type { KeyboardLayout } from '@/types/KeyboardTypes';
 
 export default class PlLanguage extends Language {
-    public static readonly CODE: string = 'pl';
-
-    public getCode(): string {
-        return PlLanguage.CODE;
-    }
+    public static override readonly CODE: string = 'pl';
 
     public getLabel(): string {
         return 'Polski';
