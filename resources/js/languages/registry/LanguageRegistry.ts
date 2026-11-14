@@ -12,28 +12,28 @@ import type Language from '@/languages/contracts/Language';
 import type UIKitSelectOption from '@/interfaces/uikit/UIKitSelectOption';
 
 class LanguageRegistry {
-    private languages: Record<string, Language> = {};
+    private _languages: Record<string, Language> = {};
 
     public constructor(languages: Language[]) {
         languages.forEach(language => {
-            this.languages[language.getCode()] = language;
+            this._languages[language.getCode()] = language;
         });
     }
 
     public get(code: string): Language | undefined {
-        return this.languages[code];
+        return this._languages[code];
     }
 
     public getSupportedOrDefault(code: string): Language {
-        return this.languages[code] ?? this.languages[EnLanguage.CODE];
+        return this._languages[code] ?? this._languages[EnLanguage.CODE];
     }
 
     public getSupportedCodes(): string[] {
-        return Object.keys(this.languages);
+        return Object.keys(this._languages);
     }
 
     public getAllLanguages(): Language[] {
-        return Object.values(this.languages);
+        return Object.values(this._languages);
     }
 
     public getSelectOptions(): UIKitSelectOption[] {
