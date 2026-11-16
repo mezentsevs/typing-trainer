@@ -183,26 +183,26 @@ const loadLesson = async (): Promise<void> => {
 };
 
 const onInput = async (): Promise<void> => {
-    await handleTypingInput(
-        {
-            errors,
-            isCompleted,
-            isSuccessful,
-            language,
-            speed,
-            startTime,
-            text,
-            textContainer,
-            time,
-            typed,
-            progress,
-        } as TypingContext,
-        '/lessons/result',
-        {
-            lesson_id: lesson.value?.id,
-            language,
-        } as BaseSaveResultRequestPayload,
-    );
+    const context: TypingContext = {
+        errors,
+        isCompleted,
+        isSuccessful,
+        language,
+        speed,
+        startTime,
+        text,
+        textContainer,
+        time,
+        typed,
+        progress,
+    };
+    const url = '/lessons/result';
+    const payload: BaseSaveResultRequestPayload = {
+        lesson_id: lesson.value?.id,
+        language,
+    };
+
+    await handleTypingInput(context, url, payload);
 };
 
 const onNext = async (): Promise<void> => {

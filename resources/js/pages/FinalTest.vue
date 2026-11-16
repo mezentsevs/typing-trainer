@@ -205,25 +205,25 @@ const onStart = async (selectedGenre: string): Promise<void> => {
 };
 
 const onInput = async (): Promise<void> => {
-    await handleTypingInput(
-        {
-            errors,
-            isCompleted,
-            isSuccessful,
-            language,
-            speed,
-            startTime,
-            text,
-            textContainer,
-            time,
-            typed,
-            progress,
-        } as TypingContext,
-        '/test/result',
-        {
-            language,
-        } as BaseSaveResultRequestPayload,
-    );
+    const context: TypingContext = {
+        errors,
+        isCompleted,
+        isSuccessful,
+        language,
+        speed,
+        startTime,
+        text,
+        textContainer,
+        time,
+        typed,
+        progress,
+    };
+    const url = '/test/result';
+    const payload: BaseSaveResultRequestPayload = {
+        language,
+    };
+
+    await handleTypingInput(context, url, payload);
 };
 
 onUnmounted((): void => {
