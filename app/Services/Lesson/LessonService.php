@@ -8,10 +8,13 @@ use App\Dtos\Lesson\LessonShowDto;
 use App\Models\Lesson;
 use App\Models\LessonResult;
 use App\Services\Lesson\LessonGeneration\LessonGenerationOrchestrator;
+use App\Traits\HasSaveResultMapping;
 use Random\RandomException;
 
 class LessonService
 {
+    use HasSaveResultMapping;
+
     public function __construct(protected LessonGenerationOrchestrator $lessonGenerationOrchestrator)
     {
     }
@@ -38,14 +41,6 @@ class LessonService
 
     public function saveResult(LessonSaveResultDto $dto): LessonResult
     {
-        return LessonResult::create([
-            'user_id' => $dto->userId,
-            'lesson_id' => $dto->lessonId,
-            'language' => $dto->language,
-            'time_seconds' => $dto->timeSeconds,
-            'speed_wpm' => $dto->speedWpm,
-            'errors' => $dto->errors,
-            'success' => $dto->success,
-        ]);
+        return LessonResult::create(static::mapSaveResult($dto, ['lesson_id' => $dto->lessonId]));
     }
 }
