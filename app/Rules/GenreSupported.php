@@ -3,15 +3,15 @@
 namespace App\Rules;
 
 use App\Enums\Genre;
-use Closure;
+use App\Traits\HasSupportedValidation;
 use Illuminate\Contracts\Validation\ValidationRule;
 
 class GenreSupported implements ValidationRule
 {
-    public function validate(string $attribute, mixed $value, Closure $fail): void
+    use HasSupportedValidation;
+
+    protected function getSupportedValues(): array
     {
-        if (!in_array($value, Genre::supportedValues(), true)) {
-            $fail('The selected genre is not supported.');
-        }
+        return Genre::supportedValues();
     }
 }
