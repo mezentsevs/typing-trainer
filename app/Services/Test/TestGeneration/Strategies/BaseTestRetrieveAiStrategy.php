@@ -13,10 +13,11 @@ use Illuminate\Support\Facades\Log;
 
 abstract class BaseTestRetrieveAiStrategy implements TestRetrieveStrategy
 {
+    protected string $aiConfigPath;
+
     private string $language;
     private ?string $genre;
     private string $aiType;
-    private string $aiConfigPath;
     private string $strategyName;
 
     abstract protected function getAiType(): AiType;
@@ -48,8 +49,8 @@ abstract class BaseTestRetrieveAiStrategy implements TestRetrieveStrategy
         $this->language = $language;
         $this->genre = $genre;
         $this->aiType = $this->getAiType()->value;
-        $this->aiConfigPath = "services.ai_text_generation.{$this->aiType}";
         $this->strategyName = ucfirst($this->aiType) . ' AI';
+        $this->aiConfigPath = "services.ai_text_generation.{$this->aiType}";
     }
 
     private function shouldProceed(): bool

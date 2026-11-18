@@ -13,8 +13,6 @@ class TestRetrieveAiCloudStrategy extends BaseTestRetrieveAiStrategy
 
     protected function isEnabled(): bool
     {
-        $aiType = $this->getAiType()->value;
-
-        return parent::isEnabled() && config("services.ai_text_generation.{$aiType}.key");
+        return parent::isEnabled() && config("{$this->aiConfigPath}.key");
     }
 }
