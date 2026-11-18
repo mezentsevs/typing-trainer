@@ -16,6 +16,7 @@ abstract class BaseTestRetrieveAiStrategy implements TestRetrieveStrategy
     private string $language;
     private ?string $genre;
     private string $aiType;
+    private string $aiConfigPath;
     private string $strategyName;
 
     abstract protected function getAiType(): AiType;
@@ -39,7 +40,7 @@ abstract class BaseTestRetrieveAiStrategy implements TestRetrieveStrategy
 
     protected function isEnabled(): bool
     {
-        return (bool) config("services.ai_text_generation.{$this->aiType}.enabled");
+        return (bool) config("{$this->aiConfigPath}.enabled");
     }
 
     private function initializeStrategy(string $language, ?string $genre): void
@@ -47,6 +48,7 @@ abstract class BaseTestRetrieveAiStrategy implements TestRetrieveStrategy
         $this->language = $language;
         $this->genre = $genre;
         $this->aiType = $this->getAiType()->value;
+        $this->aiConfigPath = "services.ai_text_generation.{$this->aiType}";
         $this->strategyName = ucfirst($this->aiType) . ' AI';
     }
 
@@ -68,7 +70,7 @@ abstract class BaseTestRetrieveAiStrategy implements TestRetrieveStrategy
     private function buildRequestHeaders(): array
     {
         $headers = ['Content-Type' => 'application/json'];
-        $apiKey = config("services.ai_text_generation.{$this->aiType}.key");
+        $apiKey = config("{$this->aiConfigPath}.key");
 
         if ($apiKey) {
             $headers['Authorization'] = 'Bearer ' . $apiKey;
@@ -88,21 +90,21 @@ abstract class BaseTestRetrieveAiStrategy implements TestRetrieveStrategy
     private function buildRequestBody(string $prompt): array
     {
         return [
-            'model' => config("services.ai_text_generation.{$this->aiType}.model"),
+            'model' => config("{$this->aiConfigPath}.model"),
             'messages' => [
                 ['role' => 'user', 'content' => $prompt],
             ],
-            'max_tokens' => (int) config("services.ai_text_generation.{$this->aiType}.max_tokens"),
-            'temperature' => (float) config("services.ai_text_generation.{$this->aiType}.temperature"),
-            'stream' => (bool) config("services.ai_text_generation.{$this->aiType}.stream"),
+            'max_tokens' => (int) config("{$this->aiConfigPath}.max_tokens"),
+            'temperature' => (float) config("{$this->aiConfigPath}.temperature"),
+            'stream' => (bool) config("{$this->aiConfigPath}.stream"),
         ];
     }
 
     private function sendHttpRequest(array $requestHeaders, array $requestBody): Response
     {
-        return Http::timeout((int) config("services.ai_text_generation.{$this->aiType}.timeout"))
+        return Http::timeout((int) config("{$this->aiConfigPath}.timeout"))
             ->withHeaders($requestHeaders)
-            ->post(config("services.ai_text_generation.{$this->aiType}.url"), $requestBody);
+            ->post(config("{$this->aiConfigPath}.url"), $requestBody);
     }
 
     private function processResponse(Response $response): ?string
