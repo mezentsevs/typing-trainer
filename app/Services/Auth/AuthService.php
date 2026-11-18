@@ -30,10 +30,7 @@ class AuthService
 
         $token = $user->createToken('auth_token')->plainTextToken;
 
-        return [
-            'token' => $token,
-            'user' => $user,
-        ];
+        return $this->buildAuthPayload($user, $token);
     }
 
     public function login(LoginDto $dto): ?array
@@ -52,10 +49,7 @@ class AuthService
 
         $token = $user->createToken('auth_token')->plainTextToken;
 
-        return [
-            'token' => $token,
-            'user' => $user,
-        ];
+        return $this->buildAuthPayload($user, $token);
     }
 
     public function logout(): void
@@ -67,5 +61,13 @@ class AuthService
 
         $user->tokens()->delete();
         Auth::forgetGuards();
+    }
+
+    private function buildAuthPayload(User $user, string $token): array
+    {
+        return [
+            'token' => $token,
+            'user' => $user,
+        ];
     }
 }
