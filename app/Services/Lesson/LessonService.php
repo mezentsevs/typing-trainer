@@ -8,13 +8,10 @@ use App\Dtos\Lesson\LessonShowDto;
 use App\Models\Lesson;
 use App\Models\LessonResult;
 use App\Services\Lesson\LessonGeneration\LessonGenerationOrchestrator;
-use App\Traits\HasDtoMapping;
 use Random\RandomException;
 
 class LessonService
 {
-    use HasDtoMapping;
-
     public function __construct(protected LessonGenerationOrchestrator $lessonGenerationOrchestrator)
     {
     }
@@ -41,6 +38,6 @@ class LessonService
 
     public function saveResult(LessonSaveResultDto $dto): LessonResult
     {
-        return LessonResult::create(static::mapDtoToAttributes($dto));
+        return LessonResult::create($dto->toAttributes());
     }
 }

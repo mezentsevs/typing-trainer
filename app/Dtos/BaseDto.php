@@ -2,6 +2,8 @@
 
 namespace App\Dtos;
 
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 use ReflectionClass;
 
 abstract class BaseDto
@@ -18,5 +20,10 @@ abstract class BaseDto
         }
 
         return new static(...$args);
+    }
+
+    public function toAttributes(): array
+    {
+        return Arr::mapWithKeys(get_object_vars($this), fn ($value, $key) => [Str::snake($key) => $value]);
     }
 }
