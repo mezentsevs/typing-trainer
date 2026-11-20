@@ -2,7 +2,6 @@
 
 return [
     App\Providers\AppServiceProvider::class,
-    App\Providers\AuthServiceProvider::class,
     App\Providers\LanguageServiceProvider::class,
     App\Providers\LessonServiceProvider::class,
     App\Providers\SeederServiceProvider::class,

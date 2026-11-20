@@ -45,8 +45,5 @@ class WordServiceProvider extends ServiceProvider
                 $app->make(LanguageRegistry::class),
             );
         });
-
-        $this->app->bind(WordCharProbabilitySelector::class);
-        $this->app->bind(WordCharDataProvider::class);
     }
 }

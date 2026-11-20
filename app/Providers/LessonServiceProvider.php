@@ -32,7 +32,5 @@ class LessonServiceProvider extends ServiceProvider
         $this->app->bind(LessonTextGenerator::class, function ($app) {
             return new LessonTextGenerator($app->make(WordService::class));
         });
-
-        $this->app->bind(LessonSequenceGenerator::class);
     }
 }

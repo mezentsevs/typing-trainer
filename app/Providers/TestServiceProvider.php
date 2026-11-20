@@ -30,10 +30,5 @@ class TestServiceProvider extends ServiceProvider
                 iterator_to_array($app->tagged('testRetrieveStrategies'), false),
             );
         });
-
-        $this->app->bind(TestRetrieveAiLocalStrategy::class);
-        $this->app->bind(TestRetrieveAiCloudStrategy::class);
-        $this->app->bind(TestRetrieveFileStrategy::class);
-        $this->app->bind(TestRetrieveDatabaseStrategy::class);
     }
 }
