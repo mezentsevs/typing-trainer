@@ -7,11 +7,11 @@ use App\Dtos\Test\TestSaveResultDto;
 use App\Dtos\Test\TestUploadDto;
 use App\Models\TestResult;
 use App\Services\Test\TestGeneration\TestGenerationOrchestrator;
-use App\Traits\HasSaveResultDtoMapping;
+use App\Traits\HasDtoMapping;
 
 class TestService
 {
-    use HasSaveResultDtoMapping;
+    use HasDtoMapping;
 
     public function __construct(protected TestGenerationOrchestrator $testGenerationOrchestrator)
     {
@@ -37,6 +37,6 @@ class TestService
 
     public function saveResult(TestSaveResultDto $dto): TestResult
     {
-        return TestResult::create(static::mapSaveResultDtoToAttributes($dto));
+        return TestResult::create(static::mapDtoToAttributes($dto));
     }
 }
