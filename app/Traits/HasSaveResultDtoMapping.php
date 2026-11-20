@@ -4,9 +4,9 @@ namespace App\Traits;
 
 use App\Dtos\BaseSaveResultDto;
 
-trait HasSaveResultMapping
+trait HasSaveResultDtoMapping
 {
-    public static function mapSaveResult(BaseSaveResultDto $dto, array $additional = []): array
+    public static function mapSaveResultDtoToAttributes(BaseSaveResultDto $dto, array $additional = []): array
     {
         return array_merge([
             'user_id' => $dto->userId,
