@@ -20,7 +20,7 @@ class TestController extends Controller
     public function retrieve(TestRetrieveRequest $request): JsonResponse
     {
         $dto = TestRetrieveDto::fromArray([
-            'userId' => auth()->id(),
+            'userId' => $request->user()->id,
             'language' => $request->language,
             'genre' => $request->genre,
         ]);
@@ -31,7 +31,7 @@ class TestController extends Controller
     public function upload(TestUploadRequest $request): JsonResponse
     {
         $dto = TestUploadDto::fromArray([
-            'userId' => auth()->id(),
+            'userId' => $request->user()->id,
             'language' => $request->language,
             'file' => $request->file('file'),
         ]);
@@ -45,7 +45,7 @@ class TestController extends Controller
     public function saveResult(TestSaveResultRequest $request): JsonResponse
     {
         $dto = TestSaveResultDto::fromArray([
-            'userId' => auth()->id(),
+            'userId' => $request->user()->id,
             'language' => $request->language,
             'timeSeconds' => $request->time_seconds,
             'speedWpm' => $request->speed_wpm,

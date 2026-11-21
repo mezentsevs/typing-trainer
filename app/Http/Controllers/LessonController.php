@@ -25,7 +25,7 @@ class LessonController extends Controller
     public function show(LessonShowRequest $request, string $language, int $lessonNumber): JsonResponse
     {
         $dto = LessonShowDto::fromArray([
-            'userId' => auth()->id(),
+            'userId' => $request->user()->id,
             'language' => $language,
             'lessonNumber' => $lessonNumber,
         ]);
@@ -36,7 +36,7 @@ class LessonController extends Controller
     public function generate(LessonGenerateRequest $request): JsonResponse
     {
         $dto = LessonGenerateDto::fromArray([
-            'userId' => auth()->id(),
+            'userId' => $request->user()->id,
             'language' => $request->language,
             'lessonCount' => $request->lesson_count,
         ]);
@@ -51,7 +51,7 @@ class LessonController extends Controller
         $this->authorize('create', [LessonResult::class, Lesson::findOrFail($request->lesson_id)]);
 
         $dto = LessonSaveResultDto::fromArray([
-            'userId' => auth()->id(),
+            'userId' => $request->user()->id,
             'lessonId' => $request->lesson_id,
             'language' => $request->language,
             'timeSeconds' => $request->time_seconds,
