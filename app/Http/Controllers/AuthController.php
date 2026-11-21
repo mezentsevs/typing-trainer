@@ -22,21 +22,14 @@ class AuthController extends Controller
 
     public function register(RegisterRequest $request): JsonResponse
     {
-        $dto = RegisterDto::fromArray([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => $request->password,
-        ]);
+        $dto = RegisterDto::fromRequest($request);
 
         return response()->json($this->authService->register($dto), 201);
     }
 
     public function login(LoginRequest $request): JsonResponse
     {
-        $dto = LoginDto::fromArray([
-            'email' => $request->email,
-            'password' => $request->password,
-        ]);
+        $dto = LoginDto::fromRequest($request);
 
         $result = $this->authService->login($dto);
 

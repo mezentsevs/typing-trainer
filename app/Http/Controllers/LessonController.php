@@ -35,11 +35,7 @@ class LessonController extends Controller
 
     public function generate(LessonGenerateRequest $request): JsonResponse
     {
-        $dto = LessonGenerateDto::fromArray([
-            'userId' => $request->user()->id,
-            'language' => $request->language,
-            'lessonCount' => $request->lesson_count,
-        ]);
+        $dto = LessonGenerateDto::fromRequest($request);
 
         $this->lessonService->generate($dto);
 
@@ -50,15 +46,7 @@ class LessonController extends Controller
     {
         $this->authorize('create', [LessonResult::class, Lesson::findOrFail($request->lesson_id)]);
 
-        $dto = LessonSaveResultDto::fromArray([
-            'userId' => $request->user()->id,
-            'lessonId' => $request->lesson_id,
-            'language' => $request->language,
-            'timeSeconds' => $request->time_seconds,
-            'speedWpm' => $request->speed_wpm,
-            'errors' => $request->errors,
-            'success' => $request->success,
-        ]);
+        $dto = LessonSaveResultDto::fromRequest($request);
 
         return response()->json($this->lessonService->saveResult($dto));
     }

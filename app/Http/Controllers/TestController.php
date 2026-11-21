@@ -19,11 +19,7 @@ class TestController extends Controller
 
     public function retrieve(TestRetrieveRequest $request): JsonResponse
     {
-        $dto = TestRetrieveDto::fromArray([
-            'userId' => $request->user()->id,
-            'language' => $request->language,
-            'genre' => $request->genre,
-        ]);
+        $dto = TestRetrieveDto::fromRequest($request);
 
         return response()->json(['text' => $this->testService->retrieve($dto)]);
     }
@@ -44,14 +40,7 @@ class TestController extends Controller
 
     public function saveResult(TestSaveResultRequest $request): JsonResponse
     {
-        $dto = TestSaveResultDto::fromArray([
-            'userId' => $request->user()->id,
-            'language' => $request->language,
-            'timeSeconds' => $request->time_seconds,
-            'speedWpm' => $request->speed_wpm,
-            'errors' => $request->errors,
-            'success' => $request->success,
-        ]);
+        $dto = TestSaveResultDto::fromRequest($request);
 
         return response()->json($this->testService->saveResult($dto));
     }
