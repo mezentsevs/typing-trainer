@@ -66,28 +66,22 @@ class WordLettersPartGenerator
 
         switch (true) {
             case $hasVowelChars && $hasConsonantChars:
-                $startType = random_int(
+                $isVowelFirst = random_int(
                     WordCharDataProvider::BINARY_CHOICE_MIN,
                     WordCharDataProvider::BINARY_CHOICE_MAX,
-                ) === WordCharDataProvider::BINARY_CHOICE_DEFAULT
-                    ? WordCharDataProvider::CHAR_TYPE_VOWEL
-                    : WordCharDataProvider::CHAR_TYPE_CONSONANT;
+                ) === WordCharDataProvider::BINARY_CHOICE_DEFAULT;
 
-                $startCharSet = $startType === WordCharDataProvider::CHAR_TYPE_VOWEL
-                    ? $charSets['availableVowelChars']
-                    : $charSets['availableConsonantChars'];
-
-                $startNewCharSet = $startType === WordCharDataProvider::CHAR_TYPE_VOWEL
-                    ? $charSets['newVowelChars']
-                    : $charSets['newConsonantChars'];
-
-                $otherCharSet = $startType === WordCharDataProvider::CHAR_TYPE_VOWEL
-                    ? $charSets['availableConsonantChars']
-                    : $charSets['availableVowelChars'];
-
-                $otherNewCharSet = $startType === WordCharDataProvider::CHAR_TYPE_VOWEL
-                    ? $charSets['newConsonantChars']
-                    : $charSets['newVowelChars'];
+                if ($isVowelFirst) {
+                    $startCharSet = $charSets['availableVowelChars'];
+                    $startNewCharSet = $charSets['newVowelChars'];
+                    $otherCharSet = $charSets['availableConsonantChars'];
+                    $otherNewCharSet = $charSets['newConsonantChars'];
+                } else {
+                    $startCharSet = $charSets['availableConsonantChars'];
+                    $startNewCharSet = $charSets['newConsonantChars'];
+                    $otherCharSet = $charSets['availableVowelChars'];
+                    $otherNewCharSet = $charSets['newVowelChars'];
+                }
                 break;
 
             case $hasVowelChars:

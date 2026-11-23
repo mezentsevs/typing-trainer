@@ -79,9 +79,6 @@ class WordCharDataProviderTest extends TestCase
             'BINARY_CHOICE_DEFAULT' => self::EXPECTED_BINARY_CHOICE_DEFAULT,
             'BINARY_CHOICE_MAX' => self::EXPECTED_BINARY_CHOICE_MAX,
             'BINARY_CHOICE_MIN' => self::EXPECTED_BINARY_CHOICE_MIN,
-
-            'CHAR_TYPE_CONSONANT' => self::EXPECTED_CHAR_TYPE_CONSONANT,
-            'CHAR_TYPE_VOWEL' => self::EXPECTED_CHAR_TYPE_VOWEL,
         ];
 
         foreach ($constants as $name => $expectedValue) {

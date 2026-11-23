@@ -22,9 +22,6 @@ class WordCharDataProvider
     public const int BINARY_CHOICE_MAX = 1;
     public const int BINARY_CHOICE_MIN = 0;
 
-    public const string CHAR_TYPE_CONSONANT = 'C';
-    public const string CHAR_TYPE_VOWEL = 'V';
-
     public function __construct(protected LanguageRegistry $languageRegistry)
     {
     }
