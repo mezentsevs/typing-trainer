@@ -23,8 +23,8 @@ class WordLettersPartGenerator
         for ($i = 0; $i < $lettersPartLength; $i++) {
             $isStart = $i % 2 === 0;
 
-            $currentCharSet = $isStart ? $letterAlternationSets['startCharSet'] : $letterAlternationSets['otherCharSet'];
-            $currentNewCharSet = $isStart ? $letterAlternationSets['startNewCharSet'] : $letterAlternationSets['otherNewCharSet'];
+            $currentCharSet = $isStart ? $letterAlternationSets['startCharSet'] : $letterAlternationSets['endCharSet'];
+            $currentNewCharSet = $isStart ? $letterAlternationSets['startNewCharSet'] : $letterAlternationSets['endNewCharSet'];
 
             if (empty($currentCharSet)) {
                 $currentCharSet = $charSets['availableLetterChars'];
@@ -60,8 +60,8 @@ class WordLettersPartGenerator
     {
         $startCharSet = [];
         $startNewCharSet = [];
-        $otherCharSet = [];
-        $otherNewCharSet = [];
+        $endCharSet = [];
+        $endNewCharSet = [];
 
         $hasVowelChars = !empty($charSets['availableVowelChars']);
         $hasConsonantChars = !empty($charSets['availableConsonantChars']);
@@ -75,8 +75,8 @@ class WordLettersPartGenerator
 
                 $startCharSet = $isVowelFirst ? $charSets['availableVowelChars'] : $charSets['availableConsonantChars'];
                 $startNewCharSet = $isVowelFirst ? $charSets['newVowelChars'] : $charSets['newConsonantChars'];
-                $otherCharSet = $isVowelFirst ? $charSets['availableConsonantChars'] : $charSets['availableVowelChars'];
-                $otherNewCharSet = $isVowelFirst ? $charSets['newConsonantChars'] : $charSets['newVowelChars'];
+                $endCharSet = $isVowelFirst ? $charSets['availableConsonantChars'] : $charSets['availableVowelChars'];
+                $endNewCharSet = $isVowelFirst ? $charSets['newConsonantChars'] : $charSets['newVowelChars'];
                 break;
 
             case $hasVowelChars:
@@ -96,8 +96,8 @@ class WordLettersPartGenerator
         return [
             'startCharSet' => $startCharSet,
             'startNewCharSet' => $startNewCharSet,
-            'otherCharSet' => $otherCharSet,
-            'otherNewCharSet' => $otherNewCharSet,
+            'endCharSet' => $endCharSet,
+            'endNewCharSet' => $endNewCharSet,
         ];
     }
 }
