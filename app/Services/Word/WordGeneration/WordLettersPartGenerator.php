@@ -56,7 +56,7 @@ class WordLettersPartGenerator
     /**
      * @throws RandomException
      */
-    protected function getLetterAlternationSets(array $charSets): array
+    private function getLetterAlternationSets(array $charSets): array
     {
         $startCharSet = [];
         $startNewCharSet = [];
