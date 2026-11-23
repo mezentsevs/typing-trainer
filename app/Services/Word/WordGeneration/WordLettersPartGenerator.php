@@ -71,17 +71,10 @@ class WordLettersPartGenerator
                     WordCharDataProvider::BINARY_CHOICE_MAX,
                 ) === WordCharDataProvider::BINARY_CHOICE_DEFAULT;
 
-                if ($isVowelFirst) {
-                    $startCharSet = $charSets['availableVowelChars'];
-                    $startNewCharSet = $charSets['newVowelChars'];
-                    $otherCharSet = $charSets['availableConsonantChars'];
-                    $otherNewCharSet = $charSets['newConsonantChars'];
-                } else {
-                    $startCharSet = $charSets['availableConsonantChars'];
-                    $startNewCharSet = $charSets['newConsonantChars'];
-                    $otherCharSet = $charSets['availableVowelChars'];
-                    $otherNewCharSet = $charSets['newVowelChars'];
-                }
+                $startCharSet = $isVowelFirst ? $charSets['availableVowelChars'] : $charSets['availableConsonantChars'];
+                $startNewCharSet = $isVowelFirst ? $charSets['newVowelChars'] : $charSets['newConsonantChars'];
+                $otherCharSet = $isVowelFirst ? $charSets['availableConsonantChars'] : $charSets['availableVowelChars'];
+                $otherNewCharSet = $isVowelFirst ? $charSets['newConsonantChars'] : $charSets['newVowelChars'];
                 break;
 
             case $hasVowelChars:
