@@ -21,8 +21,10 @@ class WordLettersPartGenerator
         $lettersPart = '';
 
         for ($i = 0; $i < $lettersPartLength; $i++) {
-            $currentCharSet = ($i % 2 === 0) ? $letterAlternationSets['startCharSet'] : $letterAlternationSets['otherCharSet'];
-            $currentNewCharSet = ($i % 2 === 0) ? $letterAlternationSets['startNewCharSet'] : $letterAlternationSets['otherNewCharSet'];
+            $isStart = $i % 2 === 0;
+
+            $currentCharSet = $isStart ? $letterAlternationSets['startCharSet'] : $letterAlternationSets['otherCharSet'];
+            $currentNewCharSet = $isStart ? $letterAlternationSets['startNewCharSet'] : $letterAlternationSets['otherNewCharSet'];
 
             if (empty($currentCharSet)) {
                 $currentCharSet = $charSets['availableLetterChars'];
