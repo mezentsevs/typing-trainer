@@ -67,15 +67,15 @@ class WordLettersPartGenerator
 
         switch (true) {
             case $hasVowelChars && $hasConsonantChars:
-                $isVowelFirst = random_int(
+                $isEvenVowel = random_int(
                     WordCharDataProvider::BINARY_CHOICE_MIN,
                     WordCharDataProvider::BINARY_CHOICE_MAX,
                 ) === WordCharDataProvider::BINARY_CHOICE_DEFAULT;
 
-                $evenAvailable = $isVowelFirst ? $charSets['availableVowelChars'] : $charSets['availableConsonantChars'];
-                $evenNew = $isVowelFirst ? $charSets['newVowelChars'] : $charSets['newConsonantChars'];
-                $oddAvailable = $isVowelFirst ? $charSets['availableConsonantChars'] : $charSets['availableVowelChars'];
-                $oddNew = $isVowelFirst ? $charSets['newConsonantChars'] : $charSets['newVowelChars'];
+                $evenAvailable = $isEvenVowel ? $charSets['availableVowelChars'] : $charSets['availableConsonantChars'];
+                $evenNew = $isEvenVowel ? $charSets['newVowelChars'] : $charSets['newConsonantChars'];
+                $oddAvailable = $isEvenVowel ? $charSets['availableConsonantChars'] : $charSets['availableVowelChars'];
+                $oddNew = $isEvenVowel ? $charSets['newConsonantChars'] : $charSets['newVowelChars'];
                 break;
 
             case $hasVowelChars:
