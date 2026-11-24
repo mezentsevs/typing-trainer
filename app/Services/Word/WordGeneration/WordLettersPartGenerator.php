@@ -18,17 +18,16 @@ class WordLettersPartGenerator
     public function generate(array $charSets, int $lettersPartLength): string
     {
         $letterAlternationSets = $this->getLetterAlternationSets($charSets);
-        $lettersPart = '';
+        $result = '';
 
         for ($i = 0; $i < $lettersPartLength; $i++) {
-            $isStart = $i % 2 === 0;
+            $position = $i % 2 ? 'odd' : 'even';
+            $availableChars = $letterAlternationSets[$position]['available'];
+            $newChars = $letterAlternationSets[$position]['new'];
 
-            $currentCharSet = $isStart ? $letterAlternationSets['startCharSet'] : $letterAlternationSets['endCharSet'];
-            $currentNewCharSet = $isStart ? $letterAlternationSets['startNewCharSet'] : $letterAlternationSets['endNewCharSet'];
-
-            if (empty($currentCharSet)) {
-                $currentCharSet = $charSets['availableLetterChars'];
-                $currentNewCharSet = $charSets['newLetterChars'];
+            if (empty($availableChars)) {
+                $availableChars = $charSets['availableLetterChars'];
+                $newChars = $charSets['newLetterChars'];
             }
 
             $useNumber = !empty($charSets['availableNumberChars']) &&
@@ -38,19 +37,19 @@ class WordLettersPartGenerator
                         ) < WordCharDataProvider::DIGIT_USAGE_CHANCE;
 
             if ($useNumber) {
-                $lettersPart .= $this->wordCharProbabilitySelector->selectChar(
+                $result .= $this->wordCharProbabilitySelector->selectChar(
                     $charSets['availableNumberChars'],
                     $charSets['newNumberChars'],
                 );
             } else {
-                $lettersPart .= $this->wordCharProbabilitySelector->selectChar(
-                    $currentCharSet,
-                    $currentNewCharSet,
+                $result .= $this->wordCharProbabilitySelector->selectChar(
+                    $availableChars,
+                    $newChars,
                 );
             }
         }
 
-        return $lettersPart;
+        return $result;
     }
 
     /**
@@ -58,10 +57,10 @@ class WordLettersPartGenerator
      */
     private function getLetterAlternationSets(array $charSets): array
     {
-        $startCharSet = [];
-        $startNewCharSet = [];
-        $endCharSet = [];
-        $endNewCharSet = [];
+        $evenAvailable = [];
+        $evenNew = [];
+        $oddAvailable = [];
+        $oddNew = [];
 
         $hasVowelChars = !empty($charSets['availableVowelChars']);
         $hasConsonantChars = !empty($charSets['availableConsonantChars']);
@@ -73,20 +72,20 @@ class WordLettersPartGenerator
                     WordCharDataProvider::BINARY_CHOICE_MAX,
                 ) === WordCharDataProvider::BINARY_CHOICE_DEFAULT;
 
-                $startCharSet = $isVowelFirst ? $charSets['availableVowelChars'] : $charSets['availableConsonantChars'];
-                $startNewCharSet = $isVowelFirst ? $charSets['newVowelChars'] : $charSets['newConsonantChars'];
-                $endCharSet = $isVowelFirst ? $charSets['availableConsonantChars'] : $charSets['availableVowelChars'];
-                $endNewCharSet = $isVowelFirst ? $charSets['newConsonantChars'] : $charSets['newVowelChars'];
+                $evenAvailable = $isVowelFirst ? $charSets['availableVowelChars'] : $charSets['availableConsonantChars'];
+                $evenNew = $isVowelFirst ? $charSets['newVowelChars'] : $charSets['newConsonantChars'];
+                $oddAvailable = $isVowelFirst ? $charSets['availableConsonantChars'] : $charSets['availableVowelChars'];
+                $oddNew = $isVowelFirst ? $charSets['newConsonantChars'] : $charSets['newVowelChars'];
                 break;
 
             case $hasVowelChars:
-                $startCharSet = $charSets['availableVowelChars'];
-                $startNewCharSet = $charSets['newVowelChars'];
+                $evenAvailable = $charSets['availableVowelChars'];
+                $evenNew = $charSets['newVowelChars'];
                 break;
 
             case $hasConsonantChars:
-                $startCharSet = $charSets['availableConsonantChars'];
-                $startNewCharSet = $charSets['newConsonantChars'];
+                $evenAvailable = $charSets['availableConsonantChars'];
+                $evenNew = $charSets['newConsonantChars'];
                 break;
 
             default:
@@ -94,10 +93,14 @@ class WordLettersPartGenerator
         }
 
         return [
-            'startCharSet' => $startCharSet,
-            'startNewCharSet' => $startNewCharSet,
-            'endCharSet' => $endCharSet,
-            'endNewCharSet' => $endNewCharSet,
+            'even' => [
+                'available' => $evenAvailable,
+                'new' => $evenNew,
+            ],
+            'odd' => [
+                'available' => $oddAvailable,
+                'new' => $oddNew,
+            ],
         ];
     }
 }
