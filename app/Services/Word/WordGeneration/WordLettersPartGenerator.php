@@ -72,10 +72,13 @@ class WordLettersPartGenerator
                     WordCharDataProvider::BINARY_CHOICE_MAX,
                 ) === WordCharDataProvider::BINARY_CHOICE_DEFAULT;
 
-                $evenAvailable = $isEvenVowel ? $charSets['availableVowelChars'] : $charSets['availableConsonantChars'];
-                $evenNew = $isEvenVowel ? $charSets['newVowelChars'] : $charSets['newConsonantChars'];
-                $oddAvailable = $isEvenVowel ? $charSets['availableConsonantChars'] : $charSets['availableVowelChars'];
-                $oddNew = $isEvenVowel ? $charSets['newConsonantChars'] : $charSets['newVowelChars'];
+                $types = ['Vowel', 'Consonant'];
+                [$evenType, $oddType] = $isEvenVowel ? $types : array_reverse($types);
+
+                $evenAvailable = $charSets["available{$evenType}Chars"];
+                $evenNew = $charSets["new{$evenType}Chars"];
+                $oddAvailable = $charSets["available{$oddType}Chars"];
+                $oddNew = $charSets["new{$oddType}Chars"];
                 break;
 
             case $hasVowelChars:
