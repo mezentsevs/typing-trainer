@@ -70,11 +70,8 @@ class WordCharDataProviderTest extends TestCase
             'MAX_LETTERS_PART_LENGTH' => self::EXPECTED_MAX_LETTERS_PART_LENGTH,
             'MIN_LETTERS_PART_LENGTH' => self::EXPECTED_MIN_LETTERS_PART_LENGTH,
 
-            'RANDOM_MAX_VALUE' => self::EXPECTED_RANDOM_MAX_VALUE,
-            'RANDOM_MIN_VALUE' => self::EXPECTED_RANDOM_MIN_VALUE,
-
-            'DIGIT_USAGE_CHANCE' => self::EXPECTED_DIGIT_USAGE_CHANCE,
-            'NEW_CHAR_USAGE_CHANCE' => self::EXPECTED_NEW_CHAR_USAGE_CHANCE,
+            'NUMBER_CHANCE' => self::EXPECTED_NUMBER_CHANCE,
+            'NEW_CHAR_CHANCE' => self::EXPECTED_NEW_CHAR_CHANCE,
         ];
 
         foreach ($constants as $name => $expectedValue) {

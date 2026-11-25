@@ -12,11 +12,8 @@ class WordCharDataProvider
     public const int MAX_LETTERS_PART_LENGTH = 8;
     public const int MIN_LETTERS_PART_LENGTH = 3;
 
-    public const int RANDOM_MAX_VALUE = 99;
-    public const int RANDOM_MIN_VALUE = 0;
-
-    public const int DIGIT_USAGE_CHANCE = 30;
-    public const int NEW_CHAR_USAGE_CHANCE = 70;
+    public const int NUMBER_CHANCE = 30;
+    public const int NEW_CHAR_CHANCE = 70;
 
     public function __construct(protected LanguageRegistry $languageRegistry)
     {

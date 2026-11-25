@@ -2,23 +2,16 @@
 
 namespace App\Services\Word\WordGeneration;
 
-use Random\RandomException;
+use App\Helpers\RandomHelper;
 
 class WordCharProbabilitySelector
 {
-    /**
-     * @throws RandomException
-     */
     public function selectChar(array $availableChars, array $newChars): string
     {
-        if (!empty($newChars) &&
-            random_int(
-                WordCharDataProvider::RANDOM_MIN_VALUE,
-                WordCharDataProvider::RANDOM_MAX_VALUE,
-            ) < WordCharDataProvider::NEW_CHAR_USAGE_CHANCE) {
-            return $newChars[array_rand($newChars)];
-        }
+        $useNewChar = $newChars && RandomHelper::rollChance(WordCharDataProvider::NEW_CHAR_CHANCE);
 
-        return $availableChars[array_rand($availableChars)];
+        return $useNewChar
+            ? $newChars[array_rand($newChars)]
+            : $availableChars[array_rand($availableChars)];
     }
 }

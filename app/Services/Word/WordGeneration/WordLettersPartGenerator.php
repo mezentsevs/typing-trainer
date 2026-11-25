@@ -3,7 +3,6 @@
 namespace App\Services\Word\WordGeneration;
 
 use App\Helpers\RandomHelper;
-use Random\RandomException;
 
 class WordLettersPartGenerator
 {
@@ -13,9 +12,6 @@ class WordLettersPartGenerator
     ) {
     }
 
-    /**
-     * @throws RandomException
-     */
     public function generate(array $charSets, int $lettersPartLength): string
     {
         $letterAlternationSets = $this->getLetterAlternationSets($charSets);
@@ -31,23 +27,17 @@ class WordLettersPartGenerator
                 $newChars = $charSets['newLetterChars'];
             }
 
-            $useNumber = !empty($charSets['availableNumberChars']) &&
-                        random_int(
-                            WordCharDataProvider::RANDOM_MIN_VALUE,
-                            WordCharDataProvider::RANDOM_MAX_VALUE,
-                        ) < WordCharDataProvider::DIGIT_USAGE_CHANCE;
+            $useNumber = $charSets['availableNumberChars'] && RandomHelper::rollChance(WordCharDataProvider::NUMBER_CHANCE);
 
-            if ($useNumber) {
-                $result .= $this->wordCharProbabilitySelector->selectChar(
+            $result .= $useNumber
+                ? $this->wordCharProbabilitySelector->selectChar(
                     $charSets['availableNumberChars'],
                     $charSets['newNumberChars'],
-                );
-            } else {
-                $result .= $this->wordCharProbabilitySelector->selectChar(
+                )
+                : $this->wordCharProbabilitySelector->selectChar(
                     $availableChars,
                     $newChars,
                 );
-            }
         }
 
         return $result;
