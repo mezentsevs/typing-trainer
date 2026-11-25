@@ -94,12 +94,12 @@ class WordSpecialCharsAppender
             return $lettersPart . $specialChar;
         }
 
-        $position = random_int(
+        $isPrepend = random_int(
             WordCharDataProvider::BINARY_CHOICE_MIN,
             WordCharDataProvider::BINARY_CHOICE_MAX,
-        ) === WordCharDataProvider::BINARY_CHOICE_DEFAULT ? 'start' : 'end';
+        ) === WordCharDataProvider::BINARY_CHOICE_DEFAULT;
 
-        return $position === 'start' ? $specialChar . $lettersPart : $lettersPart . $specialChar;
+        return $isPrepend ? $specialChar . $lettersPart : $lettersPart . $specialChar;
     }
 
     protected function addPairedSpecialChars(string $lettersPart, array $availableSpecialChars): string
