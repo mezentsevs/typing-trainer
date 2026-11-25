@@ -27,7 +27,7 @@ class WordLettersPartGenerator
                 $newChars = $charSets['newLetterChars'];
             }
 
-            $useNumber = $charSets['availableNumberChars'] && RandomHelper::rollChance(WordCharDataProvider::NUMBER_CHANCE);
+            $useNumber = !empty($charSets['availableNumberChars']) && RandomHelper::rollChance(WordCharDataProvider::NUMBER_CHANCE);
 
             $result .= $useNumber
                 ? $this->wordCharProbabilitySelector->selectChar(
