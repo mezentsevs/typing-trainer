@@ -75,10 +75,6 @@ class WordCharDataProviderTest extends TestCase
 
             'DIGIT_USAGE_CHANCE' => self::EXPECTED_DIGIT_USAGE_CHANCE,
             'NEW_CHAR_USAGE_CHANCE' => self::EXPECTED_NEW_CHAR_USAGE_CHANCE,
-
-            'BINARY_CHOICE_DEFAULT' => self::EXPECTED_BINARY_CHOICE_DEFAULT,
-            'BINARY_CHOICE_MAX' => self::EXPECTED_BINARY_CHOICE_MAX,
-            'BINARY_CHOICE_MIN' => self::EXPECTED_BINARY_CHOICE_MIN,
         ];
 
         foreach ($constants as $name => $expectedValue) {

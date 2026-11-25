@@ -12,8 +12,4 @@ trait WithWordCharDataProviderConstants
 
     protected const int EXPECTED_DIGIT_USAGE_CHANCE = 30;
     protected const int EXPECTED_NEW_CHAR_USAGE_CHANCE = 70;
-
-    protected const int EXPECTED_BINARY_CHOICE_DEFAULT = 0;
-    protected const int EXPECTED_BINARY_CHOICE_MAX = 1;
-    protected const int EXPECTED_BINARY_CHOICE_MIN = 0;
 }

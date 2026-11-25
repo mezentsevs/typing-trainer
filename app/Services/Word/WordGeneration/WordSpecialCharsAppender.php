@@ -2,8 +2,8 @@
 
 namespace App\Services\Word\WordGeneration;
 
+use App\Helpers\RandomHelper;
 use App\Languages\Registry\LanguageRegistry;
-use Random\RandomException;
 
 class WordSpecialCharsAppender
 {
@@ -82,9 +82,6 @@ class WordSpecialCharsAppender
         });
     }
 
-    /**
-     * @throws RandomException
-     */
     protected function addSingleSpecialChar(string $lettersPart, array $availableSpecialChars): string
     {
         $singleSpecialChars = $this->getSingleSpecialChars($availableSpecialChars);
@@ -94,10 +91,7 @@ class WordSpecialCharsAppender
             return $lettersPart . $specialChar;
         }
 
-        $isPrepend = random_int(
-            WordCharDataProvider::BINARY_CHOICE_MIN,
-            WordCharDataProvider::BINARY_CHOICE_MAX,
-        ) === WordCharDataProvider::BINARY_CHOICE_DEFAULT;
+        $isPrepend = RandomHelper::flipCoin();
 
         return $isPrepend ? $specialChar . $lettersPart : $lettersPart . $specialChar;
     }

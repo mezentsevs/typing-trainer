@@ -18,10 +18,6 @@ class WordCharDataProvider
     public const int DIGIT_USAGE_CHANCE = 30;
     public const int NEW_CHAR_USAGE_CHANCE = 70;
 
-    public const int BINARY_CHOICE_DEFAULT = 0;
-    public const int BINARY_CHOICE_MAX = 1;
-    public const int BINARY_CHOICE_MIN = 0;
-
     public function __construct(protected LanguageRegistry $languageRegistry)
     {
     }

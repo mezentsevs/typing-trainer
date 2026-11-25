@@ -2,6 +2,7 @@
 
 namespace App\Services\Word\WordGeneration;
 
+use App\Helpers\RandomHelper;
 use Random\RandomException;
 
 class WordLettersPartGenerator
@@ -52,9 +53,6 @@ class WordLettersPartGenerator
         return $result;
     }
 
-    /**
-     * @throws RandomException
-     */
     private function getLetterAlternationSets(array $charSets): array
     {
         $evenAvailable = [];
@@ -67,10 +65,7 @@ class WordLettersPartGenerator
 
         switch (true) {
             case $hasVowelChars && $hasConsonantChars:
-                $isEvenVowel = random_int(
-                    WordCharDataProvider::BINARY_CHOICE_MIN,
-                    WordCharDataProvider::BINARY_CHOICE_MAX,
-                ) === WordCharDataProvider::BINARY_CHOICE_DEFAULT;
+                $isEvenVowel = RandomHelper::flipCoin();
 
                 $types = ['Vowel', 'Consonant'];
                 [$evenType, $oddType] = $isEvenVowel ? $types : array_reverse($types);
