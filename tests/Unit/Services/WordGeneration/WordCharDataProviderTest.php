@@ -19,8 +19,8 @@ class WordCharDataProviderTest extends TestCase
         WithLanguageRegistryConstants,
         WithWordCharDataProviderConstants;
 
-    protected WordCharDataProvider $provider;
-    protected LanguageRegistry $languageRegistry;
+    private WordCharDataProvider $provider;
+    private LanguageRegistry $languageRegistry;
 
     protected function setUp(): void
     {
