@@ -7,7 +7,7 @@ use Random\RandomException;
 
 class LessonDataComposer
 {
-    public function __construct(protected LessonTextGenerator $lessonTextGenerator)
+    public function __construct(private LessonTextGenerator $lessonTextGenerator)
     {
     }
 

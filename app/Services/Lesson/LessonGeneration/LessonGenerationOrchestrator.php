@@ -8,8 +8,8 @@ use Random\RandomException;
 class LessonGenerationOrchestrator
 {
     public function __construct(
-        protected LessonSequenceGenerator $lessonSequenceGenerator,
-        protected LessonDataComposer $lessonDataComposer,
+        private LessonSequenceGenerator $lessonSequenceGenerator,
+        private LessonDataComposer $lessonDataComposer,
     ) {
     }
 
@@ -30,7 +30,7 @@ class LessonGenerationOrchestrator
         Lesson::insert($lessons);
     }
 
-    protected function purge(int $userId, string $language): void
+    private function purge(int $userId, string $language): void
     {
         Lesson::where('user_id', $userId)
             ->where('language', $language)

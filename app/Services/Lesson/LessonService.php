@@ -12,7 +12,7 @@ use Random\RandomException;
 
 class LessonService
 {
-    public function __construct(protected LessonGenerationOrchestrator $lessonGenerationOrchestrator)
+    public function __construct(private LessonGenerationOrchestrator $lessonGenerationOrchestrator)
     {
     }
 

@@ -7,10 +7,10 @@ use App\Services\Lesson\LessonGeneration\ValueObjects\LessonBlueprint;
 
 class LessonSequenceGenerator
 {
-    protected const int MIN_LESSON_LENGTH = 100;
-    protected const int MAX_LESSON_LENGTH = 300;
+    private const int MIN_LESSON_LENGTH = 100;
+    private const int MAX_LESSON_LENGTH = 300;
 
-    public function __construct(protected LanguageRegistry $languageRegistry)
+    public function __construct(private LanguageRegistry $languageRegistry)
     {
     }
 
@@ -53,7 +53,7 @@ class LessonSequenceGenerator
         return $lessonBlueprints;
     }
 
-    protected function calculateLessonLength(int $lessonNumber, int $lessonCount): int
+    private function calculateLessonLength(int $lessonNumber, int $lessonCount): int
     {
         if ($lessonCount <= 1) {
             return self::MIN_LESSON_LENGTH;

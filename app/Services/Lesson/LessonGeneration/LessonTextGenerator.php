@@ -8,13 +8,13 @@ use Random\RandomException;
 
 class LessonTextGenerator
 {
-    protected const string ENCODING = 'UTF-8';
-    protected const int MIN_WORDS_PER_LINE = 2;
-    protected const int MAX_WORDS_PER_LINE = 8;
-    protected const int WORDS_BEFORE_NEWLINE = 2;
-    protected const int MIN_WORD_LENGTH_TO_COUNT = 3;
+    private const string ENCODING = 'UTF-8';
+    private const int MIN_WORDS_PER_LINE = 2;
+    private const int MAX_WORDS_PER_LINE = 8;
+    private const int WORDS_BEFORE_NEWLINE = 2;
+    private const int MIN_WORD_LENGTH_TO_COUNT = 3;
 
-    public function __construct(protected WordService $wordService)
+    public function __construct(private WordService $wordService)
     {
     }
 
@@ -96,12 +96,12 @@ class LessonTextGenerator
         return $this->formatFinalText($text, $blueprint->length);
     }
 
-    protected function determineSeparator(int $lineWordCount, int $currentLineWords): string
+    private function determineSeparator(int $lineWordCount, int $currentLineWords): string
     {
         return $lineWordCount >= $currentLineWords ? "\n" : ' ';
     }
 
-    protected function formatFinalText(string $text, int $length): string
+    private function formatFinalText(string $text, int $length): string
     {
         $lines = explode("\n", $text);
         $lines = array_map('rtrim', $lines);
