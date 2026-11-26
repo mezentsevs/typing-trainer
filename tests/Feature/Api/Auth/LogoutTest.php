@@ -19,7 +19,7 @@ class LogoutTest extends TestCase
         WithLessonConstants,
         WithAuthAssertions;
 
-    protected LessonService $lessonService;
+    private LessonService $lessonService;
 
     protected function setUp(): void
     {

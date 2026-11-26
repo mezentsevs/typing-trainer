@@ -10,9 +10,9 @@ use Tests\TestCase;
 
 class WordServiceTest extends TestCase
 {
-    protected WordService $service;
+    private WordService $service;
 
-    protected const int MAX_EXTRA_SPECIAL_CHARS_COUNT = 2;
+    private const int MAX_EXTRA_SPECIAL_CHARS_COUNT = 2;
 
     protected function setUp(): void
     {

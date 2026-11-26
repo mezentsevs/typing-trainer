@@ -12,7 +12,7 @@ class LanguageRegistryTest extends TestCase
 {
     use WithLanguageRegistryConstants;
 
-    protected LanguageRegistry $registry;
+    private LanguageRegistry $registry;
 
     protected function setUp(): void
     {

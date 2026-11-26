@@ -20,8 +20,8 @@ class LessonServiceTest extends TestCase
 {
     use RefreshDatabase;
 
-    protected LessonService $service;
-    protected User $user;
+    private LessonService $service;
+    private User $user;
 
     protected function setUp(): void
     {
