@@ -9,7 +9,7 @@ class TestGenerationOrchestrator
     /**
      * @param TestRetrieveStrategy[] $strategies
      */
-    public function __construct(protected array $strategies)
+    public function __construct(private array $strategies)
     {
     }
 

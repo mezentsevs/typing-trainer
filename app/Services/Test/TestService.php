@@ -10,7 +10,7 @@ use App\Services\Test\TestGeneration\TestGenerationOrchestrator;
 
 class TestService
 {
-    public function __construct(protected TestGenerationOrchestrator $testGenerationOrchestrator)
+    public function __construct(private TestGenerationOrchestrator $testGenerationOrchestrator)
     {
     }
 
