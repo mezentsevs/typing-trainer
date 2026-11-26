@@ -15,7 +15,7 @@ class WordCharDataProvider
     public const int NUMBER_CHANCE = 30;
     public const int NEW_CHAR_CHANCE = 70;
 
-    public function __construct(protected LanguageRegistry $languageRegistry)
+    public function __construct(private LanguageRegistry $languageRegistry)
     {
     }
 

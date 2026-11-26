@@ -7,7 +7,7 @@ use Random\RandomException;
 
 class WordService
 {
-    public function __construct(protected WordGenerationOrchestrator $wordGenerationOrchestrator)
+    public function __construct(private WordGenerationOrchestrator $wordGenerationOrchestrator)
     {
     }
 

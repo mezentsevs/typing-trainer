@@ -4,7 +4,7 @@ namespace App\Services\Word\WordGeneration;
 
 class WordCharSetsInitializer
 {
-    public function __construct(protected WordCharDataProvider $wordCharDataProvider)
+    public function __construct(private WordCharDataProvider $wordCharDataProvider)
     {
     }
 

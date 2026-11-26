@@ -6,10 +6,8 @@ use App\Helpers\RandomHelper;
 
 class WordLettersPartGenerator
 {
-    public function __construct(
-        protected WordCharProbabilitySelector $wordCharProbabilitySelector,
-        protected WordCharDataProvider $wordCharDataProvider,
-    ) {
+    public function __construct(private WordCharProbabilitySelector $wordCharProbabilitySelector)
+    {
     }
 
     public function generate(array $charSets, int $lettersPartLength): string

@@ -8,8 +8,8 @@ use App\Languages\Registry\LanguageRegistry;
 class WordSpecialCharsAppender
 {
     public function __construct(
-        protected WordCharDataProvider $wordCharDataProvider,
-        protected LanguageRegistry $languageRegistry,
+        private WordCharDataProvider $wordCharDataProvider,
+        private LanguageRegistry $languageRegistry,
     ) {
     }
 
@@ -33,7 +33,7 @@ class WordSpecialCharsAppender
         return $this->addPairedSpecialChars($lettersPart, $availableSpecialChars);
     }
 
-    protected function filterSpecialChars(array $availableChars, string $language): array
+    private function filterSpecialChars(array $availableChars, string $language): array
     {
         $allowedSpecialChars = $this->languageRegistry->get($language)?->getSpecials() ?? [];
 
@@ -42,7 +42,7 @@ class WordSpecialCharsAppender
         });
     }
 
-    protected function determineSpecialCharType(array $availableSpecialChars): string
+    private function determineSpecialCharType(array $availableSpecialChars): string
     {
         $singleSpecialChars = $this->getSingleSpecialChars($availableSpecialChars);
         $availableOpeningPairedChars = $this->getAvailableOpeningPairedChars($availableSpecialChars);
@@ -60,7 +60,7 @@ class WordSpecialCharsAppender
         return $totalOptions[array_rand($totalOptions)];
     }
 
-    protected function getSingleSpecialChars(array $availableSpecialChars): array
+    private function getSingleSpecialChars(array $availableSpecialChars): array
     {
         $pairedSymbolChars = array_merge(
             array_keys(WordCharDataProvider::PAIRED),
@@ -70,7 +70,7 @@ class WordSpecialCharsAppender
         return array_diff($availableSpecialChars, $pairedSymbolChars);
     }
 
-    protected function getAvailableOpeningPairedChars(array $availableSpecialChars): array
+    private function getAvailableOpeningPairedChars(array $availableSpecialChars): array
     {
         $availableOpeningPairedChars = array_intersect(
             array_keys(WordCharDataProvider::PAIRED),
@@ -82,7 +82,7 @@ class WordSpecialCharsAppender
         });
     }
 
-    protected function addSingleSpecialChar(string $lettersPart, array $availableSpecialChars): string
+    private function addSingleSpecialChar(string $lettersPart, array $availableSpecialChars): string
     {
         $singleSpecialChars = $this->getSingleSpecialChars($availableSpecialChars);
         $specialChar = $singleSpecialChars[array_rand($singleSpecialChars)];
@@ -96,7 +96,7 @@ class WordSpecialCharsAppender
         return $isPrepend ? $specialChar . $lettersPart : $lettersPart . $specialChar;
     }
 
-    protected function addPairedSpecialChars(string $lettersPart, array $availableSpecialChars): string
+    private function addPairedSpecialChars(string $lettersPart, array $availableSpecialChars): string
     {
         $availableOpeningPairedChars = $this->getAvailableOpeningPairedChars($availableSpecialChars);
         $openingChar = $availableOpeningPairedChars[array_rand($availableOpeningPairedChars)];

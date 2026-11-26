@@ -33,10 +33,7 @@ class WordServiceProvider extends ServiceProvider
         });
 
         $this->app->bind(WordLettersPartGenerator::class, function ($app) {
-            return new WordLettersPartGenerator(
-                $app->make(WordCharProbabilitySelector::class),
-                $app->make(WordCharDataProvider::class),
-            );
+            return new WordLettersPartGenerator($app->make(WordCharProbabilitySelector::class));
         });
 
         $this->app->bind(WordSpecialCharsAppender::class, function ($app) {

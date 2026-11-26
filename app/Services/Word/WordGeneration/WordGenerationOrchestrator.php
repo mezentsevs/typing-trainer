@@ -7,9 +7,9 @@ use Random\RandomException;
 class WordGenerationOrchestrator
 {
     public function __construct(
-        protected WordCharSetsInitializer $wordCharSetsInitializer,
-        protected WordLettersPartGenerator $wordLettersPartGenerator,
-        protected WordSpecialCharsAppender $wordSpecialCharsAppender,
+        private WordCharSetsInitializer $wordCharSetsInitializer,
+        private WordLettersPartGenerator $wordLettersPartGenerator,
+        private WordSpecialCharsAppender $wordSpecialCharsAppender,
     ) {
     }
 
