@@ -13,7 +13,7 @@ use Illuminate\Http\JsonResponse;
 
 class TestController extends Controller
 {
-    public function __construct(protected TestService $testService)
+    public function __construct(private TestService $testService)
     {
     }
 

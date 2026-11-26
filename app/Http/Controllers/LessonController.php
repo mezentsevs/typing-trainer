@@ -18,7 +18,7 @@ class LessonController extends Controller
 {
     use AuthorizesRequests;
 
-    public function __construct(protected LessonService $lessonService)
+    public function __construct(private LessonService $lessonService)
     {
     }
 

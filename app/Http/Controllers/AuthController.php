@@ -11,7 +11,7 @@ use Illuminate\Http\JsonResponse;
 
 class AuthController extends Controller
 {
-    public function __construct(protected AuthService $authService)
+    public function __construct(private AuthService $authService)
     {
     }
 
