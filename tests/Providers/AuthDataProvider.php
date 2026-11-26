@@ -4,8 +4,8 @@ namespace Tests\Providers;
 
 class AuthDataProvider
 {
-    protected const string NUMBERS = '0123456789';
-    protected const string SPECIAL_CHARS = '!@#$%^&*()_+-=[]{}|;:\"\',.<>/?~`';
+    private const string NUMBERS = '0123456789';
+    private const string SPECIAL_CHARS = '!@#$%^&*()_+-=[]{}|;:\"\',.<>/?~`';
 
     public static function provideValidUserNames(): array
     {
