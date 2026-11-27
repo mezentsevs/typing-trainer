@@ -21,4 +21,12 @@ class RandomHelper
     {
         return random_int(0, 99) < $chance;
     }
+
+    /**
+     * @throws RandomException
+     */
+    public static function rollRange(int $min, int $max): int
+    {
+        return random_int($min, $max);
+    }
 }

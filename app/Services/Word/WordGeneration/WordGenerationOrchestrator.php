@@ -2,7 +2,7 @@
 
 namespace App\Services\Word\WordGeneration;
 
-use Random\RandomException;
+use App\Helpers\RandomHelper;
 
 class WordGenerationOrchestrator
 {
@@ -13,9 +13,6 @@ class WordGenerationOrchestrator
     ) {
     }
 
-    /**
-     * @throws RandomException
-     */
     public function generate(string $language, array $availableChars, array $newChars): string
     {
         $charSets = $this->wordCharSetsInitializer->initialize($language, $availableChars, $newChars);
@@ -24,7 +21,7 @@ class WordGenerationOrchestrator
             return '';
         }
 
-        $lettersPartLength = random_int(
+        $lettersPartLength = RandomHelper::rollRange(
             WordCharDataProvider::MIN_LETTERS_PART_LENGTH,
             WordCharDataProvider::MAX_LETTERS_PART_LENGTH,
         );

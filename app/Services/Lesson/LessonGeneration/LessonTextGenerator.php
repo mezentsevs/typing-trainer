@@ -2,9 +2,9 @@
 
 namespace App\Services\Lesson\LessonGeneration;
 
+use App\Helpers\RandomHelper;
 use App\Services\Lesson\LessonGeneration\ValueObjects\LessonBlueprint;
 use App\Services\Word\WordService;
-use Random\RandomException;
 
 class LessonTextGenerator
 {
@@ -18,9 +18,6 @@ class LessonTextGenerator
     {
     }
 
-    /**
-     * @throws RandomException
-     */
     public function generate(LessonBlueprint $blueprint): string
     {
         $availableChars = mb_str_split($blueprint->availableChars, 1, self::ENCODING);
@@ -33,7 +30,7 @@ class LessonTextGenerator
         $text = '';
         $wordsAdded = 0;
         $lineWordCount = 0;
-        $currentLineWords = random_int(self::MIN_WORDS_PER_LINE, self::MAX_WORDS_PER_LINE);
+        $currentLineWords = RandomHelper::rollRange(self::MIN_WORDS_PER_LINE, self::MAX_WORDS_PER_LINE);
         $isFirstOfPair = true;
         $baseWord = null;
 
@@ -42,7 +39,7 @@ class LessonTextGenerator
                 $separator = $this->determineSeparator($lineWordCount, $currentLineWords);
                 if ($separator === "\n") {
                     $lineWordCount = 0;
-                    $currentLineWords = random_int(self::MIN_WORDS_PER_LINE, self::MAX_WORDS_PER_LINE);
+                    $currentLineWords = RandomHelper::rollRange(self::MIN_WORDS_PER_LINE, self::MAX_WORDS_PER_LINE);
                 }
 
                 if (mb_strlen($text) + mb_strlen($separator) > $blueprint->length) {
@@ -72,7 +69,7 @@ class LessonTextGenerator
                 if ($lineWordCount + self::WORDS_BEFORE_NEWLINE > $currentLineWords) {
                     $text .= "\n";
                     $lineWordCount = 0;
-                    $currentLineWords = random_int(self::MIN_WORDS_PER_LINE, self::MAX_WORDS_PER_LINE);
+                    $currentLineWords = RandomHelper::rollRange(self::MIN_WORDS_PER_LINE, self::MAX_WORDS_PER_LINE);
                 }
             } else {
                 $currentWord = $baseWord;
