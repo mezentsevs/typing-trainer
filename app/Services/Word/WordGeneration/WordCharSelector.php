@@ -8,7 +8,7 @@ class WordCharSelector
 {
     public function select(array $availableChars, array $newChars): string
     {
-        $useNewChar = $newChars && RandomHelper::rollChance(WordCharDataProvider::NEW_CHAR_CHANCE);
+        $useNewChar = !empty($newChars) && RandomHelper::rollChance(WordCharDataProvider::NEW_CHAR_CHANCE);
 
         return $useNewChar
             ? $newChars[array_rand($newChars)]
