@@ -12,9 +12,17 @@ abstract class LanguageTestCase extends TestCase
 
     protected Language $language;
 
-    abstract protected function createLanguage(): Language;
+    protected const string LANGUAGE_CLASS = '';
 
-    abstract protected function getExpectedCode(): string;
+    protected function createLanguage(): Language
+    {
+        return new (static::LANGUAGE_CLASS)();
+    }
+
+    protected function getExpectedCode(): string
+    {
+        return (static::LANGUAGE_CLASS)::CODE;
+    }
 
     protected function setUp(): void
     {
