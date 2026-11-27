@@ -6,7 +6,7 @@ use App\Helpers\RandomHelper;
 
 class WordLettersPartGenerator
 {
-    public function __construct(private WordCharProbabilitySelector $wordCharProbabilitySelector)
+    public function __construct(private WordCharSelector $wordCharSelector)
     {
     }
 
@@ -28,11 +28,11 @@ class WordLettersPartGenerator
             $useNumber = !empty($charSets['availableNumberChars']) && RandomHelper::rollChance(WordCharDataProvider::NUMBER_CHANCE);
 
             $result .= $useNumber
-                ? $this->wordCharProbabilitySelector->selectChar(
+                ? $this->wordCharSelector->select(
                     $charSets['availableNumberChars'],
                     $charSets['newNumberChars'],
                 )
-                : $this->wordCharProbabilitySelector->selectChar(
+                : $this->wordCharSelector->select(
                     $availableChars,
                     $newChars,
                 );

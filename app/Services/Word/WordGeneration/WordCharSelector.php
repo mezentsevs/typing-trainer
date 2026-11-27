@@ -4,9 +4,9 @@ namespace App\Services\Word\WordGeneration;
 
 use App\Helpers\RandomHelper;
 
-class WordCharProbabilitySelector
+class WordCharSelector
 {
-    public function selectChar(array $availableChars, array $newChars): string
+    public function select(array $availableChars, array $newChars): string
     {
         $useNewChar = $newChars && RandomHelper::rollChance(WordCharDataProvider::NEW_CHAR_CHANCE);
 

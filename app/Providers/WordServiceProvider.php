@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use App\Languages\Registry\LanguageRegistry;
 use App\Services\Word\WordGeneration\WordCharDataProvider;
-use App\Services\Word\WordGeneration\WordCharProbabilitySelector;
+use App\Services\Word\WordGeneration\WordCharSelector;
 use App\Services\Word\WordGeneration\WordCharSetsInitializer;
 use App\Services\Word\WordGeneration\WordGenerationOrchestrator;
 use App\Services\Word\WordGeneration\WordLettersPartGenerator;
@@ -33,7 +33,7 @@ class WordServiceProvider extends ServiceProvider
         });
 
         $this->app->bind(WordLettersPartGenerator::class, function ($app) {
-            return new WordLettersPartGenerator($app->make(WordCharProbabilitySelector::class));
+            return new WordLettersPartGenerator($app->make(WordCharSelector::class));
         });
 
         $this->app->bind(WordSpecialCharsAppender::class, function ($app) {
