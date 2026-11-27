@@ -14,6 +14,13 @@ abstract class LanguageTestCase extends TestCase
 
     protected const string LANGUAGE_CLASS = '';
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->language = $this->createLanguage();
+    }
+
     protected function createLanguage(): Language
     {
         return new (static::LANGUAGE_CLASS)();
@@ -22,13 +29,6 @@ abstract class LanguageTestCase extends TestCase
     protected function getExpectedCode(): string
     {
         return (static::LANGUAGE_CLASS)::CODE;
-    }
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->language = $this->createLanguage();
     }
 
     public function testGetCodeReturnsExpectedCode(): void
