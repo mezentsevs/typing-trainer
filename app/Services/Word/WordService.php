@@ -10,7 +10,7 @@ class WordService
     {
     }
 
-    public function generateWord(string $language, array $availableChars, array $newChars): string
+    public function generate(string $language, array $availableChars, array $newChars): string
     {
         return $this->wordGenerationOrchestrator->generate($language, $availableChars, $newChars);
     }
