@@ -3,7 +3,6 @@
 namespace App\Services\Lesson\LessonGeneration;
 
 use App\Models\Lesson;
-use Random\RandomException;
 
 class LessonGenerationOrchestrator
 {
@@ -13,9 +12,6 @@ class LessonGenerationOrchestrator
     ) {
     }
 
-    /**
-     * @throws RandomException
-     */
     public function generate(int $userId, string $language, int $lessonCount): void
     {
         $this->purge($userId, $language);

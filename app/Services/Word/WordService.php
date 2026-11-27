@@ -3,7 +3,6 @@
 namespace App\Services\Word;
 
 use App\Services\Word\WordGeneration\WordGenerationOrchestrator;
-use Random\RandomException;
 
 class WordService
 {
@@ -11,9 +10,6 @@ class WordService
     {
     }
 
-    /**
-     * @throws RandomException
-     */
     public function generateWord(string $language, array $availableChars, array $newChars): string
     {
         return $this->wordGenerationOrchestrator->generate($language, $availableChars, $newChars);

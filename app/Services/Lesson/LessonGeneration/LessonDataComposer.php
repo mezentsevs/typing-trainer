@@ -3,7 +3,6 @@
 namespace App\Services\Lesson\LessonGeneration;
 
 use App\Services\Lesson\LessonGeneration\ValueObjects\LessonBlueprint;
-use Random\RandomException;
 
 class LessonDataComposer
 {
@@ -11,9 +10,6 @@ class LessonDataComposer
     {
     }
 
-    /**
-     * @throws RandomException
-     */
     public function compose(LessonBlueprint $blueprint, int $userId): array
     {
         return [

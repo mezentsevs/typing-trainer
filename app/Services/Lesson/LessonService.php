@@ -8,7 +8,6 @@ use App\Dtos\Lesson\LessonShowDto;
 use App\Models\Lesson;
 use App\Models\LessonResult;
 use App\Services\Lesson\LessonGeneration\LessonGenerationOrchestrator;
-use Random\RandomException;
 
 class LessonService
 {
@@ -24,9 +23,6 @@ class LessonService
             ->firstOrFail();
     }
 
-    /**
-     * @throws RandomException
-     */
     public function generate(LessonGenerateDto $dto): void
     {
         $this->lessonGenerationOrchestrator->generate(
