@@ -17,7 +17,7 @@ class WordGenerationOrchestrator
     {
         $charSets = $this->wordCharSetsInitializer->initialize($language, $availableChars, $newChars);
 
-        if (empty($charSets['availableVowelChars']) && empty($charSets['availableConsonantChars'])) {
+        if (empty($charSets['availableVowels']) && empty($charSets['availableConsonants'])) {
             return '';
         }
 

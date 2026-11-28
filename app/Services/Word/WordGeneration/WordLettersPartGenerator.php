@@ -21,16 +21,16 @@ class WordLettersPartGenerator
             $newChars = $letterAlternationSets[$position]['new'];
 
             if (empty($availableChars)) {
-                $availableChars = $charSets['availableLetterChars'];
-                $newChars = $charSets['newLetterChars'];
+                $availableChars = $charSets['availableLetters'];
+                $newChars = $charSets['newLetters'];
             }
 
-            $useNumber = !empty($charSets['availableNumberChars']) && RandomHelper::rollChance(WordCharDataProvider::NUMBER_CHANCE);
+            $useNumber = !empty($charSets['availableNumbers']) && RandomHelper::rollChance(WordCharDataProvider::NUMBER_CHANCE);
 
             $result .= $useNumber
                 ? $this->wordCharSelector->select(
-                    $charSets['availableNumberChars'],
-                    $charSets['newNumberChars'],
+                    $charSets['availableNumbers'],
+                    $charSets['newNumbers'],
                 )
                 : $this->wordCharSelector->select(
                     $availableChars,
@@ -48,30 +48,30 @@ class WordLettersPartGenerator
         $oddAvailable = [];
         $oddNew = [];
 
-        $hasVowelChars = !empty($charSets['availableVowelChars']);
-        $hasConsonantChars = !empty($charSets['availableConsonantChars']);
+        $hasVowels = !empty($charSets['availableVowels']);
+        $hasConsonants = !empty($charSets['availableConsonants']);
 
         switch (true) {
-            case $hasVowelChars && $hasConsonantChars:
+            case $hasVowels && $hasConsonants:
                 $isEvenVowel = RandomHelper::flipCoin();
 
                 $types = ['Vowel', 'Consonant'];
                 [$evenType, $oddType] = $isEvenVowel ? $types : array_reverse($types);
 
-                $evenAvailable = $charSets["available{$evenType}Chars"];
-                $evenNew = $charSets["new{$evenType}Chars"];
-                $oddAvailable = $charSets["available{$oddType}Chars"];
-                $oddNew = $charSets["new{$oddType}Chars"];
+                $evenAvailable = $charSets["available{$evenType}s"];
+                $evenNew = $charSets["new{$evenType}s"];
+                $oddAvailable = $charSets["available{$oddType}s"];
+                $oddNew = $charSets["new{$oddType}s"];
                 break;
 
-            case $hasVowelChars:
-                $evenAvailable = $charSets['availableVowelChars'];
-                $evenNew = $charSets['newVowelChars'];
+            case $hasVowels:
+                $evenAvailable = $charSets['availableVowels'];
+                $evenNew = $charSets['newVowels'];
                 break;
 
-            case $hasConsonantChars:
-                $evenAvailable = $charSets['availableConsonantChars'];
-                $evenNew = $charSets['newConsonantChars'];
+            case $hasConsonants:
+                $evenAvailable = $charSets['availableConsonants'];
+                $evenNew = $charSets['newConsonants'];
                 break;
 
             default:

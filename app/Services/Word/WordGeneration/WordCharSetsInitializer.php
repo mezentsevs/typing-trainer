@@ -10,39 +10,39 @@ class WordCharSetsInitializer
 
     public function initialize(string $language, array $availableChars, array $newChars): array
     {
-        $availableLetterChars = array_filter($availableChars, function ($char) {
+        $availableLetters = array_filter($availableChars, function ($char) {
             return preg_match('/[\p{L}\p{N}]/u', $char);
         });
 
-        $newLetterChars = array_filter($newChars, function ($char) {
+        $newLetters = array_filter($newChars, function ($char) {
             return preg_match('/[\p{L}\p{N}]/u', $char);
         });
 
-        $allVowelChars = $this->wordCharDataProvider->getVowels($language);
-        $availableVowelChars = array_intersect($allVowelChars, $availableLetterChars);
-        $newVowelChars = array_intersect($allVowelChars, $newLetterChars);
+        $allVowels = $this->wordCharDataProvider->getVowels($language);
+        $availableVowels = array_intersect($allVowels, $availableLetters);
+        $newVowels = array_intersect($allVowels, $newLetters);
 
-        $allConsonantChars = $this->wordCharDataProvider->getConsonants($language);
-        $availableConsonantChars = array_intersect($allConsonantChars, $availableLetterChars);
-        $newConsonantChars = array_intersect($allConsonantChars, $newLetterChars);
+        $allConsonants = $this->wordCharDataProvider->getConsonants($language);
+        $availableConsonants = array_intersect($allConsonants, $availableLetters);
+        $newConsonants = array_intersect($allConsonants, $newLetters);
 
-        $availableNumberChars = array_filter($availableLetterChars, function ($char) {
+        $availableNumbers = array_filter($availableLetters, function ($char) {
             return preg_match('/\p{N}/u', $char);
         });
 
-        $newNumberChars = array_filter($newLetterChars, function ($char) {
+        $newNumbers = array_filter($newLetters, function ($char) {
             return preg_match('/\p{N}/u', $char);
         });
 
         return [
-            'availableVowelChars' => $availableVowelChars,
-            'newVowelChars' => $newVowelChars,
-            'availableConsonantChars' => $availableConsonantChars,
-            'newConsonantChars' => $newConsonantChars,
-            'availableNumberChars' => $availableNumberChars,
-            'newNumberChars' => $newNumberChars,
-            'availableLetterChars' => $availableLetterChars,
-            'newLetterChars' => $newLetterChars,
+            'availableVowels' => $availableVowels,
+            'newVowels' => $newVowels,
+            'availableConsonants' => $availableConsonants,
+            'newConsonants' => $newConsonants,
+            'availableNumbers' => $availableNumbers,
+            'newNumbers' => $newNumbers,
+            'availableLetters' => $availableLetters,
+            'newLetters' => $newLetters,
         ];
     }
 }
