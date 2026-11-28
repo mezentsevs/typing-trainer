@@ -2,6 +2,8 @@
 
 namespace App\Services\Word\WordGeneration;
 
+use App\Helpers\CharHelper;
+
 class WordCharSetsInitializer
 {
     public function __construct(private WordCharDataProvider $wordCharDataProvider)
@@ -10,13 +12,8 @@ class WordCharSetsInitializer
 
     public function initialize(string $language, array $availableChars, array $newChars): array
     {
-        $availableLetters = array_filter($availableChars, function ($char) {
-            return preg_match('/[\p{L}\p{N}]/u', $char);
-        });
-
-        $newLetters = array_filter($newChars, function ($char) {
-            return preg_match('/[\p{L}\p{N}]/u', $char);
-        });
+        $availableLetters = array_filter($availableChars, [CharHelper::class, 'isAlphanumeric']);
+        $newLetters = array_filter($newChars, [CharHelper::class, 'isAlphanumeric']);
 
         $allVowels = $this->wordCharDataProvider->getVowels($language);
         $availableVowels = array_intersect($allVowels, $availableLetters);
@@ -26,13 +23,8 @@ class WordCharSetsInitializer
         $availableConsonants = array_intersect($allConsonants, $availableLetters);
         $newConsonants = array_intersect($allConsonants, $newLetters);
 
-        $availableNumbers = array_filter($availableLetters, function ($char) {
-            return preg_match('/\p{N}/u', $char);
-        });
-
-        $newNumbers = array_filter($newLetters, function ($char) {
-            return preg_match('/\p{N}/u', $char);
-        });
+        $availableNumbers = array_filter($availableLetters, [CharHelper::class, 'isNumeric']);
+        $newNumbers = array_filter($newLetters, [CharHelper::class, 'isNumeric']);
 
         return [
             'availableVowels' => $availableVowels,
