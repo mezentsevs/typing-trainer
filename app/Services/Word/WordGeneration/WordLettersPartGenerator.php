@@ -21,8 +21,8 @@ class WordLettersPartGenerator
             $newChars = $letterAlternationSets[$position]['new'];
 
             if (empty($availableChars)) {
-                $availableChars = $charSets['availableLetters'];
-                $newChars = $charSets['newLetters'];
+                $availableChars = $charSets['availableAlphanumerics'];
+                $newChars = $charSets['newAlphanumerics'];
             }
 
             $useNumber = !empty($charSets['availableNumbers']) && RandomHelper::rollChance(WordCharDataProvider::NUMBER_CHANCE);

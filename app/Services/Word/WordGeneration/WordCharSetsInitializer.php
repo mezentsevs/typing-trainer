@@ -12,19 +12,19 @@ class WordCharSetsInitializer
 
     public function initialize(string $language, array $availableChars, array $newChars): array
     {
-        $availableLetters = array_filter($availableChars, [CharHelper::class, 'isAlphanumeric']);
-        $newLetters = array_filter($newChars, [CharHelper::class, 'isAlphanumeric']);
+        $availableAlphanumerics = array_filter($availableChars, [CharHelper::class, 'isAlphanumeric']);
+        $newAlphanumerics = array_filter($newChars, [CharHelper::class, 'isAlphanumeric']);
 
         $allVowels = $this->wordCharDataProvider->getVowels($language);
-        $availableVowels = array_intersect($allVowels, $availableLetters);
-        $newVowels = array_intersect($allVowels, $newLetters);
+        $availableVowels = array_intersect($allVowels, $availableAlphanumerics);
+        $newVowels = array_intersect($allVowels, $newAlphanumerics);
 
         $allConsonants = $this->wordCharDataProvider->getConsonants($language);
-        $availableConsonants = array_intersect($allConsonants, $availableLetters);
-        $newConsonants = array_intersect($allConsonants, $newLetters);
+        $availableConsonants = array_intersect($allConsonants, $availableAlphanumerics);
+        $newConsonants = array_intersect($allConsonants, $newAlphanumerics);
 
-        $availableNumbers = array_filter($availableLetters, [CharHelper::class, 'isNumeric']);
-        $newNumbers = array_filter($newLetters, [CharHelper::class, 'isNumeric']);
+        $availableNumbers = array_filter($availableAlphanumerics, [CharHelper::class, 'isNumeric']);
+        $newNumbers = array_filter($newAlphanumerics, [CharHelper::class, 'isNumeric']);
 
         return [
             'availableVowels' => $availableVowels,
@@ -33,8 +33,8 @@ class WordCharSetsInitializer
             'newConsonants' => $newConsonants,
             'availableNumbers' => $availableNumbers,
             'newNumbers' => $newNumbers,
-            'availableLetters' => $availableLetters,
-            'newLetters' => $newLetters,
+            'availableAlphanumerics' => $availableAlphanumerics,
+            'newAlphanumerics' => $newAlphanumerics,
         ];
     }
 }
