@@ -26,15 +26,15 @@ class WordCharSetsInitializer
         $availableNumbers = array_filter($availableAlphanumerics, [CharHelper::class, 'isNumeric']);
         $newNumbers = array_filter($newAlphanumerics, [CharHelper::class, 'isNumeric']);
 
-        return [
-            'availableAlphanumerics' => $availableAlphanumerics,
-            'newAlphanumerics' => $newAlphanumerics,
-            'availableVowels' => $availableVowels,
-            'newVowels' => $newVowels,
-            'availableConsonants' => $availableConsonants,
-            'newConsonants' => $newConsonants,
-            'availableNumbers' => $availableNumbers,
-            'newNumbers' => $newNumbers,
-        ];
+        return compact(
+            'availableAlphanumerics',
+            'newAlphanumerics',
+            'availableVowels',
+            'newVowels',
+            'availableConsonants',
+            'newConsonants',
+            'availableNumbers',
+            'newNumbers',
+        );
     }
 }
